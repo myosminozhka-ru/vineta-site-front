@@ -1,4 +1,7 @@
 export default {
+  router: {
+    base: '/vineta/',
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'vineta',
