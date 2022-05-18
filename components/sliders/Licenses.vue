@@ -1,22 +1,21 @@
 <template>
-    <div class="customers glide">
-        <osm-h2 class="customers__title">Заказчики</osm-h2>
-        <div class="customers__slider">
+    <div class="licenses glide">
+        <div class="licenses__slider">
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-                    <li v-for="(key, item) in 15" :key="item.index" class="customers__slide glide__slide">
-                        <img :src="require('~/assets/img/customers/customer1.png')" alt="">
+                    <li v-for="(key, item) in 15" :key="item.index" class="licenses__slide glide__slide">
+                        <img :src="require('~/assets/img/licenses/license1.png')" alt="">
                     </li>
                 </ul>
             </div>
-            <div class="customers__arrows" data-glide-el="controls">
-                <button class="customers__arrow customers__arrow--left" data-glide-dir="<">
+            <div class="licenses__arrows" data-glide-el="controls">
+                <button class="licenses__arrow licenses__arrow--left" data-glide-dir="<">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
                         <rect width="40" height="40" fill="#FF004D"/>
                         <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
                     </svg>
                 </button>
-                <button class="customers__arrow customers__arrow--right" data-glide-dir=">">
+                <button class="licenses__arrow licenses__arrow--right" data-glide-dir=">">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
                         <rect width="40" height="40" fill="#FF004D"/>
                         <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
@@ -28,30 +27,32 @@
 </template>
 
 <script>
-import Glide from '@glidejs/glide'
+// import Glide from '@glidejs/glide'
 export default {
-    name: "CustomersSlider",
-    components: {
-        OsmH2: () => import('~/components/global/OsmH2.vue'),
-    },
+    name: "licensesSlider",
     data: () => ({
-        slider: new Glide('.customers.glide', {
-            perView: 6
-        })
+        sliders: []
     }),
     beforeDestroy() {
         console.log('beforeDestroy');
-        this.slider.destroy();
+        // this.slider.destroy();
     },
     beforeMount() {
         console.log('beforeMount');
-        this.slider.mount();
+        // document.querySelectorAll('.licenses.glide').forEach(item => {
+        //     this.sliders.push(
+        //         new Glide(item, {
+        //             perView: 6
+        //         }).mount()
+        //     );
+        // });
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.customers {
+.licenses {
+    max-width: 100%;
     &__title {
         margin-bottom: vw(30);
     }

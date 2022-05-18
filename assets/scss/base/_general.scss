@@ -86,10 +86,23 @@ body .wrapper  .sections {
   padding-left: vw(133);
   padding-top: vw(120);
   box-sizing: border-box;
+  position: relative;
 }
 
 body .wrapper .section {
   display: flex;
+  background: #F2F2F2;
+  position: absolute;
+  top: 0;
+  left: vw(133);
+  right: 0;
+  bottom: 0;
+  &:not(:first-child) {
+    transform: translateY(100vh);
+  }
+  // &.isActive {
+  //   transform: translateY(100vh);
+  // }
   &__item {
     display: flex;
     align-items: center;

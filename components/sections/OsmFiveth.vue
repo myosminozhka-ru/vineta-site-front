@@ -1,13 +1,15 @@
 <template>
     <section class="section section__item section__item--fiveth">
-        <customers />
+        <customers class="customers__slider" />
+        <licenses />
     </section>
 </template>
 <script>
 export default {
   name: 'OsmFivethSection',
   components: {
-    Customers: () => import('~/components/sliders/Customers.vue')
+    Customers: () => import('~/components/sliders/Customers.vue'),
+    Licenses: () => import('~/components/tabs/Licenses.vue'),
   }
 }
 </script>
@@ -15,7 +17,13 @@ export default {
 <style lang="scss" scoped>
 .section {
     &__item {
-        padding: vw(100) vw(240) vw(70) vw(108);
+      flex-direction: column;
+      padding: vw(100) vw(240) vw(70) vw(108);
     }
+}
+.customers {
+  &__slider {
+    margin-bottom: vw(80);
+  }
 }
 </style>
