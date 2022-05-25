@@ -41,7 +41,9 @@ export default {
     }),
     beforeDestroy() {
         console.log('beforeDestroy');
-        this.slider.destroy();
+        if (this.slider) {
+            this.slider.destroy();
+        }
     },
     beforeMount() {
         console.log('beforeMount');

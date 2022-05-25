@@ -35,15 +35,7 @@ export default {
         return this.activeIndex;
       },
       set(newIndex) {
-        console.log(newIndex);
-        if (newIndex < 0) {
-          this.activeIndex = 0;
-        } else if (newIndex > this.sections.length) {
-          this.activeIndex = this.sections.length - 1;
-        } else {
-          this.activeIndex = newIndex;
-        }
-        console.log('this.activeIndex is ' + this.activeIndex);
+        this.activeIndex = newIndex;
       }
     }
   },
@@ -54,40 +46,37 @@ export default {
   },
   mounted() {
     this.sections = document.querySelectorAll('.section.section__item');
+
     document.addEventListener('mousewheel', (event) => {
       if (this.isInProgress) return;
-      
-
-      console.log('change');
       if (event.wheelDelta > 0 || event.detail < 0) {
-        this.isInProgress = true;
         this.change('up');
-        this.activeSection--;
-      } else {
         this.isInProgress = true;
-        this.activeSection++;
+      } else {
         this.change('down');
+        this.isInProgress = true;
       }
     });
   },
   methods: {
     change(direction) {
-      console.log(direction);
-      this.$gsap.to(this.sections[this.activeSection], 1, {
-        y: () => {
-          if (direction === 'up' && this.activeSection !== 0) {
-            return '100vh';
-          } else if (direction === 'down' && this.activeSection !== 0) {
-            return 0;
-          } else {
-            return 0;
-          }
-        },
+      if (this.activeIndex < 1) {
+        this.activeIndex = 1;
+      }
+      if (direction === 'down' && this.activeIndex < this.sections.length - 1) {
+        this.activeIndex++;
+      }
+      this.$gsap.to(this.sections[this.activeSection], 0.5, {
+        y: direction === 'down' ? 0 : '100vh',
         onComplete: () => {
+          console.log(this.activeIndex);
           this.isInProgress = false;
-          console.log('onComplete');
         }
       });
+      
+      if (direction === 'up' && this.activeIndex > 1) {
+        this.activeIndex--;
+      }
     },
   }
 }
