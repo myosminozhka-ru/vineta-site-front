@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import Glide from '@glidejs/glide'
+import Glide from '@glidejs/glide';
+import { mapGetters } from 'vuex';
 export default {
     name: "CustomersSlider",
     components: {
@@ -39,6 +40,12 @@ export default {
             perView: 6
         })
     }),
+    computed: {
+        ...mapGetters(['getMain']),
+        fivethData() {
+            return this.getMain[4];
+        }
+    },
     beforeDestroy() {
         console.log('beforeDestroy');
         if (this.slider) {

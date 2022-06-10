@@ -10,7 +10,8 @@ export default {
   components: {
     Customers: () => import('~/components/sliders/Customers.vue'),
     Licenses: () => import('~/components/tabs/Licenses.vue'),
-  }
+  },
+  
 }
 </script>
 

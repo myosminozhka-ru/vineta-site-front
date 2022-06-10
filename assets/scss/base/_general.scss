@@ -1,5 +1,7 @@
+
 body {
   box-sizing: border-box;
+  font-family: 'Guardian Sans Cy', sans-serif;
 }
 *,
 ::after,
@@ -22,8 +24,11 @@ body .wrapper .full-page-indicators {
   left: 0;
   width: vw(133);
   padding-top: vw(120);
+  &.white {
+    background: #fff;
+  }
   .indicator {
-    
+    cursor: pointer;
     color: #82827D;
     text-decoration: none;
     margin-bottom: 0;
@@ -78,8 +83,7 @@ body .wrapper .full-page-indicators {
     }
   }
 }
-
-body .wrapper  .sections {
+.sections {
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -89,7 +93,7 @@ body .wrapper  .sections {
   position: relative;
 }
 
-body .wrapper .section {
+.section {
   display: flex;
   background: #F2F2F2;
   position: absolute;
@@ -97,9 +101,7 @@ body .wrapper .section {
   left: vw(133);
   right: 0;
   bottom: 0;
-  &:not(:first-child) {
-    transform: translateY(100vh);
-  }
+  transition: all 1s ease;
   // &.isActive {
   //   transform: translateY(100vh);
   // }
@@ -108,19 +110,35 @@ body .wrapper .section {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    width: 100%;
+    max-width: 100%;
     height: 100%;
+    box-sizing: border-box;
   }
   &__left {
-      width: vw(715);
+    width: vw(715);
+    height: 100%;
+    background-image: url('~assets/img/background.svg');
+    background-position: 50% 300px;
+    background-size: 150%;
+    background-repeat: repeat;
+    transition: 0s background-position 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: 50% 0;
+    }
+    &--fullwidth img {
       height: 100%;
-      img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: 50% 50%;
-      }
+    }
   }
+  &.isActive &__left {
+    transition: background-position 1s ease;
+    background-position: 50% 50%;
+  }
+  
   &__right {
       width: calc(100% - #{vw(715)});
       height: 100%;

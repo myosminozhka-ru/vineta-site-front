@@ -1,19 +1,17 @@
 <template>
-  <section class="section section__item section__item--third">
-    <div class="section__left">
-      <img :src="require('~/assets/img/sections/third.jpg')" alt="first">
+  <section class="section section__item section__item--third" v-if="thirdData">
+    <div class="section__left section__left--fullwidth">
+      <img :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first">
     </div>
     <div class="section__right section__slider glide">
       <div class="section__content">
         <div class="glide__track" data-glide-el="track">
           <div class="glide__slides">
             <div v-for="item in 6" :key="item.index" class="section__slide glide__slide">
-              <osm-h1 class="section__title">История производства</osm-h1>
-              <div class="section__text">Безусловно, постоянное информационно-пропагандистское обеспечение нашей
-                деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё
-                реплицированные с зарубежных источников, современные исследования будут своевременно верифицированы! А
-                также активно развивающиеся страны третьего мира могут быть рассмотрены исключительно в разрезе
-                маркетинговых и финансовых предпосылок.</div>
+              <osm-h1 class="section__title">{{ thirdData.NAME }}</osm-h1>
+              <div class="section__text">
+                {{ thirdData.PREVIEW_TEXT }}
+              </div>
               <osm-button link="index">Каталог</osm-button>
             </div>
           </div>
@@ -26,7 +24,8 @@
   </section>
 </template>
 <script>
-  import Glide from '@glidejs/glide'
+  import Glide from '@glidejs/glide';
+  import { mapGetters } from 'vuex';
   export default {
     name: 'OsmFirstSection',
     data: () => ({
@@ -36,8 +35,16 @@
       OsmH1: () => import('~/components/global/OsmH1.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue'),
     },
+    computed: {
+      ...mapGetters(['getMain']),
+      thirdData() {
+        return this.getMain[2];
+    }
+  },
     mounted() {
-      this.slider.mount();
+      setTimeout(() => {
+        this.slider.mount();
+      }, 500);
     }
   }
 

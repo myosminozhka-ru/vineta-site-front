@@ -1,0 +1,240 @@
+<template>
+    <footer class="section section__item section__item--second section__item--dark">
+        <div class="section__left">
+            <div class="section__left_top">
+                <osm-h1 class="section__title">Контакты</osm-h1>
+                <div class="section__text">
+                    Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные
+                </div>
+            </div>
+            <form @submit.prevent class="section__left_form">
+                <osm-input class="section__input" placeholder="ФИО *" :required="true"/>
+                <osm-input class="section__input" placeholder="Компания *" :required="true"/>
+                <osm-input class="section__input" placeholder="Телефон *" type="tel" :required="true"/>
+                <osm-input class="section__input" placeholder="E-mail *" type="email" :required="true"/>
+                <osm-textarea class="section__textarea" placeholder="E-mail *" type="email" :required="true"/>
+                <osm-button class="section__button" :large="true" type="submit">Подробнее</osm-button>
+            </form>
+        </div>
+        <div class="section__right">
+            <div class="section__content">
+                <osm-h1 class="section__title">Контакты</osm-h1>
+                <div class="section__contacts">
+                    <div class="section__contacts_side">
+                        <a href="tel:78124935048" class="section__contact">+7(812)493-50-48</a>
+                        <div class="section__contacts_worktime">Пн-Пт с 9:00 до 18:00</div>
+                    </div>
+                    <div class="section__contacts_side">
+                        <a href="mailto:info@vineta.ru" class="section__contact">info@vineta.ru</a>
+                        <div class="section__contacts_info">Ответим в течение рабочего дня или на следующий рабочий день</div>
+                    </div>
+                </div>
+                <div class="section__socials">
+                    <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
+                        <img :src="social.icon" width="100%" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="section__map">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A53f4c694e1d4abd01e62a7f6f9d00f3717cffcb4b3a7cec3cc46bea2513cf1ab&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+        <div class="section__popup">
+            <div class="section__popup_left">ООО “Винета”, 2012-2022</div>
+            <div class="section__popup_right">
+                <ul>
+                    <li><a href="#">Политика конфидециальности</a></li>
+                    <li><a href="#">Пользовательское соглашение</a></li>
+                    <li><a href="#">Карта сайта</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</template>
+<script>
+export default {
+  name: 'OsmFirstSection',
+  components: {
+    OsmH1: () => import('~/components/global/OsmH1.vue'),
+    OsmInput: () => import('~/components/global/OsmInput.vue'),
+    OsmTextarea: () => import('~/components/global/OsmTextarea.vue'),
+    OsmButton: () => import('~/components/global/OsmButton.vue'),
+  },
+  data: () => ({
+      socials: [
+          {
+              icon: require('~/assets/img/socials/vk.svg'),
+              link: '#',
+          },
+          {
+              icon: require('~/assets/img/socials/vk.svg'),
+              link: '#',
+          },
+          {
+              icon: require('~/assets/img/socials/vk.svg'),
+              link: '#',
+          },
+          {
+              icon: require('~/assets/img/socials/vk.svg'),
+              link: '#',
+          },
+          {
+              icon: require('~/assets/img/socials/vk.svg'),
+              link: '#',
+          },
+          {
+              icon: require('~/assets/img/socials/vk.svg'),
+              link: '#',
+          }
+      ]
+  })
+}
+</script>
+
+<style lang="scss" scoped>
+.section {
+    overflow: visible;
+    &__content {
+        margin-bottom: vw(31);
+    }
+    &__left {
+        padding-left: vw(107);
+        padding-right: vw(71);
+        padding-top: vw(170);
+        padding-bottom: vw(121);
+        width: calc(#{vw(900)} - #{vw(133)});
+        background: none;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    &__left &__title {
+        margin-bottom: vw(30);
+    }
+    &__left_top {
+        margin-bottom: vw(48);
+    }
+    &__left_form {
+        width: 100%;
+    }
+    &__input {
+        margin-bottom: vw(20);
+    }
+    &__textarea {
+        margin-bottom: vw(20);
+    }
+    &__button {
+        width: 100%;
+    }
+    &__right {
+        padding-right: vw(240);
+        padding-left: vw(71);
+        padding-top: vw(170);
+        padding-bottom: vw(121);
+        background: #2E5599;
+        width: calc(100% - #{vw(900)} + #{vw(133)});
+        flex-direction: column;
+    }
+    &__right &__title {
+        color: #fff;
+        margin-bottom: vw(30);
+    }
+    &__contacts {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: vw(54);
+    }
+    &__contacts_side {
+        width: vw(240);
+        &:not(:last-child) {
+            margin-right: vw(143);
+        }
+    }
+    &__contact {
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 600;
+        font-size: vw(30);
+        line-height: 140%;
+        color: #FFFFFF;
+        display: block;
+        margin-bottom: vw(10);
+    }
+    &__contacts_worktime {
+        font-style: normal;
+        font-weight: 400;
+        font-size: vw(20);
+        line-height: 140%;
+        color: #FFFFFF;
+    }
+    &__contacts_info {
+        font-style: normal;
+        font-weight: 400;
+        font-size: vw(16);
+        line-height: 140%;
+        color: #FFFFFF;
+    }
+    &__socials {
+        display: flex;
+        align-items: center;
+    }
+    &__social {
+        width: vw(50);
+        font-size: 0;
+        display: block;
+        &:not(:last-child) {
+            margin-right: vw(20);
+        }
+    }
+    &__map {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+    &__popup {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        left: vw(-133);
+        right: 0;
+        bottom: -100%;
+        z-index: 3;
+        background: #172242;
+        padding: vw(20) vw(50);
+        transition: 1s bottom 0.5s ease;
+    }
+    &__popup_left {
+        font-style: normal;
+        font-weight: 600;
+        font-size: vw(20);
+        line-height: 140%;
+        color: #FFFFFF;
+    }
+    &__popup_right {
+        
+        ul {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li {
+                &:not(:last-child) {
+                    margin-right: vw(40);
+                }
+            }
+            a {
+                font-style: normal;
+                font-weight: 600;
+                font-size: vw(16);
+                line-height: 140%;
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+        }
+    }
+    &.isActive &__popup {
+        bottom: 0;
+    }
+}
+</style>

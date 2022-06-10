@@ -20,7 +20,7 @@ export default {
 <style lang="scss" scoped>
 .header {
     background: #172242;
-    padding: vw(35) vw(50);
+    padding: 0 vw(50);
     display: flex;
     align-items: center;
     justify-content: space-between;

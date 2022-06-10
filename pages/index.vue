@@ -1,12 +1,18 @@
 <template>
   <div class="wrapper">
     <osm-header />
-    <div class="sections">
-      <osm-first-section :class="{'isActive': activeIndex === 0}" />
-      <osm-second-section :class="{'isActive': activeIndex === 1}" />
-      <osm-third-section :class="{'isActive': activeIndex === 2}" />
-      <osm-fourth-section :class="{'isActive': activeIndex === 3}" />
-      <osm-fiveth-section :class="{'isActive': activeIndex === 4}"/>
+    <div class="full-page-indicators" :class="{'white': +activeIndex === 5}">
+      <div class="indicator" v-for="(indicator, key) in sections" :key="indicator.index" :class="{'active': +activeIndex === +key}" @click="activeIndex = key"><span></span></div>
+    </div>
+    <div class="sections" :data-id="activeIndex">
+      <osm-first-section :class="{'isActive': activeIndex === 0}" :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vh);'}`" />
+      <osm-second-section :class="{'isActive': activeIndex === 1}" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vh);'}`" />
+      <osm-third-section :class="{'isActive': activeIndex === 2}" :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vh);'}`"/>
+      <osm-fourth-section :class="{'isActive': activeIndex === 3}" :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vh);'}`"/>
+      <osm-fiveth-section :class="{'isActive': activeIndex === 4}" :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vh);'}`"/>
+      <osm-sixth-section :class="{'isActive': activeIndex === 5}" :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vh);'}`"/>
+      <osm-seventh-section :class="{'isActive': activeIndex === 6}" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vh);'}`"/>
+      <osm-footer-section :class="{'isActive': activeIndex === 7}" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vh);'}`"/>
     </div>
   </div>
 </template>
@@ -14,6 +20,7 @@
 <script>
 // import $ from 'jquery';
 // import 'pagepiling-js-version-kostyast/jquery.pagepiling.min.js';
+import { mapActions } from 'vuex';
 export default {
   name: 'IndexPage',
   components: {
@@ -23,9 +30,12 @@ export default {
     OsmThirdSection: () => import('~/components/sections/OsmThird.vue'),
     OsmFourthSection: () => import('~/components/sections/OsmFourth.vue'),
     OsmFivethSection: () => import('~/components/sections/OsmFiveth.vue'),
+    OsmSixthSection: () => import('~/components/sections/OsmSixth.vue'),
+    OsmSeventhSection: () => import('~/components/sections/OsmSeventh.vue'),
+    OsmFooterSection: () => import('~/components/sections/OsmFooter.vue'),
   },
   data: () => ({
-    activeIndex: 0,
+    activeIndex: null,
     sections: [],
     isInProgress: false,
   }),
@@ -45,10 +55,17 @@ export default {
     });
   },
   mounted() {
-    this.sections = document.querySelectorAll('.section.section__item');
+    this.addMain().then(response => {
+      console.log(response);
+    }).catch(error => {
+      console.log(error);
+    });
+    setTimeout(() => {
+      this.sections = document.querySelectorAll('.section');
+      this.activeIndex = 0;
+    }, 500);
 
     document.addEventListener('mousewheel', (event) => {
-      if (this.isInProgress) return;
       if (event.wheelDelta > 0 || event.detail < 0) {
         this.change('up');
         this.isInProgress = true;
@@ -59,24 +76,23 @@ export default {
     });
   },
   methods: {
+    ...mapActions(['addMain']),
     change(direction) {
-      if (this.activeIndex < 1) {
-        this.activeIndex = 1;
-      }
+      if (this.isInProgress) return;
+      
       if (direction === 'down' && this.activeIndex < this.sections.length - 1) {
         this.activeIndex++;
       }
-      this.$gsap.to(this.sections[this.activeSection], 0.5, {
-        y: direction === 'down' ? 0 : '100vh',
-        onComplete: () => {
-          console.log(this.activeIndex);
-          this.isInProgress = false;
-        }
-      });
-      
-      if (direction === 'up' && this.activeIndex > 1) {
+      if (direction === 'up') {
         this.activeIndex--;
       }
+      if (this.activeIndex < 1) {
+        this.activeIndex = 0;
+      }
+      console.log(this.activeIndex);
+      setTimeout(() => {
+        this.isInProgress = false;
+      }, 500);
     },
   }
 }

@@ -5,3 +5,9 @@
 @import 'vendor/libs';
 @import 'base/fonts';
 @import 'base/general';
+
+
+pre {
+    height: 400px;
+    overflow: auto;
+}

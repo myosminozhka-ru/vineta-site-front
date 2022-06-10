@@ -1,7 +1,7 @@
 <template>
     <div>
-        <nuxt-link v-if="link" :to="{ name: link }" class="button"><slot/></nuxt-link>
-        <button v-else class="button" :type="type"><slot/></button>
+        <nuxt-link v-if="link" :to="{ name: link }" class="button" :class="{'isOutlined': outlined, 'isLarge': large}"><slot/></nuxt-link>
+        <button v-else class="button" :class="{'isOutlined': outlined, 'isLarge': large}" :type="type"><slot/></button>
     </div>
 </template>
 
@@ -16,6 +16,14 @@ export default {
         type: {
             type: String,
             default: 'button'
+        },
+        outlined: {
+            type: Boolean,
+            default: false
+        },
+        large: {
+            type: Boolean,
+            default: false
         }
     }
 }
@@ -37,5 +45,14 @@ export default {
     color: #FFFFFF;
     cursor: pointer;
     text-decoration: none;
+    &.isOutlined {
+        padding: vw(20) vw(30);
+        background: transparent;
+        color: #172242;
+        border: vw(2) solid #FF004D;
+    }
+    &.isLarge {
+        width: 100%;
+    }
 }
 </style>
