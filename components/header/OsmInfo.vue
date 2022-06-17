@@ -39,6 +39,10 @@ export default {
         width: vw(30);
         margin-right: vw(40);
         position: relative;
+        @media all and (max-width: 1024px) {
+            width: 30px;
+            margin-right: 30px;
+        }
     }
     &__count {
         position: absolute;
@@ -56,6 +60,14 @@ export default {
         box-sizing: border-box;
         text-align: center;
         border-radius: 50%;
+        @media all and (max-width: 1024px) {
+            top: -5px;
+            left: -5px;
+            width: 19px;
+            height: 19px;
+            font-size: 14px;
+            line-height: 19px;
+        }
     }
     &__langs {
         display: flex;
@@ -66,6 +78,10 @@ export default {
         margin-right: vw(40);
         line-height: 140%;
         color: #D7DCE1;
+        @media all and (max-width: 1024px) {
+            font-size: 18px;
+            margin-right: 31px;
+        }
         .delim {
             margin: 0 vw(8);
         }
@@ -88,6 +104,9 @@ export default {
         line-height: 140%;
         color: #D7DCE1;
         text-decoration: none;
+        @media all and (max-width: 1024px) {
+            font-size: 20px;
+        }
     }
     object {
         pointer-events: none;

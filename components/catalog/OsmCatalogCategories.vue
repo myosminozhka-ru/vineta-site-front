@@ -1,20 +1,30 @@
 <template>
     <div class="categories">
-        <div class="categories__item" v-for="item in 9" :key="item.index">
+        <div class="categories__item" v-for="category in getCatalog" :key="category.ID">
             <div class="categories__item_image">
                 <div class="image_container">
-                    <img :src="require('~/assets/img/sections/second.jpg')" alt="">
+                    <img v-if="category.DETAIL_PICTURE" :src="$vareibles.remote + category.DETAIL_PICTURE" alt="">
+                    <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                 </div>
             </div>
-            <nuxt-link :to="{name: 'index'}" class="categories__item_name">Фильтры</nuxt-link>
-            <ul class="categories__item_childs">
-                <li class="categories__item_child" v-for="child in 4" :key="child.index">
-                    <nuxt-link :to="{name: 'index' }">Фланцевые;</nuxt-link>
+            <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE}}" class="categories__item_name">{{ category.NAME }}</nuxt-link>
+            <ul class="categories__item_childs" v-if="category.CHILD">
+                <li class="categories__item_child" v-for="child in category.CHILD" :key="child.index">
+                    <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: child.CODE}}">{{ child.NAME }}</nuxt-link>
                 </li>
             </ul>
         </div>
     </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+export default {
+    computed: {
+        ...mapGetters(['getCatalog']),
+    },
+}
+</script>
 
 
 <style lang="scss" scoped>
@@ -24,7 +34,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     &__item {
-        width: calc(100% / 3 - #{vw(40)} / 2);
+        width: calc(100% / 3 - #{vw(40)} / 3);
         &:nth-child(n + 4) {
             margin-top: vw(79);
         }

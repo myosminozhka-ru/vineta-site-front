@@ -47,12 +47,11 @@ export default {
         }
     },
     beforeDestroy() {
-        console.log('beforeDestroy');
         if (this.slider) {
             this.slider.destroy();
         }
     },
-    beforeMount() {
+    mounted() {
         console.log('beforeMount');
         this.slider.mount();
     }

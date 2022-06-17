@@ -41,6 +41,9 @@
         return this.getMain[2];
     }
   },
+  beforeDestroy() {
+    this.slider.destroy();
+  },
     mounted() {
       setTimeout(() => {
         this.slider.mount();

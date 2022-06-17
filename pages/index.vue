@@ -20,7 +20,7 @@
 <script>
 // import $ from 'jquery';
 // import 'pagepiling-js-version-kostyast/jquery.pagepiling.min.js';
-import { mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
   name: 'IndexPage',
   components: {
@@ -40,6 +40,7 @@ export default {
     isInProgress: false,
   }),
   computed: {
+    ...mapGetters(['getMain']),
     activeSection: {
       get() {
         return this.activeIndex;
@@ -55,28 +56,21 @@ export default {
     });
   },
   mounted() {
-    this.addMain().then(response => {
-      console.log(response);
-    }).catch(error => {
-      console.log(error);
-    });
-    setTimeout(() => {
-      this.sections = document.querySelectorAll('.section');
-      this.activeIndex = 0;
-    }, 500);
-
-    document.addEventListener('mousewheel', (event) => {
-      if (event.wheelDelta > 0 || event.detail < 0) {
-        this.change('up');
-        this.isInProgress = true;
-      } else {
-        this.change('down');
-        this.isInProgress = true;
-      }
-    });
+    this.sections = document.querySelectorAll('.section');
+    this.activeIndex = 0;
+    if (window.innerHeight >= 1024) {
+      document.addEventListener('mousewheel', (event) => {
+        if (event.wheelDelta > 0 || event.detail < 0) {
+          this.change('up');
+          this.isInProgress = true;
+        } else {
+          this.change('down');
+          this.isInProgress = true;
+        }
+      });
+    }
   },
   methods: {
-    ...mapActions(['addMain']),
     change(direction) {
       if (this.isInProgress) return;
       

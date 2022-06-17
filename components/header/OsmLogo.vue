@@ -4,12 +4,16 @@
     </nuxt-link>
 </template>
 
+
 <style lang="scss" scoped>
 .header {
     &__logo {
         display: block;
         width: vw(187);
         font-size: 0;
+        @media all and (max-width: 1024px) {
+            width: 187px;
+        }
     }
     &__object {
         pointer-events: none;

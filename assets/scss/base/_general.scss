@@ -18,8 +18,17 @@ body {
   background: #F2F2F2;
   counter-reset: section;
 }
-
-
+.wrapper {
+  min-height: 100vh;
+  &.footerOnBottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+.pageWrap {
+  padding: vw(150) vw(240) vw(150);
+}
 body .wrapper .full-page-indicators {
   left: 0;
   width: vw(133);
