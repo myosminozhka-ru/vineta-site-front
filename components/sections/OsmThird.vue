@@ -57,11 +57,19 @@
   .section {
     &__right {
       padding-right: vw(243);
+      display: block;
+      @media all and (max-width: 1024px) {
+          padding-right: 20px;
+        }
     }
     &__bullets {
         position: absolute;
         left: vw(133);
         bottom: vw(73);
+        @media all and (max-width: 1024px) {
+          position: static;
+          margin-top: 43px;
+        }
     }
     &__bullet {
         font-size: 0;

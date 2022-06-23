@@ -56,9 +56,12 @@ export default {
     });
   },
   mounted() {
-    this.sections = document.querySelectorAll('.section');
-    this.activeIndex = 0;
-    if (window.innerHeight >= 1024) {
+    if (window.innerWidth <= 1024) {
+      this.activeIndex = -1;
+    }
+    if (window.innerWidth > 1024) {
+      this.sections = document.querySelectorAll('.section');
+      this.activeIndex = 0;
       document.addEventListener('mousewheel', (event) => {
         if (event.wheelDelta > 0 || event.detail < 0) {
           this.change('up');
@@ -83,7 +86,6 @@ export default {
       if (this.activeIndex < 1) {
         this.activeIndex = 0;
       }
-      console.log(this.activeIndex);
       setTimeout(() => {
         this.isInProgress = false;
       }, 500);

@@ -1,20 +1,23 @@
 <template>
     <div class="header__info">
-        <nuxt-link class="header__button header__button--search" :to="{ name: 'index' }">
+        <nuxt-link class="header__button header__button--search hide_on_mobile" :to="{ name: 'index' }">
             <object :data="require(`~/assets/img/search.svg`)" width="100%" />
         </nuxt-link>
-        <nuxt-link class="header__button header__button--favorites" :to="{ name: 'index' }">
+        <nuxt-link class="header__button header__button--favorites hide_on_mobile" :to="{ name: 'index' }">
             <object :data="require(`~/assets/img/favorites.svg`)" width="100%" />
             <div v-if="favoritesCount" class="header__count">
                 {{ favoritesCount }}
             </div>
         </nuxt-link>
-        <div class="header__langs">
+        <div class="header__langs hide_on_mobile">
             <nuxt-link :to="{ name: 'index' }" class="isActive">Ру</nuxt-link>
             <div class="delim">/</div>
             <nuxt-link :to="{ name: 'index' }">En</nuxt-link>
         </div>
         <a href="tel:+78124935048" class="header__phone">+7 (812) 493-50-48</a>
+        <div class="header__button header__button--favorites hide_off_mobile">
+            <object :data="require(`~/assets/img/favorites.svg`)" width="100%" />
+        </div>
     </div>
 </template>
 
@@ -32,6 +35,15 @@ export default {
     &__info {
         display: flex;
         align-items: center;
+        @media all and (max-width: 640px) {
+            order: 2;
+            margin-top: 20px;
+            border-top: 1px solid #D7DCE1;
+            width: 100%;
+            padding-top: 12px;
+            padding-bottom: 23px;
+            justify-content: space-between;
+        }
     }
     &__button {
         display: block;
@@ -42,6 +54,9 @@ export default {
         @media all and (max-width: 1024px) {
             width: 30px;
             margin-right: 30px;
+        }
+        @media all and (max-width: 640px) {
+            margin-right: 0;
         }
     }
     &__count {
@@ -106,6 +121,9 @@ export default {
         text-decoration: none;
         @media all and (max-width: 1024px) {
             font-size: 20px;
+        }
+        @media all and (max-width: 530px) {
+            font-size: 18px;
         }
     }
     object {

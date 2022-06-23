@@ -45,6 +45,7 @@ export default {
     color: #FFFFFF;
     cursor: pointer;
     text-decoration: none;
+    transition: .3s ease;
     &.isOutlined {
         padding: vw(20) vw(30);
         background: transparent;
@@ -53,6 +54,12 @@ export default {
     }
     &.isLarge {
         width: 100%;
+    }
+    &:hover {
+        background: #DF0043;
+    }
+    &:active {
+        background: #A70032;
     }
 }
 </style>

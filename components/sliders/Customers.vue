@@ -37,7 +37,12 @@ export default {
     },
     data: () => ({
         slider: new Glide('.customers.glide', {
-            perView: 6
+            perView: 6,
+            breakpoints: {
+                1024: {
+                    perView: 3
+                }
+            }
         })
     }),
     computed: {
@@ -73,6 +78,10 @@ export default {
         align-items: center;
         justify-content: center;
         min-height: vw(114);
+        @media all and (max-width: 1024px) {
+            min-height: 114px;
+            padding: 20px;
+        }
         img {
             max-width: 100%;
             max-height: 100%;
@@ -89,11 +98,19 @@ export default {
         transform: translateY(-50%);
         cursor: pointer;
         font-size: 0;
+        @media all and (max-width: 1024px) {
+            width: 40px;
+        }
         &--left {
             left: vw(-20);
+            @media all and (max-width: 1024px) {
+                left: -20px;
+            }
         }
         &--right {
-            right: vw(-20);
+            @media all and (max-width: 1024px) {
+                right: -20px;
+            }
             transform: translateY(-50%) rotate(180deg);
         }
     }

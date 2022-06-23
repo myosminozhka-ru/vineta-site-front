@@ -30,3 +30,19 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.section {
+    &__left {
+        @media all and (max-width: 1024px) {
+            height: 470px;
+            width: 495px;
+        }
+    }
+    &__right {
+        @media all and (max-width: 1024px) {
+            padding: 20px;
+        }
+    }
+}
+</style>

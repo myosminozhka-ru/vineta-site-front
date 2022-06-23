@@ -17,7 +17,6 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
@@ -30,3 +29,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.section {
+    @media all and (max-width: 1024px) {
+        background: #2E5599;
+    }
+    &__title {
+        @media all and (max-width: 1024px) {
+            color: #fff;
+        }
+    }
+    &__text {
+        @media all and (max-width: 1024px) {
+            color: #fff;
+        }
+    }
+}
+</style>

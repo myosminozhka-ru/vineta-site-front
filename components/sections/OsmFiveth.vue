@@ -20,6 +20,9 @@ export default {
     &__item {
       flex-direction: column;
       padding: vw(100) vw(240) vw(70) vw(108);
+      @media all and (max-width: 1024px) {
+        padding: 80px 20px;
+      }
     }
 }
 .customers {

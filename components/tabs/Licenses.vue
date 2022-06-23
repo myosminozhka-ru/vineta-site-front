@@ -116,6 +116,9 @@ export default {
         }
         &:not(:last-child) {
             margin-right: vw(100);
+            @media all and (max-width: 1024px) {
+                margin-right: 8%;
+            }
         }
         a {
             text-decoration: none;
@@ -125,6 +128,9 @@ export default {
             line-height: 140%;
             color: #172242;
             transition: all .3s ease;
+            @media all and (max-width: 1024px) {
+                font-size: 20px;
+            }
         }
         &.is-active {
             &:after {
@@ -180,11 +186,19 @@ export default {
         transform: translateY(-50%);
         cursor: pointer;
         font-size: 0;
+        @media all and (max-width: 1024px) {
+            width: 40px;
+        }
         &--left {
             left: vw(-20);
+            @media all and (max-width: 1024px) {
+                left: -20px;
+            }
         }
         &--right {
-            right: vw(-20);
+            @media all and (max-width: 1024px) {
+                right: -20px;
+            }
             transform: translateY(-50%) rotate(180deg);
         }
     }

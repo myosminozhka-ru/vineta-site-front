@@ -14,6 +14,9 @@
         @media all and (max-width: 1024px) {
             width: 187px;
         }
+        @media all and (max-width: 640px) {
+            width: 114px;
+        }
     }
     &__object {
         pointer-events: none;

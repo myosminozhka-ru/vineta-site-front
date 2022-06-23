@@ -32,6 +32,7 @@
                         </label>
                     </div>
                 </div>
+                 
                 <div class="filter__params_block">
                     <div class="filter__params_title">Штуцерные</div>
                     <div class="filter__params_items">
