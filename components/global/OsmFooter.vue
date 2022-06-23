@@ -4,7 +4,7 @@
             <osm-up />
             <div class="footer__top_left">
                <osm-logo-footer />
-               <div class="footer__top_socials">
+               <div class="footer__top_socials hide_on_tablet">
                     <a :href="social.link" target="_blank" class="footer__top_social" v-for="social in socials" :key="social.index">
                         <img :src="social.icon" width="100%" alt="">
                     </a>
@@ -53,17 +53,28 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .footer {
+    @media all and (max-width: 1024px) {
+        width: 100%;
+    }
     &__top {
         background: #2E5599;
         padding: vw(70) vw(243) vw(70) vw(50);
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+        @media all and (max-width: 1024px) {
+            padding: 60px 20px;
+            flex-direction: column;
+        }
     }
     &__top_left {
         width: vw(312);
+        @media all and (max-width: 1024px) {
+            width: 155px;
+            margin-bottom: 51px;
+        }
     }
     &__top_socials {
         display: flex;
@@ -84,6 +95,10 @@ export default {
         background: #172242;
         padding: vw(20) vw(50);
         transition: 1s bottom 0.5s ease;
+        @media all and (max-width: 1024px) {
+            padding: 30px 20px;
+            align-items: flex-start;
+        }
     }
     &__bottom_left {
         font-style: normal;
@@ -91,18 +106,32 @@ export default {
         font-size: vw(20);
         line-height: 140%;
         color: #FFFFFF;
+        @media all and (max-width: 1024px) {
+            font-size: 18px;
+            width: 50%;
+        }
     }
     &__bottom_right {
-        
+        @media all and (max-width: 1024px) {
+            width: 50%;
+        }
         ul {
             display: flex;
             align-items: center;
             margin: 0;
             padding: 0;
             list-style: none;
+            @media all and (max-width: 1024px) {
+                flex-direction: column;
+                align-items: flex-start;
+            }
             li {
                 &:not(:last-child) {
                     margin-right: vw(40);
+                    @media all and (max-width: 1024px) {
+                        margin-right: 0;
+                        margin-bottom: 15px;
+                    }
                 }
             }
             a {
@@ -112,6 +141,10 @@ export default {
                 line-height: 140%;
                 color: #FFFFFF;
                 text-decoration: none;
+                @media all and (max-width: 1024px) {
+                    font-size: 16px;
+                    font-weight: 400;
+                }
             }
         }
     }

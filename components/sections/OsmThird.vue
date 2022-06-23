@@ -81,8 +81,15 @@
         border-radius: 50%;
         cursor: pointer;
         transition: all .3s ease;
+        @media all and (max-width: 1024px) {
+          width: 10px;
+          height: 10px;
+        }
         &:not(:last-child) {
             margin-right: vw(25);
+            @media all and (max-width: 1024px) {
+              margin-right: 25px;
+            }
         }
         &.glide__bullet--active {
             background: #2E5599;

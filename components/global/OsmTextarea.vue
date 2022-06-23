@@ -36,6 +36,11 @@ export default {
     background: none;
     border-radius: 0;
     outline: none;
+    @media all and (max-width: 1024px) {
+        max-height: 100px;
+        min-height: 200px;
+        padding: 20px 30px;
+    }
     &, 
     &::placeholder {
         font-style: normal;
@@ -43,6 +48,9 @@ export default {
         font-size: vw(20);
         line-height: 140%;
         color: #82827D;
+        @media all and (max-width: 1024px) {
+            font-size: 16px;
+        }
     }
 }
 </style>

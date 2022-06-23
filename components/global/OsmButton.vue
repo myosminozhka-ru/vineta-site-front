@@ -46,11 +46,19 @@ export default {
     cursor: pointer;
     text-decoration: none;
     transition: .3s ease;
+    @media all and (max-width: 1024px) {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
     &.isOutlined {
         padding: vw(20) vw(30);
         background: transparent;
         color: #172242;
         border: vw(2) solid #FF004D;
+        @media all and (max-width: 1024px) {
+            border-width: 2px;
+            padding: 20px 30px;
+        }
     }
     &.isLarge {
         width: 100%;

@@ -160,7 +160,7 @@ export default {
         justify-content: flex-end;
         align-items: flex-end;
         @media all and (max-width: 1024px) {
-            padding: 266px 0 0 126px;
+            padding: 266px 30px 30px 126px;
             height: auto;
         }
     }
@@ -174,7 +174,7 @@ export default {
         box-sizing: border-box;
         overflow: hidden;
         @media all and (max-width: 1024px) {
-            padding: 266px 0 0 126px;
+            padding: 126px 0 0 219px;
             height: auto;
         }
         .image {

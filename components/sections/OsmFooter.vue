@@ -1,5 +1,5 @@
 <template>
-    <footer class="section section__item section__item--second section__item--dark">
+    <section class="section section__item section__item--footer section__item--dark">
         <div class="section__left">
             <div class="section__left_top">
                 <osm-h1 class="section__title">Контакты</osm-h1>
@@ -39,7 +39,8 @@
                 <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A53f4c694e1d4abd01e62a7f6f9d00f3717cffcb4b3a7cec3cc46bea2513cf1ab&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
             </div>
         </div>
-        <div class="section__popup">
+        <osm-footer class="section__footer hide_on_desktop" />
+        <div class="section__popup hide_on_tablet">
             <div class="section__popup_left">ООО “Винета”, 2012-2022</div>
             <div class="section__popup_right">
                 <ul>
@@ -49,7 +50,7 @@
                 </ul>
             </div>
         </div>
-    </footer>
+    </section>
 </template>
 <script>
 export default {
@@ -59,6 +60,7 @@ export default {
     OsmInput: () => import('~/components/global/OsmInput.vue'),
     OsmTextarea: () => import('~/components/global/OsmTextarea.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
+    OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
   data: () => ({
       socials: [
@@ -94,8 +96,22 @@ export default {
 <style lang="scss" scoped>
 .section {
     overflow: visible;
+    @media all and (max-width: 1024px) {
+        flex-direction: column-reverse;
+    }
+    &__footer {
+        order: -1;
+    }
     &__content {
         margin-bottom: vw(31);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 30px;
+        }
+    }
+    &__text {
+        @media all and (max-width: 1024px) {
+            margin-bottom: 0;
+        }
     }
     &__left {
         padding-left: vw(107);
@@ -107,21 +123,37 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+        @media all and (max-width: 1024px) {
+            width: 100%;
+            padding: 80px 20px;
+        }
     }
     &__left &__title {
         margin-bottom: vw(30);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 30px;
+        }
     }
     &__left_top {
         margin-bottom: vw(48);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 20px;
+        }
     }
     &__left_form {
         width: 100%;
     }
     &__input {
         margin-bottom: vw(20);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 10px;
+        }
     }
     &__textarea {
         margin-bottom: vw(20);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 20px;
+        }
     }
     &__button {
         width: 100%;
@@ -134,20 +166,36 @@ export default {
         background: #2E5599;
         width: calc(100% - #{vw(900)} + #{vw(133)});
         flex-direction: column;
+        @media all and (max-width: 1024px) {
+            width: 100%;
+            padding: 80px 20px;
+        }
     }
     &__right &__title {
         color: #fff;
         margin-bottom: vw(30);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 30px;
+        }
     }
     &__contacts {
         display: flex;
         align-items: flex-start;
         margin-bottom: vw(54);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 60px;
+        }
     }
     &__contacts_side {
         width: vw(240);
+        @media all and (max-width: 1024px) {
+            width: auto;
+        }
         &:not(:last-child) {
             margin-right: vw(143);
+            @media all and (max-width: 1024px) {
+                margin-right: 130px;
+            }
         }
     }
     &__contact {
@@ -159,6 +207,10 @@ export default {
         color: #FFFFFF;
         display: block;
         margin-bottom: vw(10);
+        @media all and (max-width: 1024px) {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
     }
     &__contacts_worktime {
         font-style: normal;
@@ -166,6 +218,9 @@ export default {
         font-size: vw(20);
         line-height: 140%;
         color: #FFFFFF;
+        @media all and (max-width: 1024px) {
+            font-size: 16px;
+        }
     }
     &__contacts_info {
         font-style: normal;
@@ -173,6 +228,9 @@ export default {
         font-size: vw(16);
         line-height: 140%;
         color: #FFFFFF;
+        @media all and (max-width: 1024px) {
+            font-size: 16px;
+        }
     }
     &__socials {
         display: flex;
@@ -182,13 +240,22 @@ export default {
         width: vw(50);
         font-size: 0;
         display: block;
+        @media all and (max-width: 1024px) {
+            width: 40px;
+        }
         &:not(:last-child) {
             margin-right: vw(20);
+            @media all and (max-width: 1024px) {
+                margin-right: 30px;
+            }
         }
     }
     &__map {
         flex: 1 1 auto;
         width: 100%;
+        @media all and (max-width: 1024px) {
+            height: 370px;
+        }
     }
     &__popup {
         display: flex;

@@ -5,7 +5,7 @@
                 <osm-h1 class="catalog__title">Каталог</osm-h1>
                 <osm-button link="index" :outlined="true">Все новости</osm-button>
             </div>
-            <div class="news__bottom">
+            <div class="news__bottom hide_on_tablet">
                 <div v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
                     <template v-if="key === 0">
                         <div class="news__image">
@@ -39,10 +39,50 @@
                     </template>
                 </div>
             </div>
+            <div class="glide news__slider hide_on_desktop">
+                <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides news__slides">
+                        <div v-for="(item, key) in news" :key="key" class="news__item_big">
+                            <div class="news__image">
+                                <img :src="item.image" width="100%" alt="">
+                            </div>
+                            <div class="news__item_top">
+                                <div class="news__date">{{ item.date }}</div>
+                            </div>
+                            <div class="news__item_bottom">
+                                <div class="news__text">
+                                    {{ item.text }}
+                                </div>
+                                <osm-button :link="item.link">Подробнее</osm-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="news__slider-buttons">
+                    <div class="news__bullets" data-glide-el="controls[nav]">
+                        <button v-for="(item, key) in news" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
+                    </div>
+                    <div class="news__arrows" data-glide-el="controls">
+                        <button class="news__arrow news__arrow--left" data-glide-dir="<">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                                <rect width="40" height="40" fill="#FF004D"/>
+                                <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </button>
+                        <button class="news__arrow news__arrow--right" data-glide-dir=">">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                                <rect width="40" height="40" fill="#FF004D"/>
+                                <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
 <script>
+import Glide from '@glidejs/glide';
 export default {
   name: 'OsmSeventhSection',
   components: {
@@ -50,6 +90,10 @@ export default {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   data: () => ({
+    slider: new Glide('.news__slider', {
+        perView: 2,
+        gap: 20
+    }),
       news: [
           {
               image: require('~/assets/img/news/news1.jpg'),
@@ -76,21 +120,77 @@ export default {
               link: 'index'
           }
       ]
-  })
+  }),
+  mounted() {
+    this.slider.mount();
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .news {
+    &__arrows {
+        font-size: 0;
+    }
+    &__arrow {
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+        font-size: 0;
+        @media all and (max-width: 1024px) {
+            width: 40px;
+        }
+        &--left {
+            margin-right: 20px;
+        }
+        &--right {
+            transform: rotate(180deg);
+        }
+    }
+    &__bullet {
+        font-size: 0;
+        border: none;
+        background: #D7DCE1;
+        padding: 0;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all .3s ease;
+        @media all and (max-width: 1024px) {
+          width: 10px;
+          height: 10px;
+        }
+        &:not(:last-child) {
+            @media all and (max-width: 1024px) {
+              margin-right: 25px;
+            }
+        }
+        &.glide__bullet--active {
+            background: #2E5599;
+            transform: scale(1.6);
+        }
+    }
+    &__slider-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
     &__wrap {
         width: 100%;
         padding: vw(100) vw(240) vw(70) vw(108);
+        @media all and (max-width: 1024px) {
+            padding: 80px 20px;
+        }
     }
     &__top {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: vw(30);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 30px;
+        }
     }
     &__bottom {
         display: grid;
@@ -108,6 +208,10 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         grid-area: first;
+        @media all and (max-width: 1024px) {
+            padding: 20px 30px 20px 20px;
+            min-height: 450px;
+        }
         &::before {
             content: "";
             position: absolute;
@@ -148,6 +252,9 @@ export default {
         font-size: vw(20);
         line-height: 140%;
         color: #FFFFFF;
+        @media all and (max-width: 1024px) {
+            font-size: 20px;
+        }
     }
     &__item_big &__text {
         font-style: normal;
@@ -155,7 +262,11 @@ export default {
         font-size: vw(24);
         margin-bottom: vw(30);
         line-height: 140%;
-        color: #FFFFFF; 
+        color: #FFFFFF;
+        @media all and (max-width: 1024px) {
+            white-space: normal;
+            font-size: 20px;
+        }
     }
     &__item {
         display: flex;
