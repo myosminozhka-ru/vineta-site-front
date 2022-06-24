@@ -276,8 +276,14 @@ export default {
         display: flex;
         align-items: center;
         z-index: 2;
+        cursor: pointer;
         .icon {
             width: vw(60);
+            svg {
+                rect {
+                    transition: all .3s ease;
+                }
+            }
         }
         .text {
             margin-left: vw(20);
@@ -286,6 +292,26 @@ export default {
             font-size: vw(20);
             line-height: 130%;
             color: #FFFFFF;
+        }
+        &:hover {
+            .icon {
+                width: vw(60);
+                svg {
+                    rect {
+                        fill: #DF0043;
+                    }
+                }
+            } 
+        }
+        &:active {
+            .icon {
+                width: vw(60);
+                svg {
+                    rect {
+                        fill: #A70032;
+                    }
+                }
+            } 
         }
     }
 }

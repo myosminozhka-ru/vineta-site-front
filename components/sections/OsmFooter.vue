@@ -9,10 +9,10 @@
             </div>
             <form @submit.prevent class="section__left_form">
                 <osm-input class="section__input" placeholder="ФИО *" :required="true"/>
-                <osm-input class="section__input" placeholder="Компания *" :required="true"/>
+                <!-- <osm-input class="section__input" placeholder="Компания *" :required="true"/> -->
                 <osm-input class="section__input" placeholder="Телефон *" type="tel" :required="true"/>
                 <osm-input class="section__input" placeholder="E-mail *" type="email" :required="true"/>
-                <osm-textarea class="section__textarea" placeholder="E-mail *" type="email" :required="true"/>
+                <osm-textarea class="section__textarea" placeholder="Ваше сообщение" type="email" :required="true"/>
                 <osm-button class="section__button" :large="true" type="submit">Подробнее</osm-button>
             </form>
         </div>
@@ -109,6 +109,7 @@ export default {
         }
     }
     &__text {
+        margin-bottom: 0;
         @media all and (max-width: 1024px) {
             margin-bottom: 0;
         }
