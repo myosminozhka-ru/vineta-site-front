@@ -16,7 +16,7 @@
                 <osm-button class="section__button" :large="true" type="submit">Подробнее</osm-button>
             </form>
         </div>
-        <div class="section__right">
+        <div class="section__right hide_on_mobile">
             <div class="section__content">
                 <osm-h1 class="section__title">Контакты</osm-h1>
                 <div class="section__contacts">
@@ -127,6 +127,9 @@ export default {
             width: 100%;
             padding: 80px 20px;
         }
+        @media all and (max-width: 840px) {
+            height: auto !important;
+        }
     }
     &__left &__title {
         margin-bottom: vw(30);
@@ -167,7 +170,7 @@ export default {
         width: calc(100% - #{vw(900)} + #{vw(133)});
         flex-direction: column;
         @media all and (max-width: 1024px) {
-            width: 100%;
+            width: 100% !important;
             padding: 80px 20px;
         }
     }

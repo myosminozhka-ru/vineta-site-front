@@ -33,6 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .section {
+    
     &__left {
         @media all and (max-width: 1024px) {
             height: 470px;

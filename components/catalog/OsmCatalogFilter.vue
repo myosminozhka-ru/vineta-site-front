@@ -3,6 +3,11 @@
         <div class="filter__in">
             <div class="filter__title">
                 Параметры поиска
+                <div class="arrow hide_on_desktop">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
+                        <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
+                    </svg>
+                </div>
             </div>
             <div class="filter__params">
                 <div class="filter__params_block">
@@ -60,8 +65,9 @@
                         </label>
                     </div>
                 </div>
+                <button class="filter__clear hide_on_desktop">Сбросить</button>
             </div>
-            <button class="filter__clear">Сбросить</button>
+            <button class="filter__clear hide_on_tablet">Сбросить</button>
         </div>
     </div>
 </template>
@@ -70,14 +76,33 @@
 export default {
     data: () => ({
         filters: []
-    })
+    }),
+    mounted() {
+        this.setFilterOPener();
+    },
+    methods: {
+        setFilterOPener() {
+            document.querySelector('.filter__title').addEventListener('click', (event) => {
+                if (window.innerWidth <= 1024) {
+                    event.target.closest('.filter').classList.toggle('opened');
+                }
+            })
+        }
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .filter {
+    @media all and (max-width: 1024px) {
+        margin-bottom: 52px;
+        position: relative;
+    }
     &__in {
         padding: vw(40) vw(30);
+        @media all and (max-width: 1024px) {
+            padding: 0;
+        }
     }
     &__title {
         font-style: normal;
@@ -86,6 +111,48 @@ export default {
         margin-bottom: vw(40);
         line-height: 110%;
         color: #172242;
+        @media all and (max-width: 1024px) {
+            padding: 20px;
+            border: 1px solid #F2F2F2;
+            font-size: 18px;
+            margin-bottom: 0;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+    &.opened &__title {
+        @media all and (max-width: 1024px) {
+            border-color: #FF0040;
+            background: #FF0040;
+            color: #fff;
+            svg path {
+                stroke: #fff;
+            }
+            .arrow {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    &__params {
+        @media all and (max-width: 1024px) {
+            padding: 30px 20px;
+            background: #F2F2F2;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 4;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+    &.opened &__params {
+        @media all and (max-width: 1024px) {
+            opacity: 1;
+            visibility: visible;
+        }
     }
     &__params_title {
         font-style: normal;
@@ -94,10 +161,17 @@ export default {
         margin-bottom: vw(30);
         line-height: 110%;
         color: #172242;
+        @media all and (max-width: 1024px) {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
     }
     &__params_block {
         &:not(:last-child) {
             margin-bottom: vw(40);
+            @media all and (max-width: 1024px) {
+                margin-bottom: 40px;
+            }
         }
     }
     &__params_item {
@@ -106,6 +180,9 @@ export default {
         cursor: pointer;
         &:not(:last-child) {
             margin-bottom: vw(20);
+            @media all and (max-width: 1024px) {
+                margin-bottom: 20px;
+            }
         }
     }
     &__params_checkbox {
@@ -115,6 +192,10 @@ export default {
         border: 1px solid #555F76;
         position: relative;
         transition: .3s all .3s ease;
+        @media all and (max-width: 1024px) {
+            width: 24px;
+            height: 24px;
+        }
         .check {
             position: absolute;
             top: 0;
@@ -128,6 +209,9 @@ export default {
             transform: scale(0);
             transform-origin: 50% 50%;
             transition: all .3s ease;
+            @media all and (max-width: 1024px) {
+                padding: 0 4px;
+            }
         }
     }
     .checkbox {
@@ -151,6 +235,12 @@ export default {
         width: calc(100% - #{vw(24)} - #{vw(10)});
         margin-left: vw(10);
         padding-top: vw(3);
+        @media all and (max-width: 1024px) {
+            width: calc(100% - 24px - 10px);
+            margin-left: 10px;
+            padding-top: 3px;
+            font-size: 14px;
+        }
     }
     &__clear {
         width: 100%;
@@ -164,6 +254,18 @@ export default {
         background: #FF0040;
         border: none;
         cursor: pointer;
+        transition: all .3s ease;
+        &:hover {
+            background: #DF0043;
+        }
+        &:active {
+            background: #A70032;
+        }
+        @media all and (max-width: 1024px) {
+            height: 68px;
+            font-size: 20px;
+            margin-top: 0;
+        }
     }
 }
 </style>

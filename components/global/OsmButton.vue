@@ -45,10 +45,13 @@ export default {
     color: #FFFFFF;
     cursor: pointer;
     text-decoration: none;
-    transition: .3s ease;
+    transition: all .3s ease;
     @media all and (max-width: 1024px) {
         font-size: 20px;
         padding: 20px 40px;
+    }
+    @media all and (max-width: 1024px) {
+        width: 100%;
     }
     &.isOutlined {
         padding: vw(20) vw(30);

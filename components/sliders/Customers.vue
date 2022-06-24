@@ -1,7 +1,7 @@
 <template>
     <div class="customers glide">
         <osm-h2 class="customers__title">Заказчики</osm-h2>
-        <div class="customers__slider">
+        <div class="customers__slider-in">
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
                     <li v-for="(key, item) in 15" :key="item.index" class="customers__slide glide__slide">
@@ -41,6 +41,9 @@ export default {
             breakpoints: {
                 1024: {
                     perView: 3
+                },
+                840: {
+                    perView: 1
                 }
             }
         })
@@ -68,8 +71,14 @@ export default {
     &__title {
         margin-bottom: vw(30);
     }
-    &__slider {
+    &__slider-in {
         position: relative;
+        @media all and (max-width: 840px) {
+            padding-right: 102px;
+            .glide__track {
+                overflow: visible;
+            }
+        }
     }
     &__slide {
         padding: vw(20);
@@ -108,6 +117,7 @@ export default {
             }
         }
         &--right {
+            right: vw(-20);
             @media all and (max-width: 1024px) {
                 right: -20px;
             }

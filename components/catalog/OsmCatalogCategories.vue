@@ -38,10 +38,28 @@ export default {
         &:nth-child(n + 4) {
             margin-top: vw(79);
         }
+        @media all and (max-width: 1024px) {
+            width: calc(100% / 2 - 10px);
+            &:nth-child(n + 3) {
+                margin-top: 30px;
+            }
+        }
+        @media all and (max-width: 840px) {
+            width: 100%;
+            &:nth-child(n + 2) {
+                margin-top: 20px;
+            }
+        }
     }
     &__item_image {
         background: #D7DCE1;
         margin-bottom: vw(40);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 30px;
+        }
+        @media all and (max-width: 840px) {
+            margin-bottom: 20px;
+        }
         .image_container {
             position: relative;
             padding-top: 50%;
@@ -63,10 +81,17 @@ export default {
         font-size: vw(20);
         line-height: 140%;
         color: #172242;
+        @media all and (max-width: 1024px) {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
     }
     &__item_childs {
         margin: 0;
         padding: 0 0 0 vw(23);
+        @media all and (max-width: 1024px) {
+            padding: 0 0 0 23px;
+        }
     }
     &__item_child {
         font-style: normal;
@@ -74,8 +99,14 @@ export default {
         font-size: vw(16);
         line-height: 140%;
         color: #555F76;
+        @media all and (max-width: 1024px) {
+            font-size: 16px;
+        }
         &:not(:last-child) {
             margin-bottom: vw(10);
+            @media all and (max-width: 1024px) {
+                margin-bottom: 10px;
+            }
         }
         a {
             text-decoration: none;

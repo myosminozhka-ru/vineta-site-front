@@ -46,6 +46,11 @@ export default {
     transition: opacity .3s ease;
     opacity: 0;
     visibility: hidden;
+    z-index: 10;
+    @media all and (max-width: 1024px) {
+        width: 67px;
+        height: 67px;
+    }
     &.isVisible {
         opacity: 1;
         visibility: visible;
@@ -57,6 +62,11 @@ export default {
         margin-bottom: vw(5);
         font-size: 0;
         pointer-events: none;
+        @media all and (max-width: 1024px) {
+            width: 8px;
+            height: 18px;
+            margin-bottom: 5px;
+        }
     }
     .text {
         font-style: normal;
@@ -64,6 +74,10 @@ export default {
         font-size: vw(14);
         line-height: vw(17);
         color: #FFFFFF;
+        @media all and (max-width: 1024px) {
+            font-size: 12px;
+            line-height: 14px;
+        }
     }
 }
 </style>

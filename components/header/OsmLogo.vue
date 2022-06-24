@@ -14,7 +14,7 @@
         @media all and (max-width: 1024px) {
             width: 187px;
         }
-        @media all and (max-width: 640px) {
+        @media all and (max-width: 840px) {
             width: 114px;
         }
     }

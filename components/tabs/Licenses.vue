@@ -1,7 +1,7 @@
 <template>
     <div class="licenses">
         <osm-h2 class="licenses__title">Лицензии и сертификаты</osm-h2>
-        <tabs @clicked="tabClicked" @changed="tabChanged" :options="{ useUrlFragment: false }">
+        <tabs class="hide_on_mobile" @clicked="tabClicked" @changed="tabChanged" :options="{ useUrlFragment: false }">
             <tab v-for="tab in tabs" :key="tab.index" :name="tab">
                 <div class="licensesSlid glide">
                     <div class="licensesSlid__slider">
@@ -30,11 +30,53 @@
                 </div>
             </tab>
         </tabs>
+        <div class="licenses__accordions hide_off_mobile">
+            <div class="licenses__accordion" v-for="tab in tabs" :key="tab.index">
+                <div class="title">
+                    <div class="text">{{ tab }}</div>
+                    <div class="arrow">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
+                            <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="licensesSlid glide">
+                        <div class="licensesSlid__slider">
+                            <div class="glide__track" data-glide-el="track">
+                                <ul class="glide__slides">
+                                    <li v-for="(key, item) in 15" :key="item.index" class="licensesSlid__slide glide__slide">
+                                        <img :src="require('~/assets/img/licenses/license1.png')" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="licensesSlid__arrows" >
+                            <nuxt-link :to="{name: 'index'}" class="more">Смотреть все</nuxt-link>
+                            <div class="licensesSlid__arrows-in" data-glide-el="controls">
+                                <button class="licensesSlid__arrow licensesSlid__arrow--left" data-glide-dir="<">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                                        <rect width="40" height="40" fill="#FF004D"/>
+                                        <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                                <button class="licensesSlid__arrow licensesSlid__arrow--right" data-glide-dir=">">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                                        <rect width="40" height="40" fill="#FF004D"/>
+                                        <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import Glide from '@glidejs/glide'
+import Glide from '@glidejs/glide';
 export default {
   name: 'LicensesTabs',
   components: {
@@ -50,6 +92,7 @@ export default {
     mounted() {
         setTimeout(() => {
             this.initSlider();
+            this.initAccordions();
         }, 1000) 
     },
   methods: {
@@ -63,8 +106,21 @@ export default {
         document.querySelectorAll('.licensesSlid').forEach(item => {
             new Glide(item, {
                 perView: 6,
-                type: 'carousel'
+                type: 'carousel',
+                breakpoints: {
+                    840: {
+                        perView: 1,
+                        gap: 20
+                    }
+                }
             }).mount()
+        })
+    },
+    initAccordions() {
+        document.querySelectorAll('.licenses__accordion').forEach(item => {
+            item.querySelector('.title').addEventListener('click', (event) => {
+                event.target.closest('.licenses__accordion').classList.toggle('opened')
+            })
         })
     }
   }
@@ -150,6 +206,67 @@ export default {
 .licenses {
     max-width: 100%;
     width: 100%;
+    &__accordion {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border: 1px solid #D7DCE1;
+            cursor: pointer;
+        }
+        .text {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 140%;
+            color: #555F76;
+        }
+        .content {
+            height: 0;
+            overflow: hidden;
+        }
+        .more {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            color: #FF004D;
+            text-decoration: none;
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -5px;
+                height: 2px;
+                background: #FF004D;
+                border-radius: 5px;
+            }
+        }
+        &.opened {
+            .title {
+                border-color: #FF0040;
+                background: #FF0040;
+            }
+            .text {
+                color: #fff;
+            }
+            .arrow {
+                transform: rotate(180deg);
+                svg path {
+                    stroke: #fff;
+                }
+            }
+            .content {
+                height: auto;
+                padding-top: 20px;
+            }
+        }
+    }
     &__title {
         margin-bottom: vw(30);
     }
@@ -162,6 +279,12 @@ export default {
     }
     &__slider {
         position: relative;
+        @media all and (max-width: 840px) {
+           padding-right: 143px; 
+           .glide__track {
+            overflow: visible;
+           }
+        }
     }
     &__slide {
         padding: vw(20);
@@ -175,7 +298,15 @@ export default {
             max-height: 100%;
         }
     }
-    &__arrows {}
+    &__arrows {
+        @media all and (max-width: 840px) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-bottom: 10px;
+        }
+    }
     &__arrow {
         position: absolute;
         width: vw(40);
@@ -189,6 +320,10 @@ export default {
         @media all and (max-width: 1024px) {
             width: 40px;
         }
+        @media all and (max-width: 840px) {
+            position: static;
+            transform: translateY(0);
+        }
         &--left {
             left: vw(-20);
             @media all and (max-width: 1024px) {
@@ -196,10 +331,14 @@ export default {
             }
         }
         &--right {
+            right: vw(-20);
+            transform: translateY(-50%) rotate(180deg);
             @media all and (max-width: 1024px) {
                 right: -20px;
             }
-            transform: translateY(-50%) rotate(180deg);
+            @media all and (max-width: 840px) {
+                transform: rotate(180deg);
+            }
         }
     }
 }

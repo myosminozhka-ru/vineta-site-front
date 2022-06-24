@@ -74,6 +74,19 @@ export default {
           }
       ]
     }),
+    mounted() {
+        this.initCollapse()
+    },
+    methods: {
+        initCollapse() {
+            document.querySelectorAll('.footer__menu ul').forEach(item => {
+                item.querySelector('li:first-child').addEventListener('click', (event) => {
+                    console.log(123);
+                    event.target.closest('ul').classList.toggle('opened')
+                })
+            })
+        }
+    }
 }
 </script>
 
@@ -100,13 +113,25 @@ export default {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+        @media all and (max-width: 840px) {
+            flex-direction: column;
+        }
         ul {
             margin: 0;
             padding: 0;
+            @media all and (max-width: 840px) {
+                padding-top: 20px;
+                width: 100%;
+                border-top: 1px solid #B4B9C1;
+            }
             &:not(:last-child) {
                 margin-right: vw(160);
                 @media all and (max-width: 1024px) {
                     margin-right: 86px;
+                }
+                @media all and (max-width: 840px) {
+                    margin-right: 0;
+                    padding-bottom: 20px;
                 }
             }
             li {
@@ -116,8 +141,24 @@ export default {
                     @media all and (max-width: 1024px) {
                         margin-bottom: 15px;
                     }
+                    @media all and (max-width: 840px) {
+                        margin-bottom: 0;
+                    }
+                }
+                &:not(:first-child) {
+                    @media all and (max-width: 840px) {
+                        height: 0;
+                        overflow: hidden;
+                    }
                 }
             }
+            &.opened li:not(:first-child) {
+                @media all and (max-width: 840px) {
+                    height: auto;
+                    margin-bottom: 15px;
+                }
+            }
+            
             a, span {
                 text-decoration: none;
                 font-style: normal;
@@ -132,8 +173,22 @@ export default {
             }
             li:first-child {
                 margin-bottom: vw(20);
+                position: relative;
+                cursor: pointer;
                 @media all and (max-width: 1024px) {
                     margin-bottom: 20px;
+                }
+                @media all and (max-width: 840px) {
+                    margin-bottom: 0;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                        width: 16px;
+                        background: url('~assets/img/link_arrow.svg') 50% 50% no-repeat;
+                    }
                 }
                 a, span {
                     font-style: normal;
@@ -143,6 +198,17 @@ export default {
                     color: #FFFFFF;
                     @media all and (max-width: 1024px) {
                         font-size: 18px;
+                    }
+                    @media all and (max-width: 840px) {
+                        pointer-events: none;
+                    }
+                }
+            }
+            &.opened li:first-child {
+                @media all and (max-width: 840px) {
+                    margin-bottom: 9px;
+                    &:after {
+                        transform: rotate(90deg);
                     }
                 }
             }

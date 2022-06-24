@@ -16,9 +16,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-.pageWrap {
-    padding: vw(150) vw(240) vw(150);
-}
-</style>

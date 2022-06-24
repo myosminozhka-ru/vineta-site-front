@@ -3,7 +3,7 @@
         <div class="news__wrap">
             <div class="news__top">
                 <osm-h1 class="catalog__title">Каталог</osm-h1>
-                <osm-button link="index" :outlined="true">Все новости</osm-button>
+                <osm-button class="news__button_top" link="index" :outlined="true">Все новости</osm-button>
             </div>
             <div class="news__bottom hide_on_tablet">
                 <div v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
@@ -53,15 +53,19 @@
                                 <div class="news__text">
                                     {{ item.text }}
                                 </div>
-                                <osm-button :link="item.link">Подробнее</osm-button>
+                                <osm-button :link="item.link" class="hide_on_mobile">Подробнее</osm-button>
+                                <div class="mobile_link hide_off_mobile">
+                                    <nuxt-link :to="{name: 'index'}" class="more">Читать новость</nuxt-link>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="news__slider-buttons">
-                    <div class="news__bullets" data-glide-el="controls[nav]">
+                    <div class="news__bullets hide_on_mobile" data-glide-el="controls[nav]">
                         <button v-for="(item, key) in news" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
                     </div>
+                    <nuxt-link :to="{name: 'index'}" class="more hide_off_mobile">Смотреть все</nuxt-link>
                     <div class="news__arrows" data-glide-el="controls">
                         <button class="news__arrow news__arrow--left" data-glide-dir="<">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
@@ -92,7 +96,12 @@ export default {
   data: () => ({
     slider: new Glide('.news__slider', {
         perView: 2,
-        gap: 20
+        gap: 20,
+        breakpoints: {
+            840: {
+                perView: 1,
+            }
+        }
     }),
       news: [
           {
@@ -126,9 +135,48 @@ export default {
   }
 }
 </script>
-
+<style lang="scss">
+.news {
+    &__button_top .button {
+        @media all and (max-width: 840px) {
+            color: #fff !important;
+        }
+    }
+}
+</style>
 <style lang="scss" scoped>
 .news {
+    &__slider {
+        @media all and (max-width: 840px) {
+            padding-right: 102px;
+            .glide__track {
+                overflow: visible;
+            }
+            .mobile_link {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+        .more {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -5px;
+                height: 2px;
+                background: #fff;
+                border-radius: 5px;
+            }
+        }
+    }
     &__arrows {
         font-size: 0;
     }
@@ -175,6 +223,9 @@ export default {
         align-items: center;
         justify-content: space-between;
         margin-top: 30px;
+        @media all and (max-width: 840px) {
+            margin-right: -102px;
+        }
     }
     &__wrap {
         width: 100%;
@@ -182,7 +233,16 @@ export default {
         @media all and (max-width: 1024px) {
             padding: 80px 20px;
         }
+        @media all and (max-width: 840px) {
+            background: #2E5599;
+        }
     }
+    .catalog__title {
+        @media all and (max-width: 840px) {
+            color: #fff;
+        }
+    }
+    
     &__top {
         display: flex;
         align-items: center;
@@ -211,6 +271,9 @@ export default {
         @media all and (max-width: 1024px) {
             padding: 20px 30px 20px 20px;
             min-height: 450px;
+        }
+        @media all and (max-width: 1024px) {
+            min-height: 280px;
         }
         &::before {
             content: "";
@@ -255,6 +318,9 @@ export default {
         @media all and (max-width: 1024px) {
             font-size: 20px;
         }
+        @media all and (max-width: 1024px) {
+            font-size: 14px;
+        }
     }
     &__item_big &__text {
         font-style: normal;
@@ -266,6 +332,9 @@ export default {
         @media all and (max-width: 1024px) {
             white-space: normal;
             font-size: 20px;
+        }
+        @media all and (max-width: 1024px) {
+            font-size: 14px;
         }
     }
     &__item {

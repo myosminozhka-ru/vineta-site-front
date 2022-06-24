@@ -1,6 +1,6 @@
 <template>
   <section class="section section__item section__item--third" v-if="thirdData">
-    <div class="section__left section__left--fullwidth">
+    <div class="section__left section__left--fullwidth hide_on_mobile">
       <img :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first">
     </div>
     <div class="section__right section__slider glide">
@@ -16,6 +16,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="section__right-image hide_off_mobile">
+        <img :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first">
       </div>
       <div class="section__bullets" data-glide-el="controls[nav]">
         <button v-for="(key, item) in 6" :key="item.index" class="section__bullet" :data-glide-dir="`=${key-1}`">{{ key }}</button>
@@ -58,9 +61,28 @@
     &__right {
       padding-right: vw(243);
       display: block;
+      @media all and (min-width: 1025px) {
+        padding-top: vw(300);
+
+      }
       @media all and (max-width: 1024px) {
           padding-right: 20px;
+          
         }
+        @media all and (max-width: 840px) {
+          padding-bottom: 60px !important;
+        }
+    }
+    &__right-image {
+      height: 360px;
+      margin-top: 20px;
+      margin-left: -20px;
+      margin-right: -20px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
     &__bullets {
         position: absolute;
@@ -69,6 +91,9 @@
         @media all and (max-width: 1024px) {
           position: static;
           margin-top: 43px;
+        }
+        @media all and (max-width: 840px) {
+          margin-top: 20px;
         }
     }
     &__bullet {

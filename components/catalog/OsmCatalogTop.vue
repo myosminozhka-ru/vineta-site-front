@@ -2,7 +2,7 @@
     <div class="catalog__header">
         <div class="catalog__header_left">Каталог</div>
         <div class="catalog__header_right">
-            <nuxt-link :to="{name: 'index'}" class="catalog__header_btn">
+            <nuxt-link :to="{name: 'index'}" class="catalog__header_btn hide_on_mobile">
                 <div class="text">Лодки и катера</div>
                 <div class="icon">
                     <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,6 +37,9 @@ export default {
         align-items: center;
         justify-content: space-between;
         margin-bottom: vw(30);
+        @media all and (max-width: 1024px) {
+            margin-bottom: 30px ;
+        }
     }
     &__header_left {
         font-style: normal;
@@ -44,6 +47,9 @@ export default {
         font-size: vw(40);
         line-height: 110%;
         color: #172242;
+        @media all and (max-width: 1024px) {
+            font-size: 30px;
+        }
     }
     &__header_right {
         display: flex;
@@ -55,18 +61,36 @@ export default {
         text-decoration: none;
         padding: vw(20) vw(40);
         background: #FF0040;
+        transition: all .3s ease;
+        @media all and (max-width: 1024px) {
+            padding: 20px 40px;
+        }
+        &:hover {
+            background: #DF0043;
+        }
+        &:active {
+            background: #A70032;
+        }
         .text {
             font-style: normal;
             font-weight: 600;
             font-size: vw(20);
             line-height: 140%;
             color: #FFFFFF;
+            @media all and (max-width: 1024px) {
+                font-size: 20px;
+            }
         }
         .icon {
             width: vw(22);
             height: vw(22);
             margin-left: vw(22);
             font-size: 0;
+            @media all and (max-width: 1024px) {
+                width: 28px;
+                height: 28px;
+                margin-left: 20px;
+            }
         }
     }
     &__header_link {
@@ -74,17 +98,27 @@ export default {
         align-items: center;
         text-decoration: none;
         margin-left: vw(42);
+        @media all and (max-width: 1024px) {
+            margin-left: 40px;
+        }
         .text {
             font-style: normal;
             font-weight: 400;
             font-size: vw(16);
             line-height: 140%;
             color: #FF0040;
+            @media all and (max-width: 1024px) {
+                font-size: 16px;
+            }
         }
         .icon {
             width: vw(18);
             margin-right: vw(13);
             font-size: 0;
+            @media all and (max-width: 1024px) {
+                width: 25px;
+                margin-right: 10px;
+            }
         }
     }
 }

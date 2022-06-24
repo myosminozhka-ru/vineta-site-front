@@ -75,6 +75,9 @@ export default {
             width: 155px;
             margin-bottom: 51px;
         }
+        @media all and (max-width: 1024px) {
+            margin-bottom: 30px;
+        }
     }
     &__top_socials {
         display: flex;
@@ -88,6 +91,11 @@ export default {
             margin-right: vw(10);
         }
     }
+    &__top_right {
+        @media all and (max-width: 1024px) {
+            width: 100%;
+        }
+    }
     &__bottom {
         display: flex;
         align-items: center;
@@ -98,6 +106,9 @@ export default {
         @media all and (max-width: 1024px) {
             padding: 30px 20px;
             align-items: flex-start;
+        }
+        @media all and (max-width: 840px) {
+            flex-direction: column;
         }
     }
     &__bottom_left {
@@ -110,10 +121,17 @@ export default {
             font-size: 18px;
             width: 50%;
         }
+        @media all and (max-width: 840px) {
+            width: 100%;
+            margin-bottom: 19px;
+        }
     }
     &__bottom_right {
         @media all and (max-width: 1024px) {
             width: 50%;
+        }
+        @media all and (max-width: 840px) {
+            width: 100%;
         }
         ul {
             display: flex;

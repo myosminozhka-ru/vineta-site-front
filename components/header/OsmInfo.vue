@@ -35,7 +35,7 @@ export default {
     &__info {
         display: flex;
         align-items: center;
-        @media all and (max-width: 640px) {
+        @media all and (max-width: 840px) {
             order: 2;
             margin-top: 20px;
             border-top: 1px solid #D7DCE1;
@@ -55,7 +55,7 @@ export default {
             width: 30px;
             margin-right: 30px;
         }
-        @media all and (max-width: 640px) {
+        @media all and (max-width: 840px) {
             margin-right: 0;
         }
     }

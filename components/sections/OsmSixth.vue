@@ -1,5 +1,5 @@
 <template>
-    <section class="section section__item section__item--sixth catalog">
+    <section class="section section__item section__item--sixth catalog hide_on_mobile">
         <div class="catalog__wrap">
             <div class="catalog__left">
                 <osm-h1 class="catalog__title">Каталог</osm-h1>

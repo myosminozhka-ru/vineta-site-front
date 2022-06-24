@@ -294,6 +294,9 @@
     }
   }
   .header {
+    &__menu_opener {
+      font-size: 0;
+    }
 &__button {
         display: block;
         font-size: 0;
@@ -304,7 +307,7 @@
             width: 30px;
             margin-right: 30px;
         }
-        @media all and (max-width: 540px) {
+        @media all and (max-width: 840px) {
             width: 30px;
             margin-right: 15px;
         }
@@ -343,7 +346,7 @@
         width: 100%;
         order: 3;
       }
-      @media all and (max-width: 640px) {
+      @media all and (max-width: 840px) {
         display: flex;
         align-items: center;
         width: auto;
