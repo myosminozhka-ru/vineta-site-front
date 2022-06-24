@@ -54,13 +54,28 @@ export default {
         width: 100%;
     }
     &.isOutlined {
-        padding: vw(20) vw(30);
+        padding: vw(18) vw(30);
         background: transparent;
         color: #172242;
         border: vw(2) solid #FF004D;
         @media all and (max-width: 1024px) {
             border-width: 2px;
-            padding: 20px 30px;
+            padding: 18px 30px;
+        }
+        svg {
+            // fill: #fff;
+            path {
+                transition: all .3s ease;
+            }
+        }
+        &:hover {
+            color: #fff;
+            svg {
+                // fill: #fff;
+                path {
+                    fill: #fff;
+                }
+            }
         }
     }
     &.isLarge {

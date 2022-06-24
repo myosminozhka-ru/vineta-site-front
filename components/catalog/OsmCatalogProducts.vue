@@ -45,13 +45,13 @@ export default {
         }
     },
     async fetch() {
-        console.log(this.currentCategory.ID, this.$route.params.catalogId);
-        this.products = await this.$axios.$get(`catalog/elements.php?id=${this.currentCategory.ID}&sub=y`);
+        this.products = await this.$axios.$get(`catalog/elements.php?id=${this.$route.params.catalogId}&sub=y`);
+        console.log(this.products);
     }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .products {
     &__items {
         display: flex;
