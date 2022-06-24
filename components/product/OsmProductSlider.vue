@@ -16,7 +16,7 @@
             </div>
             <div class="productPage__slider-right">
                 <div class="productPage__slider-previews">
-                    <div class="productPage__slider-preview" v-for="item in 6" :key="item.index">
+                    <div class="productPage__slider-preview" v-for="(item, key) in 6" :key="item.index" @click="slider.go(`=${key}`)">
                         <img :src="require('~/assets/img/catalog/2_5 1.jpg')" alt="">
                     </div>
                 </div>
@@ -110,6 +110,7 @@ export default {
         margin-left: vw(24);
     }
     &__slider-previews {
+        cursor: pointer;
         img{
             max-width: 100%;
         }

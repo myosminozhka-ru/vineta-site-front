@@ -81,9 +81,13 @@ export default {
         font-size: vw(20);
         line-height: 140%;
         color: #172242;
+        transition: all .3s ease;
         @media all and (max-width: 1024px) {
             margin-bottom: 15px;
             font-size: 20px;
+        }
+        &:hover {
+            color: #FF0040;
         }
     }
     &__item_childs {
@@ -115,6 +119,24 @@ export default {
             font-size: inherit;
             line-height: inherit;
             color: inherit;
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                right: 0;
+                left: 0;
+                bottom: vw(-5);
+                height: 0;
+                background: #FF0040;
+                transition: all .3s ease;
+                border-radius: vw(5);
+            }
+        }
+        &:hover {
+            color: #FF0040;
+            a:after {
+                height: 1px;
+            }
         }
     }
 }
