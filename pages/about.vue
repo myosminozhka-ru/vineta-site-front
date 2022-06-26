@@ -92,6 +92,40 @@
           </div>
         </div>
       </section>
+      <section class="fourth">
+        <img :src="require('~/assets/img/about/people.jpg')" width="100%" alt="">
+      </section>
+      <section class="fiveth">
+        <div class="fiveth__title">Руководство</div>
+        <div class="fiveth__items">
+          <div class="fiveth__item" v-for="item in 4" :key="item.index">
+            <div class="avatar">
+              <div class="avatar__in">
+                <img :src="require('~/assets/img/about/avatar1.jpg')" alt="">
+              </div>
+            </div>
+            <div class="name">Абрамов Дмитрий Витальевич</div>
+            <div class="position">Заместитель директора по качеству</div>
+            <a href="tel:+78124935048" class="phone">+7(812) 493-50-48 (доб. 141)</a>
+            <a href="mailto:utfe@utfe.su" class="email">utfe@utfe.su</a>
+          </div>
+        </div>
+      </section>
+      <section class="fourth">
+        <img :src="require('~/assets/img/about/people2.jpg')" width="100%" alt="">
+      </section>
+      <section class="sixth">
+        <customers />
+      </section>
+      <section class="seventh">
+        <div class="seventh__title">Карта</div>
+        <div class="seventh__map">
+          <img :src="require('~/assets/img/about/map.svg')" width="100%" alt="">
+        </div>
+      </section>
+      <section class="eighth">
+        <licenses />
+      </section>
     </div>
     <osm-footer />
   </div>
@@ -103,6 +137,8 @@
       OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue'),
+      Customers: () => import('~/components/sliders/Customers.vue'),
+      Licenses: () => import('~/components/tabs/Licenses.vue'),
     },
     data: () => ({
       isTextShowed: false
@@ -112,6 +148,9 @@
 </script>
 
 <style lang="scss" scoped>
+  .header_padding {
+    background: #fff;
+  }
   .first {
     display: flex;
     align-items: center;
@@ -316,7 +355,13 @@
     }
   }
   .third {
-    padding: vw(120) vw(150);
+    padding: vw(120) vw(240);
+    @media all and (max-width: 1024px) {
+      padding: 80px 20px;
+    }
+    @media all and (max-width: 840px) {
+      padding: 60px 15px;
+    }
     &__title {
       font-style: normal;
       font-weight: 600;
@@ -341,6 +386,9 @@
       @media all and (max-width: 1024px) {}
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
+        &:nth-child(n+3) {
+          margin-top: 20px;
+        }
       }
       .number {
         font-style: normal;
@@ -368,6 +416,172 @@
           font-size: 16px;
         }
       }
+    }
+  }
+  .fourth {
+    padding: 0 vw(240);
+    font-size: 0;
+    @media all and (max-width: 1024px) {
+      padding: 0 20px;
+    }
+    @media all and (max-width: 840px) {
+      padding: 0 15px;
+    }
+  }
+  .fiveth {
+    padding: vw(120) vw(240);
+    @media all and (max-width: 1024px) {
+      padding: 80px 20px;
+    }
+    @media all and (max-width: 840px) {
+      padding: 60px 15px;
+    }
+    &__title {
+      font-style: normal;
+      font-weight: 600;
+      font-size: vw(40);
+      margin-bottom: vw(30);
+      line-height: 140%;
+      color: #172242;
+      @media all and (max-width: 1024px) {
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+      @media all and (max-width: 840px) {}
+    }
+    &__items {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    &__item {
+      width: calc(100% / 4 - #{vw(60)} / 4);
+      @media all and (max-width: 1024px) {}
+      @media all and (max-width: 840px) {
+        width: calc(100% / 2 - 10px);
+        &:nth-child(n+3) {
+          margin-top: 20px;
+        }
+      }
+      .avatar {
+        position: relative;
+        margin-bottom: vw(20);
+      }
+      .avatar__in {
+        padding-top: 95%;
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 0;
+        }
+      }
+      .name {
+        font-style: normal;
+        font-weight: 600;
+        font-size: vw(20);
+        margin-bottom: vw(10);
+        line-height: 140%;
+        color: #172242;
+        @media all and (max-width: 1024px) {
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        @media all and (max-width: 840px) {
+          font-size: 14px;
+        }
+      }
+      .position {
+        font-style: normal;
+        font-weight: 400;
+        font-size: vw(16);
+        margin-bottom: vw(10);
+        line-height: 140%;
+        color: #555F76;
+        @media all and (max-width: 1024px) {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+        @media all and (max-width: 840px) {
+          font-size: 12px;
+        }
+      }
+      .phone {
+        margin-bottom: 10px;
+        @media all and (max-width: 1024px) {
+          margin-bottom: 10px;
+        }
+      }
+      .phone,
+      .email {
+        display: block;
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 400;
+        font-size: vw(16);
+        line-height: 140%;
+        color: #FF0040;
+        @media all and (max-width: 1024px) {
+          font-size: 16px;
+        }
+        @media all and (max-width: 840px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .sixth {
+    overflow: hidden;
+    padding: vw(120) vw(240);
+    background: #F2F2F2;
+    @media all and (max-width: 1024px) {
+      padding: 80px 20px;
+    }
+    @media all and (max-width: 840px) {
+      padding: 60px 15px;
+    }
+  }
+  .seventh {
+    padding: vw(120) vw(240);
+    @media all and (max-width: 1024px) {
+      padding: 80px 20px;
+    }
+    @media all and (max-width: 840px) {
+      padding: 60px 15px;
+    }
+    &__title {
+      font-style: normal;
+      font-weight: 600;
+      font-size: vw(40);
+      margin-bottom: vw(30);
+      line-height: 140%;
+      color: #172242;
+      @media all and (max-width: 1024px) {
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+      @media all and (max-width: 840px) {}
+    }
+    &__map {
+      padding: 0 vw(110);
+      @media all and (max-width: 1024px) {
+        padding: 0;
+      }
+    }
+  }
+  .eighth {
+    overflow: hidden;
+    padding: vw(120) vw(240);
+    background: #F2F2F2;
+    @media all and (max-width: 1024px) {
+      padding: 80px 20px;
+    }
+    @media all and (max-width: 840px) {
+      padding: 60px 15px;
     }
   }
 </style>
