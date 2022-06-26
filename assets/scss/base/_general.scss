@@ -244,6 +244,11 @@ body .wrapper .full-page-indicators {
       }
   }
 }
+.header_padding {
+  @media all and (min-width: 1025px) {
+    padding-top: vw(95);
+  }
+}
 
 .products {
   &__items {
