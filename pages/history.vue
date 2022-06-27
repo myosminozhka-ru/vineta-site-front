@@ -10,3 +10,11 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    name: 'HistoryPage',
+    mounted() {
+        console.log(header);
+    }
+}
+</script>

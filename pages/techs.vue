@@ -42,6 +42,7 @@ export default {
     });
   },
   mounted() {
+    console.log(header);
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1;
     }
