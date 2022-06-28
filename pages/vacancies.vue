@@ -10,122 +10,7 @@
           <img :src="require('~/assets/img/about/first_img.png')" width="100%" alt="">
         </div>
       </section>
-      <section class="second">
-        <div class="second__side second__side--left">
-          <div class="second__side_top">
-            <div class="second__title">
-              <div class="text">О компании</div>
-            </div>
-            <div class="second__text">
-              <p>Современные технологии достигли такого уровня, что дальнейшее развитие различных форм деятельности не
-                даёт нам иного выбора, кроме определения благоприятных перспектив. Высокий уровень вовлечения
-                представителей целевой аудитории является четким доказательством простого факта: разбавленное изрядной
-                долей эмпатии, рациональное мышление, в своём классическом представлении, допускает внедрение
-                инновационных.</p>
-              <p v-if="isTextShowed">Современные технологии достигли такого уровня, что дальнейшее развитие различных форм деятельности не
-                даёт нам иного выбора, кроме определения благоприятных перспектив. Высокий уровень вовлечения
-                представителей целевой аудитории является четким доказательством простого факта: разбавленное изрядной
-                долей эмпатии, рациональное мышление, в своём классическом представлении, допускает внедрение
-                инновационных.</p>
-            </div>
-          </div>
-          <div class="second__buttons" @click="isTextShowed = !isTextShowed">
-            <osm-button class="second__button">
-                <div class="icon" :class="{'isOpened': isTextShowed}">
-                <svg width="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_37_12945)">
-                    <path d="M0.933594 8.3999L14.0003 19.5999L27.0669 8.3999" stroke="white" stroke-width="3" />
-                    </g>
-                    <defs>
-                    <clipPath id="clip0_37_12945">
-                        <rect width="28" height="28" fill="white" />
-                    </clipPath>
-                    </defs>
-                </svg>
-                </div>
-                <div class="text">
-                  <template v-if="!isTextShowed">Развернуть</template>
-                  <template v-else>Свернуть</template>
-                </div>
-            </osm-button>
-          </div>
-        </div>
-        <div class="second__side second__side--right">
-          <div class="second__side_top">
-            <div class="second__title">
-              <div class="text">Каталог</div>
-              <nuxt-link :to="{name: 'catalog'}" class="second__title_button">
-                <svg width="100%" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L8 9L1 17" stroke="white" stroke-width="2"/>
-                </svg>
-              </nuxt-link>
-            </div>
-            <div class="second__items">
-              <div class="second__item" v-for="item in 9" :key="item.index">
-                <div class="icon">
-                  <img :src="require('~/assets/img/about/cat_icon.svg')" width="100%" alt="">
-                </div>
-                <div class="text">Теплообменное оборудование</div>
-              </div>
-            </div>
-          </div>
-          <div class="second__buttons">
-            <osm-button class="second__button">
-              <div class="text">
-                Лодки и катера
-              </div>
-              <div class="icon">
-                <svg width="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M23.676 2.87788C24.2651 2.88266 24.7388 3.36242 24.734 3.94946L24.6559 13.5158C24.6511 14.1028 24.1697 14.5749 23.5806 14.5701C22.9915 14.5653 22.5178 14.0855 22.5226 13.4985L22.5798 6.4983L11.2594 17.5974C10.8394 18.0091 10.1641 18.0036 9.75092 17.5851C9.33777 17.1667 9.34326 16.4937 9.76319 16.0819L21.0836 4.98287L14.059 4.92594C13.4699 4.92116 12.9962 4.44141 13.001 3.85437C13.0058 3.26733 13.4872 2.79531 14.0763 2.80008L23.676 2.87788ZM5.9998 5.32962C5.4107 5.32962 4.93314 5.80553 4.93314 6.39259V22.0112C4.93314 22.5982 5.4107 23.0741 5.99981 23.0741H21.9998C22.5889 23.0741 23.0665 22.5982 23.0665 22.0112V18.9252C23.0665 18.3381 23.544 17.8622 24.1331 17.8622C24.7222 17.8622 25.1998 18.3381 25.1998 18.9252V22.0112C25.1998 23.7723 23.7671 25.2001 21.9998 25.2001H5.99981C4.2325 25.2001 2.7998 23.7723 2.7998 22.0112V6.39259C2.7998 4.63141 4.23249 3.2037 5.9998 3.2037H9.18232C9.77142 3.2037 10.249 3.6796 10.249 4.26666C10.249 4.85372 9.77142 5.32962 9.18232 5.32962H5.9998Z" fill="white"/>
-                </svg>
-              </div>
-            </osm-button>
-          </div>
-        </div>
-      </section>
-      <section class="third">
-        <div class="third__title">О компании в цифрах</div>
-        <div class="third__items">
-          <div class="third__item" v-for="item in 4" :key="item.index">
-            <div class="number">403</div>
-            <div class="text">Человек работает</div>
-          </div>
-        </div>
-      </section>
-      <section class="fourth">
-        <img :src="require('~/assets/img/about/people.jpg')" width="100%" alt="">
-      </section>
-      <section class="fiveth">
-        <div class="fiveth__title">Руководство</div>
-        <div class="fiveth__items">
-          <div class="fiveth__item" v-for="item in 4" :key="item.index">
-            <div class="avatar">
-              <div class="avatar__in">
-                <img :src="require('~/assets/img/about/avatar1.jpg')" alt="">
-              </div>
-            </div>
-            <div class="name">Абрамов Дмитрий Витальевич</div>
-            <div class="position">Заместитель директора по качеству</div>
-            <a href="tel:+78124935048" class="phone">+7(812) 493-50-48 (доб. 141)</a>
-            <a href="mailto:utfe@utfe.su" class="email">utfe@utfe.su</a>
-          </div>
-        </div>
-      </section>
-      <section class="fourth">
-        <img :src="require('~/assets/img/about/people2.jpg')" width="100%" alt="">
-      </section>
-      <section class="sixth">
-        <customers />
-      </section>
-      <section class="seventh">
-        <div class="seventh__title">Карта</div>
-        <div class="seventh__map">
-          <img :src="require('~/assets/img/about/map.svg')" width="100%" alt="">
-        </div>
-      </section>
-      <section class="eighth">
-        <licenses />
-      </section>
+      <img :src="require('~/assets/img/vacancies/bg.svg')" width="100%" alt="">
     </div>
     <osm-footer />
   </div>
@@ -136,9 +21,9 @@
     components: {
       OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-      OsmButton: () => import('~/components/global/OsmButton.vue'),
-      Customers: () => import('~/components/sliders/Customers.vue'),
-      Licenses: () => import('~/components/tabs/Licenses.vue'),
+      // OsmButton: () => import('~/components/global/OsmButton.vue'),
+      // Customers: () => import('~/components/sliders/Customers.vue'),
+      // Licenses: () => import('~/components/tabs/Licenses.vue'),
     },
     data: () => ({
       isTextShowed: false

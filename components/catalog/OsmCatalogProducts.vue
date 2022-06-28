@@ -45,7 +45,7 @@ export default {
         }
     },
     async fetch() {
-        this.products = await this.$axios.$get(`catalog/elements.php?id=${this.$route.params.catalogId}&sub=y`);
+        this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
         console.log(this.products);
     }
 }
