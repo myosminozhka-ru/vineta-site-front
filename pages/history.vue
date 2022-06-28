@@ -1,20 +1,269 @@
 <template>
     <div class="history">
-        <div class="history__top"></div>
-        <div class="history__bottom">
-            <div class="history__text">
-                <div class="history__text--left"></div>
-                <div class="history__text--buttons"></div>
+        <osm-header />
+        <div class="header_padding">
+            <div class="history__in">
+                <div class="history__top">
+                    <osm-breadcrumbs :white="true" />
+                </div>
+                <div class="history__bottom">
+                    <div class="history__text">
+                        <div class="history__text--left" v-for="(item, key) in 6" :key="item.index" :class="{'isActive': key === selectedTime}">
+                            <p>{{key}}ООО «Винета» определено головным предприятием по проектированию и производству теплообменного оборудования для нужд судостроительной промышленности России.</p>
+                            <p>Разработаны установки подготовки дизельного топлива на базе полимерных фильтроэлементов, пневмоцистерны систем водоснабжения, аппараты стационарные пены, статические сепараторы дизельного топлива и другие решения.</p>
+                            <p>Поставляемые ООО «Винета» блоки сепарации БС используются на кораблях военно-морского флота РФ.</p>
+                        </div>
+                        <div class="history__text--buttons hide_on_tablet">
+                            <div @click="prev">
+                                <osm-button :outlined="true" class="history__text--button">
+                                    <div class="arrow">
+                                        <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="">
+                                    </div>
+                                    <div class="text">В прошлое</div>
+                                </osm-button>
+                            </div>
+                            <div @click="next">
+                                <osm-button :outlined="true" class="history__text--button history__text--button--fwd" >
+                                    <div class="arrow">
+                                        <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="">
+                                    </div>
+                                    <div class="text">В Настоящее</div>
+                                </osm-button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="history__timeline">
+                        <div class="history__timeline_item" v-for="(item, key) in 6" :key="item.index" :class="{'isActive': key <= selectedTime, 'isTransformed': key === selectedTime}" :style="`--index: ${selectedTime}`">
+                            <div class="top">
+                                <div class="line"></div>
+                                <div class="sqare"></div>
+                            </div>
+                            <div class="bottom">199{{ key }}</div>
+                        </div>
+                    </div>
+                    <div class="history__text--buttons hide_on_desktop">
+                        <div @click="prev">
+                            <osm-button :outlined="true" class="history__text--button">
+                                <div class="arrow">
+                                    <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="">
+                                </div>
+                                <div class="text">В прошлое</div>
+                            </osm-button>
+                        </div>
+                        <div @click="next">
+                            <osm-button :outlined="true" class="history__text--button history__text--button--fwd" >
+                                <div class="arrow">
+                                    <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="">
+                                </div>
+                                <div class="text">В Настоящее</div>
+                            </osm-button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="history__timeline"></div>
         </div>
     </div>
 </template>
 <script>
 export default {
     name: 'HistoryPage',
-    mounted() {
-        console.log(header);
+    components: {
+        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
+        OsmButton: () => import('~/components/global/OsmButton.vue')
+    },
+    data: () => ({
+        selectedTime: 0,
+    }),
+    methods: {
+        next() {
+            if (this.selectedTime >= 5) return;
+            this.selectedTime++;
+        },
+        prev() {
+            if (this.selectedTime <= 0) return;
+            this.selectedTime--;
+        }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.history {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+    &__in {
+        flex: 1 1 auto;
+        padding: vw(30) vw(240) vw(144) vw(240);
+        background: url('~assets/img/history.jpg') 50% 50%/cover no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @media all and (max-width: 1024px) {
+            padding: 30px 20px 80px 20px;
+        }
+    }
+    &__text {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    &__text--left {
+        width: vw(588);
+        display: none;
+        @media all and (max-width: 1024px) {
+            width: 100%;
+        }
+        &.isActive {
+            display: block;
+        }
+        p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: vw(20);
+            line-height: 140%;
+            color: #FFFFFF;
+            margin: 0;
+            @media all and (max-width: 1024px) {
+                font-size: 20px;
+            }
+            &:not(:last-child) {
+                margin-bottom: vw(10);
+                @media all and (max-width: 1024px) {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+    &__text--buttons {
+        display: flex;
+        align-items: center;
+        @media all and (max-width: 1024px) {
+            margin-top: 80px;
+        }
+    }
+    &__text--button {
+        .arrow {
+            width: vw(28);
+            height: vw(28);
+            font-size: 0;
+            @media all and (max-width: 1024px) {
+                width: 28px;
+                height: 28px;
+            }
+        }
+        .text {
+            font-style: normal;
+            font-weight: 600;
+            font-size: vw(20);
+            margin-left: vw(20);
+            line-height: 140%;
+            color: #FFFFFF;
+            @media all and (max-width: 1024px) {
+                margin-left: 20px;
+                font-size: 20px;    
+            }
+        }
+        &--fwd {
+            margin-left: vw(30);
+            @media all and (max-width: 1024px) {
+                margin-left: 30px; 
+            }
+            .text {
+                order: -1;
+                margin-left: 0;
+                margin-right: vw(20);
+                @media all and (max-width: 1024px) {
+                    margin-right: 20px;
+                }
+            }
+            .arrow {
+                transform: rotate(180deg);
+            }
+        }
+    }
+    &__timeline {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        margin-top: vw(128);
+        @media all and (max-width: 1024px) {
+            margin-top: 80px;
+        }
+    }
+    &__timeline_item {
+        min-width: vw(291);
+        transition: all .3s ease;
+        @media all and (max-width: 1024px) {
+            transform: translateX(calc(-100% * var(--index)));
+            min-width: 190px;
+        }
+        .top {}
+        .line {
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+            &::after {
+                content: "";
+                width: 0;
+                height: 4px;
+                position: absolute;
+                top: -1px;
+                left: 0;
+                background: #fff;
+                transition: all .3s ease;
+            }
+        }
+        .sqare {
+            width: vw(12);
+            height: vw(12);
+            border-radius: vw(2);
+            transform: rotate(-45deg);
+            margin-top: vw(-7);
+            background: #4A4A4A;
+            border: vw(2) solid #FFFFFF;
+            box-sizing: border-box;
+            @media all and (max-width: 1024px) {
+                width: 12px;
+                height: 12px;
+                border-radius: 2px;
+                margin-top: -7px;
+                border: 2px solid #FFFFFF;
+            }
+        }
+        .bottom {
+            margin-top: vw(20);
+            font-style: normal;
+            font-weight: 600;
+            font-size: vw(22);
+            line-height: 140%;
+            color: #FFFFFF;
+            opacity: 0.8;
+            transform-origin: 0 0;
+            transition: all .3s ease;
+            @media all and (max-width: 1024px) {
+                font-size: 18px;
+                margin-top: 19px;
+            }
+        }
+        &.isActive {
+            .line::after {
+                width: 100%;
+            }
+        }
+        &.isTransformed {
+            .bottom {
+                transform: scale(1.3)
+            }
+        }
+    }
+}
+.header_padding {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+</style>

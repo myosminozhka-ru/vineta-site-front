@@ -1,5 +1,5 @@
 <template>
-    <ul class="breadcrumbs">
+    <ul class="breadcrumbs" :class="{'white': white}">
         <div class="back_button hide_off_mobile">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <rect width="24" height="24" fill="#FF0040"/>
@@ -17,6 +17,17 @@
         </li>
     </ul>
 </template>
+
+<script>
+export default {
+    props: {
+        white: {
+            type: Boolean,
+            default: false
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
 .back_button {
@@ -61,6 +72,11 @@
         margin: 0 vw(10);
         @media all and (max-width: 1024px) {
             margin: 0 10px;
+        }
+    }
+    &.white {
+        a, span {
+            color: #fff !important;
         }
     }
 }
