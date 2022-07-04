@@ -1,5 +1,8 @@
 html {
   font-size: 0.05208333333vw;
+  @media all and (max-width: 1440px) {
+    font-size: 0.06208333333vw;
+  }
   @media all and (max-width: 1280px) {
     font-size: 1px;
   }
@@ -189,6 +192,9 @@ body .wrapper .full-page-indicators {
       display: flex;
       align-items: center;
       justify-content: center;
+      @media all and (max-width: 1440px) {
+        padding: 20px !important;
+      }
       @media all and (max-width: 1280px) {
         width: calc(100% - 495px) !important;
         padding: 20px !important;
