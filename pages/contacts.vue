@@ -49,23 +49,24 @@
                     </div>
                 </div>
             </div>
+          <osm-contacts-slider />
         </div>
         <section class="fiveth">
-        <div class="fiveth__title">Руководство</div>
-        <div class="fiveth__items">
-          <div class="fiveth__item" v-for="item in 4" :key="item.index">
-            <div class="avatar">
-              <div class="avatar__in">
-                <img :src="require('~/assets/img/about/avatar1.jpg')" alt="">
+          <div class="fiveth__title">Руководство</div>
+          <div class="fiveth__items">
+            <div class="fiveth__item" v-for="item in 4" :key="item.index">
+              <div class="avatar">
+                <div class="avatar__in">
+                  <img :src="require('~/assets/img/about/avatar1.jpg')" alt="">
+                </div>
               </div>
+              <div class="name">Абрамов Дмитрий Витальевич</div>
+              <div class="position">Заместитель директора по качеству</div>
+              <a href="tel:+78124935048" class="phone">+7(812) 493-50-48 (доб. 141)</a>
+              <a href="mailto:utfe@utfe.su" class="email">utfe@utfe.su</a>
             </div>
-            <div class="name">Абрамов Дмитрий Витальевич</div>
-            <div class="position">Заместитель директора по качеству</div>
-            <a href="tel:+78124935048" class="phone">+7(812) 493-50-48 (доб. 141)</a>
-            <a href="mailto:utfe@utfe.su" class="email">utfe@utfe.su</a>
           </div>
-        </div>
-      </section>
+        </section>
       <osm-footer />
     </div>
 </template>
@@ -78,6 +79,7 @@ export default {
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
+        OsmContactsSlider: () => import('~/components/contacts/OsmSlider.vue'),
     }
 }
 </script>
@@ -91,6 +93,7 @@ export default {
     &__top {
         display: flex;
         align-items: center;
+        margin-bottom: rem(120);
         @media all and (max-width: 840px) {
             flex-direction: column;
         }
