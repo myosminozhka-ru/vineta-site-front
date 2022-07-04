@@ -29,21 +29,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper {
+    background: #172242;
+}
 .errorPage {
     min-height: 100vh;
-    background: #172242;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    @media all and (max-width: 1280px) {
+        padding: 152px 40px 152px;
+        box-sizing: border-box;
+        min-height: 0;
+    }
     &__buttons {
         display: flex;
         align-items: center;
         justify-content: center;
+        @media all and (max-width: 1280px) {
+            flex-direction: column;
+        }
     }
     &__button {
         &:not(:last-child) {
             margin-right: rem(30);
+            @media all and (max-width: 1280px) {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
         }
     }
     &__in {
@@ -60,6 +74,9 @@ export default {
         line-height: 140%;
         text-align: center;
         color: #FFFFFF;
+        @media all and (max-width: 1280px) {
+            font-size: 34px;
+        }
     }
     &__text {
         font-style: normal;
@@ -69,6 +86,9 @@ export default {
         line-height: 140%;
         text-align: center;
         color: #FFFFFF;
+        @media all and (max-width: 1280px) {
+            font-size: 16px;
+        }
     }
 }
 </style>
