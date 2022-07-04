@@ -10,7 +10,7 @@
     line-height: 140%;
     color: #172242;
     margin: 0;
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         font-size: 40px;
     }
 }

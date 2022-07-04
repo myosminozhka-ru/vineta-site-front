@@ -37,7 +37,7 @@ export default {
         align-items: center;
         justify-content: space-between;
         margin-bottom: rem(30);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 30px ;
         }
     }
@@ -47,7 +47,7 @@ export default {
         font-size: rem(40);
         line-height: 110%;
         color: #172242;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 30px;
         }
     }
@@ -62,7 +62,7 @@ export default {
         padding: rem(20) rem(40);
         background: #FF0040;
         transition: all .3s ease;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 20px 40px;
         }
         &:hover {
@@ -77,7 +77,7 @@ export default {
             font-size: rem(20);
             line-height: 140%;
             color: #FFFFFF;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 20px;
             }
         }
@@ -86,7 +86,7 @@ export default {
             height: rem(22);
             margin-left: rem(22);
             font-size: 0;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: 28px;
                 height: 28px;
                 margin-left: 20px;
@@ -98,7 +98,7 @@ export default {
         align-items: center;
         text-decoration: none;
         margin-left: rem(42);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-left: 40px;
         }
         .text {
@@ -107,7 +107,7 @@ export default {
             font-size: rem(16);
             line-height: 140%;
             color: #FF0040;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 16px;
             }
         }
@@ -115,7 +115,7 @@ export default {
             width: rem(18);
             margin-right: rem(13);
             font-size: 0;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: 25px;
                 margin-right: 10px;
             }

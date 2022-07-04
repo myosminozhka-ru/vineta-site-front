@@ -100,11 +100,11 @@ export default {
     &__top_social {
         font-size: 0;
         display: block;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 30px;
         }
         &:not(:last-child) {
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-right: 10px;
             }
         }
@@ -126,7 +126,7 @@ export default {
             }
             &:not(:last-child) {
                 margin-right: rem(160);
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-right: 86px;
                 }
                 @media all and (max-width: 840px) {
@@ -138,7 +138,7 @@ export default {
                 display: block;
                 &:not(:last-child) {
                     margin-bottom: rem(15);
-                    @media all and (max-width: 1440px) {
+                    @media all and (max-width: 1280px) {
                         margin-bottom: 15px;
                     }
                     @media all and (max-width: 840px) {
@@ -166,7 +166,7 @@ export default {
                 font-size: rem(16);
                 line-height: 140%;
                 color: #D7DCE1;
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     font-size: 16px;
                 }
                 
@@ -175,7 +175,7 @@ export default {
                 margin-bottom: rem(20);
                 position: relative;
                 cursor: pointer;
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-bottom: 20px;
                 }
                 @media all and (max-width: 840px) {
@@ -196,7 +196,7 @@ export default {
                     font-size: rem(24);
                     line-height: 140%;
                     color: #FFFFFF;
-                    @media all and (max-width: 1440px) {
+                    @media all and (max-width: 1280px) {
                         font-size: 18px;
                     }
                     @media all and (max-width: 840px) {

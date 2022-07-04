@@ -180,7 +180,7 @@
       opacity: 0;
       visibility: hidden;
       transition: all .3s ease;
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         left: 0;
         right: 0;
       }
@@ -193,20 +193,20 @@
     &__modal_top {
       padding: rem(62) rem(70) rem(38);
       background: #fff;
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         padding: 30px 20px;
       }
     }
     &__modal_bottom {
       background: #F2F2F2;
       padding: rem(62) rem(70);
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         padding: 30px 20px;
       }
     }
     &__modal_title {
       margin-bottom: rem(50);
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         margin-bottom: 30px;
       }
     }
@@ -223,7 +223,7 @@
         &:not(:last-child) {
             margin-bottom: rem(30);
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           width: calc(100% / 2 - 30px);
           &:not(:last-child) {
               margin-bottom: 20px;
@@ -237,7 +237,7 @@
         .icon {
             width: rem(40);
             margin-right: rem(20);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
               width: 30px;
               margin-right: 20px;
             }
@@ -248,7 +248,7 @@
             font-size: rem(24);
             line-height: 140%;
             color: #555F76;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
               width: calc(100% - 30px);
               font-size: 20px;
             }
@@ -262,7 +262,7 @@
         width: rem(40);
         height: rem(40);
         margin-right: rem(20);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           width: 30px;
           margin-right: 20px;
         }
@@ -303,7 +303,7 @@
         width: rem(30);
         margin-right: rem(40);
         position: relative;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 30px;
             margin-right: 30px;
         }
@@ -332,7 +332,7 @@
         box-sizing: border-box;
         text-align: center;
         border-radius: 50%;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             top: -5px;
             left: -5px;
             width: 19px;
@@ -342,7 +342,7 @@
         }
     }
     &__menu {
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         width: 100%;
         order: 3;
       }
@@ -359,7 +359,7 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         justify-content: space-between;
         border-top: 1px solid #D7DCE1;
         margin-top: 20px;
@@ -393,14 +393,14 @@
         background: #fff;
         transition: all .3s ease;
       }
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         font-size: 18px;
         padding: 20px 0s;
       }
     }
     &__li.isActive &__link:after {
       height: rem(8);
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         height: 4px; 
       }
     }
@@ -408,7 +408,7 @@
         width: rem(9);
         margin-left: rem(10);
         font-size: 0;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           width: 9px;
           margin-left: 10px;
         }

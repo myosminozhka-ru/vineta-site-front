@@ -117,7 +117,7 @@ export default {
         }
     }
     &__content {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             display: flex;
             justify-content: space-between;
             .mobile_left,
@@ -150,13 +150,13 @@ export default {
     &__right {
         padding-right: rem(240);
         background: #2E5599;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
            width: 100% !important;
            padding: 80px 20px;
         }
     }
     &__left {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             display: none;
         }
     }
@@ -164,7 +164,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             flex-wrap: wrap;
         }
     }
@@ -172,7 +172,7 @@ export default {
         display: flex;
         align-items: center;
         text-decoration: none;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin: 25px 0;
         }
         @media all and (max-width: 840px) {
@@ -188,7 +188,7 @@ export default {
         .icon {
             width: rem(19);
             font-size: 0;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: 25px;
             }
         }
@@ -199,7 +199,7 @@ export default {
             line-height: 140%;
             color: #FFFFFF;
             margin-left: rem(14);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 16px;
             }
         }
@@ -212,7 +212,7 @@ export default {
         line-height: 140%;
         color: #FFFFFF;
         background: #00234A;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 8px 10px;
             font-size: 12px;
         }
@@ -230,7 +230,7 @@ export default {
     grid-template-areas:
             "first second"
             "first third";
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;
         grid-template-areas:

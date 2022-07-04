@@ -52,13 +52,13 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }
     }
     &__middle--tech {
         margin-bottom: rem(40);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 0;
             position: relative;
             z-index: 2;
@@ -68,7 +68,7 @@ export default {
         flex: 1 1 auto;
         display: flex;
         align-items: center;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             flex-direction: column;
         }
     }
@@ -77,7 +77,7 @@ export default {
         margin-right: rem(128);
         font-size: 0;
         height: 100%;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 100%;
             margin-right: 0;
             order: 2;
@@ -94,7 +94,7 @@ export default {
         width: calc(100% - #{rem(602)} - #{rem(128)});
         // margin-left: rem(128);
         position: relative;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 100%;
             margin-bottom: 30px;
         }
@@ -108,7 +108,7 @@ export default {
             right: 0;
             text-align: center;
             pointer-events: none;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 text-align: right;
                 font-size: 300px;
                 top: -107px;
@@ -134,7 +134,7 @@ export default {
             margin-bottom: rem(30);
             line-height: 140%;
             color: #172242;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 30px;
                 margin-bottom: 30px;
             }
@@ -143,12 +143,12 @@ export default {
             padding: 0;
             margin: 0;
             padding-left: rem(24);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 padding-left: 24px;
             }
             &:not(:last-child) {
                 margin-bottom: rem(40);
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-bottom: 40px;
                 }
             }
@@ -158,13 +158,13 @@ export default {
                 font-size: rem(16);
                 line-height: 140%;
                 color: #555F76;
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-bottom: 40px;
                     font-size: 16px;
                 }
                 &:not(:last-child) {
                     margin-bottom: rem(10);
-                    @media all and (max-width: 1440px) {
+                    @media all and (max-width: 1280px) {
                         margin-bottom: 10px;
                     }
                 }
@@ -176,12 +176,12 @@ export default {
             font-size: rem(16);
             line-height: 140%;
             color: #172242;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 16px;
             }
             &:not(:last-child) {
                 margin-bottom: rem(20);
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-bottom: 20px;
                 }
             }
@@ -193,12 +193,12 @@ export default {
             font-size: rem(16);
             line-height: 140%;
             color: #555F76;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 16px;
             }
             &:not(:last-child) {
                 margin-bottom: rem(20);
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-bottom: 20px;
                 }
             }
@@ -207,12 +207,12 @@ export default {
             height: rem(2);
             background: #D7DCE1;
             border-radius: 20px;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 height: 2px;
             }
             &:not(:last-child) {
                 margin-bottom: rem(20);
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-bottom: 20px;
                 }
             }
@@ -226,13 +226,13 @@ export default {
             line-height: 140%;
             text-align: center;
             color: #555F76;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 12px;
                 padding: 20px;
             }
             &:not(:last-child) {
                 margin-bottom: rem(30);
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-bottom: 30px;
                 }
             }

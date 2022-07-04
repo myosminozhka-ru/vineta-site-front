@@ -102,7 +102,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 30px 20px 80px 20px;
         }
     }
@@ -114,7 +114,7 @@ export default {
     &__text--left {
         width: rem(588);
         display: none;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 100%;
         }
         &.isActive {
@@ -127,12 +127,12 @@ export default {
             line-height: 140%;
             color: #FFFFFF;
             margin: 0;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 20px;
             }
             &:not(:last-child) {
                 margin-bottom: rem(10);
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-bottom: 10px;
                 }
             }
@@ -141,7 +141,7 @@ export default {
     &__text--buttons {
         display: flex;
         align-items: center;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-top: 80px;
         }
     }
@@ -150,7 +150,7 @@ export default {
             width: rem(28);
             height: rem(28);
             font-size: 0;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: 28px;
                 height: 28px;
             }
@@ -162,21 +162,21 @@ export default {
             margin-left: rem(20);
             line-height: 140%;
             color: #FFFFFF;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-left: 20px;
                 font-size: 20px;    
             }
         }
         &--fwd {
             margin-left: rem(30);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-left: 30px; 
             }
             .text {
                 order: -1;
                 margin-left: 0;
                 margin-right: rem(20);
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     margin-right: 20px;
                 }
             }
@@ -190,14 +190,14 @@ export default {
         align-items: flex-start;
         flex-wrap: nowrap;
         margin-top: rem(128);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-top: 80px;
         }
     }
     &__timeline_item {
         min-width: rem(291);
         transition: all .3s ease;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             transform: translateX(calc(-100% * var(--index)));
             min-width: 190px;
         }
@@ -226,7 +226,7 @@ export default {
             background: #4A4A4A;
             border: rem(2) solid #FFFFFF;
             box-sizing: border-box;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: 12px;
                 height: 12px;
                 border-radius: 2px;
@@ -244,7 +244,7 @@ export default {
             opacity: 0.8;
             transform-origin: 0 0;
             transition: all .3s ease;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 18px;
                 margin-top: 19px;
             }

@@ -35,13 +35,13 @@ export default {
 .section {
     
     &__left {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             height: 470px;
             width: 495px;
         }
     }
     &__right {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 20px;
         }
     }

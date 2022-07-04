@@ -29,7 +29,7 @@ export default {
     right: 0;
     top: 0;
     z-index: 10;
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         padding: 35px 20px 0;
         position: relative;
     }

@@ -51,7 +51,7 @@ export default {
 .gallery {
     &:not(:last-child) {
         margin-bottom: rem(120);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 80px;
         }
     }
@@ -62,7 +62,7 @@ export default {
         margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1440px) {;
+        @media all and (max-width: 1280px) {;
             font-size: 30px;
             margin-bottom: 30px;
         }
@@ -71,10 +71,10 @@ export default {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-gap: rem(20);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             grid-gap: 20px;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             grid-template-columns: repeat(2, 1fr);
         }
     }

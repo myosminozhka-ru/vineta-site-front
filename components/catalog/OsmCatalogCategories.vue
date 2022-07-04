@@ -38,7 +38,7 @@ export default {
         &:nth-child(n + 4) {
             margin-top: rem(79);
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: calc(100% / 2 - 10px);
             &:nth-child(n + 3) {
                 margin-top: 30px;
@@ -54,7 +54,7 @@ export default {
     &__item_image {
         background: #D7DCE1;
         margin-bottom: rem(40);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }
         @media all and (max-width: 840px) {
@@ -82,7 +82,7 @@ export default {
         line-height: 140%;
         color: #172242;
         transition: all .3s ease;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 15px;
             font-size: 20px;
         }
@@ -93,7 +93,7 @@ export default {
     &__item_childs {
         margin: 0;
         padding: 0 0 0 rem(23);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 0 0 0 23px;
         }
     }
@@ -103,12 +103,12 @@ export default {
         font-size: rem(16);
         line-height: 140%;
         color: #555F76;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 16px;
         }
         &:not(:last-child) {
             margin-bottom: rem(10);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-bottom: 10px;
             }
         }

@@ -55,7 +55,7 @@ export default {
 
 <style lang="scss">
 .footer {
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         width: 100%;
     }
     &__top {
@@ -64,18 +64,18 @@ export default {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 60px 20px;
             flex-direction: column;
         }
     }
     &__top_left {
         width: rem(312);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 155px;
             margin-bottom: 51px;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }
     }
@@ -92,7 +92,7 @@ export default {
         }
     }
     &__top_right {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 100%;
         }
     }
@@ -103,7 +103,7 @@ export default {
         background: #172242;
         padding: rem(20) rem(50);
         transition: 1s bottom 0.5s ease;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 30px 20px;
             align-items: flex-start;
         }
@@ -117,7 +117,7 @@ export default {
         font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 18px;
             width: 50%;
         }
@@ -127,7 +127,7 @@ export default {
         }
     }
     &__bottom_right {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 50%;
         }
         @media all and (max-width: 840px) {
@@ -139,14 +139,14 @@ export default {
             margin: 0;
             padding: 0;
             list-style: none;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 flex-direction: column;
                 align-items: flex-start;
             }
             li {
                 &:not(:last-child) {
                     margin-right: rem(40);
-                    @media all and (max-width: 1440px) {
+                    @media all and (max-width: 1280px) {
                         margin-right: 0;
                         margin-bottom: 15px;
                     }
@@ -159,7 +159,7 @@ export default {
                 line-height: 140%;
                 color: #FFFFFF;
                 text-decoration: none;
-                @media all and (max-width: 1440px) {
+                @media all and (max-width: 1280px) {
                     font-size: 16px;
                     font-weight: 400;
                 }

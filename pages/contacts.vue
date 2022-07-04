@@ -85,7 +85,7 @@ export default {
 <style lang="scss" scoped>
 .contacts {
     padding: rem(30) rem(240) rem(120);
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         padding: 30px 20px;
     }
     &__top {
@@ -102,14 +102,14 @@ export default {
         font-size: rem(40);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 30px;
             margin-bottom: 30px;
         }
     }
     &__left {
         width: calc(100% - #{rem(852)});
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 50%;
         }
         @media all and (max-width: 840px) {
@@ -119,7 +119,7 @@ export default {
     &__right {
         width: rem(832);
         margin-left: rem(20);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 50%;
             margin-left: 0;
         }
@@ -134,7 +134,7 @@ export default {
         text-decoration: none;
         &:not(:last-child) {
             margin-bottom: rem(20);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-bottom: 20px;
             }
         }
@@ -142,7 +142,7 @@ export default {
             width: rem(30);
             margin-right: rem(20);
             font-size: 0;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: 30px;
                 margin-right: 20px;
             }
@@ -154,14 +154,14 @@ export default {
             font-size: rem(16);
             line-height: 140%;
             color: #172242;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 16px;
             }
         }
     }
     &__button {
         margin-top: rem(30);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 300px;
             margin-top: 30px;
         }
@@ -177,7 +177,7 @@ export default {
             height: rem(28);
             margin-right: rem(25);
             font-size: 0;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: 20px;
                 height: 28px;
                 margin-right: 25px;
@@ -188,7 +188,7 @@ export default {
 
 .fiveth {
     padding: 0 rem(240) rem(120);
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
       padding: 80px 20px;
     }
     @media all and (max-width: 840px) {
@@ -201,7 +201,7 @@ export default {
       margin-bottom: rem(30);
       line-height: 140%;
       color: #172242;
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         font-size: 30px;
         margin-bottom: 30px;
       }
@@ -215,7 +215,7 @@ export default {
     }
     &__item {
       width: calc(100% / 4 - #{rem(60)} / 4);
-      @media all and (max-width: 1440px) {}
+      @media all and (max-width: 1280px) {}
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
         &:nth-child(n+3) {
@@ -245,7 +245,7 @@ export default {
         margin-bottom: rem(10);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           font-size: 20px;
           margin-bottom: 10px;
         }
@@ -260,7 +260,7 @@ export default {
         margin-bottom: rem(10);
         line-height: 140%;
         color: #555F76;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           font-size: 16px;
           margin-bottom: 10px;
         }
@@ -270,7 +270,7 @@ export default {
       }
       .phone {
         margin-bottom: 10px;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           margin-bottom: 10px;
         }
       }
@@ -283,7 +283,7 @@ export default {
         font-size: rem(16);
         line-height: 140%;
         color: #FF0040;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           font-size: 16px;
         }
         @media all and (max-width: 840px) {

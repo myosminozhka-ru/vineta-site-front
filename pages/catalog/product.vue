@@ -437,7 +437,7 @@
       margin-left: rem(42);
       margin-left: rem(20);
 
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         margin-left: 40px;
       }
 
@@ -448,7 +448,7 @@
         line-height: 140%;
         color: #FF0040;
 
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           font-size: 16px;
         }
       }
@@ -458,7 +458,7 @@
         margin-right: rem(10) !important;
         font-size: 0;
 
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           width: 25px;
           margin-right: 10px !important;
         }

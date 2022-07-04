@@ -20,7 +20,7 @@ export default {
     &__item {
       flex-direction: column;
       padding: rem(100) rem(240) rem(70) rem(108);
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
         padding: 80px 20px;
       }
     }

@@ -97,7 +97,7 @@ export default {
         display: flex;
         align-items: center;
         padding: rem(100) rem(240) rem(70) rem(108);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 20px;
         }
     }
@@ -105,20 +105,20 @@ export default {
         width: rem(657);
         padding-right: rem(100);
         box-sizing: border-box;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 300px;
             padding-right: 0;
         }
     }
     &__right {
         width: calc(100% - #{rem(657)});
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: calc(100% - 300px);
         }
     }
     &__title {
         margin-bottom: rem(30);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }
     }
@@ -159,7 +159,7 @@ export default {
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 266px 30px 30px 126px;
             height: auto;
         }
@@ -173,7 +173,7 @@ export default {
         height: rem(435);
         box-sizing: border-box;
         overflow: hidden;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 126px 0 0 219px;
             height: auto;
         }
@@ -182,7 +182,7 @@ export default {
             top: rem(-73);
             left: rem(-108);
             width: rem(358);   
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: 510px;
                 height: 510px;
                 left: -219px;
@@ -201,7 +201,7 @@ export default {
             color: #2E5599;
             max-width: 100%;
             white-space: initial;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 30px;
             }
         }

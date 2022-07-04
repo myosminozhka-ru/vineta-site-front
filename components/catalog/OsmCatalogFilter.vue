@@ -94,13 +94,13 @@ export default {
 
 <style lang="scss" scoped>
 .filter {
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         margin-bottom: 52px;
         position: relative;
     }
     &__in {
         padding: rem(40) rem(30);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 0;
         }
     }
@@ -111,7 +111,7 @@ export default {
         margin-bottom: rem(40);
         line-height: 110%;
         color: #172242;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 20px;
             border: 1px solid #F2F2F2;
             font-size: 18px;
@@ -123,7 +123,7 @@ export default {
         }
     }
     &.opened &__title {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             border-color: #FF0040;
             background: #FF0040;
             color: #fff;
@@ -136,7 +136,7 @@ export default {
         }
     }
     &__params {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 30px 20px;
             background: #F2F2F2;
             position: absolute;
@@ -149,7 +149,7 @@ export default {
         }
     }
     &.opened &__params {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             opacity: 1;
             visibility: visible;
         }
@@ -161,7 +161,7 @@ export default {
         margin-bottom: rem(30);
         line-height: 110%;
         color: #172242;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 20px;
             margin-bottom: 30px;
         }
@@ -169,7 +169,7 @@ export default {
     &__params_block {
         &:not(:last-child) {
             margin-bottom: rem(40);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-bottom: 40px;
             }
         }
@@ -180,7 +180,7 @@ export default {
         cursor: pointer;
         &:not(:last-child) {
             margin-bottom: rem(20);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-bottom: 20px;
             }
         }
@@ -192,7 +192,7 @@ export default {
         border: 1px solid #555F76;
         position: relative;
         transition: .3s all .3s ease;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 24px;
             height: 24px;
         }
@@ -209,7 +209,7 @@ export default {
             transform: scale(0);
             transform-origin: 50% 50%;
             transition: all .3s ease;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 padding: 0 4px;
             }
         }
@@ -235,7 +235,7 @@ export default {
         width: calc(100% - #{rem(24)} - #{rem(10)});
         margin-left: rem(10);
         padding-top: rem(3);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: calc(100% - 24px - 10px);
             margin-left: 10px;
             padding-top: 3px;
@@ -261,7 +261,7 @@ export default {
         &:active {
             background: #A70032;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             height: 68px;
             font-size: 20px;
             margin-top: 0;

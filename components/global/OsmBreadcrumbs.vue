@@ -40,7 +40,7 @@ export default {
     padding: 0;
     list-style: none; 
     margin-bottom: rem(30);
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         margin-bottom: 43px; 
     }
     @media all and (max-width: 840px) {
@@ -57,7 +57,7 @@ export default {
             font-size: rem(14);
             line-height: 140%;
             color: #555F76;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 14px;
             }
         }
@@ -70,7 +70,7 @@ export default {
     }
     &__item--delim {
         margin: 0 rem(10);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin: 0 10px;
         }
     }

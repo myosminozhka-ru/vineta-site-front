@@ -46,11 +46,11 @@ export default {
     cursor: pointer;
     text-decoration: none;
     transition: all .3s ease;
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         font-size: 20px;
         padding: 20px 40px;
     }
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         width: 100%;
     }
     &.isOutlined {
@@ -58,7 +58,7 @@ export default {
         background: transparent;
         color: #172242;
         border: rem(2) solid #FF004D;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             border-width: 2px;
             padding: 18px 30px;
         }

@@ -87,7 +87,7 @@ export default {
         align-items: center;
         justify-content: center;
         min-height: rem(114);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             min-height: 114px;
             padding: 20px;
         }
@@ -107,18 +107,18 @@ export default {
         transform: translateY(-50%);
         cursor: pointer;
         font-size: 0;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 40px;
         }
         &--left {
             left: rem(-20);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 left: -20px;
             }
         }
         &--right {
             right: rem(-20);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 right: -20px;
             }
             transform: translateY(-50%) rotate(180deg);

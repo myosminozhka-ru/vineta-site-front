@@ -47,7 +47,7 @@ export default {
     opacity: 0;
     visibility: hidden;
     z-index: 10;
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         width: 67px;
         height: 67px;
     }
@@ -62,7 +62,7 @@ export default {
         margin-bottom: rem(5);
         font-size: 0;
         pointer-events: none;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 8px;
             height: 18px;
             margin-bottom: 5px;
@@ -74,7 +74,7 @@ export default {
         font-size: rem(14);
         line-height: rem(17);
         color: #FFFFFF;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 12px;
             line-height: 14px;
         }

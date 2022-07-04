@@ -52,7 +52,7 @@ export default {
     margin-bottom: rem(-20);
     margin-left: rem(-20);
     margin-right: rem(-20);
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         width: calc(100% + 40px);
         margin-top: 20px;
         margin-bottom: -20px;

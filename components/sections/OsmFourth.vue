@@ -32,16 +32,16 @@ export default {
 
 <style lang="scss" scoped>
 .section {
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         background: #2E5599;
     }
     &__title {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             color: #fff;
         }
     }
     &__text {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             color: #fff;
         }
     }

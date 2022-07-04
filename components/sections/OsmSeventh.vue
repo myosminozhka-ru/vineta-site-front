@@ -186,7 +186,7 @@ export default {
         padding: 0;
         cursor: pointer;
         font-size: 0;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 40px;
         }
         &--left {
@@ -204,12 +204,12 @@ export default {
         border-radius: 50%;
         cursor: pointer;
         transition: all .3s ease;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           width: 10px;
           height: 10px;
         }
         &:not(:last-child) {
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
               margin-right: 25px;
             }
         }
@@ -230,7 +230,7 @@ export default {
     &__wrap {
         width: 100%;
         padding: rem(100) rem(240) rem(70) rem(108);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 80px 20px;
         }
         @media all and (max-width: 840px) {
@@ -248,7 +248,7 @@ export default {
         align-items: center;
         justify-content: space-between;
         margin-bottom: rem(30);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }
     }
@@ -268,11 +268,11 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         grid-area: first;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 20px 30px 20px 20px;
             min-height: 450px;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             min-height: 280px;
         }
         &::before {
@@ -315,10 +315,10 @@ export default {
         font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 20px;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 14px;
         }
     }
@@ -329,11 +329,11 @@ export default {
         margin-bottom: rem(30);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             white-space: normal;
             font-size: 20px;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 14px;
         }
     }

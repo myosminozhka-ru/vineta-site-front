@@ -51,7 +51,7 @@ export default {
         width: rem(30);
         margin-right: rem(40);
         position: relative;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 30px;
             margin-right: 30px;
         }
@@ -75,7 +75,7 @@ export default {
         box-sizing: border-box;
         text-align: center;
         border-radius: 50%;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             top: -5px;
             left: -5px;
             width: 19px;
@@ -93,7 +93,7 @@ export default {
         margin-right: rem(40);
         line-height: 140%;
         color: #D7DCE1;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 18px;
             margin-right: 31px;
         }
@@ -119,7 +119,7 @@ export default {
         line-height: 140%;
         color: #D7DCE1;
         text-decoration: none;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 20px;
         }
         @media all and (max-width: 530px) {

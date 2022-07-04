@@ -88,11 +88,11 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         grid-area: big;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 20px 30px 20px 20px;
             min-height: 450px;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             min-height: 280px;
         }
         &::before {
@@ -135,10 +135,10 @@ export default {
         font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 20px;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 14px;
         }
     }
@@ -149,11 +149,11 @@ export default {
         margin-bottom: rem(30);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             white-space: normal;
             font-size: 20px;
         }
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 14px;
         }
     }

@@ -37,12 +37,12 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }
     }
     &__top--tech {
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             display: none;
         }
     }
@@ -58,7 +58,7 @@ export default {
             margin-bottom: rem(30);
             line-height: 140%;
             color: #172242;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 30px;
                 margin-bottom: 30px;
             }
@@ -83,7 +83,7 @@ export default {
             img {
                 width: 100%;
             }
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 width: calc(100% / 4 - 20px * 3 / 4);
                 padding: 20px;
                 &:not(:nth-child(6n+6)) {

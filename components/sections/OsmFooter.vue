@@ -96,7 +96,7 @@ export default {
 <style lang="scss" scoped>
 .section {
     overflow: visible;
-    @media all and (max-width: 1440px) {
+    @media all and (max-width: 1280px) {
         flex-direction: column-reverse;
     }
     &__footer {
@@ -104,13 +104,13 @@ export default {
     }
     &__content {
         margin-bottom: rem(31);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }
     }
     &__text {
         margin-bottom: 0;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 0;
         }
     }
@@ -124,7 +124,7 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 100%;
             padding: 80px 20px;
         }
@@ -134,13 +134,13 @@ export default {
     }
     &__left &__title {
         margin-bottom: rem(30);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }
     }
     &__left_top {
         margin-bottom: rem(48);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 20px;
         }
     }
@@ -149,13 +149,13 @@ export default {
     }
     &__input {
         margin-bottom: rem(20);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 10px;
         }
     }
     &__textarea {
         margin-bottom: rem(20);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 20px;
         }
     }
@@ -170,7 +170,7 @@ export default {
         background: #2E5599;
         width: calc(100% - #{rem(900)} + #{rem(133)});
         flex-direction: column;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 100% !important;
             padding: 80px 20px;
         }
@@ -178,7 +178,7 @@ export default {
     &__right &__title {
         color: #fff;
         margin-bottom: rem(30);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }
     }
@@ -186,18 +186,18 @@ export default {
         display: flex;
         align-items: flex-start;
         margin-bottom: rem(54);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             margin-bottom: 60px;
         }
     }
     &__contacts_side {
         width: rem(240);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: auto;
         }
         &:not(:last-child) {
             margin-right: rem(143);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-right: 130px;
             }
         }
@@ -211,7 +211,7 @@ export default {
         color: #FFFFFF;
         display: block;
         margin-bottom: rem(10);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 20px;
             margin-bottom: 20px;
         }
@@ -222,7 +222,7 @@ export default {
         font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 16px;
         }
     }
@@ -232,7 +232,7 @@ export default {
         font-size: rem(16);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             font-size: 16px;
         }
     }
@@ -244,12 +244,12 @@ export default {
         width: rem(50);
         font-size: 0;
         display: block;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 40px;
         }
         &:not(:last-child) {
             margin-right: rem(20);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-right: 30px;
             }
         }
@@ -257,7 +257,7 @@ export default {
     &__map {
         flex: 1 1 auto;
         width: 100%;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             height: 370px;
         }
     }

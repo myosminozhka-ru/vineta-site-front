@@ -61,11 +61,11 @@
     &__right {
       padding-right: rem(243);
       display: block;
-      @media all and (min-width: 1441px) {
+      @media all and (min-width: 1281px) {
         padding-top: rem(300);
 
       }
-      @media all and (max-width: 1440px) {
+      @media all and (max-width: 1280px) {
           padding-right: 20px;
           
         }
@@ -88,7 +88,7 @@
         position: absolute;
         left: rem(133);
         bottom: rem(73);
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           position: static;
           margin-top: 43px;
         }
@@ -106,13 +106,13 @@
         border-radius: 50%;
         cursor: pointer;
         transition: all .3s ease;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
           width: 10px;
           height: 10px;
         }
         &:not(:last-child) {
             margin-right: rem(25);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
               margin-right: 25px;
             }
         }

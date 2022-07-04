@@ -172,7 +172,7 @@ export default {
         }
         &:not(:last-child) {
             margin-right: rem(100);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 margin-right: 8%;
             }
         }
@@ -184,7 +184,7 @@ export default {
             line-height: 140%;
             color: #172242;
             transition: all .3s ease;
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 font-size: 20px;
             }
         }
@@ -317,7 +317,7 @@ export default {
         transform: translateY(-50%);
         cursor: pointer;
         font-size: 0;
-        @media all and (max-width: 1440px) {
+        @media all and (max-width: 1280px) {
             width: 40px;
         }
         @media all and (max-width: 840px) {
@@ -326,14 +326,14 @@ export default {
         }
         &--left {
             left: rem(-20);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 left: -20px;
             }
         }
         &--right {
             right: rem(-20);
             transform: translateY(-50%) rotate(180deg);
-            @media all and (max-width: 1440px) {
+            @media all and (max-width: 1280px) {
                 right: -20px;
             }
             @media all and (max-width: 840px) {
