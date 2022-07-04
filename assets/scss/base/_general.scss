@@ -193,7 +193,8 @@ body .wrapper .full-page-indicators {
       align-items: center;
       justify-content: center;
       @media all and (max-width: 1440px) {
-        padding: 20px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
       }
       @media all and (max-width: 1280px) {
         width: calc(100% - 495px) !important;
