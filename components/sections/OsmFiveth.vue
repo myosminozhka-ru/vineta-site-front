@@ -19,15 +19,15 @@ export default {
 .section {
     &__item {
       flex-direction: column;
-      padding: vw(100) vw(240) vw(70) vw(108);
-      @media all and (max-width: 1024px) {
+      padding: rem(100) rem(240) rem(70) rem(108);
+      @media all and (max-width: 1440px) {
         padding: 80px 20px;
       }
     }
 }
 .customers {
   &__slider {
-    margin-bottom: vw(80);
+    margin-bottom: rem(80);
   }
 }
 </style>

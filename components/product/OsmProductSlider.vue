@@ -94,7 +94,7 @@ export default {
     justify-content: center;
     background: rgba(0, 0, 0, 0.3);
     &__in {
-      width: vw(1200);
+      width: rem(1200);
       iframe {
         border: none;
       }
@@ -106,7 +106,7 @@ export default {
         align-items: flex-start;
     }
     &__slider-left {
-        width: vw(828);
+        width: rem(828);
     }
     &__slider-item {
         background: #D7DCE1;
@@ -118,10 +118,10 @@ export default {
     }
     &__slider-item__imege {
         position: absolute;
-        top: vw(120);
-        left: vw(120);
-        right: vw(120);
-        bottom: vw(120);
+        top: rem(120);
+        left: rem(120);
+        right: rem(120);
+        bottom: rem(120);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -130,10 +130,10 @@ export default {
         }
     }
     &__slider-right {
-        width: vw(98);
+        width: rem(98);
         display: flex;
         flex-direction: column;
-        margin-left: vw(24);
+        margin-left: rem(24);
     }
     &__slider-previews {
         cursor: pointer;
@@ -144,15 +144,15 @@ export default {
     &__slider-preview {
         font-size: 0;
         &:not(:last-child) {
-            margin-bottom: vw(20);
+            margin-bottom: rem(20);
         }
     }
     &__slider-buttons {
-        margin-top: vw(20);
+        margin-top: rem(20);
     }
     &__slider-button {
         width: 100%;
-        height: vw(98);
+        height: rem(98);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -160,13 +160,13 @@ export default {
         .text {
             font-style: normal;
             font-weight: 400;
-            font-size: vw(16);
+            font-size: rem(16);
             line-height: 140%;
         }
         .icon {
-            width: vw(22);
+            width: rem(22);
             font-size: 0;
-            margin-right: vw(11);
+            margin-right: rem(11);
         }
         &--more {
             background: #FF0040;
@@ -175,7 +175,7 @@ export default {
         &--3d {
             background: #D7DCE1;
             color: #172242;
-            margin-top: vw(20);
+            margin-top: rem(20);
         }
     }
 }

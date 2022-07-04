@@ -36,29 +36,29 @@ export default {
     justify-content: center;
     border: none;
     background: transparent;
-    padding: vw(20) vw(60);
+    padding: rem(20) rem(60);
     background: #FF0040;
     font-style: normal;
     font-weight: 600;
-    font-size: vw(20);
+    font-size: rem(20);
     line-height: 140%;
     color: #FFFFFF;
     cursor: pointer;
     text-decoration: none;
     transition: all .3s ease;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         font-size: 20px;
         padding: 20px 40px;
     }
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         width: 100%;
     }
     &.isOutlined {
-        padding: vw(18) vw(30);
+        padding: rem(18) rem(30);
         background: transparent;
         color: #172242;
-        border: vw(2) solid #FF004D;
-        @media all and (max-width: 1024px) {
+        border: rem(2) solid #FF004D;
+        @media all and (max-width: 1440px) {
             border-width: 2px;
             padding: 18px 30px;
         }

@@ -358,18 +358,18 @@
 
 <style lang="scss" scoped>
   .productPage {
-    padding: vw(150) 0 vw(150);
+    padding: rem(150) 0 rem(150);
     max-width: 100%;
     background: #fff;
 
     &__analogs {
-      margin-top: vw(118);
+      margin-top: rem(118);
 
       .title {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(40);
-        margin-bottom: vw(30);
+        font-size: rem(40);
+        margin-bottom: rem(30);
         line-height: 110%;
         color: #172242;
       }
@@ -380,17 +380,17 @@
       }
 
       .products__item {
-        width: calc(100% / 4 - #{vw(60)} / 4);
+        width: calc(100% / 4 - #{rem(60)} / 4);
         margin-top: 0;
 
         &:not(:nth-child(4n+4)) {
-          margin-right: vw(20);
+          margin-right: rem(20);
         }
       }
     }
 
     &__mods {
-      padding-top: vw(60);
+      padding-top: rem(60);
     }
 
     &__mods--tabs {
@@ -402,7 +402,7 @@
         background: #fff;
       }
       .tabs {
-        margin-top: vw(60);
+        margin-top: rem(60);
       }
     }
 
@@ -410,19 +410,19 @@
       .title {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(24);
-        margin-bottom: vw(30);
+        font-size: rem(24);
+        margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
       }
     }
     &__mods--bg {
-      padding: vw(50) vw(40) vw(40);
+      padding: rem(50) rem(40) rem(40);
       background: #F2F2F2;
     }
 
     &__mods--opener {
-      margin-right: vw(20);
+      margin-right: rem(20);
 
       &:not(.isActive) {
         filter: grayscale(1);
@@ -434,31 +434,31 @@
       display: flex;
       align-items: center;
       text-decoration: none;
-      margin-left: vw(42);
-      margin-left: vw(20);
+      margin-left: rem(42);
+      margin-left: rem(20);
 
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         margin-left: 40px;
       }
 
       .text {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(18);
+        font-size: rem(18);
         line-height: 140%;
         color: #FF0040;
 
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 16px;
         }
       }
 
       .icon {
-        width: vw(18);
-        margin-right: vw(10) !important;
+        width: rem(18);
+        margin-right: rem(10) !important;
         font-size: 0;
 
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           width: 25px;
           margin-right: 10px !important;
         }
@@ -466,24 +466,24 @@
     }
 
     &__buttons {
-      margin-top: vw(40);
+      margin-top: rem(40);
       display: flex;
       align-items: center;
 
       .icon {
-        width: vw(28);
-        height: vw(28);
-        margin-right: vw(20);
+        width: rem(28);
+        height: rem(28);
+        margin-right: rem(20);
         font-size: 0;
       }
 
       &--buy {
-        margin-right: vw(20);
+        margin-right: rem(20);
       }
     }
 
     &__container {
-      padding: 0 vw(240) 0;
+      padding: 0 rem(240) 0;
     }
 
     &__top {
@@ -492,22 +492,22 @@
     }
 
     &__info {
-      width: calc(100% - #{vw(828)} - #{vw(24)} - #{vw(98)} - #{vw(20)});
-      margin-left: vw(20);
+      width: calc(100% - #{rem(828)} - #{rem(24)} - #{rem(98)} - #{rem(20)});
+      margin-left: rem(20);
     }
 
     &__texts {
-      padding: 0 vw(336) 0 vw(40);
+      padding: 0 rem(336) 0 rem(40);
     }
 
     &__description {
-      padding: 0 vw(336) 0 vw(40);
+      padding: 0 rem(336) 0 rem(40);
 
       .title {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(25);
-        margin-bottom: vw(20);
+        font-size: rem(25);
+        margin-bottom: rem(20);
         line-height: 140%;
         color: #172242;
       }
@@ -515,7 +515,7 @@
       .value {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(18);
+        font-size: rem(18);
         line-height: 140%;
         color: #555F76;
       }
@@ -524,24 +524,24 @@
     &__text--title {
       font-style: normal;
       font-weight: 600;
-      font-size: vw(25);
-      padding-top: vw(40);
-      padding-left: vw(40);
-      margin-bottom: vw(20);
+      font-size: rem(25);
+      padding-top: rem(40);
+      padding-left: rem(40);
+      margin-bottom: rem(20);
       line-height: 140%;
       color: #172242;
     }
 
     &__text {
       &:not(:last-child) {
-        margin-bottom: vw(20);
+        margin-bottom: rem(20);
       }
 
       .title {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(18);
-        margin-bottom: vw(5);
+        font-size: rem(18);
+        margin-bottom: rem(5);
         line-height: 140%;
         color: #172242;
       }
@@ -549,7 +549,7 @@
       .value {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
+        font-size: rem(16);
         line-height: 140%;
         color: #555F76;
       }

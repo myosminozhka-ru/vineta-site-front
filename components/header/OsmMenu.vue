@@ -175,12 +175,12 @@
     &__modal {
       position: absolute;
       top: 100%;
-      left: vw(240);
-      right: vw(240);
+      left: rem(240);
+      right: rem(240);
       opacity: 0;
       visibility: hidden;
       transition: all .3s ease;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         left: 0;
         right: 0;
       }
@@ -191,22 +191,22 @@
       }
     }
     &__modal_top {
-      padding: vw(62) vw(70) vw(38);
+      padding: rem(62) rem(70) rem(38);
       background: #fff;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         padding: 30px 20px;
       }
     }
     &__modal_bottom {
       background: #F2F2F2;
-      padding: vw(62) vw(70);
-      @media all and (max-width: 1024px) {
+      padding: rem(62) rem(70);
+      @media all and (max-width: 1440px) {
         padding: 30px 20px;
       }
     }
     &__modal_title {
-      margin-bottom: vw(50);
-      @media all and (max-width: 1024px) {
+      margin-bottom: rem(50);
+      @media all and (max-width: 1440px) {
         margin-bottom: 30px;
       }
     }
@@ -219,11 +219,11 @@
       justify-content: space-between;
       flex-wrap: wrap;
       li {
-        width: calc(100% / 3 - #{vw(20)});
+        width: calc(100% / 3 - #{rem(20)});
         &:not(:last-child) {
-            margin-bottom: vw(30);
+            margin-bottom: rem(30);
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           width: calc(100% / 2 - 30px);
           &:not(:last-child) {
               margin-bottom: 20px;
@@ -235,20 +235,20 @@
         align-items: center;
         text-decoration: none;
         .icon {
-            width: vw(40);
-            margin-right: vw(20);
-            @media all and (max-width: 1024px) {
+            width: rem(40);
+            margin-right: rem(20);
+            @media all and (max-width: 1440px) {
               width: 30px;
               margin-right: 20px;
             }
         }
         .text {
-            width: calc(100% - #{vw(60)});
+            width: calc(100% - #{rem(60)});
             font-weight: 400;
-            font-size: vw(24);
+            font-size: rem(24);
             line-height: 140%;
             color: #555F76;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
               width: calc(100% - 30px);
               font-size: 20px;
             }
@@ -259,10 +259,10 @@
       text-decoration: none;
       display: inline-flex;
       .icon {
-        width: vw(40);
-        height: vw(40);
-        margin-right: vw(20);
-        @media all and (max-width: 1024px) {
+        width: rem(40);
+        height: rem(40);
+        margin-right: rem(20);
+        @media all and (max-width: 1440px) {
           width: 30px;
           margin-right: 20px;
         }
@@ -273,21 +273,21 @@
         span {
           font-style: normal;
           font-weight: 400;
-          font-size: vw(14);
+          font-size: rem(14);
           line-height: 140%;
           color: #555F76;
         }
       }
       .delim {
-        width: vw(20);
-        height: vw(20);
-        margin: 0 vw(5);
+        width: rem(20);
+        height: rem(20);
+        margin: 0 rem(5);
         font-size: 0;
       }
       .top {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #172242;
       }
@@ -300,10 +300,10 @@
 &__button {
         display: block;
         font-size: 0;
-        width: vw(30);
-        margin-right: vw(40);
+        width: rem(30);
+        margin-right: rem(40);
         position: relative;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 30px;
             margin-right: 30px;
         }
@@ -318,12 +318,12 @@
     }
     &__count {
         position: absolute;
-        top: vw(-5);
-        left: vw(-5);
-        width: vw(19);
-        height: vw(19);
-        font-size: vw(14);
-        line-height: vw(19);
+        top: rem(-5);
+        left: rem(-5);
+        width: rem(19);
+        height: rem(19);
+        font-size: rem(14);
+        line-height: rem(19);
         font-style: normal;
         font-weight: 400;
         color: #FFFFFF;
@@ -332,7 +332,7 @@
         box-sizing: border-box;
         text-align: center;
         border-radius: 50%;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             top: -5px;
             left: -5px;
             width: 19px;
@@ -342,7 +342,7 @@
         }
     }
     &__menu {
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         width: 100%;
         order: 3;
       }
@@ -359,7 +359,7 @@
       list-style: none;
       padding: 0;
       margin: 0;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         justify-content: space-between;
         border-top: 1px solid #D7DCE1;
         margin-top: 20px;
@@ -369,7 +369,7 @@
     &__li {
       position: relative;
       &:not(:last-child) {
-        margin-right: vw(40);
+        margin-right: rem(40);
       }
     }
 
@@ -378,11 +378,11 @@
       align-items: center;
       font-style: normal;
       font-weight: 400;
-      font-size: vw(18);
+      font-size: rem(18);
       line-height: 140%;
       color: #D7DCE1;
       text-decoration: none;
-      padding: vw(35) 0;
+      padding: rem(35) 0;
       &:after {
         content: "";
         position: absolute;
@@ -393,22 +393,22 @@
         background: #fff;
         transition: all .3s ease;
       }
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 18px;
         padding: 20px 0s;
       }
     }
     &__li.isActive &__link:after {
-      height: vw(8);
-      @media all and (max-width: 1024px) {
+      height: rem(8);
+      @media all and (max-width: 1440px) {
         height: 4px; 
       }
     }
     &__arrow {
-        width: vw(9);
-        margin-left: vw(10);
+        width: rem(9);
+        margin-left: rem(10);
         font-size: 0;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           width: 9px;
           margin-left: 10px;
         }

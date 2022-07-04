@@ -6,11 +6,11 @@
 .osm__h2 {
     font-style: normal;
     font-weight: 600;
-    font-size: vw(40);
+    font-size: rem(40);
     line-height: 140%;
     color: #172242;
     margin: 0;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         font-size: 40px;
     }
 }

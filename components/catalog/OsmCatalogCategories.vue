@@ -34,11 +34,11 @@ export default {
     flex-wrap: wrap;
     justify-content: space-between;
     &__item {
-        width: calc(100% / 3 - #{vw(40)} / 3);
+        width: calc(100% / 3 - #{rem(40)} / 3);
         &:nth-child(n + 4) {
-            margin-top: vw(79);
+            margin-top: rem(79);
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: calc(100% / 2 - 10px);
             &:nth-child(n + 3) {
                 margin-top: 30px;
@@ -53,8 +53,8 @@ export default {
     }
     &__item_image {
         background: #D7DCE1;
-        margin-bottom: vw(40);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(40);
+        @media all and (max-width: 1440px) {
             margin-bottom: 30px;
         }
         @media all and (max-width: 840px) {
@@ -73,16 +73,16 @@ export default {
         }
     }
     &__item_name {
-        margin-bottom: vw(15);
+        margin-bottom: rem(15);
         display: block;
         text-decoration: none;
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #172242;
         transition: all .3s ease;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             margin-bottom: 15px;
             font-size: 20px;
         }
@@ -92,23 +92,23 @@ export default {
     }
     &__item_childs {
         margin: 0;
-        padding: 0 0 0 vw(23);
-        @media all and (max-width: 1024px) {
+        padding: 0 0 0 rem(23);
+        @media all and (max-width: 1440px) {
             padding: 0 0 0 23px;
         }
     }
     &__item_child {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
+        font-size: rem(16);
         line-height: 140%;
         color: #555F76;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 16px;
         }
         &:not(:last-child) {
-            margin-bottom: vw(10);
-            @media all and (max-width: 1024px) {
+            margin-bottom: rem(10);
+            @media all and (max-width: 1440px) {
                 margin-bottom: 10px;
             }
         }
@@ -125,11 +125,11 @@ export default {
                 position: absolute;
                 right: 0;
                 left: 0;
-                bottom: vw(-5);
+                bottom: rem(-5);
                 height: 0;
                 background: #FF0040;
                 transition: all .3s ease;
-                border-radius: vw(5);
+                border-radius: rem(5);
             }
         }
         &:hover {

@@ -154,9 +154,9 @@
   .first {
     display: flex;
     align-items: center;
-    padding: vw(20) vw(495) vw(20) vw(240);
+    padding: rem(20) rem(495) rem(20) rem(240);
     background: #D7DCE1;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
       padding: 20px 146px 20px 20px;
     }
     @media all and (max-width: 840px) {
@@ -164,13 +164,13 @@
     }
 
     &__text {
-      width: calc(100% - #{vw(419)});
+      width: calc(100% - #{rem(419)});
       font-style: normal;
       font-weight: 600;
-      font-size: vw(50);
+      font-size: rem(50);
       line-height: 140%;
       color: #172242;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         width: 446px;
         font-size: 30px;
       }
@@ -180,16 +180,16 @@
     }
 
     &__image {
-      width: vw(419);
+      width: rem(419);
       font-size: 0;
-       @media all and (max-width: 1024px) {
+       @media all and (max-width: 1440px) {
         width: calc(100% - 446px);
       }
     }
   }
   .second {
     display: flex;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
       flex-direction: column;
     }
     &__side {
@@ -198,12 +198,12 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         width: 100%;
       }
       &--left {
-        padding: vw(60) vw(60) vw(60) vw(240);
-        @media all and (max-width: 1024px) {
+        padding: rem(60) rem(60) rem(60) rem(240);
+        @media all and (max-width: 1440px) {
           padding: 40px 20px;
         }
         @media all and (max-width: 840px) {
@@ -211,9 +211,9 @@
         }
       }
       &--right {
-        padding: vw(60) vw(240) vw(60) vw(60);
+        padding: rem(60) rem(240) rem(60) rem(60);
         background: #2E5599;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           padding: 40px 20px;
         }
         @media all and (max-width: 840px) {
@@ -224,12 +224,12 @@
     &__title {
       font-style: normal;
       font-weight: 600;
-      font-size: vw(24);
-      margin-bottom: vw(45);
+      font-size: rem(24);
+      margin-bottom: rem(45);
       line-height: 140%;
       display: flex;
       align-items: center;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 24px;
         margin-bottom: 42px;
       }
@@ -239,15 +239,15 @@
     }
     &__title_button {
       display: block;
-      width: vw(40);
-      height: vw(40);
-      padding: vw(12) vw(16);
-      margin-left: vw(20);
+      width: rem(40);
+      height: rem(40);
+      padding: rem(12) rem(16);
+      margin-left: rem(20);
       background: #FF0040;
       box-sizing: border-box;
       font-size: 0;
       transition: all .3s ease;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         width: 40px;
         height: 40px;
         padding: 12px 16px;
@@ -264,25 +264,25 @@
       p {
         font-style: normal;
         font-weight: 600400;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #555F76;
         margin: 0;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 20px;
         }
 
         &:not(:last-child) {
-          margin-bottom: vw(20);
-          @media all and (max-width: 1024px) {
+          margin-bottom: rem(20);
+          @media all and (max-width: 1440px) {
             margin-bottom: 20px;
           }
         }
       }
     }
     &__buttons {
-      margin-top: vw(54);
-      @media all and (max-width: 1024px) {
+      margin-top: rem(54);
+      @media all and (max-width: 1440px) {
         margin-top: 30px;
       }
     }
@@ -290,12 +290,12 @@
       display: flex;
       align-items: center;
       .icon {
-        width: vw(28);
-        height: vw(28);
-        margin-right: vw(20);
+        width: rem(28);
+        height: rem(28);
+        margin-right: rem(20);
         font-size: 0;
         transition: all .3s ease;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           width: 28px;
           height: 28px;
           margin-right: 20px;
@@ -308,8 +308,8 @@
     &__side--right &__button {
       .icon {
         margin-right: 0;
-        margin-left: vw(20);
-        @media all and (max-width: 1024px) {
+        margin-left: rem(20);
+        @media all and (max-width: 1440px) {
           margin-left: 20px;
         }
       }
@@ -323,7 +323,7 @@
       width: 50%;
       display: flex;
       align-items: center;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         &:not(:last-child) {
           margin-bottom: 20px;
         }
@@ -333,9 +333,9 @@
       }
       .icon {
         font-size: 0;
-        width: vw(24);
-        margin: vw(10);
-        @media all and (max-width: 1024px) {
+        width: rem(24);
+        margin: rem(10);
+        @media all and (max-width: 1440px) {
           width: 24px;
           margin-right: 10px;
         }
@@ -343,11 +343,11 @@
       .text {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
+        font-size: rem(16);
         line-height: 140%;
         color: #FFFFFF;
-        width: calc(100% - #{vw(34)});
-        @media all and (max-width: 1024px) {
+        width: calc(100% - #{rem(34)});
+        @media all and (max-width: 1440px) {
           width: calc(100% - 34px);
           font-size: 16px;
         }
@@ -355,8 +355,8 @@
     }
   }
   .third {
-    padding: vw(120) vw(240);
-    @media all and (max-width: 1024px) {
+    padding: rem(120) rem(240);
+    @media all and (max-width: 1440px) {
       padding: 80px 20px;
     }
     @media all and (max-width: 840px) {
@@ -365,11 +365,11 @@
     &__title {
       font-style: normal;
       font-weight: 600;
-      font-size: vw(40);
-      margin-bottom: vw(30);
+      font-size: rem(40);
+      margin-bottom: rem(30);
       line-height: 140%;
       color: #172242;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 30px;
         margin-bottom: 30px;
       }
@@ -382,8 +382,8 @@
       justify-content: space-between;
     }
     &__item {
-      width: calc(100% / 4 - #{vw(60)} / 4);
-      @media all and (max-width: 1024px) {}
+      width: calc(100% / 4 - #{rem(60)} / 4);
+      @media all and (max-width: 1440px) {}
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
         &:nth-child(n+3) {
@@ -393,10 +393,10 @@
       .number {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(120);
+        font-size: rem(120);
         line-height: 110%;
         color: #FF0040;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 80px;
         }
         @media all and (max-width: 840px) {
@@ -406,10 +406,10 @@
       .text {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 110%;
         color: #555F76;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 20px;
         }
         @media all and (max-width: 840px) {
@@ -419,9 +419,9 @@
     }
   }
   .fourth {
-    padding: 0 vw(240);
+    padding: 0 rem(240);
     font-size: 0;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
       padding: 0 20px;
     }
     @media all and (max-width: 840px) {
@@ -429,8 +429,8 @@
     }
   }
   .fiveth {
-    padding: vw(120) vw(240);
-    @media all and (max-width: 1024px) {
+    padding: rem(120) rem(240);
+    @media all and (max-width: 1440px) {
       padding: 80px 20px;
     }
     @media all and (max-width: 840px) {
@@ -439,11 +439,11 @@
     &__title {
       font-style: normal;
       font-weight: 600;
-      font-size: vw(40);
-      margin-bottom: vw(30);
+      font-size: rem(40);
+      margin-bottom: rem(30);
       line-height: 140%;
       color: #172242;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 30px;
         margin-bottom: 30px;
       }
@@ -456,8 +456,8 @@
       justify-content: space-between;
     }
     &__item {
-      width: calc(100% / 4 - #{vw(60)} / 4);
-      @media all and (max-width: 1024px) {}
+      width: calc(100% / 4 - #{rem(60)} / 4);
+      @media all and (max-width: 1440px) {}
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
         &:nth-child(n+3) {
@@ -466,7 +466,7 @@
       }
       .avatar {
         position: relative;
-        margin-bottom: vw(20);
+        margin-bottom: rem(20);
       }
       .avatar__in {
         padding-top: 95%;
@@ -483,11 +483,11 @@
       .name {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
-        margin-bottom: vw(10);
+        font-size: rem(20);
+        margin-bottom: rem(10);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 20px;
           margin-bottom: 10px;
         }
@@ -498,11 +498,11 @@
       .position {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
-        margin-bottom: vw(10);
+        font-size: rem(16);
+        margin-bottom: rem(10);
         line-height: 140%;
         color: #555F76;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 16px;
           margin-bottom: 10px;
         }
@@ -512,7 +512,7 @@
       }
       .phone {
         margin-bottom: 10px;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           margin-bottom: 10px;
         }
       }
@@ -522,10 +522,10 @@
         text-decoration: none;
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
+        font-size: rem(16);
         line-height: 140%;
         color: #FF0040;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 16px;
         }
         @media all and (max-width: 840px) {
@@ -536,9 +536,9 @@
   }
   .sixth {
     overflow: hidden;
-    padding: vw(120) vw(240);
+    padding: rem(120) rem(240);
     background: #F2F2F2;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
       padding: 80px 20px;
     }
     @media all and (max-width: 840px) {
@@ -546,8 +546,8 @@
     }
   }
   .seventh {
-    padding: vw(120) vw(240);
-    @media all and (max-width: 1024px) {
+    padding: rem(120) rem(240);
+    @media all and (max-width: 1440px) {
       padding: 80px 20px;
     }
     @media all and (max-width: 840px) {
@@ -556,28 +556,28 @@
     &__title {
       font-style: normal;
       font-weight: 600;
-      font-size: vw(40);
-      margin-bottom: vw(30);
+      font-size: rem(40);
+      margin-bottom: rem(30);
       line-height: 140%;
       color: #172242;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 30px;
         margin-bottom: 30px;
       }
       @media all and (max-width: 840px) {}
     }
     &__map {
-      padding: 0 vw(110);
-      @media all and (max-width: 1024px) {
+      padding: 0 rem(110);
+      @media all and (max-width: 1440px) {
         padding: 0;
       }
     }
   }
   .eighth {
     overflow: hidden;
-    padding: vw(120) vw(240);
+    padding: rem(120) rem(240);
     background: #F2F2F2;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
       padding: 80px 20px;
     }
     @media all and (max-width: 840px) {

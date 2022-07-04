@@ -26,18 +26,18 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: vw(30);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(30);
+        @media all and (max-width: 1440px) {
             margin-bottom: 30px ;
         }
     }
     &__header_left {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(40);
+        font-size: rem(40);
         line-height: 110%;
         color: #172242;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 30px;
         }
     }
@@ -49,10 +49,10 @@ export default {
         display: flex;
         align-items: center;
         text-decoration: none;
-        padding: vw(20) vw(40);
+        padding: rem(20) rem(40);
         background: #FF0040;
         transition: all .3s ease;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 20px 40px;
         }
         &:hover {
@@ -64,19 +64,19 @@ export default {
         .text {
             font-style: normal;
             font-weight: 600;
-            font-size: vw(20);
+            font-size: rem(20);
             line-height: 140%;
             color: #FFFFFF;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 font-size: 20px;
             }
         }
         .icon {
-            width: vw(22);
-            height: vw(22);
-            margin-right: vw(22);
+            width: rem(22);
+            height: rem(22);
+            margin-right: rem(22);
             font-size: 0;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 width: 28px;
                 height: 28px;
                 margin-right: 20px;

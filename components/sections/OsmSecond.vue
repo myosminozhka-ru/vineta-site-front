@@ -117,7 +117,7 @@ export default {
         }
     }
     &__content {
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             display: flex;
             justify-content: space-between;
             .mobile_left,
@@ -148,15 +148,15 @@ export default {
         color: #fff;
     }
     &__right {
-        padding-right: vw(240);
+        padding-right: rem(240);
         background: #2E5599;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
            width: 100% !important;
            padding: 80px 20px;
         }
     }
     &__left {
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             display: none;
         }
     }
@@ -164,7 +164,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             flex-wrap: wrap;
         }
     }
@@ -172,7 +172,7 @@ export default {
         display: flex;
         align-items: center;
         text-decoration: none;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             margin: 25px 0;
         }
         @media all and (max-width: 840px) {
@@ -183,36 +183,36 @@ export default {
     &__pdf {
         display: flex;
         align-items: center;
-        margin-right: vw(42);
+        margin-right: rem(42);
         
         .icon {
-            width: vw(19);
+            width: rem(19);
             font-size: 0;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 width: 25px;
             }
         }
         .text {
             font-style: normal;
             font-weight: 400;
-            font-size: vw(16);
+            font-size: rem(16);
             line-height: 140%;
             color: #FFFFFF;
-            margin-left: vw(14);
-            @media all and (max-width: 1024px) {
+            margin-left: rem(14);
+            @media all and (max-width: 1440px) {
                 font-size: 16px;
             }
         }
     }
     &__plank {
-        padding: vw(12) vw(20);
+        padding: rem(12) rem(20);
         font-style: normal;
         font-weight: 400;
-        font-size: vw(14);
+        font-size: rem(14);
         line-height: 140%;
         color: #FFFFFF;
         background: #00234A;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 8px 10px;
             font-size: 12px;
         }
@@ -223,14 +223,14 @@ export default {
     }
 }
 .tiles {
-    margin-bottom: vw(30);
+    margin-bottom: rem(30);
     display: grid;
-    grid-template-columns: vw(440) auto;
-    grid-gap: vw(20);
+    grid-template-columns: rem(440) auto;
+    grid-gap: rem(20);
     grid-template-areas:
             "first second"
             "first third";
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;
         grid-template-areas:
@@ -241,7 +241,7 @@ export default {
         margin-bottom: 20px;
     }
     &__item {
-        min-height: vw(148);
+        min-height: rem(148);
         &:nth-child(n+4) {
             display: none;
         }
@@ -278,7 +278,7 @@ export default {
         z-index: 2;
         cursor: pointer;
         .icon {
-            width: vw(60);
+            width: rem(60);
             svg {
                 rect {
                     transition: all .3s ease;
@@ -286,16 +286,16 @@ export default {
             }
         }
         .text {
-            margin-left: vw(20);
+            margin-left: rem(20);
             font-style: normal;
             font-weight: 400;
-            font-size: vw(20);
+            font-size: rem(20);
             line-height: 130%;
             color: #FFFFFF;
         }
         &:hover {
             .icon {
-                width: vw(60);
+                width: rem(60);
                 svg {
                     rect {
                         fill: #DF0043;
@@ -305,7 +305,7 @@ export default {
         }
         &:active {
             .icon {
-                width: vw(60);
+                width: rem(60);
                 svg {
                     rect {
                         fill: #A70032;

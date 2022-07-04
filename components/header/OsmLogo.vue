@@ -9,9 +9,9 @@
 .header {
     &__logo {
         display: block;
-        width: vw(187);
+        width: rem(187);
         font-size: 0;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 187px;
         }
         @media all and (max-width: 840px) {

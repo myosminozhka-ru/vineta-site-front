@@ -1,4 +1,9 @@
-
+html {
+  font-size: 0.05208333333vw;
+  @media all and (max-width: 1440px) {
+    font-size: 1px;
+  }
+}
 body {
   box-sizing: border-box;
   font-family: 'Guardian Sans Cy', sans-serif;
@@ -27,15 +32,15 @@ body {
   }
 }
 .pageWrap {
-  padding: vw(150) vw(240) vw(150);
+  padding: rem(150) rem(240) rem(150);
 }
 body .wrapper .full-page-indicators {
-  @media all and (max-width: 1024px) {
+  @media all and (max-width: 1440px) {
     display: none;
   }
   left: 0;
-  width: vw(133);
-  padding-top: vw(120);
+  width: rem(133);
+  padding-top: rem(120);
   &.white {
     background: #fff;
   }
@@ -51,7 +56,7 @@ body .wrapper .full-page-indicators {
     display: block;
     text-align: center;
     &:not(:last-child) {
-      margin-bottom: vw(32);
+      margin-bottom: rem(32);
     }
     span {
       display: block;
@@ -61,7 +66,7 @@ body .wrapper .full-page-indicators {
       border-radius: 0;
       background-color: transparent;
       transition: all 0s ease 0s;
-      padding-left: vw(11);
+      padding-left: rem(11);
       position: relative;
       &:after {
         content: "";
@@ -69,7 +74,7 @@ body .wrapper .full-page-indicators {
         right: 100%;
         top: 50%;
         bottom: 50%;
-        width: vw(3);
+        width: rem(3);
         background: #2E5599;
         transition: all .3s ease;
       }
@@ -79,13 +84,13 @@ body .wrapper .full-page-indicators {
       content: counter(section);
       font-style: normal;
       font-weight: 400;
-      font-size: vw(16);
-      line-height: vw(19);
+      font-size: rem(16);
+      line-height: rem(19);
     }
     &.active span {
       font-weight: 600;
-      font-size: vw(18);
-      line-height: vw(22);
+      font-size: rem(18);
+      line-height: rem(22);
       color: #2E5599;
       transition: all 0s ease 0s;
       &:after {
@@ -100,23 +105,23 @@ body .wrapper .full-page-indicators {
   overflow: hidden;
   box-sizing: border-box;
   position: relative;
-  @media all and (min-width: 1025px) {
+  @media all and (min-width: 1441px) {
     height: 100vh; 
-    padding-left: vw(133);
-    padding-top: vw(120);
+    padding-left: rem(133);
+    padding-top: rem(120);
   }
 }
 
 .section {
   display: flex;
   background: #F2F2F2;
-  @media all and (max-width: 1024px) {
+  @media all and (max-width: 1440px) {
     transform: none !important;
   }
-  @media all and (min-width: 1025px) {
+  @media all and (min-width: 1441px) {
     position: absolute;
     top: 0;
-    left: vw(133);
+    left: rem(133);
     right: 0;
     bottom: 0;
     transition: all 1s ease;
@@ -137,7 +142,7 @@ body .wrapper .full-page-indicators {
     box-sizing: border-box;
   }
   &__left {
-    width: vw(715);
+    width: rem(715);
     height: 100%;
     background-image: url('~assets/img/background.svg');
     background-position: 50% 300px;
@@ -161,7 +166,7 @@ body .wrapper .full-page-indicators {
     &--fullwidth img {
       height: 100%;
     }
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         min-height: 470px;
         height: 100%;
         width: 495px;
@@ -177,14 +182,14 @@ body .wrapper .full-page-indicators {
   }
   
   &__right {
-      width: calc(100% - #{vw(715)});
+      width: calc(100% - #{rem(715)});
       height: 100%;
-      padding: vw(50) vw(240) vw(50) vw(122);
+      padding: rem(50) rem(240) rem(50) rem(122);
       box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: center;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         width: calc(100% - 495px) !important;
         padding: 20px !important;
       }
@@ -196,31 +201,31 @@ body .wrapper .full-page-indicators {
       width: 100%;
   }
   &__title {
-    margin-bottom: vw(30);
-    @media all and (max-width: 1024px) {
+    margin-bottom: rem(30);
+    @media all and (max-width: 1440px) {
       margin-bottom: 30px !important;
     }
   }
   &__text {
       font-style: normal;
       font-weight: 400;
-      font-size: vw(20);
-      margin-bottom: vw(30);
+      font-size: rem(20);
+      margin-bottom: rem(30);
       line-height: 140%;
       color: #555F76;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 16px;
         margin-bottom: 30px;
       }
   }
 }
 .hide_on_desktop {
-  @media all and (min-width: 1025px) {
+  @media all and (min-width: 1441px) {
     display: none !important;
   }
 }
 .hide_on_tablet {
-  @media all and (max-width: 1024px) {
+  @media all and (max-width: 1440px) {
     display: none !important;
   }
 }
@@ -236,17 +241,17 @@ body .wrapper .full-page-indicators {
 }
 
 .pageWrap {
-  padding: vw(150) vw(240) vw(150);
-  @media all and (max-width: 1024px) {
+  padding: rem(150) rem(240) rem(150);
+  @media all and (max-width: 1440px) {
       padding: 30px 20px 82px;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
           background: #fff;
       }
   }
 }
 .header_padding {
-  @media all and (min-width: 1025px) {
-    padding-top: vw(95);
+  @media all and (min-width: 1441px) {
+    padding-top: rem(95);
   }
 }
 
@@ -259,7 +264,7 @@ body .wrapper .full-page-indicators {
   }
   
   &__item {
-      width: calc(100% / 3 - #{vw(40)} / 3);
+      width: calc(100% / 3 - #{rem(40)} / 3);
       border: 1px solid #D7DCE1;
       box-sizing: border-box;
       transition: all .3s ease;
@@ -267,10 +272,10 @@ body .wrapper .full-page-indicators {
           border-color: transparent;
       }
       &:nth-child(n + 4) {
-          margin-top: vw(79);
+          margin-top: rem(79);
       }
       &:not(:nth-child(3n+3)) {
-          margin-right: vw(20);
+          margin-right: rem(20);
       }
       @media all and (max-width: 840px) {
         margin-right: 0 !important;
@@ -280,7 +285,7 @@ body .wrapper .full-page-indicators {
       
   }
   &__items--favorites &__item {
-      width: calc(100% / 4 - #{vw(60)} / 4);
+      width: calc(100% / 4 - #{rem(60)} / 4);
       &:nth-child(n + 4) {
         margin-top: 0;
       }
@@ -288,10 +293,10 @@ body .wrapper .full-page-indicators {
           margin-right: 0;
       }
       &:nth-child(n + 5) {
-        margin-top: vw(20);
+        margin-top: rem(20);
       }
       &:not(:nth-child(4n+4)) {
-          margin-right: vw(20);
+          margin-right: rem(20);
       }
       @media all and (max-width: 840px) {
         margin-right: 0 !important;
@@ -314,8 +319,8 @@ body .wrapper .full-page-indicators {
       }
   }
   &__item_data {
-      padding: vw(20);
-      @media all and (max-width: 1024px) {
+      padding: rem(20);
+      @media all and (max-width: 1440px) {
         padding: 20px;
       }
   }
@@ -323,12 +328,12 @@ body .wrapper .full-page-indicators {
     display: block;
       font-style: normal;
       font-weight: 600;
-      font-size: vw(20);
-      margin-bottom: vw(10);
+      font-size: rem(20);
+      margin-bottom: rem(10);
       line-height: 140%;
       color: #172242;
       text-decoration: none;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 20px;
         margin-bottom: 10px;
       }
@@ -336,18 +341,18 @@ body .wrapper .full-page-indicators {
   &__item_sku {
       font-style: normal;
       font-weight: 400;
-      font-size: vw(16);
+      font-size: rem(16);
       line-height: 110%;
       color: #555F76;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 16px;
       }
   }
   &__item_properties {
-      padding-top: vw(20);
-      margin-top: vw(20);
-      border-top: vw(2) solid #D7DCE1;
-      @media all and (max-width: 1024px) {
+      padding-top: rem(20);
+      margin-top: rem(20);
+      border-top: rem(2) solid #D7DCE1;
+      @media all and (max-width: 1440px) {
         padding-top: 20px;
         margin-top: 20px;
         border-top: 2px solid #D7DCE1;
@@ -355,19 +360,19 @@ body .wrapper .full-page-indicators {
   }
   &__item_property {
       &:not(:last-child) {
-        margin-bottom: vw(20);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1440px) {
           margin-bottom: 20px;
         }
       }
       .name {
           font-style: normal;
           font-weight: 600;
-          font-size: vw(16);
-          margin-bottom: vw(5);
+          font-size: rem(16);
+          margin-bottom: rem(5);
           line-height: 110%;
           color: #172242;
-          @media all and (max-width: 1024px) {
+          @media all and (max-width: 1440px) {
             font-size: 16px;
             margin-bottom: 5px;
           }
@@ -375,10 +380,10 @@ body .wrapper .full-page-indicators {
       .value {
           font-style: normal;
           font-weight: 400;
-          font-size: vw(14);
+          font-size: rem(14);
           line-height: 140%;
           color: #555F76;
-          @media all and (max-width: 1024px) {
+          @media all and (max-width: 1440px) {
             font-size: 14px;
           }
       }

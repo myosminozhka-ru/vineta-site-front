@@ -47,12 +47,12 @@ export default {
 
 <style lang="scss" scoped>
 .products__item_button {
-    width: calc(100% + #{vw(40)});
-    margin-top: vw(20);
-    margin-bottom: vw(-20);
-    margin-left: vw(-20);
-    margin-right: vw(-20);
-    @media all and (max-width: 1024px) {
+    width: calc(100% + #{rem(40)});
+    margin-top: rem(20);
+    margin-bottom: rem(-20);
+    margin-left: rem(-20);
+    margin-right: rem(-20);
+    @media all and (max-width: 1440px) {
         width: calc(100% + 40px);
         margin-top: 20px;
         margin-bottom: -20px;

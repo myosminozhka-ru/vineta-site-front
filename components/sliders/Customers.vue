@@ -69,7 +69,7 @@ export default {
 <style lang="scss" scoped>
 .customers {
     &__title {
-        margin-bottom: vw(30);
+        margin-bottom: rem(30);
     }
     &__slider-in {
         position: relative;
@@ -81,13 +81,13 @@ export default {
         }
     }
     &__slide {
-        padding: vw(20);
+        padding: rem(20);
         background: #D7DCE1;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: vw(114);
-        @media all and (max-width: 1024px) {
+        min-height: rem(114);
+        @media all and (max-width: 1440px) {
             min-height: 114px;
             padding: 20px;
         }
@@ -99,7 +99,7 @@ export default {
     &__arrows {}
     &__arrow {
         position: absolute;
-        width: vw(40);
+        width: rem(40);
         top: 50%;
         border: none;
         background: none;
@@ -107,18 +107,18 @@ export default {
         transform: translateY(-50%);
         cursor: pointer;
         font-size: 0;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 40px;
         }
         &--left {
-            left: vw(-20);
-            @media all and (max-width: 1024px) {
+            left: rem(-20);
+            @media all and (max-width: 1440px) {
                 left: -20px;
             }
         }
         &--right {
-            right: vw(-20);
-            @media all and (max-width: 1024px) {
+            right: rem(-20);
+            @media all and (max-width: 1440px) {
                 right: -20px;
             }
             transform: translateY(-50%) rotate(180deg);

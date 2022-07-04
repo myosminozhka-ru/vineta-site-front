@@ -44,11 +44,11 @@ export default {
         align-items: flex-start;
     }
     &__content_left {
-        width: calc(100% - #{vw(345)} - #{vw(20)});
+        width: calc(100% - #{rem(345)} - #{rem(20)});
     }
     &__content_right {
-        width: vw(345);
-        margin-left: vw(20);
+        width: rem(345);
+        margin-left: rem(20);
     }
 }
 </style>

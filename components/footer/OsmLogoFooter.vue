@@ -10,7 +10,7 @@
     &__logo {
         display: block;
         font-size: 0;
-        margin-bottom: vw(30);
+        margin-bottom: rem(30);
     }
     &__object {
         pointer-events: none;

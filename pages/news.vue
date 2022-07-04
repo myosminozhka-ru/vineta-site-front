@@ -22,8 +22,8 @@ export default {
 
 <style lang="scss" scoped>
 .news {
-    padding: vw(30) vw(240) vw(120);
-    @media all and (max-width: 1024px) {
+    padding: rem(30) rem(240) rem(120);
+    @media all and (max-width: 1440px) {
         padding: 30px 20px;
     }
 }

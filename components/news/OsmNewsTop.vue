@@ -39,17 +39,17 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: vw(34);
+        margin-bottom: rem(34);
     }
     &__top_title {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(40);
+        font-size: rem(40);
         line-height: 140%;
         color: #172242;
     }
     &__mods--opener {
-      margin-right: vw(20);
+      margin-right: rem(20);
 
       &:not(.isActive) {
         filter: grayscale(1);

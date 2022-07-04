@@ -100,11 +100,11 @@ export default {
     &__top_social {
         font-size: 0;
         display: block;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 30px;
         }
         &:not(:last-child) {
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 margin-right: 10px;
             }
         }
@@ -125,8 +125,8 @@ export default {
                 border-top: 1px solid #B4B9C1;
             }
             &:not(:last-child) {
-                margin-right: vw(160);
-                @media all and (max-width: 1024px) {
+                margin-right: rem(160);
+                @media all and (max-width: 1440px) {
                     margin-right: 86px;
                 }
                 @media all and (max-width: 840px) {
@@ -137,8 +137,8 @@ export default {
             li {
                 display: block;
                 &:not(:last-child) {
-                    margin-bottom: vw(15);
-                    @media all and (max-width: 1024px) {
+                    margin-bottom: rem(15);
+                    @media all and (max-width: 1440px) {
                         margin-bottom: 15px;
                     }
                     @media all and (max-width: 840px) {
@@ -163,19 +163,19 @@ export default {
                 text-decoration: none;
                 font-style: normal;
                 font-weight: 400;
-                font-size: vw(16);
+                font-size: rem(16);
                 line-height: 140%;
                 color: #D7DCE1;
-                @media all and (max-width: 1024px) {
+                @media all and (max-width: 1440px) {
                     font-size: 16px;
                 }
                 
             }
             li:first-child {
-                margin-bottom: vw(20);
+                margin-bottom: rem(20);
                 position: relative;
                 cursor: pointer;
-                @media all and (max-width: 1024px) {
+                @media all and (max-width: 1440px) {
                     margin-bottom: 20px;
                 }
                 @media all and (max-width: 840px) {
@@ -193,10 +193,10 @@ export default {
                 a, span {
                     font-style: normal;
                     font-weight: 600;
-                    font-size: vw(24);
+                    font-size: rem(24);
                     line-height: 140%;
                     color: #FFFFFF;
-                    @media all and (max-width: 1024px) {
+                    @media all and (max-width: 1440px) {
                         font-size: 18px;
                     }
                     @media all and (max-width: 840px) {

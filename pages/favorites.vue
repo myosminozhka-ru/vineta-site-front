@@ -31,15 +31,15 @@ export default {
 
 <style lang="scss" scoped>
 .favorites {
-    padding: vw(30) vw(240) vw(120);
-    @media all and (max-width: 1024px) {
+    padding: rem(30) rem(240) rem(120);
+    @media all and (max-width: 1440px) {
         padding: 30px 20px;
     }
     &__title {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(40);
-        margin-bottom: vw(30);
+        font-size: rem(40);
+        margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
     }
@@ -47,11 +47,11 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-top: vw(40);
+        margin-top: rem(40);
     }
     &__button {
         &:first-child {
-            margin-right: vw(40);
+            margin-right: rem(40);
         }
     }
 }

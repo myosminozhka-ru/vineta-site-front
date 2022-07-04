@@ -96,35 +96,35 @@ export default {
 <style lang="scss" scoped>
 .section {
     overflow: visible;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         flex-direction: column-reverse;
     }
     &__footer {
         order: -1;
     }
     &__content {
-        margin-bottom: vw(31);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(31);
+        @media all and (max-width: 1440px) {
             margin-bottom: 30px;
         }
     }
     &__text {
         margin-bottom: 0;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             margin-bottom: 0;
         }
     }
     &__left {
-        padding-left: vw(107);
-        padding-right: vw(71);
-        padding-top: vw(170);
-        padding-bottom: vw(121);
-        width: calc(#{vw(900)} - #{vw(133)});
+        padding-left: rem(107);
+        padding-right: rem(71);
+        padding-top: rem(170);
+        padding-bottom: rem(121);
+        width: calc(#{rem(900)} - #{rem(133)});
         background: none;
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 100%;
             padding: 80px 20px;
         }
@@ -133,14 +133,14 @@ export default {
         }
     }
     &__left &__title {
-        margin-bottom: vw(30);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(30);
+        @media all and (max-width: 1440px) {
             margin-bottom: 30px;
         }
     }
     &__left_top {
-        margin-bottom: vw(48);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(48);
+        @media all and (max-width: 1440px) {
             margin-bottom: 20px;
         }
     }
@@ -148,14 +148,14 @@ export default {
         width: 100%;
     }
     &__input {
-        margin-bottom: vw(20);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1440px) {
             margin-bottom: 10px;
         }
     }
     &__textarea {
-        margin-bottom: vw(20);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1440px) {
             margin-bottom: 20px;
         }
     }
@@ -163,41 +163,41 @@ export default {
         width: 100%;
     }
     &__right {
-        padding-right: vw(240);
-        padding-left: vw(71);
-        padding-top: vw(170);
-        padding-bottom: vw(121);
+        padding-right: rem(240);
+        padding-left: rem(71);
+        padding-top: rem(170);
+        padding-bottom: rem(121);
         background: #2E5599;
-        width: calc(100% - #{vw(900)} + #{vw(133)});
+        width: calc(100% - #{rem(900)} + #{rem(133)});
         flex-direction: column;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 100% !important;
             padding: 80px 20px;
         }
     }
     &__right &__title {
         color: #fff;
-        margin-bottom: vw(30);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(30);
+        @media all and (max-width: 1440px) {
             margin-bottom: 30px;
         }
     }
     &__contacts {
         display: flex;
         align-items: flex-start;
-        margin-bottom: vw(54);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(54);
+        @media all and (max-width: 1440px) {
             margin-bottom: 60px;
         }
     }
     &__contacts_side {
-        width: vw(240);
-        @media all and (max-width: 1024px) {
+        width: rem(240);
+        @media all and (max-width: 1440px) {
             width: auto;
         }
         &:not(:last-child) {
-            margin-right: vw(143);
-            @media all and (max-width: 1024px) {
+            margin-right: rem(143);
+            @media all and (max-width: 1440px) {
                 margin-right: 130px;
             }
         }
@@ -206,12 +206,12 @@ export default {
         text-decoration: none;
         font-style: normal;
         font-weight: 600;
-        font-size: vw(30);
+        font-size: rem(30);
         line-height: 140%;
         color: #FFFFFF;
         display: block;
-        margin-bottom: vw(10);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(10);
+        @media all and (max-width: 1440px) {
             font-size: 20px;
             margin-bottom: 20px;
         }
@@ -219,20 +219,20 @@ export default {
     &__contacts_worktime {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 16px;
         }
     }
     &__contacts_info {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
+        font-size: rem(16);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 16px;
         }
     }
@@ -241,15 +241,15 @@ export default {
         align-items: center;
     }
     &__social {
-        width: vw(50);
+        width: rem(50);
         font-size: 0;
         display: block;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 40px;
         }
         &:not(:last-child) {
-            margin-right: vw(20);
-            @media all and (max-width: 1024px) {
+            margin-right: rem(20);
+            @media all and (max-width: 1440px) {
                 margin-right: 30px;
             }
         }
@@ -257,7 +257,7 @@ export default {
     &__map {
         flex: 1 1 auto;
         width: 100%;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             height: 370px;
         }
     }
@@ -266,18 +266,18 @@ export default {
         align-items: center;
         justify-content: space-between;
         position: absolute;
-        left: vw(-133);
+        left: rem(-133);
         right: 0;
         bottom: -100%;
         z-index: 3;
         background: #172242;
-        padding: vw(20) vw(50);
+        padding: rem(20) rem(50);
         transition: 1s bottom 0.5s ease;
     }
     &__popup_left {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
     }
@@ -291,13 +291,13 @@ export default {
             list-style: none;
             li {
                 &:not(:last-child) {
-                    margin-right: vw(40);
+                    margin-right: rem(40);
                 }
             }
             a {
                 font-style: normal;
                 font-weight: 600;
-                font-size: vw(16);
+                font-size: rem(16);
                 line-height: 140%;
                 color: #FFFFFF;
                 text-decoration: none;

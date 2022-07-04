@@ -36,13 +36,13 @@ export default {
         height: 100%;
         display: flex;
         flex-direction: column;
-        padding: vw(30) vw(260) vw(40) vw(107);
-        @media all and (max-width: 1024px) {
+        padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1440px) {
             padding: 30px 20px 40px;
         }
     }
     &__top--tech {
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             display: none;
         }
     }
@@ -54,11 +54,11 @@ export default {
         .title {
             font-style: normal;
             font-weight: 600;
-            font-size: vw(40);
-            margin-bottom: vw(30);
+            font-size: rem(40);
+            margin-bottom: rem(30);
             line-height: 140%;
             color: #172242;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 font-size: 30px;
                 margin-bottom: 30px;
             }
@@ -69,21 +69,21 @@ export default {
             flex-wrap: wrap;
         }
         .item {
-            width: calc(100% / 6 - #{vw(20)} * 5 / 6);
-            padding: vw(25);
+            width: calc(100% / 6 - #{rem(20)} * 5 / 6);
+            padding: rem(25);
             box-sizing: border-box;
             font-size: 0;
             background: #F2F2F2;
             &:not(:nth-child(6n+6)) {
-                margin-right: calc(#{vw(20)} * 5 / 6);
+                margin-right: calc(#{rem(20)} * 5 / 6);
             }
             &:nth-child(n + 7) {
-                margin-top: vw(20);
+                margin-top: rem(20);
             }
             img {
                 width: 100%;
             }
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 width: calc(100% / 4 - 20px * 3 / 4);
                 padding: 20px;
                 &:not(:nth-child(6n+6)) {

@@ -84,8 +84,8 @@ export default {
 
 <style lang="scss" scoped>
 .contacts {
-    padding: vw(30) vw(240) vw(120);
-    @media all and (max-width: 1024px) {
+    padding: rem(30) rem(240) rem(120);
+    @media all and (max-width: 1440px) {
         padding: 30px 20px;
     }
     &__top {
@@ -96,20 +96,20 @@ export default {
         }
     }
     &__title {
-        margin-bottom: vw(30);
+        margin-bottom: rem(30);
         font-style: normal;
         font-weight: 600;
-        font-size: vw(40);
+        font-size: rem(40);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 30px;
             margin-bottom: 30px;
         }
     }
     &__left {
-        width: calc(100% - #{vw(852)});
-        @media all and (max-width: 1024px) {
+        width: calc(100% - #{rem(852)});
+        @media all and (max-width: 1440px) {
             width: 50%;
         }
         @media all and (max-width: 840px) {
@@ -117,9 +117,9 @@ export default {
         }
     }
     &__right {
-        width: vw(832);
-        margin-left: vw(20);
-        @media all and (max-width: 1024px) {
+        width: rem(832);
+        margin-left: rem(20);
+        @media all and (max-width: 1440px) {
             width: 50%;
             margin-left: 0;
         }
@@ -133,35 +133,35 @@ export default {
         align-items: center;
         text-decoration: none;
         &:not(:last-child) {
-            margin-bottom: vw(20);
-            @media all and (max-width: 1024px) {
+            margin-bottom: rem(20);
+            @media all and (max-width: 1440px) {
                 margin-bottom: 20px;
             }
         }
         .icon {
-            width: vw(30);
-            margin-right: vw(20);
+            width: rem(30);
+            margin-right: rem(20);
             font-size: 0;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 width: 30px;
                 margin-right: 20px;
             }
         }
         .text {
-            width: calc(100% - #{vw(50)});
+            width: calc(100% - #{rem(50)});
             font-style: normal;
             font-weight: 400;
-            font-size: vw(16);
+            font-size: rem(16);
             line-height: 140%;
             color: #172242;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 font-size: 16px;
             }
         }
     }
     &__button {
-        margin-top: vw(30);
-        @media all and (max-width: 1024px) {
+        margin-top: rem(30);
+        @media all and (max-width: 1440px) {
             width: 300px;
             margin-top: 30px;
         }
@@ -173,11 +173,11 @@ export default {
         display: flex;
         align-items: center;
         .icon {
-            width: vw(20);
-            height: vw(28);
-            margin-right: vw(25);
+            width: rem(20);
+            height: rem(28);
+            margin-right: rem(25);
             font-size: 0;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 width: 20px;
                 height: 28px;
                 margin-right: 25px;
@@ -187,8 +187,8 @@ export default {
 }
 
 .fiveth {
-    padding: 0 vw(240) vw(120);
-    @media all and (max-width: 1024px) {
+    padding: 0 rem(240) rem(120);
+    @media all and (max-width: 1440px) {
       padding: 80px 20px;
     }
     @media all and (max-width: 840px) {
@@ -197,11 +197,11 @@ export default {
     &__title {
       font-style: normal;
       font-weight: 600;
-      font-size: vw(40);
-      margin-bottom: vw(30);
+      font-size: rem(40);
+      margin-bottom: rem(30);
       line-height: 140%;
       color: #172242;
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
         font-size: 30px;
         margin-bottom: 30px;
       }
@@ -214,8 +214,8 @@ export default {
       justify-content: space-between;
     }
     &__item {
-      width: calc(100% / 4 - #{vw(60)} / 4);
-      @media all and (max-width: 1024px) {}
+      width: calc(100% / 4 - #{rem(60)} / 4);
+      @media all and (max-width: 1440px) {}
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
         &:nth-child(n+3) {
@@ -224,7 +224,7 @@ export default {
       }
       .avatar {
         position: relative;
-        margin-bottom: vw(20);
+        margin-bottom: rem(20);
       }
       .avatar__in {
         padding-top: 95%;
@@ -241,11 +241,11 @@ export default {
       .name {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
-        margin-bottom: vw(10);
+        font-size: rem(20);
+        margin-bottom: rem(10);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 20px;
           margin-bottom: 10px;
         }
@@ -256,11 +256,11 @@ export default {
       .position {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
-        margin-bottom: vw(10);
+        font-size: rem(16);
+        margin-bottom: rem(10);
         line-height: 140%;
         color: #555F76;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 16px;
           margin-bottom: 10px;
         }
@@ -270,7 +270,7 @@ export default {
       }
       .phone {
         margin-bottom: 10px;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           margin-bottom: 10px;
         }
       }
@@ -280,10 +280,10 @@ export default {
         text-decoration: none;
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
+        font-size: rem(16);
         line-height: 140%;
         color: #FF0040;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           font-size: 16px;
         }
         @media all and (max-width: 840px) {

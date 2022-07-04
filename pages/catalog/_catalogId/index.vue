@@ -31,19 +31,19 @@ export default {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             flex-direction: column;
         }
     }
     &__in-left {
-        width: vw(270);
-        @media all and (max-width: 1024px) {
+        width: rem(270);
+        @media all and (max-width: 1440px) {
             width: 100%;
         }
     }
     &__in-right {
-        width: calc(100% - #{vw(290)});
-        @media all and (max-width: 1024px) {
+        width: calc(100% - #{rem(290)});
+        @media all and (max-width: 1440px) {
             width: 100%;
         }
     }

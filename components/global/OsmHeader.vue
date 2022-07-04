@@ -19,7 +19,7 @@ export default {
 <style lang="scss">
 .header {
     background: #172242;
-    padding: 0 vw(50);
+    padding: 0 rem(50);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -29,7 +29,7 @@ export default {
     right: 0;
     top: 0;
     z-index: 10;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         padding: 35px 20px 0;
         position: relative;
     }

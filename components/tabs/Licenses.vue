@@ -155,7 +155,7 @@ export default {
         list-style: none;
         display: flex;
         align-items: center;
-        margin: 0 0 vw(26) 0;
+        margin: 0 0 rem(26) 0;
         padding: 0;
     }
     &-tab {
@@ -165,14 +165,14 @@ export default {
             position: absolute;
             left: 50%;
             right: 50%;
-            bottom: vw(-5);
-            height: vw(2);
+            bottom: rem(-5);
+            height: rem(2);
             background: #FF004D;
             transition: all .3s ease;
         }
         &:not(:last-child) {
-            margin-right: vw(100);
-            @media all and (max-width: 1024px) {
+            margin-right: rem(100);
+            @media all and (max-width: 1440px) {
                 margin-right: 8%;
             }
         }
@@ -180,11 +180,11 @@ export default {
             text-decoration: none;
             font-style: normal;
             font-weight: 400;
-            font-size: vw(20);
+            font-size: rem(20);
             line-height: 140%;
             color: #172242;
             transition: all .3s ease;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 font-size: 20px;
             }
         }
@@ -268,14 +268,14 @@ export default {
         }
     }
     &__title {
-        margin-bottom: vw(30);
+        margin-bottom: rem(30);
     }
 }
 .licensesSlid {
     max-width: 100%;
     width: 100%;
     &__title {
-        margin-bottom: vw(30);
+        margin-bottom: rem(30);
     }
     &__slider {
         position: relative;
@@ -287,12 +287,12 @@ export default {
         }
     }
     &__slide {
-        padding: vw(20);
+        padding: rem(20);
         background: #D7DCE1;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: vw(114);
+        min-height: rem(114);
         img {
             max-width: 100%;
             max-height: 100%;
@@ -309,7 +309,7 @@ export default {
     }
     &__arrow {
         position: absolute;
-        width: vw(40);
+        width: rem(40);
         top: 50%;
         border: none;
         background: none;
@@ -317,7 +317,7 @@ export default {
         transform: translateY(-50%);
         cursor: pointer;
         font-size: 0;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 40px;
         }
         @media all and (max-width: 840px) {
@@ -325,15 +325,15 @@ export default {
             transform: translateY(0);
         }
         &--left {
-            left: vw(-20);
-            @media all and (max-width: 1024px) {
+            left: rem(-20);
+            @media all and (max-width: 1440px) {
                 left: -20px;
             }
         }
         &--right {
-            right: vw(-20);
+            right: rem(-20);
             transform: translateY(-50%) rotate(180deg);
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 right: -20px;
             }
             @media all and (max-width: 840px) {

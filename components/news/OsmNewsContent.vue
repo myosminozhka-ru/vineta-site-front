@@ -74,7 +74,7 @@ export default {
 .news {
     &__content_in {
         display: grid;
-        grid-gap: vw(20);
+        grid-gap: rem(20);
         grid-template-columns: repeat(3, 1fr );
         grid-template-areas: 
             'big big big'
@@ -82,17 +82,17 @@ export default {
     }
     &__item_big {
         position: relative;
-        padding: vw(60);
-        min-height: vw(563);
+        padding: rem(60);
+        min-height: rem(563);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         grid-area: big;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 20px 30px 20px 20px;
             min-height: 450px;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             min-height: 280px;
         }
         &::before {
@@ -123,7 +123,7 @@ export default {
     &__item_big &__item_top {
         position: relative;
         z-index: 2;
-        margin-bottom: vw(70);
+        margin-bottom: rem(70);
     }
     &__item_big &__item_bottom {
         position: relative;
@@ -132,28 +132,28 @@ export default {
     &__item_big &__date {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 20px;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 14px;
         }
     }
     &__item_big &__text {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(24);
-        margin-bottom: vw(30);
+        font-size: rem(24);
+        margin-bottom: rem(30);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             white-space: normal;
             font-size: 20px;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 14px;
         }
     }
@@ -162,8 +162,8 @@ export default {
         flex-direction: column;
     }
     &__item &__item_left {
-        // height: vw(185);
-        margin-bottom: vw(20);
+        // height: rem(185);
+        margin-bottom: rem(20);
     }
     &__item &__image {
         width: 100%;
@@ -171,26 +171,26 @@ export default {
     }
     &__item &__item_right {
         flex: 1 1 auto;
-        padding: vw(20);
+        padding: rem(20);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
     &__item &__item_top {
-        margin-bottom: vw(42);
+        margin-bottom: rem(42);
     }
     &__item &__date {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
-        margin-bottom: vw(16);
+        font-size: rem(16);
+        margin-bottom: rem(16);
         line-height: 140%;
         color: #B4B9C1;
     }
     &__item &__text {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #172242;
     }
@@ -199,11 +199,11 @@ export default {
         text-decoration: none;
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
+        font-size: rem(16);
         line-height: 140%;
         color: #FF004D;
         padding-bottom: 5px;
-        border-bottom: vw(4) solid #FF004D;
+        border-bottom: rem(4) solid #FF004D;
     }
 }
 </style>

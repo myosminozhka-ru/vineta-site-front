@@ -94,24 +94,24 @@ export default {
 
 <style lang="scss" scoped>
 .filter {
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         margin-bottom: 52px;
         position: relative;
     }
     &__in {
-        padding: vw(40) vw(30);
-        @media all and (max-width: 1024px) {
+        padding: rem(40) rem(30);
+        @media all and (max-width: 1440px) {
             padding: 0;
         }
     }
     &__title {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(24);
-        margin-bottom: vw(40);
+        font-size: rem(24);
+        margin-bottom: rem(40);
         line-height: 110%;
         color: #172242;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 20px;
             border: 1px solid #F2F2F2;
             font-size: 18px;
@@ -123,7 +123,7 @@ export default {
         }
     }
     &.opened &__title {
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             border-color: #FF0040;
             background: #FF0040;
             color: #fff;
@@ -136,7 +136,7 @@ export default {
         }
     }
     &__params {
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 30px 20px;
             background: #F2F2F2;
             position: absolute;
@@ -149,7 +149,7 @@ export default {
         }
     }
     &.opened &__params {
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             opacity: 1;
             visibility: visible;
         }
@@ -157,19 +157,19 @@ export default {
     &__params_title {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(20);
-        margin-bottom: vw(30);
+        font-size: rem(20);
+        margin-bottom: rem(30);
         line-height: 110%;
         color: #172242;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 20px;
             margin-bottom: 30px;
         }
     }
     &__params_block {
         &:not(:last-child) {
-            margin-bottom: vw(40);
-            @media all and (max-width: 1024px) {
+            margin-bottom: rem(40);
+            @media all and (max-width: 1440px) {
                 margin-bottom: 40px;
             }
         }
@@ -179,20 +179,20 @@ export default {
         align-items: flex-start;
         cursor: pointer;
         &:not(:last-child) {
-            margin-bottom: vw(20);
-            @media all and (max-width: 1024px) {
+            margin-bottom: rem(20);
+            @media all and (max-width: 1440px) {
                 margin-bottom: 20px;
             }
         }
     }
     &__params_checkbox {
-        width: vw(24);
-        height: vw(24);
+        width: rem(24);
+        height: rem(24);
         box-sizing: border-box;
         border: 1px solid #555F76;
         position: relative;
         transition: .3s all .3s ease;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 24px;
             height: 24px;
         }
@@ -205,11 +205,11 @@ export default {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 vw(4);
+            padding: 0 rem(4);
             transform: scale(0);
             transform-origin: 50% 50%;
             transition: all .3s ease;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 padding: 0 4px;
             }
         }
@@ -229,13 +229,13 @@ export default {
     &__params_name {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(14);
+        font-size: rem(14);
         line-height: 140%;
         color: #555F76;
-        width: calc(100% - #{vw(24)} - #{vw(10)});
-        margin-left: vw(10);
-        padding-top: vw(3);
-        @media all and (max-width: 1024px) {
+        width: calc(100% - #{rem(24)} - #{rem(10)});
+        margin-left: rem(10);
+        padding-top: rem(3);
+        @media all and (max-width: 1440px) {
             width: calc(100% - 24px - 10px);
             margin-left: 10px;
             padding-top: 3px;
@@ -244,11 +244,11 @@ export default {
     }
     &__clear {
         width: 100%;
-        height: vw(68);
-        margin-top: vw(40);
+        height: rem(68);
+        margin-top: rem(40);
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
         background: #FF0040;
@@ -261,7 +261,7 @@ export default {
         &:active {
             background: #A70032;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             height: 68px;
             font-size: 20px;
             margin-top: 0;

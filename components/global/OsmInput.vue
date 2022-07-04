@@ -24,15 +24,15 @@ export default {
 
 <style lang="scss" scoped>
 .osm__input {
-    height: vw(60);
+    height: rem(60);
     width: 100%;
     box-sizing: border-box;
-    padding: 0 vw(40);
+    padding: 0 rem(40);
     border: 1px solid #D7DCE1;
     background: none;
     border-radius: 0;
     outline: none;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         height: 50px;
         padding: 0 30px;
     }
@@ -40,10 +40,10 @@ export default {
     &::placeholder {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #82827D;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 16px;
         }
     }

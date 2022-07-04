@@ -186,7 +186,7 @@ export default {
         padding: 0;
         cursor: pointer;
         font-size: 0;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 40px;
         }
         &--left {
@@ -204,12 +204,12 @@ export default {
         border-radius: 50%;
         cursor: pointer;
         transition: all .3s ease;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           width: 10px;
           height: 10px;
         }
         &:not(:last-child) {
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
               margin-right: 25px;
             }
         }
@@ -229,8 +229,8 @@ export default {
     }
     &__wrap {
         width: 100%;
-        padding: vw(100) vw(240) vw(70) vw(108);
-        @media all and (max-width: 1024px) {
+        padding: rem(100) rem(240) rem(70) rem(108);
+        @media all and (max-width: 1440px) {
             padding: 80px 20px;
         }
         @media all and (max-width: 840px) {
@@ -247,8 +247,8 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: vw(30);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(30);
+        @media all and (max-width: 1440px) {
             margin-bottom: 30px;
         }
     }
@@ -259,20 +259,20 @@ export default {
                 "first third"
                 "first fourth";
         grid-template-columns: repeat(2, 50%);
-        grid-gap: vw(20);
+        grid-gap: rem(20);
     }
     &__item_big {
         position: relative;
-        padding: vw(60);
+        padding: rem(60);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         grid-area: first;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 20px 30px 20px 20px;
             min-height: 450px;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             min-height: 280px;
         }
         &::before {
@@ -303,7 +303,7 @@ export default {
     &__item_big &__item_top {
         position: relative;
         z-index: 2;
-        margin-bottom: vw(70);
+        margin-bottom: rem(70);
     }
     &__item_big &__item_bottom {
         position: relative;
@@ -312,28 +312,28 @@ export default {
     &__item_big &__date {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 20px;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 14px;
         }
     }
     &__item_big &__text {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(24);
-        margin-bottom: vw(30);
+        font-size: rem(24);
+        margin-bottom: rem(30);
         line-height: 140%;
         color: #FFFFFF;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             white-space: normal;
             font-size: 20px;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 14px;
         }
     }
@@ -341,35 +341,35 @@ export default {
         display: flex;
     }
     &__item &__item_left {
-        width: vw(220);
-        height: vw(185);
-        margin-right: vw(20);
+        width: rem(220);
+        height: rem(185);
+        margin-right: rem(20);
     }
     &__item &__image {
         width: 100%;
         height: 100%;
     }
     &__item &__item_right {
-        width: calc(100% - #{vw(240)});
+        width: calc(100% - #{rem(240)});
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
     &__item &__item_top {
-        margin-bottom: vw(42);
+        margin-bottom: rem(42);
     }
     &__item &__date {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
-        margin-bottom: vw(16);
+        font-size: rem(16);
+        margin-bottom: rem(16);
         line-height: 140%;
         color: #B4B9C1;
     }
     &__item &__text {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #172242;
     }
@@ -378,11 +378,11 @@ export default {
         text-decoration: none;
         font-style: normal;
         font-weight: 400;
-        font-size: vw(16);
+        font-size: rem(16);
         line-height: 140%;
         color: #FF004D;
         padding-bottom: 5px;
-        border-bottom: vw(4) solid #FF004D;
+        border-bottom: rem(4) solid #FF004D;
     }
 }
 </style>

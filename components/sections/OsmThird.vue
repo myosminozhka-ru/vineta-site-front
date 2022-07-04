@@ -59,13 +59,13 @@
 <style lang="scss" scoped>
   .section {
     &__right {
-      padding-right: vw(243);
+      padding-right: rem(243);
       display: block;
-      @media all and (min-width: 1025px) {
-        padding-top: vw(300);
+      @media all and (min-width: 1441px) {
+        padding-top: rem(300);
 
       }
-      @media all and (max-width: 1024px) {
+      @media all and (max-width: 1440px) {
           padding-right: 20px;
           
         }
@@ -86,9 +86,9 @@
     }
     &__bullets {
         position: absolute;
-        left: vw(133);
-        bottom: vw(73);
-        @media all and (max-width: 1024px) {
+        left: rem(133);
+        bottom: rem(73);
+        @media all and (max-width: 1440px) {
           position: static;
           margin-top: 43px;
         }
@@ -100,19 +100,19 @@
         font-size: 0;
         border: none;
         background: #D7DCE1;
-        width: vw(10);
-        height: vw(10);
+        width: rem(10);
+        height: rem(10);
         padding: 0;
         border-radius: 50%;
         cursor: pointer;
         transition: all .3s ease;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
           width: 10px;
           height: 10px;
         }
         &:not(:last-child) {
-            margin-right: vw(25);
-            @media all and (max-width: 1024px) {
+            margin-right: rem(25);
+            @media all and (max-width: 1440px) {
               margin-right: 25px;
             }
         }

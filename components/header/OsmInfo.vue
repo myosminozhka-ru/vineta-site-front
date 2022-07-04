@@ -48,10 +48,10 @@ export default {
     &__button {
         display: block;
         font-size: 0;
-        width: vw(30);
-        margin-right: vw(40);
+        width: rem(30);
+        margin-right: rem(40);
         position: relative;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 30px;
             margin-right: 30px;
         }
@@ -61,12 +61,12 @@ export default {
     }
     &__count {
         position: absolute;
-        top: vw(-5);
-        left: vw(-5);
-        width: vw(19);
-        height: vw(19);
-        font-size: vw(14);
-        line-height: vw(19);
+        top: rem(-5);
+        left: rem(-5);
+        width: rem(19);
+        height: rem(19);
+        font-size: rem(14);
+        line-height: rem(19);
         font-style: normal;
         font-weight: 400;
         color: #FFFFFF;
@@ -75,7 +75,7 @@ export default {
         box-sizing: border-box;
         text-align: center;
         border-radius: 50%;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             top: -5px;
             left: -5px;
             width: 19px;
@@ -89,16 +89,16 @@ export default {
         align-items: center;
         font-style: normal;
         font-weight: 400;
-        font-size: vw(18);
-        margin-right: vw(40);
+        font-size: rem(18);
+        margin-right: rem(40);
         line-height: 140%;
         color: #D7DCE1;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 18px;
             margin-right: 31px;
         }
         .delim {
-            margin: 0 vw(8);
+            margin: 0 rem(8);
         }
         a {
             text-decoration: none;
@@ -115,11 +115,11 @@ export default {
     &__phone {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(20);
+        font-size: rem(20);
         line-height: 140%;
         color: #D7DCE1;
         text-decoration: none;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 20px;
         }
         @media all and (max-width: 530px) {

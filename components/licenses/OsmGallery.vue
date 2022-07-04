@@ -50,19 +50,19 @@ export default {
 <style lang="scss" scoped>
 .gallery {
     &:not(:last-child) {
-        margin-bottom: vw(120);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(120);
+        @media all and (max-width: 1440px) {
             margin-bottom: 80px;
         }
     }
     &__title {
         font-style: normal;
         font-weight: 600;
-        font-size: vw(40);
-        margin-bottom: vw(30);
+        font-size: rem(40);
+        margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1024px) {;
+        @media all and (max-width: 1440px) {;
             font-size: 30px;
             margin-bottom: 30px;
         }
@@ -70,11 +70,11 @@ export default {
     &__items {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
-        grid-gap: vw(20);
-        @media all and (max-width: 1024px) {
+        grid-gap: rem(20);
+        @media all and (max-width: 1440px) {
             grid-gap: 20px;
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             grid-template-columns: repeat(2, 1fr);
         }
     }
@@ -92,20 +92,20 @@ export default {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: vw(53) vw(33) vw(33) vw(33);
+        padding: rem(53) rem(33) rem(33) rem(33);
         opacity: 0;
         visibility: hidden;
         transition: all .3s ease;
         cursor: pointer;
         .icon {
-            width: vw(44);
-            margin-bottom: vw(20);
+            width: rem(44);
+            margin-bottom: rem(20);
             font-size: 0;
         }
         .text {
             font-style: normal;
             font-weight: 600;
-            font-size: vw(16);
+            font-size: rem(16);
             line-height: 140%;
             text-align: center;
             color: #FFFFFF;

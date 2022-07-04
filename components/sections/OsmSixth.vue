@@ -96,29 +96,29 @@ export default {
         width: 100%;
         display: flex;
         align-items: center;
-        padding: vw(100) vw(240) vw(70) vw(108);
-        @media all and (max-width: 1024px) {
+        padding: rem(100) rem(240) rem(70) rem(108);
+        @media all and (max-width: 1440px) {
             padding: 20px;
         }
     }
     &__left {
-        width: vw(657);
-        padding-right: vw(100);
+        width: rem(657);
+        padding-right: rem(100);
         box-sizing: border-box;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 300px;
             padding-right: 0;
         }
     }
     &__right {
-        width: calc(100% - #{vw(657)});
-        @media all and (max-width: 1024px) {
+        width: calc(100% - #{rem(657)});
+        @media all and (max-width: 1440px) {
             width: calc(100% - 300px);
         }
     }
     &__title {
-        margin-bottom: vw(30);
-        @media all and (max-width: 1024px) {
+        margin-bottom: rem(30);
+        @media all and (max-width: 1440px) {
             margin-bottom: 30px;
         }
     }
@@ -127,16 +127,16 @@ export default {
         align-items: center;
         cursor: pointer;
         &:not(:last-child) {
-            margin-bottom: vw(30);
+            margin-bottom: rem(30);
         }
         .icon {
-            width: vw(40);
-            margin-right: vw(20);
+            width: rem(40);
+            margin-right: rem(20);
         }
         .text {
-            width: calc(100% - #{vw(60)});
+            width: calc(100% - #{rem(60)});
             font-weight: 400;
-            font-size: vw(24);
+            font-size: rem(24);
             line-height: 140%;
             color: #555F76;
         }
@@ -151,15 +151,15 @@ export default {
         background-repeat: repeat;
         transition: 0s background-position 1s ease;
         height: 100%;
-        border-bottom: vw(9) solid #2E5599;
+        border-bottom: rem(9) solid #2E5599;
         box-sizing: border-box;
-        padding-left: vw(250);
-        padding-bottom: vw(40);
-        padding-right: vw(30);
+        padding-left: rem(250);
+        padding-bottom: rem(40);
+        padding-right: rem(30);
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 266px 30px 30px 126px;
             height: auto;
         }
@@ -169,20 +169,20 @@ export default {
         transition: background-position 1s ease;
     }
     &__item {
-        padding: vw(73) 0 0 vw(108);
-        height: vw(435);
+        padding: rem(73) 0 0 rem(108);
+        height: rem(435);
         box-sizing: border-box;
         overflow: hidden;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 126px 0 0 219px;
             height: auto;
         }
         .image {
             position: absolute;
-            top: vw(-73);
-            left: vw(-108);
-            width: vw(358);   
-            @media all and (max-width: 1024px) {
+            top: rem(-73);
+            left: rem(-108);
+            width: rem(358);   
+            @media all and (max-width: 1440px) {
                 width: 510px;
                 height: 510px;
                 left: -219px;
@@ -194,14 +194,14 @@ export default {
             text-align: right;
             font-style: normal;
             font-weight: 600;
-            font-size: vw(40);
+            font-size: rem(40);
             line-height: 140%;
             text-align: right;
             text-transform: uppercase;
             color: #2E5599;
             max-width: 100%;
             white-space: initial;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 font-size: 30px;
             }
         }

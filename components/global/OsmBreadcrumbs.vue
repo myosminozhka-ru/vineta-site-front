@@ -39,8 +39,8 @@ export default {
     margin: 0;
     padding: 0;
     list-style: none; 
-    margin-bottom: vw(30);
-    @media all and (max-width: 1024px) {
+    margin-bottom: rem(30);
+    @media all and (max-width: 1440px) {
         margin-bottom: 43px; 
     }
     @media all and (max-width: 840px) {
@@ -54,10 +54,10 @@ export default {
             text-decoration: none;
             font-style: normal;
             font-weight: 400;
-            font-size: vw(14);
+            font-size: rem(14);
             line-height: 140%;
             color: #555F76;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 font-size: 14px;
             }
         }
@@ -69,8 +69,8 @@ export default {
         }
     }
     &__item--delim {
-        margin: 0 vw(10);
-        @media all and (max-width: 1024px) {
+        margin: 0 rem(10);
+        @media all and (max-width: 1440px) {
             margin: 0 10px;
         }
     }

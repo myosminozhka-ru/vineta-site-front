@@ -97,12 +97,12 @@ export default {
     
     &__in {
         flex: 1 1 auto;
-        padding: vw(30) vw(240) vw(144) vw(240);
+        padding: rem(30) rem(240) rem(144) rem(240);
         background: url('~assets/img/history.jpg') 50% 50%/cover no-repeat;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             padding: 30px 20px 80px 20px;
         }
     }
@@ -112,9 +112,9 @@ export default {
         justify-content: space-between;
     }
     &__text--left {
-        width: vw(588);
+        width: rem(588);
         display: none;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 100%;
         }
         &.isActive {
@@ -123,16 +123,16 @@ export default {
         p {
             font-style: normal;
             font-weight: 400;
-            font-size: vw(20);
+            font-size: rem(20);
             line-height: 140%;
             color: #FFFFFF;
             margin: 0;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 font-size: 20px;
             }
             &:not(:last-child) {
-                margin-bottom: vw(10);
-                @media all and (max-width: 1024px) {
+                margin-bottom: rem(10);
+                @media all and (max-width: 1440px) {
                     margin-bottom: 10px;
                 }
             }
@@ -141,16 +141,16 @@ export default {
     &__text--buttons {
         display: flex;
         align-items: center;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             margin-top: 80px;
         }
     }
     &__text--button {
         .arrow {
-            width: vw(28);
-            height: vw(28);
+            width: rem(28);
+            height: rem(28);
             font-size: 0;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 width: 28px;
                 height: 28px;
             }
@@ -158,25 +158,25 @@ export default {
         .text {
             font-style: normal;
             font-weight: 600;
-            font-size: vw(20);
-            margin-left: vw(20);
+            font-size: rem(20);
+            margin-left: rem(20);
             line-height: 140%;
             color: #FFFFFF;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 margin-left: 20px;
                 font-size: 20px;    
             }
         }
         &--fwd {
-            margin-left: vw(30);
-            @media all and (max-width: 1024px) {
+            margin-left: rem(30);
+            @media all and (max-width: 1440px) {
                 margin-left: 30px; 
             }
             .text {
                 order: -1;
                 margin-left: 0;
-                margin-right: vw(20);
-                @media all and (max-width: 1024px) {
+                margin-right: rem(20);
+                @media all and (max-width: 1440px) {
                     margin-right: 20px;
                 }
             }
@@ -189,15 +189,15 @@ export default {
         display: flex;
         align-items: flex-start;
         flex-wrap: nowrap;
-        margin-top: vw(128);
-        @media all and (max-width: 1024px) {
+        margin-top: rem(128);
+        @media all and (max-width: 1440px) {
             margin-top: 80px;
         }
     }
     &__timeline_item {
-        min-width: vw(291);
+        min-width: rem(291);
         transition: all .3s ease;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             transform: translateX(calc(-100% * var(--index)));
             min-width: 190px;
         }
@@ -218,15 +218,15 @@ export default {
             }
         }
         .sqare {
-            width: vw(12);
-            height: vw(12);
-            border-radius: vw(2);
+            width: rem(12);
+            height: rem(12);
+            border-radius: rem(2);
             transform: rotate(-45deg);
-            margin-top: vw(-7);
+            margin-top: rem(-7);
             background: #4A4A4A;
-            border: vw(2) solid #FFFFFF;
+            border: rem(2) solid #FFFFFF;
             box-sizing: border-box;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 width: 12px;
                 height: 12px;
                 border-radius: 2px;
@@ -235,16 +235,16 @@ export default {
             }
         }
         .bottom {
-            margin-top: vw(20);
+            margin-top: rem(20);
             font-style: normal;
             font-weight: 600;
-            font-size: vw(22);
+            font-size: rem(22);
             line-height: 140%;
             color: #FFFFFF;
             opacity: 0.8;
             transform-origin: 0 0;
             transition: all .3s ease;
-            @media all and (max-width: 1024px) {
+            @media all and (max-width: 1440px) {
                 font-size: 18px;
                 margin-top: 19px;
             }

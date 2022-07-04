@@ -33,10 +33,10 @@ export default {
 <style lang="scss" scoped>
 .totop {
     position: fixed;
-    right: vw(50);
-    bottom: vw(165);
-    width: vw(80);
-    height: vw(80);
+    right: rem(50);
+    bottom: rem(165);
+    width: rem(80);
+    height: rem(80);
     border-radius: 50%;
     background: #FF004D;
     display: flex;
@@ -47,7 +47,7 @@ export default {
     opacity: 0;
     visibility: hidden;
     z-index: 10;
-    @media all and (max-width: 1024px) {
+    @media all and (max-width: 1440px) {
         width: 67px;
         height: 67px;
     }
@@ -57,12 +57,12 @@ export default {
     }
     cursor: pointer;
     .icon {
-        width: vw(10);
-        height: vw(21);
-        margin-bottom: vw(5);
+        width: rem(10);
+        height: rem(21);
+        margin-bottom: rem(5);
         font-size: 0;
         pointer-events: none;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             width: 8px;
             height: 18px;
             margin-bottom: 5px;
@@ -71,10 +71,10 @@ export default {
     .text {
         font-style: normal;
         font-weight: 400;
-        font-size: vw(14);
-        line-height: vw(17);
+        font-size: rem(14);
+        line-height: rem(17);
         color: #FFFFFF;
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1440px) {
             font-size: 12px;
             line-height: 14px;
         }

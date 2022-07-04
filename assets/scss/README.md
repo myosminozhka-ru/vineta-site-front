@@ -13,13 +13,13 @@
 - Функция перевода px в vw
 
 ```
-@function vw($target) {
+@function rem($target) {
     $vw-result: math.div($target * 100, 1920) * 1vw;
     @return $vw-result;
 }
 ```
 
-- Вызывается так: `width: vw(20);`
+- Вызывается так: `width: rem(20);`
 
 ## :zap: Переменные
 
