@@ -24,6 +24,7 @@ export default {
   plugins: [
     '~/plugins/tabs.js',
     '~/plugins/vars.js',
+    { src: '~/plugins/lightgallery.js', ssr: false }
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

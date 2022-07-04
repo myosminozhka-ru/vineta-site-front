@@ -257,6 +257,7 @@ body .wrapper .full-page-indicators {
       flex-wrap: wrap;
       // justify-content: space-between;
   }
+  
   &__item {
       width: calc(100% / 3 - #{vw(40)} / 3);
       border: 1px solid #D7DCE1;
@@ -270,6 +271,32 @@ body .wrapper .full-page-indicators {
       }
       &:not(:nth-child(3n+3)) {
           margin-right: vw(20);
+      }
+      @media all and (max-width: 840px) {
+        margin-right: 0 !important;
+        margin-top: 20px;
+        width: 100%;
+      }
+      
+  }
+  &__items--favorites &__item {
+      width: calc(100% / 4 - #{vw(60)} / 4);
+      &:nth-child(n + 4) {
+        margin-top: 0;
+      }
+      &:not(:nth-child(3n+3)) {
+          margin-right: 0;
+      }
+      &:nth-child(n + 5) {
+        margin-top: vw(20);
+      }
+      &:not(:nth-child(4n+4)) {
+          margin-right: vw(20);
+      }
+      @media all and (max-width: 840px) {
+        margin-right: 0 !important;
+        margin-top: 20px;
+        width: 100%;
       }
   }
   &__item_image {
@@ -288,8 +315,12 @@ body .wrapper .full-page-indicators {
   }
   &__item_data {
       padding: vw(20);
+      @media all and (max-width: 1024px) {
+        padding: 20px;
+      }
   }
   &__item_name {
+    display: block;
       font-style: normal;
       font-weight: 600;
       font-size: vw(20);
@@ -297,6 +328,10 @@ body .wrapper .full-page-indicators {
       line-height: 140%;
       color: #172242;
       text-decoration: none;
+      @media all and (max-width: 1024px) {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
   }
   &__item_sku {
       font-style: normal;
@@ -304,15 +339,26 @@ body .wrapper .full-page-indicators {
       font-size: vw(16);
       line-height: 110%;
       color: #555F76;
+      @media all and (max-width: 1024px) {
+        font-size: 16px;
+      }
   }
   &__item_properties {
       padding-top: vw(20);
       margin-top: vw(20);
       border-top: vw(2) solid #D7DCE1;
+      @media all and (max-width: 1024px) {
+        padding-top: 20px;
+        margin-top: 20px;
+        border-top: 2px solid #D7DCE1;
+      }
   }
   &__item_property {
       &:not(:last-child) {
-          margin-bottom: vw(20);
+        margin-bottom: vw(20);
+        @media all and (max-width: 1024px) {
+          margin-bottom: 20px;
+        }
       }
       .name {
           font-style: normal;
@@ -321,6 +367,10 @@ body .wrapper .full-page-indicators {
           margin-bottom: vw(5);
           line-height: 110%;
           color: #172242;
+          @media all and (max-width: 1024px) {
+            font-size: 16px;
+            margin-bottom: 5px;
+          }
       }
       .value {
           font-style: normal;
@@ -328,6 +378,9 @@ body .wrapper .full-page-indicators {
           font-size: vw(14);
           line-height: 140%;
           color: #555F76;
+          @media all and (max-width: 1024px) {
+            font-size: 14px;
+          }
       }
   }
 }
