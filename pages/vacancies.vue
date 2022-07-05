@@ -13,6 +13,7 @@
     components: {
       OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),
+      
     },
   }
 
