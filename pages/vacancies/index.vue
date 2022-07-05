@@ -5,7 +5,7 @@
             Проектируем, изготавливаем и поставляем оборудование для судостроения
             </div>
             <div class="first__image hide_on_mobile">
-            <img :src="require('~/assets/img/about/first_img.png')" width="100%" alt="">
+              <img :src="require('~/assets/img/about/first_img.png')" width="100%" alt="">
             </div>
         </section>
         <osm-advantagies />

@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="list__item_button">
-                    <osm-button>Откликнуться</osm-button>
+                    <nuxt-link :to="{name: 'vacancies-itemId', params: {itemId: 'test'}}" class="button">Откликнуться</nuxt-link>
                 </div>
             </div>
         </div>
