@@ -81,6 +81,9 @@
   .vacancies {
     &__slider {
       padding: 0 rem(240);
+      @media all and (max-width: 1280px) {
+        padding: 0 20px;
+      }
     }
   }
 </style>

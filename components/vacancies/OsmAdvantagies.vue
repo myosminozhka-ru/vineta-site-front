@@ -27,6 +27,9 @@ export default {
 <style lang="scss" scoped>
 .advantages {
     padding: rem(120) rem(240);
+    @media all and (max-width: 1280px) {
+        padding: 80px 20px;
+    }
     &__title {
         font-style: normal;
         font-weight: 600;
@@ -34,11 +37,18 @@ export default {
         margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
+        @media all and (max-width: 1280px) {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
     }
     &__items {
         display: grid;
         grid-template-columns: repeat(4, 1fr );
         grid-gap: rem(20);
+        @media all and (max-width: 840px) {
+            grid-template-columns: repeat(1, 1fr );
+        }
         .icon {
             width: rem(40);
             margin-bottom: rem(20);
@@ -62,6 +72,9 @@ export default {
     }
     &__button {
         margin-top: rem(30);
+        @media all and (max-width: 1280px) {
+            width: 188px;
+        }
     }
 }
 </style>

@@ -34,15 +34,31 @@ export default {
 <style lang="scss" scoped>
 .response {
     padding: rem(120) rem(240);
+    @media all and (max-width: 1280px) {
+        padding: 80px 20px;
+    }
     &__in {
         padding: rem(60);
         background: #172242;
         display: flex;
         align-items: flex-end;
+        @media all and (max-width: 1280px) {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 40px;
+        }
+        @media all and (max-width: 840px) {
+            padding: 30px;
+        }
     }
     &__left {
         flex: 1 1 auto;
         margin-right: rem(76);
+        @media all and (max-width: 1280px) {
+            margin-right: 0;
+            width: 100%;
+            margin-bottom: 30px;
+        }
     }
     &__title {
         font-style: normal;
@@ -51,6 +67,10 @@ export default {
         margin-bottom: rem(20);
         line-height: 110%;
         color: #FFFFFF;
+        @media all and (max-width: 1280px) {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
     }
     &__line {
         height: rem(2);
@@ -61,6 +81,13 @@ export default {
         align-items: center;
         justify-content: space-between;
         margin-top: rem(60);
+        @media all and (max-width: 1280px) {
+            margin-top: 30px;
+        }
+        @media all and (max-width: 840px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
         .name {
             font-style: normal;
             font-weight: 400;
@@ -71,6 +98,11 @@ export default {
         .phones {
             display: flex;
             align-items: center;
+            @media all and (max-width: 840px) {
+                flex-direction: column;
+                align-items: flex-start;
+                margin: 60px 0;
+            }
         }
         .delim {
             width: rem(6);
@@ -78,6 +110,9 @@ export default {
             border-radius: rem(1);
             margin: 0 rem(10) rem(5);
             background: #fff;
+            @media all and (max-width: 840px) {
+                margin: 10px 0;
+            }
         }
         .phones,
         .email {

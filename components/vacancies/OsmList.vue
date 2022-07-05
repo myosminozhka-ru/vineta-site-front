@@ -25,15 +25,30 @@
                         </div>
                     </div>
                 </div>
+                <div class="list__item_button">
+                    <osm-button>Откликнуться</osm-button>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
+<script>
+export default {
+    components: {
+        OsmButton: () => import('~/components/global/OsmButton.vue')
+    }
+}
+</script>
+
 <style lang="scss" scoped>
 .list {
     padding: rem(120) rem(240);
     background: #F2F2F2;
+
+    @media all and (max-width: 1280px) {
+        padding: 60px 20px;
+    }
     &__title {
         font-style: normal;
         font-weight: 600;
@@ -41,6 +56,10 @@
         margin-bottom: rem(30);
         line-height: 110%;
         color: #172242;
+        @media all and (max-width: 1280px) {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
     }
     &__item {
         background: #fff;
@@ -61,6 +80,9 @@
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+        @media all and (max-width: 840px) {
+            flex-direction: column;
+        }
     }
     &__item_info--item {
         .title {
@@ -77,12 +99,28 @@
             font-size: rem(20);
             line-height: 140%;
             color: #172242;
+            @media all and (max-width: 1280px) {
+                font-size: 16px;
+            }
         }
         &:nth-child(1) {
             max-width: rem(158);
         }
         &:nth-child(3) {
             max-width: rem(310);
+        }
+        @media all and (max-width: 1280px) {
+            max-width: 100% !important;
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    &__item_button {
+        margin-top: rem(30);
+        @media all and (max-width: 1280px) {
+            margin-top: 30px;
+            max-width: 209px;
         }
     }
 }
