@@ -12,7 +12,7 @@
             </ul>
         </div>
         <div class="contacts__arrows" >
-            <nuxt-link :to="{name: 'index'}" class="more">Смотреть все</nuxt-link>
+            <!-- <nuxt-link :to="{name: 'index'}" class="more">Смотреть все</nuxt-link> -->
             <div class="contacts__arrows-in" data-glide-el="controls">
                 <button class="contacts__arrow contacts__arrow--left" data-glide-dir="<">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
