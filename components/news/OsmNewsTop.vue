@@ -1,7 +1,7 @@
 <template>
     <div class="news__top">
         <div class="news__top_title">Новости</div>
-        <div class="news__top_buttons">
+        <div class="news__top_buttons hide_on_mobile">
             <div @click.prevent="tabs.selected = 1">
               <osm-button class="news__mods--opener" :class="{'isActive': tabs.selected === 1}" :outlined="true">
                 Новости</osm-button>

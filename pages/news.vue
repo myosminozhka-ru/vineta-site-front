@@ -4,7 +4,21 @@
         <div class="header_padding">
             <div class="news">
                 <osm-breadcrumbs />
-                <nuxt-child />
+                <div class="news_page">
+                    <osm-news-top />
+                    <main class="news__content">
+                        <div class="news__content_left">
+                            <nuxt-child />
+                        </div>
+                        <div class="news__content_right">
+                            <div class="news__content_bottons">
+                                <osm-button class="news__content_botton" :large="true">В каталог</osm-button>
+                                <osm-button class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
+                            </div>
+                            <osm-category />
+                        </div>
+                    </main>
+                </div>
             </div>
         </div>
     </div>
@@ -25,6 +39,42 @@ export default {
     padding: rem(30) rem(240) rem(120);
     @media all and (max-width: 1280px) {
         padding: 30px 20px;
+    }
+    &__content {
+        display: flex;
+        align-items: flex-start;
+        @media all and (max-width: 1280px) {
+            display: block;
+        }
+    }
+    &__content_left {
+        width: calc(100% - #{rem(345)} - #{rem(20)});
+        @media all and (max-width: 1280px) {
+            width: 100%;
+        }
+        @media all and (max-width: 840px) {
+            margin-bottom: 60px;
+        }
+    }
+    &__content_right {
+        width: rem(345);
+        margin-left: rem(20);
+        @media all and (max-width: 1280px) {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+    &__content_bottons {
+        padding: rem(30);
+        background: #FFFFFF;
+        border: 1px solid #D7DCE1;
+        border-bottom: none;
+        box-sizing: border-box;
+    }
+    &__content_botton {
+        &:not(:last-child) {
+            margin-bottom: rem(13);
+        }
     }
 }
 </style>
