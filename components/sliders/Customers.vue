@@ -12,13 +12,13 @@
             <div class="customers__arrows" data-glide-el="controls">
                 <button class="customers__arrow customers__arrow--left" data-glide-dir="<">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                        <rect width="40" height="40" fill="#FF004D"/>
+                        <rect width="40" height="40"/>
                         <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
                     </svg>
                 </button>
                 <button class="customers__arrow customers__arrow--right" data-glide-dir=">">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                        <rect width="40" height="40" fill="#FF004D"/>
+                        <rect width="40" height="40"/>
                         <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
                     </svg>
                 </button>
@@ -122,6 +122,20 @@ export default {
                 right: -20px;
             }
             transform: translateY(-50%) rotate(180deg);
+        }
+        svg rect {
+            fill: #FF004D;
+            transition: all .3s ease;
+        }
+        &:hover {
+            svg rect {
+                fill: #DF0043;
+            }
+        }
+        &:active {
+            svg rect {
+                fill: #A70032;
+            }
         }
     }
 }

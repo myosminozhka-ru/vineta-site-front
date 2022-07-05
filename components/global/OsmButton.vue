@@ -58,6 +58,27 @@ export default {
         background: transparent;
         color: #172242;
         border: rem(2) solid #FF004D;
+        position: relative;
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: rem(-2);
+            left: 0;
+            height: rem(3);
+            background: #fff;
+            width: 0;
+            transition: all .3s ease;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            top: rem(-2);
+            right: 0;
+            height: rem(3);
+            background: #fff;
+            width: 0;
+            transition: all .3s ease;
+        }
         @media all and (max-width: 1280px) {
             border-width: 2px;
             padding: 18px 30px;
@@ -69,12 +90,24 @@ export default {
             }
         }
         &:hover {
-            color: #fff;
-            svg {
-                // fill: #fff;
-                path {
-                    fill: #fff;
-                }
+            // color: #fff;
+            background: #fff;
+            // svg {
+            //     // fill: #fff;
+            //     path {
+            //         fill: #fff;
+            //     }
+            // }
+            &:before,
+            &:after {
+                width: 70%;
+            }
+        }
+        &:active {
+            border-color: #A70032;
+            &:before,
+            &:after {
+                width: 0;
             }
         }
     }

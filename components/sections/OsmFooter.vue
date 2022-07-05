@@ -244,6 +244,7 @@ export default {
         width: rem(50);
         font-size: 0;
         display: block;
+        transition: all .3s ease;
         @media all and (max-width: 1280px) {
             width: 40px;
         }
@@ -252,6 +253,9 @@ export default {
             @media all and (max-width: 1280px) {
                 margin-right: 30px;
             }
+        }
+        &:hover {
+            mix-blend-mode: overlay;
         }
     }
     &__map {

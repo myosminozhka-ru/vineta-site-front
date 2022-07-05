@@ -43,7 +43,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    transition: opacity .3s ease;
+    transition: all .3s ease;
     opacity: 0;
     visibility: hidden;
     z-index: 10;
@@ -78,6 +78,12 @@ export default {
             font-size: 12px;
             line-height: 14px;
         }
+    }
+    &:hover {
+        background: #DF0043;
+    }
+    &:active {
+        background: #A70032;
     }
 }
 </style>

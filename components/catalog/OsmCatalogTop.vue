@@ -105,11 +105,26 @@ export default {
             font-style: normal;
             font-weight: 400;
             font-size: rem(16);
-            line-height: 140%;
+            line-height: 1;
             color: #FF0040;
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 100%;
+                bottom: rem(-5);
+                height: rem(2);
+                border-radius: rem(2);
+                background: #FF0040;
+                transition: all .3s ease;
+            }
             @media all and (max-width: 1280px) {
                 font-size: 16px;
             }
+        }
+        &:hover .text:after {
+            right: 0;
         }
         .icon {
             width: rem(18);

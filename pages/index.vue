@@ -35,7 +35,7 @@ export default {
     OsmFooterSection: () => import('~/components/sections/OsmFooter.vue'),
   },
   data: () => ({
-    activeIndex: null,
+    activeIndex: 0,
     sections: [],
     isInProgress: false,
   }),

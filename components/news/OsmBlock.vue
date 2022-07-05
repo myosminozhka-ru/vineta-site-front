@@ -1,13 +1,47 @@
 <template>
-    <section class="section section__item section__item--seventh news">
-        <div class="news__wrap" :class="{'innerPage': inner}">
-            <div class="news__top">
-                <osm-h1 class="catalog__title">Каталог</osm-h1>
-                <osm-button class="news__button_top" link="index" :outlined="true">Все новости</osm-button>
+    <div class="news__wrap" :class="{'innerPage': inner}">
+        <div class="news__top">
+            <osm-h1 class="catalog__title">Каталог</osm-h1>
+            <osm-button class="news__button_top" link="index" :outlined="true">Все новости</osm-button>
+        </div>
+        <div class="news__bottom hide_on_tablet">
+            <div v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+                <template v-if="key === 0">
+                    <div class="news__image">
+                        <img :src="item.image" width="100%" alt="">
+                    </div>
+                    <div class="news__item_top">
+                        <div class="news__date">{{ item.date }}</div>
+                    </div>
+                    <div class="news__item_bottom">
+                        <div class="news__text">
+                            {{ item.text }}
+                        </div>
+                        <osm-button :link="item.link">Подробнее</osm-button>
+                    </div>
+                </template>
+                <template v-else>
+                    <div class="news__item_left">
+                        <div class="news__image">
+                            <img :src="item.image" width="100%" alt="">
+                        </div>
+                    </div>
+                    <div class="news__item_right">
+                        <div class="news__item_top">
+                            <div class="news__date">{{ item.date }}</div>
+                            <div class="news__text">
+                                {{ item.text }}
+                            </div>
+                        </div>
+                        <a class="news__link" :href="item.link">Читать новость</a>
+                    </div>
+                </template>
             </div>
-            <div class="news__bottom hide_on_tablet">
-                <div v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
-                    <template v-if="key === 0">
+        </div>
+        <div class="glide news__slider hide_on_desktop">
+            <div class="glide__track" data-glide-el="track">
+                <div class="glide__slides news__slides">
+                    <div v-for="(item, key) in news" :key="key" class="news__item_big">
                         <div class="news__image">
                             <img :src="item.image" width="100%" alt="">
                         </div>
@@ -18,72 +52,36 @@
                             <div class="news__text">
                                 {{ item.text }}
                             </div>
-                            <osm-button :link="item.link">Подробнее</osm-button>
-                        </div>
-                    </template>
-                    <template v-else>
-                        <div class="news__item_left">
-                            <div class="news__image">
-                                <img :src="item.image" width="100%" alt="">
+                            <osm-button :link="item.link" class="hide_on_mobile">Подробнее</osm-button>
+                            <div class="mobile_link hide_off_mobile">
+                                <nuxt-link :to="{name: 'index'}" class="more">Читать новость</nuxt-link>
                             </div>
                         </div>
-                        <div class="news__item_right">
-                            <div class="news__item_top">
-                                <div class="news__date">{{ item.date }}</div>
-                                <div class="news__text">
-                                    {{ item.text }}
-                                </div>
-                            </div>
-                            <a class="news__link" :href="item.link">Читать новость</a>
-                        </div>
-                    </template>
+                    </div>
                 </div>
             </div>
-            <div class="glide news__slider hide_on_desktop">
-                <div class="glide__track" data-glide-el="track">
-                    <div class="glide__slides news__slides">
-                        <div v-for="(item, key) in news" :key="key" class="news__item_big">
-                            <div class="news__image">
-                                <img :src="item.image" width="100%" alt="">
-                            </div>
-                            <div class="news__item_top">
-                                <div class="news__date">{{ item.date }}</div>
-                            </div>
-                            <div class="news__item_bottom">
-                                <div class="news__text">
-                                    {{ item.text }}
-                                </div>
-                                <osm-button :link="item.link" class="hide_on_mobile">Подробнее</osm-button>
-                                <div class="mobile_link hide_off_mobile">
-                                    <nuxt-link :to="{name: 'index'}" class="more">Читать новость</nuxt-link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="news__slider-buttons">
+                <div class="news__bullets hide_on_mobile" data-glide-el="controls[nav]">
+                    <button v-for="(item, key) in news" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
                 </div>
-                <div class="news__slider-buttons">
-                    <div class="news__bullets hide_on_mobile" data-glide-el="controls[nav]">
-                        <button v-for="(item, key) in news" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
-                    </div>
-                    <nuxt-link :to="{name: 'index'}" class="more hide_off_mobile">Смотреть все</nuxt-link>
-                    <div class="news__arrows" data-glide-el="controls">
-                        <button class="news__arrow news__arrow--left" data-glide-dir="<">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                                <rect width="40" height="40" fill="#FF004D"/>
-                                <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
-                            </svg>
-                        </button>
-                        <button class="news__arrow news__arrow--right" data-glide-dir=">">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                                <rect width="40" height="40" fill="#FF004D"/>
-                                <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
-                            </svg>
-                        </button>
-                    </div>
+                <nuxt-link :to="{name: 'index'}" class="more hide_off_mobile">Смотреть все</nuxt-link>
+                <div class="news__arrows" data-glide-el="controls">
+                    <button class="news__arrow news__arrow--left" data-glide-dir="<">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" fill="#FF004D"/>
+                            <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <button class="news__arrow news__arrow--right" data-glide-dir=">">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" fill="#FF004D"/>
+                            <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 <script>
 import Glide from '@glidejs/glide';
@@ -213,6 +211,20 @@ export default {
         }
         &--right {
             transform: rotate(180deg);
+        }
+        svg rect {
+            fill: #FF004D;
+            transition: all .3s ease;
+        }
+        &:hover {
+            svg rect {
+                fill: #DF0043;
+            }
+        }
+        &:active {
+            svg rect {
+                fill: #A70032;
+            }
         }
     }
     &__bullet {
