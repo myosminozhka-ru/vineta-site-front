@@ -93,6 +93,9 @@ export default {
         &:not(:last-child) {
             margin-right: rem(10);
         }
+        &:hover {
+            mix-blend-mode: overlay;
+        }
     }
     &__top_right {
         @media all and (max-width: 1280px) {
@@ -162,10 +165,25 @@ export default {
                 line-height: 140%;
                 color: #FFFFFF;
                 text-decoration: none;
+                position: relative;
+                &:after  {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    right: 100%;
+                    bottom: rem(-5);
+                    height: rem(2);
+                    background: #FFFFFF;
+                    transition: all .3s ease;
+                }
+                &:hover:after {
+                    right: 0;
+                }
                 @media all and (max-width: 1280px) {
                     font-size: 16px;
                     font-weight: 400;
                 }
+                
             }
         }
     }

@@ -158,6 +158,26 @@ export default {
                     margin-bottom: 15px;
                 }
             }
+            a {
+                position: relative;
+                transition: all .3s ease;
+                &:after  {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    right: 100%;
+                    bottom: rem(-5);
+                    height: rem(1);
+                    background: #32D2E8;
+                    transition: all .3s ease;
+                }
+                &:hover {
+                    color: #32d2e8 !important;
+                }
+                &:hover:after {
+                    right: 0;
+                }
+            }
             
             a, span {
                 text-decoration: none;
