@@ -113,6 +113,12 @@
       </section>
       <section class="fourth">
         <img :src="require('~/assets/img/about/people2.jpg')" width="100%" alt="">
+        <div class="play">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" fill="none">
+            <rect width="100%" height="100%" fill="#FF004D"/>
+            <path d="M61.6673 50L38.334 33.3334V66.6667L61.6673 50Z" fill="white"/>
+          </svg>
+        </div>
       </section>
       <section class="sixth">
         <customers />
@@ -437,11 +443,43 @@
   .fourth {
     padding: 0 rem(240);
     font-size: 0;
+    position: relative;
     @media all and (max-width: 1280px) {
       padding: 0 20px;
     }
     @media all and (max-width: 840px) {
       padding: 0 15px;
+    }
+    .play {
+      font-size: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      cursor: pointer;
+      width: rem(100);
+      height: rem(100);
+      @media all and (max-width: 1280px) {
+        width: 80px;
+        height: 80px;
+      }
+      @media all and (max-width: 840px) {
+        width: 60px;
+        height: 60px;
+      }
+      svg rect {
+        transition: all .3s ease;
+      }
+      &:hover {
+        svg rect {
+          fill: #DF0043;
+        } 
+      }
+      &:active {
+        svg rect {
+          fill: #A70032;
+        } 
+      }
     }
   }
   .fiveth {
