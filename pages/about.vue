@@ -209,6 +209,9 @@
       }
       &--left {
         padding: rem(60) rem(60) rem(60) rem(240);
+        @media all and (max-width: 1440px) {
+          padding-left: 150px;
+        }
         @media all and (max-width: 1280px) {
           padding: 40px 20px;
         }
@@ -219,6 +222,9 @@
       &--right {
         padding: rem(60) rem(240) rem(60) rem(60);
         background: #2E5599;
+        @media all and (max-width: 1440px) {
+          padding-right: 150px;
+        }
         @media all and (max-width: 1280px) {
           padding: 40px 20px;
         }
@@ -378,6 +384,10 @@
   }
   .third {
     padding: rem(120) rem(240);
+    @media all and (max-width: 1440px) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
     @media all and (max-width: 1280px) {
       padding: 80px 20px;
     }
@@ -444,6 +454,10 @@
     padding: 0 rem(240);
     font-size: 0;
     position: relative;
+    @media all and (max-width: 1440px) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
     @media all and (max-width: 1280px) {
       padding: 0 20px;
     }
@@ -484,6 +498,10 @@
   }
   .fiveth {
     padding: rem(120) rem(240);
+    @media all and (max-width: 1440px) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
     @media all and (max-width: 1280px) {
       padding: 80px 20px;
     }
@@ -592,6 +610,10 @@
     overflow: hidden;
     padding: rem(120) rem(240);
     background: #F2F2F2;
+    @media all and (max-width: 1440px) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
     @media all and (max-width: 1280px) {
       padding: 80px 20px;
     }
@@ -601,6 +623,10 @@
   }
   .seventh {
     padding: rem(120) rem(240);
+    @media all and (max-width: 1440px) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
     @media all and (max-width: 1280px) {
       padding: 80px 20px;
     }
@@ -631,6 +657,10 @@
     overflow: hidden;
     padding: rem(120) rem(240);
     background: #F2F2F2;
+    @media all and (max-width: 1440px) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
     @media all and (max-width: 1280px) {
       padding: 80px 20px;
     }

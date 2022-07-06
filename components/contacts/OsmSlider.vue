@@ -39,6 +39,11 @@ export default {
         slider: new Glide('.glide', {
             perView: 4,
             gap: '20rem',
+            breakpoints: {
+                840: {
+                    perView: 1,
+                }
+            }
         })
     }),
     mounted() {

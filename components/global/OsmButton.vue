@@ -46,6 +46,8 @@ export default {
     cursor: pointer;
     text-decoration: none;
     transition: all .3s ease;
+    white-space: nowrap;
+    text-align: center;
     @media all and (max-width: 1280px) {
         font-size: 20px;
         padding: 20px 40px;

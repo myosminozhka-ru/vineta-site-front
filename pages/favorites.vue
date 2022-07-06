@@ -7,8 +7,8 @@
                 <div class="favorites__title">Избранное</div>
                 <osm-catalog-products />
                 <div class="favorites__buttons">
-                    <osm-button class="favorites__button" :outlined="true">Выгрузить</osm-button>
-                    <osm-button class="favorites__button">В каталог</osm-button>
+                    <osm-button class="favorites__button" :large="true" :outlined="true">Выгрузить</osm-button>
+                    <osm-button class="favorites__button" :large="true">В каталог</osm-button>
                 </div>
             </div>
         </div>
@@ -50,6 +50,7 @@ export default {
         margin-top: rem(40);
     }
     &__button {
+        width: rem(200);
         &:first-child {
             margin-right: rem(40);
         }

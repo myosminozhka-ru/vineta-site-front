@@ -38,7 +38,7 @@
                                 <div class="line"></div>
                                 <div class="sqare"></div>
                             </div>
-                            <div class="bottom">199{{ key }}</div>
+                            <div class="bottom" @click="selectedTime = key">199{{ key }}</div>
                         </div>
                     </div>
                     <div class="history__text--buttons hide_on_desktop">
@@ -162,9 +162,15 @@ export default {
             margin-left: rem(20);
             line-height: 140%;
             color: #FFFFFF;
+            transition: all .3s ease;
             @media all and (max-width: 1280px) {
                 margin-left: 20px;
                 font-size: 20px;    
+            }
+        }
+        &:hover {
+            .text {
+                color: #172242;
             }
         }
         &--fwd {
@@ -244,6 +250,7 @@ export default {
             opacity: 0.8;
             transform-origin: 0 0;
             transition: all .3s ease;
+            cursor: pointer;
             @media all and (max-width: 1280px) {
                 font-size: 18px;
                 margin-top: 19px;

@@ -1,6 +1,6 @@
 <template>
     <div class="news__content_in">
-        <div v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+        <nuxt-link :to="{name: 'news-newsId', params: {newsId: 'test'}}" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
             <template v-if="key === 0">
                 <div class="news__image">
                     <img :src="item.image" width="100%" alt="">
@@ -31,7 +31,7 @@
                     <a class="news__link" :href="item.link">Читать новость</a>
                 </div>
             </template>
-        </div>
+        </nuxt-link>
     </div>
 </template>
 
@@ -88,6 +88,7 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         grid-area: big;
+        text-decoration: none;
         @media all and (max-width: 1280px) {
             padding: 20px 30px 20px 20px;
             min-height: 450px;
@@ -160,6 +161,7 @@ export default {
     &__item {
         display: flex;
         flex-direction: column;
+        text-decoration: none;
     }
     &__item &__item_left {
         // height: rem(185);

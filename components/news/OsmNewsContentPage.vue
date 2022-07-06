@@ -1,6 +1,6 @@
 <template>
     <div class="news__content_in">
-        <div v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile">
+        <nuxt-link :to="{name: 'news-newsId', params: {newsId: 'test'}}" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
             <template v-if="key === 0">
                 <div class="news__image">
                     <img :src="item.image" width="100%" alt="">
@@ -31,13 +31,13 @@
                     <nuxt-link class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</nuxt-link>
                 </div>
             </template>
-        </div>
+        </nuxt-link>
         <div class="news__content_tabs">
             <!-- <div class="news__content_tabs--opener">
                 <div class="text"></div>
                 <div class="arrow"></div>
             </div> -->
-            <div v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+            <nuxt-link :to="{name: 'news-newsId', params: {newsId: 'test'}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
                         <img :src="item.image" width="100%" alt="">
@@ -50,9 +50,9 @@
                             {{ item.text }}
                         </div>
                     </div>
-                    <nuxt-link class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</nuxt-link>
+                    <span class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</span>
                 </div>
-            </div>
+            </nuxt-link>
         </div>
     </div>
 </template>
@@ -109,6 +109,7 @@ export default {
         }
     }
     &__item_big {
+        text-decoration: none;
         position: relative;
         padding: rem(60);
         min-height: rem(563);
@@ -188,6 +189,7 @@ export default {
     &__item {
         display: flex;
         flex-direction: column;
+        text-decoration: none;
     }
     &__item &__item_left {
         // height: rem(185);

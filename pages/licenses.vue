@@ -9,6 +9,7 @@
                 <osm-gallery />
             </div>
         </div>
+        <osm-footer />
     </div>
 </template>
 
@@ -17,6 +18,7 @@ export default {
     name: "LicensesPage",
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmGallery: () => import('~/components/licenses/OsmGallery.vue'),
     }

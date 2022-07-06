@@ -87,6 +87,10 @@ export default {
 <style lang="scss" scoped>
 .contacts {
     padding: rem(30) rem(240) rem(120);
+    @media all and (max-width: 1440px) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
     @media all and (max-width: 1280px) {
         padding: 30px 20px;
     }
@@ -191,6 +195,10 @@ export default {
 
 .fiveth {
     padding: 0 rem(240) rem(120);
+    @media all and (max-width: 1440px) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
     @media all and (max-width: 1280px) {
       padding: 80px 20px;
     }

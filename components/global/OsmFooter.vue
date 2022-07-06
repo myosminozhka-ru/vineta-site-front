@@ -71,6 +71,9 @@ export default {
     }
     &__top_left {
         width: rem(312);
+        @media all and (max-width: 1440px) {
+            width: 155px;
+        }
         @media all and (max-width: 1280px) {
             width: 155px;
             margin-bottom: 51px;
