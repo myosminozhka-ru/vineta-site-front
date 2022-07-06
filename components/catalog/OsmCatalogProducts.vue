@@ -1,14 +1,14 @@
 <template>
     <div class="products">
         <div class="products__items" v-if="products">
-            <div class="products__item" v-for="product in products" :key="product.ID">
+            <nuxt-link class="products__item" v-for="product in products" :key="product.ID" :to="{name: 'catalog-product'}">
                 <div class="products__item_image">
                     <div class="image_container">
                         <img :src="require('~/assets/img/sections/second.jpg')" alt="">
                     </div>
                 </div>
                 <div class="products__item_data">
-                    <nuxt-link class="products__item_name" :to="{name: 'index'}">{{product.NAME}}</nuxt-link>
+                    <span class="products__item_name">{{product.NAME}}</span>
                     <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                     <div class="products__item_properties">
                         <div class="products__item_property" v-for="property in product.PROPERIES" :key="property.index">
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </nuxt-link>
         </div>
         <div class="products__none" v-else>
             Нет товаров

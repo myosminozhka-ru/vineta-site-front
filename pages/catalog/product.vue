@@ -78,7 +78,11 @@
           <div class="tabs">
             <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 1">
               <div class="title">Описание</div>
-              <div class="value"></div>
+              <div class="value">
+                <div class="value__in">
+                  Безусловно, социально-экономическое развитие требует определения и уточнения системы массового участия. В рамках спецификации современных стандартов, действия представителей оппозиции формируют глобальную экономическую сеть и при этом -  ассоциативно распределены по отраслям. Приятно, граждане, наблюдать, как интерактивные прототипы, превозмогая сложившуюся непростую экономическую ситуацию, преданы социально-демократической анафеме. Повседневная практика показывает, что граница обучения кадров не даёт нам иного выбора, кроме определения укрепления моральных ценностей. Вот вам яркий пример современных тенденций - экономическая повестка сегодняшнего дня требует анализа своевременного выполнения сверхзадачи.
+                </div>
+              </div>
               <div class="productPage__buttons">
                 <osm-button class="productPage__buttons--buy">Заказать</osm-button>
                 <osm-button class="productPage__buttons--fav" :outlined="true">
@@ -415,6 +419,16 @@
         line-height: 140%;
         color: #172242;
       }
+      .value {
+        &__in {
+          padding: rem(40);
+          font-style: normal;
+          font-weight: 400;
+          font-size: rem(20);
+          line-height: 140%;
+          color: #555F76;
+        }
+      }
     }
     &__mods--bg {
       padding: rem(50) rem(40) rem(40);
@@ -447,10 +461,23 @@
         font-size: rem(18);
         line-height: 140%;
         color: #FF0040;
-
+        position: relative;
         @media all and (max-width: 1280px) {
           font-size: 16px;
         }
+        &:after  {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: rem(-5);
+            height: rem(2);
+            background: #FF0040;
+            transition: all .3s ease;
+        }
+      }
+      &:hover .text:after {
+          right: 0;
       }
 
       .icon {

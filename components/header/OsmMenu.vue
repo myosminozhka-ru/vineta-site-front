@@ -1,7 +1,7 @@
 <template>
-  <nav class="header__menu">
+  <nav class="header__menu" @mouseleave="closeModals">
     <ul class="header__ul hide_on_mobile">
-      <li v-for="(link, key) in menu" :key="link.index" class="header__li" @click.stop="openModal(key)" :data-modal-to-open="key" :class="{'has-child': link.childs}">
+      <li v-for="(link, key) in menu" :key="link.index" class="header__li" @mouseenter.stop="openModal(key)" :data-modal-to-open="key" :class="{'has-child': link.childs}">
         <nuxt-link class="header__link" :to="{name: link.url}" @click.stop="">
             <span>{{ link.text }}</span>
             <div v-if="link.childs" class="header__arrow">
@@ -80,7 +80,7 @@
     data: () => ({
       menu: [{
           text: 'Каталог',
-          url: 'index',
+          url: 'catalog',
           childs: [{
             url: 'index',
             icon: require('~/assets/img/catalog/catalog_icon1.svg'),
@@ -89,16 +89,7 @@
         },
         {
           text: 'О компании',
-          url: 'index',
-          childs: [{
-            url: 'index',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Оборудование очистки газов и воздухаы'
-          }]
-        },
-        {
-          text: 'О компании',
-          url: 'index',
+          url: 'about',
           childs: [{
             url: 'index',
             icon: require('~/assets/img/catalog/catalog_icon1.svg'),
@@ -107,7 +98,7 @@
         },
         {
           text: 'Новости',
-          url: 'index',
+          url: 'news',
           childs: [
             {
               url: 'index',
@@ -133,11 +124,11 @@
         },
         {
           text: 'Вакансии',
-          url: 'index'
+          url: 'vacancies'
         },
         {
           text: 'Контакты',
-          url: 'index'
+          url: 'contacts'
         },
       ],
       favoritesCount: 4,

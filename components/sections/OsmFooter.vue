@@ -124,6 +124,9 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+        @media all and (max-width: 1440px) {
+            padding: 100px 20px;
+        }
         @media all and (max-width: 1280px) {
             width: 100%;
             padding: 80px 20px;
@@ -134,12 +137,18 @@ export default {
     }
     &__left &__title {
         margin-bottom: rem(30);
+        @media all and (max-width: 1440px) {
+            margin-bottom: 20px;
+        }
         @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }
     }
     &__left_top {
         margin-bottom: rem(48);
+        @media all and (max-width: 1440px) {
+            margin-bottom: 20px;
+        }
         @media all and (max-width: 1280px) {
             margin-bottom: 20px;
         }
@@ -170,6 +179,9 @@ export default {
         background: #2E5599;
         width: calc(100% - #{rem(900)} + #{rem(133)});
         flex-direction: column;
+        @media all and (max-width: 1440px) {
+            padding: 100px 20px;
+        }
         @media all and (max-width: 1280px) {
             width: 100% !important;
             padding: 80px 20px;
@@ -305,6 +317,20 @@ export default {
                 line-height: 140%;
                 color: #FFFFFF;
                 text-decoration: none;
+                position: relative;
+                &:after  {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    right: 100%;
+                    bottom: rem(-5);
+                    height: rem(2);
+                    background: #FF0040;
+                    transition: all .3s ease;
+                }
+                &:hover:after {
+                    right: 0;
+                }
             }
         }
     }

@@ -1,17 +1,17 @@
 <template>
     <div class="products__items products__items--favorites">
-        <div class="products__item" v-for="product in 8" :key="product.index">
+        <nuxt-link class="products__item" v-for="product in 8" :key="product.index" :to="{name: 'catalog-product'}">
             <div class="products__item_image">
                 <div class="image_container">
                     <img :src="require('~/assets/img/sections/second.jpg')" alt="">
                 </div>
             </div>
             <div class="products__item_data">
-                <nuxt-link class="products__item_name" :to="{name: 'index'}">Товар</nuxt-link>
+                <span class="products__item_name">Товар</span>
                 <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                 <osm-button class="products__item_button" :large="true">Заказать</osm-button>
             </div>
-        </div>
+        </nuxt-link>
     </div>
 </template>
 

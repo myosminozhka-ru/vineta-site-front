@@ -67,6 +67,25 @@ export default {
         @media all and (max-width: 840px) {
             margin-left: 15px;
         }
+        a {
+            position: relative;
+            &:after  {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 100%;
+                bottom: rem(-5);
+                height: rem(2);
+                background: #FF0040;
+                transition: all .3s ease;
+            }
+            &:hover {
+                color: #FF0040;
+                &:after {
+                    right: 0;
+                }
+            }
+        }
     }
     &__item--delim {
         margin: 0 rem(10);

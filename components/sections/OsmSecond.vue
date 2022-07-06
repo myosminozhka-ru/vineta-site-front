@@ -150,6 +150,9 @@ export default {
     &__right {
         padding-right: rem(240);
         background: #2E5599;
+        @media all and (max-width: 1440px) {
+           padding-top: 100px;
+        }
         @media all and (max-width: 1280px) {
            width: 100% !important;
            padding: 80px 20px;
@@ -245,6 +248,9 @@ export default {
     grid-template-areas:
             "first second"
             "first third";
+    @media all and (max-width: 1440px) and (min-width: 1281px) {
+        grid-template-rows: repeat(2, 100px );
+    }
     @media all and (max-width: 1280px) {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;
@@ -257,6 +263,9 @@ export default {
     }
     &__item {
         min-height: rem(148);
+        @media all and (max-width: 1440px) and (min-width: 1281px) {
+            min-height: 100px;
+        }
         &:nth-child(n+4) {
             display: none;
         }
@@ -269,6 +278,7 @@ export default {
         &:first-child {
             grid-area: first;
             position: relative;
+            
             &::after {
                 content: "";
                 position: absolute;

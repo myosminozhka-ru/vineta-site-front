@@ -61,12 +61,12 @@
               </nuxt-link>
             </div>
             <div class="second__items">
-              <div class="second__item" v-for="item in 9" :key="item.index">
+              <nuxt-link :to="{name: 'catalog'}" class="second__item" v-for="item in 9" :key="item.index">
                 <div class="icon">
                   <img :src="require('~/assets/img/about/cat_icon.svg')" width="100%" alt="">
                 </div>
                 <div class="text">Теплообменное оборудование</div>
-              </div>
+              </nuxt-link>
             </div>
           </div>
           <div class="second__buttons">
@@ -323,6 +323,7 @@
       width: 50%;
       display: flex;
       align-items: center;
+      text-decoration: none;
       @media all and (max-width: 1280px) {
         &:not(:last-child) {
           margin-bottom: 20px;
@@ -346,11 +347,26 @@
         font-size: rem(16);
         line-height: 140%;
         color: #FFFFFF;
-        width: calc(100% - #{rem(34)});
+        // width: calc(100% - #{rem(34)});
+        position: relative;
+        &:after  {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: rem(-5);
+            height: rem(1);
+            background: #fff;
+            transition: all .3s ease;
+        }
+        
         @media all and (max-width: 1280px) {
-          width: calc(100% - 34px);
+          // width: calc(100% - 34px);
           font-size: 16px;
         }
+      }
+      &:hover .text:after {
+        right: 0;
       }
     }
   }

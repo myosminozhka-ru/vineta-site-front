@@ -249,11 +249,14 @@ body .wrapper .full-page-indicators {
 
 .pageWrap {
   padding: rem(150) rem(240) rem(150);
+  background: #fff;
+  @media all and (max-width: 1440px) {
+    padding-left: rem(150);
+    padding-right: rem(150);
+}
   @media all and (max-width: 1280px) {
       padding: 30px 20px 82px;
-      @media all and (max-width: 1280px) {
-          background: #fff;
-      }
+      background: #fff;
   }
 }
 .header_padding {
@@ -265,7 +268,6 @@ body .wrapper .full-page-indicators {
 .products {
   &__items {
       display: flex;
-      align-items: flex-start;
       flex-wrap: wrap;
       // justify-content: space-between;
   }
@@ -275,8 +277,9 @@ body .wrapper .full-page-indicators {
       border: 1px solid #D7DCE1;
       box-sizing: border-box;
       transition: all .3s ease;
+      text-decoration: none;
       &:hover {
-          border-color: transparent;
+          border-color: #FF0040;
       }
       &:nth-child(n + 4) {
           margin-top: rem(79);
@@ -437,15 +440,15 @@ body .wrapper .full-page-indicators {
               transition: all .3s ease;
           }
       }
-      &:hover {
-          color: #fff;
-          svg {
+      // &:hover {
+          // color: #fff;
+          // svg {
               // fill: #fff;
-              path {
-                  fill: #fff;
-              }
-          }
-      }
+              // path {
+              //     fill: #fff;
+              // }
+          // }
+      // }
   }
   &.isLarge {
       width: 100%;

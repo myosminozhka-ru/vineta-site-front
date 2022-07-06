@@ -171,11 +171,46 @@ export default {
         &--more {
             background: #FF0040;
             color: #fff;
+            transition: all .3s ease;
+            &:hover {
+                background: #DF0043;
+            }
+            &:active {
+                background: #A70032;
+            }
         }
         &--3d {
             background: #D7DCE1;
             color: #172242;
             margin-top: rem(20);
+            transition: all .3s ease;
+
+            .text {
+                transition: all .3s ease;
+            }
+            svg path {
+                transition: all .3s ease;
+            }
+            &:hover {
+                background: #DF0043;
+                svg path {
+                    fill: #fff;
+                    stroke: #fff;
+                }
+                .text {
+                    color: #fff;
+                }
+            }
+            &:active {
+                background: #A70032;
+                svg path {
+                    fill: #fff;
+                    stroke: #fff;
+                }
+                .text {
+                    color: #fff;
+                }
+            }
         }
     }
 }
