@@ -174,6 +174,11 @@
       box-sizing: border-box;
       min-height: 0;
     }
+    @media all and (max-width: 1280px) {
+      padding: 74px 20px 74px;
+      box-sizing: border-box;
+      min-height: 0;
+    }
     &__background {
         position: absolute;
         top: 0;
@@ -189,6 +194,7 @@
 
       @media all and (max-width: 1280px) {
         flex-direction: column;
+        align-items: stretch;
       }
     }
 

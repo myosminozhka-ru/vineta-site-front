@@ -3,7 +3,7 @@
         <div class="gallery__title">Лицензии и сертификаты</div>
         <no-ssr>
             <LightGallery
-                :images="images"
+                :images="gallery"
                 :index="index"
                 :disable-scroll="true"
                 @close="index = null"
@@ -37,10 +37,14 @@ export default {
           { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
           { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
           { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
+        ],
+        gallery: [
+          require('~/assets/img/licenses/license2.png'),
+          require('~/assets/img/licenses/license2.png'),
+          require('~/assets/img/licenses/license2.png'),
+          require('~/assets/img/licenses/license2.png'),
+          require('~/assets/img/licenses/license2.png'),
+          require('~/assets/img/licenses/license2.png'),
         ],
         index: null,
     })
