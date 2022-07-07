@@ -1,6 +1,11 @@
 export const state = () => ({
   main: [],
-  catalog: []
+  catalog: [],
+  modals: {
+    buy: {
+      isOpened: false
+    }
+  }
 })
 
 export const mutations = {
@@ -10,6 +15,9 @@ export const mutations = {
   addCatalog(state, data) {
     state.catalog = data
   },
+  toggleBuyModal(state, data) {
+    state.modals.buy = data;
+  }
 }
 
 export const actions = {
@@ -37,6 +45,14 @@ export const actions = {
         })
     });
   },
+  toggleModal(context, data) {
+    if (data.type === 'buy') {
+      context.commit('toggleBuyModal', {
+        isOpened: data.isOpened
+      });
+    }
+    console.log(data);
+  },
   async nuxtServerInit ({ dispatch }) {
     await dispatch('addMain');
     await dispatch('addCatalog');
@@ -49,5 +65,8 @@ export const getters = {
   },
   getCatalog(state) {
     return state.catalog;
+  },
+  getModals(state) {
+    return state.modals;
   },
 }

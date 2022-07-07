@@ -32,7 +32,9 @@
           </div>
         </div>
         <div class="productPage__buttons">
-          <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+          <div @click="openBuy">
+            <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+          </div>
           <osm-button class="productPage__buttons--fav" :outlined="true">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
@@ -84,7 +86,9 @@
                 </div>
               </div>
               <div class="productPage__buttons">
-                <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                <div @click="openBuy">
+                  <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                </div>
                 <osm-button class="productPage__buttons--fav" :outlined="true">
                   <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
@@ -172,7 +176,9 @@
                 </svg>
               </div>
               <div class="productPage__buttons">
-                <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                <div @click="openBuy">
+                  <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                </div>
                 <osm-button class="productPage__buttons--fav" :outlined="true">
                   <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
@@ -297,7 +303,9 @@
                 </svg>
               </div>
               <div class="productPage__buttons">
-                <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                <div @click="openBuy">
+                  <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                </div>
                 <osm-button class="productPage__buttons--fav" :outlined="true">
                   <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
@@ -329,7 +337,9 @@
                 </div>
               </div>
               <div class="productPage__buttons">
-                <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                <div @click="openBuy">
+                  <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                </div>
                 <osm-button class="productPage__buttons--fav" :outlined="true">
                   <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
@@ -423,7 +433,9 @@
                 </svg>
               </div>
               <div class="productPage__buttons">
-                <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                <div @click="openBuy">
+                  <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                </div>
                 <osm-button class="productPage__buttons--fav" :outlined="true">
                   <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
@@ -554,7 +566,9 @@
                 </svg>
               </div>
               <div class="productPage__buttons">
-                <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                <div @click="openBuy">
+                  <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                </div>
                 <osm-button class="productPage__buttons--fav" :outlined="true">
                   <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
@@ -595,11 +609,12 @@
         </div>
       </div>
     </div>
-    
+    <osm-modals-buy />
   </div>
 </template>
 
 <script>
+  import {mapActions} from 'vuex';
   export default {
     name: 'CatalogPage',
     components: {
@@ -607,12 +622,23 @@
       OsmProductTop: () => import('~/components/product/OsmProductTop.vue'),
       OsmProductSlider: () => import('~/components/product/OsmProductSlider.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue'),
+      OsmModalsBuy: () => import('~/components/modals/buy.vue'),
     },
     data: () => ({
       tabs: {
         selected: 1,
       }
-    })
+    }),
+    methods: {
+      ...mapActions(['toggleModal']),
+      openBuy() {
+        console.log(123123)
+        this.toggleModal({
+          isOpened: true,
+          type: 'buy'
+        })
+      }
+    }
   }
 
 </script>

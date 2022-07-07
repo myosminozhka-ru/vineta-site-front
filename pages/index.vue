@@ -51,7 +51,8 @@ export default {
     }
   },
   beforeDestroy() {
-    document.removeEventListener('mousewheel', () => {
+    console.log('beforeDestroy')
+    document.removeEventListener('mousewheel', function() {
       console.log('mousewheel event removed')
     });
   },
@@ -60,17 +61,20 @@ export default {
       this.activeIndex = -1;
     }
     if (window.innerWidth > 1024) {
-      this.sections = document.querySelectorAll('.section');
-      this.activeIndex = 0;
-      document.addEventListener('mousewheel', (event) => {
-        if (event.wheelDelta > 0 || event.detail < 0) {
-          this.change('up');
-          this.isInProgress = true;
-        } else {
-          this.change('down');
-          this.isInProgress = true;
-        }
-      });
+      setTimeout(() => {
+        this.sections = document.querySelectorAll('.section');
+        this.activeIndex = 0;
+        console.log(this.sections);
+        document.addEventListener('mousewheel', (event) => {
+          if (event.wheelDelta > 0 || event.detail < 0) {
+            this.change('up');
+            this.isInProgress = true;
+          } else {
+            this.change('down');
+            this.isInProgress = true;
+          }
+        });
+      }, 500);
     }
   },
   methods: {
