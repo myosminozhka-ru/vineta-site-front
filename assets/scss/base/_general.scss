@@ -90,6 +90,14 @@ body .wrapper .full-page-indicators {
       font-size: rem(16);
       line-height: rem(19);
     }
+    &:hover span {
+      color: #2E5599;
+      transition: all 0s ease 0s;
+      &:after {
+        top: 0;
+        bottom: 0;
+      }
+    }
     &.active span {
       font-weight: 600;
       font-size: rem(18);

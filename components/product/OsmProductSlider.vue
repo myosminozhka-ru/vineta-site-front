@@ -176,12 +176,17 @@ export default {
     }
     &__slider-preview {
         font-size: 0;
+        border: 1px solid transparent;
+        transition: all .3s ease;
         &:not(:last-child) {
             margin-bottom: rem(20);
             @media all and (max-width: 1280px) {
                 margin-bottom: 0;
                 margin-right: 40px;
             }
+        }
+        &:hover {
+            border-color: #D7DCE1;
         }
         @media all and (max-width: 1280px) {
             width: 73px;

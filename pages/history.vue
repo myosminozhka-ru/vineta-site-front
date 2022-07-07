@@ -144,6 +144,10 @@ export default {
         @media all and (max-width: 1280px) {
             margin-top: 80px;
         }
+        @media all and (max-width: 840px) {
+            flex-direction: column;
+            align-items: stretch;
+        }
     }
     &__text--button {
         .arrow {
@@ -178,6 +182,10 @@ export default {
             @media all and (max-width: 1280px) {
                 margin-left: 30px; 
             }
+            @media all and (max-width: 840px) {
+                margin-left: 0;
+                margin-top: 20px;
+            }
             .text {
                 order: -1;
                 margin-left: 0;
@@ -199,6 +207,12 @@ export default {
         @media all and (max-width: 1280px) {
             margin-top: 80px;
         }
+        @media all and (max-width: 840px) {
+            overflow: auto;
+            margin-left: -20px;
+            margin-right: -20px;
+            padding: 20px;
+        }
     }
     &__timeline_item {
         min-width: rem(291);
@@ -206,6 +220,10 @@ export default {
         @media all and (max-width: 1280px) {
             transform: translateX(calc(-100% * var(--index)));
             min-width: 190px;
+        }
+        @media all and (max-width: 1280px) {
+            transform: none;
+            // min-width: 190px;
         }
         .top {}
         .line {
