@@ -1,5 +1,5 @@
 <template>
-    <div class="productPage__top">
+    <div class="productPage__in">
         <div class="productPage__slider">
             <div class="glide productPage__slider-left">
                 <div class="glide__track" data-glide-el="track">
@@ -101,12 +101,27 @@ export default {
     }
   }
 .productPage {
+    &__in {
+        @media all and (max-width: 1280px) {
+         
+            width: 100%;
+        }
+    }
     &__slider {
         display: flex;
         align-items: flex-start;
+        @media all and (max-width: 1280px) {
+            flex-direction: column;
+        }
     }
     &__slider-left {
         width: rem(828);
+        @media all and (max-width: 1440px) {
+            width: 710px;
+        }
+        @media all and (max-width: 1280px) {
+            width: 100%;
+        }
     }
     &__slider-item {
         background: #D7DCE1;
@@ -114,7 +129,10 @@ export default {
     &__slider-item__in {
         position: relative;
         padding-top: 100%;
-        
+        @media all and (max-width: 1280px) {
+            padding-top: 56%;
+            width: 100%;
+        }
     }
     &__slider-item__imege {
         position: absolute;
@@ -134,9 +152,24 @@ export default {
         display: flex;
         flex-direction: column;
         margin-left: rem(24);
+        @media all and (max-width: 1440px) {
+            width: 77px;
+            margin-left: 20px;
+        }
+        @media all and (max-width: 1280px) {
+            width: 100%;
+            margin-left: 0;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
     }
     &__slider-previews {
         cursor: pointer;
+        @media all and (max-width: 1280px) {
+            display: flex;
+            align-items: center;
+        }
         img{
             max-width: 100%;
         }
@@ -145,10 +178,28 @@ export default {
         font-size: 0;
         &:not(:last-child) {
             margin-bottom: rem(20);
+            @media all and (max-width: 1280px) {
+                margin-bottom: 0;
+                margin-right: 40px;
+            }
+        }
+        @media all and (max-width: 1280px) {
+            width: 73px;
+        }
+        @media all and (max-width: 840px) {
+            width: 60px;
+            &:nth-child(n+3) {
+                display: none;
+            }
         }
     }
     &__slider-buttons {
         margin-top: rem(20);
+        @media all and (max-width: 1280px) {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
     }
     &__slider-button {
         width: 100%;
@@ -157,6 +208,14 @@ export default {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        @media all and (max-width: 1280px) {
+            width: 77px;
+            height: 77px;
+        }
+        @media all and (max-width: 840px) {
+            width: 65px;
+            height: 65px;
+        }
         .text {
             font-style: normal;
             font-weight: 400;
@@ -184,7 +243,10 @@ export default {
             color: #172242;
             margin-top: rem(20);
             transition: all .3s ease;
-
+@media all and (max-width: 1280px) {
+            margin-top: 0;
+            margin-left: 20px;
+        }
             .text {
                 transition: all .3s ease;
             }
