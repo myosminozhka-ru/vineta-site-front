@@ -373,7 +373,7 @@
       line-height: 140%;
       color: #D7DCE1;
       text-decoration: none;
-      padding: rem(35) 0;
+      padding: rem(47) 0;
       &:after {
         content: "";
         position: absolute;

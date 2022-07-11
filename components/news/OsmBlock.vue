@@ -1,7 +1,7 @@
 <template>
     <div class="news__wrap" :class="{'innerPage': inner}">
         <div class="news__top">
-            <osm-h1 class="catalog__title">Каталог</osm-h1>
+            <osm-h1 class="news__title">Новости</osm-h1>
             <osm-button class="news__button_top" link="index" :outlined="true">Все новости</osm-button>
         </div>
         <div class="news__bottom hide_on_tablet">
@@ -297,6 +297,9 @@ export default {
                 "first fourth";
         grid-template-columns: repeat(2, 50%);
         grid-gap: rem(20);
+    }
+    &__title {
+        font-size: rem(40);
     }
     &__item_big {
         position: relative;

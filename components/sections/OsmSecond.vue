@@ -143,6 +143,8 @@ export default {
     }
     &__item--dark &__title {
         color: #fff;
+        font-size: rem(40);
+        margin-bottom: rem(30);
     }
     &__item--dark &__text {
         color: #fff;
@@ -262,9 +264,11 @@ export default {
         margin-bottom: 20px;
     }
     &__item {
-        min-height: rem(148);
+        &:not(:first-child) {
+            height: rem(148);
+        }
         @media all and (max-width: 1440px) and (min-width: 1281px) {
-            min-height: 100px;
+            height: 100px;
         }
         &:nth-child(n+4) {
             display: none;

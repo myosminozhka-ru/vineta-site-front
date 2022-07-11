@@ -36,11 +36,14 @@ export default {
         background: #2E5599;
     }
     &__title {
+        font-size: rem(40);
+        margin-bottom: rem(30);
         @media all and (max-width: 1280px) {
             color: #fff;
         }
     }
     &__text {
+        
         @media all and (max-width: 1280px) {
             color: #fff;
         }

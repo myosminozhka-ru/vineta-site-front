@@ -45,5 +45,8 @@ export default {
             padding: 20px;
         }
     }
+    &__title {
+        margin-bottom: rem(30);
+    }
 }
 </style>

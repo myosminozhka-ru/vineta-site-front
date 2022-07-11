@@ -94,9 +94,10 @@ export default {
     background: #FFFFFF;
     &__wrap {
         width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
-        padding: rem(100) rem(240) rem(70) rem(108);
+        padding: rem(120) rem(240) rem(0) rem(108);
         @media all and (max-width: 1280px) {
             padding: 20px;
         }
@@ -117,6 +118,7 @@ export default {
         }
     }
     &__title {
+        font-size: rem(40);
         margin-bottom: rem(30);
         @media all and (max-width: 1280px) {
             margin-bottom: 30px;

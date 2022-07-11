@@ -59,12 +59,12 @@
 <style lang="scss" scoped>
   .section {
     &__right {
-      padding-right: rem(243);
+      padding-top: rem(100);
+      padding-bottom: 0;
       display: block;
-      @media all and (min-width: 1281px) {
-        padding-top: rem(300);
-
-      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
       @media all and (max-width: 1280px) {
           padding-right: 20px;
           
@@ -72,6 +72,10 @@
         @media all and (max-width: 840px) {
           padding-bottom: 60px !important;
         }
+    }
+    &__title {
+      font-size: rem(40);
+      margin-bottom: rem(30);
     }
     &__right-image {
       height: 360px;
