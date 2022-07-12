@@ -47,6 +47,9 @@ export default {
         font-size: rem(40);
         line-height: 110%;
         color: #172242;
+        @media all and (max-width: 1440px) {
+            font-size: 40px;
+        }
         @media all and (max-width: 1280px) {
             font-size: 30px;
         }

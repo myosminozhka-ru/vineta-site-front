@@ -324,6 +324,7 @@ export default {
                 color: #FFFFFF;
                 text-decoration: none;
                 position: relative;
+                transition: all .3s ease;
                 &:after  {
                     content: "";
                     position: absolute;
@@ -331,8 +332,11 @@ export default {
                     right: 100%;
                     bottom: rem(-5);
                     height: rem(2);
-                    background: #FF0040;
+                    background: #32D2E8;
                     transition: all .3s ease;
+                }
+                &:hover {
+                    color: #32D2E8;
                 }
                 &:hover:after {
                     right: 0;

@@ -88,7 +88,7 @@ body .wrapper .full-page-indicators {
     }
     span::before {
       counter-increment: section;
-      content: counter(section);
+      content: '0'counter(section);
       font-style: normal;
       font-weight: 400;
       font-size: rem(16);
@@ -271,13 +271,18 @@ body .wrapper .full-page-indicators {
   padding: rem(150) rem(240) rem(150);
   background: #fff;
   @media all and (max-width: 1440px) {
-    padding-left: rem(150);
-    padding-right: rem(150);
+    padding-left: rem(165);
+    padding-right: rem(165);
+    padding-top: rem(170);
 }
   @media all and (max-width: 1280px) {
       padding: 30px 20px 82px;
       background: #fff;
   }
+  @media all and (max-width: 840px) {
+    padding: 30px 15px 82px;
+    background: #fff;
+}
 }
 .header_padding {
   @media all and (min-width: 1281px) {
@@ -340,7 +345,7 @@ body .wrapper .full-page-indicators {
       background: #D7DCE1;
       .image_container {
           position: relative;
-          padding-top: 50%;
+          padding-top: 58%;
       }
       img {
           position: absolute;

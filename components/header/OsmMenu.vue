@@ -392,7 +392,7 @@
       }
       @media all and (max-width: 1280px) {
         font-size: 18px;
-        padding: 20px 0s;
+        padding: 20px 0;
       }
     }
     &__li.isActive &__link:after {

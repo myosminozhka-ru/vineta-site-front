@@ -83,7 +83,7 @@ export default {
     methods: {
         setFilterOPener() {
             document.querySelector('.filter__title').addEventListener('click', (event) => {
-                if (window.innerWidth <= 1024) {
+                if (window.innerWidth <= 1280) {
                     event.target.closest('.filter').classList.toggle('opened');
                 }
             })

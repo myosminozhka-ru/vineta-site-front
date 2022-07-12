@@ -62,7 +62,16 @@ export default {
         }
         .image_container {
             position: relative;
-            padding-top: 50%;
+            padding-top: 58%;
+            @media all and (max-width: 1440px) {
+                padding-top: 76%;
+            }
+            @media all and (max-width: 1280px) {
+                padding-top: 58%;
+            }
+            @media all and (max-width: 840px) {
+                padding-top: 83%;
+            }
         }
         img {
             position: absolute;

@@ -36,13 +36,15 @@ export default {
         }
     }
     &__in-left {
-        width: rem(270);
+        width: rem(345);
+        border: 1px solid #D7DCE1;
         @media all and (max-width: 1280px) {
             width: 100%;
+            border: none;
         }
     }
     &__in-right {
-        width: calc(100% - #{rem(290)});
+        width: calc(100% - #{rem(365)});
         @media all and (max-width: 1280px) {
             width: 100%;
         }

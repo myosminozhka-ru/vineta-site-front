@@ -120,6 +120,24 @@
           </svg>
         </div>
       </section>
+      <section class="history">
+        <div class="history__side history__left">
+          <div class="history__top">
+            <div class="history__title">Наша история</div>
+            <div class="history__line"></div>
+            <div class="history__text">Узнайте больше о том, как развивалось предприятие ООО «Винета» с 1996 года — от оборудования для аквакультуры до полноценного судопроизводства.</div>
+          </div>
+          <osm-button class="history__button">Подробнее</osm-button>
+        </div>
+        <div class="history__side history__right">
+          <div class="history__top">
+            <div class="history__title">Технологии производства</div>
+            <div class="history__line"></div>
+            <div class="history__text">Узнайте больше о тексте для этого блока, который написал в качестве примера. Несколько строк об этапах производства и что ожидает пользователя после клика на плитку.</div>
+          </div>
+          <osm-button class="history__button" :outlined="true">Подробнее</osm-button>
+        </div>
+      </section>
       <section class="sixth">
         <customers />
       </section>
@@ -160,7 +178,7 @@
   .first {
     display: flex;
     align-items: center;
-    padding: rem(20) rem(495) rem(20) rem(240);
+    padding: rem(20) rem(240) rem(20) rem(240);
     background: #D7DCE1;
     @media all and (max-width: 1280px) {
       padding: 20px 146px 20px 20px;
@@ -666,6 +684,110 @@
     }
     @media all and (max-width: 840px) {
       padding: 60px 15px;
+    }
+  }
+  .history {
+    padding: rem(120) 0;
+    display: flex;
+    @media all and (max-width: 1280px) {
+      padding: rem(80) 0;
+    }
+    @media all and (max-width: 1280px) {
+      overflow: auto;
+    }
+    &__side {
+      width: 50%;
+      padding-top: rem(60);
+      padding-bottom: rem(60);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @media all and (max-width: 1280px) {
+        min-width: 314px;
+      }
+    }
+    &__left {
+      padding-left: rem(240);
+      padding-right: rem(240);
+      position: relative;
+      background: url('~assets/img/about/about_history.jpg') 50% 50% / cover no-repeat;
+      @media all and (max-width: 1280px) {
+        padding-left: rem(20);
+        padding-right: rem(20);
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #172242;
+        opacity: 0.6;
+      }
+    }
+    &__right {
+      padding-left: rem(131);
+      padding-right: rem(350);
+      @media all and (max-width: 1280px) {
+        padding-left: rem(20);
+        padding-right: rem(20);
+      }
+    }
+    &__top {
+      position: relative;
+      z-index: 5;
+    }
+    &__title {
+      font-style: normal;
+      font-weight: 600;
+      font-size: rem(40);
+      margin-bottom: rem(30);
+      line-height: 140%;
+      @media all and (max-width: 1280px) {
+        font-size: 30px;
+      }
+    }
+    &__left &__title {
+      color: #FFFFFF;
+    }
+    &__right &__title {
+      color: #172242;
+    }
+    &__line {
+      width: 100%;
+      height: 2px;
+      border-radius: 4px;
+      margin-bottom: rem(30);
+    }
+    &__left &__line {
+      background: #FFFFFF;
+    }
+    &__right &__line {
+      background: #555F76;
+      opacity: 0.2;
+    }
+    &__text {
+      font-style: normal;
+      font-weight: 400;
+      font-size: rem(18);
+      margin-bottom: rem(30);
+      line-height: 140%;
+    }
+    &__left &__text {
+      color: #FFFFFF;
+      opacity: 0.9;
+    }
+    &__right &__text {
+      color: #555F76;
+      opacity: 0.7;
+    }
+    &__button {
+      position: relative;
+      z-index: 5;
+      @media all and (max-width: 1280px) {
+        width: 183px;
+      }
     }
   }
 </style>

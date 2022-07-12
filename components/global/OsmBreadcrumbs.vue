@@ -40,6 +40,9 @@ export default {
     padding: 0;
     list-style: none; 
     margin-bottom: rem(30);
+    @media all and (max-width: 1440px) {
+        margin-bottom: 35px; 
+    }
     @media all and (max-width: 1280px) {
         margin-bottom: 43px; 
     }
