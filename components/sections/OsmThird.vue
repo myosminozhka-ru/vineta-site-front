@@ -12,7 +12,7 @@
               <div class="section__text">
                 {{ thirdData.PREVIEW_TEXT }}
               </div>
-              <osm-button link="index">Каталог</osm-button>
+              <osm-button class="section__button" link="index">Подробнее</osm-button>
             </div>
           </div>
         </div>
@@ -66,12 +66,12 @@
       justify-content: center;
       align-items: center;
       @media all and (max-width: 1280px) {
-          padding-right: 20px;
-          
-        }
-        @media all and (max-width: 840px) {
-          padding-bottom: 60px !important;
-        }
+        padding-right: 20px;
+        
+      }
+      @media all and (max-width: 840px) {
+        padding-bottom: 60px !important;
+      }
     }
     &__title {
       font-size: rem(40);
@@ -87,6 +87,14 @@
         height: 100%;
         object-fit: cover;
       }
+      @media all and (max-width: 840px) {
+        width: 100%;
+      }
+    }
+    &__button {
+      @media all and (max-width: 1280px) {
+        width: 223px;
+      }
     }
     &__bullets {
         position: absolute;
@@ -95,6 +103,7 @@
         @media all and (max-width: 1280px) {
           position: static;
           margin-top: 43px;
+          width: 100%;
         }
         @media all and (max-width: 840px) {
           margin-top: 20px;

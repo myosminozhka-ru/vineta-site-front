@@ -9,7 +9,7 @@
                 <div class="section__text">
                     {{ firstData.PREVIEW_TEXT }}
                 </div>
-                <osm-button link="catalog">{{ firstData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
+                <osm-button class="section__button" link="catalog">{{ firstData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
             </div>
         </div>
     </section>
@@ -47,6 +47,9 @@ export default {
     }
     &__title {
         margin-bottom: rem(30);
+    }
+    &__button {
+        width: 192px;
     }
 }
 </style>

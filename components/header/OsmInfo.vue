@@ -111,9 +111,12 @@ export default {
         font-style: normal;
         font-weight: 400;
         font-size: rem(18);
-        margin-right: rem(40);
+        margin-right: rem(55);
         line-height: 140%;
         color: #D7DCE1;
+        @media all and (max-width: 1440px) {
+            margin-right: 60px;
+        }
         @media all and (max-width: 1280px) {
             font-size: 18px;
             margin-right: 31px;

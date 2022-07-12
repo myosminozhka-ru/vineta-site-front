@@ -38,12 +38,16 @@ body {
   padding: rem(150) rem(240) rem(150);
 }
 body .wrapper .full-page-indicators {
-  @media all and (max-width: 1280px) {
-    display: none;
-  }
+  
   left: 0;
   width: rem(133);
   padding-top: rem(120);
+  @media all and (max-width: 1280px) {
+    width: 133px;
+  }
+  @media all and (max-width: 1280px) {
+    display: none;
+  }
   &.white {
     background: #fff;
   }
@@ -163,6 +167,7 @@ body .wrapper .full-page-indicators {
     display: flex;
     align-items: center;
     justify-content: center;
+    
     img {
       
       @media all and (min-width: 841px) {
@@ -177,10 +182,13 @@ body .wrapper .full-page-indicators {
     &--fullwidth img {
       height: 100%;
     }
+    @media all and (max-width: 1440px) {
+      width: 523px;
+    }
     @media all and (max-width: 1280px) {
-        min-height: 470px;
+        min-height: 495px;
         height: 100%;
-        width: 495px;
+        width: 470px;
     }
     @media all and (max-width: 840px) {
       width: 100% !important;
@@ -201,12 +209,16 @@ body .wrapper .full-page-indicators {
       align-items: center;
       justify-content: center;
       @media all and (max-width: 1440px) {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
+        padding-left: 74px !important;
+        padding-right: 140px !important;
+        padding-top: 120px !important;
+        padding-bottom: 0 !important;
+        width: calc(100% - #{rem(523)});
       }
       @media all and (max-width: 1280px) {
-        width: calc(100% - 495px) !important;
+        width: calc(100% - 470px) !important;
         padding: 20px !important;
+        flex-direction: column;
       }
       @media all and (max-width: 840px) {
         width: 100% !important;

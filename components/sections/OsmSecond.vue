@@ -120,6 +120,7 @@ export default {
         @media all and (max-width: 1280px) {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             .mobile_left,
             .mobile_right {
                 width: calc(50% - 10px);
@@ -153,7 +154,8 @@ export default {
         padding-right: rem(240);
         background: #2E5599;
         @media all and (max-width: 1440px) {
-           padding-top: 100px;
+           padding-top: 100px !important;
+           padding-bottom: 80px !important;
         }
         @media all and (max-width: 1280px) {
            width: 100% !important;
@@ -254,6 +256,7 @@ export default {
         grid-template-rows: repeat(2, 100px );
     }
     @media all and (max-width: 1280px) {
+        margin-bottom: 0;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 20px;
         grid-template-areas:
@@ -268,7 +271,9 @@ export default {
             height: rem(148);
         }
         @media all and (max-width: 1440px) and (min-width: 1281px) {
-            height: 100px;
+            &:not(:first-child) {
+                height: 100px;
+            }
         }
         &:nth-child(n+4) {
             display: none;

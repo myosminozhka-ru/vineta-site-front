@@ -171,6 +171,8 @@
       opacity: 0;
       visibility: hidden;
       transition: all .3s ease;
+      border: 1px solid #D7DCE1;
+      border-top: none;
       @media all and (max-width: 1280px) {
         left: 0;
         right: 0;
@@ -374,6 +376,10 @@
       color: #D7DCE1;
       text-decoration: none;
       padding: rem(47) 0;
+      @media all and (max-width: 1440px) {
+        padding-top: 49px;
+        padding-bottom: 49px;
+      }
       &:after {
         content: "";
         position: absolute;

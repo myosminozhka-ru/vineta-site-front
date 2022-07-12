@@ -261,8 +261,8 @@ export default {
     &__wrap {
         width: 100%;
         &:not(.innerPage) {
-            padding: rem(100) rem(240) rem(70) rem(108);
-            .catalog__title {
+            padding: 110rem 240rem 0rem 108rem;
+            .news__title {
                 @media all and (max-width: 840px) {
                     color: #fff;
                 }

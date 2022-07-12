@@ -9,7 +9,7 @@
                 <div class="section__text">
                     {{ fourthData.PREVIEW_TEXT }}
                 </div>
-                <osm-button link="index">Подробнее</osm-button>
+                <osm-button class="section__button" link="index">Подробнее</osm-button>
             </div>
         </div>
     </section>
@@ -46,6 +46,11 @@ export default {
         
         @media all and (max-width: 1280px) {
             color: #fff;
+        }
+    }
+    &__button {
+        @media all and (max-width: 1280px) {
+            width: 223px;
         }
     }
 }

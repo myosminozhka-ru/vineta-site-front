@@ -2,7 +2,7 @@
     <section class="section section__item section__item--footer section__item--dark">
         <div class="section__left">
             <div class="section__left_top">
-                <osm-h1 class="section__title">Контакты</osm-h1>
+                <osm-h1 class="section__title">Оставить заявку</osm-h1>
                 <div class="section__text">
                     Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные
                 </div>
@@ -102,6 +102,9 @@ export default {
     &__footer {
         order: -1;
     }
+    &__title {
+        font-size: rem(40);
+    }
     &__content {
         margin-bottom: rem(31);
         @media all and (max-width: 1280px) {
@@ -117,7 +120,7 @@ export default {
     &__left {
         padding-left: rem(107);
         padding-right: rem(71);
-        padding-top: rem(170);
+        padding-top: rem(175);
         padding-bottom: rem(121);
         width: calc(#{rem(900)} - #{rem(133)});
         background: none;
@@ -125,7 +128,8 @@ export default {
         justify-content: space-between;
         align-items: flex-start;
         @media all and (max-width: 1440px) {
-            padding: 100px 20px;
+            padding: 178px 70px 120px 0;
+            width: calc(100% - 778px);
         }
         @media all and (max-width: 1280px) {
             width: 100%;
@@ -174,17 +178,19 @@ export default {
     &__right {
         padding-right: rem(240);
         padding-left: rem(71);
-        padding-top: rem(170);
+        padding-top: rem(175);
         padding-bottom: rem(121);
         background: #2E5599;
         width: calc(100% - #{rem(900)} + #{rem(133)});
         flex-direction: column;
+        
         @media all and (max-width: 1440px) {
-            padding: 100px 20px;
+            padding: 178px 150px 120px 70px !important;
+            width: 778px;
         }
         @media all and (max-width: 1280px) {
             width: 100% !important;
-            padding: 80px 20px;
+            padding: 80px 20px !important;
         }
     }
     &__right &__title {
