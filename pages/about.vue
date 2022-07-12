@@ -139,7 +139,7 @@
         </div>
       </section>
       <section class="sixth">
-        <customers />
+        <customers :has-button="true" />
       </section>
       <section class="seventh">
         <div class="seventh__title">Карта</div>

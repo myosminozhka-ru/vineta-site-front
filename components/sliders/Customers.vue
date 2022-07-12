@@ -1,6 +1,9 @@
 <template>
     <div class="customers glide">
-        <osm-h2 class="customers__title">Заказчики</osm-h2>
+        <osm-h2 class="customers__top">
+            <osm-h2 class="customers__title">Заказчики</osm-h2>
+            <osm-button class="customers__button" v-if="hasButton">Подробнее</osm-button>
+        </osm-h2>
         <div class="customers__slider-in">
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
@@ -32,6 +35,12 @@ import Glide from '@glidejs/glide';
 import { mapGetters } from 'vuex';
 export default {
     name: "CustomersSlider",
+    props: {
+        hasButton: {
+            type: Boolean,
+            default: false
+        }
+    },
     components: {
         OsmH2: () => import('~/components/global/OsmH2.vue'),
     },
@@ -68,8 +77,16 @@ export default {
 
 <style lang="scss" scoped>
 .customers {
-    &__title {
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: rem(30);
+    }
+    &__button {
+        @media all and (max-width: 840px) {
+            display: none;
+        }
     }
     &__slider-in {
         position: relative;

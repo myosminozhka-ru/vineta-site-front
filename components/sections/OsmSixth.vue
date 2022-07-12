@@ -150,6 +150,20 @@ export default {
             font-size: rem(24);
             line-height: 140%;
             color: #555F76;
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 100%;
+                bottom: rem(-5);
+                height: 1px;
+                background: #555F76;
+                transition: all .3s ease;
+            }
+        }
+        &:hover .text:after {
+            right: 0;
         }
     }
     &__item_in {
@@ -218,6 +232,7 @@ export default {
             @media all and (max-width: 1440px) {
                 font-size: 30px;
             }
+            
         }
     }
 }
