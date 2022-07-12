@@ -13,6 +13,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="productPage__arrows" data-glide-el="controls">
+                    <button class="productPage__arrow productPage__arrow--left" data-glide-dir="<">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" fill="#FF004D"/>
+                            <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <button class="productPage__arrow productPage__arrow--right" data-glide-dir=">">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40" fill="#FF004D"/>
+                            <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
             <div class="productPage__slider-right">
                 <div class="productPage__slider-previews">
@@ -101,6 +115,56 @@ export default {
     }
   }
 .productPage {
+    &__arrows {
+        font-size: 0;
+    }
+    &__arrow {
+        position: absolute;
+        width: rem(40);
+        top: 50%;
+        border: none;
+        background: none;
+        padding: 0;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 0;
+        @media all and (max-width: 1280px) {
+            width: 40px;
+        }
+        &--left {
+            left: rem(50);
+            @media all and (max-width: 1280px) {
+                left: 30px;
+            }
+            @media all and (max-width: 840px) {
+                left: 15px;
+            }
+        }
+        &--right {
+            right: rem(50);
+            @media all and (max-width: 1280px) {
+                right: 30px;
+            }
+            @media all and (max-width: 840px) {
+                right: 15px;
+            }
+            transform: translateY(-50%) rotate(180deg);
+        }
+        svg rect {
+            fill: #FF004D;
+            transition: all .3s ease;
+        }
+        &:hover {
+            svg rect {
+                fill: #DF0043;
+            }
+        }
+        &:active {
+            svg rect {
+                fill: #A70032;
+            }
+        }
+    }
     &__in {
         @media all and (max-width: 1280px) {
          
@@ -120,7 +184,9 @@ export default {
             width: 710px;
         }
         @media all and (max-width: 1280px) {
-            width: 100%;
+            width: calc(100% + 40px);
+            margin-left: -20px;
+            margin-right: -20px;
         }
     }
     &__slider-item {

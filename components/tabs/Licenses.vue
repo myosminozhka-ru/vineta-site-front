@@ -329,6 +329,9 @@ export default {
             @media all and (max-width: 1280px) {
                 left: -20px;
             }
+            @media all and (max-width: 840px) {
+                margin-right: 20px;
+            }
         }
         &--right {
             right: rem(-20);

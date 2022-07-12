@@ -141,6 +141,11 @@ export default {
 </script>
 <style lang="scss">
 .news {
+    &__wrap:not(.innerPage) &__button_top {
+        @media all and (max-width: 840px) {
+            display: none;
+        }
+    }
     &__wrap:not(.innerPage) &__button_top .button {
         @media all and (max-width: 840px) {
             color: #fff !important;
@@ -312,7 +317,8 @@ export default {
             padding: 20px 30px 20px 20px;
             min-height: 450px;
         }
-        @media all and (max-width: 1280px) {
+        @media all and (max-width: 840px) {
+            padding: 20px;
             min-height: 280px;
         }
         &::before {
