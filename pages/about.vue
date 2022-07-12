@@ -319,6 +319,12 @@
     &__button {
       display: flex;
       align-items: center;
+      @media all and (max-width: 1280px) {
+        width: 233px;
+      }
+      @media all and (max-width: 840px) {
+        width: 100%;
+      }
       .icon {
         width: rem(28);
         height: rem(28);
