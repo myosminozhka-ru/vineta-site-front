@@ -51,7 +51,11 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend (config, ctx) {
+      config.resolve.symlinks = false
+    }
+  },
   components: true,
   styleResources: {
     scss: ['./assets/scss/helpers/*.scss'],

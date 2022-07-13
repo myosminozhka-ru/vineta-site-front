@@ -1,5 +1,6 @@
 <template>
     <div class="customers glide">
+        <client-only>
         <osm-h2 class="customers__top">
             <osm-h2 class="customers__title">Заказчики</osm-h2>
             <osm-button class="customers__button" v-if="hasButton">Подробнее</osm-button>
@@ -27,6 +28,7 @@
                 </button>
             </div>
         </div>
+        </client-only>
     </div>
 </template>
 
@@ -45,17 +47,7 @@ export default {
         OsmH2: () => import('~/components/global/OsmH2.vue'),
     },
     data: () => ({
-        slider: new Glide('.customers.glide', {
-            perView: 6,
-            breakpoints: {
-                1024: {
-                    perView: 3
-                },
-                840: {
-                    perView: 1
-                }
-            }
-        })
+        slider: null
     }),
     computed: {
         ...mapGetters(['getMain']),
@@ -70,7 +62,19 @@ export default {
     },
     mounted() {
         console.log('beforeMount');
-        this.slider.mount();
+        setTimeout(() => {
+            this.slider = new Glide('.customers.glide', {
+                perView: 6,
+                breakpoints: {
+                    1024: {
+                        perView: 3
+                    },
+                    840: {
+                        perView: 1
+                    }
+                }
+            }).mount();
+        }, 500)
     }
 }
 </script>

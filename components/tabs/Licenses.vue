@@ -2,14 +2,15 @@
     <div class="licenses">
         asdasad
         <osm-h2 class="licenses__title">Лицензии и сертификаты {{ index }}</osm-h2>
-        <no-ssr>
+        <ClientOnly>
             <LightGallery
                 :images="gallery"
                 :index="index"
                 :disable-scroll="true"
                 @close="index = null"
+                v-if="isMounted"
             />
-        </no-ssr>
+        </ClientOnly>
         <tabs class="hide_on_mobile" @clicked="tabClicked" @changed="tabChanged" :options="{ useUrlFragment: false }">
             <tab v-for="tab in tabs" :key="tab.index" :name="tab">
                 <div class="licensesSlid glide">
@@ -100,6 +101,7 @@ export default {
   data: () => ({
     tabs: ['Лицензии и сертификаты', 'Благодарственные письма и отзывы', 'Отчеты СОУП и аттестации'],
     slider: null,
+    isMounted: false,
     gallery: [
         require('~/assets/img/licenses/license2.png'),
         require('~/assets/img/licenses/license2.png'),
@@ -126,6 +128,7 @@ export default {
         setTimeout(() => {
             this.initSlider();
             this.initAccordions();
+            this.isMounted = true;
         }, 1000) 
     },
   methods: {
