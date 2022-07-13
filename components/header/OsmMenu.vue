@@ -303,6 +303,9 @@
         @media all and (max-width: 840px) {
             width: 30px;
             margin-right: 15px;
+            &--favorites {
+              order: -1;
+            }
         }
         @media all and (max-width: 359px) {
             width: 25px;

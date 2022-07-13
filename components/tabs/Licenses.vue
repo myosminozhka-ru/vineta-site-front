@@ -1,15 +1,27 @@
 <template>
     <div class="licenses">
-        <osm-h2 class="licenses__title">Лицензии и сертификаты</osm-h2>
+        asdasad
+        <osm-h2 class="licenses__title">Лицензии и сертификаты {{ index }}</osm-h2>
+        <no-ssr>
+            <LightGallery
+                :images="gallery"
+                :index="index"
+                :disable-scroll="true"
+                @close="index = null"
+            />
+        </no-ssr>
         <tabs class="hide_on_mobile" @clicked="tabClicked" @changed="tabChanged" :options="{ useUrlFragment: false }">
             <tab v-for="tab in tabs" :key="tab.index" :name="tab">
                 <div class="licensesSlid glide">
                     <div class="licensesSlid__slider">
                         <div class="glide__track" data-glide-el="track">
                             <ul class="glide__slides">
-                                <li v-for="(key, item) in 15" :key="item.index" class="licensesSlid__slide glide__slide">
+                                <li v-for="(key, item) in 15" :key="item.index" class="licensesSlid__slide glide__slide" @click="index = key">
                                     <img :src="require('~/assets/img/licenses/license1.png')" alt="">
                                 </li>
+                                <nuxt-link :to="{name: 'licenses'}" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
+                                    <div class="text">Смотреть все</div>
+                                </nuxt-link>
                             </ul>
                         </div>
                         <div class="licensesSlid__arrows" data-glide-el="controls">
@@ -45,9 +57,12 @@
                         <div class="licensesSlid__slider">
                             <div class="glide__track" data-glide-el="track">
                                 <ul class="glide__slides">
-                                    <li v-for="(key, item) in 15" :key="item.index" class="licensesSlid__slide glide__slide">
+                                    <li v-for="(key, item) in 15" :key="item.index" class="licensesSlid__slide glide__slide" @click="index = key">
                                         <img :src="require('~/assets/img/licenses/license1.png')" alt="">
                                     </li>
+                                    <nuxt-link :to="{name: 'licenses'}" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
+                                        <div class="text">Смотреть все</div>
+                                    </nuxt-link>
                                 </ul>
                             </div>
                         </div>
@@ -84,7 +99,25 @@ export default {
   },
   data: () => ({
     tabs: ['Лицензии и сертификаты', 'Благодарственные письма и отзывы', 'Отчеты СОУП и аттестации'],
-    slider: null
+    slider: null,
+    gallery: [
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+    ],
+    index: null,
   }),
   beforeDestroy() {
     if (this.slider) this.slider.destroy();
@@ -206,6 +239,12 @@ export default {
 .licenses {
     max-width: 100%;
     width: 100%;
+    .glide__slides {
+        align-items: stretch;
+    }
+    .glide__slide {
+        height: auto;
+    }
     &__accordion {
         &:not(:last-child) {
             margin-bottom: 10px;
@@ -296,6 +335,24 @@ export default {
         img {
             max-width: 100%;
             max-height: 100%;
+        }
+        &--last {
+            background: #555F76;
+            text-decoration: none;
+            transition: all .3s ease;
+            &:hover {
+                background: #444c5f;
+            }
+            &:active {
+                background: #373d4d;
+            }
+            .text {
+                font-style: normal;
+                font-weight: 400;
+                font-size: rem(20);
+                line-height: 140%;
+                color: #FFFFFF;
+            }
         }
     }
     &__arrows {

@@ -23,8 +23,8 @@
             <nuxt-link :to="{ name: 'index' }">En</nuxt-link>
         </div>
         <a href="tel:+78124935048" class="header__phone">+7 (812) 493-50-48</a>
-        <div class="header__button header__button--favorites hide_off_mobile">
-            <object :data="require(`~/assets/img/favorites.svg`)" width="100%" />
+        <div class="header__button header__button--phone hide_off_mobile">
+            <object :data="require(`~/assets/img/phone.svg`)" width="100%" />
         </div>
     </div>
 </template>
@@ -65,6 +65,11 @@ export default {
         }
         @media all and (max-width: 840px) {
             margin-right: 0;
+        }
+        &--favorites {
+            @media all and (max-width: 840px) {
+                order: -1;
+            }
         }
         svg rect {
             transition: all .3s ease;
