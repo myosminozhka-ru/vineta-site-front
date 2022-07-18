@@ -2,25 +2,22 @@
   <div class="wrapper footerOnBottom" >
     <osm-header />
     <div class="header_padding">
-      <pre style="font-size: 15rem;">
-        {{ pageData }}
-      </pre>
       <section class="first">
         <div class="first__text">
-          {{ pageData.banners[0].NAME }}
+          {{ getAbout.banners[0].NAME }}
         </div>
         <div class="first__image hide_on_mobile">
-          <img :src="$vareibles.remote + pageData.banners[0].PREVIEW_PICTURE" width="100%" alt="">
+          <img :src="$vareibles.remote + getAbout.banners[0].PREVIEW_PICTURE" width="100%" alt="">
         </div>
       </section>
-      <section class="second" v-if="pageData.banners[1]">
+      <section class="second" v-if="getAbout.banners[1]">
         <div class="second__side second__side--left">
           <div class="second__side_top">
             <div class="second__title">
-              <div class="text">{{ pageData.banners[1].NAME }}</div>
+              <div class="text">{{ getAbout.banners[1].NAME }}</div>
             </div>
             <div class="second__text">
-              <p>{{ pageData.banners[1].PREVIEW_TEXT }}</p>
+              <p>{{ getAbout.banners[1].PREVIEW_TEXT }}</p>
               <p v-if="isTextShowed">Современные технологии достигли такого уровня, что дальнейшее развитие различных форм деятельности не
                 даёт нам иного выбора, кроме определения благоприятных перспектив. Высокий уровень вовлечения
                 представителей целевой аудитории является четким доказательством простого факта: разбавленное изрядной
@@ -60,7 +57,7 @@
               </nuxt-link>
             </div>
             <div class="second__items">
-              <nuxt-link v-for="link in pageData.sections" :key="link.index" :to="{name: 'catalog-catalogId', params: {catalogId: link.CODE}}" class="second__item">
+              <nuxt-link v-for="link in getAbout.sections" :key="link.index" :to="{name: 'catalog-catalogId', params: {catalogId: link.CODE}}" class="second__item">
                 <div class="icon">
                   <img :src="require('~/assets/img/about/cat_icon.svg')" width="100%" alt="">
                 </div>
@@ -85,28 +82,28 @@
       <section class="third">
         <div class="third__title">О компании в цифрах</div>
         <div class="third__items">
-          <div class="third__item" v-for="item in 4" :key="item.index">
-            <div class="number">403</div>
-            <div class="text">Человек работает</div>
+          <div class="third__item" v-for="item in getAbout.numbers" :key="item.index">
+            <div class="number">{{ item.PROPERIES[0].VALUE }}</div>
+            <div class="text">{{ item.NAME }}</div>
           </div>
         </div>
       </section>
-      <section class="fourth">
-        <img :src="require('~/assets/img/about/people.jpg')" width="100%" alt="">
+      <section class="fourth" v-if="getAbout.banners[2]">
+        <img :src="$vareibles.remote + getAbout.banners[2].PREVIEW_PICTURE" width="100%" alt="">
       </section>
       <section class="fiveth">
         <div class="fiveth__title">Руководство</div>
         <div class="fiveth__items">
-          <div class="fiveth__item" v-for="item in 4" :key="item.index">
+          <div class="fiveth__item" v-for="item in getAbout.peoples" :key="item.index">
             <div class="avatar">
               <div class="avatar__in">
-                <img :src="require('~/assets/img/about/avatar1.jpg')" alt="">
+                <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
               </div>
             </div>
-            <div class="name">Абрамов Дмитрий Витальевич</div>
-            <div class="position">Заместитель директора по качеству</div>
-            <a href="tel:+78124935048" class="phone">+7(812) 493-50-48 (доб. 141)</a>
-            <a href="mailto:utfe@utfe.su" class="email">utfe@utfe.su</a>
+            <div class="name">{{ item.NAME }}</div>
+            <div class="position">{{ item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
+            <a :href="`tel:${item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE}`" class="phone">{{ item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE }}</a>
+            <a :href="`mailto:${item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE}`" class="email">{{ item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE }}</a>
           </div>
         </div>
       </section>
@@ -122,19 +119,19 @@
       <section class="history">
         <div class="history__side history__left">
           <div class="history__top">
-            <div class="history__title">Наша история</div>
+            <div class="history__title">{{getAbout.banners[4].NAME}}</div>
             <div class="history__line"></div>
-            <div class="history__text">Узнайте больше о том, как развивалось предприятие ООО «Винета» с 1996 года — от оборудования для аквакультуры до полноценного судопроизводства.</div>
+            <div class="history__text">{{getAbout.banners[4].PREVIEW_TEXT}}</div>
           </div>
-          <osm-button class="history__button">Подробнее</osm-button>
+          <osm-button class="history__button" link="history">Подробнее</osm-button>
         </div>
         <div class="history__side history__right">
           <div class="history__top">
-            <div class="history__title">Технологии производства</div>
+            <div class="history__title">{{getAbout.banners[5].NAME}}</div>
             <div class="history__line"></div>
-            <div class="history__text">Узнайте больше о тексте для этого блока, который написал в качестве примера. Несколько строк об этапах производства и что ожидает пользователя после клика на плитку.</div>
+            <div class="history__text">{{getAbout.banners[5].PREVIEW_TEXT}}</div>
           </div>
-          <osm-button class="history__button" :outlined="true">Подробнее</osm-button>
+          <osm-button class="history__button" :outlined="true" link="techs">Подробнее</osm-button>
         </div>
       </section>
       <section class="sixth">
@@ -154,6 +151,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
   export default {
     name: 'AboutPage',
     components: {
@@ -166,11 +164,8 @@
     data: () => ({
       isTextShowed: false,
     }),
-    async fetch() {
-      await this.$axios.$get(`about.php`).then(response => {
-        this.pageData = response;
-        console.log('about', this.pageData);
-      })
+    computed: {
+      ...mapGetters(['getAbout']),
     }
   }
 

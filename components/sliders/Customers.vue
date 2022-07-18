@@ -1,7 +1,6 @@
 <template>
     <div class="customers glide">
         <client-only>
-            {{ fivethData }}
             <osm-h2 class="customers__top">
                 <osm-h2 class="customers__title">Заказчики</osm-h2>
                 <osm-button class="customers__button" v-if="hasButton">Подробнее</osm-button>
