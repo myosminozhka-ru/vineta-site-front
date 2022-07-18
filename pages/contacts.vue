@@ -1,37 +1,56 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="contacts" v-if="false">
+        <!-- <pre style="font-size: 15rem;">
+          {{ getContacts }}
+        </pre> -->
+        <div class="contacts" v-if="getContacts">
             <div class="header_padding">
                 <osm-breadcrumbs />
                 <div class="contacts__top">
                     <div class="contacts__left">
-                        <div class="contacts__title">Контакты</div>
+                        <div class="contacts__title">{{ getContacts[0].NAME }}</div>
                         <div class="contacts__items">
-                            <div class="contacts__item">
+                          <div class="contacts__item" v-for="contact in getContacts[0].PROPERIES" :key="contact.index">
+                            <template v-if="contact.CODE === 'VK' || contact.CODE === 'INSTAGRAM' || contact.CODE === 'TELEGRAM' || contact.CODE === 'FACEBOOK' || contact.CODE === 'TWITTER' && contact.CODE !== 'GEO'">                              
+                              <a :href="contact.VALUE" class="contacts__item_in">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
                                 </div>
-                                <div class="text">620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500</div>
-                            </div>
-                            <a href="mailto:info@vineta.ru" class="contacts__item">
+                                <div class="text">{{ contact.NAME }}</div>
+                              </a>
+                            </template>
+                            <template v-else-if="contact.CODE === 'PHONE'">                              
+                              <a :href="`tel:${contact.VALUE}`" class="contacts__item_in">
+                                <div class="icon">
+                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                </div>
+                                <div class="text">{{ contact.VALUE }}</div>
+                              </a>
+                            </template>
+                            <template v-else-if="contact.CODE === 'EMAIL'">                              
+                              <a :href="`mailto:${contact.VALUE}`" class="contacts__item_in">
+                                <div class="icon">
+                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                </div>
+                                <div class="text">{{ contact.VALUE }}</div>
+                              </a>
+                            </template>
+                            <template v-else>
+                              <div class="contacts__item_in">
+                                  <div class="icon">
+                                      <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                  </div>
+                                  <div class="text">{{ contact.VALUE }}</div>
+                              </div>
+                            </template>
+                            <!-- <a href="mailto:info@vineta.ru" class="contacts__item_in">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">info@vineta.ru</div>
-                            </a>
-                            <a href="tel:+7(812)493-50-48" class="contacts__item">
-                                <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
-                                </div>
-                                <div class="text">+7(812)493-50-48</div>
-                            </a>
-                            <div class="contacts__item">
-                                <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
-                                </div>
-                                <div class="text">Пн-Пт с 9:00 до 18:00</div>
-                            </div>
+                            </a> -->
+                          </div>
                         </div>
                         <osm-button class="contacts__button">
                             <div class="contacts__button_in">
@@ -51,7 +70,7 @@
             </div>
           <osm-contacts-slider />
         </div>
-        <section class="fiveth" v-if="false">
+        <section class="fiveth">
           <div class="fiveth__title">Руководство</div>
           <div class="fiveth__items">
             <div class="fiveth__item" v-for="item in 4" :key="item.index">
@@ -72,6 +91,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: "LicensesPage",
     components: {
@@ -80,6 +100,9 @@ export default {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmContactsSlider: () => import('~/components/contacts/OsmSlider.vue'),
+    },
+    computed: {
+      ...mapGetters(['getContacts']),
     }
 }
 </script>
@@ -136,15 +159,18 @@ export default {
         }
     }
     &__item {
+      &:not(:last-child) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 20px;
+        }
+      }
+    }
+    &__item_in {
         display: flex;
         align-items: center;
         text-decoration: none;
-        &:not(:last-child) {
-            margin-bottom: rem(20);
-            @media all and (max-width: 1280px) {
-                margin-bottom: 20px;
-            }
-        }
+        
         .icon {
             width: rem(30);
             margin-right: rem(20);

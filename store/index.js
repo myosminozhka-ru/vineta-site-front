@@ -3,6 +3,7 @@ export const state = () => ({
   main2: [],
   catalog: [],
   vacancies: [],
+  contacts: [],
   modals: {
     buy: {
       isOpened: false
@@ -22,6 +23,9 @@ export const mutations = {
   },
   addVacancies(state, data) {
     state.vacancies = data
+  },
+  addContacts(state, data) {
+    state.contacts = data
   },
   toggleBuyModal(state, data) {
     state.modals.buy = data;
@@ -77,6 +81,19 @@ export const actions = {
         })
     });
   },
+  addContacts(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios.$get('contact.php')
+        .then((response) => {
+          console.log('addContacts', response)
+          context.commit('addContacts', response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
+  },
   toggleModal(context, data) {
     if (data.type === 'buy') {
       context.commit('toggleBuyModal', {
@@ -89,6 +106,7 @@ export const actions = {
     await dispatch('addMainMore');
     await dispatch('addCatalog');
     await dispatch('addVacancies');
+    await dispatch('addContacts');
   }
 }
 
@@ -107,5 +125,8 @@ export const getters = {
   },
   getModals(state) {
     return state.modals;
+  },
+  getContacts(state) {
+    return state.contacts;
   },
 }
