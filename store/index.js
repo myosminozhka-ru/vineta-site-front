@@ -4,6 +4,7 @@ export const state = () => ({
   catalog: [],
   vacancies: [],
   contacts: [],
+  about: {},
   modals: {
     buy: {
       isOpened: false
@@ -26,6 +27,9 @@ export const mutations = {
   },
   addContacts(state, data) {
     state.contacts = data
+  },
+  addAbout(state, data) {
+    state.about = data
   },
   toggleBuyModal(state, data) {
     state.modals.buy = data;
@@ -85,8 +89,19 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios.$get('contact.php')
         .then((response) => {
-          console.log('addContacts', response)
           context.commit('addContacts', response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
+  },
+  addAbout(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios.$get('about.php')
+        .then((response) => {
+          context.commit('addAbout', response);
           resolve(response);
         })
         .catch((error) => {
@@ -107,6 +122,7 @@ export const actions = {
     await dispatch('addCatalog');
     await dispatch('addVacancies');
     await dispatch('addContacts');
+    await dispatch('addAbout');
   }
 }
 
@@ -128,5 +144,8 @@ export const getters = {
   },
   getContacts(state) {
     return state.contacts;
+  },
+  getAbout(state) {
+    return state.about;
   },
 }

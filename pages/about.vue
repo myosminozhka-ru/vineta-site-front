@@ -1,27 +1,26 @@
 <template>
   <div class="wrapper footerOnBottom" >
     <osm-header />
-    <div class="header_padding" v-if="false">
+    <div class="header_padding">
+      <pre style="font-size: 15rem;">
+        {{ pageData }}
+      </pre>
       <section class="first">
         <div class="first__text">
-          Проектируем, изготавливаем и поставляем оборудование для судостроения
+          {{ pageData.banners[0].NAME }}
         </div>
         <div class="first__image hide_on_mobile">
-          <img :src="require('~/assets/img/about/first_img.png')" width="100%" alt="">
+          <img :src="$vareibles.remote + pageData.banners[0].PREVIEW_PICTURE" width="100%" alt="">
         </div>
       </section>
-      <section class="second">
+      <section class="second" v-if="pageData.banners[1]">
         <div class="second__side second__side--left">
           <div class="second__side_top">
             <div class="second__title">
-              <div class="text">О компании</div>
+              <div class="text">{{ pageData.banners[1].NAME }}</div>
             </div>
             <div class="second__text">
-              <p>Современные технологии достигли такого уровня, что дальнейшее развитие различных форм деятельности не
-                даёт нам иного выбора, кроме определения благоприятных перспектив. Высокий уровень вовлечения
-                представителей целевой аудитории является четким доказательством простого факта: разбавленное изрядной
-                долей эмпатии, рациональное мышление, в своём классическом представлении, допускает внедрение
-                инновационных.</p>
+              <p>{{ pageData.banners[1].PREVIEW_TEXT }}</p>
               <p v-if="isTextShowed">Современные технологии достигли такого уровня, что дальнейшее развитие различных форм деятельности не
                 даёт нам иного выбора, кроме определения благоприятных перспектив. Высокий уровень вовлечения
                 представителей целевой аудитории является четким доказательством простого факта: разбавленное изрядной
@@ -61,11 +60,11 @@
               </nuxt-link>
             </div>
             <div class="second__items">
-              <nuxt-link :to="{name: 'catalog'}" class="second__item" v-for="item in 9" :key="item.index">
+              <nuxt-link v-for="link in pageData.sections" :key="link.index" :to="{name: 'catalog-catalogId', params: {catalogId: link.CODE}}" class="second__item">
                 <div class="icon">
                   <img :src="require('~/assets/img/about/cat_icon.svg')" width="100%" alt="">
                 </div>
-                <div class="text">Теплообменное оборудование</div>
+                <div class="text">{{ link.NAME }}</div>
               </nuxt-link>
             </div>
           </div>
@@ -165,8 +164,14 @@
       Licenses: () => import('~/components/tabs/Licenses.vue'),
     },
     data: () => ({
-      isTextShowed: false
-    })
+      isTextShowed: false,
+    }),
+    async fetch() {
+      await this.$axios.$get(`about.php`).then(response => {
+        this.pageData = response;
+        console.log('about', this.pageData);
+      })
+    }
   }
 
 </script>
