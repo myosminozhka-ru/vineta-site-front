@@ -1,9 +1,12 @@
 <template>
     <div class="vacancy">
-        <div class="vacancy__in">
+        <div class="vacancy__in" v-if="vacancy">
             <osm-breadcrumbs />
             <div class="vacancy__top">
-                <div class="vacancy__title">Оператор станков с ЧПУ Challenger (фрезерная группа) 3-5 разряда</div>
+                <!-- <pre style="font-size: 15rem;">
+                    {{ vacancy }}
+                </pre> -->
+                <div class="vacancy__title">{{ vacancy[0].NAME }}</div>
                 <div class="vacancy__button hide_on_mobile">
                     <osm-button>Откликнуться</osm-button>
                 </div>
@@ -14,20 +17,12 @@
                 </div>
             <div class="vacancy__items">
                 <div class="vacancy__item">
-                    <div class="spec">
-                        <div class="title">Опыт работы:</div>
-                        <div class="text">от 2 лет в области машиностроения</div>
-                    </div>
-                    <div class="spec">
-                        <div class="title">Образование:</div>
-                        <div class="text">специальное/среднее техническое /высшее образование (по специальности)</div>
-                    </div>
-                    <div class="spec">
-                        <div class="title">График работы:</div>
-                        <div class="text">8.00 - 17.00 / 16.00-24.00</div>
+                    <div class="spec" v-for="item in vacancy[0].PROPERIES" :key="item.index">
+                        <div class="title">{{ item.NAME }}</div>
+                        <div class="text" v-html="item.VALUE" />
                     </div>
                 </div>
-                <div class="vacancy__item" v-for="item in 3" :key="item.index">
+                <!-- <div class="vacancy__item" v-for="item in 3" :key="item.index">
                     <div class="title">Требования:</div>
                     <ul class="list">
                         <li>Среднее специальное/среднее техническое /высшее образование (по специальности);</li>
@@ -36,7 +31,7 @@
                         <li>Среднее специальное/среднее техническое /высшее образование (по специальности);</li>
                         <li>Среднее специальное/среднее техническое /высшее образование (по специальности);</li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
         <osm-response />
@@ -49,7 +44,13 @@ export default {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmResponse: () => import('~/components/vacancies/OsmResponse.vue'),
-    }
+    },
+    data: () => ({
+        vacancy: null
+    }),
+    async fetch() {
+        this.vacancy = await this.$axios.$get(`vacancy-detail.php?code=${this.$route.params.itemId}`)
+    },
 }
 </script>
 

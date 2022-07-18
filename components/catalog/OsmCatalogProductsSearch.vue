@@ -30,7 +30,6 @@ export default {
     }),
     beforeDestroy() {
         this.products = [];
-        console.log(this.products);
     },
     computed: {
         ...mapGetters(['getCatalog']),
@@ -43,7 +42,6 @@ export default {
     },
     async fetch() {
         this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
-        console.log(this.products);
     }
 }
 </script>

@@ -1,34 +1,25 @@
 <template>
-  <div class="productPage">
+  <div class="productPage" v-if="product">
+    <!-- <pre style="font-size: 15rem;">
+      {{ product[0] }}
+    </pre> -->
     <div class="productPage__container">
       <osm-breadcrumbs />
-      <osm-product-top />
+      <osm-product-top :data="product[0]" />
     </div>
     <div class="productPage__top">
-      <osm-product-slider />
+      <osm-product-slider :data="product[0]" />
       <div class="productPage__info">
         <div class="productPage__description">
-          <div class="title">Назначение</div>
+          <div class="title">Описание</div>
           <div class="value">Охладитель предназначен для охлаждения масла, жидкостей систем гидравлики, пресной и
             морской воды в системах энергетических установок, охлаждения вспомогательных механизмов.</div>
         </div>
         <div class="productPage__text--title">Основные характеристики</div>
         <div class="productPage__texts">
-          <div class="productPage__text">
-            <div class="title">Охлаждаемая среда:</div>
-            <div class="value">Масло веретенное (режим 1), вода пресная (режим 2)</div>
-          </div>
-          <div class="productPage__text">
-            <div class="title">Охлаждающая среда:</div>
-            <div class="value">Вода морская</div>
-          </div>
-          <div class="productPage__text">
-            <div class="title">Материал корпуса:</div>
-            <div class="value">Сплав МНЖ</div>
-          </div>
-          <div class="productPage__text">
-            <div class="title">Материал трубных решеток:</div>
-            <div class="value">Латунь</div>
+          <div class="productPage__text" v-for="item in product[0].PROPERIES" :key="item.index">
+            <div class="title">{{ item.NAME }}</div>
+            <div class="value">{{ item.VALUE }}</div>
           </div>
         </div>
         <div class="productPage__buttons">
@@ -627,12 +618,20 @@
     data: () => ({
       tabs: {
         selected: 1,
-      }
+      },
+      product: null
     }),
+    // async fetch() {
+    //     this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
+    //     console.log(this.product);
+    // },
+    async fetch() {
+      this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
+        console.log(this.product);
+    },
     methods: {
       ...mapActions(['toggleModal']),
       openBuy() {
-        console.log(123123)
         this.toggleModal({
           isOpened: true,
           type: 'buy'

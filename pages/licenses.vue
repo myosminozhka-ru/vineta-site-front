@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="licenses">
+        <div class="licenses" v-if="false">
             <div class="header_padding">
                 <osm-breadcrumbs />
                 <osm-gallery />

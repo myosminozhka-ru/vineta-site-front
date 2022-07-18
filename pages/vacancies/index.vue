@@ -13,11 +13,12 @@
             <osm-slider />
         </div>
         <osm-response />
-        <osm-list />
+        <osm-list :vacancies="getVacancies" />
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
   export default {
     name: 'AboutPage',
     components: {
@@ -28,7 +29,10 @@
     },
     data: () => ({
       isTextShowed: false
-    })
+    }),
+    computed: {
+      ...mapGetters(['getVacancies']),
+    }
   }
 
 </script>

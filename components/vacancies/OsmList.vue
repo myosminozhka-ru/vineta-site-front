@@ -1,32 +1,23 @@
 <template>
     <div class="list">
+        <!-- <pre style="font-size: 15rem;">{{ vacancies }}</pre> -->
         <div class="list__title">Вакансии</div>
         <div class="list__items">
-            <div class="list__item" v-for="item in 5" :key="item.index">
-                <div class="list__item_title">Токарь/токарь универсал 3-6 разряда</div>
+            <div class="list__item" v-for="item in vacancies" :key="item.index">
+                <div class="list__item_title">{{ item.NAME }}</div>
                 <div class="list__item_info">
-                    <div class="list__item_info--item">
-                        <div class="title">Опыт работы:</div>
-                        <div class="text">от 2 лет в области машиностроения</div>
-                    </div>
-                    <div class="list__item_info--item">
-                        <div class="title">Отклад:</div>
-                        <div class="text">45 000-65 000 Р</div>
-                    </div>
-                    <div class="list__item_info--item">
-                        <div class="title">Образование:</div>
-                        <div class="text">специальное/среднее техническое / высшее образование</div>
-                    </div>
-                    <div class="list__item_info--item">
-                        <div class="title">График работы:</div>
-                        <div class="text">
-                            <div>8.00 - 17.00</div>
-                            <div>16.00-24.00</div>
-                        </div>
+                    <div class="list__item_info--item" v-for="prop in item.PROPERIES" :key="prop.index">
+                        <div class="title">{{ prop.NAME }}</div>
+                        <template v-if="prop.VALUE.TEXT" >
+                            <div class="text" v-html="prop.VALUE.TEXT" />
+                        </template>
+                        <template v-if="!prop.VALUE.TEXT" >
+                            <div class="text" v-html="prop.VALUE" />
+                        </template>
                     </div>
                 </div>
                 <div class="list__item_button">
-                    <nuxt-link :to="{name: 'vacancies-itemId', params: {itemId: 'test'}}" class="button">Откликнуться</nuxt-link>
+                    <nuxt-link :to="{name: 'vacancies-itemId', params: {itemId: item.CODE}}" class="button">Подробнее</nuxt-link>
                 </div>
             </div>
         </div>
@@ -35,9 +26,12 @@
 
 <script>
 export default {
-    components: {
-        OsmButton: () => import('~/components/global/OsmButton.vue')
-    }
+    props: {
+        vacancies: {
+            type: Array,
+            default: () => ([]),
+        }
+    },
 }
 </script>
 
@@ -77,11 +71,15 @@ export default {
         color: #172242;
     }
     &__item_info {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr );
+        grid-gap: rem(30);
+        @media all and (max-width: 1280px) {
+            grid-template-columns: repeat(3, 1fr );
+        }
         @media all and (max-width: 840px) {
-            flex-direction: column;
+            grid-template-columns: repeat(1, 1fr );
+            grid-gap: rem(10);
         }
     }
     &__item_info--item {

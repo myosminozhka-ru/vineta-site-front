@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="contacts">
+        <div class="contacts" v-if="false">
             <div class="header_padding">
                 <osm-breadcrumbs />
                 <div class="contacts__top">
@@ -51,7 +51,7 @@
             </div>
           <osm-contacts-slider />
         </div>
-        <section class="fiveth">
+        <section class="fiveth" v-if="false">
           <div class="fiveth__title">Руководство</div>
           <div class="fiveth__items">
             <div class="fiveth__item" v-for="item in 4" :key="item.index">

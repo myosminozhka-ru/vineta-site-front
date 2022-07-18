@@ -1,7 +1,7 @@
 <template>
     <div class="history">
         <osm-header />
-        <div class="header_padding">
+        <div class="header_padding" v-if="false">
             <div class="history__in">
                 <div class="history__top">
                     <osm-breadcrumbs :white="true" />

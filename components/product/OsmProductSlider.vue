@@ -1,13 +1,20 @@
 <template>
-    <div class="productPage__in">
+    <div class="productPage__in" v-if="data">
         <div class="productPage__slider">
             <div class="glide productPage__slider-left">
                 <div class="glide__track" data-glide-el="track">
                     <div class="glide__slides">
-                        <div class="glide__slide productPage__slider-item" v-for="item in 10" :key="item.index">
+                        <div class="glide__slide productPage__slider-item" v-if="data.PREVIEW_PICTURE">
                             <div class="productPage__slider-item__in">
                                 <div class="productPage__slider-item__imege">
-                                    <img :src="require('~/assets/img/catalog/2_5 1.jpg')" alt="">
+                                    <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glide__slide productPage__slider-item" v-for="item in data.MORE_PHOTO.VALUE" :key="item.index">
+                            <div class="productPage__slider-item__in">
+                                <div class="productPage__slider-item__imege">
+                                    <img :src="$vareibles.remote + item.SRC" alt="">
                                 </div>
                             </div>
                         </div>
@@ -30,8 +37,11 @@
             </div>
             <div class="productPage__slider-right">
                 <div class="productPage__slider-previews">
-                    <div class="productPage__slider-preview" v-for="(item, key) in 6" :key="item.index" @click="slider.go(`=${key}`)">
-                        <img :src="require('~/assets/img/catalog/2_5 1.jpg')" alt="">
+                    <div class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE" @click="slider.go(`=0`)">
+                        <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
+                    </div>
+                    <div class="productPage__slider-preview" v-for="(item, key) in data.MORE_PHOTO.VALUE" :key="item.index" @click="slider.go(`=${key+1}`)">
+                        <img :src="$vareibles.remote + item.SRC" alt="">
                     </div>
                 </div>
                 <div class="productPage__slider-buttons">
@@ -78,6 +88,12 @@
 <script>
 import Glide from '@glidejs/glide'
 export default {
+    props: {
+        data: {
+            type: Object,
+            default: null
+        }
+    },
     data: () => ({
         slider: new Glide('.productPage__slider-left', {
             perView: 1,

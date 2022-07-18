@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="header_padding">
+        <div class="header_padding" v-if="false">
             <div class="search">
                 <osm-breadcrumbs />
                 <div class="search__title">Избранное</div>

@@ -81,7 +81,6 @@ export default {
         initCollapse() {
             document.querySelectorAll('.footer__menu ul').forEach(item => {
                 item.querySelector('li:first-child').addEventListener('click', (event) => {
-                    console.log(123);
                     event.target.closest('ul').classList.toggle('opened')
                 })
             })

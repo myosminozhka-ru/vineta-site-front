@@ -1,10 +1,10 @@
 <template>
     <div class="products">
         <div class="products__items" v-if="products">
-            <nuxt-link class="products__item" v-for="product in products" :key="product.ID" :to="{name: 'catalog-product'}">
+            <nuxt-link class="products__item" v-for="product in products" :key="product.ID" :to="{name: 'catalog-catalogId-productId', params: {productId: product.CODE}}">
                 <div class="products__item_image">
                     <div class="image_container">
-                        <img :src="require('~/assets/img/sections/second.jpg')" alt="">
+                        <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
                     </div>
                 </div>
                 <div class="products__item_data">
@@ -33,7 +33,6 @@ export default {
     }),
     beforeDestroy() {
         this.products = [];
-        console.log(this.products);
     },
     computed: {
         ...mapGetters(['getCatalog']),
@@ -46,7 +45,6 @@ export default {
     },
     async fetch() {
         this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
-        console.log(this.products);
     }
 }
 </script>

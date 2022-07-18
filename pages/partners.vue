@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="partners">
+        <div class="partners" v-if="false">
             <div class="header_padding">
                 <osm-breadcrumbs />
                 <div class="partners__title">Основные заказчики и партнёры</div>

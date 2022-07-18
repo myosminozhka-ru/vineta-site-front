@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper footerOnBottom">
+  <div class="wrapper footerOnBottom" >
     <osm-header />
-    <div class="header_padding">
+    <div class="header_padding" v-if="false">
       <section class="first">
         <div class="first__text">
           Проектируем, изготавливаем и поставляем оборудование для судостроения

@@ -5,6 +5,13 @@
       <div class="indicator" v-for="(indicator, key) in sections" :key="indicator.index" :class="{'active': +activeIndex === +key}" @click="activeIndex = key"><span></span></div>
     </div>
     <div class="sections" :data-id="activeIndex">
+      <pre>
+        {{ getMain }}
+        
+      </pre>
+      <pre>
+        {{  getMainMore }}
+      </pre>
       <osm-first-section :class="{'isActive': activeIndex === 0}" :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
       <osm-second-section :class="{'isActive': activeIndex === 1}" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
       <osm-third-section :class="{'isActive': activeIndex === 2}" :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>
@@ -41,6 +48,7 @@ export default {
   }),
   computed: {
     ...mapGetters(['getMain']),
+    ...mapGetters(['getMainMore']),
     activeSection: {
       get() {
         return this.activeIndex;
@@ -57,6 +65,7 @@ export default {
     });
   },
   mounted() {
+    console.log('getMainMore', this.getMainMore)
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1;
     }
@@ -64,7 +73,6 @@ export default {
       setTimeout(() => {
         this.sections = document.querySelectorAll('.section');
         this.activeIndex = 0;
-        console.log(this.sections);
         document.addEventListener('mousewheel', (event) => {
           if (event.wheelDelta > 0 || event.detail < 0) {
             this.change('up');

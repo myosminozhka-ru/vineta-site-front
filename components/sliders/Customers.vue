@@ -1,33 +1,34 @@
 <template>
     <div class="customers glide">
         <client-only>
-        <osm-h2 class="customers__top">
-            <osm-h2 class="customers__title">Заказчики</osm-h2>
-            <osm-button class="customers__button" v-if="hasButton">Подробнее</osm-button>
-        </osm-h2>
-        <div class="customers__slider-in">
-            <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides">
-                    <li v-for="(key, item) in 15" :key="item.index" class="customers__slide glide__slide">
-                        <img :src="require('~/assets/img/customers/customer1.png')" alt="">
-                    </li>
-                </ul>
+            {{ fivethData }}
+            <osm-h2 class="customers__top">
+                <osm-h2 class="customers__title">Заказчики</osm-h2>
+                <osm-button class="customers__button" v-if="hasButton">Подробнее</osm-button>
+            </osm-h2>
+            <div class="customers__slider-in">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <li v-for="(item, key) in fivethData.filter(item => item.PREVIEW_PICTURE)" :key="key" class="customers__slide glide__slide">
+                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" :alt="item.name">
+                        </li>
+                    </ul>
+                </div>
+                <div class="customers__arrows" data-glide-el="controls">
+                    <button class="customers__arrow customers__arrow--left" data-glide-dir="<">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40"/>
+                            <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <button class="customers__arrow customers__arrow--right" data-glide-dir=">">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                            <rect width="40" height="40"/>
+                            <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div class="customers__arrows" data-glide-el="controls">
-                <button class="customers__arrow customers__arrow--left" data-glide-dir="<">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                        <rect width="40" height="40"/>
-                        <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
-                    </svg>
-                </button>
-                <button class="customers__arrow customers__arrow--right" data-glide-dir=">">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                        <rect width="40" height="40"/>
-                        <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
         </client-only>
     </div>
 </template>
@@ -50,9 +51,9 @@ export default {
         slider: null
     }),
     computed: {
-        ...mapGetters(['getMain']),
+        ...mapGetters(['getMainMore']),
         fivethData() {
-            return this.getMain[4];
+            return this.getMainMore.client;
         }
     },
     beforeDestroy() {

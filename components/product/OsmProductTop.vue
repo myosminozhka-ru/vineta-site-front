@@ -1,7 +1,8 @@
 <template>
     <div class="product__header">
-        <div class="product__header_left">Охладители масла и воды ОКН 0,2-74</div>
+        <div class="product__header_left" v-if="data">{{ data.NAME }}</div>
         <div class="product__header_right">
+            
             <nuxt-link :to="{name: 'index'}" class="product__header_btn hide_on_mobile">
                 <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 22 20" fill="none">
@@ -16,7 +17,13 @@
 
 <script>
 export default {
-    name: 'OsmProductTop'
+    name: 'OsmProductTop',
+    props: {
+        data: {
+            type: Object,
+            default: null
+        }
+    }
 }
 </script>
 
