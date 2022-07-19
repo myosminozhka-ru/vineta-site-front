@@ -1,6 +1,9 @@
 <template>
-    <div class="productPage__in" v-if="data">
-        <div class="productPage__slider">
+    <div class="productPage__in" >
+        <!-- <pre style="font-size: 15rem;">
+            {{ data }}
+        </pre> -->
+        <div class="productPage__slider" v-if="data">
             <div class="glide productPage__slider-left">
                 <div class="glide__track" data-glide-el="track">
                     <div class="glide__slides">
@@ -11,13 +14,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="glide__slide productPage__slider-item" v-for="item in data.MORE_PHOTO.VALUE" :key="item.index">
-                            <div class="productPage__slider-item__in">
-                                <div class="productPage__slider-item__imege">
-                                    <img :src="$vareibles.remote + item.SRC" alt="">
+                        <template v-if="data.MORE_PHOTO">
+                            <div class="glide__slide productPage__slider-item" v-for="item in data.MORE_PHOTO.VALUE" :key="item.index">
+                                <div class="productPage__slider-item__in">
+                                    <div class="productPage__slider-item__imege">
+                                        <img :src="$vareibles.remote + item.SRC" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </template>
                     </div>
                 </div>
                 <div class="productPage__arrows" data-glide-el="controls">
@@ -40,12 +45,14 @@
                     <div class="productPage__slider-preview" v-if="data.PREVIEW_PICTURE" @click="slider.go(`=0`)">
                         <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
                     </div>
-                    <div class="productPage__slider-preview" v-for="(item, key) in data.MORE_PHOTO.VALUE" :key="item.index" @click="slider.go(`=${key+1}`)">
-                        <img :src="$vareibles.remote + item.SRC" alt="">
-                    </div>
+                    <template v-if="data.MORE_PHOTO">
+                        <div class="productPage__slider-preview" v-for="(item, key) in data.MORE_PHOTO.VALUE" :key="item.index" @click="slider.go(`=${key+1}`)">
+                            <img :src="$vareibles.remote + item.SRC" alt="">
+                        </div>
+                    </template>
                 </div>
                 <div class="productPage__slider-buttons">
-                    <div class="productPage__slider-button productPage__slider-button--more">
+                    <div class="productPage__slider-button productPage__slider-button--more" v-if="data.PREVIEW_PICTURE">
                         <div class="text">
                             Еще 10
                         </div>
