@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="header_padding" v-if="false">
+        <div class="header_padding">
             <div class="news">
                 <osm-breadcrumbs />
                 <div class="news_page">
@@ -30,6 +30,7 @@ export default {
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
+        OsmNewsTop: () => import('~/components/news/OsmNewsTop.vue'),
     }
 }
 </script>

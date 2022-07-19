@@ -1,16 +1,16 @@
 <template>
     <div class="news__content_in">
-        <nuxt-link :to="{name: 'news-newsId', params: {newsId: 'test'}}" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
+        <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in getNews" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
             <template v-if="key === 0">
                 <div class="news__image">
-                    <img :src="item.image" width="100%" alt="">
+                    <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                 </div>
                 <div class="news__item_top">
-                    <div class="news__date">{{ item.date }}</div>
+                    <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
                 </div>
                 <div class="news__item_bottom">
                     <div class="news__text">
-                        {{ item.text }}
+                        {{ item.NAME }}
                     </div>
                     <osm-button :link="item.link">Подробнее</osm-button>
                 </div>
@@ -18,17 +18,17 @@
             <template v-else>
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img :src="item.image" width="100%" alt="">
+                        <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                     </div>
                 </div>
                 <div class="news__item_right">
                     <div class="news__item_top">
-                        <div class="news__date">{{ item.date }}</div>
+                        <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
                         <div class="news__text">
-                            {{ item.text }}
+                            {{ item.NAME }}
                         </div>
                     </div>
-                    <nuxt-link class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</nuxt-link>
+                    <span class="news__link" :to="{name: item.link, params: {newsId: item.CODE}}">Читать новость</span>
                 </div>
             </template>
         </nuxt-link>
@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: "OsmNewsContent",
     data: () => ({
@@ -90,7 +91,10 @@ export default {
               link: 'news-newsId'
           }
       ]
-    })
+    }),
+    computed: {
+        ...mapGetters(['getNews']), 
+    }
 }
 </script>
 

@@ -1,7 +1,8 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="partners" v-if="false">
+        <div class="partners">
+            <pre style="font-size: 15rem;">{{ getPartners }}</pre>
             <div class="header_padding">
                 <osm-breadcrumbs />
                 <div class="partners__title">Основные заказчики и партнёры</div>
@@ -80,12 +81,16 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: "LicensesPage",
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),
+    },
+    computed: {
+        ...mapGetters(['getPartners']), 
     }
 }
 </script>

@@ -4,7 +4,11 @@ export const state = () => ({
   catalog: [],
   vacancies: [],
   contacts: [],
+  history: [],
   about: {},
+  licenses: [],
+  news: [],
+  partners: [],
   modals: {
     buy: {
       isOpened: false
@@ -30,6 +34,18 @@ export const mutations = {
   },
   addAbout(state, data) {
     state.about = data
+  },
+  addHistory(state, data) {
+    state.history = data
+  },
+  addLicenses(state, data) {
+    state.licenses = data
+  },
+  addNews(state, data) {
+    state.news = data
+  },
+  addPartners(state, data) {
+    state.partners = data
   },
   toggleBuyModal(state, data) {
     state.modals.buy = data;
@@ -109,6 +125,54 @@ export const actions = {
         })
     });
   },
+  addHistory(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios.$get('history.php')
+        .then((response) => {
+          context.commit('addHistory', response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
+  },
+  addLicenses(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios.$get('license.php')
+        .then((response) => {
+          context.commit('addLicenses', response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
+  },
+  addNews(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios.$get('news.php')
+        .then((response) => {
+          context.commit('addNews', response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
+  },
+  addPartners(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios.$get('client.php')
+        .then((response) => {
+          context.commit('addPartners', response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
+  },
   toggleModal(context, data) {
     if (data.type === 'buy') {
       context.commit('toggleBuyModal', {
@@ -123,6 +187,10 @@ export const actions = {
     await dispatch('addVacancies');
     await dispatch('addContacts');
     await dispatch('addAbout');
+    await dispatch('addHistory');
+    await dispatch('addLicenses');
+    await dispatch('addNews');
+    await dispatch('addPartners');
   }
 }
 
@@ -147,5 +215,17 @@ export const getters = {
   },
   getAbout(state) {
     return state.about;
+  },
+  getHistory(state) {
+    return state.history;
+  },
+  getLicenses(state) {
+    return state.licenses;
+  },
+  getNews(state) {
+    return state.news;
+  },
+  getPartners(state) {
+    return state.partners;
   },
 }

@@ -12,14 +12,14 @@
         <div class="gallery__items">
             <div class="gallery__item" v-for="(image, key) in images" :key="image.index" @click="index = key">
                 <div class="gallery__item_image">
-                    <img :src="image.image" width="100%" alt="">
+                    <img :src="$vareibles.remote + image.PREVIEW_PICTURE" width="100%" alt="">
                 </div>
                 <div class="gallery__item_overlay">
                     <div class="icon">
                         <img :src="require('~/assets/img/licenses/search_icon.svg')" width="100%" alt="">
                     </div>
                     <div class="text">
-                        {{image.title}}
+                        Благодарственное письмо от АО "СПМБМ "Малахит"
                     </div>
                 </div>
             </div>
@@ -29,15 +29,13 @@
 
 <script>
 export default {
+    props: {
+        images: {
+            type: Array,
+            default: () => ([]),
+        }
+    },
     data: () => ({
-        images: [
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-          { title:'Благодарственное письмо от АО "СПМБМ "Малахит"', image: require('~/assets/img/licenses/license2.png') },
-        ],
         gallery: [
           require('~/assets/img/licenses/license2.png'),
           require('~/assets/img/licenses/license2.png'),

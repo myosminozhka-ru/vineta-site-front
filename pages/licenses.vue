@@ -1,12 +1,13 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="licenses" v-if="false">
+        <div class="licenses">
             <div class="header_padding">
                 <osm-breadcrumbs />
-                <osm-gallery />
-                <osm-gallery />
-                <osm-gallery />
+                <!-- <pre style="font-size: 15rem;">
+                    {{ getLicenses }}
+                </pre> -->
+                <osm-gallery :images="getLicenses" />
             </div>
         </div>
         <osm-footer />
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: "LicensesPage",
     components: {
@@ -21,6 +23,9 @@ export default {
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmGallery: () => import('~/components/licenses/OsmGallery.vue'),
+    },
+    computed: {
+        ...mapGetters(['getLicenses']), 
     }
 }
 </script>

@@ -1,72 +1,66 @@
 <template>
-    <div class="news__inner">
+    <div class="news__inner" v-if="detail">
+        <!-- <pre style="font-size: 15rem;">
+            {{ detail }}
+        </pre> -->
         <div class="news__image">
-            <img :src="require('~/assets/img/news/news1.jpg')" alt="">
+            <img :src="$vareibles.remote + detail[0].PREVIEW_PICTURE" alt="">
         </div>
         <div class="news__buttons">
-            <osm-button class="news__button">28.02.2022</osm-button>
-            <osm-button :outlined="true" class="news__button">Пресс-релизы</osm-button>
+            <osm-button class="news__button">{{ detail[0].PROPERIES[0].VALUE }}</osm-button>
+            <osm-button :outlined="true" class="news__button">{{ detail[0].PROPERIES[1].VALUE }}</osm-button>
         </div>
         <div class="news__title">
-            Предприятие делится опытом внедрения инструментов бережливого производства
+            {{ detail[0].NAME }}
         </div>
         <div class="news__texts">
-            <p>На предприятии подвели первые итоги реализации национального проекта «Производительность труда».</p>
-            <p>Совместно с экспертом Федерального центра компетенций для оптимизации производственных процессов предприятия был выбран пилотный поток. Переход на новую систему организации производства стартовал с участка изготовления охладителя наддувочного воздуха. Применяя инструменты бережливого производства, планируется сократить время, затрачиваемое на выполнение данного процесса, снизить себестоимость изделия и нарастить рынок сбыта.</p>
-            <p>На старте проекта рабочая группа предприятия в составе 14 человек прошла обучение основам бережливого производства, картированию, внедрению системы 5С на производстве, стандартизированной работе, а также реализации проекта по улучшению. По итогам диагностики были проанализированы все потери и проблемы в пилотном потоке, выявлено 57 узких мест, в числе которых: планирование производства, длительная транспортировка деталей и переналадка оборудования, ожидание ОТК и другие. С помощью полученных знаний и при поддержке эксперта ФЦК на рабочих местах была внедрена система 5С, организован производственный анализ, решен вопрос с проведением контроля ― для этого были созданы специальные места приемки ОТК, организован вызов специалиста для контроля по рации, а также разработана визуализация статуса приемки детали. Кроме того, был изменен график работы и трансфера рабочего персонала, что позволило устранить простои во время пересменки и увеличить полезное время вечерней смены на 2 часа.</p>
-            <p>По итогам полугодовой реализации проекта предприятие планирует сократить время выполнения процесса на 49%, вдвое снизить объем незавершенного производства ― с 234 до 123 штук, а также увеличить выработку работника пилотного потока ― с 0,4 до 0,6 чел/час.</p>
+            <p v-html="detail[0].NAME" />
         </div>
         <div class="news__more">
             <div class="news__more--title">Смотрите так же</div>
             <div class="news__more--items">
-                <div v-for="(item, key) in news" :key="key" class="news__item">
+                <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item">
                     <div class="news__item_left">
                         <div class="news__image">
-                            <img :src="item.image" width="100%" alt="">
+                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                         </div>
                     </div>
                     <div class="news__item_right">
                         <div class="news__item_top">
-                            <div class="news__date">{{ item.date }}</div>
+                            <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
                             <div class="news__text">
-                                {{ item.text }}
+                                {{ item.NAME }}
                             </div>
                         </div>
-                        <nuxt-link class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</nuxt-link>
+                        <span class="news__link" :to="{name: item.link, params: {newsId: item.CODE}}">Читать новость</span>
                     </div>
-                </div>
+                </nuxt-link>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     components: {
         OsmButton: () => import('~/components/global/OsmButton.vue')
     },
     data: () => ({
-        news: [
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: 'Команда «Винета» - трижды обладатель «Кубка Чемпионов» в турнире по настольному теннису!',
-              date: '2 апреля 2021',
-              link: 'news-newsId'
-          },
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: '25 лет верным курсом!',
-              date: '2 апреля 2021',
-              link: 'news-newsId'
-          },
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: 'Поздравляем с наступающим Новым 2022 Годом и Рождеством!',
-              date: '2 апреля 2021',
-              link: 'news-newsId'
-          },
-      ]
-    })
+        detail: null,
+    }),
+    computed: {
+        ...mapGetters(['getNews']),
+        news() {
+            return this.getNews.filter(item => item.CODE !== this.$route.params.newsId)
+        }
+    },
+    beforeDestroy() {
+        this.detail = null
+    },
+    async fetch() {
+        this.detail = await this.$axios.$get(`news-detail.php?code=${this.$route.params.newsId}`);
+    },
 }
 </script>
 
@@ -129,6 +123,7 @@ export default {
         display: flex;
         flex-direction: column;
         border: 1px solid #D7DCE1;
+        text-decoration: none;
     }
     &__item &__item_left {
         // height: rem(185);

@@ -1,17 +1,18 @@
 <template>
     <div class="history">
         <osm-header />
-        <div class="header_padding" v-if="false">
+        <div class="header_padding">
+            <!-- <pre style="font-size: 15rem;">
+                {{ getHistory }}
+            </pre> -->
             <div class="history__in">
                 <div class="history__top">
                     <osm-breadcrumbs :white="true" />
                 </div>
                 <div class="history__bottom">
                     <div class="history__text">
-                        <div class="history__text--left" v-for="(item, key) in 6" :key="item.index" :class="{'isActive': key === selectedTime}">
-                            <p>{{key}}ООО «Винета» определено головным предприятием по проектированию и производству теплообменного оборудования для нужд судостроительной промышленности России.</p>
-                            <p>Разработаны установки подготовки дизельного топлива на базе полимерных фильтроэлементов, пневмоцистерны систем водоснабжения, аппараты стационарные пены, статические сепараторы дизельного топлива и другие решения.</p>
-                            <p>Поставляемые ООО «Винета» блоки сепарации БС используются на кораблях военно-морского флота РФ.</p>
+                        <div class="history__text--left" v-for="(item, key) in getHistory" :key="item.index" :class="{'isActive': key === selectedTime}">
+                            <p v-html="item.PREVIEW_TEXT" />
                         </div>
                         <div class="history__text--buttons hide_on_tablet">
                             <div @click="prev">
@@ -33,12 +34,12 @@
                         </div>
                     </div>
                     <div class="history__timeline">
-                        <div class="history__timeline_item" v-for="(item, key) in 6" :key="item.index" :class="{'isActive': key <= selectedTime, 'isTransformed': key === selectedTime}" :style="`--index: ${selectedTime}`">
+                        <div class="history__timeline_item" v-for="(item, key) in getHistory" :key="item.index" :class="{'isActive': key <= selectedTime, 'isTransformed': key === selectedTime}" :style="`--index: ${selectedTime}`">
                             <div class="top">
                                 <div class="line"></div>
                                 <div class="sqare"></div>
                             </div>
-                            <div class="bottom" @click="selectedTime = key">199{{ key }}</div>
+                            <div class="bottom" @click="selectedTime = key">{{ item.NAME }}</div>
                         </div>
                     </div>
                     <div class="history__text--buttons hide_on_desktop">
@@ -65,6 +66,7 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: 'HistoryPage',
     components: {
@@ -75,9 +77,12 @@ export default {
     data: () => ({
         selectedTime: 0,
     }),
+    computed: {
+        ...mapGetters(['getHistory']), 
+    },
     methods: {
         next() {
-            if (this.selectedTime >= 5) return;
+            if (this.selectedTime >= this.getHistory.length - 1) return;
             this.selectedTime++;
         },
         prev() {
