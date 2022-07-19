@@ -2,14 +2,14 @@
     <div class="wrapper">
         <osm-header />
         <div class="partners">
-            <pre style="font-size: 15rem;">{{ getPartners }}</pre>
-            <div class="header_padding">
+            <!-- <pre style="font-size: 15rem;">{{ getPartners }}</pre> -->
+            <div class="header_padding" v-if="getPartners">
                 <osm-breadcrumbs />
                 <div class="partners__title">Основные заказчики и партнёры</div>
                 <div class="partners__items">
-                    <div class="partners__item" v-for="item in 6" :key="item.index">
+                    <div class="partners__item" v-for="item in getPartners" :key="item.index">
                         <div class="partners__item_logo">
-                            <img :src="require('~/assets/img/partners/partner1.svg')" alt="">
+                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                         </div>
                         <div class="partners__item_text">
                             С 2008 года «Альфеус-Фидс» является официальным дистрибьютором компании «Coppens International» (Нидерланды) на территории Российской Федерации.
@@ -19,25 +19,25 @@
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
                                 </div>
-                                <div class="text">620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500</div>
+                                <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                             </div>
-                            <a href="mailto:info@vineta.ru" class="partners__contact_item">
+                            <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
                                 </div>
-                                <div class="text">info@vineta.ru</div>
+                                <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
                             </a>
-                            <a href="tel:+7(812)493-50-48" class="partners__contact_item">
+                            <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
                                 </div>
-                                <div class="text">+7(812)493-50-48</div>
+                                <div class="text">{{item.PROPERIES[3].VALUE}}</div>
                             </a>
                             <div class="partners__contact_item">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
                                 </div>
-                                <div class="text">Пн-Пт с 9:00 до 18:00</div>
+                                <div class="text">{{ item.PROPERIES[4].VALUE }}</div>
                             </div>
                         </div>
                         <osm-button>В каталог</osm-button>
