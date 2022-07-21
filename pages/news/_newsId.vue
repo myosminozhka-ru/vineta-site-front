@@ -1,14 +1,14 @@
 <template>
     <div class="news__inner" v-if="detail">
-        <pre style="font-size: 15rem;">
+        <!-- <pre style="font-size: 15rem;">
             {{ detail }}
-        </pre>
+        </pre> -->
         <div class="news__image">
             <img :src="$vareibles.remote + detail[0].PREVIEW_PICTURE" alt="">
         </div>
         <div class="news__buttons">
-            <osm-button class="news__button">{{ detail[0].PROPERIES[0].VALUE }}</osm-button>
-            <osm-button :outlined="true" class="news__button">{{ detail[0].PROPERIES[1].VALUE }}</osm-button>
+            <osm-button class="news__button" style="pointer-events: none;">{{ detail[0].PROPERIES[0].VALUE }}</osm-button>
+            <osm-button :outlined="true" class="news__button" style="pointer-events: none;">{{ detail[0].PROPERIES[1].VALUE }}</osm-button>
         </div>
         <div class="news__title">
             {{ detail[0].NAME }}
