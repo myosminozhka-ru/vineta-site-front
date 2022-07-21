@@ -1,11 +1,11 @@
 <template>
-    <div class="contacts__slider glide">
+    <div class="contacts__slider glide" v-if="gallery">
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
-                <li class="glide__slide" v-for="item in 10" :key="item.index">
+                <li class="glide__slide" v-for="item in gallery" :key="item.index">
                     <div class="contacts__slider_item">
                         <div class="contacts__slider_item_in">
-                            <img :src="require('~/assets/img/contacts/contacts.jpg')" alt="">
+                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                         </div>
                     </div>
                 </li>
@@ -35,6 +35,12 @@
 import Glide from '@glidejs/glide'
 export default {
     name: "OsmCatalogSlider",
+    props: {
+        gallery: {
+            type: Array,
+            default: () => ([])
+        }
+    },
     data: () => ({
         slider: new Glide('.glide', {
             perView: 4,

@@ -7,12 +7,12 @@
                     Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные
                 </div>
             </div>
-            <form @submit.prevent class="section__left_form">
-                <osm-input class="section__input" placeholder="ФИО *" :required="true"/>
-                <!-- <osm-input class="section__input" placeholder="Компания *" :required="true"/> -->
-                <osm-input class="section__input" placeholder="Телефон *" type="tel" :required="true"/>
-                <osm-input class="section__input" placeholder="E-mail *" type="email" :required="true"/>
-                <osm-textarea class="section__textarea" placeholder="Ваше сообщение" type="email" :required="true"/>
+            <form @submit.prevent="sendForm" class="section__left_form">
+                <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
+                    <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
+                    <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input section__input" v-model="formData[field.VARNAME]">
+                    <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
+                </div>
                 <osm-button class="section__button" :large="true" type="submit">Подробнее</osm-button>
             </form>
         </div>
@@ -57,12 +57,17 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    OsmInput: () => import('~/components/global/OsmInput.vue'),
-    OsmTextarea: () => import('~/components/global/OsmTextarea.vue'),
+    // OsmInput: () => import('~/components/global/OsmInput.vue'),
+    // OsmTextarea: () => import('~/components/global/OsmTextarea.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
+  
   data: () => ({
+        fields: [],
+        formData: {},
+        errors: {},
+        isSuccess: false,
       socials: [
           {
               icon: require('~/assets/img/socials/vk.svg'),
@@ -89,7 +94,29 @@ export default {
               link: '#',
           }
       ]
-  })
+    }),
+    async fetch() {
+        this.fields = await this.$axios.$get('forms/request.php');
+    },
+    methods: {
+        sendForm() {
+            const formObj = {...this.formData}
+            const form = new FormData();
+
+            for ( const key in formObj ) {
+                form.append(key, formObj[key]);
+            }
+            this.$axios.$post('forms/result_request.php', form).then(result => {
+                console.log(result);
+                if (result.error) {
+                    this.errors = result.error
+                }
+                if (result.success) {
+                    this.isSuccess = true
+                }
+            })
+        }
+    }
 }
 </script>
 
@@ -160,7 +187,7 @@ export default {
     &__left_form {
         width: 100%;
     }
-    &__input {
+    .osm__form_field {
         margin-bottom: rem(20);
         @media all and (max-width: 1280px) {
             margin-bottom: 10px;

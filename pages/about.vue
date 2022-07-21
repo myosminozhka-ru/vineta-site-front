@@ -2,22 +2,25 @@
   <div class="wrapper footerOnBottom" >
     <osm-header />
     <div class="header_padding">
+      <!-- <pre style="font-size: 15rem;">
+        {{ getAbout }}
+      </pre> -->
       <section class="first">
         <div class="first__text">
-          {{ getAbout.banners[0].NAME }}
+          {{ getAbout.banners.first.NAME }}
         </div>
         <div class="first__image hide_on_mobile">
-          <img :src="$vareibles.remote + getAbout.banners[0].PREVIEW_PICTURE" width="100%" alt="">
+          <img :src="$vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="">
         </div>
       </section>
-      <section class="second" v-if="getAbout.banners[1]">
+      <section class="second" v-if="getAbout.banners.second">
         <div class="second__side second__side--left">
           <div class="second__side_top">
             <div class="second__title">
-              <div class="text">{{ getAbout.banners[1].NAME }}</div>
+              <div class="text">{{ getAbout.banners.second.NAME }}</div>
             </div>
             <div class="second__text">
-              <p>{{ getAbout.banners[1].PREVIEW_TEXT }}</p>
+              <p>{{ getAbout.banners.second.PREVIEW_TEXT }}</p>
               <p v-if="isTextShowed">Современные технологии достигли такого уровня, что дальнейшее развитие различных форм деятельности не
                 даёт нам иного выбора, кроме определения благоприятных перспектив. Высокий уровень вовлечения
                 представителей целевой аудитории является четким доказательством простого факта: разбавленное изрядной
@@ -88,8 +91,8 @@
           </div>
         </div>
       </section>
-      <section class="fourth" v-if="getAbout.banners[2]">
-        <img :src="$vareibles.remote + getAbout.banners[2].PREVIEW_PICTURE" width="100%" alt="">
+      <section class="fourth" v-if="getAbout.banners.third">
+        <img :src="$vareibles.remote + getAbout.banners.third.PREVIEW_PICTURE" width="100%" alt="">
       </section>
       <section class="fiveth">
         <div class="fiveth__title">Руководство</div>
@@ -119,17 +122,17 @@
       <section class="history">
         <div class="history__side history__left">
           <div class="history__top">
-            <div class="history__title">{{getAbout.banners[4].NAME}}</div>
+            <div class="history__title">{{getAbout.banners.fifth.NAME}}</div>
             <div class="history__line"></div>
-            <div class="history__text">{{getAbout.banners[4].PREVIEW_TEXT}}</div>
+            <div class="history__text">{{getAbout.banners.fifth.PREVIEW_TEXT}}</div>
           </div>
           <osm-button class="history__button" link="history">Подробнее</osm-button>
         </div>
         <div class="history__side history__right">
           <div class="history__top">
-            <div class="history__title">{{getAbout.banners[5].NAME}}</div>
+            <div class="history__title">{{getAbout.banners.sixth.NAME}}</div>
             <div class="history__line"></div>
-            <div class="history__text">{{getAbout.banners[5].PREVIEW_TEXT}}</div>
+            <div class="history__text">{{getAbout.banners.sixth.PREVIEW_TEXT}}</div>
           </div>
           <osm-button class="history__button" :outlined="true" link="techs">Подробнее</osm-button>
         </div>

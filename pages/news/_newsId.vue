@@ -1,8 +1,8 @@
 <template>
     <div class="news__inner" v-if="detail">
-        <!-- <pre style="font-size: 15rem;">
+        <pre style="font-size: 15rem;">
             {{ detail }}
-        </pre> -->
+        </pre>
         <div class="news__image">
             <img :src="$vareibles.remote + detail[0].PREVIEW_PICTURE" alt="">
         </div>

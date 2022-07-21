@@ -1,19 +1,23 @@
 <template>
     <div>
-        <section class="first">
+
+      <pre style="font-size: 15rem;">
+        {{ getVacancies }}
+      </pre>
+        <section class="first" v-if="getVacancies.banners.first">
             <div class="first__text">
-            Проектируем, изготавливаем и поставляем оборудование для судостроения
+            {{ getVacancies.banners.first.NAME }}
             </div>
             <div class="first__image hide_on_mobile">
-              <img :src="require('~/assets/img/about/first_img.png')" width="100%" alt="">
+              <img :src="$vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="">
             </div>
         </section>
-        <osm-advantagies />
+        <osm-advantagies :bennefits="getVacancies.bennefits" />
         <div class="vacancies__slider">
-            <osm-slider />
+            <osm-slider :gallery="getVacancies.gallery" />
         </div>
         <osm-response />
-        <osm-list :vacancies="getVacancies" />
+        <osm-list :vacancies="getVacancies.vacancy" />
     </div>
 </template>
 

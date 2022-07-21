@@ -56,7 +56,7 @@
             {{ favoritesCount }}
         </div>
     </nuxt-link>
-    <div class="header__menu_opener hide_off_mobile">
+    <div class="header__menu_opener hide_off_mobile" @click="openMenu">
       <svg xmlns="http://www.w3.org/2000/svg" width="77" height="30" viewBox="0 0 77 30" fill="none">
         <rect width="77" height="30" rx="5" fill="#2E5599"/>
         <path d="M19.75 18H12.25C12.0511 18 11.8603 18.079 11.7197 18.2197C11.579 18.3603 11.5 18.5511 11.5 18.75C11.5 18.9489 11.579 19.1397 11.7197 19.2803C11.8603 19.421 12.0511 19.5 12.25 19.5H19.75C19.9489 19.5 20.1397 19.421 20.2803 19.2803C20.421 19.1397 20.5 18.9489 20.5 18.75C20.5 18.5511 20.421 18.3603 20.2803 18.2197C20.1397 18.079 19.9489 18 19.75 18ZM12.25 12H25.75C25.9489 12 26.1397 11.921 26.2803 11.7803C26.421 11.6397 26.5 11.4489 26.5 11.25C26.5 11.0511 26.421 10.8603 26.2803 10.7197C26.1397 10.579 25.9489 10.5 25.75 10.5H12.25C12.0511 10.5 11.8603 10.579 11.7197 10.7197C11.579 10.8603 11.5 11.0511 11.5 11.25C11.5 11.4489 11.579 11.6397 11.7197 11.7803C11.8603 11.921 12.0511 12 12.25 12ZM25.75 14.25H12.25C12.0511 14.25 11.8603 14.329 11.7197 14.4697C11.579 14.6103 11.5 14.8011 11.5 15C11.5 15.1989 11.579 15.3897 11.7197 15.5303C11.8603 15.671 12.0511 15.75 12.25 15.75H25.75C25.9489 15.75 26.1397 15.671 26.2803 15.5303C26.421 15.3897 26.5 15.1989 26.5 15C26.5 14.8011 26.421 14.6103 26.2803 14.4697C26.1397 14.329 25.9489 14.25 25.75 14.25Z" fill="white"/>
@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
   export default {
     name: 'OsmMenu',
     components: {
@@ -152,7 +153,14 @@
         if (!document.querySelector(`[data-modal-id="${id}"]`)) return;
         document.querySelector(`[data-modal-id="${id}"]`).classList.add('isOpened');
         document.querySelector(`[data-modal-to-open="${id}"]`).classList.add('isActive');
-      }
+      },
+      ...mapActions(['toggleModal']),
+      openMenu() {
+        this.toggleModal({
+          isOpened: true,
+          type: 'mobileMenu'
+        })
+      },
     }
   }
 

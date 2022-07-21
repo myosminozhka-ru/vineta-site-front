@@ -6,16 +6,23 @@
                     <img :src="require('~/assets/img/closer.svg')" width="100%" alt="">
                 </div>
             </div>
-            <form class="modal__form">
-                <div class="modal__form_in">
+            <form class="modal__form" @submit.prevent="sendForm" ref="buy_form">
+                <div class="modal__form_in" v-if="!isSuccess">
                     <div class="modal__title">Оставить заявку</div>
-                    <osm-input class="modal__input" placeholder="ФИО *" :required="true"/>
+                    <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
+                        <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
+                        <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input modal__input" v-model="formData[field.VARNAME]">
+                        <!-- <osm-input class="modal__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
+                    </div>
                     <!-- <osm-input class="modal__input" placeholder="Компания *" :required="true"/> -->
-                    <osm-input class="modal__input" placeholder="Телефон *" type="tel" :required="true"/>
+                    <!-- <osm-input class="modal__input" placeholder="Телефон *" type="tel" :required="true"/>
                     <osm-input class="modal__input" placeholder="E-mail *" type="email" :required="true"/>
                     <osm-counter class="modal__input"/>
-                    <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/>
-                    <osm-button class="modal__button" :large="true" type="submit">Подробнее</osm-button>
+                    <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
+                    <osm-button class="modal__button" :large="true" type="submit">Отправить</osm-button>
+                </div>
+                <div class="modal__form_in" v-else>
+                    <div class="modal__title">Спасибо за заявку! Мы свяжемся с Вами в ближайшее время.</div>
                 </div>
             </form>
         </div>
@@ -26,15 +33,63 @@
 import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "OsmBuyModal",
+    data: () => ({
+        isSended: false,
+        result: null,
+        fields: [],
+        formData: {},
+        errors: {},
+        isSuccess: false
+    }),
     computed: {
         ...mapGetters(['getModals']),
+        // formData() {
+        //     return this.fields.value.map(item => {
+        //         return {
+        //             name: item.VARNAME,
+        //             value: ""
+        //         }
+        //     })
+        // }
+    },
+    async fetch() {
+        this.fields = await this.$axios.$get('forms/order.php');
     },
     methods: {
       ...mapActions(['toggleModal']),
       closeBuy() {
+        this.isSuccess = false;
+        this.formData = {};
         this.toggleModal({
           isOpened: false,
           type: 'buy'
+        })
+      },
+      sendForm() {
+        const formObj = {...this.formData}
+        // const form = this.formData.filter(item => item);
+        // console.log(form)
+        // const data = new FormData(this.$refs.buy_form);
+        const form = new FormData();
+
+        for ( const key in formObj ) {
+            form.append(key, formObj[key]);
+        }
+        // this.formData.map(item => {
+        //     const [key, value] = item;
+        //     console.log(key, value);
+        //     return item;
+        // })
+        // const form = new FormData(this.formData);
+        // console.log(form);
+        this.$axios.$post('forms/result_order.php', form).then(result => {
+            console.log(result);
+            if (result.error) {
+                this.errors = result.error
+            }
+            if (result.success) {
+                this.isSuccess = true
+            }
         })
       }
     }
@@ -114,9 +169,12 @@ export default {
         line-height: 140%;
         color: #172242;
     }
-    &__input {
+    .osm__form_field {
         margin-bottom: rem(20);
     }
+    // &__input {
+    //     margin-bottom: rem(20);
+    // }
     &__textarea {
         margin-bottom: rem(20);
     }

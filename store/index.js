@@ -12,6 +12,9 @@ export const state = () => ({
   modals: {
     buy: {
       isOpened: false
+    },
+    mobileMenu: {
+      isOpened: false
     }
   }
 })
@@ -49,6 +52,9 @@ export const mutations = {
   },
   toggleBuyModal(state, data) {
     state.modals.buy = data;
+  },
+  toggleMobileMenu(state, data) {
+    state.modals.mobileMenu = data;
   }
 }
 
@@ -176,6 +182,11 @@ export const actions = {
   toggleModal(context, data) {
     if (data.type === 'buy') {
       context.commit('toggleBuyModal', {
+        isOpened: data.isOpened
+      });
+    }
+    if (data.type === 'mobileMenu') {
+      context.commit('toggleMobileMenu', {
         isOpened: data.isOpened
       });
     }

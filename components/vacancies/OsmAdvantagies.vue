@@ -1,13 +1,13 @@
 <template>
-    <div class="advantages">
+    <div class="advantages" v-if="bennefits">
         <div class="advantages__title">Преимущества работы с нами</div>
         <div class="advantages__items">
-            <div class="advantages__item" v-for="item in 4" :key="item.index">
+            <div class="advantages__item" v-for="item in bennefits" :key="item.index">
                 <div class="icon">
-                    <img :src="require('~/assets/img/advantagies/star.svg')" width="100%" alt="">
+                    <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                 </div>
-                <div class="title">Качество</div>
-                <div class="text">Проектируем, изготавливаем и поставляем оборудование для судостроения</div>
+                <div class="title">{{ item.NAME }}</div>
+                <div class="text">{{ item.PREVIEW_TEXT }}</div>
             </div>
         </div>
         <div class="advantages__button">
@@ -18,6 +18,12 @@
 
 <script>
 export default {
+    props: {
+        bennefits: {
+            type: Array,
+            default: () => ([])
+        }
+    },
     components: {
         OsmButton: () => import('~/components/global/OsmButton.vue')
     }
