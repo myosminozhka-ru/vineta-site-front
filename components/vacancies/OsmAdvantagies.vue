@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="advantages__button">
-            <osm-button>О компании</osm-button>
+            <osm-button link="about">О компании</osm-button>
         </div>
     </div>
 </template>

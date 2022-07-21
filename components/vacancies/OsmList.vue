@@ -12,6 +12,7 @@
                             <div class="text" v-html="prop.VALUE.TEXT" />
                         </template>
                         <template v-if="!prop.VALUE.TEXT" >
+                            {{ prop.VALUE }}
                             <div class="text" v-html="prop.VALUE" />
                         </template>
                     </div>

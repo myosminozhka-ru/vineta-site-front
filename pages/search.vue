@@ -1,10 +1,10 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <div class="header_padding" v-if="false">
+        <div class="header_padding">
             <div class="search">
                 <osm-breadcrumbs />
-                <div class="search__title">Избранное</div>
+                <div class="search__title">Результаты поиска</div>
                 <osm-catalog-products />
                 <div class="search__buttons">
                     <osm-button class="search__button" :outlined="true">Выгрузить</osm-button>

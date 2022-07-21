@@ -3,7 +3,7 @@
         <client-only>
             <osm-h2 class="customers__top">
                 <osm-h2 class="customers__title">Заказчики</osm-h2>
-                <osm-button class="customers__button" v-if="hasButton">Подробнее</osm-button>
+                <osm-button class="customers__button" v-if="hasButton" link="partners">Подробнее</osm-button>
             </osm-h2>
             <div class="customers__slider-in">
                 <div class="glide__track" data-glide-el="track">

@@ -3,6 +3,7 @@
         <osm-logo />
         <osm-menu />
         <osm-info />
+        <osm-search />
         <osm-mobile-menu />
     </header>
 </template>
@@ -14,6 +15,7 @@ export default {
         OsmMenu: () => import('~/components/header/OsmMenu.vue'),
         OsmInfo: () => import('~/components/header/OsmInfo.vue'),
         OsmMobileMenu: () => import('~/components/header/OsmMobileMenu.vue'),
+        OsmSearch: () => import('~/components/search/OsmSearchPopup.vue'),
     }
 }
 </script>

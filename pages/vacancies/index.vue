@@ -1,9 +1,9 @@
 <template>
     <div>
 
-      <pre style="font-size: 15rem;">
+      <!-- <pre style="font-size: 15rem;">
         {{ getVacancies }}
-      </pre>
+      </pre> -->
         <section class="first" v-if="getVacancies.banners.first">
             <div class="first__text">
             {{ getVacancies.banners.first.NAME }}
