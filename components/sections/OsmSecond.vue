@@ -1,7 +1,12 @@
 <template>
     <section class="section section__item section__item--second section__item--dark" v-if="secondData">
         <div class="section__left section__left--fullwidth">
-            <img :src="$vareibles.remote + secondData.PREVIEW_PICTURE" alt="first" width="100%">
+            <div class="section__left_image_wrap">
+                <img v-if="isMounted" :src="require('~/assets/img/sections/detail1.svg')" height="100%" alt="">
+                <img :class="{isMounted}" class="section__left_image_clipped" :src="require('~/assets/img/sections/first.png')" height="100%" alt="">
+                <!-- <img class="section__left_image_clipped" :src="$vareibles.remote + firstData.PREVIEW_PICTURE" alt="first"> -->
+            </div>
+            <!-- <img :src="$vareibles.remote + secondData.PREVIEW_PICTURE" alt="first" width="100%"> -->
         </div>
         <div class="section__right">
             <div class="section__content">
