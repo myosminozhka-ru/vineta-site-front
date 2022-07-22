@@ -59,7 +59,7 @@
       </div>
       <div class="menu__modal" @click.stop v-for="(submenu, key) in submenus" :key="submenu.index" :data-modal-id="key">
         <div class="menu__modal_top">
-          <osm-h2 class="menu__modal_title">Выпускаемая продукция</osm-h2>
+          <osm-h2 class="menu__modal_title">О компании</osm-h2>
           <ul class="menu__modal_menu">
             <li v-for="item in submenu.childs" :key="item.index">
               <nuxt-link :to="{name: item.url}">
