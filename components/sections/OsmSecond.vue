@@ -1169,7 +1169,9 @@
     //   padding-top: rem(30);
     //   padding-bottom: rem(25);
     }
-
+    &:not(.isActive) &__left_image_clipped {
+        opacity: 0;
+    }
     &.isActive &__left_image_clipped {
       clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
     }

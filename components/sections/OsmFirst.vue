@@ -1678,9 +1678,12 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      transition: 1s all 1.3s ease;
+      transition: 1s clip-path 1.3s ease;
       padding-top: rem(30);
       padding-bottom: rem(25);
+    }
+    &:not(.isActive) &__left_image_clipped {
+        opacity: 0;
     }
 
     &.isActive &__left_image_clipped {
