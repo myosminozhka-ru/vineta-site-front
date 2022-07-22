@@ -213,6 +213,7 @@ import { mapGetters ,mapActions } from 'vuex';
         display: flex;
         align-items: center;
         text-decoration: none;
+        
         .icon {
             width: rem(40);
             margin-right: rem(20);
@@ -222,15 +223,29 @@ import { mapGetters ,mapActions } from 'vuex';
             }
         }
         .text {
-            width: calc(100% - #{rem(60)});
+            max-width: calc(100% - #{rem(60)});
             font-weight: 400;
             font-size: rem(24);
             line-height: 140%;
             color: #555F76;
+            position: relative;
+            &:after {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 100%;
+              bottom: rem(-5);
+              height: 1px;
+              background: #FF004D;
+              transition: all .3s ease;
+            }
             @media all and (max-width: 1280px) {
               width: calc(100% - 30px);
               font-size: 20px;
             }
+        }
+        &:hover .text:after {
+          right: 0;
         }
       }
     }
