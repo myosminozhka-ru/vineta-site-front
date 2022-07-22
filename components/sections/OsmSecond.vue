@@ -1150,6 +1150,8 @@
 
       img {
         width: auto;
+        -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
+        filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
       }
     }
 
@@ -1161,10 +1163,12 @@
       left: 50%;
       transform: translateX(-50%);
       transition: 1s all 1.3s ease;
+    //   padding-top: rem(30);
+    //   padding-bottom: rem(25);
     }
 
     &.isActive &__left_image_clipped {
-      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
     }
 
     &__more {
