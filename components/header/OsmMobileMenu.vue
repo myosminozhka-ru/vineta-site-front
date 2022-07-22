@@ -13,6 +13,29 @@
       </div>
       <nav class="menu__links">
         <ul>
+          <li class="menu__links_li has-child">
+            <a :to="{name: 'catalog'}" @click.prevent>
+                <div class="text">Каталог</div>
+                <div class="arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
+                    <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2"/>
+                  </svg>
+                </div>
+                <!-- <div v-if="link.childs" class="header__arrow">
+                    <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
+                </div> -->
+            </a>
+            <ul v-if="getCatalog">
+              <li v-for="child in getCatalog" :key="child.index">
+                <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: child.CODE}}">
+                <div class="icon">
+                  <img :src="require('~/assets/img/catalog/catalog_icon1.svg')" width="100%" alt="">
+                </div>
+                <div class="text">{{ child.NAME }}</div>
+              </nuxt-link>
+              </li>
+            </ul>
+          </li>
           <li v-for="link in menu" :key="link.index" class="menu__links_li" :class="{'has-child': link.childs, 'isOpened': link.isOpened}">
             <nuxt-link :to="{name: link.url}">
                 <div class="text">{{ link.text }}</div>
@@ -38,7 +61,11 @@
           </li>
         </ul>
       </nav>
-      <div class="menu__socials"></div>
+      <div class="menu__socials">
+        <!-- <pre style="font-size: 15rem">
+          {{ getMainMore.contact[0].PROPERIES }}
+        </pre> -->
+      </div>
     </div>
   </div>
 </template>
@@ -47,51 +74,16 @@
 import { mapGetters, mapActions } from 'vuex';
   export default {
     data: () => ({
-      menu: [{
-          text: 'Каталог',
-          isOpened: false,
-          url: 'catalog',
-          childs: [{
-            url: 'index',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Оборудование очистки газов и воздухаы'
-          }]
-        },
+      menu: [
         {
           text: 'О компании',
           isOpened: false,
-          url: 'about',
-          childs: [{
-            url: 'index',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Оборудование очистки газов и воздухаы'
-          }]
+          url: 'about'
         },
         {
           text: 'Новости',
           isOpened: false,
           url: 'news',
-          childs: [{
-              url: 'index',
-              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-              text: 'Оборудование очистки газов и воздухаы'
-            },
-            {
-              url: 'index',
-              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-              text: 'Оборудование очистки газов и воздухаы'
-            },
-            {
-              url: 'index',
-              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-              text: 'Оборудование очистки газов и воздухаы'
-            },
-            {
-              url: 'index',
-              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-              text: 'Оборудование очистки газов и воздухаы'
-            }
-          ]
         },
         {
           text: 'Вакансии',
@@ -106,10 +98,13 @@ import { mapGetters, mapActions } from 'vuex';
       ],
     }),
     mounted() {
+      this.closeMenu();
       this.openChilds();
     },
     computed: {
       ...mapGetters(['getModals']),
+      ...mapGetters(['getCatalog']),
+      ...mapGetters(['getMainMore']),
     },
     methods: {
       openChilds() {

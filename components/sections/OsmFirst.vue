@@ -1706,6 +1706,9 @@
 
     &__button {
       width: 192px;
+      @media all and (max-width: 840px) {
+        width: 100%;
+      }
     }
   }
 

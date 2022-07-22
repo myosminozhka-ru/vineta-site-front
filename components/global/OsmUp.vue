@@ -50,6 +50,8 @@ export default {
     @media all and (max-width: 1280px) {
         width: 67px;
         height: 67px;
+        right: 15px;
+        bottom: 30px;
     }
     &.isVisible {
         opacity: 1;

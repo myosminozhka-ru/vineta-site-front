@@ -21,6 +21,7 @@
                 </div>
             </div>
         </div>
+        <osm-footer />
     </div>
 </template>
 
@@ -29,6 +30,7 @@ export default {
     name: "NewsPage",
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmNewsTop: () => import('~/components/news/OsmNewsTop.vue'),
     }

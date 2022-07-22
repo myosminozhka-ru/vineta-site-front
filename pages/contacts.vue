@@ -68,21 +68,21 @@
                     </div>
                 </div>
             </div>
-          <osm-contacts-slider />
+          <osm-contacts-slider :gallery="getVacancies.gallery" />
         </div>
         <section class="fiveth">
           <div class="fiveth__title">Руководство</div>
           <div class="fiveth__items">
-            <div class="fiveth__item" v-for="item in 4" :key="item.index">
+            <div class="fiveth__item" v-for="item in getAbout.peoples" :key="item.index">
               <div class="avatar">
                 <div class="avatar__in">
-                  <img :src="require('~/assets/img/about/avatar1.jpg')" alt="">
+                  <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                 </div>
               </div>
-              <div class="name">Абрамов Дмитрий Витальевич</div>
-              <div class="position">Заместитель директора по качеству</div>
-              <a href="tel:+78124935048" class="phone">+7(812) 493-50-48 (доб. 141)</a>
-              <a href="mailto:utfe@utfe.su" class="email">utfe@utfe.su</a>
+              <div class="name">{{ item.NAME }}</div>
+              <div class="position">{{ item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
+              <a :href="`tel:${item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE}`" class="phone">{{ item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE }}</a>
+              <a :href="`mailto:${item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE}`" class="email">{{ item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE }}</a>
             </div>
           </div>
         </section>
@@ -103,6 +103,8 @@ export default {
     },
     computed: {
       ...mapGetters(['getContacts']),
+      ...mapGetters(['getVacancies']),
+      ...mapGetters(['getAbout']),
     }
 }
 </script>
