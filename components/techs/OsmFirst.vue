@@ -99,7 +99,7 @@ export default {
             margin-bottom: 30px;
         }
         .index {
-            color: #F2F2F2;
+            color: #e7e7e7;
             font-size: rem(400);
             font-weight: 600;
             position: absolute;
