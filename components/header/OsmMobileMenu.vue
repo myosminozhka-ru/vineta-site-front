@@ -78,7 +78,22 @@ import { mapGetters, mapActions } from 'vuex';
         {
           text: 'О компании',
           isOpened: false,
-          url: 'about'
+          url: 'about',
+          childs: [{
+            url: 'techs',
+            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+            text: 'Технологии производства'
+          },
+          {
+            url: 'history',
+            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+            text: 'История'
+          },
+          {
+            url: 'partners',
+            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+            text: 'Партнеры'
+          }]
         },
         {
           text: 'Новости',

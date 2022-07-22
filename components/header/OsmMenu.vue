@@ -4,6 +4,14 @@
       {{ getMainMore.downloads }}
     </pre> -->
     <ul class="header__ul hide_on_mobile">
+      <li class="header__li has-child" @mouseenter.stop="openModal(123)" :data-modal-to-open="123">
+        <nuxt-link class="header__link" :to="{name: 'catalog'}" @click.stop="">
+            <span>Каталог</span>
+            <div class="header__arrow">
+                <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
+            </div>
+        </nuxt-link>
+      </li>
       <li v-for="(link, key) in menu" :key="link.index" class="header__li" @mouseenter.stop="openModal(key)" :data-modal-to-open="key" :class="{'has-child': link.childs}">
         <nuxt-link class="header__link" :to="{name: link.url}" @click.stop="">
             <span>{{ link.text }}</span>
@@ -14,7 +22,7 @@
       </li>
     </ul>
     <div class="menu__modals hide_on_mobile">
-      <div class="menu__modal" @click.stop v-for="(submenu, key) in submenus" :key="submenu.index" :data-modal-id="key">
+      <div class="menu__modal" :data-modal-id="123">
         <div class="menu__modal_top">
           <osm-h2 class="menu__modal_title">Выпускаемая продукция</osm-h2>
           <ul class="menu__modal_menu">
@@ -24,6 +32,41 @@
                   <img :src="require('~/assets/img/catalog/catalog_icon1.svg')" width="100%" alt="">
                 </div>
                 <div class="text">{{ category.NAME }}</div>
+              </nuxt-link>
+            </li>
+          </ul>
+        </div>
+        <div class="menu__modal_bottom">
+          <osm-h2 class="menu__modal_title">Загрузки</osm-h2>
+          <a :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC" class="menu__modal_file">
+            <div class="icon">
+              <img src="~/assets/img/download.svg" width="100%" alt="">
+            </div>
+            <div class="text">
+              <div class="top">{{ getMainMore.downloads[0].NAME }}</div>
+              <div class="bottom">
+                <span>PDF</span>
+                <div class="delim">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
+                    <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599"/>
+                  </svg>
+                </div>
+                <span>30.2 МБ</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="menu__modal" @click.stop v-for="(submenu, key) in submenus" :key="submenu.index" :data-modal-id="key">
+        <div class="menu__modal_top">
+          <osm-h2 class="menu__modal_title">Выпускаемая продукция</osm-h2>
+          <ul class="menu__modal_menu">
+            <li v-for="item in submenu.childs" :key="item.index">
+              <nuxt-link :to="{name: item.url}">
+                <div class="icon">
+                  <img :src="item.icon" width="100%" alt="">
+                </div>
+                <div class="text">{{ item.text }}</div>
               </nuxt-link>
             </li>
           </ul>
@@ -84,18 +127,25 @@ import { mapGetters ,mapActions } from 'vuex';
       ...mapGetters(['getMainMore']),
     },
     data: () => ({
-      menu: [{
-          text: 'Каталог',
-          url: 'catalog',
-          childs: [{
-            url: 'index',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Оборудование очистки газов и воздухаы'
-          }]
-        },
+      menu: [
         {
           text: 'О компании',
-          url: 'about'
+          url: 'about',
+          childs: [{
+            url: 'techs',
+            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+            text: 'Технологии производства'
+          },
+          {
+            url: 'history',
+            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+            text: 'История'
+          },
+          {
+            url: 'partners',
+            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+            text: 'Партнеры'
+          }]
         },
         {
           text: 'Новости',
