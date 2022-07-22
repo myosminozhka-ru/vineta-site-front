@@ -96,13 +96,17 @@ export default {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   data: () => ({
-      isVideoPlayed: false
+      isVideoPlayed: false,
+      isMounted: false
   }),
   computed: {
       ...mapGetters(['getMain']),
       secondData() {
         return this.getMain[1]
       }
+  },
+  mounted() {
+    this.isMounted = true
   },
   methods: {
       playVideo() {
@@ -115,6 +119,28 @@ export default {
 
 <style lang="scss" scoped>
 .section {
+    &__left_image_wrap {
+        padding-left: rem(90);
+        padding-right: rem(90);
+        height: rem(600);
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    &__left_image_clipped {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: 1s  all 1.3s ease;
+    }
+    &.isActive &__left_image_clipped {
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
     &__more {
         @media all and (max-width: 840px) {
            width: 100%;

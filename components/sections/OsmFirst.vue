@@ -61,9 +61,9 @@ export default {
         left: 50%;
         transform: translateX(-50%);
         transition: 1s  all 1.3s ease;
-        &.isMounted {
-            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-        }
+    }
+    &.isActive &__left_image_clipped.isMounted {
+        clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
     }
     &__left {
         @media all and (max-width: 1280px) {
