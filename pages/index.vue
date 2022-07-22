@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <osm-header />
+    <!-- <pre style="font-size: 15rem;">{{getMainMore}}</pre> -->
     <div class="full-page-indicators" :class="{'white': +activeIndex === 5}">
       <div class="indicator" v-for="(indicator, key) in sections" :key="indicator.index" :class="{'active': +activeIndex === +key}" @click="activeIndex = key"><span></span></div>
     </div>

@@ -1,5 +1,8 @@
 <template>
   <nav class="header__menu" @mouseleave="closeModals">
+    <!-- <pre style="font-size: 15rem">
+      {{ getMainMore.downloads }}
+    </pre> -->
     <ul class="header__ul hide_on_mobile">
       <li v-for="(link, key) in menu" :key="link.index" class="header__li" @mouseenter.stop="openModal(key)" :data-modal-to-open="key" :class="{'has-child': link.childs}">
         <nuxt-link class="header__link" :to="{name: link.url}" @click.stop="">
@@ -15,24 +18,24 @@
         <div class="menu__modal_top">
           <osm-h2 class="menu__modal_title">Выпускаемая продукция</osm-h2>
           <ul class="menu__modal_menu">
-            <li v-for="child in submenu.childs" :key="child.index">
-              <a href="#">
+            <li v-for="category in getCatalog" :key="category.ID">
+              <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE}}">
                 <div class="icon">
-                  <img :src="child.icon" width="100%" alt="">
+                  <img :src="require('~/assets/img/catalog/catalog_icon1.svg')" width="100%" alt="">
                 </div>
-                <div class="text">{{ child.text }}</div>
-              </a>
+                <div class="text">{{ category.NAME }}</div>
+              </nuxt-link>
             </li>
           </ul>
         </div>
         <div class="menu__modal_bottom">
           <osm-h2 class="menu__modal_title">Загрузки</osm-h2>
-          <a href="#" class="menu__modal_file">
+          <a :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC" class="menu__modal_file">
             <div class="icon">
               <img src="~/assets/img/download.svg" width="100%" alt="">
             </div>
             <div class="text">
-              <div class="top">Каталог продукции ООО «Винета»</div>
+              <div class="top">{{ getMainMore.downloads[0].NAME }}</div>
               <div class="bottom">
                 <span>PDF</span>
                 <div class="delim">
@@ -67,7 +70,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters ,mapActions } from 'vuex';
   export default {
     name: 'OsmMenu',
     components: {
@@ -76,7 +79,9 @@ import { mapActions } from 'vuex';
     computed: {
       submenus() {
         return this.menu.filter(item => item.childs);
-      }
+      },
+      ...mapGetters(['getCatalog']),
+      ...mapGetters(['getMainMore']),
     },
     data: () => ({
       menu: [{
@@ -90,38 +95,11 @@ import { mapActions } from 'vuex';
         },
         {
           text: 'О компании',
-          url: 'about',
-          childs: [{
-            url: 'index',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Оборудование очистки газов и воздухаы'
-          }]
+          url: 'about'
         },
         {
           text: 'Новости',
-          url: 'news',
-          childs: [
-            {
-              url: 'index',
-              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-              text: 'Оборудование очистки газов и воздухаы'
-            },
-            {
-              url: 'index',
-              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-              text: 'Оборудование очистки газов и воздухаы'
-            },
-            {
-              url: 'index',
-              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-              text: 'Оборудование очистки газов и воздухаы'
-            },
-            {
-              url: 'index',
-              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-              text: 'Оборудование очистки газов и воздухаы'
-            }
-          ]
+          url: 'news'
         },
         {
           text: 'Вакансии',

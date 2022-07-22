@@ -1,6 +1,6 @@
 <template>
     <div class="products__items products__items--favorites">
-        <nuxt-link class="products__item" v-for="product in 8" :key="product.index" :to="{name: 'catalog-product'}">
+        <nuxt-link class="products__item" v-for="product in 8" :key="product.index" :to="{name: 'catalog'}">
             <div class="products__item_image">
                 <div class="image_container">
                     <img :src="require('~/assets/img/sections/second.jpg')" alt="">

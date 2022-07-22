@@ -11,7 +11,7 @@
             </form>
             <div class="seacrhModal__result">Найдено 74 результата</div>
             <div class="seacrhModal__items">
-                <nuxt-link class="seacrhModal__item" v-for="product in 4" :key="product.index" :to="{name: 'catalog-product'}">
+                <nuxt-link class="seacrhModal__item" v-for="product in 4" :key="product.index" :to="{name: 'catalog'}">
                     <div class="products__item_image">
                         <div class="image_container">
                             <img :src="require('~/assets/img/sections/second.jpg')" alt="">

@@ -2,38 +2,38 @@
     <div class="news__wrap" :class="{'innerPage': inner}">
         <div class="news__top">
             <osm-h1 class="news__title">Новости</osm-h1>
-            <osm-button class="news__button_top" link="index" :outlined="true">Все новости</osm-button>
+            <osm-button class="news__button_top" link="news" :outlined="true">Все новости</osm-button>
         </div>
         <div class="news__bottom hide_on_tablet">
-            <div v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+            <div v-for="(item, key) in getNews" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
                 <template v-if="key === 0">
                     <div class="news__image">
-                        <img :src="item.image" width="100%" alt="">
+                        <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                     </div>
                     <div class="news__item_top">
-                        <div class="news__date">{{ item.date }}</div>
+                        <div class="news__date">{{ item.DATE }}</div>
                     </div>
                     <div class="news__item_bottom">
                         <div class="news__text">
-                            {{ item.text }}
+                            {{ item.NAME }}
                         </div>
-                        <osm-button :link="item.link">Подробнее</osm-button>
+                        <nuxt-link class="button" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</nuxt-link>
                     </div>
                 </template>
                 <template v-else>
                     <div class="news__item_left">
                         <div class="news__image">
-                            <img :src="item.image" width="100%" alt="">
+                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                         </div>
                     </div>
                     <div class="news__item_right">
                         <div class="news__item_top">
-                            <div class="news__date">{{ item.date }}</div>
+                            <div class="news__date">{{ item.DATE }}</div>
                             <div class="news__text">
-                                {{ item.text }}
+                                {{ item.NAME }}
                             </div>
                         </div>
-                        <a class="news__link" :href="item.link">Читать новость</a>
+                        <nuxt-link class="news__link" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</nuxt-link>
                     </div>
                 </template>
             </div>
@@ -41,20 +41,20 @@
         <div class="glide news__slider hide_on_desktop">
             <div class="glide__track" data-glide-el="track">
                 <div class="glide__slides news__slides">
-                    <div v-for="(item, key) in news" :key="key" class="news__item_big">
+                    <div v-for="(item, key) in getNews" :key="key" class="news__item_big">
                         <div class="news__image">
-                            <img :src="item.image" width="100%" alt="">
+                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                         </div>
                         <div class="news__item_top">
-                            <div class="news__date">{{ item.date }}</div>
+                            <div class="news__date">{{ item.DATE }}</div>
                         </div>
                         <div class="news__item_bottom">
                             <div class="news__text">
-                                {{ item.text }}
+                                {{ item.NAME }}
                             </div>
                             <osm-button :link="item.link" class="hide_on_mobile">Подробнее</osm-button>
                             <div class="mobile_link hide_off_mobile">
-                                <nuxt-link :to="{name: 'index'}" class="more">Читать новость</nuxt-link>
+                                <nuxt-link class="more" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</nuxt-link>
                             </div>
                         </div>
                     </div>
@@ -62,9 +62,9 @@
             </div>
             <div class="news__slider-buttons">
                 <div class="news__bullets hide_on_mobile" data-glide-el="controls[nav]">
-                    <button v-for="(item, key) in news" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
+                    <button v-for="(item, key) in getNews" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
                 </div>
-                <nuxt-link :to="{name: 'index'}" class="more hide_off_mobile">Смотреть все</nuxt-link>
+                <nuxt-link :to="{name: 'news'}" class="more hide_off_mobile">Смотреть все</nuxt-link>
                 <div class="news__arrows" data-glide-el="controls">
                     <button class="news__arrow news__arrow--left" data-glide-dir="<">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
@@ -85,6 +85,7 @@
 </template>
 <script>
 import Glide from '@glidejs/glide';
+import { mapGetters } from 'vuex';
 export default {
   name: 'OsmSeventhSection',
   props: {
@@ -107,33 +108,10 @@ export default {
             }
         }
     }),
-      news: [
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: 'Команда «Винета» - трижды обладатель «Кубка Чемпионов» в турнире по настольному теннису!',
-              date: '2 апреля 2021',
-              link: 'index'
-          },
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: '25 лет верным курсом!',
-              date: '2 апреля 2021',
-              link: 'index'
-          },
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: 'Поздравляем с наступающим Новым 2022 Годом и Рождеством!',
-              date: '2 апреля 2021',
-              link: 'index'
-          },
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: 'Команда «Винета» - трижды обладатель «Кубка Чемпионов» в турнире по настольному теннису!',
-              date: '2 апреля 2021',
-              link: 'index'
-          }
-      ]
   }),
+  computed: {
+    ...mapGetters(['getNews']),
+  },
   mounted() {
     this.slider.mount();
   }

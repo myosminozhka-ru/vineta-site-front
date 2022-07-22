@@ -14,7 +14,7 @@
             {{ detail[0].NAME }}
         </div>
         <div class="news__texts">
-            <p v-html="detail[0].NAME" />
+            <p v-html="detail[0].DETAIL_TEXT" />
         </div>
         <div class="news__more">
             <div class="news__more--title">Смотрите так же</div>
