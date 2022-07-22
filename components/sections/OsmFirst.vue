@@ -17,21 +17,21 @@
               clip-rule: evenodd;
               stroke-dasharray: 1000;
               stroke-dashoffset: 1000;
-              animation: dash 1s linear alternate forwards;
+              animation: dash 2s linear alternate forwards;
             }
 
             @keyframes dash {
               from {
-                stroke-dashoffset: 0;
+                stroke-dashoffset: 1000;
               }
 
               to {
-                stroke-dashoffset: 2000;
+                stroke-dashoffset: 0;
               }
             }
 
           </style>
-          <path class="path" fill="none" stroke-dashoffset="0" stroke-dasharray="0" stroke="#000" stroke-width="3" d="M2837.2,4278.8c-2.7-6.8-4.5-9.3-9.9-13.4c-6.3-4.9-13.9-8.2-26.5-11.5c-8.3-2.2-26.4-5.6-35-6.6
+          <path class="path" fill="none" stroke-dashoffset="0" stroke-dasharray="0" stroke="transparent" stroke-width="3" d="M2837.2,4278.8c-2.7-6.8-4.5-9.3-9.9-13.4c-6.3-4.9-13.9-8.2-26.5-11.5c-8.3-2.2-26.4-5.6-35-6.6
 	c-2.8-0.3-8.3-1.6-12.4-2.8l-7.4-2.2l-9.4-11l-9.4-11V4147c0-40.3-0.3-76.1-0.6-79.5c-0.9-8.7-5.5-22.3-10.5-31.5
 	c-4.8-8.7-14.5-21.5-21.3-28.2l-4.6-4.5v-11.7c0-10.9-0.2-11.9-2.4-14.6l-2.4-2.9l34.2-6l34.2-6l3-5.6c1.7-3.1,3.3-5.9,3.7-6.3
 	c0.3-0.3,1.9,1.6,3.5,4.4l2.8,5.1h13.2h13.2l0.3,40.2l0.3,40.2l14.4,0.3c9.7,0.2,14.8-0.1,15.8-0.9c1.1-0.9,1.4-5.9,1.4-25
@@ -1591,7 +1591,9 @@
 	h10.9v-20v-20H415.4 M415.3,4078.7c-10.9,0-11,0-12,2.6c-1.3,3.4-1.2,7.4,0.1,11.3l1.1,3.1h10.9h10.9v-8.5v-8.5H415.3 M22.6-59.5
 	c-0.2,1.2-0.2,3,0,4s0.4-0.1,0.4-2.3C23-60,22.8-60.8,22.6-59.5 M22.6-48.5c-0.2,2.9-0.2,7.6,0,10.5c0.2,2.9,0.4,0.5,0.4-5.2
 	S22.8-51.4,22.6-48.5">
-            <animate attributeName="fill" from="transparent" to="#000" begin="1s" dur="0.3s" fill="freeze"
+            <animate attributeName="fill" from="transparent" to="#000" begin="2s" dur="1s" fill="freeze"
+              repeatCount="1" />
+              <animate attributeName="stroke" from="transparent" to="#000" begin="1s" dur="0.3s" fill="freeze"
               repeatCount="1" />
           </path>
         </svg>
@@ -1664,10 +1666,12 @@
       left: 50%;
       transform: translateX(-50%);
       transition: 1s all 1.3s ease;
+      padding-top: rem(20);
+      padding-bottom: rem(20);
     }
 
     &.isActive &__left_image_clipped {
-      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
     }
 
     &__left {
