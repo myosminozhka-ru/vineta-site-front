@@ -1004,7 +1004,8 @@
             </clipPath>
           </g>
         </svg>
-
+        <img class="hode_on_desctop" :src="require('~/assets/img/sections/detail2.svg')"
+          height="100%" alt="">
         <img :class="{isMounted}" class="section__left_image_clipped" :src="require('~/assets/img/sections/second.png')"
           height="100%" alt="">
 
@@ -1156,7 +1157,9 @@
     }
 
     &__left_image_clipped {
-      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        @media all and (min-width: 1281px) {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+      }
       position: absolute;
       top: 0;
       bottom: 0;

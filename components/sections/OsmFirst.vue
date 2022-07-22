@@ -2,6 +2,8 @@
   <section class="section section__item section__item--first" v-if="firstData">
     <div class="section__left">
       <div class="section__left_image_wrap">
+        <img class="hode_on_desctop" :src="require('~/assets/img/sections/detail1.svg')"
+          height="100%" alt="">
         <svg v-if="isMounted" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 3259 5289"
           style="enable-background:new 0 0 3259 5289;" xml:space="preserve">
@@ -1652,7 +1654,10 @@
       justify-content: center;
       position: relative;
       width: 100%;
-
+        @media all and (max-width: 1280px) {
+        padding-top: 150px;
+        padding-bottom: 150px;
+      }
       img {
         width: auto;
         -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
@@ -1661,7 +1666,13 @@
     }
 
     &__left_image_clipped {
-      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+      @media all and (min-width: 1281px) {
+        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+      }
+      @media all and (max-width: 1280px) {
+        padding-top: 165px;
+        padding-bottom: 165px;
+      }
       position: absolute;
       top: 0;
       bottom: 0;
