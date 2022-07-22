@@ -95,18 +95,20 @@ export default {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
+  props: {
+    isMounted: {
+        type: Boolean,
+        default: false
+    }
+  },
   data: () => ({
-      isVideoPlayed: false,
-      isMounted: false
+      isVideoPlayed: false
   }),
   computed: {
       ...mapGetters(['getMain']),
       secondData() {
         return this.getMain[1]
       }
-  },
-  mounted() {
-    this.isMounted = true
   },
   methods: {
       playVideo() {
@@ -128,6 +130,10 @@ export default {
         align-items: center;
         justify-content: center;
         position: relative;
+        width: 100%;
+        img {
+            width: auto;
+        }
     }
     &__left_image_clipped {
         clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);

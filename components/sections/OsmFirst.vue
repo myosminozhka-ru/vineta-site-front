@@ -22,22 +22,22 @@
 import { mapGetters } from 'vuex';
 export default {
   name: 'OsmFirstSection',
+  props: {
+    isMounted: {
+        type: Boolean,
+        default: false
+    }
+  },
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
-  data: () => ({
-    isMounted: false
-  }),
   computed: {
       ...mapGetters(['getMain']),
       firstData() {
           return this.getMain[0]
       }
   },
-  mounted() {
-    this.isMounted = true
-  }
 }
 </script>
 
@@ -52,6 +52,10 @@ export default {
         align-items: center;
         justify-content: center;
         position: relative;
+        width: 100%;
+        img {
+            width: auto;
+        }
     }
     &__left_image_clipped {
         clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
@@ -62,7 +66,7 @@ export default {
         transform: translateX(-50%);
         transition: 1s  all 1.3s ease;
     }
-    &.isActive &__left_image_clipped.isMounted {
+    &.isActive &__left_image_clipped {
         clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
     }
     &__left {
