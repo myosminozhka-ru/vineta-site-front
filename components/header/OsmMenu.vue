@@ -234,9 +234,9 @@ import { mapGetters ,mapActions } from 'vuex';
       }
     }
     &__modal_title {
-      margin-bottom: rem(50);
+      margin-bottom: rem(50) !important;
       @media all and (max-width: 1280px) {
-        margin-bottom: 30px;
+        margin-bottom: 30px !important;
       }
     }
     &__modal_menu {
