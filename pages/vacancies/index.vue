@@ -45,7 +45,7 @@ import { mapGetters } from 'vuex';
   .first {
     display: flex;
     align-items: center;
-    padding: rem(20) rem(495) rem(20) rem(240);
+    padding: rem(20) rem(240) rem(20) rem(240);
     background: #D7DCE1;
     @media all and (max-width: 1280px) {
       padding: 20px 146px 20px 20px;

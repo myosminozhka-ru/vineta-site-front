@@ -1148,7 +1148,7 @@
       justify-content: center;
       position: relative;
       width: 100%;
-
+		transform: rotate(-90deg);
       img {
         width: auto;
         -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
@@ -1165,12 +1165,13 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      transition: 1s clip-path 1.3s ease;
+      transition: 1s clip-path 2.3s ease;
     //   padding-top: rem(30);
     //   padding-bottom: rem(25);
     }
     &:not(.isActive) &__left_image_clipped {
         opacity: 0;
+		transition: 1s clip-path 0.3s ease;
     }
     &.isActive &__left_image_clipped {
       clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
