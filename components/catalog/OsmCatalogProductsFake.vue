@@ -1,14 +1,15 @@
 <template>
     <div class="products__items products__items--favorites">
-        <nuxt-link class="products__item" v-for="product in 8" :key="product.index" :to="{name: 'catalog'}">
+            
+        <nuxt-link class="products__item" v-for="product in products" :key="product.index" :to="{name: 'catalog-catalogId-productId', params: {productId: product.CODE}}">
             <div class="products__item_image">
                 <div class="image_container">
-                    <img :src="require('~/assets/img/sections/second.jpg')" alt="">
+                    <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
                 </div>
             </div>
             <div class="products__item_data">
-                <span class="products__item_name">Товар</span>
-                <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
+                <span class="products__item_name">{{ product.NAME }}</span>
+                <!-- <div class="products__item_sku">ТУ 3683-005-54116265-2011</div> -->
                 <osm-button class="products__item_button" :large="true">Заказать</osm-button>
             </div>
         </nuxt-link>
@@ -19,27 +20,16 @@
 import { mapGetters } from 'vuex';
 export default {
     name: "OsmCatalogFake",
-    data: () => ({
-        products: [],
-    }),
     components: {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
     },
-    beforeDestroy() {
-        this.products = [];
-    },
     computed: {
-        ...mapGetters(['getCatalog']),
-        catalogId() {
-            return this.$route.params.catalogId
-        },
-        currentCategory() {
-            return this.getCatalog.filter(item => item.CODE === this.catalogId)
+        ...mapGetters(['getProducts']),
+        ...mapGetters('localStorage', ['getFavorites']),
+        products() {
+            return this.getProducts.filter(item => this.getFavorites.includes(+item.ID));
         }
     },
-    async fetch() {
-        this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
-    }
 }
 </script>
 

@@ -41,7 +41,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    '@openafg/nuxt-fullpage'
+    '@openafg/nuxt-fullpage',
+    'nuxt-vuex-localstorage'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

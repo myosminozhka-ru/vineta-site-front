@@ -5,10 +5,10 @@
             <div class="search">
                 <osm-breadcrumbs />
                 <div class="search__title">Результаты поиска</div>
-                <osm-catalog-products />
+                <osm-catalog-products :products="productsResult" />
                 <div class="search__buttons">
                     <osm-button class="search__button" :outlined="true">Выгрузить</osm-button>
-                    <osm-button class="search__button">В каталог</osm-button>
+                    <osm-button class="search__button" link="catalog">В каталог</osm-button>
                 </div>
                 <osm-news-block :inner="true" class="search__news" />
             </div>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: "FavoritesPage",
     components: {
@@ -27,6 +28,15 @@ export default {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmNewsBlock: () => import('~/components/news/OsmBlock.vue'),
+    },
+    computed: {
+        ...mapGetters(['getProducts']),
+        productsResult() {
+            return this.getProducts.filter(product => product.NAME.includes(this.$route.query.q));
+        }
+    },
+    mounted() {
+        console.log(this.$route.query.q);
     }
 }
 </script>

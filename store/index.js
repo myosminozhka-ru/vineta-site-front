@@ -9,11 +9,15 @@ export const state = () => ({
   licenses: [],
   news: [],
   partners: [],
+  products: [],
   modals: {
     buy: {
       isOpened: false
     },
     mobileMenu: {
+      isOpened: false
+    },
+    search: {
       isOpened: false
     }
   }
@@ -50,12 +54,18 @@ export const mutations = {
   addPartners(state, data) {
     state.partners = data
   },
+  addProducts(state, data) {
+    state.products = data
+  },
   toggleBuyModal(state, data) {
     state.modals.buy = data;
   },
   toggleMobileMenu(state, data) {
     state.modals.mobileMenu = data;
-  }
+  },
+  toggleSearch(state, data) {
+    state.modals.search = data;
+  },
 }
 
 export const actions = {
@@ -179,6 +189,18 @@ export const actions = {
         })
     });
   },
+  addProducts(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios.$get('catalog/elements_all.php')
+        .then((response) => {
+          context.commit('addProducts', response);
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
+  },
   toggleModal(context, data) {
     if (data.type === 'buy') {
       context.commit('toggleBuyModal', {
@@ -187,6 +209,12 @@ export const actions = {
     }
     if (data.type === 'mobileMenu') {
       context.commit('toggleMobileMenu', {
+        isOpened: data.isOpened
+      });
+    }
+    if (data.type === 'search') {
+      console.log(data)
+      context.commit('toggleSearch', {
         isOpened: data.isOpened
       });
     }
@@ -202,6 +230,7 @@ export const actions = {
     await dispatch('addLicenses');
     await dispatch('addNews');
     await dispatch('addPartners');
+    await dispatch('addProducts');
   }
 }
 
@@ -238,5 +267,8 @@ export const getters = {
   },
   getPartners(state) {
     return state.partners;
+  },
+  getProducts(state) {
+    return state.products;
   },
 }
