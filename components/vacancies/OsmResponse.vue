@@ -39,7 +39,7 @@ export default {
     }
     &__in {
         padding: rem(60);
-        background: #172242;
+        background: #172242 url('~assets/img/vacancies/plank_bg.svg') 100% 0% / rem(350) no-repeat;
         display: flex;
         align-items: flex-end;
         @media all and (max-width: 1280px) {

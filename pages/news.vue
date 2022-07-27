@@ -74,10 +74,21 @@ export default {
         border: 1px solid #D7DCE1;
         border-bottom: none;
         box-sizing: border-box;
+        @media all and (max-width: 1280px) and (min-width: 861px) {
+            display: flex;
+            align-items: center;
+        }
     }
     &__content_botton {
+        @media all and (max-width: 1280px) and (min-width: 861px) {
+            width: calc(50% - 10px);
+        }
         &:not(:last-child) {
             margin-bottom: rem(13);
+            @media all and (max-width: 1280px) and (min-width: 861px) {
+                margin-bottom: 0;
+                margin-right: 20px;
+            }
         }
     }
 }

@@ -278,22 +278,43 @@
         </div>
       </div>
       <div class="productPage__analogs">
-        <div class="title">Аналоги</div>
-        <div class="values">
-          <div class="products__item" v-for="product in 4" :key="product.index">
-            <div class="products__item_image">
-              <div class="image_container">
-                <img :src="require('~/assets/img/sections/second.jpg')" alt="">
-              </div>
-            </div>
-            <div class="products__item_data">
-              <nuxt-link class="products__item_name" :to="{name: 'index'}">Охладители масла и воды ОКН 0,2-74
-              </nuxt-link>
-              <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
-              <div class="products__item_properties">
-                <div class="products__item_property" v-for="property in 3" :key="property.index">
-                  <div class="name">Охлаждающая среда:</div>
-                  <div class="value">Турбинное масло</div>
+        <div class="productPage__analogs_top">
+          <div class="title">Аналоги</div>
+          <div class="productPage__analogs_top_arrows hide_on_desktop">
+            <button class="productPage__arrow productPage__arrow--left" @click="prevSlide" data-glide-dir="<">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" fill="#FF004D"/>
+                    <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                </svg>
+            </button>
+            <button class="productPage__arrow productPage__arrow--right" @click="nextSlide">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" fill="#FF004D"/>
+                    <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
+                </svg>
+            </button>
+          </div>
+        </div>
+        <div class="values glide">
+          <div class="glide__track" data-glide-el="track">
+            <div class="glide__slides">
+              <div class="products__item" v-for="prod in getProducts.slice(0, 4)" :key="prod.index">
+                <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
+                <div class="products__item_image">
+                  <div class="image_container">
+                    <img :src="$vareibles.remote + prod.PREVIEW_PICTURE" alt="">
+                  </div>
+                </div>
+                <div class="products__item_data">
+                  <nuxt-link class="products__item_name" :to="{name: 'catalog-catalogId-productId', props: {catalogId: prod.SECTION.CODE, productId: prod.CODE}}">{{ prod.NAME }}
+                  </nuxt-link>
+                  <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
+                  <div class="products__item_properties">
+                    <div class="products__item_property" v-for="property in prod.PROPERIES" :key="property.index">
+                      <div class="name">{{ property.NAME }}</div>
+                      <div class="value">{{ property.VALUE }}</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -306,7 +327,8 @@
 </template>
 
 <script>
-  import {mapActions} from 'vuex';
+  import {mapActions, mapGetters} from 'vuex';
+  import Glide from '@glidejs/glide';
   export default {
     name: 'CatalogPage',
     components: {
@@ -316,15 +338,35 @@
       OsmButton: () => import('~/components/global/OsmButton.vue'),
       OsmModalsBuy: () => import('~/components/modals/buy.vue'),
     },
+    computed: {
+      ...mapGetters(['getProducts']), 
+    },
     data: () => ({
       tabs: {
         selected: 1,
       },
-      product: null
+      product: null,
+      prodsSlider: null
     }),
     async fetch() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
         console.log(this.product);
+    },
+    mounted() {
+      if (window.innerWidth <= 1280) {
+        setTimeout(() => {
+          this.prodsSlider = new Glide('.productPage__analogs .values.glide', {
+            perView: 3,
+            type: 'carousel',
+            breakpoints: {
+              860: {
+                perView: 1,
+              }
+            }
+          }).mount();
+          console.log(this.prodsSlider)
+        }, 500)
+      }
     },
     methods: {
       ...mapActions(['toggleModal']),
@@ -334,6 +376,14 @@
           isOpened: true,
           type: 'buy'
         })
+      },
+      prevSlide() {
+        if (!this.prodsSlider) return;
+        this.prodsSlider.go('<');
+      },
+      nextSlide() {
+        if (!this.prodsSlider) return;
+        this.prodsSlider.go('>');
       }
     }
   }
@@ -354,7 +404,9 @@
 
     &__analogs {
       margin-top: rem(118);
-
+      * {
+        white-space: normal;
+      }
       .title {
         font-style: normal;
         font-weight: 600;
@@ -389,17 +441,14 @@
           &:not(:nth-child(3n+3)) {
             margin-right: 20px;
           }
-          &:nth-child(n+4){
-            display: none;
-          }
+          // &:nth-child(n+4){
+          //   display: none;
+          // }
         }
         @media all and (max-width: 840px) {
           width: 100%;
           margin-top: 0;
           margin-right: 0;
-          &:nth-child(n+2){
-            display: none;
-          }
         }
       }
     }
@@ -807,6 +856,42 @@
           margin-bottom: 0;
         }
       }
+    }
+    &__analogs_top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &__analogs_top_arrows {
+      display: flex;
+      align-items: center;
+    }
+    &__arrow {
+        width: rem(40);
+        border: none;
+        background: none;
+        padding: 0;
+        cursor: pointer;
+        font-size: 0;
+        @media all and (max-width: 1280px) {
+            width: 40px;
+        }
+        @media all and (max-width: 840px) {
+            position: static;
+            transform: translateY(0);
+        }
+        &--left {
+          margin-right: 20px;
+        }
+        &--right {
+            transform: rotate(180deg);
+            @media all and (max-width: 1280px) {
+                right: -20px;
+            }
+            @media all and (max-width: 840px) {
+                transform: rotate(180deg);
+            }
+        }
     }
   }
 

@@ -63,7 +63,9 @@ export default {
 <style lang="scss" scoped>
 .contacts {
     &__slider {
+        
         @media all and (max-width: 840px) {
+            overflow: hidden;
             margin-right: -20px;
             width: calc(100% + 20px);
             padding-right: 102px;

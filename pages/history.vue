@@ -52,7 +52,7 @@
                             </osm-button>
                         </div>
                         <div @click="next">
-                            <osm-button :outlined="true" class="history__text--button history__text--button--fwd" >
+                            <osm-button :outlined="false" class="history__text--button history__text--button--fwd" >
                                 <div class="arrow">
                                     <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="">
                                 </div>
@@ -179,7 +179,10 @@ export default {
         }
         &:hover {
             .text {
-                color: #172242;
+                color: #000;
+            }
+            .arrow {
+                filter: invert(1);
             }
         }
         &--fwd {
