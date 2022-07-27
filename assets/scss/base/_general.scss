@@ -289,7 +289,7 @@ body .wrapper .full-page-indicators {
 }
 .header_padding {
   @media all and (min-width: 1281px) {
-    padding-top: rem(95);
+    padding-top: rem(120);
   }
 }
 
@@ -310,7 +310,7 @@ body .wrapper .full-page-indicators {
           border-color: #FF0040;
       }
       &:nth-child(n + 4) {
-          margin-top: rem(79);
+          margin-top: rem(30);
       }
       &:not(:nth-child(3n+3)) {
           margin-right: rem(20);

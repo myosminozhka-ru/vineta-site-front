@@ -13,7 +13,7 @@
                     <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input section__input" v-model="formData[field.VARNAME]">
                     <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
                 </div>
-                <osm-button class="section__button" :large="true" type="submit">Подробнее</osm-button>
+                <osm-button class="section__button" :large="true" type="submit">Отправить</osm-button>
             </form>
         </div>
         <div class="section__right hide_on_mobile">

@@ -222,6 +222,10 @@ export default {
             padding-top: 56%;
             width: 100%;
         }
+        @media all and (max-width: 840px) {
+            padding-top: 70%;
+            width: 100%;
+        }
     }
     &__slider-item__imege {
         position: absolute;
@@ -232,6 +236,12 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        @media all and (max-width: 840px) {
+            top: 38px;
+            bottom: 38px;
+            right: 78px;
+            left: 78px;
+        }
         img {
             width: 100%;
         }

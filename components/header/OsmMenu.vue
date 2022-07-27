@@ -27,9 +27,10 @@
           <osm-h2 class="menu__modal_title">Выпускаемая продукция</osm-h2>
           <ul class="menu__modal_menu">
             <li v-for="category in getCatalog" :key="category.ID">
+              <!-- <pre style="font-size: 15rem">{{ category }}</pre> -->
               <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE}}">
                 <div class="icon">
-                  <img :src="require('~/assets/img/catalog/catalog_icon1.svg')" width="100%" alt="">
+                  <img :src="$vareibles.remote + category.PICTURE" width="100%" alt="">
                 </div>
                 <div class="text">{{ category.NAME }}</div>
               </nuxt-link>

@@ -3,24 +3,25 @@
         <div class="catalog__wrap">
             <div class="catalog__left">
                 <osm-h1 class="catalog__title">Каталог</osm-h1>
+                <!-- <pre style="font-size: 15rem">{{ getCatalog }}</pre> -->
                 <div class="catalog__points">
-                    <div class="catalog__point" v-for="(point, key) in catalog.items" :key="point.index" @click="catalog.slider.go(`=${key}`)">
+                    <div class="catalog__point" v-for="(point, key) in getCatalog" :key="point.index" @click="catalog.slider.go(`=${key}`)">
                         <div class="icon">
-                            <img :src="point.icon" width="100%" alt="">
+                            <img :src="$vareibles.remote + point.PICTURE" width="100%" alt="">
                         </div>
-                        <div class="text">{{ point.text }}</div>
+                        <div class="text">{{ point.NAME }}</div>
                     </div>
                 </div>
             </div>
             <div class="catalog__right catalog__slider glide">
                 <div class="glide__track" data-glide-el="track">
                     <div class="glide__slides">
-                        <div class="catalog__item" v-for="item in catalog.items" :key="item.index">
+                        <div class="catalog__item" v-for="item in getCatalog" :key="item.index">
                             <div class="catalog__item_in">
                                 <div class="image">
-                                    <img :src="item.icon" width="100%" alt="">
+                                    <img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="">
                                 </div>
-                                <div class="text">{{ item.text }}</div>
+                                <div class="text">{{ item.NAME }}</div>
                             </div>
                         </div>
                     </div>
@@ -30,11 +31,15 @@
     </section>
 </template>
 <script>
-import Glide from '@glidejs/glide'
+import Glide from '@glidejs/glide';
+import { mapGetters } from 'vuex';
 export default {
   name: 'OsmSixthSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
+  },
+  computed: {
+    ...mapGetters(['getCatalog']), 
   },
   data: () => ({
       catalog: {
@@ -131,6 +136,7 @@ export default {
         margin-bottom: rem(30);
         @media all and (max-width: 1280px) {
             margin-bottom: 30px;
+            font-size: 30px;
         }
     }
     &__point {
@@ -143,6 +149,9 @@ export default {
         .icon {
             width: rem(40);
             margin-right: rem(20);
+            @media all and (max-width: 1280px) {
+                width: 30px;
+            }
         }
         .text {
             width: calc(100% - #{rem(60)});
@@ -151,6 +160,10 @@ export default {
             line-height: 140%;
             color: #555F76;
             position: relative;
+            @media all and (max-width: 1280px) {
+                font-size: 18px;
+                width: calc(100% - #{rem(50)});
+            }
             &:after {
                 content: "";
                 position: absolute;
@@ -202,7 +215,7 @@ export default {
         box-sizing: border-box;
         overflow: hidden;
         @media all and (max-width: 1280px) {
-            padding: 126px 0 0 219px;
+            padding: 126px 0 0 167px;
             height: auto;
         }
         .image {

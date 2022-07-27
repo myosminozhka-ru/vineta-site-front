@@ -33,6 +33,9 @@ export default {
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: space-between;
+    @media all and (max-width: 1280px) {
+        margin-bottom: 30px;
+    }
     &__item {
         width: calc(100% / 3 - #{rem(40)} / 3);
         &:nth-child(n + 4) {

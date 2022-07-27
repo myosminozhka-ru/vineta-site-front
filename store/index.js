@@ -10,6 +10,7 @@ export const state = () => ({
   news: [],
   partners: [],
   products: [],
+  filters: [],
   modals: {
     buy: {
       isOpened: false
@@ -24,6 +25,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  addFilters(state, data) {
+    state.filters = data
+  },
   addMain(state, data) {
     state.main = data
   },
@@ -69,6 +73,10 @@ export const mutations = {
 }
 
 export const actions = {
+  addFilters(context, data) {
+    console.log('addFilters', data)
+    context.commit('addFilters', data);
+  },
   addMain(context) {
     return new Promise((resolve, reject) => {
       this.$axios.$get('slider.php')
@@ -270,5 +278,8 @@ export const getters = {
   },
   getProducts(state) {
     return state.products;
+  },
+  getFilters(state) {
+    return state.filters;
   },
 }

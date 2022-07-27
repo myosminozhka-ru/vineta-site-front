@@ -65,6 +65,7 @@ export default {
         setTimeout(() => {
             this.slider = new Glide('.customers.glide', {
                 perView: 6,
+                type: 'carousel',
                 breakpoints: {
                     1024: {
                         perView: 3

@@ -1,7 +1,9 @@
 <template>
     <div class="products">
+        
         <div class="products__items" v-if="products">
-            <nuxt-link class="products__item" v-for="product in products" :key="product.ID" :to="{name: 'catalog-catalogId-productId', params: {productId: product.CODE}}">
+            <nuxt-link class="products__item" v-for="product in filteredProducts" :key="product.ID" :to="{name: 'catalog-catalogId-productId', params: {productId: product.CODE}}">
+                <!-- <pre style="font-size: 15rem">{{ product }}</pre> -->
                 <div class="products__item_image">
                     <div class="image_container">
                         <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
@@ -36,11 +38,19 @@ export default {
     },
     computed: {
         ...mapGetters(['getCatalog']),
+        ...mapGetters(['getFilters']),
         catalogId() {
             return this.$route.params.catalogId
         },
         currentCategory() {
             return this.getCatalog.filter(item => item.CODE === this.catalogId)
+        },
+        filteredProducts() {
+            if (this.getFilters.length) {
+                return this.products.filter(product => this.getFilters.includes(product.SECTION.CODE));
+            } else {
+                return this.products;
+            }
         }
     },
     async fetch() {

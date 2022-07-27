@@ -30,7 +30,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .catalog {
     &__header {
         display: flex;
@@ -57,6 +57,9 @@ export default {
     &__header_right {
         display: flex;
         align-items: center;
+        @media all and (max-width: 840px) {
+            flex-direction: column;
+        }
     }
     &__header_btn {
         display: flex;
@@ -67,6 +70,11 @@ export default {
         transition: all .3s ease;
         @media all and (max-width: 1280px) {
             padding: 20px 40px;
+        }
+        @media all and (max-width: 840px) {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 20px;
         }
         &:hover {
             background: #DF0043;
@@ -103,6 +111,10 @@ export default {
         margin-left: rem(42);
         @media all and (max-width: 1280px) {
             margin-left: 40px;
+        }
+        @media all and (max-width: 840px) {
+            margin-left: 0;
+            margin-top: 0;
         }
         .text {
             font-style: normal;

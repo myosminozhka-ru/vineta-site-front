@@ -1180,7 +1180,7 @@
     &__more {
       @media all and (max-width: 840px) {
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 0;
       }
     }
 
@@ -1218,6 +1218,9 @@
       color: #fff;
       font-size: rem(40);
       margin-bottom: rem(30);
+	  @media all and (max-width: 1280px) {
+		font-size: 30px;
+	  }
     }
 
     &__item--dark &__text {
@@ -1267,6 +1270,8 @@
       @media all and (max-width: 840px) {
         width: 100%;
         justify-content: space-between;
+		margin-bottom: 0;
+		margin-top: 30px;
       }
     }
 

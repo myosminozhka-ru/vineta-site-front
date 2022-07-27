@@ -45,6 +45,7 @@ export default {
         slider: new Glide('.glide', {
             perView: 4,
             gap: '20rem',
+            type: 'carousel',
             breakpoints: {
                 840: {
                     perView: 1,
@@ -61,6 +62,17 @@ export default {
 
 <style lang="scss" scoped>
 .contacts {
+    &__slider {
+        @media all and (max-width: 840px) {
+            margin-right: -20px;
+            width: calc(100% + 20px);
+            padding-right: 102px;
+            .glide__slides,
+            .glide__track {
+                overflow: visible;
+            }
+        }
+    }
     &__slider_item_in {
         padding-top: 100%;
         position: relative;
@@ -77,7 +89,9 @@ export default {
     }
     &__arrows {
         @media all and (max-width: 840px) {
-            display: flex;
+            
+            display: none;
+            // display: flex;
             align-items: center;
             justify-content: space-between;
             margin-top: 20px;

@@ -48,11 +48,21 @@ export default {
         align-items: center;
         justify-content: center;
         margin-top: rem(40);
+        @media all and (max-width: 840px) {
+            flex-direction: column;
+        }
     }
     &__button {
         width: rem(200);
+        @media all and (max-width: 840px) {
+            width: 100%;
+        }
         &:first-child {
             margin-right: rem(40);
+            @media all and (max-width: 840px) {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
         }
     }
 }

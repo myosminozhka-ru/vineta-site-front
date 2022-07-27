@@ -123,9 +123,9 @@ export default {
         grid-area: big;
         @media all and (max-width: 1280px) {
             padding: 20px 30px 20px 20px;
-            min-height: 450px;
+            min-height: 563px;
         }
-        @media all and (max-width: 1280px) {
+        @media all and (max-width: 840px) {
             min-height: 280px;
         }
         &::before {

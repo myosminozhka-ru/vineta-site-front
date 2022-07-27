@@ -112,6 +112,9 @@ export default {
 <style lang="scss" scoped>
 .contacts {
     padding: rem(30) rem(240) rem(120);
+    @media all and (max-width: 840px) {
+        overflow: hidden;
+    }
     @media all and (max-width: 1440px) {
         padding-right: 150px;
         padding-left: 150px;

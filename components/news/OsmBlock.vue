@@ -102,6 +102,7 @@ export default {
     slider: new Glide('.news__slider', {
         perView: 2,
         gap: 20,
+        type: 'carousel',
         breakpoints: {
             840: {
                 perView: 1,

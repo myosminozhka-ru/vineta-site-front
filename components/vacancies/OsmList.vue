@@ -62,6 +62,9 @@ export default {
         &:not(:last-child) {
             margin-bottom: rem(10);
         }
+        @media all and (max-width: 860px) {
+            padding: 30px;
+        }
     }
     &__item_title {
         font-style: normal;

@@ -9,7 +9,8 @@
             <div class="catalog__in-right">
                 <osm-catalog-products /> 
             </div>
-        </div>           
+        </div>
+          
     </div>
 </template>
 
