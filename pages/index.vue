@@ -7,7 +7,7 @@
     </div>
     <div class="sections" :data-id="activeIndex">
       <osm-first-section :isMounted="activeIndex === 0" :class="{'isActive': activeIndex === 0}" :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
-      <osm-second-section :isMounted="activeIndex === 1" :class="{'isActive': activeIndex === 1}" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" /> -->
+      <osm-second-section :isMounted="activeIndex === 1" :class="{'isActive': activeIndex === 1}" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
       <osm-third-section :class="{'isActive': activeIndex === 2}" :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>
       <osm-fourth-section :class="{'isActive': activeIndex === 3}" :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>
       <osm-fiveth-section :class="{'isActive': activeIndex === 4}" :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>

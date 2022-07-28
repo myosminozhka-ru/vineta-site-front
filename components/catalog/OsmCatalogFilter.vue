@@ -1,8 +1,5 @@
 <template>
     <div class="filter" :class="{'opened': isFilterOpened}">
-        <!-- <pre style="font-size: 15rem">
-            {{ getFilters }}
-        </pre> -->
         <div class="filter__in">
             <div class="filter__title" v-if="currentCategory[0]">
                 Параметры поиска
