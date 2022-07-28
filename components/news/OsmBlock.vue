@@ -62,7 +62,7 @@
             </div>
             <div class="news__slider-buttons">
                 <div class="news__bullets hide_on_mobile" data-glide-el="controls[nav]">
-                    <button v-for="(item, key) in getNews" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
+                    <button v-for="(item, key) in getNews.slice(0, 4)" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
                 </div>
                 <nuxt-link :to="{name: 'news'}" class="more hide_off_mobile">Смотреть все</nuxt-link>
                 <div class="news__arrows" data-glide-el="controls">
