@@ -1,21 +1,32 @@
 <template>
     <div class="productPage__in" >
-        <!-- <pre style="font-size: 15rem;">
-            {{ data }}
-        </pre> -->
+        <LightGallery
+            :images="popupPhotos"
+            :index="elementOpened"
+            :disable-scroll="true"
+            @close="elementOpened = null"
+        />
         <div class="productPage__slider" v-if="data">
             <div class="glide productPage__slider-left">
                 <div class="glide__track" data-glide-el="track">
                     <div class="glide__slides">
-                        <div class="glide__slide productPage__slider-item" v-if="data.PREVIEW_PICTURE">
+                        <div class="glide__slide productPage__slider-item" v-if="data.PREVIEW_PICTURE" @click="elementOpened = 0">
                             <div class="productPage__slider-item__in">
                                 <div class="productPage__slider-item__imege">
                                     <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
                                 </div>
                             </div>
                         </div>
+                        <div class="glide__slide productPage__slider-item" v-else @click="elementOpened = 0">
+                            <div class="productPage__slider-item__in">
+                                <div class="productPage__slider-item__imege">
+                                    <img :src="require('~/assets/img/product.noimage.png')" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        
                         <template v-if="data.MORE_PHOTO">
-                            <div class="glide__slide productPage__slider-item" v-for="item in data.MORE_PHOTO.VALUE" :key="item.index">
+                            <div class="glide__slide productPage__slider-item" v-for="(item, key) in data.MORE_PHOTO.VALUE" :key="item.index" @click="elementOpened = key+1">
                                 <div class="productPage__slider-item__in">
                                     <div class="productPage__slider-item__imege">
                                         <img :src="$vareibles.remote + item.SRC" alt="">
@@ -99,6 +110,21 @@ export default {
         data: {
             type: Object,
             default: null
+        },
+    },
+    computed: {
+        popupPhotos() {
+            const mainPicture = this.$vareibles.remote + this.data.PREVIEW_PICTURE;
+            let morePhoto;
+            if (this.data.MORE_PHOTO) {
+                morePhoto = this.$vareibles.remote + this.data.MORE_PHOTO.VALUE.map(item => {
+                    return item.SRC
+                })
+            }
+            return [
+                mainPicture,
+                morePhoto
+            ]
         }
     },
     data: () => ({
@@ -108,7 +134,8 @@ export default {
         }),
         treeDView: {
             isOpened: false,
-        }
+        },
+        elementOpened: null
     }),
     mounted() {
         setTimeout(() => {
@@ -243,7 +270,7 @@ export default {
             left: 78px;
         }
         img {
-            width: 100%;
+            height: 100%;
         }
     }
     &__slider-right {

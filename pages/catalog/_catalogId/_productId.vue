@@ -861,6 +861,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 30rem;
+      .title {
+        margin-bottom: 0;
+      }
     }
     &__analogs_top_arrows {
       display: flex;

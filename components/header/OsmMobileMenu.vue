@@ -29,7 +29,7 @@
               <li v-for="child in getCatalog" :key="child.index">
                 <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: child.CODE}}">
                 <div class="icon">
-                  <img :src="require('~/assets/img/catalog/catalog_icon1.svg')" width="100%" alt="">
+                  <img :src="$vareibles.remote + child.PICTURE" width="100%" alt="">
                 </div>
                 <div class="text">{{ child.NAME }}</div>
               </nuxt-link>

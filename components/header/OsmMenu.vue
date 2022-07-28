@@ -146,6 +146,11 @@ import { mapGetters ,mapActions } from 'vuex';
             url: 'partners',
             icon: require('~/assets/img/catalog/catalog_icon1.svg'),
             text: 'Партнеры'
+          },
+          {
+            url: 'licenses',
+            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+            text: 'Лицензии'
           }]
         },
         {

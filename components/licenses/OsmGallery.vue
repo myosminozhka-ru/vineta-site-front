@@ -1,9 +1,12 @@
 <template>
     <div class="gallery">
         <div class="gallery__title">Лицензии и сертификаты</div>
+        <pre style="font-size: 15rem;">
+            {{ imagesGallery }}
+        </pre>
         <no-ssr>
             <LightGallery
-                :images="gallery"
+                :images="imagesGallery"
                 :index="index"
                 :disable-scroll="true"
                 @close="index = null"
@@ -33,6 +36,13 @@ export default {
         images: {
             type: Array,
             default: () => ([]),
+        }
+    },
+    computed: {
+        imagesGallery() {
+            return this.images.map(item => {
+                return this.$vareibles.remote + item.PREVIEW_PICTURE;
+            });
         }
     },
     data: () => ({

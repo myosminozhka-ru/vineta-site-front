@@ -108,9 +108,9 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: rem(114);
+        height: rem(114);
         @media all and (max-width: 1280px) {
-            min-height: 114px;
+            height: 114px;
             padding: 20px;
         }
         img {

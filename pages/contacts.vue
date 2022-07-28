@@ -80,9 +80,9 @@
                 </div>
               </div>
               <div class="name">{{ item.NAME }}</div>
-              <div class="position">{{ item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
-              <a :href="`tel:${item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE}`" class="phone">{{ item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE }}</a>
-              <a :href="`mailto:${item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE}`" class="email">{{ item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE }}</a>
+              <div v-if="item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST').length" class="position">{{ item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
+              <a v-if="item.PROPERIES.filter(elem => elem.CODE === 'PHONE').length" :href="`tel:${item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE}`" class="phone">{{ item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE }}</a>
+              <a v-if="item.PROPERIES.filter(elem => elem.CODE === 'EMAIL').length" :href="`mailto:${item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE}`" class="email">{{ item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE }}</a>
             </div>
           </div>
         </section>

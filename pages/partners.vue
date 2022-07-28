@@ -40,7 +40,7 @@
                                 <div class="text">{{ item.PROPERIES[4].VALUE }}</div>
                             </div>
                         </div>
-                        <osm-button>В каталог</osm-button>
+                        <osm-button link="catalog">В каталог</osm-button>
                     </div>
                 </div>
                 <div class="partners__title">Дочерние предприятия</div>

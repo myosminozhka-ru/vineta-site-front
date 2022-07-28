@@ -133,6 +133,19 @@ export default {
                 transform: rotate(180deg);
             }
         }
+        svg rect {
+            transition: all .3s ease;
+        }
+        &:hover {
+            svg rect {
+                fill: #DF0043;
+            }
+        }
+        &:active {
+            svg rect {
+                fill: #A70032;
+            }
+        }
     }
 }
 </style>
