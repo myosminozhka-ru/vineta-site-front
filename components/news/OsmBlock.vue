@@ -5,7 +5,7 @@
             <osm-button class="news__button_top" link="news" :outlined="true">Все новости</osm-button>
         </div>
         <div class="news__bottom hide_on_tablet">
-            <div v-for="(item, key) in getNews" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+            <div v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
                 <template v-if="key === 0">
                     <div class="news__image">
                         <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -373,6 +373,12 @@ export default {
     &__item &__image {
         width: 100%;
         height: 100%;
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: 50% 50%;
+        }
     }
     &__item &__item_right {
         width: calc(100% - #{rem(240)});
