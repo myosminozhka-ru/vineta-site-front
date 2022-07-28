@@ -2,16 +2,16 @@
     <div class="news__top">
         <div class="news__top_title">Новости</div>
         <div class="news__top_buttons hide_on_mobile">
-            <div @click.prevent="tabs.selected = 1">
-              <osm-button class="news__mods--opener" :class="{'isActive': tabs.selected === 1}" :outlined="true">
+            <div @click.prevent="addSelectedNewsType('Новости')">
+              <osm-button class="news__mods--opener" :class="{'isActive': getSelectedNewsType === 'Новости'}" :outlined="true">
                 Новости</osm-button>
             </div>
-            <div @click.prevent="tabs.selected = 2">
-              <osm-button class="news__mods--opener" :class="{'isActive': tabs.selected === 2}" :outlined="true">
+            <div @click.prevent="addSelectedNewsType(' Пресс-релизы')">
+              <osm-button class="news__mods--opener" :class="{'isActive': getSelectedNewsType === ' Пресс-релизы'}" :outlined="true">
                  Пресс-релизы</osm-button>
             </div>
-            <div @click.prevent="tabs.selected = 3">
-              <osm-button class="news__mods--opener" :class="{'isActive': tabs.selected === 3}" :outlined="true">
+            <div @click.prevent="addSelectedNewsType('Статьи')">
+              <osm-button class="news__mods--opener" :class="{'isActive': getSelectedNewsType === 'Статьи'}" :outlined="true">
                 Статьи</osm-button>
             </div>
         </div>
@@ -19,16 +19,23 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
   export default {
     name: 'CatalogPage',
     components: {
       OsmButton: () => import('~/components/global/OsmButton.vue'),
     },
+    computed: {
+      ...mapGetters(['getSelectedNewsType']),
+    },
     data: () => ({
       tabs: {
         selected: 1,
       }
-    })
+    }),
+    methods: {
+      ...mapActions(['addSelectedNewsType'])
+    }
   }
 
 </script>

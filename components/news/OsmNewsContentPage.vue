@@ -1,6 +1,7 @@
 <template>
     <div class="news__content_in">
-        <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in getNews" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
+        <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
+        <!-- <pre style="font-size: 15rem">{{ item }}</pre> -->
             <template v-if="key === 0">
                 <div class="news__image">
                     <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -33,10 +34,6 @@
             </template>
         </nuxt-link>
         <div class="news__content_tabs">
-            <!-- <div class="news__content_tabs--opener">
-                <div class="text"></div>
-                <div class="arrow"></div>
-            </div> -->
             <nuxt-link :to="{name: 'news-newsId', params: {newsId: 'test'}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
@@ -65,35 +62,13 @@ export default {
         tabs: {
             selected: 1,
         },
-        news: [
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: 'Команда «Винета» - трижды обладатель «Кубка Чемпионов» в турнире по настольному теннису!',
-              date: '2 апреля 2021',
-              link: 'news-newsId'
-          },
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: '25 лет верным курсом!',
-              date: '2 апреля 2021',
-              link: 'news-newsId'
-          },
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: 'Поздравляем с наступающим Новым 2022 Годом и Рождеством!',
-              date: '2 апреля 2021',
-              link: 'news-newsId'
-          },
-          {
-              image: require('~/assets/img/news/news1.jpg'),
-              text: 'Команда «Винета» - трижды обладатель «Кубка Чемпионов» в турнире по настольному теннису!',
-              date: '2 апреля 2021',
-              link: 'news-newsId'
-          }
-      ]
     }),
     computed: {
-        ...mapGetters(['getNews']), 
+        ...mapGetters(['getNews']),
+        ...mapGetters(['getSelectedNewsType']),
+        news() {
+            return this.getNews.filter(item => item.PROPERIES[1].VALUE === this.getSelectedNewsType)
+        }
     }
 }
 </script>

@@ -11,6 +11,7 @@ export const state = () => ({
   partners: [],
   products: [],
   filters: [],
+  selectedNewsType: 'Новости',
   modals: {
     buy: {
       isOpened: false
@@ -61,6 +62,9 @@ export const mutations = {
   addProducts(state, data) {
     state.products = data
   },
+  addSelectedNewsType(state, data) {
+    state.selectedNewsType = data
+  },
   toggleBuyModal(state, data) {
     state.modals.buy = data;
   },
@@ -73,6 +77,9 @@ export const mutations = {
 }
 
 export const actions = {
+  addSelectedNewsType(context, data) {
+    context.commit('addSelectedNewsType', data);
+  },
   addFilters(context, data) {
     console.log('addFilters', data)
     context.commit('addFilters', data);
@@ -281,5 +288,8 @@ export const getters = {
   },
   getFilters(state) {
     return state.filters;
+  },
+  getSelectedNewsType(state) {
+    return state.selectedNewsType;
   },
 }
