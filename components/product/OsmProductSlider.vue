@@ -1,5 +1,6 @@
 <template>
     <div class="productPage__in" >
+        {{ popupPhotos }}
         <LightGallery
             :images="popupPhotos"
             :index="elementOpened"
@@ -114,17 +115,27 @@ export default {
     },
     computed: {
         popupPhotos() {
-            const mainPicture = this.$vareibles.remote + this.data.PREVIEW_PICTURE;
-            let morePhoto;
+            const mainPicture = {
+                url: this.$vareibles.remote + this.data.PREVIEW_PICTURE,
+                title: ''
+            };
             if (this.data.MORE_PHOTO) {
-                morePhoto = this.$vareibles.remote + this.data.MORE_PHOTO.VALUE.map(item => {
-                    return item.SRC
+                const morePhoto = this.$vareibles.remote + this.data.MORE_PHOTO.VALUE.map(item => {
+                    return {
+                        url: item.SRC,
+                        title: ''
+                    }
                 })
+                return [
+                    mainPicture,
+                    morePhoto
+                ]
+            } else {
+                return [
+                    mainPicture,
+                ]
             }
-            return [
-                mainPicture,
-                morePhoto
-            ]
+            
         }
     },
     data: () => ({

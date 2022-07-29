@@ -1,9 +1,9 @@
 <template>
-    <section class="section section__item section__item--fourth" v-if="fourthData">
-        <div class="section__left">
+    <section class="section section__item section__item--fourth">
+        <div class="section__left" v-if="fourthData">
             <img :src="$vareibles.remote + fourthData.PREVIEW_PICTURE" alt="first">
         </div>
-        <div class="section__right">
+        <div class="section__right" v-if="fourthData">
             <div class="section__content">
                 <osm-h1 class="section__title">{{ fourthData.NAME }}</osm-h1>
                 <div class="section__text">
@@ -24,7 +24,7 @@ export default {
   computed: {
       ...mapGetters(['getMain']),
       fourthData() {
-        return this.getMain[3];
+        return this.getMain[2];
     }
   }
 }

@@ -23,7 +23,7 @@
                             <template v-else-if="contact.CODE === 'PHONE'">                              
                               <a :href="`tel:${contact.VALUE}`" class="contacts__item_in">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">{{ contact.VALUE }}</div>
                               </a>
@@ -31,11 +31,28 @@
                             <template v-else-if="contact.CODE === 'EMAIL'">                              
                               <a :href="`mailto:${contact.VALUE}`" class="contacts__item_in">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">{{ contact.VALUE }}</div>
                               </a>
                             </template>
+                            <template v-else-if="contact.CODE === 'GEO'">                              
+                              <div class="contacts__item_in">
+                                  <div class="icon">
+                                      <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
+                                  </div>
+                                  <div class="text">{{ contact.VALUE }}</div>
+                              </div>
+                            </template>
+                            <template v-else-if="contact.CODE === 'NAME_PHONE'">                              
+                              <div class="contacts__item_in">
+                                  <div class="icon">
+                                      <img :src="require('~/assets/img/contacts/NAME_PHONE.svg')" width="100%" alt="">
+                                  </div>
+                                  <div class="text">{{ contact.VALUE }}</div>
+                              </div>
+                            </template>
+                            <template v-else-if="contact.CODE === 'NAME_EMAIL'"><span></span></template>
                             <template v-else>
                               <div class="contacts__item_in">
                                   <div class="icon">
@@ -44,6 +61,7 @@
                                   <div class="text">{{ contact.VALUE }}</div>
                               </div>
                             </template>
+                            <!-- {{ contact.CODE }} -->
                             <!-- <a href="mailto:info@vineta.ru" class="contacts__item_in">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
@@ -73,10 +91,11 @@
         <section class="fiveth">
           <div class="fiveth__title">Руководство</div>
           <div class="fiveth__items">
-            <div class="fiveth__item" v-for="item in getAbout.peoples" :key="item.index">
+            <div class="fiveth__item" v-for="item in getAbout.peoples.slice(0, 4)" :key="item.index">
               <div class="avatar">
                 <div class="avatar__in">
-                  <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
+                  <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
+                  <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                 </div>
               </div>
               <div class="name">{{ item.NAME }}</div>

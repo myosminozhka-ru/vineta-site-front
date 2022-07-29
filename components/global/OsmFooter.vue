@@ -18,9 +18,9 @@
             <div class="footer__bottom_left">ООО “Винета”, 2012-2022</div>
             <div class="footer__bottom_right">
                 <ul>
-                    <li><a href="#">Политика конфидециальности</a></li>
-                    <li><a href="#">Пользовательское соглашение</a></li>
-                    <li><a href="#">Карта сайта</a></li>
+                    <li v-if="getDownloads[1]"><a :href="$vareibles.remote + getDownloads[1].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a></li>
+                    <!-- <li><a href="#">Пользовательское соглашение</a></li>
+                    <li><a href="#">Карта сайта</a></li> -->
                 </ul>
             </div>
         </div>
@@ -28,27 +28,34 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     components: {
         OsmLogoFooter: () => import('~/components/footer/OsmLogoFooter.vue'),
         OsmFooterMenu: () => import('~/components/footer/OsmFooterMenu.vue'),
         OsmUp: () => import('~/components/global/OsmUp.vue'),
     },
+    computed: {
+        ...mapGetters(['getDownloads']),
+    },
+    mounted() {
+        console.log(this.getDownloads[1]);
+    },
     data: () => ({
         socials: [
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          },
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          },
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          }
-      ]
+            {
+                icon: require('~/assets/img/socials/vk.svg'),
+                link: '#',
+            },
+            {
+                icon: require('~/assets/img/socials/telegram.svg'),
+                link: '#',
+            },
+            {
+                icon: require('~/assets/img/socials/twitter.svg'),
+                link: '#',
+            }
+        ]
     }),
 }
 </script>

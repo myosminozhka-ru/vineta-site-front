@@ -23,19 +23,19 @@
                             </div>
                             <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
                             </a>
                             <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">{{item.PROPERIES[3].VALUE}}</div>
                             </a>
                             <div class="partners__contact_item">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">{{ item.PROPERIES[4].VALUE }}</div>
                             </div>

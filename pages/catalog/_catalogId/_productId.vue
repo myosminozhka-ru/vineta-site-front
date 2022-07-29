@@ -75,7 +75,14 @@
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
-                  Безусловно, социально-экономическое развитие требует определения и уточнения системы массового участия. В рамках спецификации современных стандартов, действия представителей оппозиции формируют глобальную экономическую сеть и при этом -  ассоциативно распределены по отраслям. Приятно, граждане, наблюдать, как интерактивные прототипы, превозмогая сложившуюся непростую экономическую ситуацию, преданы социально-демократической анафеме. Повседневная практика показывает, что граница обучения кадров не даёт нам иного выбора, кроме определения укрепления моральных ценностей. Вот вам яркий пример современных тенденций - экономическая повестка сегодняшнего дня требует анализа своевременного выполнения сверхзадачи.
+                  Безусловно, социально-экономическое развитие требует определения и уточнения системы массового
+                  участия. В рамках спецификации современных стандартов, действия представителей оппозиции формируют
+                  глобальную экономическую сеть и при этом - ассоциативно распределены по отраслям. Приятно, граждане,
+                  наблюдать, как интерактивные прототипы, превозмогая сложившуюся непростую экономическую ситуацию,
+                  преданы социально-демократической анафеме. Повседневная практика показывает, что граница обучения
+                  кадров не даёт нам иного выбора, кроме определения укрепления моральных ценностей. Вот вам яркий
+                  пример современных тенденций - экономическая повестка сегодняшнего дня требует анализа своевременного
+                  выполнения сверхзадачи.
                 </div>
               </div>
               <div class="productPage__buttons">
@@ -168,14 +175,24 @@
             <div class="tabs__opener" :class="{'isActive': tabs.selected === 1}" @click.prevent="tabs.selected = 1">
               <div class="text">Описание</div>
               <div class="arrow">
-                <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none"><path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path></svg>
+                <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
+                  fill="none">
+                  <path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path>
+                </svg>
               </div>
             </div>
             <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 1">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
-                  Безусловно, социально-экономическое развитие требует определения и уточнения системы массового участия. В рамках спецификации современных стандартов, действия представителей оппозиции формируют глобальную экономическую сеть и при этом -  ассоциативно распределены по отраслям. Приятно, граждане, наблюдать, как интерактивные прототипы, превозмогая сложившуюся непростую экономическую ситуацию, преданы социально-демократической анафеме. Повседневная практика показывает, что граница обучения кадров не даёт нам иного выбора, кроме определения укрепления моральных ценностей. Вот вам яркий пример современных тенденций - экономическая повестка сегодняшнего дня требует анализа своевременного выполнения сверхзадачи.
+                  Безусловно, социально-экономическое развитие требует определения и уточнения системы массового
+                  участия. В рамках спецификации современных стандартов, действия представителей оппозиции формируют
+                  глобальную экономическую сеть и при этом - ассоциативно распределены по отраслям. Приятно, граждане,
+                  наблюдать, как интерактивные прототипы, превозмогая сложившуюся непростую экономическую ситуацию,
+                  преданы социально-демократической анафеме. Повседневная практика показывает, что граница обучения
+                  кадров не даёт нам иного выбора, кроме определения укрепления моральных ценностей. Вот вам яркий
+                  пример современных тенденций - экономическая повестка сегодняшнего дня требует анализа своевременного
+                  выполнения сверхзадачи.
                 </div>
               </div>
               <div class="productPage__buttons">
@@ -198,7 +215,10 @@
             <div class="tabs__opener" :class="{'isActive': tabs.selected === 2}" @click.prevent="tabs.selected = 2">
               <div class="text">Характеристики</div>
               <div class="arrow">
-                <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none"><path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path></svg>
+                <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
+                  fill="none">
+                  <path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path>
+                </svg>
               </div>
             </div>
             <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 2">
@@ -231,7 +251,10 @@
             <div class="tabs__opener" :class="{'isActive': tabs.selected === 3}" @click.prevent="tabs.selected = 3">
               <div class="text">Модификации (13)</div>
               <div class="arrow">
-                <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none"><path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path></svg>
+                <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
+                  fill="none">
+                  <path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path>
+                </svg>
               </div>
             </div>
             <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 3">
@@ -282,16 +305,16 @@
           <div class="title">Аналоги</div>
           <div class="productPage__analogs_top_arrows hide_on_desktop">
             <button class="productPage__arrow productPage__arrow--left" @click="prevSlide" data-glide-dir="<">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                    <rect width="40" height="40" fill="#FF004D"/>
-                    <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
-                </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" fill="#FF004D" />
+                <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2" />
+              </svg>
             </button>
             <button class="productPage__arrow productPage__arrow--right" @click="nextSlide">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
-                    <rect width="40" height="40" fill="#FF004D"/>
-                    <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2"/>
-                </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" fill="#FF004D" />
+                <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2" />
+              </svg>
             </button>
           </div>
         </div>
@@ -306,7 +329,9 @@
                   </div>
                 </div>
                 <div class="products__item_data">
-                  <nuxt-link class="products__item_name" :to="{name: 'catalog-catalogId-productId', props: {catalogId: prod.SECTION.CODE, productId: prod.CODE}}">{{ prod.NAME }}
+                  <nuxt-link class="products__item_name"
+                    :to="{name: 'catalog-catalogId-productId', props: {catalogId: prod.SECTION.CODE, productId: prod.CODE}}">
+                    {{ prod.NAME }}
                   </nuxt-link>
                   <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                   <div class="products__item_properties">
@@ -327,7 +352,10 @@
 </template>
 
 <script>
-  import {mapActions, mapGetters} from 'vuex';
+  import {
+    mapActions,
+    mapGetters
+  } from 'vuex';
   import Glide from '@glidejs/glide';
   export default {
     name: 'CatalogPage',
@@ -339,7 +367,7 @@
       OsmModalsBuy: () => import('~/components/modals/buy.vue'),
     },
     computed: {
-      ...mapGetters(['getProducts']), 
+      ...mapGetters(['getProducts']),
     },
     data: () => ({
       tabs: {
@@ -350,7 +378,7 @@
     }),
     async fetch() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
-        console.log(this.product);
+      console.log(this.product);
     },
     mounted() {
       if (window.innerWidth <= 1280) {
@@ -395,18 +423,22 @@
     padding: rem(150) 0 rem(150);
     max-width: 100%;
     background: #fff;
+
     @media all and (max-width: 1440px) {
       padding: 130px 0 120px;
     }
+
     @media all and (max-width: 1280px) {
       padding: 30px 20px;
     }
 
     &__analogs {
       margin-top: rem(118);
+
       * {
         white-space: normal;
       }
+
       .title {
         font-style: normal;
         font-weight: 600;
@@ -419,6 +451,7 @@
       .values {
         display: flex;
         align-items: flex-start;
+
         @media all and (max-width: 1280px) {
           flex-wrap: wrap;
         }
@@ -431,6 +464,7 @@
         &:not(:nth-child(4n+4)) {
           margin-right: rem(20);
         }
+
         @media all and (max-width: 1280px) {
           width: calc(100% / 3 - #{rem(40)} / 3);
           margin-top: 0;
@@ -438,13 +472,16 @@
           &:not(:nth-child(4n+4)) {
             margin-right: 0;
           }
+
           &:not(:nth-child(3n+3)) {
             margin-right: 20px;
           }
+
           // &:nth-child(n+4){
           //   display: none;
           // }
         }
+
         @media all and (max-width: 840px) {
           width: 100%;
           margin-top: 0;
@@ -462,14 +499,18 @@
         display: flex;
         align-items: center;
       }
+
       .value {
         background: #fff;
       }
+
       .tabs {
         margin-top: rem(60);
+
         @media all and (max-width: 1280px) {
           margin-top: 0;
         }
+
         &__opener {
           background: #FFFFFF;
           border: 1px solid #D7DCE1;
@@ -479,6 +520,7 @@
           justify-content: space-between;
           margin-bottom: 20px;
           margin-top: 20px;
+
           .text {
             font-style: normal;
             font-weight: 600;
@@ -486,17 +528,22 @@
             line-height: 140%;
             color: #172242;
           }
+
           .arrow {
             width: 16px;
           }
+
           &.isActive {
             background: #FF0040;
             border-color: #FF0040;
+
             .text {
               color: #fff;
             }
+
             .arrow {
               transform: rotate(180deg);
+
               svg path {
                 stroke: #fff;
               }
@@ -515,6 +562,7 @@
         line-height: 140%;
         color: #172242;
       }
+
       .value {
         &__in {
           padding: rem(40);
@@ -523,9 +571,11 @@
           font-size: rem(20);
           line-height: 140%;
           color: #555F76;
+
           @media all and (max-width: 1280px) {
             padding: 30px;
           }
+
           @media all and (max-width: 860px) {
             font-size: 16px;
             padding: 20px;
@@ -533,9 +583,11 @@
         }
       }
     }
+
     &__mods--bg {
       padding: rem(50) rem(40) rem(40);
       background: #F2F2F2;
+
       @media all and (max-width: 1280px) {
         padding: 20px;
       }
@@ -556,12 +608,15 @@
       text-decoration: none;
       margin-left: rem(42);
       margin-left: rem(20);
+
       @media all and (max-width: 1440px) {
         display: none;
       }
+
       @media all and (max-width: 1280px) {
         display: flex;
       }
+
       @media all and (max-width: 840px) {
         width: 100%;
         margin-left: 0;
@@ -575,22 +630,25 @@
         line-height: 140%;
         color: #FF0040;
         position: relative;
+
         @media all and (max-width: 1280px) {
           font-size: 16px;
         }
-        &:after  {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 100%;
-            bottom: rem(-5);
-            height: rem(2);
-            background: #FF0040;
-            transition: all .3s ease;
+
+        &:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 100%;
+          bottom: rem(-5);
+          height: rem(2);
+          background: #FF0040;
+          transition: all .3s ease;
         }
       }
+
       &:hover .text:after {
-          right: 0;
+        right: 0;
       }
 
       .icon {
@@ -609,10 +667,12 @@
       margin-top: rem(40);
       display: flex;
       align-items: center;
+
       @media all and (max-width: 840px) {
         flex-direction: column;
         align-items: stretch;
       }
+
       .icon {
         width: rem(28);
         height: rem(28);
@@ -622,11 +682,13 @@
 
       &--buy {
         margin-right: rem(20);
+
         @media all and (max-width: 840px) {
           margin-right: 0;
           margin-bottom: 20px;
         }
       }
+
       &--fav {
         @media all and (max-width: 840px) {
           margin-right: 0;
@@ -637,9 +699,11 @@
 
     &__container {
       padding: 0 rem(240) 0;
+
       @media all and (max-width: 1440px) {
         padding: 0 150px 0;
       }
+
       @media all and (max-width: 1280px) {
         padding: 0;
       }
@@ -648,6 +712,7 @@
     &__top {
       display: flex;
       align-items: flex-start;
+
       @media all and (max-width: 1280px) {
         flex-direction: column;
       }
@@ -656,9 +721,11 @@
     &__info {
       width: calc(100% - #{rem(828)} - #{rem(24)} - #{rem(98)} - #{rem(20)});
       margin-left: rem(20);
+
       @media all and (max-width: 1440px) {
         width: calc(100% - 807px - 20px);
       }
+
       @media all and (max-width: 1280px) {
         width: 100%;
         margin-left: 0;
@@ -667,9 +734,11 @@
 
     &__texts {
       padding: 0 rem(336) 0 rem(40);
+
       @media all and (max-width: 1440px) {
         padding: 0 150px 0 60px;
       }
+
       @media all and (max-width: 1280px) {
         padding: 0;
       }
@@ -677,9 +746,11 @@
 
     &__description {
       padding: 0 rem(336) 0 rem(40);
+
       @media all and (max-width: 1440px) {
         padding: 0 150px 0 60px;
       }
+
       @media all and (max-width: 1280px) {
         padding: 60px 0;
       }
@@ -711,9 +782,11 @@
       margin-bottom: rem(20);
       line-height: 140%;
       color: #172242;
+
       @media all and (max-width: 1440px) {
         padding-left: 60px;
       }
+
       @media all and (max-width: 1280px) {
         padding-left: 0;
       }
@@ -741,22 +814,27 @@
         color: #555F76;
       }
     }
+
     &__mods--chars {
       padding: rem(40);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: rem(30);
+
       @media all and (max-width: 1440px) {
         grid-template-columns: repeat(2, 1fr);
         padding: 30px;
       }
+
       @media all and (max-width: 1280px) {
         padding: 20px;
       }
+
       @media all and (max-width: 860px) {
         grid-template-columns: repeat(1, 1fr);
       }
     }
+
     &__mods--char {
       @media all and (max-width: 840px) {
         display: flex;
@@ -765,6 +843,11 @@
         border-bottom: 2px solid #D7DCE1;
       }
     }
+
+    &__mods--mod {
+      overflow: auto;
+    }
+
     &__mods--char_title {
       font-style: normal;
       font-weight: 600;
@@ -772,6 +855,7 @@
       margin-bottom: rem(10);
       line-height: 110%;
       color: #172242;
+
       @media all and (max-width: 860px) {
         width: 50%;
         margin-right: 10px;
@@ -782,12 +866,14 @@
         color: #172242;
       }
     }
+
     &__mods--char_value {
       font-style: normal;
       font-weight: 400;
       font-size: rem(16);
       line-height: 140%;
       color: #555F76;
+
       @media all and (max-width: 860px) {
         width: calc(50% - 10px);
         font-style: normal;
@@ -798,50 +884,64 @@
         color: #555F76;
       }
     }
+
     &__mods--mods_title {
       font-style: normal;
       font-weight: 400;
       font-size: rem(14);
       line-height: 140%;
       color: #172242;
-      width: rem(223);
+      min-width: rem(223);
+      max-width: rem(223);
+
       @media all and (max-width: 1440px) {
-        width: 173px;
+        min-width: 173px;
+        max-width: 173px;
       }
+
       @media all and (max-width: 1280px) {
         width: 100%;
       }
     }
+
     &__mods--mods_titles {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: rem(22);
     }
+
     &__mods--mods_item {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       padding: rem(15) 0;
       border-top: 1px solid #D7DCE1;
+      width: fit-content;
       &:last-child {
         border-bottom: 1px solid #D7DCE1;
       }
+
       @media all and (max-width: 1280px) {
         flex-direction: column;
         border: none !important;
       }
     }
+
     &__mods--mods_val {
-      width: rem(223);
+      min-width: rem(223);
+      max-width: rem(223);
       font-style: normal;
       font-weight: 400;
       font-size: rem(16);
       line-height: 140%;
       color: #555F76;
+
       @media all and (max-width: 1440px) {
-        width: 173px;
+        min-width: 173px;
+        max-width: 173px;
       }
+
       @media all and (max-width: 1280px) {
         width: 100%;
         display: flex;
@@ -850,6 +950,7 @@
         border-top: 1px solid #D7DCE1;
         padding-top: 15px;
         margin-bottom: 15px;
+
         &:last-child {
           border-bottom: 1px solid #D7DCE1;
           padding-bottom: 15px;
@@ -857,45 +958,55 @@
         }
       }
     }
+
     &__analogs_top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 30rem;
+
       .title {
         margin-bottom: 0;
       }
     }
+
     &__analogs_top_arrows {
       display: flex;
       align-items: center;
     }
+
     &__arrow {
-        width: rem(40);
-        border: none;
-        background: none;
-        padding: 0;
-        cursor: pointer;
-        font-size: 0;
+      width: rem(40);
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 0;
+
+      @media all and (max-width: 1280px) {
+        width: 40px;
+      }
+
+      @media all and (max-width: 840px) {
+        position: static;
+        transform: translateY(0);
+      }
+
+      &--left {
+        margin-right: 20px;
+      }
+
+      &--right {
+        transform: rotate(180deg);
+
         @media all and (max-width: 1280px) {
-            width: 40px;
+          right: -20px;
         }
+
         @media all and (max-width: 840px) {
-            position: static;
-            transform: translateY(0);
+          transform: rotate(180deg);
         }
-        &--left {
-          margin-right: 20px;
-        }
-        &--right {
-            transform: rotate(180deg);
-            @media all and (max-width: 1280px) {
-                right: -20px;
-            }
-            @media all and (max-width: 840px) {
-                transform: rotate(180deg);
-            }
-        }
+      }
     }
   }
 

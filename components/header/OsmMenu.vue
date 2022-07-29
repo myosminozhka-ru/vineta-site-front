@@ -441,8 +441,8 @@ import { mapGetters ,mapActions } from 'vuex';
       text-decoration: none;
       padding: rem(47) 0;
       @media all and (max-width: 1440px) {
-        padding-top: 49px;
-        padding-bottom: 49px;
+        padding-top: 30px;
+        padding-bottom: 30px;
       }
       &:after {
         content: "";

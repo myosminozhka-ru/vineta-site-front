@@ -16,10 +16,15 @@
                     <osm-button>Откликнуться</osm-button>
                 </div>
             <div class="vacancy__items">
-                <div class="vacancy__item">
+                <div class="vacancy__item" v-if="isMounted">
                     <div class="spec" v-for="item in vacancy[0].PROPERIES" :key="item.index">
                         <div class="title">{{ item.NAME }}</div>
-                        <div class="text" v-html="item.VALUE" />
+                        <template v-if="item.VALUE.TEXT" >
+                            <div class="text" v-html="decodeHTML(item.VALUE.TEXT)"></div>
+                        </template>
+                        <template v-if="!item.VALUE.TEXT" >
+                            <div class="text" v-html="decodeHTML(item.VALUE)"></div>
+                        </template>
                     </div>
                 </div>
                 <!-- <div class="vacancy__item" v-for="item in 3" :key="item.index">
@@ -46,11 +51,25 @@ export default {
         OsmResponse: () => import('~/components/vacancies/OsmResponse.vue'),
     },
     data: () => ({
-        vacancy: null
+        vacancy: null,
+        isMounted: false
     }),
     async fetch() {
         this.vacancy = await this.$axios.$get(`vacancy-detail.php?code=${this.$route.params.itemId}`)
     },
+    mounted() {
+        window.scrollTo( 0, 0 );
+        this.isMounted = true
+    },
+    methods: {
+        decodeHTML(html) {
+            if (document) {
+                const txt = document.createElement("textarea");
+                txt.innerHTML = html;
+                return txt.value;
+            }
+        }
+    }
 }
 </script>
 

@@ -1126,7 +1126,7 @@
       ...mapGetters(['getMain']),
       secondData() {
         return this.getMain[1]
-      }
+      },
     },
     methods: {
       playVideo() {

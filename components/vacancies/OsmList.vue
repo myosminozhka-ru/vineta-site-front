@@ -2,18 +2,19 @@
     <div class="list">
         <!-- <pre style="font-size: 15rem;">{{ vacancies }}</pre> -->
         <div class="list__title">Вакансии</div>
-        <div class="list__items">
+        <div class="list__items" v-if="isMounted">
             <div class="list__item" v-for="item in vacancies" :key="item.index">
                 <div class="list__item_title">{{ item.NAME }}</div>
                 <div class="list__item_info">
                     <div class="list__item_info--item" v-for="prop in item.PROPERIES" :key="prop.index">
-                        <div class="title">{{ prop.NAME }}</div>
-                        <template v-if="prop.VALUE.TEXT" >
-                            <div class="text" v-html="prop.VALUE.TEXT" />
-                        </template>
-                        <template v-if="!prop.VALUE.TEXT" >
-                            {{ prop.VALUE }}
-                            <div class="text">{{prop.VALUE}}</div>
+                        <template v-if="prop.CODE !== 'YSL'">
+                            <div class="title">{{ prop.NAME }}</div>
+                            <template v-if="prop.VALUE.TEXT" >
+                                <div class="text" v-html="decodeHTML(prop.VALUE.TEXT)"></div>
+                            </template>
+                            <template v-if="!prop.VALUE.TEXT" >
+                                <div class="text" v-html="decodeHTML(prop.VALUE)"></div>
+                            </template>
                         </template>
                     </div>
                 </div>
@@ -33,6 +34,19 @@ export default {
             default: () => ([]),
         }
     },
+    data: () => ({
+        isMounted: false
+    }),
+    mounted() {
+        this.isMounted = true
+    },
+    methods: {
+        decodeHTML(html) {
+            const txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+    }
 }
 </script>
 
@@ -101,6 +115,7 @@ export default {
             font-size: rem(20);
             line-height: 140%;
             color: #172242;
+            // white-space: pre-wrap;
             @media all and (max-width: 1280px) {
                 font-size: 16px;
             }

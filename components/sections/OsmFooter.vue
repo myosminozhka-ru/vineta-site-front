@@ -69,31 +69,19 @@ export default {
         errors: {},
         isSuccess: false,
       socials: [
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          },
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          },
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          },
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          },
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          },
-          {
-              icon: require('~/assets/img/socials/vk.svg'),
-              link: '#',
-          }
-      ]
+            {
+                icon: require('~/assets/img/socials/vk.svg'),
+                link: '#',
+            },
+            {
+                icon: require('~/assets/img/socials/telegram.svg'),
+                link: '#',
+            },
+            {
+                icon: require('~/assets/img/socials/twitter.svg'),
+                link: '#',
+            }
+        ]
     }),
     async fetch() {
         this.fields = await this.$axios.$get('forms/request.php');
@@ -155,7 +143,7 @@ export default {
         justify-content: space-between;
         align-items: flex-start;
         @media all and (max-width: 1440px) {
-            padding: 178px 70px 120px 0;
+            padding: 90px 70px 120px 0;
             width: calc(100% - 778px);
         }
         @media all and (max-width: 1280px) {
@@ -212,7 +200,7 @@ export default {
         flex-direction: column;
         
         @media all and (max-width: 1440px) {
-            padding: 178px 150px 120px 70px !important;
+            padding: 90px 150px 120px 70px !important;
             width: 778px;
         }
         @media all and (max-width: 1280px) {

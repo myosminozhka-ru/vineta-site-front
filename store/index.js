@@ -12,6 +12,7 @@ export const state = () => ({
   products: [],
   filters: [],
   selectedNewsType: 'Новости',
+  downloads: [],
   modals: {
     buy: {
       isOpened: false
@@ -28,6 +29,9 @@ export const state = () => ({
 export const mutations = {
   addFilters(state, data) {
     state.filters = data
+  },
+  addDownloads(state, data) {
+    state.downloads = data
   },
   addMain(state, data) {
     state.main = data
@@ -83,6 +87,18 @@ export const actions = {
   addFilters(context, data) {
     console.log('addFilters', data)
     context.commit('addFilters', data);
+  },
+  addDownloads(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios.$get('downloads.php')
+        .then((response) => {
+          resolve(response);
+          context.commit('addDownloads', response);
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    });
   },
   addMain(context) {
     return new Promise((resolve, reject) => {
@@ -246,6 +262,7 @@ export const actions = {
     await dispatch('addNews');
     await dispatch('addPartners');
     await dispatch('addProducts');
+    await dispatch('addDownloads');
   }
 }
 
@@ -291,5 +308,8 @@ export const getters = {
   },
   getSelectedNewsType(state) {
     return state.selectedNewsType;
+  },
+  getDownloads(state) {
+    return state.downloads;
   },
 }

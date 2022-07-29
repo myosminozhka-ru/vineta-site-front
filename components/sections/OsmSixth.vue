@@ -19,7 +19,7 @@
                         <div class="catalog__item" v-for="item in getCatalog" :key="item.index">
                             <div class="catalog__item_in">
                                 <div class="image">
-                                    <img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="">
+                                    <img :src="$vareibles.remote + item.PICTURE" width="100%" alt="">
                                 </div>
                                 <div class="text">{{ item.NAME }}</div>
                             </div>

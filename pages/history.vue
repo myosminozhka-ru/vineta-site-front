@@ -293,6 +293,15 @@ export default {
             }
         }
     }
+    &__bottom {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        @media all and (min-width: 1281px) {
+            padding-top: rem(100);
+        }
+    }
 }
 .header_padding {
     display: flex;
