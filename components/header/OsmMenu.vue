@@ -97,10 +97,13 @@
     <nuxt-link class="header__button header__button--search hide_off_mobile" :to="{ name: 'index' }">
         <object :data="require(`~/assets/img/search.svg`)" width="100%" />
     </nuxt-link>
-    <nuxt-link class="header__button header__button--favorites hide_off_mobile" :to="{ name: 'index' }">
-        <object :data="require(`~/assets/img/favorites.svg`)" width="100%" />
-        <div v-if="favoritesCount" class="header__count">
-            {{ favoritesCount }}
+    <nuxt-link class="header__button header__button--favorites hide_off_mobile" :to="{ name: 'favorites' }">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none">
+            <rect width="30" height="30" rx="15" fill="#2E5599"/>
+            <path d="M22.9788 12.7966C22.9243 12.6295 22.7767 12.5102 22.602 12.4916L17.4819 11.972L15.4058 7.26423C15.3348 7.10463 15.1757 7 15.0001 7C14.8245 7 14.6654 7.10374 14.5945 7.26512L12.5179 11.9725L7.39867 12.4916C7.22399 12.5093 7.07592 12.6299 7.02183 12.7966C6.9673 12.9638 7.01695 13.1473 7.14818 13.2643L10.9839 16.6949L9.89642 21.7236C9.85962 21.8952 9.92701 22.0725 10.0693 22.1758C10.1469 22.2321 10.2382 22.2605 10.33 22.2605C10.4067 22.2605 10.4838 22.2406 10.553 22.1998L15.0005 19.6107L19.4472 22.1998C19.5988 22.2871 19.7886 22.2787 19.9309 22.1736C20.0728 22.0721 20.141 21.893 20.1042 21.7214L19.0167 16.6922L22.8529 13.2621C22.9833 13.1469 23.0334 12.9633 22.9788 12.7966ZM18.2325 16.2054C18.1137 16.3118 18.0609 16.4737 18.0946 16.6297L19.0243 20.9278L15.2231 18.7156C15.0852 18.6349 14.915 18.6349 14.7771 18.7156L10.9751 20.9278L11.9047 16.6297C11.9384 16.4737 11.8857 16.3118 11.7669 16.2054L8.48794 13.2736L12.8637 12.8294C13.0224 12.8139 13.1598 12.7124 13.2245 12.567L14.9997 8.54281L16.7743 12.567C16.8391 12.7124 16.9765 12.8139 17.1352 12.8294L21.5109 13.2736L18.2325 16.2054Z" fill="white"/>
+        </svg>
+        <div v-if="getFavorites.length" class="header__count">
+            {{ getFavorites.length }}
         </div>
     </nuxt-link>
     <div class="header__menu_opener hide_off_mobile" @click="openMenu">
@@ -126,6 +129,7 @@ import { mapGetters ,mapActions } from 'vuex';
       },
       ...mapGetters(['getCatalog']),
       ...mapGetters(['getMainMore']),
+      ...mapGetters('localStorage', ['getFavorites']),
     },
     data: () => ({
       menu: [

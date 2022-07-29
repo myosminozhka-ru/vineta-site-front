@@ -1,9 +1,9 @@
 <template>
     <div class="gallery">
         <div class="gallery__title">Лицензии и сертификаты</div>
-        <pre style="font-size: 15rem;">
+        <!-- <pre style="font-size: 15rem;">
             {{ imagesGallery }}
-        </pre>
+        </pre> -->
         <no-ssr>
             <LightGallery
                 :images="imagesGallery"
