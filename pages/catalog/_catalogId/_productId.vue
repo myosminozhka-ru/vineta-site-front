@@ -844,8 +844,11 @@
       }
     }
 
-    &__mods--mod {
+    &__mods--mods {
       overflow: auto;
+    }
+    &__mods--mod:not(:first-child) &__mods--mods_titles {
+      display: none;
     }
 
     &__mods--char_title {
@@ -900,7 +903,8 @@
       }
 
       @media all and (max-width: 1280px) {
-        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
       }
     }
 
@@ -918,6 +922,9 @@
       padding: rem(15) 0;
       border-top: 1px solid #D7DCE1;
       width: fit-content;
+      @media all and (max-width: 1280px) {
+        width: 100%;
+      }
       &:last-child {
         border-bottom: 1px solid #D7DCE1;
       }
@@ -943,7 +950,8 @@
       }
 
       @media all and (max-width: 1280px) {
-        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;

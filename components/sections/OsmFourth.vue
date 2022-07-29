@@ -1,7 +1,7 @@
 <template>
     <section class="section section__item section__item--fourth">
         <div class="section__left" v-if="fourthData">
-            <img :src="$vareibles.remote + fourthData.PREVIEW_PICTURE" alt="first">
+            <img v-if="fourthData.PREVIEW_PICTURE" :src="$vareibles.remote + fourthData.PREVIEW_PICTURE" alt="first">
         </div>
         <div class="section__right" v-if="fourthData">
             <div class="section__content">

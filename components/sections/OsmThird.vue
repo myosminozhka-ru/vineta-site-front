@@ -1,7 +1,7 @@
 <template>
   <section class="section section__item section__item--third" v-if="thirdData">
     <div class="section__left section__left--fullwidth hide_on_mobile">
-      <img :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first">
+      <img v-if="thirdData.PREVIEW_PICTURE" :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first">
     </div>
     <div class="section__right section__slider glide">
       <div class="section__content">

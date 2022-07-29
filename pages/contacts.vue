@@ -11,16 +11,8 @@
                     <div class="contacts__left">
                         <div class="contacts__title">{{ getContacts[0].NAME }}</div>
                         <div class="contacts__items">
-                          <div class="contacts__item" v-for="contact in getContacts[0].PROPERIES" :key="contact.index">
-                            <template v-if="contact.CODE === 'VK' || contact.CODE === 'INSTAGRAM' || contact.CODE === 'TELEGRAM' || contact.CODE === 'FACEBOOK' || contact.CODE === 'TWITTER' && contact.CODE !== 'GEO'">                              
-                              <a :href="contact.VALUE" class="contacts__item_in">
-                                <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
-                                </div>
-                                <div class="text">{{ contact.NAME }}</div>
-                              </a>
-                            </template>
-                            <template v-else-if="contact.CODE === 'PHONE'">                              
+                          <div class="contacts__item" v-for="contact in contacts" :key="contact.index">
+                            <template v-if="contact.CODE === 'PHONE'">                              
                               <a :href="`tel:${contact.VALUE}`" class="contacts__item_in">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
@@ -124,6 +116,9 @@ export default {
       ...mapGetters(['getContacts']),
       ...mapGetters(['getVacancies']),
       ...mapGetters(['getAbout']),
+      contacts() {
+        return this.getContacts[0].PROPERIES.filter(contact => contact.CODE !== 'VK' && contact.CODE !== 'INSTAGRAM' && contact.CODE !== 'TELEGRAM' && contact.CODE !== 'FACEBOOK' && contact.CODE !== 'TWITTER')
+      }
     }
 }
 </script>
