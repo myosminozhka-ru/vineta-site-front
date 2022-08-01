@@ -28,12 +28,12 @@
           <ul class="menu__modal_menu">
             <li v-for="category in getCatalog" :key="category.ID">
               <!-- <pre style="font-size: 15rem">{{ category }}</pre> -->
-              <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE}}">
+              <a :href="`catalog/${category.CODE}`">
                 <div class="icon">
                   <img :src="$vareibles.remote + category.PICTURE" width="100%" alt="">
                 </div>
                 <div class="text">{{ category.NAME }}</div>
-              </nuxt-link>
+              </a>
             </li>
           </ul>
         </div>
@@ -271,7 +271,7 @@ import { mapGetters ,mapActions } from 'vuex';
       }
       a {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         text-decoration: none;
         
         .icon {

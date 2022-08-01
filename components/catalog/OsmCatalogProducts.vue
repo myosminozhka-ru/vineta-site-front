@@ -1,6 +1,5 @@
 <template>
     <div class="products">
-        
         <div class="products__items" v-if="products">
             <nuxt-link class="products__item" v-for="product in filteredProducts" :key="product.ID" :to="{name: 'catalog-catalogId-productId', params: {productId: product.CODE}}">
                 <!-- <pre style="font-size: 15rem">{{ product }}</pre> -->
@@ -29,7 +28,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     data: () => ({
         products: [],
@@ -54,8 +53,26 @@ export default {
             }
         }
     },
-    async fetch() {
+    created() {
+        if (this.currentCategory[0]) {
+            this.addBreadcrumbs([
+                {
+                    name: 'Каталог',
+                    link: 'catalog',
+                    isLink: true
+                },
+                {
+                    name: this.currentCategory[0].NAME,
+                    isLink: false
+                },
+            ])
+        }
+    },
+    async mounted() {
         this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
+    },
+    methods: {
+        ...mapActions(['addBreadcrumbs'])
     }
 }
 </script>

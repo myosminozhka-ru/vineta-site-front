@@ -14,11 +14,12 @@
             </div>
         </div>
         <osm-footer />
+        <osm-preloader />
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "FavoritesPage",
     components: {
@@ -28,6 +29,7 @@ export default {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmNewsBlock: () => import('~/components/news/OsmBlock.vue'),
+        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     },
     computed: {
         ...mapGetters(['getProducts']),
@@ -35,8 +37,24 @@ export default {
             return this.getProducts.filter(product => product.NAME.includes(this.$route.query.q));
         }
     },
+    created() {
+      this.addBreadcrumbs([
+          {
+              name: 'Главная',
+              link: 'index',
+              isLink: true
+          },
+          {
+              name: 'Результаты поиска',
+              isLink: false
+          },
+      ])
+    },
+    methods: {
+      ...mapActions(['addBreadcrumbs'])
+    },
     mounted() {
-        console.log(this.$route.query.q);
+        // console.log(this.$route.query.q);
     }
 }
 </script>

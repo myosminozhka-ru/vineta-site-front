@@ -1593,14 +1593,14 @@
 	h10.9v-20v-20H415.4 M415.3,4078.7c-10.9,0-11,0-12,2.6c-1.3,3.4-1.2,7.4,0.1,11.3l1.1,3.1h10.9h10.9v-8.5v-8.5H415.3 M22.6-59.5
 	c-0.2,1.2-0.2,3,0,4s0.4-0.1,0.4-2.3C23-60,22.8-60.8,22.6-59.5 M22.6-48.5c-0.2,2.9-0.2,7.6,0,10.5c0.2,2.9,0.4,0.5,0.4-5.2
 	S22.8-51.4,22.6-48.5">
-            <animate attributeName="fill" from="transparent" to="#000" begin="2s" dur="1s" fill="freeze"
+            <animate attributeName="fill" from="#fefefe" to="#000" begin="2s" dur="1s" fill="freeze"
               repeatCount="1" />
-              <animate attributeName="stroke" from="transparent" to="#000" begin="1s" dur="0.3s" fill="freeze"
+              <animate attributeName="stroke" from="#fefefe" to="#000" begin="0s" dur="0.3s" fill="freeze"
               repeatCount="1" />
           </path>
         </svg>
 
-        <img :class="{isMounted}" class="section__left_image_clipped" :src="require('~/assets/img/sections/first.png')"
+        <img :class="{isClipped}" class="section__left_image_clipped" :src="require('~/assets/img/sections/first.png')"
           height="100%" alt="">
         <!-- <img class="section__left_image_clipped" :src="$vareibles.remote + firstData.PREVIEW_PICTURE" alt="first"> -->
       </div>
@@ -1628,6 +1628,14 @@
         default: false
       }
     },
+	data: () => ({
+		isClipped: false
+	}),
+	mounted() {
+		document.addEventListener('DOMContentLoaded', () => {
+			this.isClipped = true
+		})
+	},
     components: {
       OsmH1: () => import('~/components/global/OsmH1.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue'),
@@ -1682,15 +1690,16 @@
       transition: 1s clip-path 2.3s ease;
       padding-top: rem(30);
       padding-bottom: rem(25);
-    }
-    &:not(.isActive) &__left_image_clipped {
-        opacity: 0;
-		transition: 1s clip-path 0.3s ease;
-    }
+	  &:not(.isClipped) {
+			opacity: 0;
+			transition: 1s clip-path 0.3s ease;
+		}
 
-    &.isActive &__left_image_clipped {
-      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+		&.isClipped {
+		clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+		}
     }
+    
 
     &__left {
       @media all and (max-width: 1280px) {

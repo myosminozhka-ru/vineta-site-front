@@ -61,7 +61,7 @@ export default {
         }
     },
     mounted() {
-        console.log('beforeMount');
+        // console.log('beforeMount');
         setTimeout(() => {
             this.slider = new Glide('.customers.glide', {
                 perView: 6,

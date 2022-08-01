@@ -6,25 +6,35 @@
                 <path d="M14.4004 7.2002L10.2004 12.0002L14.4004 16.8002" stroke="white" stroke-width="2"/>
             </svg>
         </div>
-        <li class="breadcrumbs__item hide_on_mobile">
-            <nuxt-link :to="{name: 'index'}">Главная</nuxt-link>
+        <li class="breadcrumbs__item" v-for="(br, key) in getBreadcrumbs" :key="br.index" :class="{'hide_on_mobile': key > 0}">
+            <template v-if="br.isLink">
+                <nuxt-link :to="{name: br.link}">{{ br.name }}</nuxt-link>
+            </template>
+            <template v-else>
+                <span>{{ br.name }}</span>
+            </template>
+            <span v-if="key !== getBreadcrumbs.length - 1" class="breadcrumbs__item--delim hide_on_mobile">/</span>
         </li>
-        <li class="breadcrumbs__item breadcrumbs__item--delim hide_on_mobile">
-            <span>/</span>
+        <!-- <li class="breadcrumbs__item breadcrumbs__item--delim hide_on_mobile">
+            
         </li> 
-        <li class="breadcrumbs__item">
-            <span>Каталог</span>
-        </li>
+        <li class="breadcrumbs__item hideOffMobile">
+            <nuxt-link :to="{name: getBreadcrumbs[0].link}">{{ getBreadcrumbs[0].name }}</nuxt-link>
+        </li> -->
     </ul>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     props: {
         white: {
             type: Boolean,
             default: false
         }
+    },
+    computed: {
+        ...mapGetters(['getBreadcrumbs']),
     }
 }
 </script>

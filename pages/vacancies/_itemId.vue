@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
     components: {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
@@ -56,12 +57,24 @@ export default {
     }),
     async fetch() {
         this.vacancy = await this.$axios.$get(`vacancy-detail.php?code=${this.$route.params.itemId}`)
+        this.addBreadcrumbs([
+            {
+                name: 'Вакансии',
+                link: 'vacancies',
+                isLink: true
+            },
+            {
+                name: this.vacancy[0].NAME,
+                isLink: false
+            },
+        ])
     },
     mounted() {
         window.scrollTo( 0, 0 );
         this.isMounted = true
     },
     methods: {
+        ...mapActions(['addBreadcrumbs']),
         decodeHTML(html) {
             if (document) {
                 const txt = document.createElement("textarea");

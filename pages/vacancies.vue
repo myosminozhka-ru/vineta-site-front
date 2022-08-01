@@ -5,6 +5,7 @@
       <nuxt-child />
     </div>
     <osm-footer />
+    <osm-preloader />
   </div>
 </template>
 <script>
@@ -13,7 +14,7 @@
     components: {
       OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-      
+      OsmPreloader: () => import('~/components/global/OsmPreloader.vue')      
     },
   }
 

@@ -19,7 +19,7 @@
         <div class="news__more">
             <div class="news__more--title">Смотрите так же</div>
             <div class="news__more--items">
-                <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item">
+                <a :href="`/news/${item.CODE}`" v-for="(item, key) in news" :key="key" class="news__item">
                     <div class="news__item_left">
                         <div class="news__image">
                             <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -34,14 +34,14 @@
                         </div>
                         <span class="news__link" :to="{name: item.link, params: {newsId: item.CODE}}">Читать новость</span>
                     </div>
-                </nuxt-link>
+                </a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     components: {
         OsmButton: () => import('~/components/global/OsmButton.vue')
@@ -58,9 +58,23 @@ export default {
     beforeDestroy() {
         this.detail = null
     },
-    async fetch() {
+    async mounted() {
         this.detail = await this.$axios.$get(`news-detail.php?code=${this.$route.params.newsId}`);
+        this.addBreadcrumbs([
+            {
+                name: 'Новости',
+                link: 'news',
+                isLink: true
+            },
+            {
+                name: this.detail[0].NAME,
+                isLink: false
+            },
+        ])
     },
+    methods: {
+        ...mapActions(['addBreadcrumbs']), 
+    }
 }
 </script>
 

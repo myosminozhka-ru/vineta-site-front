@@ -98,11 +98,12 @@
           </div>
         </section>
       <osm-footer />
+      <osm-preloader />
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "LicensesPage",
     components: {
@@ -111,6 +112,7 @@ export default {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmContactsSlider: () => import('~/components/contacts/OsmSlider.vue'),
+        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     },
     computed: {
       ...mapGetters(['getContacts']),
@@ -119,7 +121,23 @@ export default {
       contacts() {
         return this.getContacts[0].PROPERIES.filter(contact => contact.CODE !== 'VK' && contact.CODE !== 'INSTAGRAM' && contact.CODE !== 'TELEGRAM' && contact.CODE !== 'FACEBOOK' && contact.CODE !== 'TWITTER')
       }
-    }
+    },
+    created() {
+      this.addBreadcrumbs([
+          {
+              name: 'Главная',
+              link: 'index',
+              isLink: true
+          },
+          {
+              name: 'Контакты',
+              isLink: false
+          },
+      ])
+    },
+    methods: {
+      ...mapActions(['addBreadcrumbs'])
+    },
 }
 </script>
 

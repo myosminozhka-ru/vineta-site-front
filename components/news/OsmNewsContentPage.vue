@@ -34,17 +34,17 @@
             </template>
         </nuxt-link>
         <div class="news__content_tabs">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: 'test'}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img :src="item.image" width="100%" alt="">
+                        <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                     </div>
                 </div>
                 <div class="news__item_right">
                     <div class="news__item_top">
-                        <div class="news__date">{{ item.date }}</div>
+                        <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
                         <div class="news__text">
-                            {{ item.text }}
+                            {{ item.NAME }}
                         </div>
                     </div>
                     <span class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</span>

@@ -11,11 +11,12 @@
             </div>
         </div>
         <osm-footer />
+        <osm-preloader />
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "LicensesPage",
     components: {
@@ -23,10 +24,27 @@ export default {
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmGallery: () => import('~/components/licenses/OsmGallery.vue'),
+        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     },
     computed: {
         ...mapGetters(['getLicenses']), 
-    }
+    },
+    created() {
+      this.addBreadcrumbs([
+          {
+              name: 'Главная',
+              link: 'index',
+              isLink: true
+          },
+          {
+              name: 'Лицензии и сертификаты',
+              isLink: false
+          },
+      ])
+    },
+    methods: {
+      ...mapActions(['addBreadcrumbs'])
+    },
 }
 </script>
 

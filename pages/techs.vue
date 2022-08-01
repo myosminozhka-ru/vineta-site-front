@@ -14,6 +14,7 @@
       <osm-seventh-section :class="{'isActive': activeIndex === 6}" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-eighth-section :class="{'isActive': activeIndex === 7}" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-footer-section :class="{'isActive': activeIndex === 8}" :style="`${activeIndex >= 8 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"/>
+      <osm-preloader />
     </div>
   </div>
 </template>
@@ -21,7 +22,7 @@
 <script>
 // import $ from 'jquery';
 // import 'pagepiling-js-version-kostyast/jquery.pagepiling.min.js';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'IndexPage',
   components: {
@@ -35,6 +36,7 @@ export default {
     OsmSeventhSection: () => import('~/components/techs/OsmSeventh.vue'),
     OsmEighthSection: () => import('~/components/techs/OsmEighth.vue'),
     OsmFooterSection: () => import('~/components/sections/OsmFooter.vue'),
+    OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
   },
   data: () => ({
     activeIndex: null,
@@ -54,9 +56,22 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener('mousewheel', () => {
-      console.log('mousewheel event removed')
+      // console.log('mousewheel event removed')
     });
   },
+  created() {
+      this.addBreadcrumbs([
+          {
+              name: 'Главная',
+              link: 'index',
+              isLink: true
+          },
+          {
+              name: 'Технология производства',
+              isLink: false
+          },
+      ])
+    },
   mounted() {
     setTimeout(() => {
       if (window.innerWidth <= 1024) {
@@ -78,6 +93,7 @@ export default {
     }, 500)
   },
   methods: {
+    ...mapActions(['addBreadcrumbs']),
     change(direction) {
       if (this.isInProgress) return;
       

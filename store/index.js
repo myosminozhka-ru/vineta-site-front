@@ -13,6 +13,7 @@ export const state = () => ({
   filters: [],
   selectedNewsType: 'Новости',
   downloads: [],
+  breadcrumbs: [],
   modals: {
     buy: {
       isOpened: false
@@ -27,6 +28,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  addBreadcrumbs(state, data) {
+    state.breadcrumbs = data
+  },
   addFilters(state, data) {
     state.filters = data
   },
@@ -81,11 +85,14 @@ export const mutations = {
 }
 
 export const actions = {
+  addBreadcrumbs(context, data) {
+    context.commit('addBreadcrumbs', data);
+  },
   addSelectedNewsType(context, data) {
     context.commit('addSelectedNewsType', data);
   },
   addFilters(context, data) {
-    console.log('addFilters', data)
+    // console.log('addFilters', data)
     context.commit('addFilters', data);
   },
   addDownloads(context) {
@@ -244,7 +251,7 @@ export const actions = {
       });
     }
     if (data.type === 'search') {
-      console.log(data)
+      // console.log(data)
       context.commit('toggleSearch', {
         isOpened: data.isOpened
       });
@@ -269,6 +276,9 @@ export const actions = {
 export const getters = {
   getMain(state) {
     return state.main;
+  },
+  getBreadcrumbs(state) {
+    return state.breadcrumbs;
   },
   getMainMore(state) {
     return state.main2;

@@ -170,11 +170,13 @@
       </section>
     </div>
     <osm-footer />
+    <osm-preloader />
   </div>
 </template>
 <script>
   import {
-    mapGetters
+    mapGetters,
+    mapActions
   } from 'vuex';
   export default {
     name: 'AboutPage',
@@ -184,13 +186,30 @@
       OsmButton: () => import('~/components/global/OsmButton.vue'),
       Customers: () => import('~/components/sliders/Customers.vue'),
       Licenses: () => import('~/components/tabs/Licenses.vue'),
+      OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     },
     data: () => ({
       isTextShowed: false,
     }),
+    created() {
+      this.addBreadcrumbs([
+          {
+              name: 'Главная',
+              link: 'index',
+              isLink: true
+          },
+          {
+              name: 'О компании',
+              isLink: false
+          },
+      ])
+    },
+    methods: {
+      ...mapActions(['addBreadcrumbs'])
+    },
     computed: {
       ...mapGetters(['getAbout']),
-    }
+    },
   }
 
 </script>

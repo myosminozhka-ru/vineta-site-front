@@ -22,6 +22,7 @@
             </div>
         </div>
         <osm-footer />
+        <osm-preloader />
     </div>
 </template>
 
@@ -33,6 +34,7 @@ export default {
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmNewsTop: () => import('~/components/news/OsmNewsTop.vue'),
+        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     }
 }
 </script>

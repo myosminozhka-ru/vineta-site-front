@@ -24,6 +24,7 @@ export default {
   plugins: [
     '~/plugins/tabs.js',
     '~/plugins/vars.js',
+    '~/plugins/print.js',
     { src: '~/plugins/lightgallery.js', ssr: false }
   ],
 
@@ -33,7 +34,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    'nuxt-gsap-module'
+    'nuxt-gsap-module',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

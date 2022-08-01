@@ -83,7 +83,7 @@ export default {
         // const form = new FormData(this.formData);
         // console.log(form);
         this.$axios.$post('forms/result_order.php', form).then(result => {
-            console.log(result);
+            // console.log(result);
             if (result.error) {
                 this.errors = result.error
             }

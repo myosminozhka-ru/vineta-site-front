@@ -9,14 +9,14 @@ export const mutations = {
         } else {
             state.favorites.push(+data);
         }
-        console.log(state.favorites, data);
+        // console.log(state.favorites, data);
     },
 }
 
 export const actions = {
     addFavorites(context, data) {
         context.commit('addFavorites', data);
-        console.log('addFavorites', data)
+        // console.log('addFavorites', data)
     },
 }
 

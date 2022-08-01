@@ -39,7 +39,7 @@ export default {
         ...mapGetters(['getDownloads']),
     },
     mounted() {
-        console.log(this.getDownloads[1]);
+        // console.log(this.getDownloads[1]);
     },
     data: () => ({
         socials: [

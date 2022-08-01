@@ -47,7 +47,7 @@ export default {
                 return this.getFilters;
             },
             set(newValue) {
-                console.log(newValue)
+                // console.log(newValue)
                 this.addFilters(newValue)
             }
         },

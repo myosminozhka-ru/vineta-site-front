@@ -255,7 +255,7 @@ export default {
     }
     &__slider-item__in {
         position: relative;
-        padding-top: 100%;
+        padding-top: 75%;
         @media all and (max-width: 1280px) {
             padding-top: 56%;
             width: 100%;

@@ -14,6 +14,7 @@
       <osm-sixth-section :class="{'isActive': activeIndex === 5}" :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>
       <osm-seventh-section :class="{'isActive': activeIndex === 6}" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>
       <osm-footer-section :class="{'isActive': activeIndex === 7}" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>
+      <osm-preloader />
     </div>
   </div>
 </template>
@@ -34,9 +35,10 @@ export default {
     OsmSixthSection: () => import('~/components/sections/OsmSixth.vue'),
     OsmSeventhSection: () => import('~/components/sections/OsmSeventh.vue'),
     OsmFooterSection: () => import('~/components/sections/OsmFooter.vue'),
+    OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
   },
   data: () => ({
-    activeIndex: -1,
+    activeIndex: 0,
     sections: [],
     isInProgress: false,
   }),
@@ -53,14 +55,14 @@ export default {
     }
   },
   beforeDestroy() {
-    console.log('beforeDestroy')
+    // console.log('beforeDestroy')
     document.removeEventListener('mousewheel', function() {
-      console.log('mousewheel event removed')
+      // console.log('mousewheel event removed')
     });
   },
   mounted() {
     
-    console.log('getMainMore', this.getMainMore)
+    // console.log('getMainMore', this.getMainMore)
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1;
     }
@@ -78,7 +80,7 @@ export default {
             this.isInProgress = true;
           }
         });
-      }, 500);
+      }, 0);
     }
   },
   methods: {

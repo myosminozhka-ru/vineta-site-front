@@ -140,10 +140,10 @@
     },
     methods: {
       tabClicked(selectedTab) {
-        console.log('Current tab re-clicked:' + selectedTab.tab.name);
+        // console.log('Current tab re-clicked:' + selectedTab.tab.name);
       },
       tabChanged(selectedTab) {
-        console.log('Tab changed to:' + selectedTab.tab.name);
+        // console.log('Tab changed t:' + selectedTab.tab.name);
       },
       initSlider() {
         document.querySelectorAll('.licensesSlid').forEach(item => {

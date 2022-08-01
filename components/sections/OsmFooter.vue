@@ -2,12 +2,19 @@
     <section class="section section__item section__item--footer section__item--dark">
         <div class="section__left">
             <div class="section__left_top">
-                <osm-h1 class="section__title">Оставить заявку</osm-h1>
-                <div class="section__text">
+                <osm-h1 class="section__title">
+                    <template v-if="!isSuccess">
+                        Оставить заявку
+                    </template>
+                    <template v-else>
+                        Спасибо за заявку
+                    </template>
+                </osm-h1>
+                <div class="section__text" v-if="!isSuccess">
                     Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные
                 </div>
             </div>
-            <form @submit.prevent="sendForm" class="section__left_form">
+            <form @submit.prevent="sendForm" class="section__left_form" v-if="!isSuccess">
                 <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
                     <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
                     <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input section__input" v-model="formData[field.VARNAME]">
@@ -44,15 +51,16 @@
             <div class="section__popup_left">ООО “Винета”, 2012-2022</div>
             <div class="section__popup_right">
                 <ul>
-                    <li><a href="#">Политика конфидециальности</a></li>
-                    <li><a href="#">Пользовательское соглашение</a></li>
-                    <li><a href="#">Карта сайта</a></li>
+                    <li v-if="getDownloads[1]"><a :href="$vareibles.remote + getDownloads[1].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a></li>
+                    <!-- <li><a href="#">Пользовательское соглашение</a></li>
+                    <li><a href="#">Карта сайта</a></li> -->
                 </ul>
             </div>
         </div>
     </section>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: 'OsmFirstSection',
   components: {
@@ -61,6 +69,9 @@ export default {
     // OsmTextarea: () => import('~/components/global/OsmTextarea.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
+  },
+  computed: {
+    ...mapGetters(['getDownloads']), 
   },
   
   data: () => ({
@@ -83,7 +94,7 @@ export default {
             }
         ]
     }),
-    async fetch() {
+    async mounted() {
         this.fields = await this.$axios.$get('forms/request.php');
     },
     methods: {
@@ -95,7 +106,7 @@ export default {
                 form.append(key, formObj[key]);
             }
             this.$axios.$post('forms/result_request.php', form).then(result => {
-                console.log(result);
+                // console.log(result);
                 if (result.error) {
                     this.errors = result.error
                 }

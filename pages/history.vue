@@ -63,16 +63,18 @@
                 </div>
             </div>
         </div>
+        <osm-preloader />
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     name: 'HistoryPage',
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
-        OsmButton: () => import('~/components/global/OsmButton.vue')
+        OsmButton: () => import('~/components/global/OsmButton.vue'),
+        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     },
     data: () => ({
         selectedTime: 0,
@@ -80,7 +82,21 @@ export default {
     computed: {
         ...mapGetters(['getHistory']), 
     },
+    created() {
+      this.addBreadcrumbs([
+          {
+              name: 'Главная',
+              link: 'index',
+              isLink: true
+          },
+          {
+              name: 'История',
+              isLink: false
+          },
+      ])
+    },
     methods: {
+        ...mapActions(['addBreadcrumbs']),
         next() {
             if (this.selectedTime >= this.getHistory.length - 1) return;
             this.selectedTime++;
@@ -92,6 +108,16 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.history {
+    &__text--left {
+        p {
+            margin: 0;
+        }
+    }
+}
+</style>
 
 <style lang="scss" scoped>
 .history {
@@ -117,10 +143,13 @@ export default {
         justify-content: space-between;
     }
     &__text--left {
-        width: rem(588);
+        // width: rem(588);
+        flex: 1 1 auto;
+        margin-right: rem(20);
         display: none;
         @media all and (max-width: 1280px) {
             width: 100%;
+            margin-right: 0;
         }
         &.isActive {
             display: block;
@@ -131,7 +160,9 @@ export default {
             font-size: rem(20);
             line-height: 140%;
             color: #FFFFFF;
-            margin: 0;
+            p {
+                margin: 0 !important;
+            }
             @media all and (max-width: 1280px) {
                 font-size: 20px;
             }

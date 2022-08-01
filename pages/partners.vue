@@ -8,36 +8,38 @@
                 <div class="partners__title">Основные заказчики и партнёры</div>
                 <div class="partners__items">
                     <div class="partners__item" v-for="item in getPartners" :key="item.index">
-                        <div class="partners__item_logo">
-                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
-                        </div>
-                        <div class="partners__item_text">
-                            С 2008 года «Альфеус-Фидс» является официальным дистрибьютором компании «Coppens International» (Нидерланды) на территории Российской Федерации.
-                        </div>
-                        <div class="partners__contact_items">
-                            <div class="partners__contact_item">
-                                <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
-                                </div>
-                                <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
+                        <div class="partners__item_top">
+                            <div class="partners__item_logo">
+                                <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                             </div>
-                            <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item">
-                                <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
+                            <div class="partners__item_text">
+                                С 2008 года «Альфеус-Фидс» является официальным дистрибьютором компании «Coppens International» (Нидерланды) на территории Российской Федерации.
+                            </div>
+                            <div class="partners__contact_items">
+                                <div class="partners__contact_item">
+                                    <div class="icon">
+                                        <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    </div>
+                                    <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                                 </div>
-                                <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
-                            </a>
-                            <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item">
-                                <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
+                                <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item">
+                                    <div class="icon">
+                                        <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
+                                    </div>
+                                    <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
+                                </a>
+                                <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item">
+                                    <div class="icon">
+                                        <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
+                                    </div>
+                                    <div class="text">{{item.PROPERIES[3].VALUE}}</div>
+                                </a>
+                                <div class="partners__contact_item">
+                                    <div class="icon">
+                                        <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="">
+                                    </div>
+                                    <div class="text">{{ item.PROPERIES[4].VALUE }}</div>
                                 </div>
-                                <div class="text">{{item.PROPERIES[3].VALUE}}</div>
-                            </a>
-                            <div class="partners__contact_item">
-                                <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="">
-                                </div>
-                                <div class="text">{{ item.PROPERIES[4].VALUE }}</div>
                             </div>
                         </div>
                         <osm-button link="catalog">В каталог</osm-button>
@@ -77,21 +79,39 @@
                 </div>
             </div>
         </div>
+        <osm-preloader />
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "LicensesPage",
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),
+        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     },
     computed: {
         ...mapGetters(['getPartners']), 
-    }
+    },
+    created() {
+      this.addBreadcrumbs([
+          {
+              name: 'Главная',
+              link: 'index',
+              isLink: true
+          },
+          {
+              name: 'Основные заказчики и партнёры',
+              isLink: false
+          },
+      ])
+    },
+    methods: {
+      ...mapActions(['addBreadcrumbs'])
+    },
 }
 </script>
 
@@ -140,6 +160,9 @@ export default {
     &__item {
         padding: rem(20);
         border: 1px solid #D7DCE1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     &__item_logo {
         height: rem(54);

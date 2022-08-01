@@ -48,12 +48,29 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
   export default {
     name: 'CatalogPage',
     components: {
       OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
       OsmCatalogTop: () => import('~/components/catalog/OsmCatalogTop.vue'),
       OsmCatalogCategories: () => import('~/components/catalog/OsmCatalogCategories.vue'),
+    },
+    created() {
+        this.addBreadcrumbs([
+            {
+                name: 'Главная',
+                link: 'index',
+                isLink: true
+            },
+            {
+                name: 'Каталог',
+                isLink: false
+            },
+        ])
+    },
+    methods: {
+      ...mapActions(['addBreadcrumbs']), 
     }
   }
 

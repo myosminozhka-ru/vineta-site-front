@@ -1,7 +1,7 @@
 <template>
-    <div class="seacrhModal" :class="{ 'isOpened': getModals.search.isOpened }">
+    <div class="seacrhModal" :class="{ 'isOpened': getModals.search.isOpened }" @click="closeSearch">
         <div class="seacrhModal__in">
-            <form class="seacrhModal__form" @submit.prevent="goToSearchPage">
+            <form class="seacrhModal__form" @submit.prevent="goToSearchPage" @click.stop>
                 <input type="text" class="seacrhModal__input" placeholder="Поиск по сайту" v-model="searchText">
                 <button type="submit" class="seacrhModal__button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 27 27" fill="none">
@@ -18,7 +18,7 @@
                 </template>
             </div>
             <div class="seacrhModal__items">
-                <span class="seacrhModal__item" v-for="product in productsResult.slice(0, 4)" :key="product.index">
+                <nuxt-link :to="`/catalog/${product.SECTION.CODE}/${product.CODE}`" class="seacrhModal__item" v-for="product in productsResult.slice(0, 4)" :key="product.index">
                     <div class="products__item_image">
                         <div class="image_container">
                             <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
@@ -28,7 +28,7 @@
                         <span class="products__item_name">{{ product.NAME }}</span>
                         <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                     </div>
-                </span>
+                </nuxt-link>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@ export default {
         searchText: '',
     }),
     mounted() {
-        console.log(this.getProducts);
+        // console.log(this.getProducts);
     },
     methods: {
         ...mapActions(['toggleModal']),

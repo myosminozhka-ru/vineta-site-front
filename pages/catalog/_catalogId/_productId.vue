@@ -329,10 +329,10 @@
                   </div>
                 </div>
                 <div class="products__item_data">
-                  <nuxt-link class="products__item_name"
-                    :to="{name: 'catalog-catalogId-productId', props: {catalogId: prod.SECTION.CODE, productId: prod.CODE}}">
+                  <a class="products__item_name"
+                    :href="`/catalog/${prod.SECTION.CODE}/${prod.CODE}`">
                     {{ prod.NAME }}
-                  </nuxt-link>
+                  </a>
                   <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                   <div class="products__item_properties">
                     <div class="products__item_property" v-for="property in prod.PROPERIES" :key="property.index">
@@ -378,7 +378,18 @@
     }),
     async fetch() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
-      console.log(this.product);
+      this.addBreadcrumbs([
+        {
+            name: 'Каталог',
+            link: 'catalog',
+            isLink: true
+        },
+        {
+            name: this.product[0].NAME,
+            isLink: false
+        },
+      ])
+      // console.log(this.product);
     },
     mounted() {
       if (window.innerWidth <= 1280) {
@@ -392,13 +403,14 @@
               }
             }
           }).mount();
-          console.log(this.prodsSlider)
+          // console.log(this.prodsSlider)
         }, 500)
       }
     },
     methods: {
       ...mapActions(['toggleModal']),
       ...mapActions('localStorage', ['addFavorites']),
+      ...mapActions(['addBreadcrumbs']),
       openBuy() {
         this.toggleModal({
           isOpened: true,
