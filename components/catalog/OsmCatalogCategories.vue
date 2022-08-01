@@ -1,12 +1,12 @@
 <template>
     <div class="categories">
         <div class="categories__item" v-for="category in getCatalog" :key="category.ID">
-            <div class="categories__item_image">
+            <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE}}" class="categories__item_image">
                 <div class="image_container">
                     <img v-if="category.DETAIL_PICTURE" :src="$vareibles.remote + category.DETAIL_PICTURE" alt="">
                     <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                 </div>
-            </div>
+            </nuxt-link >
             <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE}}" class="categories__item_name">{{ category.NAME }}</nuxt-link>
             <ul class="categories__item_childs" v-if="category.CHILD">
                 <li class="categories__item_child" v-for="child in category.CHILD" :key="child.index">
@@ -57,6 +57,7 @@ export default {
     &__item_image {
         background: #D7DCE1;
         margin-bottom: rem(40);
+        display: block;
         @media all and (max-width: 1280px) {
             margin-bottom: 30px;
         }

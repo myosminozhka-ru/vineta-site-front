@@ -4,7 +4,8 @@
         <!-- <pre style="font-size: 15rem">{{ item }}</pre> -->
             <template v-if="key === 0">
                 <div class="news__image">
-                    <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                    <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                    <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                 </div>
                 <div class="news__item_top">
                     <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
@@ -19,7 +20,8 @@
             <template v-else>
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                     </div>
                 </div>
                 <div class="news__item_right">
@@ -37,7 +39,8 @@
             <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                     </div>
                 </div>
                 <div class="news__item_right">

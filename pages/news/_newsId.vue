@@ -22,7 +22,8 @@
                 <a :href="`/news/${item.CODE}`" v-for="(item, key) in news" :key="key" class="news__item">
                     <div class="news__item_left">
                         <div class="news__image">
-                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                            <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                            <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                         </div>
                     </div>
                     <div class="news__item_right">

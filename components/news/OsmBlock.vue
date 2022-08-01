@@ -8,7 +8,8 @@
             <div v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
                 <template v-if="key === 0">
                     <div class="news__image">
-                        <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                     </div>
                     <div class="news__item_top">
                         <div class="news__date">{{ item.DATE }}</div>
@@ -23,7 +24,8 @@
                 <template v-else>
                     <div class="news__item_left">
                         <div class="news__image">
-                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                            <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                            <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                         </div>
                     </div>
                     <div class="news__item_right">
@@ -43,7 +45,8 @@
                 <div class="glide__slides news__slides">
                     <div v-for="(item, key) in getNews" :key="key" class="news__item_big">
                         <div class="news__image">
-                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                            <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                            <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                         </div>
                         <div class="news__item_top">
                             <div class="news__date">{{ item.DATE }}</div>

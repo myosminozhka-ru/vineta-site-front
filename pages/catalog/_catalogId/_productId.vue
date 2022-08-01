@@ -397,9 +397,11 @@
           this.prodsSlider = new Glide('.productPage__analogs .values.glide', {
             perView: 3,
             type: 'carousel',
+            
             breakpoints: {
               860: {
                 perView: 1,
+                gap: 0,
               }
             }
           }).mount();
