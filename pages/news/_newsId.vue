@@ -158,12 +158,16 @@ export default {
         margin-bottom: rem(42);
     }
     &__item &__date {
+        position: absolute;
+        top: 0;
+        left: 0;
         font-style: normal;
         font-weight: 400;
         font-size: rem(16);
-        margin-bottom: rem(16);
-        line-height: 140%;
-        color: #B4B9C1;
+        line-height: rem(19);
+        color: #FFFFFF;
+        padding: rem(11) rem(22);
+        background: #FF0040;
     }
     &__item &__text {
         font-style: normal;

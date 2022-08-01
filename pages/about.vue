@@ -410,7 +410,8 @@
         transition: all .3s ease;
 
         @media all and (max-width: 1280px) {
-          width: 28px;
+          min-width: 28px;
+          max-width: 28px;
           height: 28px;
           margin-right: 20px;
         }

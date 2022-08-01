@@ -2,19 +2,19 @@
     <nav class="footer__menu">
         <ul>
             <li>
-                <nuxt-link :to="{name: 'index'}">О компании</nuxt-link>
+                <nuxt-link :to="{name: 'about'}">О компании</nuxt-link>
             </li>
                 <li>
-                    <nuxt-link :to="{name: 'index'}">Каталог</nuxt-link>
+                    <nuxt-link :to="{name: 'catalog'}">Каталог</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link :to="{name: 'index'}">Новости</nuxt-link>
+                    <nuxt-link :to="{name: 'news'}">Новости</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link :to="{name: 'index'}">Вакансии</nuxt-link>
+                    <nuxt-link :to="{name: 'vacancies'}">Вакансии</nuxt-link>
                 </li>
                 <li>
-                    <nuxt-link :to="{name: 'index'}">Контакты</nuxt-link>
+                    <nuxt-link :to="{name: 'contacts'}">Контакты</nuxt-link>
                 </li>
         </ul>
         <ul>

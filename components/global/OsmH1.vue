@@ -11,7 +11,7 @@
     color: #172242;
     margin: 0;
     @media all and (max-width: 1280px) {
-        font-size: 30px;
+        font-size: 30px !important;
     }
 }
 </style>

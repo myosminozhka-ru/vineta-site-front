@@ -108,6 +108,7 @@ export default {
         }
         @media all and (max-width: 1280px) {
             padding: 20px;
+            align-items: flex-end;
         }
     }
     &__left {
@@ -201,7 +202,7 @@ export default {
             padding-left: 160px;
         }
         @media all and (max-width: 1280px) {
-            padding: 266px 30px 30px 126px;
+            padding: 266px 30px 30px 100px;
             height: auto;
         }
     }
