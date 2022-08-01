@@ -18,7 +18,7 @@
                 </template>
             </div>
             <div class="seacrhModal__items">
-                <nuxt-link :to="`/catalog/${product.SECTION.CODE}/${product.CODE}`" class="seacrhModal__item" v-for="product in productsResult.slice(0, 4)" :key="product.index">
+                <a :href="`/catalog/${product.SECTION.CODE}/${product.CODE}`" class="seacrhModal__item" v-for="product in productsResult.slice(0, 4)" :key="product.index">
                     <div class="products__item_image">
                         <div class="image_container">
                             <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
@@ -28,7 +28,7 @@
                         <span class="products__item_name">{{ product.NAME }}</span>
                         <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                     </div>
-                </nuxt-link>
+                </a>
             </div>
         </div>
     </div>

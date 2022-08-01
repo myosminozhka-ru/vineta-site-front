@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
   export default {
     name: 'AboutPage',
     components: {
@@ -46,6 +46,9 @@ import { mapGetters } from 'vuex';
             isLink: false
         },
       ])
+    },
+    methods: {
+      ...mapActions(['addBreadcrumbs'])
     },
     computed: {
       ...mapGetters(['getVacancies']),
