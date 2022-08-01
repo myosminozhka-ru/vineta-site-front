@@ -7,7 +7,7 @@ html {
     font-size: 1px;
   }
   @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
-    font-size: 0.05508333333vw;
+    font-size: 0.06008333333vw;
   }
 }
 body {
@@ -291,6 +291,15 @@ body .wrapper .full-page-indicators {
   @media all and (min-width: 1281px) {
     padding-top: rem(120);
   }
+  @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+    padding-top: 81px;
+  }
+  
+}
+
+
+.techs_footer .section__left {
+  background: #fff !important;
 }
 
 .products {
@@ -524,6 +533,9 @@ body .wrapper .full-page-indicators {
   background: none;
   border-radius: 0;
   outline: none;
+  @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+    height: 40px;
+  }
   &.hasError {
       border-color: #CB2A2A;
   }

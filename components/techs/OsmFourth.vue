@@ -60,9 +60,9 @@ export default {
         }
     }
     &__middle--tech {
-        margin-bottom: rem(40);
+        padding-bottom: rem(40);
         @media all and (max-width: 1280px) {
-            margin-bottom: 0;
+            padding-bottom: 0;
             position: relative;
             z-index: 2;
             display: none;
@@ -96,6 +96,7 @@ export default {
     }
     &__right--tech {
         width: calc(100% - #{rem(602)} - #{rem(128)});
+height: 100%;
         // margin-left: rem(128);
         position: relative;
         @media all and (max-width: 1280px) {
@@ -112,7 +113,7 @@ export default {
             right: 0;
             text-align: center;
             pointer-events: none;
-            @media all and (max-width: 1280px) {
+            @media all and (max-width: 1440px) {
                 text-align: right;
                 font-size: 300px;
                 top: -107px;
@@ -130,6 +131,8 @@ export default {
         .texts {
             position: relative;
             z-index: 2;
+height: 100%;
+overflow: auto;
         }
         .title {
             font-style: normal;

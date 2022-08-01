@@ -246,10 +246,14 @@ export default {
         width: 100%;
         &:not(.innerPage) {
             padding: 110rem 240rem 0rem 108rem;
+            
             .news__title {
                 @media all and (max-width: 840px) {
                     color: #fff;
                 }
+            }
+            @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+                padding-top: 81px;
             }
         }
         @media all and (max-width: 1280px) {

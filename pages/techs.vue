@@ -13,7 +13,7 @@
       <osm-sixth-section :class="{'isActive': activeIndex === 5}" :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-seventh-section :class="{'isActive': activeIndex === 6}" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-eighth-section :class="{'isActive': activeIndex === 7}" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
-      <osm-footer-section :class="{'isActive': activeIndex === 8}" :style="`${activeIndex >= 8 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"/>
+      <osm-footer-section class="techs_footer" :class="{'isActive': activeIndex === 8}" :style="`${activeIndex >= 8 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"/>
       <osm-preloader />
     </div>
   </div>
@@ -80,6 +80,14 @@ export default {
       if (window.innerWidth > 1024) {
         this.sections = document.querySelectorAll('.section');
         this.activeIndex = 0;
+        this.sections.forEach(item => {
+          if (item.querySelector('.section__top--tech') && item.querySelector('.section__middle--tech')) {
+            const top = item.querySelector('.section__top--tech').clientHeight;
+            const middle = item.querySelector('.section__middle--tech').clientHeight;
+            console.log(top, middle, 'asdasdasd');
+            item.querySelector('.section__bottom--tech').style.height = `calc(100% - ${top}px - ${middle}px)`
+          }
+        })
         document.addEventListener('mousewheel', (event) => {
           if (event.wheelDelta > 0 || event.detail < 0) {
             this.change('up');

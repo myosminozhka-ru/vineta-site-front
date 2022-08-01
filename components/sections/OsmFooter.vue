@@ -130,6 +130,9 @@ export default {
     }
     &__title {
         font-size: rem(40);
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+            margin-bottom: 5px !important;
+        }
     }
     &__content {
         margin-bottom: rem(31);
