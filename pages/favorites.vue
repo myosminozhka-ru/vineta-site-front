@@ -13,10 +13,12 @@
             </div>
         </div>
         <osm-footer />
+        <osm-preloader />
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
     name: "FavoritesPage",
     components: {
@@ -25,7 +27,24 @@ export default {
         OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProductsFake.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-    }
+        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
+    },
+    created() {
+      this.addBreadcrumbs([
+          {
+              name: 'Главная',
+              link: 'index',
+              isLink: true
+          },
+          {
+              name: 'Избранное',
+              isLink: false
+          },
+      ])
+    },
+    methods: {
+      ...mapActions(['addBreadcrumbs'])
+    },
 }
 </script>
 

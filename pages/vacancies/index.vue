@@ -34,6 +34,19 @@ import { mapGetters } from 'vuex';
     data: () => ({
       isTextShowed: false
     }),
+    created() {
+      this.addBreadcrumbs([
+        {
+            name: 'Главная',
+            link: 'index',
+            isLink: true
+        },
+        {
+            name: 'Вакансии',
+            isLink: false
+        },
+      ])
+    },
     computed: {
       ...mapGetters(['getVacancies']),
     }
