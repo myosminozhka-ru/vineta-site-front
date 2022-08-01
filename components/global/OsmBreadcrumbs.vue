@@ -7,8 +7,11 @@
             </svg>
         </div>
         <li class="breadcrumbs__item" v-for="(br, key) in getBreadcrumbs" :key="br.index" :class="{'hide_on_mobile': key > 0}">
-            <template v-if="br.isLink">
+            <template v-if="br.isLink && !br.params">
                 <nuxt-link :to="{name: br.link}">{{ br.name }}</nuxt-link>
+            </template>
+            <template v-else-if="br.isLink && br.params">
+                <nuxt-link :to="{name: br.link, params: br.params}">{{ br.name }}</nuxt-link>
             </template>
             <template v-else>
                 <span>{{ br.name }}</span>

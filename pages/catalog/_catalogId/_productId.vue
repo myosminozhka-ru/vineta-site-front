@@ -380,8 +380,14 @@
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
       this.addBreadcrumbs([
         {
-            name: 'Каталог',
+            name: 'Главная',
             link: 'catalog',
+            isLink: true
+        },
+        {
+            name: this.product[0].SECTION.NAME,
+            link: 'catalog-catalogId',
+            params: {catalogId: this.product[0].SECTION.CODE},
             isLink: true
         },
         {

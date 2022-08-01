@@ -7,6 +7,9 @@
                 <osm-catalog-filter />
             </div>
             <div class="catalog__in-right">
+                <!-- {{ currentCategory }} -->
+                <!-- {{ getCatalog }} -->
+                <!-- {{ $route.params.catalogId }} -->
                 <osm-catalog-products /> 
             </div>
         </div>
@@ -15,6 +18,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'CatalogPage',
     components: {
@@ -22,6 +26,33 @@ export default {
         OsmCatalogTop: () => import('~/components/catalog/OsmCatalogTop.vue'),
         OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProducts.vue'),
         OsmCatalogFilter: () => import('~/components/catalog/OsmCatalogFilter.vue'),
+    },
+    computed: {
+        ...mapGetters(['getCatalog']),
+        currentCategory() {
+            return this.getCatalog.filter(category => category.CODE === this.$route.params.catalogId);
+        }
+    },
+    created() {
+        this.addBreadcrumbs([
+            {
+                name: 'Главная',
+                link: 'index',
+                isLink: true
+            },
+            {
+                name: 'Каталог',
+                link: 'catalog',
+                isLink: true
+            },
+            // {
+            //     name: this.currentCategory[0].NAME,
+            //     isLink: false
+            // },
+        ])
+    },
+    methods: {
+        ...mapActions(['addBreadcrumbs'])
     }
 }
 </script>

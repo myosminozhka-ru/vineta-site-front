@@ -45,7 +45,13 @@ export default {
             this.toggleModal({
                 isOpened: true,
                 type: 'search'
-            })
+            });
+            if (document.getElementById('seacrhModal__input')) {
+                console.log(123123123123123);
+                setTimeout(() => {
+                    document.getElementById('seacrhModal__input').focus();
+                }, 0)
+            }
         },
     }
 }
@@ -72,6 +78,7 @@ export default {
         width: rem(30);
         margin-right: rem(40);
         position: relative;
+        cursor: pointer;
         @media all and (max-width: 1280px) {
             width: 30px;
             margin-right: 30px;
