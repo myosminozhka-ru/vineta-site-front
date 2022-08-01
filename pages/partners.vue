@@ -58,19 +58,19 @@
                             </div>
                             <a href="mailto:info@vineta.ru" class="partners__contact_item">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">info@vineta.ru</div>
                             </a>
                             <a href="tel:+7(812)493-50-48" class="partners__contact_item">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">+7(812)493-50-48</div>
                             </a>
                             <div class="partners__contact_item">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/WATCH.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">Пн-Пт с 9:00 до 18:00</div>
                             </div>

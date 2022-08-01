@@ -1,6 +1,5 @@
 <template>
-    <div class="productPage__in" >
-        {{ popupPhotos }}
+    <div class="productPage__in" v-if="isMounted">
         <LightGallery
             :images="popupPhotos"
             :index="elementOpened"
@@ -18,7 +17,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="glide__slide productPage__slider-item" v-else @click="elementOpened = 0">
+                        <div class="glide__slide productPage__slider-item" v-else>
                             <div class="productPage__slider-item__in">
                                 <div class="productPage__slider-item__imege">
                                     <img :src="require('~/assets/img/product.noimage.png')" alt="">
@@ -146,9 +145,11 @@ export default {
         treeDView: {
             isOpened: false,
         },
-        elementOpened: null
+        elementOpened: null,
+        isMounted: false
     }),
     mounted() {
+        this.isMounted = true;
         setTimeout(() => {
             this.slider.mount();
         }, 500)

@@ -5,7 +5,7 @@
             <div class="products__item_image">
                 <div class="image_container">
                     <img v-if="product.PREVIEW_PICTURE" :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
-                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                    <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                 </div>
             </div>
             <div class="products__item_data">

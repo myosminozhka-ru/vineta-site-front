@@ -115,8 +115,11 @@ height: 100%;
             pointer-events: none;
             @media all and (max-width: 1440px) {
                 text-align: right;
-                font-size: 300px;
+                font-size: 270px;
                 top: -107px;
+            }
+            @media all and (max-width: 1280px) {
+                top: -65px;
             }
             &:after {
                 content: "";

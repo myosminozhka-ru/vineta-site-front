@@ -10,13 +10,13 @@
     <div class="productPage__top">
       <osm-product-slider :data="product[0]" />
       <div class="productPage__info">
-        <div class="productPage__description">
+        <!-- <pre style="font-size: 15rem">{{ product[0] }}</pre> -->
+        <div class="productPage__description" v-if="product[0].DETAIL_TEXT">
           <div class="title">Описание</div>
-          <div class="value">Охладитель предназначен для охлаждения масла, жидкостей систем гидравлики, пресной и
-            морской воды в системах энергетических установок, охлаждения вспомогательных механизмов.</div>
+          <div class="value">{{ product[0].DETAIL_TEXT }}</div>
         </div>
         <div class="productPage__text--title">Основные характеристики</div>
-        <div class="productPage__texts">
+        <div class="productPage__texts" v-if="'PROPERIES' in product[0]">
           <div class="productPage__text" v-for="item in product[0].PROPERIES" :key="item.index">
             <div class="title">{{ item.NAME }}</div>
             <div class="value">{{ item.VALUE }}</div>

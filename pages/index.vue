@@ -67,6 +67,7 @@ export default {
       this.activeIndex = -1;
     }
     if (window.innerWidth > 1024) {
+      console.log(123123123123)
       setTimeout(() => {
         this.activeIndex = 0;
         this.sections = document.querySelectorAll('.section');

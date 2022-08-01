@@ -21,7 +21,7 @@
                                 <div class="image">
                                     <img :src="$vareibles.remote + item.PICTURE" width="100%" alt="">
                                 </div>
-                                <div class="text">{{ item.NAME }}</div>
+                                <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: item.CODE}}" class="text">{{ item.NAME }}</nuxt-link>
                             </div>
                         </div>
                     </div>
@@ -236,6 +236,7 @@ export default {
             }
         }
         .text {
+            text-decoration: none;
             text-align: right;
             font-style: normal;
             font-weight: 600;
