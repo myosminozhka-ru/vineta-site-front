@@ -24,13 +24,16 @@ export default {
     components: {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
     },
+    data: () => ({
+        products: []
+    }),
     computed: {
         ...mapGetters(['getProducts']),
         ...mapGetters('localStorage', ['getFavorites']),
-        products() {
-            return this.getProducts.filter(item => this.getFavorites.includes(+item.ID));
-        }
     },
+    mounted() {
+        this.products = this.getProducts.filter(item => this.getFavorites.includes(+item.ID))
+    }
 }
 </script>
 

@@ -80,6 +80,7 @@ export default {
         img {
             position: absolute;
             top: 0;
+            width: 100%;
             left: 50%;
             height: 100%;
             transform: translateX(-50%);
