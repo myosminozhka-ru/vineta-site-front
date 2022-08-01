@@ -138,6 +138,7 @@ export default {
         flex-direction: column;
         border: 1px solid #D7DCE1;
         text-decoration: none;
+        position: relative;
     }
     &__item &__item_left {
         // height: rem(185);

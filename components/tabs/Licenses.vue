@@ -1,9 +1,9 @@
 <template>
   <div class="licenses">
-    <osm-h2 class="licenses__title">Лицензии и сертификаты {{ index }}</osm-h2>
-    <ClientOnly>
+    <osm-h2 class="licenses__title">Лицензии и сертификаты</osm-h2>
+    <!-- <ClientOnly>
       <LightGallery :images="imagesGallery" :index="index" :disable-scroll="true" @close="index = null" v-if="isMounted" />
-    </ClientOnly>
+    </ClientOnly> -->
     <tabs class="hide_on_mobile" @clicked="tabClicked" @changed="tabChanged" :options="{ useUrlFragment: false }">
       <tab v-for="tab in tabs" :key="tab.index" :name="tab">
         <div class="licensesSlid glide">
