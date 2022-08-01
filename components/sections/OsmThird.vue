@@ -78,7 +78,7 @@
       margin-bottom: rem(30);
       word-break: break-word;
     }
-    &__right-image {npm run deploy
+    &__right-image {
       height: 360px;
       margin-top: 20px;
       margin-left: -20px;
