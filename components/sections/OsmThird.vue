@@ -76,8 +76,9 @@
     &__title {
       font-size: rem(40);
       margin-bottom: rem(30);
+      word-break: break-word;
     }
-    &__right-image {
+    &__right-image {npm run deploy
       height: 360px;
       margin-top: 20px;
       margin-left: -20px;
