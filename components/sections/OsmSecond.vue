@@ -1021,8 +1021,8 @@
             {{ secondData.PREVIEW_TEXT }}
           </div>
           <div class="section__buttons hide_on_desktop hide_on_mobile">
-            <osm-button link="index" v-if="secondData.PROPERIES">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
-            <a v-if="secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC"
+            <osm-button link="index" v-if="'NAME_BUTTON' in secondData.PROPERIES">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
+            <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC"
               class="section__downloads">
               <div class="section__pdf">
                 <div class="icon">
@@ -1043,7 +1043,7 @@
         <div class="mobile_right">
           <div class="tiles">
             <div class="tiles__item" v-if="secondData.PROPERIES">
-              <video controls="false" :src="$vareibles.remote + secondData.PROPERIES.VIDEO.VALUE.SRC"
+              <video v-if="'VIDEO' in secondData.PROPERIES" controls="false" :src="$vareibles.remote + secondData.PROPERIES.VIDEO.VALUE.SRC"
                 :type="secondData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" />
               <div class="tiles__item-bottom" v-if="!isVideoPlayed" @click="playVideo">
                 <div class="icon">
@@ -1052,18 +1052,18 @@
                     <path d="M37 30L23 20V40L37 30Z" fill="white" />
                   </svg>
                 </div>
-                <div class="text">{{ secondData.PROPERIES.NAME_VIDEO.VALUE }}</div>
+                <div class="text" v-if="'NAME_VIDEO' in secondData.PROPERIES">{{ secondData.PROPERIES.NAME_VIDEO.VALUE }}</div>
               </div>
             </div>
-			<template v-if="secondData.PROPERIES">
+			<template v-if="'MORE_PHOTO' in secondData.PROPERIES">
 				<div class="tiles__item" v-for="morePhoto in secondData.PROPERIES.MORE_PHOTO.VALUE" :key="morePhoto.ID">
 				<img :src="$vareibles.remote + morePhoto.SRC" alt="">
 				</div>
 			</template>
           </div>
           <div class="section__buttons hide_off_mobile">
-            <osm-button v-if="secondData.PROPERIES" class="section__more" link="index">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
-            <a v-if="secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC"
+            <osm-button v-if="'NAME_BUTTON' in secondData.PROPERIES" class="section__more" link="index">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
+            <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC"
               class="section__downloads">
               <div class="section__pdf">
                 <div class="icon">
@@ -1073,7 +1073,7 @@
                       fill="white" />
                   </svg>
                 </div>
-                <div class="text">{{ secondData.PROPERIES.NAME_FILE.VALUE }}</div>
+                <div class="text" v-if="'NAME_FILE' in secondData.PROPERIES">{{ secondData.PROPERIES.NAME_FILE.VALUE }}</div>
               </div>
               <div class="section__plank">
                 / PDF 12 МБ
@@ -1082,8 +1082,8 @@
           </div>
         </div>
         <div class="section__buttons hide_on_tablet">
-          <osm-button v-if="secondData.PROPERIES" link="index">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
-          <a v-if="secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC" class="section__downloads">
+          <osm-button v-if="'NAME_BUTTON' in secondData.PROPERIES" link="index">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
+          <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC" class="section__downloads">
             <div class="section__pdf">
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 25">
@@ -1092,7 +1092,7 @@
                     fill="white" />
                 </svg>
               </div>
-              <div class="text">{{ secondData.PROPERIES.NAME_FILE.VALUE }}</div>
+              <div class="text" v-if="'NAME_FILE' in secondData.PROPERIES">{{ secondData.PROPERIES.NAME_FILE.VALUE }}</div>
             </div>
             <div class="section__plank">
               / PDF 12 МБ
@@ -1111,7 +1111,7 @@
     name: 'OsmFirstSection',
     components: {
       OsmH1: () => import('~/components/global/OsmH1.vue'),
-      OsmButton: () => import('~/components/global/OsmButton.vue'),
+    //   OsmButton: () => import('~/components/global/OsmButton.vue'),
     },
     props: {
       isMounted: {
