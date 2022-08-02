@@ -18,6 +18,9 @@ export const state = () => ({
     buy: {
       isOpened: false
     },
+    favorites: {
+      isOpened: false
+    },
     mobileMenu: {
       isOpened: false
     },
@@ -81,6 +84,9 @@ export const mutations = {
   },
   toggleSearch(state, data) {
     state.modals.search = data;
+  },
+  toggleFavorites(state, data) {
+    state.modals.favorites = data;
   },
 }
 
@@ -253,6 +259,12 @@ export const actions = {
     if (data.type === 'search') {
       // console.log(data)
       context.commit('toggleSearch', {
+        isOpened: data.isOpened
+      });
+    }
+    if (data.type === 'favorites') {
+      // console.log(data)
+      context.commit('toggleFavorites', {
         isOpened: data.isOpened
       });
     }

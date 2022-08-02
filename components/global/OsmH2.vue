@@ -9,8 +9,8 @@
     font-size: rem(40);
     line-height: 140%;
     color: #172242;
-    margin: 0;
     @media all and (max-width: 1280px) {
+        margin: 0;
         font-size: 30px;
     }
 }

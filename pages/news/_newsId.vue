@@ -103,10 +103,20 @@ export default {
             margin-top: 30px;
             margin-bottom: 40px;
         }
+        @media all and (max-width: 640px) {
+            flex-direction: column;
+        }
     }
     &__button {
         &:not(:last-child) {
             margin-right: rem(30);
+            @media all and (max-width: 640px) {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+        @media all and (max-width: 640px) {
+            width: 100%;
         }
     }
     &__title {

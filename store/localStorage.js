@@ -11,6 +11,11 @@ export const mutations = {
         }
         // console.log(state.favorites, data);
     },
+    clearFavorites(state) {
+        state.favorites = [];
+        console.log(state.favorites)
+        // console.log(state.favorites, data);
+    },
 }
 
 export const actions = {
@@ -18,6 +23,9 @@ export const actions = {
         context.commit('addFavorites', data);
         // console.log('addFavorites', data)
     },
+    clearFavorites(context) {
+        context.commit('clearFavorites');
+    }
 }
 
 export const getters = {
