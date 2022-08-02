@@ -39,7 +39,7 @@
         </div>
         <div class="menu__modal_bottom">
           <osm-h2 class="menu__modal_title">Загрузки</osm-h2>
-          <a v-if="getMainMore.downloads[0].PROPERIES" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC" class="menu__modal_file">
+          <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC" class="menu__modal_file">
             <div class="icon">
               <img src="~/assets/img/download.svg" width="100%" alt="">
             </div>
@@ -74,7 +74,7 @@
         </div>
         <div class="menu__modal_bottom">
           <osm-h2 class="menu__modal_title">Загрузки</osm-h2>
-          <a v-if="getMainMore.downloads[0].PROPERIES" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC" class="menu__modal_file">
+          <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC" class="menu__modal_file">
             <div class="icon">
               <img src="~/assets/img/download.svg" width="100%" alt="">
             </div>

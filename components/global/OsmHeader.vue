@@ -33,6 +33,9 @@ export default {
     right: 0;
     top: 0;
     z-index: 11;
+    @media print {
+        display: none;
+    }
     @media all and (max-width: 1280px) {
         padding: 35px 20px 0;
         position: relative;

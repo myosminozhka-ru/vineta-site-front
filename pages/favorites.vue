@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
         <osm-header />
         <div class="header_padding">
             <div class="favorites">
@@ -7,8 +7,10 @@
                 <div class="favorites__title">Избранное</div>
                 <osm-catalog-products />
                 <div class="favorites__buttons">
-                    <osm-button class="favorites__button" :large="true" :outlined="true">Выгрузить</osm-button>
-                    <osm-button class="favorites__button" :large="true">В каталог</osm-button>
+                    <span @click="printSection">
+                        <osm-button class="favorites__button" :large="true" :outlined="true">Выгрузить</osm-button>
+                    </span>
+                    <osm-button class="favorites__button" :large="true" link="catalog">В каталог</osm-button>
                 </div>
             </div>
         </div>
@@ -43,7 +45,10 @@ export default {
       ])
     },
     methods: {
-      ...mapActions(['addBreadcrumbs'])
+      ...mapActions(['addBreadcrumbs']),
+      printSection() {
+        this.$htmlToPaper("wrapper");
+      }
     },
 }
 </script>
@@ -61,12 +66,18 @@ export default {
         margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
+        @media print {
+            display: none;
+        }
     }
     &__buttons {
         display: flex;
         align-items: center;
         justify-content: center;
         margin-top: rem(40);
+        @media print {
+            display: none !important;
+        }
         @media all and (max-width: 840px) {
             flex-direction: column;
         }

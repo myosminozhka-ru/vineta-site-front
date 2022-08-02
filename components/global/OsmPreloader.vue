@@ -22,12 +22,18 @@ export default {
         this.isAnimated = false;
     },
     mounted() {
-        setTimeout(() => {
-            this.isMounted = true
-        }, 0);
-        setTimeout(() => {
-            this.isAnimated = true
-        }, 1000);
+      let stateCheck = setInterval(() => {
+        if (document.readyState === 'complete') {
+            clearInterval(stateCheck);
+            setTimeout(() => {
+              this.isMounted = true
+          }, 0);
+          setTimeout(() => {
+              this.isAnimated = true
+          }, 1000);
+          }
+      }, 100);
+        
     }
 }
 </script>

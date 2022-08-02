@@ -24,7 +24,7 @@ export default {
   plugins: [
     '~/plugins/tabs.js',
     '~/plugins/vars.js',
-    '~/plugins/print.js',
+    { src: '~/plugins/print.js', ssr: false },
     { src: '~/plugins/lightgallery.js', ssr: false }
   ],
 
@@ -56,7 +56,8 @@ export default {
   build: {
     extend (config, ctx) {
       config.resolve.symlinks = false
-    }
+    },
+    extractCSS: true,
   },
   components: true,
   styleResources: {

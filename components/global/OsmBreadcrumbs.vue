@@ -46,6 +46,9 @@ export default {
 .back_button {
     font-size: 0;
     cursor: pointer;
+    @media print {
+        display: none;
+    }
 }
 .breadcrumbs {
     display: flex;
@@ -53,6 +56,9 @@ export default {
     padding: 0;
     list-style: none; 
     margin-bottom: rem(30);
+    @media print {
+        display: none;
+    }
     @media all and (max-width: 1440px) {
         margin-bottom: 35px; 
     }

@@ -38,7 +38,7 @@ export default {
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
   },
   data: () => ({
-    activeIndex: 0,
+    activeIndex: -1,
     sections: [],
     isInProgress: false,
   }),
@@ -67,21 +67,25 @@ export default {
       this.activeIndex = -1;
     }
     if (window.innerWidth > 1024) {
-      console.log(123123123123)
-      setTimeout(() => {
+      const stateCheck = setInterval(() => {
+        if (document.readyState === 'complete') {
+          clearInterval(stateCheck);
+          setTimeout(() => {
         this.activeIndex = 0;
-        this.sections = document.querySelectorAll('.section');
-        this.activeIndex = 0;
-        document.addEventListener('mousewheel', (event) => {
-          if (event.wheelDelta > 0 || event.detail < 0) {
-            this.change('up');
-            this.isInProgress = true;
-          } else {
-            this.change('down');
-            this.isInProgress = true;
+            this.sections = document.querySelectorAll('.section');
+            this.activeIndex = 0;
+            document.addEventListener('mousewheel', (event) => {
+              if (event.wheelDelta > 0 || event.detail < 0) {
+                this.change('up');
+                this.isInProgress = true;
+              } else {
+                this.change('down');
+                this.isInProgress = true;
+              }
+            });
+          }, 1000);
           }
-        });
-      }, 0);
+      }, 100);
     }
   },
   methods: {

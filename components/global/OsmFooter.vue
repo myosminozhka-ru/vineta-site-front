@@ -62,6 +62,9 @@ export default {
 
 <style lang="scss">
 .footer {
+    @media print {
+        display: none;
+    }
     @media all and (max-width: 1280px) {
         width: 100%;
     }

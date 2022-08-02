@@ -36,7 +36,7 @@
                         </template>
                     </div>
                 </div>
-                <div class="productPage__arrows" data-glide-el="controls">
+                <div class="productPage__arrows" data-glide-el="controls" v-if="data.MORE_PHOTO">
                     <button class="productPage__arrow productPage__arrow--left" data-glide-dir="<">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
                             <rect width="40" height="40" fill="#FF004D"/>

@@ -51,5 +51,8 @@ export default {
         margin-left: -20px;
         margin-right: -20px;
     }
+    @media print {
+        display: none;
+    }
 }
 </style>

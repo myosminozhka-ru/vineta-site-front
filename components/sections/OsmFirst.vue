@@ -1600,7 +1600,7 @@
           </path>
         </svg>
 
-        <img :class="{isClipped}" class="section__left_image_clipped" :src="require('~/assets/img/sections/first.png')"
+        <img :class="{'isClipped': isMounted}" class="section__left_image_clipped" :src="require('~/assets/img/sections/first.png')"
           height="100%" alt="">
         <!-- <img class="section__left_image_clipped" :src="$vareibles.remote + firstData.PREVIEW_PICTURE" alt="first"> -->
       </div>
