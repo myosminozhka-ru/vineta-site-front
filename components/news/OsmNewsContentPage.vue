@@ -173,6 +173,12 @@ export default {
         flex-direction: column;
         text-decoration: none;
         position: relative;
+        @media all and (max-width: 860px) {
+            border: 1px solid #D7DCE1;
+            &:not(:last-child) {
+                margin-bottom: 20px;
+            }
+        }
     }
     &__item &__item_left {
         // height: rem(185);

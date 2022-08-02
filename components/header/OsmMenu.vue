@@ -94,9 +94,9 @@
         </div>
       </div>
     </div>
-    <nuxt-link class="header__button header__button--search hide_off_mobile" :to="{ name: 'index' }">
+    <div @click="openSearch" class="header__button header__button--search hide_off_mobile">
         <object :data="require(`~/assets/img/search.svg`)" width="100%" />
-    </nuxt-link>
+    </div>
     <nuxt-link class="header__button header__button--favorites hide_off_mobile" :to="{ name: 'favorites' }">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none">
             <rect width="30" height="30" rx="15" fill="#2E5599"/>
@@ -198,6 +198,18 @@ import { mapGetters ,mapActions } from 'vuex';
           isOpened: true,
           type: 'mobileMenu'
         })
+      },
+      ...mapActions(['toggleModal']),
+      openSearch() {
+          this.toggleModal({
+              isOpened: true,
+              type: 'search'
+          });
+          if (document.getElementById('seacrhModal__input')) {
+              setTimeout(() => {
+                  document.getElementById('seacrhModal__input').focus();
+              }, 0)
+          }
       },
     }
   }
@@ -357,6 +369,9 @@ import { mapGetters ,mapActions } from 'vuex';
         width: rem(30);
         margin-right: rem(40);
         position: relative;
+        object {
+          pointer-events: none;
+        }
         @media all and (max-width: 1280px) {
             width: 30px;
             margin-right: 30px;

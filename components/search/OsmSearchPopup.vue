@@ -77,6 +77,11 @@ export default {
     opacity: 0;
     visibility: hidden;
     transition: all .3s ease;
+    @media all and (max-width: 860px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     &.isOpened {
         opacity: 1;
         visibility: visible;
@@ -92,6 +97,13 @@ export default {
         padding: 20px;
         box-sizing: border-box;
         height: 100%;
+        @media all and (max-width: 860px) {
+            display: block;
+            overflow: auto;
+            height: auto;
+            max-height: 100vh;
+            box-sizing: border-box;
+        }
     }
     &__form {
         display: flex;
@@ -112,6 +124,9 @@ export default {
             font-size: rem(30);
             line-height: 140%;
             color: #FFFFFF;
+            @media all and (max-width: 860px) {
+                font-size: 20px;
+            }
         }
     }
     &__button {
@@ -133,12 +148,19 @@ export default {
         font-size: rem(30);
         line-height: 140%;
         color: #FFFFFF;
+        @media all and (max-width: 860px) {
+            font-size: 20px;
+            margin-top: 30px;
+        }
     }
     &__items {
         margin-top: rem(60);
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-gap: rem(20);
+        @media all and (max-width: 860px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
     &__item {
         background: #fff;

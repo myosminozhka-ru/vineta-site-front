@@ -7,12 +7,12 @@
                     {{ vacancy }}
                 </pre> -->
                 <div class="vacancy__title">{{ vacancy[0].NAME }}</div>
-                <div class="vacancy__button hide_on_mobile">
+                <div class="vacancy__button hide_on_mobile" @click="openApplyModal">
                     <osm-button>Откликнуться</osm-button>
                 </div>
             </div>
             <div class="vacancy__price">от 45 000 до 65 000 руб. до вычета налогов</div>
-            <div class="vacancy__button hide_off_mobile">
+            <div class="vacancy__button hide_off_mobile" @click="openApplyModal">
                     <osm-button>Откликнуться</osm-button>
                 </div>
             <div class="vacancy__items">
@@ -74,6 +74,14 @@ export default {
         this.isMounted = true
     },
     methods: {
+        ...mapActions(['toggleModal']),
+        openApplyModal() {
+            console.log('openApplyModal');
+            this.toggleModal({
+                isOpened: true,
+                type: 'apply'
+            });
+        },
         ...mapActions(['addBreadcrumbs']),
         decodeHTML(html) {
             if (document) {

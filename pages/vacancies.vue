@@ -6,6 +6,7 @@
     </div>
     <osm-footer />
     <osm-preloader />
+    <osm-apply-modal />
   </div>
 </template>
 <script>
@@ -14,6 +15,7 @@
     components: {
       OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),
+      OsmApplyModal: () => import('~/components/modals/apply.vue'),     
       OsmPreloader: () => import('~/components/global/OsmPreloader.vue')      
     },
   }

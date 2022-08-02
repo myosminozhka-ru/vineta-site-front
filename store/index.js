@@ -26,6 +26,9 @@ export const state = () => ({
     },
     search: {
       isOpened: false
+    },
+    apply: {
+      isOpened: false
     }
   }
 })
@@ -87,6 +90,9 @@ export const mutations = {
   },
   toggleFavorites(state, data) {
     state.modals.favorites = data;
+  },
+  toggleApply(state, data) {
+    state.modals.apply = data;
   },
 }
 
@@ -265,6 +271,12 @@ export const actions = {
     if (data.type === 'favorites') {
       // console.log(data)
       context.commit('toggleFavorites', {
+        isOpened: data.isOpened
+      });
+    }
+    if (data.type === 'apply') {
+      // console.log(data)
+      context.commit('toggleApply', {
         isOpened: data.isOpened
       });
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="modal" :class="{'isOpened': getModals.buy.isOpened}" @click="closeBuy">
+    <div class="modal" :class="{'isOpened': getModals.apply.isOpened}" @click="closeBuy">
         <div class="modal__in" @click.stop>
             <div class="modal__top">
                 <div class="modal__closer" @click="closeBuy">
@@ -10,8 +10,19 @@
                 <div class="modal__form_in" v-if="!isSuccess">
                     <div class="modal__title">Оставить заявку</div>
                     <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
-                        <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
-                        <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input modal__input" v-model="formData[field.VARNAME]">
+                        <!-- <pre>{{ field }}</pre> -->
+                        <template v-if="field.SID === 'VACANCY'">
+                            <input type="hidden" v-model="formData[field.SID]">
+                        </template>
+                        <template v-else-if="field.FIELD_TYPE === 'file'">
+                            <label>
+                                <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input modal__input" v-model="formData[field.VARNAME]" :name="field.SID">
+                            </label>
+                        </template>
+                        <template v-else>
+                            <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
+                            <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input modal__input" v-model="formData[field.VARNAME]" :name="field.SID">
+                        </template>
                         <!-- <osm-input class="modal__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
                     </div>
                     <!-- <osm-input class="modal__input" placeholder="Компания *" :required="true"/> -->
@@ -53,7 +64,10 @@ export default {
         // }
     },
     async fetch() {
-        this.fields = await this.$axios.$get('forms/order.php');
+        this.fields = await this.$axios.$get('forms/vacancy.php');
+    },
+    mounted() {
+        this.formData.VACANCY = window.location.href;
     },
     methods: {
       ...mapActions(['toggleModal']),
@@ -62,14 +76,11 @@ export default {
         this.formData = {};
         this.toggleModal({
           isOpened: false,
-          type: 'buy'
+          type: 'apply'
         })
       },
       sendForm() {
         const formObj = {...this.formData}
-        // const form = this.formData.filter(item => item);
-        // console.log(form)
-        // const data = new FormData(this.$refs.buy_form);
         const form = new FormData();
 
         for ( const key in formObj ) {
@@ -82,10 +93,10 @@ export default {
         // })
         // const form = new FormData(this.formData);
         // console.log(form);
-        this.$axios.$post('forms/result_order.php', form).then(result => {
+        this.$axios.$post('forms/result_vacancy.php', form).then(result => {
             // console.log(result);
             if (result.error) {
-                this.errors = result.error
+                this.errors = result.error;
             }
             if (result.success) {
                 this.isSuccess = true

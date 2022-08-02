@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <div class="response__right">
+            <div class="response__right" @click="openApplyModal">
                 <osm-button>Откликнуться</osm-button>
             </div>
         </div>
@@ -24,9 +24,20 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
     components: {
         OsmButton: () => import('~/components/global/OsmButton.vue')
+    },
+    methods: {
+        ...mapActions(['toggleModal']),
+        openApplyModal() {
+            console.log('openApplyModal');
+            this.toggleModal({
+                isOpened: true,
+                type: 'apply'
+            });
+        }
     }
 }
 </script>
