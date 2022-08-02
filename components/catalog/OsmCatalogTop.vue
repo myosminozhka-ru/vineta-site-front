@@ -2,6 +2,7 @@
   <div class="catalog__header">
     <div class="catalog__header_left">Каталог</div>
     <div class="catalog__header_right">
+      <!-- <pre style="font-size: 15rem">{{ getDownloads }}</pre> -->
       <nuxt-link :to="{name: 'index'}" class="catalog__header_btn hide_on_mobile">
         <div class="text">Лодки и катера</div>
         <div class="icon">
@@ -29,7 +30,7 @@
           </svg>
         </div>
       </nuxt-link>
-      <nuxt-link :to="{name: 'index'}" class="catalog__header_link">
+      <a :href="$vareibles.remote + getDownloads[1].PROPERIES[0].VALUE.SRC" target="_blank" class="catalog__header_link">
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 25" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -40,14 +41,18 @@
         <div class="text">
           Скачать каталог
         </div>
-      </nuxt-link>
+      </a>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
   export default {
     name: 'OsmCatalogTop',
+    computed: {
+      ...mapGetters(['getDownloads']),
+    }
   }
 
 </script>

@@ -62,7 +62,7 @@
                             </a> -->
                           </div>
                         </div>
-                        <osm-button class="contacts__button">
+                        <a :href="$vareibles.remote + getDownloads[0].PROPERIES[0].VALUE.SRC" target="_blank" class="button contacts__button">
                             <div class="contacts__button_in">
                                 <div class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 21 28" fill="none">
@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="text">Скачать реквизиты</div>
                             </div>
-                        </osm-button>
+                        </a>
                     </div>
                     <div class="contacts__right">
                         <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab7cb646785abc136714c4d0b89eb3d25127d58bd8423a240b26631d7b05a103d&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
@@ -109,7 +109,7 @@ export default {
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
-        OsmButton: () => import('~/components/global/OsmButton.vue'),
+        // OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmContactsSlider: () => import('~/components/contacts/OsmSlider.vue'),
         OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
@@ -118,6 +118,7 @@ export default {
       ...mapGetters(['getContacts']),
       ...mapGetters(['getVacancies']),
       ...mapGetters(['getAbout']),
+      ...mapGetters(['getDownloads']),
       contacts() {
         return this.getContacts[0].PROPERIES.filter(contact => contact.CODE !== 'VK' && contact.CODE !== 'INSTAGRAM' && contact.CODE !== 'TELEGRAM' && contact.CODE !== 'FACEBOOK' && contact.CODE !== 'TWITTER')
       }

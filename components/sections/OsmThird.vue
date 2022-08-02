@@ -1,7 +1,8 @@
 <template>
   <section class="section section__item section__item--third" v-if="thirdData">
     <div class="section__left section__left--fullwidth hide_on_mobile">
-      <img v-if="thirdData.PREVIEW_PICTURE" :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first">
+      <!-- <img v-if="thirdData.PREVIEW_PICTURE" :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first"> -->
+      <img v-if="'index' in slider" :src="require(`~/assets/img/techs/${slider.index + 1}.jpg`)" alt="arrow">
     </div>
     <div class="section__right section__slider glide">
       <div class="section__content">
@@ -18,7 +19,10 @@
         </div>
       </div>
       <div class="section__right-image hide_off_mobile">
-        <img :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first">
+        <!-- <img :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first"> -->
+        <!-- {{ slider.index }} -->
+        <img v-if="slider.index" :src="require(`~/assets/img/techs/${slider.index}.jpg`)" alt="arrow">
+        <!-- <img :src="require(`~/assets/img/techs/${slider.index}.jpg`)" alt="first">  -->
       </div>
       <div class="section__bullets" data-glide-el="controls[nav]">
         <button v-for="(key, item) in 6" :key="item.index" class="section__bullet" :data-glide-dir="`=${key-1}`">{{ key }}</button>
@@ -47,11 +51,12 @@
   beforeDestroy() {
     this.slider.destroy();
   },
-    mounted() {
-      setTimeout(() => {
-        this.slider.mount();
-      }, 500);
-    }
+  mounted() {
+    setTimeout(() => {
+      this.slider.mount();
+      console.log('slider.index', this.slider.index)
+    }, 500);
+  }
   }
 
 </script>

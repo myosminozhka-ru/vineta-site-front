@@ -12,7 +12,7 @@
                         </div>
                         <div class="news__content_right">
                             <div class="news__content_bottons">
-                                <osm-button class="news__content_botton" :large="true">В каталог</osm-button>
+                                <osm-button class="news__content_botton" :large="true" link="catalog">В каталог</osm-button>
                                 <osm-button class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
                             </div>
                             <osm-category />

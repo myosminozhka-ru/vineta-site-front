@@ -10,7 +10,7 @@
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
-                        <img :src="require('~/assets/img/techs/image.jpg')" alt="">
+                        <img :src="require('~/assets/img/techs/6.jpg')" alt="">
                     </div>
                     <div class="section__right--tech">
                         <div class="index">05</div>
