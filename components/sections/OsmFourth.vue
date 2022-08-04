@@ -61,7 +61,7 @@ export default {
     }
     &__left {
         video {
-            width: 100%;
+            max-width: 100%;
         }
     }
 }
