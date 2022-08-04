@@ -416,7 +416,7 @@
           {
             hid: 'twitter:imag',
             name: 'twitter:imag',
-            content: this.product && 'PREVIEW_PICTURE' in this.product[0] ? $vareibles.remote + this.product[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+            content: this.product && 'PREVIEW_PICTURE' in this.product[0] ? this.$vareibles.remote + this.product[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
           },
         ]
       }
