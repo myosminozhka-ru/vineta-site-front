@@ -12,7 +12,7 @@
                     <div class="section__left--tech">
                         <img :src="require('~/assets/img/techs/6.jpg')" alt="">
                     </div>
-                    <div class="section__right--tech">
+                    <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">05</div>
                         <div class="texts">
                             <div class="title">Контрольно-сдаточный этап</div>
