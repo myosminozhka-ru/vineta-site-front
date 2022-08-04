@@ -162,7 +162,7 @@
       <section class="seventh">
         <div class="seventh__title">Карта</div>
         <div class="seventh__map">
-          <img :src="require('~/assets/img/about/MAP.svg')" width="100%" alt="">
+          <img :src="require('~/assets/img/about/map.svg')" width="100%" alt="">
         </div>
       </section>
       <section class="eighth">
