@@ -1,6 +1,6 @@
 <template>
     <div class="product__header">
-        <div class="product__header_left" v-if="data">{{ data.NAME }}</div>
+        <h1 class="product__header_left" v-if="data">{{ data.NAME }}</h1>
         <div class="product__header_right">
             
             <span class="product__header_btn hide_on_mobile" @click="printSection">
@@ -49,6 +49,7 @@ export default {
         font-size: rem(40);
         line-height: 110%;
         color: #172242;
+        margin: 0;
         @media all and (max-width: 1280px) {
             font-size: 30px;
         }
