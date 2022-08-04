@@ -167,11 +167,11 @@ export default {
                     right: 100%;
                     bottom: rem(-5);
                     height: rem(1);
-                    background: #32D2E8;
+                    background: #fff;
                     transition: all .3s ease;
                 }
                 &:hover {
-                    color: #32d2e8 !important;
+                    color: #fff !important;
                 }
                 &:hover:after {
                     right: 0;

@@ -1,7 +1,10 @@
 <template>
     <div class="pageWrap">
+        <!-- <pre style="font-size: 15rem;">
+            {{ currentCategory }}
+        </pre> -->
         <osm-breadcrumbs />
-        <osm-catalog-top />
+        <osm-catalog-top v-if="'NAME' in currentCategory" :title="currentCategory.NAME" />
         <div class="catalog__in">         
             <div class="catalog__in-left">
                 <osm-catalog-filter />
@@ -27,13 +30,76 @@ export default {
         OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProducts.vue'),
         OsmCatalogFilter: () => import('~/components/catalog/OsmCatalogFilter.vue'),
     },
+    data: () => ({
+        currentCategory: {}
+    }),
+    head() {
+        // console.log(this.currentCategory);
+      return {
+        title: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.TITLE : '',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.DESCRIPTION : 'DESCRIPTION'
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.KEYWORDS : ''
+          },
+          {
+            hid: 'twitter:card',
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
+            hid: 'twitter:url',
+            name: 'twitter:url',
+            content: 'https://vineta.fvds.ru/'
+          },
+          {
+            hid: 'twitter:title',
+            name: 'twitter:title',
+            content: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.TITLE : '',
+          },
+          {
+            hid: 'twitter:description',
+            name: 'twitter:description',
+            content: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.DESCRIPTION : '',
+          },
+          {
+            hid: 'twitter:imag',
+            name: 'twitter:imag',
+            content: 'SEO' in this.currentCategory && 'DETAIL_PICTURE' in this.currentCategory ? this.$vareibles.remote + this.currentCategory.DETAIL_PICTURE : require('~/assets/img/product.noimage.png'),
+          },
+        ]
+      }
+    },
     computed: {
         ...mapGetters(['getCatalog']),
-        currentCategory() {
-            return this.getCatalog.filter(category => category.CODE === this.$route.params.catalogId);
-        }
     },
+    // beforeCreate() {
+    //     this.currentCategory = this.getCatalog.filter(category => category.CODE === this.$route.params.catalogId);
+    // },    
     created() {
+        // this.currentCategory
+        this.getCatalog.map(category => {
+            if (category.CODE === this.$route.params.catalogId) {
+                this.currentCategory = category;
+                return category;
+            }
+            if (!category.CHILD) return category;
+            category.CHILD.map(child => {
+                // console.log(child)
+                if (child.CODE === this.$route.params.catalogId) {
+                    this.currentCategory = child;
+                }
+                return child;
+            });
+            return category;
+        })
         this.addBreadcrumbs([
             {
                 name: 'Главная',
@@ -46,7 +112,7 @@ export default {
                 isLink: true
             },
             // {
-            //     name: this.currentCategory[0].NAME,
+            //     name: this.currentCategory.NAME,
             //     isLink: false
             // },
         ])

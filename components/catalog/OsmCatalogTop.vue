@@ -1,6 +1,6 @@
 <template>
   <div class="catalog__header">
-    <div class="catalog__header_left">Каталог</div>
+    <h1 class="catalog__header_left">{{ title }}</h1>
     <div class="catalog__header_right">
       <!-- <pre style="font-size: 15rem">{{ getDownloads }}</pre> -->
       <nuxt-link :to="{name: 'index'}" class="catalog__header_btn hide_on_mobile">
@@ -50,6 +50,12 @@
 import { mapGetters } from 'vuex';
   export default {
     name: 'OsmCatalogTop',
+    props: {
+      title: {
+        type: String,
+        default: 'Каталог'
+      }
+    },
     computed: {
       ...mapGetters(['getDownloads']),
     }
@@ -76,6 +82,7 @@ import { mapGetters } from 'vuex';
       font-size: rem(40);
       line-height: 110%;
       color: #172242;
+      margin: 0;
 
       @media all and (max-width: 1440px) {
         font-size: 40px;

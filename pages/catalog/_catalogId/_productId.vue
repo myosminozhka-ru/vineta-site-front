@@ -368,16 +368,6 @@
   import Glide from '@glidejs/glide';
   export default {
     name: 'CatalogPage',
-    components: {
-      OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
-      OsmProductTop: () => import('~/components/product/OsmProductTop.vue'),
-      OsmProductSlider: () => import('~/components/product/OsmProductSlider.vue'),
-      OsmButton: () => import('~/components/global/OsmButton.vue'),
-      OsmModalsBuy: () => import('~/components/modals/buy.vue'),
-    },
-    computed: {
-      ...mapGetters(['getProducts']),
-    },
     head() {
       return {
         title: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.TITLE : '',
@@ -421,6 +411,17 @@
         ]
       }
     },
+    components: {
+      OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
+      OsmProductTop: () => import('~/components/product/OsmProductTop.vue'),
+      OsmProductSlider: () => import('~/components/product/OsmProductSlider.vue'),
+      OsmButton: () => import('~/components/global/OsmButton.vue'),
+      OsmModalsBuy: () => import('~/components/modals/buy.vue'),
+    },
+    computed: {
+      ...mapGetters(['getProducts']),
+    },
+    
     data: () => ({
       tabs: {
         selected: 1,
