@@ -43,6 +43,9 @@ export default {
 .news {
     padding: rem(30) rem(240) rem(120);
     background: #fff;
+    // @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+    //     padding: rem(30) rem(100) rem(120);
+    // }
     @media all and (max-width: 1280px) {
         padding: 30px 20px;
     }

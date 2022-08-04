@@ -86,6 +86,12 @@ export default {
         grid-template-areas: 
             'big big big'
             'first second third';
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+            grid-template-columns: repeat(2, 1fr );
+            grid-template-areas: 
+                'big big'
+                'first second';
+        }
         @media all and (max-width: 840px) {
             display: block;
         }
