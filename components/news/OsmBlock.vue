@@ -5,7 +5,7 @@
             <osm-button class="news__button_top" link="news" :outlined="true">Все новости</osm-button>
         </div>
         <div class="news__bottom hide_on_tablet">
-            <div v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
                 <template v-if="key === 0">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -18,7 +18,7 @@
                         <div class="news__text">
                             {{ item.NAME }}
                         </div>
-                        <nuxt-link class="button" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</nuxt-link>
+                        <span class="button" >Читать новость</span>
                     </div>
                 </template>
                 <template v-else>
@@ -30,15 +30,16 @@
                     </div>
                     <div class="news__item_right">
                         <div class="news__item_top">
-                            <div class="news__date">{{ item.DATE }}</div>
+                            <!-- <pre>{{ item }}</pre> -->
+                            <div class="news__date" v-if="item.PROPERIES[0]">{{ item.PROPERIES[0].VALUE }}</div>
                             <div class="news__text">
                                 {{ item.NAME }}
                             </div>
                         </div>
-                        <nuxt-link class="news__link" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</nuxt-link>
+                        <span class="news__link" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</span>
                     </div>
                 </template>
-            </div>
+            </nuxt-link>
         </div>
         <div class="glide news__slider hide_on_desktop">
             <div class="glide__track" data-glide-el="track">
@@ -299,6 +300,7 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         grid-area: first;
+        text-decoration: none;
         @media all and (max-width: 1280px) {
             padding: 20px 30px 20px 20px;
             min-height: 450px;
@@ -371,6 +373,7 @@ export default {
     }
     &__item {
         display: flex;
+        text-decoration: none;
     }
     &__item &__item_left {
         width: rem(220);

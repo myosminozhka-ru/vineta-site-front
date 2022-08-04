@@ -362,7 +362,11 @@ body .wrapper .full-page-indicators {
       &:not(:nth-child(4n+4)) {
           margin-right: rem(20);
       }
-      @media all and (max-width: 840px) {
+      @media all and (max-width: 1280px) {
+        width: calc(100% / 3 - #{rem(60)} / 3);
+        
+      }
+      @media all and (max-width: 1280px) {
         margin-right: 0 !important;
         margin-top: 20px;
         width: 100%;

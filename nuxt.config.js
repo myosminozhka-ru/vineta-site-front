@@ -27,6 +27,7 @@ export default {
   plugins: [
     '~/plugins/tabs.js',
     '~/plugins/vars.js',
+    // '~/plugins/vue-meta.js',
     { src: '~/plugins/print.js', ssr: false },
     { src: '~/plugins/lightgallery.js', ssr: false }
   ],

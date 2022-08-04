@@ -59,10 +59,10 @@ export default {
             width: 223px;
         }
     }
-    // &__left {
-    //     video {
-    //         max-width: 100%;
-    //     }
-    // }
+    &__left {
+        video {
+            max-width: 100%;
+        }
+    }
 }
 </style>

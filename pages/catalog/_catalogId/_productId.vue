@@ -331,7 +331,7 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <div class="products__item" v-for="prod in getProducts.slice(0, 4)" :key="prod.index">
+              <a :href="`/catalog/${prod.SECTION.CODE}/${prod.CODE}`" class="products__item" v-for="prod in getProducts.slice(0, 4)" :key="prod.index">
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
                   <div class="image_container">
@@ -339,10 +339,9 @@
                   </div>
                 </div>
                 <div class="products__item_data">
-                  <a class="products__item_name"
-                    :href="`/catalog/${prod.SECTION.CODE}/${prod.CODE}`">
+                  <span class="products__item_name">
                     {{ prod.NAME }}
-                  </a>
+                  </span>
                   <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                   <div class="products__item_properties">
                     <div class="products__item_property" v-for="property in prod.PROPERIES" :key="property.index">
@@ -351,7 +350,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
@@ -378,6 +377,24 @@
     },
     computed: {
       ...mapGetters(['getProducts']),
+    },
+    head() {
+      return {
+        title: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.TITLE : '',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.DESCRIPTION : 'DESCRIPTION'
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.KEYWORDS : ''
+          }
+        ]
+      }
     },
     data: () => ({
       tabs: {
