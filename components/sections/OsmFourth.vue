@@ -59,5 +59,10 @@ export default {
             width: 223px;
         }
     }
+    &__left {
+        video {
+            width: 100%;
+        }
+    }
 }
 </style>
