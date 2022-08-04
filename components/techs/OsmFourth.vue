@@ -12,7 +12,7 @@
                     <div class="section__left--tech">
                         <img :src="require('~/assets/img/techs/4.jpg')" alt="">
                     </div>
-                    <div class="section__right--tech" @scroll.stop>
+                    <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">03</div>
                         <div class="texts">
                             <div class="title">Этап механической обработки 2</div>
