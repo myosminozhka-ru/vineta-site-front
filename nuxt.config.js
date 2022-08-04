@@ -2,6 +2,9 @@ export default {
   // router: {
   //   base: '/vineta/',
   // },
+  server: {
+    host: '0', // default: localhost
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'vineta',
