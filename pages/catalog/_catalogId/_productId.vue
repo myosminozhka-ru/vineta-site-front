@@ -386,7 +386,7 @@
       product: null,
       prodsSlider: null
     }),
-    async mounted() {
+    async fetch() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
       this.addBreadcrumbs([
         {
@@ -406,6 +406,8 @@
         },
       ])
       // console.log(this.product);
+    },
+    mounted() {
       if (window.innerWidth <= 1280) {
         setTimeout(() => {
           this.prodsSlider = new Glide('.productPage__analogs .values.glide', {
