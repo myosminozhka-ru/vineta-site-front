@@ -1,7 +1,7 @@
 export default {
-  // router: {
-  //   base: '/vineta/',
-  // },
+  router: {
+    base: '/vineta/',
+  },
   server: {
     host: '0', // default: localhost
   },
