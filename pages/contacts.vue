@@ -48,7 +48,7 @@
                             <template v-else>
                               <div class="contacts__item_in">
                                   <div class="icon">
-                                      <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                      <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
                                   </div>
                                   <div class="text">{{ contact.VALUE }}</div>
                               </div>

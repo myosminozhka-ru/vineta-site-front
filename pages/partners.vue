@@ -18,7 +18,7 @@
                             <div class="partners__contact_items">
                                 <div class="partners__contact_item">
                                     <div class="icon">
-                                        <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                        <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
                                     </div>
                                     <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                                 </div>
@@ -52,7 +52,7 @@
                         <div class="partners__contact_items">
                             <div class="partners__contact_item">
                                 <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
+                                    <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
                                 </div>
                                 <div class="text">620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500</div>
                             </div>
