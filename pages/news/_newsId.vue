@@ -59,7 +59,7 @@ export default {
     beforeDestroy() {
         this.detail = null
     },
-    async mounted() {
+    async fetch() {
         this.detail = await this.$axios.$get(`news-detail.php?code=${this.$route.params.newsId}`);
         this.addBreadcrumbs([
             {
@@ -72,6 +72,9 @@ export default {
                 isLink: false
             },
         ])
+    },
+    mounted() {
+        console.log('Данные страницы новости', this.detail);
     },
     methods: {
         ...mapActions(['addBreadcrumbs']), 
