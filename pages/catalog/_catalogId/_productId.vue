@@ -392,7 +392,32 @@
             hid: 'keywords',
             name: 'keywords',
             content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.KEYWORDS : ''
-          }
+          },
+          {
+            hid: 'twitter:card',
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
+            hid: 'twitter:url',
+            name: 'twitter:url',
+            content: 'https://vineta.fvds.ru/'
+          },
+          {
+            hid: 'twitter:title',
+            name: 'twitter:title',
+            content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.TITLE : '',
+          },
+          {
+            hid: 'twitter:description',
+            name: 'twitter:description',
+            content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.DESCRIPTION : '',
+          },
+          {
+            hid: 'twitter:imag',
+            name: 'twitter:imag',
+            content: this.product && 'PREVIEW_PICTURE' in this.product[0] ? $vareibles.remote + this.product[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          },
         ]
       }
     },
