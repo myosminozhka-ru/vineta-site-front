@@ -12,7 +12,7 @@ const options = {
       'scrollbars=yes'
     ],
     styles: [
-      'http://localhost:3000/vineta/_nuxt/app.css',
+      'http://62.109.13.15:3000/_nuxt/app.css',
     ],
     timeout: 1000, // default timeout before the print window appears
     autoClose: true, // if false, the window will not close after printing
