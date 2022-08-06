@@ -1,70 +1,72 @@
 <template>
   <div class="menu hide_off_mobile" :class="{'isOpened': getModals.mobileMenu.isOpened}" @click="closeMenu">
     <div class="menu__in" @click.stop>
-      <div class="menu__top">
-        <div class="menu__langs">
-          <nuxt-link :to="{ name: 'index' }" class="isActive">Ру</nuxt-link>
-          <div class="delim">/</div>
-          <nuxt-link :to="{ name: 'index' }">En</nuxt-link>
+      <div>
+        <div class="menu__top">
+          <div class="menu__langs">
+            <nuxt-link :to="{ name: 'index' }" class="isActive">Ру</nuxt-link>
+            <div class="delim">/</div>
+            <nuxt-link :to="{ name: 'index' }">En</nuxt-link>
+          </div>
+          <div class="menu__closer" @click="closeMenu">
+            <img :src="require('~/assets/img/closer.svg')" width="100%" alt="">
+          </div>
         </div>
-        <div class="menu__closer" @click="closeMenu">
-          <img :src="require('~/assets/img/closer.svg')" width="100%" alt="">
-        </div>
-      </div>
-      <nav class="menu__links">
-        <ul>
-          <li class="menu__links_li has-child">
-            <a :to="{name: 'catalog'}" @click.prevent>
-                <div class="text">Каталог</div>
-                <div class="arrow">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
-                    <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2"/>
-                  </svg>
-                </div>
-                <!-- <div v-if="link.childs" class="header__arrow">
-                    <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
-                </div> -->
-            </a>
-            <ul v-if="getCatalog">
-              <li v-for="child in getCatalog" :key="child.index">
-                <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: child.CODE}}">
-                <div class="icon">
-                  <img :src="$vareibles.remote + child.PICTURE" width="100%" alt="">
-                </div>
-                <div class="text">{{ child.NAME }}</div>
-              </nuxt-link>
-              </li>
-            </ul>
-          </li>
-          <li v-for="link in menu" :key="link.index" class="menu__links_li" :class="{'has-child': link.childs, 'isOpened': link.isOpened}">
-            <nuxt-link :to="{name: link.url}">
-                <div class="text">{{ link.text }}</div>
-                <div class="arrow" v-if="link.childs">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
-                    <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2"/>
-                  </svg>
-                </div>
-                <!-- <div v-if="link.childs" class="header__arrow">
-                    <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
-                </div> -->
-            </nuxt-link>
-            <ul v-if="link.childs">
-              <li v-for="child in link.childs" :key="child.index">
-                <nuxt-link :to="{name: child.url}">
-                  <div class="icon">
-                    <img :src="child.icon" width="100%" alt="">
+        <nav class="menu__links">
+          <ul>
+            <li class="menu__links_li has-child">
+              <a :to="{name: 'catalog'}" @click.prevent>
+                  <div class="text">Каталог</div>
+                  <div class="arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
+                      <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2"/>
+                    </svg>
                   </div>
-                  <div class="text">{{ child.text }}</div>
+                  <!-- <div v-if="link.childs" class="header__arrow">
+                      <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
+                  </div> -->
+              </a>
+              <ul v-if="getCatalog">
+                <li v-for="child in getCatalog" :key="child.index">
+                  <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: child.CODE}}">
+                  <div class="icon">
+                    <img :src="$vareibles.remote + child.PICTURE" width="100%" alt="">
+                  </div>
+                  <div class="text">{{ child.NAME }}</div>
                 </nuxt-link>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+                </li>
+              </ul>
+            </li>
+            <li v-for="link in menu" :key="link.index" class="menu__links_li" :class="{'has-child': link.childs, 'isOpened': link.isOpened}">
+              <nuxt-link :to="{name: link.url}">
+                  <div class="text">{{ link.text }}</div>
+                  <div class="arrow" v-if="link.childs">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
+                      <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <!-- <div v-if="link.childs" class="header__arrow">
+                      <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
+                  </div> -->
+              </nuxt-link>
+              <ul v-if="link.childs">
+                <li v-for="child in link.childs" :key="child.index">
+                  <nuxt-link :to="{name: child.url}">
+                    <div class="icon">
+                      <img :src="child.icon" width="100%" alt="">
+                    </div>
+                    <div class="text">{{ child.text }}</div>
+                  </nuxt-link>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
       <div class="menu__socials">
-        <!-- <pre style="font-size: 15rem">
-          {{ getMainMore.contact[0].PROPERIES }}
-        </pre> -->
+        <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
+            <img :src="social.icon" width="100%" alt="">
+        </a>
       </div>
     </div>
   </div>
@@ -74,6 +76,20 @@
 import { mapGetters, mapActions } from 'vuex';
   export default {
     data: () => ({
+      socials: [
+            {
+                icon: require('~/assets/img/socials/vk.svg'),
+                link: '#',
+            },
+            {
+                icon: require('~/assets/img/socials/telegram.svg'),
+                link: '#',
+            },
+            {
+                icon: require('~/assets/img/socials/twitter.svg'),
+                link: '#',
+            }
+        ],
       menu: [
         {
           text: 'О компании',
@@ -175,6 +191,9 @@ import { mapGetters, mapActions } from 'vuex';
       overflow: auto;
       transition: all .3s ease;
       transform: translateX(100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     &.isOpened &__in {
       transform: translateX(0);
@@ -275,6 +294,22 @@ import { mapGetters, mapActions } from 'vuex';
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+      }
+    }
+    &__socials {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 20px;
+      a {
+        mix-blend-mode: difference;
+        display: block;
+        width: 20px;
+        height: 20px;
+        font-size: 0;
+        &:not(:last-child) {
+          margin-right: 20px;
         }
       }
     }

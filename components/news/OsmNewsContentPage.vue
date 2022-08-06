@@ -35,7 +35,69 @@
                 </div>
             </template>
         </nuxt-link>
-        <div class="news__content_tabs">
+        <div class="filter__title" :class="{'isActive': tabs.selected === 1}" @click="tabs.selected = 1">
+            Новости
+            <div class="arrow hide_on_desktop">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
+                    <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+        <div class="news__content_tabs" v-if="tabs.selected === 1">
+            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+                <div class="news__item_left">
+                    <div class="news__image">
+                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                    </div>
+                </div>
+                <div class="news__item_right">
+                    <div class="news__item_top">
+                        <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
+                        <div class="news__text">
+                            {{ item.NAME }}
+                        </div>
+                    </div>
+                    <span class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</span>
+                </div>
+            </nuxt-link>
+        </div>
+        <div class="filter__title" :class="{'isActive': tabs.selected === 2}" @click="tabs.selected = 2">
+            Пресс-релизы
+            <div class="arrow hide_on_desktop">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
+                    <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+        <div class="news__content_tabs" v-if="tabs.selected === 2">
+            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+                <div class="news__item_left">
+                    <div class="news__image">
+                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
+                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                    </div>
+                </div>
+                <div class="news__item_right">
+                    <div class="news__item_top">
+                        <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
+                        <div class="news__text">
+                            {{ item.NAME }}
+                        </div>
+                    </div>
+                    <span class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</span>
+                </div>
+            </nuxt-link>
+        </div>
+        <div class="filter__title" :class="{'isActive': tabs.selected === 3}" @click="tabs.selected = 3">
+            Статьи
+            <div class="arrow hide_on_desktop">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
+                    <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
+                </svg>
+            </div>
+        </div>
+        <div class="news__content_tabs" v-if="tabs.selected === 3">
             <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
@@ -77,6 +139,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.filter {
+    &__title {
+        @media all and (max-width: 1280px) {
+            padding: 20px;
+            border: 1px solid #F2F2F2;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &.isActive {
+            border-color: #FF0040;
+            background: #FF0040;
+            color: #fff;
+            svg path {
+                stroke: #fff;
+            }
+            .arrow {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
 
 .news {
     &__content_in {

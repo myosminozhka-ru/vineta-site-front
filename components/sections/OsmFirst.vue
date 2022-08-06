@@ -2,8 +2,6 @@
   <section class="section section__item section__item--first" v-if="firstData">
     <div class="section__left">
       <div class="section__left_image_wrap">
-        <img class="hide_on_desktop" :src="require('~/assets/img/sections/detail1.svg')"
-          height="100%" alt="">
         <svg v-if="isMounted" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 3259 5289"
           style="enable-background:new 0 0 3259 5289;" xml:space="preserve">

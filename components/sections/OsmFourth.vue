@@ -4,7 +4,7 @@
         <div class="section__left" v-if="fourthData">
             <template v-if="'PROPERIES' in fourthData">
                 <video v-if="'VIDEO' in fourthData.PROPERIES" controls="false" :src="$vareibles.remote + fourthData.PROPERIES.VIDEO.SRC"
-                :type="fourthData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" />
+                :type="fourthData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" :poster="require('~/assets/img/product.noimage.png')" />
             </template>
         </div>
         <div class="section__right" v-if="fourthData">
@@ -62,6 +62,7 @@ export default {
     &__left {
         video {
             max-width: 100%;
+            width: 100%;
         }
     }
 }

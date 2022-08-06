@@ -267,20 +267,30 @@
                 </svg>
               </div>
             </div>
-            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 3">
-              <div class="title">Модификации (5)</div>
-              <div class="value">
-                <div class="value__in">
-                  <div class="productPage__mods--mods">
-                    <div class="productPage__mods--mod" v-for="mod in product[0].OFFERS" :key="mod.index">
-                      <div class="productPage__mods--mods_items">
-                        <div class="productPage__mods--mods_item">
-                          <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES" :key="proper.index">
-                            <div class="productPage__mods--mods_val_title">
-                              {{ proper.NAME }}
-                            </div>
-                            <div class="productPage__mods--mods_val_value">
-                              {{ proper.VALUE }}
+            <div v-if="tabs.selected === 3">
+              <div class="productPage__mods--tab productPage__mods--bg" v-for="(mod, key, index) in product[0].OFFERS" :key="key" @click="tabs.openedMod = index">
+                <div class="title title__opener">
+                  <span>Режим {{ index+1 }}</span>
+                  <div class="arrow">
+                    <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
+                      fill="none">
+                      <path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="value" @click.stop v-if="tabs.openedMod === index">
+                  <div class="value__in">
+                    <div class="productPage__mods--mods">
+                      <div class="productPage__mods--mod">
+                        <div class="productPage__mods--mods_items">
+                          <div class="productPage__mods--mods_item">
+                            <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES" :key="proper.index">
+                              <div class="productPage__mods--mods_val_title">
+                                {{ proper.NAME }}
+                              </div>
+                              <div class="productPage__mods--mods_val_value">
+                                {{ proper.VALUE }}
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -288,22 +298,22 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="productPage__buttons">
-                <div @click="openBuy">
-                  <osm-button class="productPage__buttons--buy">Заказать</osm-button>
-                </div>
-                <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
-                  <osm-button class="productPage__buttons--fav" :outlined="true">
-                    <div class="icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
-                        <path
-                          d="M21 2.33325H7C6.07174 2.33325 5.1815 2.702 4.52513 3.35838C3.86875 4.01476 3.5 4.90499 3.5 5.83325V18.6666C3.5 19.5948 3.86875 20.4851 4.52513 21.1415C5.1815 21.7978 6.07174 22.1666 7 22.1666H10.0217L13.1717 25.3283C13.2807 25.4364 13.41 25.5219 13.5521 25.58C13.6943 25.638 13.8465 25.6675 14 25.6666C14.2781 25.6666 14.547 25.5673 14.7583 25.3866L18.515 22.1666H21C21.9283 22.1666 22.8185 21.7978 23.4749 21.1415C24.1313 20.4851 24.5 19.5948 24.5 18.6666V5.83325C24.5 4.90499 24.1313 4.01476 23.4749 3.35838C22.8185 2.702 21.9283 2.33325 21 2.33325ZM22.1667 18.6666C22.1667 18.976 22.0438 19.2728 21.825 19.4915C21.6062 19.7103 21.3094 19.8333 21 19.8333H18.0833C17.8053 19.8332 17.5363 19.9325 17.325 20.1133L14.0583 22.9133L11.3283 20.1716C11.2193 20.0635 11.09 19.9779 10.9479 19.9199C10.8057 19.8618 10.6535 19.8324 10.5 19.8333H7C6.69058 19.8333 6.39383 19.7103 6.17504 19.4915C5.95625 19.2728 5.83333 18.976 5.83333 18.6666V5.83325C5.83333 5.52383 5.95625 5.22709 6.17504 5.00829C6.39383 4.7895 6.69058 4.66659 7 4.66659H21C21.3094 4.66659 21.6062 4.7895 21.825 5.00829C22.0438 5.22709 22.1667 5.52383 22.1667 5.83325V18.6666Z"
-                          fill="#172242" />
-                      </svg>
-                    </div>
-                    <div class="text">В избранное</div>
-                  </osm-button>
+                <div class="productPage__buttons" @click.stop v-if="tabs.openedMod === index">
+                  <div @click="openBuy">
+                    <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+                  </div>
+                  <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
+                    <osm-button class="productPage__buttons--fav" :outlined="true">
+                      <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
+                          <path
+                            d="M21 2.33325H7C6.07174 2.33325 5.1815 2.702 4.52513 3.35838C3.86875 4.01476 3.5 4.90499 3.5 5.83325V18.6666C3.5 19.5948 3.86875 20.4851 4.52513 21.1415C5.1815 21.7978 6.07174 22.1666 7 22.1666H10.0217L13.1717 25.3283C13.2807 25.4364 13.41 25.5219 13.5521 25.58C13.6943 25.638 13.8465 25.6675 14 25.6666C14.2781 25.6666 14.547 25.5673 14.7583 25.3866L18.515 22.1666H21C21.9283 22.1666 22.8185 21.7978 23.4749 21.1415C24.1313 20.4851 24.5 19.5948 24.5 18.6666V5.83325C24.5 4.90499 24.1313 4.01476 23.4749 3.35838C22.8185 2.702 21.9283 2.33325 21 2.33325ZM22.1667 18.6666C22.1667 18.976 22.0438 19.2728 21.825 19.4915C21.6062 19.7103 21.3094 19.8333 21 19.8333H18.0833C17.8053 19.8332 17.5363 19.9325 17.325 20.1133L14.0583 22.9133L11.3283 20.1716C11.2193 20.0635 11.09 19.9779 10.9479 19.9199C10.8057 19.8618 10.6535 19.8324 10.5 19.8333H7C6.69058 19.8333 6.39383 19.7103 6.17504 19.4915C5.95625 19.2728 5.83333 18.976 5.83333 18.6666V5.83325C5.83333 5.52383 5.95625 5.22709 6.17504 5.00829C6.39383 4.7895 6.69058 4.66659 7 4.66659H21C21.3094 4.66659 21.6062 4.7895 21.825 5.00829C22.0438 5.22709 22.1667 5.52383 22.1667 5.83325V18.6666Z"
+                            fill="#172242" />
+                        </svg>
+                      </div>
+                      <div class="text">В избранное</div>
+                    </osm-button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -425,6 +435,7 @@
     data: () => ({
       tabs: {
         selected: 1,
+        openedMod: 0
       },
       product: null,
       prodsSlider: null
@@ -451,6 +462,7 @@
       // console.log(this.product);
     },
     mounted() {
+      console.log('this.product', this.product)
       if (window.innerWidth <= 1280) {
         setTimeout(() => {
           this.prodsSlider = new Glide('.productPage__analogs .values.glide', {
@@ -1090,5 +1102,13 @@
       }
     }
   }
-
+  .title__opener {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0 !important;
+  }
+  .title__opener + .value {
+    margin-top: 20px;
+  }
 </style>

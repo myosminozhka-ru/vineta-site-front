@@ -1044,7 +1044,7 @@
           <div class="tiles">
             <div class="tiles__item" v-if="secondData.PROPERIES">
               <video v-if="'VIDEO' in secondData.PROPERIES" controls="false" :src="$vareibles.remote + secondData.PROPERIES.VIDEO.VALUE.SRC"
-                :type="secondData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" />
+                :type="secondData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" :poster="require('~/assets/img/product.noimage.png')" />
               <div class="tiles__item-bottom" v-if="!isVideoPlayed" @click="playVideo">
                 <div class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 60 60">
@@ -1390,6 +1390,9 @@
         height: 100%;
         object-fit: cover;
         object-position: 50% 50%;
+		&::-webkit-media-controls {
+			display: none;
+		}
       }
 
       &:first-child {
