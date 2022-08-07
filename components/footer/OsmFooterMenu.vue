@@ -18,18 +18,18 @@
                 </li>
         </ul>
         <ul>
-            <li>
+            <!-- <li>
                 <nuxt-link :to="{name: 'index'}">Заказчикам</nuxt-link>
-            </li>
+            </li> -->
             <li>
-                <nuxt-link :to="{name: 'index'}">Скачать каталог</nuxt-link>
+                <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC">Скачать каталог</a>
             </li>
-            <li>
+            <!-- <li>
                 <nuxt-link :to="{name: 'index'}">Скачать презентацию</nuxt-link>
             </li>
             <li>
                 <nuxt-link :to="{name: 'index'}">Катера и лодки</nuxt-link>
-            </li>
+            </li> -->
         </ul>
         <ul>
             <li>
@@ -57,6 +57,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     data: () => ({
         socials: [
@@ -74,6 +75,9 @@ export default {
           }
       ]
     }),
+    computed: {
+        ...mapGetters(['getMainMore']),
+    },
     mounted() {
         this.initCollapse()
     },
