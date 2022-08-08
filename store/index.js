@@ -108,148 +108,148 @@ export const actions = {
     context.commit('addFilters', data);
   },
   addDownloads(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('downloads.php')
-        .then((response) => {
-          resolve(response);
-          context.commit('addDownloads', response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('downloads.php')
+    //     .then((response) => {
+    //       resolve(response);
+    //       context.commit('addDownloads', response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addMain(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('slider.php')
-        .then((response) => {
-          resolve(response);
-          context.commit('addMain', response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('slider.php')
+    //     .then((response) => {
+    //       resolve(response);
+    //       context.commit('addMain', response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addMainMore(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('main.php')
-        .then((response) => {
-          resolve(response);
-          context.commit('addMainMore', response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('main.php')
+    //     .then((response) => {
+    //       resolve(response);
+    //       context.commit('addMainMore', response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addCatalog(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('catalog/sections.php')
-        .then((response) => {
-          context.commit('addCatalog', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('catalog/sections.php')
+    //     .then((response) => {
+    //       context.commit('addCatalog', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addVacancies(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('vacancy.php')
-        .then((response) => {
-          context.commit('addVacancies', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('vacancy.php')
+    //     .then((response) => {
+    //       context.commit('addVacancies', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addContacts(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('contact.php')
-        .then((response) => {
-          context.commit('addContacts', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('contact.php')
+    //     .then((response) => {
+    //       context.commit('addContacts', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addAbout(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('about.php')
-        .then((response) => {
-          context.commit('addAbout', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('about.php')
+    //     .then((response) => {
+    //       context.commit('addAbout', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addHistory(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('history.php')
-        .then((response) => {
-          context.commit('addHistory', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('history.php')
+    //     .then((response) => {
+    //       context.commit('addHistory', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addLicenses(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('license.php')
-        .then((response) => {
-          context.commit('addLicenses', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('license.php')
+    //     .then((response) => {
+    //       context.commit('addLicenses', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addNews(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('news.php')
-        .then((response) => {
-          context.commit('addNews', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('news.php')
+    //     .then((response) => {
+    //       context.commit('addNews', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addPartners(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('client.php')
-        .then((response) => {
-          context.commit('addPartners', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('client.php')
+    //     .then((response) => {
+    //       context.commit('addPartners', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   addProducts(context) {
-    return new Promise((resolve, reject) => {
-      this.$axios.$get('catalog/elements_all.php')
-        .then((response) => {
-          context.commit('addProducts', response);
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    });
+    // return new Promise((resolve, reject) => {
+    //   this.$axios.$get('catalog/elements_all.php')
+    //     .then((response) => {
+    //       context.commit('addProducts', response);
+    //       resolve(response);
+    //     })
+    //     .catch((error) => {
+    //       reject(error)
+    //     })
+    // });
   },
   toggleModal(context, data) {
     if (data.type === 'buy') {
