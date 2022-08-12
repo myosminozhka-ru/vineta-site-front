@@ -127,7 +127,7 @@ export default {
 .catalog {
     &__in {
         display: flex;
-        align-items: flex-start;
+        // align-items: flex-start;
         justify-content: space-between;
         @media all and (max-width: 1280px) {
             flex-direction: column;
@@ -135,10 +135,10 @@ export default {
     }
     &__in-left {
         width: rem(345);
-        border: 1px solid #D7DCE1;
+        // border: 1px solid #D7DCE1;
         @media all and (max-width: 1280px) {
             width: 100%;
-            border: none;
+            // border: none;
         }
     }
     &__in-right {

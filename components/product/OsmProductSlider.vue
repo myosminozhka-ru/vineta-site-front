@@ -63,7 +63,7 @@
                     </template>
                 </div>
                 <div class="productPage__slider-buttons">
-                    <div class="productPage__slider-button productPage__slider-button--more" v-if="data.MORE_PHOTO.length > 9">
+                    <div class="productPage__slider-button productPage__slider-button--more" v-if="MORE_PHOTO in data">
                         <div class="text">
                             Еще 10
                         </div>
@@ -256,7 +256,7 @@ export default {
     }
     &__slider-item__in {
         position: relative;
-        padding-top: 75%;
+        padding-top: 56%;
         @media all and (max-width: 1280px) {
             padding-top: 56%;
             width: 100%;
@@ -268,10 +268,10 @@ export default {
     }
     &__slider-item__imege {
         position: absolute;
-        top: rem(120);
-        left: rem(120);
-        right: rem(120);
-        bottom: rem(120);
+        top: rem(50);
+        left: rem(50);
+        right: rem(50);
+        bottom: rem(50);
         display: flex;
         align-items: center;
         justify-content: center;

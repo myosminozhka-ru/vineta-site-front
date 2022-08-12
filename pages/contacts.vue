@@ -74,7 +74,7 @@
                         </a>
                     </div>
                     <div class="contacts__right">
-                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Ab7cb646785abc136714c4d0b89eb3d25127d58bd8423a240b26631d7b05a103d&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+                        <osm-map />
                     </div>
                 </div>
             </div>
@@ -112,7 +112,8 @@ export default {
         // OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmContactsSlider: () => import('~/components/contacts/OsmSlider.vue'),
-        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
+        OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
+        OsmMap: () => import('~/components/global/OsmMap.vue'),
     },
     computed: {
       ...mapGetters(['getContacts']),
@@ -157,7 +158,7 @@ export default {
     }
     &__top {
         display: flex;
-        align-items: center;
+        // align-items: center;
         margin-bottom: rem(120);
         @media all and (max-width: 840px) {
             flex-direction: column;

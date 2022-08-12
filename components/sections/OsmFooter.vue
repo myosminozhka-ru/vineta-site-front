@@ -25,7 +25,14 @@
         </div>
         <div class="section__right hide_on_mobile">
             <div class="section__content">
-                <osm-h1 class="section__title">Контакты</osm-h1>
+                <div class="section__row">
+                    <osm-h1 class="section__title">Контакты</osm-h1>
+                    <div class="section__socials">
+                        <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
+                            <img :src="social.icon" width="100%" alt="">
+                        </a>
+                    </div>
+                </div>
                 <div class="section__contacts">
                     <div class="section__contacts_side">
                         <a href="tel:78124935048" class="section__contact">+7(812)493-50-48</a>
@@ -36,14 +43,10 @@
                         <div class="section__contacts_info">Ответим в течение рабочего дня или на следующий рабочий день</div>
                     </div>
                 </div>
-                <div class="section__socials">
-                    <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
-                        <img :src="social.icon" width="100%" alt="">
-                    </a>
-                </div>
+                
             </div>
-            <div class="section__map">
-                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A53f4c694e1d4abd01e62a7f6f9d00f3717cffcb4b3a7cec3cc46bea2513cf1ab&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+            <div class="section__map" @mousewheel.stop>
+                <osm-map />
             </div>
         </div>
         <osm-footer class="section__footer hide_on_desktop" />
@@ -66,7 +69,7 @@ export default {
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     // OsmInput: () => import('~/components/global/OsmInput.vue'),
-    // OsmTextarea: () => import('~/components/global/OsmTextarea.vue'),
+    OsmMap: () => import('~/components/global/OsmMap.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
@@ -130,14 +133,23 @@ export default {
     }
     &__title {
         font-size: rem(40);
-        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
-            margin-bottom: 5px !important;
-        }
+        margin-bottom: 0;
+        // @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+        //     margin-bottom: 5px !important;
+        // }
     }
     &__content {
         margin-bottom: rem(31);
+        padding-top: rem(175);
+        padding-left: rem(68);
+        padding-right: rem(143);
+        padding-bottom: rem(17);
+        @media all and (max-width: 1440px) {
+            padding-top: 90px;
+        }
         @media all and (max-width: 1280px) {
-            margin-bottom: 30px;
+            width: 100% !important;
+            padding: 0 !important;
         }
     }
     &__text {
@@ -205,37 +217,52 @@ export default {
         width: 100%;
     }
     &__right {
-        padding-right: rem(240);
-        padding-left: rem(71);
-        padding-top: rem(175);
-        padding-bottom: rem(121);
+        // padding-right: rem(240);
+        // padding-left: rem(71);
+        
+        // padding-bottom: rem(121);
+        padding: 0;
         background: #2E5599;
         width: calc(100% - #{rem(900)} + #{rem(133)});
         flex-direction: column;
         
+        // @media all and (max-width: 1440px) {
+        //     padding: 90px 150px 120px 70px !important;
+        //     width: 778px;
+        // }
         @media all and (max-width: 1440px) {
-            padding: 90px 150px 120px 70px !important;
             width: 778px;
+            padding: 0 !important;
+            // padding: 90px 0 0 0 !important;
+            // padding: 80px 20px !important;
         }
         @media all and (max-width: 1280px) {
             width: 100% !important;
             padding: 80px 20px !important;
+            // padding: 90px 0 0 0 !important;
+            // padding: 80px 20px !important;
         }
+    }
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: rem(25);
     }
     &__right &__title {
         color: #fff;
-        margin-bottom: rem(30);
-        @media all and (max-width: 1280px) {
-            margin-bottom: 30px;
-        }
+        // margin-bottom: rem(30);
+        // @media all and (max-width: 1280px) {
+        //     margin-bottom: 30px;
+        // }
     }
     &__contacts {
         display: flex;
         align-items: flex-start;
-        margin-bottom: rem(54);
-        @media all and (max-width: 1280px) {
-            margin-bottom: 60px;
-        }
+        // margin-bottom: rem(54);
+        // @media all and (max-width: 1280px) {
+        //     margin-bottom: 60px;
+        // }
     }
     &__contacts_side {
         width: rem(240);
@@ -253,7 +280,7 @@ export default {
         text-decoration: none;
         font-style: normal;
         font-weight: 600;
-        font-size: rem(30);
+        font-size: rem(25);
         line-height: 140%;
         color: #FFFFFF;
         display: block;
@@ -288,7 +315,7 @@ export default {
         align-items: center;
     }
     &__social {
-        width: rem(50);
+        width: rem(30);
         font-size: 0;
         display: block;
         transition: all .3s ease;

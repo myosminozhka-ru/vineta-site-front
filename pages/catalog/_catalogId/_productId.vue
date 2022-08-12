@@ -40,10 +40,8 @@
           </div>
           <nuxt-link :to="{name: 'index'}" class="productPage__link">
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 25" fill="none">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M9.11116 17.2091L9.11117 0H10.963L10.963 17.2091L15.2749 12.8972C15.6365 12.5356 16.2228 12.5356 16.5844 12.8972C16.946 13.2588 16.946 13.845 16.5844 14.2066L10.6918 20.0992C10.3302 20.4608 9.74396 20.4608 9.38236 20.0992L3.48981 14.2066C3.12821 13.845 3.12821 13.2588 3.48981 12.8972C3.8514 12.5356 4.43767 12.5356 4.79926 12.8972L9.11116 17.2091ZM19.2964 24.0741C19.2964 24.5854 18.8818 25 18.3704 25H1.70376C1.19238 25 0.777832 24.5854 0.777832 24.0741C0.777832 23.5627 1.19238 23.1481 1.70376 23.1481H18.3704C18.8818 23.1481 19.2964 23.5627 19.2964 24.0741Z"
-                  fill="#FF0040" />
+              <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 15 21" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.33396 17.2091L6.33396 0H8.18582L8.18581 17.2091L12.4977 12.8972C12.8593 12.5356 13.4456 12.5356 13.8072 12.8972C14.1688 13.2588 14.1688 13.845 13.8072 14.2066L7.91462 20.0992C7.55302 20.4608 6.96676 20.4608 6.60516 20.0992L0.712604 14.2066C0.351007 13.845 0.351007 13.2588 0.712604 12.8972C1.0742 12.5356 1.66046 12.5356 2.02206 12.8972L6.33396 17.2091Z" fill="#FF0040"/>
               </svg>
             </div>
             <div class="text">
@@ -583,6 +581,14 @@
       .titles {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        margin-bottom: rem(22);
+        width: calc(828rem + 98rem + 24rem - 240rem);
+        div {
+          &:last-child .productPage__mods--opener {
+            margin-right: 0;
+          }
+        }
       }
 
       .value {
@@ -692,33 +698,23 @@
       align-items: center;
       text-decoration: none;
       margin-left: rem(42);
-      margin-left: rem(20);
-
-      @media all and (max-width: 1440px) {
-        display: none;
-      }
 
       @media all and (max-width: 1280px) {
-        display: flex;
+        margin-left: 40px;
       }
 
       @media all and (max-width: 840px) {
-        width: 100%;
         margin-left: 0;
-        justify-content: center;
+        margin-top: 0;
       }
 
       .text {
         font-style: normal;
         font-weight: 400;
-        font-size: rem(18);
-        line-height: 140%;
+        font-size: rem(16);
+        line-height: 1;
         color: #FF0040;
         position: relative;
-
-        @media all and (max-width: 1280px) {
-          font-size: 16px;
-        }
 
         &:after {
           content: "";
@@ -727,8 +723,13 @@
           right: 100%;
           bottom: rem(-5);
           height: rem(2);
+          border-radius: rem(2);
           background: #FF0040;
           transition: all .3s ease;
+        }
+
+        @media all and (max-width: 1280px) {
+          font-size: 16px;
         }
       }
 
@@ -738,13 +739,26 @@
 
       .icon {
         width: rem(18);
-        margin-right: rem(10) !important;
+        height: rem(20);
+        margin-right: rem(13);
         font-size: 0;
-
+        padding-bottom: rem(4);
+        border-bottom: 2px solid #DF0043;
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: all .3s ease;
+        display: flex;
+        justify-content: center;
+        // svg {
+        //   transform: translateY(100%);
+        // }
         @media all and (max-width: 1280px) {
           width: 25px;
-          margin-right: 10px !important;
+          margin-right: 10px;
         }
+      }
+      &:hover .icon svg {
+        animation: flow .3s ease forwards;
       }
     }
 
@@ -976,7 +990,7 @@
     &__mods--mods_title {
       font-style: normal;
       font-weight: 400;
-      font-size: rem(14);
+      font-size: rem(16);
       line-height: 140%;
       color: #172242;
       min-width: rem(223);
@@ -997,7 +1011,6 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: rem(22);
     }
 
     &__mods--mods_item {
@@ -1025,7 +1038,7 @@
       max-width: rem(223);
       font-style: normal;
       font-weight: 400;
-      font-size: rem(16);
+      font-size: rem(19);
       line-height: 140%;
       color: #555F76;
 

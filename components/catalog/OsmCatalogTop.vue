@@ -32,10 +32,8 @@
       </nuxt-link>
       <a :href="$vareibles.remote + getDownloads[1].PROPERIES[0].VALUE.SRC" target="_blank" class="catalog__header_link">
         <div class="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 25" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M9.11116 17.2091L9.11117 0H10.963L10.963 17.2091L15.2749 12.8972C15.6365 12.5356 16.2228 12.5356 16.5844 12.8972C16.946 13.2588 16.946 13.845 16.5844 14.2066L10.6918 20.0992C10.3302 20.4608 9.74396 20.4608 9.38236 20.0992L3.48981 14.2066C3.12821 13.845 3.12821 13.2588 3.48981 12.8972C3.8514 12.5356 4.43767 12.5356 4.79926 12.8972L9.11116 17.2091ZM19.2964 24.0741C19.2964 24.5854 18.8818 25 18.3704 25H1.70376C1.19238 25 0.777832 24.5854 0.777832 24.0741C0.777832 23.5627 1.19238 23.1481 1.70376 23.1481H18.3704C18.8818 23.1481 19.2964 23.5627 19.2964 24.0741Z"
-              fill="#FF0040" />
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 15 21" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.33396 17.2091L6.33396 0H8.18582L8.18581 17.2091L12.4977 12.8972C12.8593 12.5356 13.4456 12.5356 13.8072 12.8972C14.1688 13.2588 14.1688 13.845 13.8072 14.2066L7.91462 20.0992C7.55302 20.4608 6.96676 20.4608 6.60516 20.0992L0.712604 14.2066C0.351007 13.845 0.351007 13.2588 0.712604 12.8972C1.0742 12.5356 1.66046 12.5356 2.02206 12.8972L6.33396 17.2091Z" fill="#FF0040"/>
           </svg>
         </div>
         <div class="text">
@@ -199,15 +197,43 @@ import { mapGetters } from 'vuex';
       }
 
       .icon {
-        width: rem(18);
+        width: 28rem;
+        height: 28rem;
         margin-right: rem(13);
         font-size: 0;
-
+        padding-bottom: rem(4);
+        border-bottom: 2px solid #DF0043;
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: all .3s ease;
+        display: flex;
+        justify-content: center;
+        // svg {
+        //   transform: translateY(100%);
+        // }
         @media all and (max-width: 1280px) {
           width: 25px;
           margin-right: 10px;
         }
       }
+      &:hover .icon svg {
+        animation: flow .3s ease forwards;
+      }
+    }
+  }
+
+  @keyframes flow {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(110%);
+    }
+    50.1% {
+      transform: translateY(-110%);
+    }
+    100% {
+      transform: translateY(0);
     }
   }
 

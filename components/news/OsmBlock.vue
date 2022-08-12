@@ -108,6 +108,9 @@ export default {
         gap: 20,
         type: 'carousel',
         breakpoints: {
+            1280: {
+                perView: 2,
+            },
             840: {
                 perView: 1,
             }

@@ -33,6 +33,7 @@
                 Нет доступных фильтров для этой категории
             </div>
         </div>
+        <div></div>
     </div>
 </template>
 
@@ -80,14 +81,21 @@ export default {
 
 <style lang="scss" scoped>
 .filter {
+    height: 100%;
     @media all and (max-width: 1280px) {
         margin-bottom: 52px;
         position: relative;
+        height: auto;
     }
     &__in {
         padding: rem(40) rem(30);
+        position: sticky;
+        top: rem(200);
+        border: 1px solid #D7DCE1;
         @media all and (max-width: 1280px) {
+            border: none;
             padding: 0;
+            position: static;
         }
     }
     &__title {

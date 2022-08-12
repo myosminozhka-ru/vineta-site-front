@@ -67,7 +67,7 @@ export default {
                 perView: 6,
                 type: 'carousel',
                 breakpoints: {
-                    1024: {
+                    1280: {
                         perView: 3
                     },
                     840: {

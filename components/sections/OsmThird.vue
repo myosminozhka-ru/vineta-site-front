@@ -13,7 +13,7 @@
               <div class="section__text">
                 {{ thirdData.PREVIEW_TEXT }}
               </div>
-              <osm-button class="section__button" link="index">Подробнее</osm-button>
+              <osm-button class="section__button" link="history">Подробнее</osm-button>
             </div>
           </div>
         </div>
