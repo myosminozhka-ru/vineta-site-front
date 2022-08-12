@@ -140,6 +140,7 @@ export default {
         @media all and (max-width: 1280px) {
             font-size: 18px;
             // width: 50%;
+            
         }
         @media all and (max-width: 840px) {
             width: 100%;
