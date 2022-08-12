@@ -23,6 +23,9 @@
                     <li><a href="#">Карта сайта</a></li> -->
                 </ul>
             </div>
+            <a href="https://myosminozhka.ru/" target="_blank" class="footer__popup_link">
+                <img src="~/assets/img/osm_logo.svg" width="100%" alt="">
+            </a>
         </div>
     </footer>   
 </template>
@@ -121,10 +124,11 @@ export default {
         transition: 1s bottom 0.5s ease;
         @media all and (max-width: 1280px) {
             padding: 30px 20px;
-            align-items: flex-start;
+            // align-items: flex-start;
         }
         @media all and (max-width: 840px) {
             flex-direction: column;
+            align-items: flex-start;
         }
     }
     &__bottom_left {
@@ -135,7 +139,7 @@ export default {
         color: #FFFFFF;
         @media all and (max-width: 1280px) {
             font-size: 18px;
-            width: 50%;
+            // width: 50%;
         }
         @media all and (max-width: 840px) {
             width: 100%;
@@ -144,10 +148,11 @@ export default {
     }
     &__bottom_right {
         @media all and (max-width: 1280px) {
-            width: 50%;
+            // width: 50%;
         }
         @media all and (max-width: 840px) {
             width: 100%;
+            margin-bottom: 19px;
         }
         ul {
             display: flex;
@@ -200,6 +205,11 @@ export default {
                 
             }
         }
+    }
+    &__popup_link {
+        display: block;
+        font-size: 0;
+        width: 169px;
     }
 }
 </style>

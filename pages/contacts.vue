@@ -2,7 +2,7 @@
     <div class="wrapper">
         <osm-header />
         <!-- <pre style="font-size: 15rem;">
-          {{ getContacts }}
+          {{ contacts }}
         </pre> -->
         <div class="contacts" v-if="getContacts">
             <div class="header_padding">
@@ -91,9 +91,9 @@
                 </div>
               </div>
               <div class="name">{{ item.NAME }}</div>
-              <div v-if="item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST').length" class="position">{{ item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
+              <!-- <div v-if="item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST').length" class="position">{{ item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
               <a v-if="item.PROPERIES.filter(elem => elem.CODE === 'PHONE').length" :href="`tel:${item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE}`" class="phone">{{ item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE }}</a>
-              <a v-if="item.PROPERIES.filter(elem => elem.CODE === 'EMAIL').length" :href="`mailto:${item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE}`" class="email">{{ item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE }}</a>
+              <a v-if="item.PROPERIES.filter(elem => elem.CODE === 'EMAIL').length" :href="`mailto:${item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE}`" class="email">{{ item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE }}</a> -->
             </div>
           </div>
         </section>
@@ -121,7 +121,8 @@ export default {
       ...mapGetters(['getAbout']),
       ...mapGetters(['getDownloads']),
       contacts() {
-        return this.getContacts[0].PROPERIES.filter(contact => contact.CODE !== 'VK' && contact.CODE !== 'INSTAGRAM' && contact.CODE !== 'TELEGRAM' && contact.CODE !== 'FACEBOOK' && contact.CODE !== 'TWITTER')
+        return this.getContacts
+        // return this.getContacts[0].PROPERIES.filter(contact => contact.CODE !== 'VK' && contact.CODE !== 'INSTAGRAM' && contact.CODE !== 'TELEGRAM' && contact.CODE !== 'FACEBOOK' && contact.CODE !== 'TWITTER')
       }
     },
     created() {
@@ -159,9 +160,14 @@ export default {
     &__top {
         display: flex;
         // align-items: center;
-        margin-bottom: rem(120);
+        @media all and (min-width: 1281px) {
+          position: relative;
+          padding: rem(50);
+          margin-bottom: rem(120);
+        }
         @media all and (max-width: 840px) {
             flex-direction: column;
+            margin-bottom: 50px;
         }
     }
     &__title {
@@ -178,6 +184,12 @@ export default {
     }
     &__left {
         width: calc(100% - #{rem(852)});
+        @media all and (min-width: 1281px) {
+          position: relative;
+          z-index: 5;
+          background: #fff;
+          padding: rem(50);
+        }
         @media all and (max-width: 1280px) {
             width: 50%;
         }
@@ -186,8 +198,15 @@ export default {
         }
     }
     &__right {
-        width: rem(832);
-        margin-left: rem(20);
+        @media all and (min-width: 1281px) {
+          width: 100%;
+          margin-left: rem(20);
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+        }
         @media all and (max-width: 1280px) {
             width: 50%;
             margin-left: 0;
@@ -195,6 +214,7 @@ export default {
         @media all and (max-width: 840px) {
             margin-top: 20px;
             width: 100%;
+            height: 410px;
         }
     }
     &__item {

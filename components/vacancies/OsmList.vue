@@ -5,6 +5,7 @@
         <div class="list__items" v-if="isMounted">
             <div class="list__item" v-for="item in vacancies" :key="item.index">
                 <div class="list__item_title">{{ item.NAME }}</div>
+                <div v-if="'OKLAD' in item" class="list__item_price">{{ item.OKLAD.VALUE }}</div>
                 <div class="list__item_info">
                     <div class="list__item_info--item" v-for="prop in item.PROPERIES" :key="prop.index">
                         <template v-if="prop.CODE !== 'YSL'">
@@ -54,9 +55,17 @@ export default {
 .list {
     padding: rem(120) rem(240);
     background: #F2F2F2;
-
+    
     @media all and (max-width: 1280px) {
         padding: 60px 20px;
+    }
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: rem(20);
+        @media all and (max-width: 860px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
     &__title {
         font-style: normal;
@@ -73,9 +82,9 @@ export default {
     &__item {
         background: #fff;
         padding: rem(40) rem(50);
-        &:not(:last-child) {
-            margin-bottom: rem(10);
-        }
+        // &:not(:last-child) {
+            //     margin-bottom: rem(10);
+        // }
         @media all and (max-width: 860px) {
             padding: 30px;
         }
@@ -83,24 +92,35 @@ export default {
     &__item_title {
         font-style: normal;
         font-weight: 600;
+        font-size: rem(24);
+        margin-bottom: rem(10);
+        line-height: 140%;
+        color: #172242;
+    }
+    &__item_price {
+        font-style: normal;
+        font-weight: 400;
         font-size: rem(20);
-        margin-bottom: rem(16);
+        margin-bottom: rem(24);
         line-height: 140%;
         color: #172242;
     }
     &__item_info {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr );
-        grid-gap: rem(30);
-        @media all and (max-width: 1280px) {
-            grid-template-columns: repeat(3, 1fr );
-        }
-        @media all and (max-width: 840px) {
-            grid-template-columns: repeat(1, 1fr );
-            grid-gap: rem(10);
-        }
+        // display: grid;
+        // grid-template-columns: repeat(4, 1fr );
+        // grid-gap: rem(30);
+        // @media all and (max-width: 1280px) {
+        //     grid-template-columns: repeat(3, 1fr );
+        // }
+        // @media all and (max-width: 840px) {
+        //     grid-template-columns: repeat(1, 1fr );
+        //     grid-gap: rem(10);
+        // }
     }
     &__item_info--item {
+        &:not(:last-child) {
+            margin-bottom: rem(15);
+        }
         .title {
             font-style: normal;
             font-weight: 400;
@@ -120,14 +140,14 @@ export default {
                 font-size: 16px;
             }
         }
-        &:nth-child(1) {
-            max-width: rem(158);
-        }
-        &:nth-child(3) {
-            max-width: rem(310);
-        }
+        // &:nth-child(1) {
+        //     max-width: rem(158);
+        // }
+        // &:nth-child(3) {
+        //     max-width: rem(310);
+        // }
         @media all and (max-width: 1280px) {
-            max-width: 100% !important;
+            // max-width: 100% !important;
             &:not(:last-child) {
                 margin-bottom: 20px;
             }

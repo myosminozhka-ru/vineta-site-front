@@ -59,6 +59,9 @@
                     <li><a href="#">Карта сайта</a></li> -->
                 </ul>
             </div>
+            <a href="https://myosminozhka.ru/" target="_blank" class="section__popup_link">
+                <img src="~/assets/img/osm_logo.svg" width="100%" alt="">
+            </a>
         </div>
     </section>
 </template>
@@ -399,6 +402,11 @@ export default {
                 }
             }
         }
+    }
+    &__popup_link {
+        display: block;
+        font-size: 0;
+        width: rem(169);
     }
     &.isActive &__popup {
         bottom: 0;

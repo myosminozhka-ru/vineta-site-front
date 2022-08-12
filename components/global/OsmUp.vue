@@ -51,7 +51,7 @@ export default {
         width: 67px;
         height: 67px;
         right: 15px;
-        bottom: 30px;
+        bottom: 104px;
     }
     &.isVisible {
         opacity: 1;
