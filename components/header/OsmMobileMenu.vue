@@ -15,7 +15,7 @@
         <nav class="menu__links">
           <ul>
             <li class="menu__links_li has-child">
-              <a :to="{name: 'catalog'}" @click.prevent>
+              <nuxt-link :to="localePath({name: 'catalog'})" @click.prevent>
                   <div class="text">Каталог</div>
                   <div class="arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
@@ -25,10 +25,10 @@
                   <!-- <div v-if="link.childs" class="header__arrow">
                       <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
                   </div> -->
-              </a>
+              </nuxt-link>
               <ul v-if="getCatalog">
                 <li v-for="child in getCatalog" :key="child.index">
-                  <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: child.CODE}}">
+                  <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: child.CODE}})">
                   <div class="icon">
                     <img :src="$vareibles.remote + child.PICTURE" width="100%" alt="">
                   </div>
@@ -38,7 +38,7 @@
               </ul>
             </li>
             <li v-for="link in menu" :key="link.index" class="menu__links_li" :class="{'has-child': link.childs, 'isOpened': link.isOpened}">
-              <nuxt-link :to="{name: link.url}">
+              <nuxt-link :to="localePath({name: link.url})">
                   <div class="text">{{ link.text }}</div>
                   <div class="arrow" v-if="link.childs">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
@@ -51,7 +51,7 @@
               </nuxt-link>
               <ul v-if="link.childs">
                 <li v-for="child in link.childs" :key="child.index">
-                  <nuxt-link :to="{name: child.url}">
+                  <nuxt-link :to="localePath({name: child.url})">
                     <div class="icon">
                       <img :src="child.icon" width="100%" alt="">
                     </div>

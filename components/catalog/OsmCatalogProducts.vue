@@ -1,7 +1,7 @@
 <template>
     <div class="products">
         <div class="products__items" v-if="products">
-            <nuxt-link class="products__item" v-for="product in filteredProducts" :key="product.ID" :to="{name: 'catalog-catalogId-productId', params: {productId: product.CODE}}">
+            <nuxt-link class="products__item" v-for="product in filteredProducts" :key="product.ID" :to="localePath({name: 'catalog-catalogId-productId', params: {productId: product.CODE}})">
                 <!-- <pre style="font-size: 15rem">{{ product }}</pre> -->
                 <div class="products__item_image">
                     <div class="image_container">

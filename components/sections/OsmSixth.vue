@@ -21,7 +21,7 @@
                                 <div class="image">
                                     <img :src="$vareibles.remote + item.PICTURE" width="100%" alt="">
                                 </div>
-                                <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: item.CODE}}" class="text">{{ item.NAME }}</nuxt-link>
+                                <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: item.CODE}})" class="text">{{ item.NAME }}</nuxt-link>
                             </div>
                         </div>
                     </div>

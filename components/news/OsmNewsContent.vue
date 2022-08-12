@@ -1,6 +1,6 @@
 <template>
     <div class="news__content_in">
-        <nuxt-link :to="{name: 'news-newsId', params: {newsId: 'test'}}" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+        <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: 'test'}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
             <template v-if="key === 0">
                 <div class="news__image">
                     <img :src="item.image" width="100%" alt="">

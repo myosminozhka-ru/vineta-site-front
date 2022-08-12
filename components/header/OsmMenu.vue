@@ -5,7 +5,7 @@
     </pre> -->
     <ul class="header__ul hide_on_mobile">
       <li class="header__li has-child" @mouseenter.stop="openModal(123)" :data-modal-to-open="123">
-        <nuxt-link class="header__link" :to="{name: 'catalog'}" @click.stop="">
+        <nuxt-link class="header__link" :to="localePath({name: 'catalog'})" @click.stop="">
             <span>Каталог</span>
             <div class="header__arrow">
                 <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
@@ -13,7 +13,7 @@
         </nuxt-link>
       </li>
       <li v-for="(link, key) in menu" :key="link.index" class="header__li" @mouseenter.stop="openModal(key)" :data-modal-to-open="key" :class="{'has-child': link.childs}">
-        <nuxt-link class="header__link" :to="{name: link.url}" @click.stop="">
+        <nuxt-link class="header__link" :to="localePath({name: link.url})" @click.stop="">
             <span>{{ link.text }}</span>
             <div v-if="link.childs" class="header__arrow">
                 <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
@@ -28,7 +28,7 @@
           <ul class="menu__modal_menu">
             <li v-for="category in getCatalog" :key="category.ID">
               <!-- <pre style="font-size: 15rem">{{ category }}</pre> -->
-              <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE }}">
+              <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: category.CODE }})">
                 <div class="icon">
                   <img :src="$vareibles.remote + category.PICTURE" width="100%" alt="">
                 </div>
@@ -63,7 +63,7 @@
           <osm-h2 class="menu__modal_title">О компании</osm-h2>
           <ul class="menu__modal_menu">
             <li v-for="item in submenu.childs" :key="item.index">
-              <nuxt-link :to="{name: item.url}">
+              <nuxt-link :to="localePath({name: item.url})">
                 <div class="icon">
                   <img :src="item.icon" width="100%" alt="">
                 </div>

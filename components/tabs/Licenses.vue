@@ -14,7 +14,7 @@
                   @click="index = key">
                   <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                 </li>
-                <nuxt-link :to="{name: 'licenses'}" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
+                <nuxt-link :to="localePath({name: 'licenses'})" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
                   <div class="text">Смотреть все</div>
                 </nuxt-link>
               </ul>
@@ -56,7 +56,7 @@
                     @click="index = key">
                     <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                   </li>
-                  <nuxt-link :to="{name: 'licenses'}"
+                  <nuxt-link :to="localePath({name: 'licenses'})"
                     class="licensesSlid__slide licensesSlid__slide--last glide__slide">
                     <div class="text">Смотреть все</div>
                   </nuxt-link>
@@ -64,7 +64,7 @@
               </div>
             </div>
             <div class="licensesSlid__arrows">
-              <nuxt-link :to="{name: 'licenses'}" class="more">Смотреть все</nuxt-link>
+              <nuxt-link :to="localePath({name: 'licenses'})" class="more">Смотреть все</nuxt-link>
               <div class="licensesSlid__arrows-in" data-glide-el="controls">
                 <button class="licensesSlid__arrow licensesSlid__arrow--left" data-glide-dir="<">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">

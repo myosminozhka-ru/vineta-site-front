@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link :to="{ name: 'index' }" class="header__logo">
+    <nuxt-link :to="localePath({ name: 'index' })" class="header__logo">
         <object :data="require(`~/assets/img/logo.svg`)" width="100%" class="header__object" />
     </nuxt-link>
 </template>

@@ -5,7 +5,7 @@
             <osm-button class="news__button_top" link="news" :outlined="true">Все новости</osm-button>
         </div>
         <div class="news__bottom hide_on_tablet">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
                 <template v-if="key === 0">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -58,7 +58,7 @@
                             </div>
                             <osm-button :link="item.link" class="hide_on_mobile">Подробнее</osm-button>
                             <div class="mobile_link hide_off_mobile">
-                                <nuxt-link class="more" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</nuxt-link>
+                                <nuxt-link class="more" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})">Читать новость</nuxt-link>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                 <div class="news__bullets hide_on_mobile" data-glide-el="controls[nav]">
                     <button v-for="(item, key) in getNews.slice(0, 4)" :key="key" class="news__bullet" :data-glide-dir="`=${key}`">{{ key+1 }}</button>
                 </div>
-                <nuxt-link :to="{name: 'news'}" class="more hide_off_mobile">Смотреть все</nuxt-link>
+                <nuxt-link :to="localePath({name: 'news'})" class="more hide_off_mobile">Смотреть все</nuxt-link>
                 <div class="news__arrows" data-glide-el="controls">
                     <button class="news__arrow news__arrow--left" data-glide-dir="<">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">

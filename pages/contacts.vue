@@ -183,7 +183,7 @@ export default {
         }
     }
     &__left {
-        width: calc(100% - #{rem(852)});
+        width: rem(461);
         @media all and (min-width: 1281px) {
           position: relative;
           z-index: 5;
@@ -253,8 +253,9 @@ export default {
     }
     &__button {
         margin-top: rem(30);
+        width: 100%;
         @media all and (max-width: 1280px) {
-            width: 300px;
+            // width: 300px;
             margin-top: 30px;
         }
         @media all and (max-width: 840px) {

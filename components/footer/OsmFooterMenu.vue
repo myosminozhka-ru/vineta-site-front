@@ -2,19 +2,19 @@
     <nav class="footer__menu">
         <ul>
             <li>
-                <nuxt-link :to="{name: 'about'}">О компании</nuxt-link>
+                <nuxt-link :to="localePath({name: 'about'})">О компании</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="{name: 'catalog'}">Каталог</nuxt-link>
+                <nuxt-link :to="localePath({name: 'catalog'})">Каталог</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="{name: 'news'}">Новости</nuxt-link>
+                <nuxt-link :to="localePath({name: 'news'})">Новости</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="{name: 'vacancies'}">Вакансии</nuxt-link>
+                <nuxt-link :to="localePath({name: 'vacancies'})">Вакансии</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="{name: 'contacts'}">Контакты</nuxt-link>
+                <nuxt-link :to="localePath({name: 'contacts'})">Контакты</nuxt-link>
             </li>
         </ul>
         <ul>
@@ -33,7 +33,7 @@
         </ul>
         <ul class="opened">
             <li>
-                <nuxt-link :to="{name: 'index'}">Контакты</nuxt-link>
+                <nuxt-link :to="localePath({name: 'index'})">Контакты</nuxt-link>
             </li>
             <li>
                 <span>620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500</span>

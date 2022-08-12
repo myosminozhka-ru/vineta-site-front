@@ -38,7 +38,7 @@
               <div class="text">В избранное</div>
             </osm-button>
           </div>
-          <nuxt-link :to="{name: 'index'}" class="productPage__link">
+          <nuxt-link :to="localePath({name: 'index'})" class="productPage__link">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 15 21" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M6.33396 17.2091L6.33396 0H8.18582L8.18581 17.2091L12.4977 12.8972C12.8593 12.5356 13.4456 12.5356 13.8072 12.8972C14.1688 13.2588 14.1688 13.845 13.8072 14.2066L7.91462 20.0992C7.55302 20.4608 6.96676 20.4608 6.60516 20.0992L0.712604 14.2066C0.351007 13.845 0.351007 13.2588 0.712604 12.8972C1.0742 12.5356 1.66046 12.5356 2.02206 12.8972L6.33396 17.2091Z" fill="#FF0040"/>
@@ -917,11 +917,11 @@
     &__mods--chars {
       padding: rem(40);
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: rem(30);
+      grid-template-columns: repeat(1, 1fr);
+      // grid-gap: rem(30);
 
       @media all and (max-width: 1440px) {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         padding: 30px;
       }
 
@@ -935,10 +935,14 @@
     }
 
     &__mods--char {
+      padding: rem(10) 0;
+      &:not(:last-child) {
+        border-bottom: 1px solid #F2F2F2;
+      }
       @media all and (max-width: 840px) {
-        display: flex;
-        align-self: start;
-        padding-bottom: 15px;
+        // display: flex;
+        // align-self: start;
+        // padding-bottom: 15px;
         border-bottom: 2px solid #D7DCE1;
       }
     }
@@ -958,15 +962,15 @@
       line-height: 110%;
       color: #172242;
 
-      @media all and (max-width: 860px) {
-        width: 50%;
-        margin-right: 10px;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 140%;
-        color: #172242;
-      }
+      // @media all and (max-width: 860px) {
+      //   width: 50%;
+      //   margin-right: 10px;
+      //   font-style: normal;
+      //   font-weight: 400;
+      //   font-size: 12px;
+      //   line-height: 140%;
+      //   color: #172242;
+      // }
     }
 
     &__mods--char_value {
@@ -976,15 +980,15 @@
       line-height: 140%;
       color: #555F76;
 
-      @media all and (max-width: 860px) {
-        width: calc(50% - 10px);
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 140%;
-        text-align: right;
-        color: #555F76;
-      }
+      // @media all and (max-width: 860px) {
+      //   width: calc(50% - 10px);
+      //   font-style: normal;
+      //   font-weight: 400;
+      //   font-size: 12px;
+      //   line-height: 140%;
+      //   text-align: right;
+      //   color: #555F76;
+      // }
     }
 
     &__mods--mods_title {

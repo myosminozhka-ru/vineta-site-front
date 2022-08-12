@@ -1,7 +1,8 @@
 <template>
     <div class="news__content_in">
-        <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
-        <!-- <pre style="font-size: 15rem">{{ item }}</pre> -->
+        <!-- <pre style="font-size: 15rem">{{ getNews }}</pre>
+        <pre style="font-size: 15rem">{{ getSelectedNewsType }}</pre> -->
+        <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
             <template v-if="key === 0">
                 <div class="news__image">
                     <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -35,7 +36,7 @@
                 </div>
             </template>
         </nuxt-link>
-        <div class="filter__title" :class="{'isActive': tabs.selected === 1}" @click="tabs.selected = 1">
+        <div class="filter__title hide_off_mobile" :class="{'isActive': tabs.selected === 1}" @click="tabs.selected = 1">
             Новости
             <div class="arrow hide_on_desktop">
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -43,8 +44,8 @@
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs" v-if="tabs.selected === 1">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 1">
+            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -62,7 +63,7 @@
                 </div>
             </nuxt-link>
         </div>
-        <div class="filter__title" :class="{'isActive': tabs.selected === 2}" @click="tabs.selected = 2">
+        <div class="filter__title hide_off_mobile" :class="{'isActive': tabs.selected === 2}" @click="tabs.selected = 2">
             Пресс-релизы
             <div class="arrow hide_on_desktop">
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -70,8 +71,8 @@
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs" v-if="tabs.selected === 2">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 2">
+            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -89,7 +90,7 @@
                 </div>
             </nuxt-link>
         </div>
-        <div class="filter__title" :class="{'isActive': tabs.selected === 3}" @click="tabs.selected = 3">
+        <div class="filter__title hide_off_mobile" :class="{'isActive': tabs.selected === 3}" @click="tabs.selected = 3">
             Статьи
             <div class="arrow hide_on_desktop">
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -97,8 +98,8 @@
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs" v-if="tabs.selected === 3">
-            <nuxt-link :to="{name: 'news-newsId', params: {newsId: item.CODE}}" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 3">
+            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
                         <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
@@ -132,7 +133,7 @@ export default {
         ...mapGetters(['getNews']),
         ...mapGetters(['getSelectedNewsType']),
         news() {
-            return this.getNews.filter(item => item.PROPERIES[1].VALUE === this.getSelectedNewsType)
+            return this.getNews.filter(item => item.PROPERIES[1].VALUE.replace(/\s/g, '') === this.getSelectedNewsType.replace(/\s/g, ''))
         }
     }
 }

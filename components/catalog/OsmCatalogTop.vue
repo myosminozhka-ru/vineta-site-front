@@ -3,7 +3,7 @@
     <h1 class="catalog__header_left">{{ title }}</h1>
     <div class="catalog__header_right">
       <!-- <pre style="font-size: 15rem">{{ getDownloads }}</pre> -->
-      <nuxt-link :to="{name: 'index'}" class="catalog__header_btn hide_on_mobile">
+      <nuxt-link :to="localePath({name: 'index'})" class="catalog__header_btn hide_on_mobile">
         <div class="text">Лодки и катера</div>
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="a" viewBox="0 0 72 72">

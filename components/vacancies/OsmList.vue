@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="list__item_button">
-                    <nuxt-link :to="{name: 'vacancies-itemId', params: {itemId: item.CODE}}" class="button">Подробнее</nuxt-link>
+                    <nuxt-link :to="localePath({name: 'vacancies-itemId', params: {itemId: item.CODE}})" class="button">Подробнее</nuxt-link>
                 </div>
             </div>
         </div>

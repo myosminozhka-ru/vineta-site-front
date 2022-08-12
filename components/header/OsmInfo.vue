@@ -18,9 +18,14 @@
             </div>
         </nuxt-link>
         <div class="header__langs hide_on_mobile">
-            <nuxt-link :to="{ name: 'index' }" class="isActive">Ру</nuxt-link>
+            {{ $i18n.locale }}
+            <nuxt-link
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            :to="switchLocalePath(locale.code)">{{ locale.name }}</nuxt-link>
+            <!-- <nuxt-link :to="{ name: 'index' }" class="isActive">Ру</nuxt-link>
             <div class="delim">/</div>
-            <nuxt-link :to="{ name: 'index' }">En</nuxt-link>
+            <nuxt-link :to="{ name: 'index' }">En</nuxt-link> -->
         </div>
         <a href="tel:+78124935048" class="header__phone">+7 (812) 493-50-48</a>
         <div class="header__button header__button--phone hide_off_mobile">
@@ -38,6 +43,10 @@ export default {
     }),
     computed: {
         ...mapGetters('localStorage', ['getFavorites']),
+        availableLocales () {
+            // return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
+            return this.$i18n.locales;
+        }
     },
     methods: {
         ...mapActions(['toggleModal']),

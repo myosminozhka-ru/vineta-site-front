@@ -54,7 +54,7 @@
           <div class="second__side_top">
             <div class="second__title">
               <div class="text">Каталог</div>
-              <nuxt-link :to="{name: 'catalog'}" class="second__title_button">
+              <nuxt-link :to="localePath({name: 'catalog'})" class="second__title_button">
                 <svg width="100%" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L8 9L1 17" stroke="white" stroke-width="2" />
                 </svg>
@@ -62,7 +62,7 @@
             </div>
             <div class="second__items">
               <nuxt-link v-for="link in getAbout.sections" :key="link.index"
-                :to="{name: 'catalog-catalogId', params: {catalogId: link.CODE}}" class="second__item">
+                :to="localePath({name: 'catalog-catalogId', params: {catalogId: link.CODE}})" class="second__item">
                 <div class="icon">
                   <img :src="require('~/assets/img/about/cat_icon.svg')" width="100%" alt="">
                 </div>

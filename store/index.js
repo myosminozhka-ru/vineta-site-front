@@ -133,6 +133,7 @@ export const actions = {
   },
   addMainMore(context) {
     return new Promise((resolve, reject) => {
+      console.log('addMainMore');
       this.$axios.$get('main.php')
         .then((response) => {
           resolve(response);
@@ -294,6 +295,7 @@ export const actions = {
     await dispatch('addPartners');
     await dispatch('addProducts');
     await dispatch('addDownloads');
+    console.log('fetch data');
   }
 }
 

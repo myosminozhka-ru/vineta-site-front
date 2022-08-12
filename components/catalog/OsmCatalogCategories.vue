@@ -1,16 +1,16 @@
 <template>
     <div class="categories">
         <div class="categories__item" v-for="category in getCatalog" :key="category.ID">
-            <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE}}" class="categories__item_image">
+            <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: category.CODE}})" class="categories__item_image">
                 <div class="image_container">
                     <img v-if="category.DETAIL_PICTURE" :src="$vareibles.remote + category.DETAIL_PICTURE" alt="">
                     <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
                 </div>
             </nuxt-link >
-            <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: category.CODE}}" class="categories__item_name">{{ category.NAME }}</nuxt-link>
+            <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: category.CODE}})" class="categories__item_name">{{ category.NAME }}</nuxt-link>
             <ul class="categories__item_childs" v-if="category.CHILD">
                 <li class="categories__item_child" v-for="child in category.CHILD" :key="child.index">
-                    <nuxt-link :to="{name: 'catalog-catalogId', params: {catalogId: child.CODE}}">{{ child.NAME }}</nuxt-link>
+                    <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: child.CODE}})">{{ child.NAME }}</nuxt-link>
                 </li>
             </ul>
         </div>

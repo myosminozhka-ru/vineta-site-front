@@ -1,5 +1,5 @@
 <template>
-    <nuxt-link :to="{name: 'index'}" class="category">
+    <nuxt-link :to="localePath({name: 'index'})" class="category">
         <div class="category__background">
             <img :src="require('~/assets/img/cat.jpg')" alt="">
         </div>

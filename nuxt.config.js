@@ -27,6 +27,8 @@ export default {
   plugins: [
     '~/plugins/tabs.js',
     '~/plugins/vars.js',
+    '~/plugins/i18n.js',
+    '~/plugins/axios.js',
     // '~/plugins/vue-meta.js',
     { src: '~/plugins/print.js', ssr: false },
     { src: '~/plugins/lightgallery.js', ssr: false }
@@ -47,8 +49,24 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@openafg/nuxt-fullpage',
-    'nuxt-vuex-localstorage'
+    'nuxt-vuex-localstorage',
+    '@nuxtjs/i18n'
   ],
+
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        name: 'English'
+      },
+      {
+        code: 'ru',
+        name: 'Русский'
+      },
+    ],
+    defaultLocale: 'ru',
+    strategy: 'prefix',
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
