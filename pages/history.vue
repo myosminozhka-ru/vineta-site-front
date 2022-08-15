@@ -12,7 +12,7 @@
                 <div class="history__bottom">
                     <div class="history__text">
                         <div class="history__text--left" v-for="(item, key) in getHistory" :key="item.index" :class="{'isActive': key === selectedTime}">
-                            <p v-html="item.PREVIEW_TEXT" />
+                            <p v-html="decodeHTML(item.PREVIEW_TEXT)" />
                         </div>
                         <div class="history__text--buttons hide_on_tablet">
                             <div @click="prev">
@@ -104,6 +104,13 @@ export default {
         prev() {
             if (this.selectedTime <= 0) return;
             this.selectedTime--;
+        },
+        decodeHTML(html) {
+            if (document) {
+                const txt = document.createElement("textarea");
+                txt.innerHTML = html;
+                return txt.value;
+            }
         }
     }
 }
