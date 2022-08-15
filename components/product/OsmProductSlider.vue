@@ -98,7 +98,8 @@
                         </div>
                     </template> -->
                 <div class="productPage__slider-buttons">
-                    <div class="productPage__slider-button productPage__slider-button--more" v-if="'MORE_PHOTO' in data">
+                    <!-- <div class="productPage__slider-button productPage__slider-button--more" v-if="'MORE_PHOTO' in data"> -->
+                    <div class="productPage__slider-button productPage__slider-button--more" v-if="false">
                         <div class="text">
                             Еще 10
                         </div>

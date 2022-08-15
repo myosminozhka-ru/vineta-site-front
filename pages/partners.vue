@@ -2,7 +2,7 @@
     <div class="wrapper">
         <osm-header />
         <div class="partners">
-            <pre style="font-size: 15rem;">{{ getPartners }}</pre>
+            <!-- <pre style="font-size: 15rem;">{{ getPartners }}</pre> -->
             <div class="header_padding" v-if="getPartners">
                 <osm-breadcrumbs />
                 <div class="partners__title">Основные заказчики и партнёры</div>
