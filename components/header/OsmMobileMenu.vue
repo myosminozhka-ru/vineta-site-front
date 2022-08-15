@@ -15,7 +15,7 @@
         <nav class="menu__links">
           <ul>
             <li class="menu__links_li has-child">
-              <nuxt-link :to="localePath({name: 'catalog'})" @click.prevent>
+              <nuxt-link :to="localePath({name: 'catalog'})">
                   <div class="text">Каталог</div>
                   <div class="arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
@@ -28,12 +28,12 @@
               </nuxt-link>
               <ul v-if="getCatalog">
                 <li v-for="child in getCatalog" :key="child.index">
-                  <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: child.CODE}})">
-                  <div class="icon">
-                    <img :src="$vareibles.remote + child.PICTURE" width="100%" alt="">
-                  </div>
-                  <div class="text">{{ child.NAME }}</div>
-                </nuxt-link>
+                  <a :href="localePath({name: 'catalog-catalogId', params: {catalogId: child.CODE}})">
+                    <div class="icon">
+                      <img :src="$vareibles.remote + child.PICTURE" width="100%" alt="">
+                    </div>
+                    <div class="text">{{ child.NAME }}</div>
+                  </a>
                 </li>
               </ul>
             </li>

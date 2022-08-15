@@ -1046,7 +1046,7 @@
 			<!-- <pre>
 				{{ secondData.PROPERIES }}
 			</pre> -->
-              <video v-if="'VIDEO' in secondData.PROPERIES" controls="false" :src="$vareibles.remote + secondData.PROPERIES.VIDEO.VALUE.SRC"
+              <video v-if="'VIDEO' in secondData.PROPERIES" :class="{isVideoPlayed}" controls="false" :src="$vareibles.remote + secondData.PROPERIES.VIDEO.VALUE.SRC"
                 :type="secondData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" :poster="'VIDEO_PREVIEW' in secondData.PROPERIES ? $vareibles.remote + secondData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC : require('~/assets/img/product.noimage.png')" />
               <div class="tiles__item-bottom" v-if="!isVideoPlayed" @click="playVideo">
                 <div class="icon">
@@ -1393,7 +1393,7 @@
         height: 100%;
         object-fit: cover;
         object-position: 50% 50%;
-		&::-webkit-media-controls {
+		&:not(.isVideoPlayed)::-webkit-media-controls {
 			display: none;
 		}
       }

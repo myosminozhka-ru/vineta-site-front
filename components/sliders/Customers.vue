@@ -72,6 +72,9 @@ export default {
                         perView: 3
                     },
                     840: {
+                        perView: 2
+                    },
+                    600: {
                         perView: 1
                     }
                 }

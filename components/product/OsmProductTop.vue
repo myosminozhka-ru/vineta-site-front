@@ -29,7 +29,8 @@ export default {
     },
     methods: {
       printSection() {
-        this.$htmlToPaper("wrapper");
+        window.print();
+        // this.$htmlToPaper("wrapper");
       }
     },
 }

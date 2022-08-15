@@ -4,7 +4,7 @@
     <osm-catalog-top />
     <osm-catalog-categories />
     <div class="catalog__header_right hide_off_mobile">
-      <nuxt-link :to="localePath({name: 'index'})" class="catalog__header_btn">
+      <a href="https://vinetaboat.ru/" target="_blank" class="catalog__header_btn">
         <div class="text">Лодки и катера</div>
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="a" viewBox="0 0 72 72">
@@ -30,7 +30,7 @@
               d="M64.55,60.06c-8.2,0-7.84-4.92-14.16-4.92-6.32,0-5.96,4.92-14.16,4.92h0c-8.2,0-7.84-4.92-14.16-4.92-6.32,0-5.96,4.92-14.16,4.92" />
           </svg>
         </div>
-      </nuxt-link>
+      </a>
       <nuxt-link :to="localePath({name: 'index'})" class="catalog__header_link">
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 15 21" fill="none">

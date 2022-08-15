@@ -215,7 +215,7 @@ export default {
                 font-size: 20px;    
             }
         }
-        &:hover {
+        &:hover, &:active {
             .text {
                 color: #000;
             }
@@ -242,6 +242,16 @@ export default {
             }
             .arrow {
                 transform: rotate(180deg);
+            }
+            @media all and (max-width: 1280px) {
+                &:hover, &:active {
+                    .text {
+                        color: #fff;
+                    }
+                    .arrow {
+                        filter: invert(0);
+                    }
+                }
             }
         }
     }

@@ -71,7 +71,7 @@
             </div>
           </div>
           <div class="second__buttons">
-            <osm-button class="second__button">
+            <a href="https://vinetaboat.ru/" target="_blank" class="second__button button">
               <div class="text">
                 Лодки и катера
               </div>
@@ -99,7 +99,7 @@
                     d="M64.55,60.06c-8.2,0-7.84-4.92-14.16-4.92-6.32,0-5.96,4.92-14.16,4.92h0c-8.2,0-7.84-4.92-14.16-4.92-6.32,0-5.96,4.92-14.16,4.92" />
                 </svg>
               </div>
-            </osm-button>
+            </a>
           </div>
         </div>
       </section>
@@ -391,7 +391,7 @@
     }
 
     &__button {
-      display: flex;
+      display: inline-flex;
       align-items: center;
 
       @media all and (max-width: 1280px) {

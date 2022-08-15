@@ -59,7 +59,7 @@
       <div class="productPage__mods">
         <div class="productPage__mods--tabs hide_on_tablet">
           <div class="titles">
-            <div @click.prevent="tabs.selected = 1">
+            <div @click.prevent="tabs.selected = 1" v-if="'DETAIL_TEXT' in product[0]">
               <osm-button class="productPage__mods--opener" :class="{'isActive': tabs.selected === 1}" :outlined="true">
                 Описание</osm-button>
             </div>
@@ -73,18 +73,11 @@
             </div>
           </div>
           <div class="tabs">
-            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 1">
+            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0]">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
-                  Безусловно, социально-экономическое развитие требует определения и уточнения системы массового
-                  участия. В рамках спецификации современных стандартов, действия представителей оппозиции формируют
-                  глобальную экономическую сеть и при этом - ассоциативно распределены по отраслям. Приятно, граждане,
-                  наблюдать, как интерактивные прототипы, превозмогая сложившуюся непростую экономическую ситуацию,
-                  преданы социально-демократической анафеме. Повседневная практика показывает, что граница обучения
-                  кадров не даёт нам иного выбора, кроме определения укрепления моральных ценностей. Вот вам яркий
-                  пример современных тенденций - экономическая повестка сегодняшнего дня требует анализа своевременного
-                  выполнения сверхзадачи.
+                  {{ product[0].DETAIL_TEXT }}
                 </div>
               </div>
               <div class="productPage__buttons">
@@ -180,7 +173,7 @@
         </div>
         <div class="productPage__mods--tabs hide_on_desktop">
           <div class="tabs">
-            <div class="tabs__opener" :class="{'isActive': tabs.selected === 1}" @click.prevent="tabs.selected = 1">
+            <div v-if="'DETAIL_TEXT' in product[0]" class="tabs__opener" :class="{'isActive': tabs.selected === 1}" @click.prevent="tabs.selected = 1">
               <div class="text">Описание</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
@@ -189,18 +182,11 @@
                 </svg>
               </div>
             </div>
-            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 1">
+            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0]">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
-                  Безусловно, социально-экономическое развитие требует определения и уточнения системы массового
-                  участия. В рамках спецификации современных стандартов, действия представителей оппозиции формируют
-                  глобальную экономическую сеть и при этом - ассоциативно распределены по отраслям. Приятно, граждане,
-                  наблюдать, как интерактивные прототипы, превозмогая сложившуюся непростую экономическую ситуацию,
-                  преданы социально-демократической анафеме. Повседневная практика показывает, что граница обучения
-                  кадров не даёт нам иного выбора, кроме определения укрепления моральных ценностей. Вот вам яркий
-                  пример современных тенденций - экономическая повестка сегодняшнего дня требует анализа своевременного
-                  выполнения сверхзадачи.
+                  {{ product[0].DETAIL_TEXT }}
                 </div>
               </div>
               <div class="productPage__buttons">
@@ -529,6 +515,9 @@
 
     &__analogs {
       margin-top: rem(118);
+      @media print {
+        display: none;
+      }
 
       * {
         white-space: normal;
@@ -587,6 +576,9 @@
 
     &__mods {
       padding-top: rem(60);
+      @media print {
+        display: none;
+      }
     }
 
     &__mods--tabs {
@@ -664,6 +656,9 @@
         margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
+        @media all and (max-width: 860px) {
+          font-size: 18px;
+        }
       }
 
       .value {
@@ -778,6 +773,9 @@
       margin-top: rem(40);
       display: flex;
       align-items: center;
+      @media print {
+        display: none;
+      }
 
       @media all and (max-width: 840px) {
         flex-direction: column;

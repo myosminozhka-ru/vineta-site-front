@@ -18,7 +18,7 @@
                 </template>
             </div>
             <div class="seacrhModal__items" @click.stop>
-                <nuxt-link :to="`/catalog/${product.SECTION.CODE}/${product.CODE}`" class="seacrhModal__item" v-for="product in productsResult.slice(0, 4)" :key="product.index">
+                <nuxt-link :to="localePath(`/catalog/${product.SECTION.CODE}/${product.CODE}`)" class="seacrhModal__item" v-for="product in productsResult.slice(0, 4)" :key="product.index">
                     <div class="products__item_image">
                         <div class="image_container">
                             <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">

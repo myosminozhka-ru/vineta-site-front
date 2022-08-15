@@ -3,7 +3,7 @@
     <h1 class="catalog__header_left">{{ title }}</h1>
     <div class="catalog__header_right">
       <!-- <pre style="font-size: 15rem">{{ getDownloads }}</pre> -->
-      <nuxt-link :to="localePath({name: 'index'})" class="catalog__header_btn hide_on_mobile">
+      <a href="https://vinetaboat.ru/" target="_blank" class="catalog__header_btn hide_on_mobile">
         <div class="text">Лодки и катера</div>
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="a" viewBox="0 0 72 72">
@@ -29,7 +29,7 @@
               d="M64.55,60.06c-8.2,0-7.84-4.92-14.16-4.92-6.32,0-5.96,4.92-14.16,4.92h0c-8.2,0-7.84-4.92-14.16-4.92-6.32,0-5.96,4.92-14.16,4.92" />
           </svg>
         </div>
-      </nuxt-link>
+      </a>
       <template v-if="getDownloads['katalog-produktsii']">
         <a v-if="'PROPERIES' in getDownloads['katalog-produktsii']" :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank" class="catalog__header_link">
           <div class="icon">

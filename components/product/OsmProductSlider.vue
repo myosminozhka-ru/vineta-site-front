@@ -354,6 +354,9 @@ export default {
         display: flex;
         flex-direction: column;
         margin-left: rem(24);
+        @media print {
+            display: none;
+        }
         @media all and (max-width: 1440px) {
             width: 77px;
             margin-left: 20px;

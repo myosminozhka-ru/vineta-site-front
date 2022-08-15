@@ -138,8 +138,10 @@
             type: 'carousel',
             breakpoints: {
               840: {
-                perView: 1,
-                gap: 20
+                  perView: 2
+              },
+              600: {
+                  perView: 1
               }
             }
           }).mount()

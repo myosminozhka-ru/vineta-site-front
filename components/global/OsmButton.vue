@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nuxt-link v-if="link" :to="{ name: link }" class="button" :class="{'isOutlined': outlined, 'isLarge': large}"><slot/></nuxt-link>
+        <nuxt-link v-if="link" :to="localePath({ name: link })" class="button" :class="{'isOutlined': outlined, 'isLarge': large}"><slot/></nuxt-link>
         <button v-else class="button" :class="{'isOutlined': outlined, 'isLarge': large}" :type="type"><slot/></button>
     </div>
 </template>

@@ -49,7 +49,8 @@ export default {
     methods: {
       ...mapActions(['addBreadcrumbs']),
       printSection() {
-        this.$htmlToPaper("wrapper");
+        // this.$htmlToPaper("wrapper");
+        window.print();
       }
     },
 }
