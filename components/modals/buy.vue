@@ -10,8 +10,16 @@
                 <div class="modal__form_in" v-if="!isSuccess">
                     <div class="modal__title">Оставить заявку</div>
                     <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
+                        <!-- <pre>
+                        {{ field }} 
+                        </pre> -->
                         <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
-                        <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input modal__input" v-model="formData[field.VARNAME]">
+                        <template v-if="field.VARNAME === 'GOOD'">
+                            <input type="hidden" v-model="formData[field.VARNAME]"/>
+                        </template>
+                        <template v-else>
+                            <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input modal__input" v-model="formData[field.VARNAME]">
+                        </template>
                         <!-- <osm-input class="modal__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
                     </div>
                     <!-- <osm-input class="modal__input" placeholder="Компания *" :required="true"/> -->
@@ -51,6 +59,9 @@ export default {
         //         }
         //     })
         // }
+    },
+    mounted() {
+        this.formData.GOOD = window.location.href;
     },
     async fetch() {
         this.fields = await this.$axios.$get('forms/order.php');

@@ -82,6 +82,10 @@ export default {
         }
         @media all and (max-width: 840px) {
             flex-direction: column;
+            span {
+                display: block;
+                width: 100%;
+            }
         }
     }
     &__button {

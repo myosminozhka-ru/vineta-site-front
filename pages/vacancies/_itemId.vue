@@ -59,6 +59,11 @@ export default {
         this.vacancy = await this.$axios.$get(`vacancy-detail.php?code=${this.$route.params.itemId}`)
         this.addBreadcrumbs([
             {
+                name: 'Главная',
+                link: 'index',
+                isLink: true
+            },
+            {
                 name: 'Вакансии',
                 link: 'vacancies',
                 isLink: true

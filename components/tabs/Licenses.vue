@@ -1,9 +1,7 @@
 <template>
   <div class="licenses">
     <osm-h2 class="licenses__title">Лицензии и сертификаты</osm-h2>
-    <!-- <ClientOnly>
-      <LightGallery :images="imagesGallery" :index="index" :disable-scroll="true" @close="index = null" v-if="isMounted" />
-    </ClientOnly> -->
+    
     <tabs class="hide_on_mobile" @clicked="tabClicked" @changed="tabChanged" :options="{ useUrlFragment: false }">
       <tab v-for="tab in tabs" :key="tab.index" :name="tab">
         <div class="licensesSlid glide">
@@ -11,7 +9,7 @@
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
                 <li v-for="(item, key) in getLicenses" :key="item.index" class="licensesSlid__slide glide__slide"
-                  @click="index = key">
+                  @click="setGalleryIndex(key)">
                   <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                 </li>
                 <nuxt-link :to="localePath({name: 'licenses'})" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
@@ -53,7 +51,7 @@
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
                   <li v-for="(item, key) in getLicenses" :key="item.index" class="licensesSlid__slide glide__slide"
-                    @click="index = key">
+                    @click="setGalleryIndex(key)">
                     <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                   </li>
                   <nuxt-link :to="localePath({name: 'licenses'})"
@@ -90,7 +88,8 @@
 <script>
   import Glide from '@glidejs/glide';
   import {
-    mapGetters
+    mapGetters,
+    mapActions
   } from 'vuex';
   export default {
     name: 'LicensesTabs',
@@ -101,27 +100,11 @@
       tabs: ['Лицензии и сертификаты', 'Благодарственные письма и отзывы', 'Отчеты СОУП и аттестации'],
       slider: null,
       isMounted: false,
-      gallery: [
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-        require('~/assets/img/licenses/license2.png'),
-      ],
       index: null,
     }),
     computed: {
         ...mapGetters(['getLicenses']),
+        ...mapGetters(['galleryIndex']),
         imagesGallery() {
             return this.getLicenses.map(item => {
                 return this.$vareibles.remote + item.PREVIEW_PICTURE;
@@ -136,9 +119,12 @@
         this.initSlider();
         this.initAccordions();
         this.isMounted = true;
-      }, 1000)
+      }, 1000);
+      // this.setGalleryIndex(2);
+      console.log('galleryIndex', this.galleryIndex);
     },
     methods: {
+      ...mapActions(['setGalleryIndex']),
       tabClicked(selectedTab) {
         // console.log('Current tab re-clicked:' + selectedTab.tab.name);
       },

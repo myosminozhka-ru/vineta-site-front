@@ -14,6 +14,7 @@ export const state = () => ({
   selectedNewsType: 'Новости',
   downloads: [],
   breadcrumbs: [],
+  galleryIndex: null,
   modals: {
     buy: {
       isOpened: false
@@ -34,6 +35,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  setGalleryIndex(state, data) {
+    state.galleryIndex = data
+  },
   addBreadcrumbs(state, data) {
     state.breadcrumbs = data
   },
@@ -99,6 +103,9 @@ export const mutations = {
 export const actions = {
   addBreadcrumbs(context, data) {
     context.commit('addBreadcrumbs', data);
+  },
+  setGalleryIndex(context, data) {
+    context.commit('setGalleryIndex', data);
   },
   addSelectedNewsType(context, data) {
     context.commit('addSelectedNewsType', data);
@@ -347,5 +354,8 @@ export const getters = {
   },
   getDownloads(state) {
     return state.downloads;
+  },
+  galleryIndex(state) {
+    return state.galleryIndex;
   },
 }

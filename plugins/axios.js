@@ -3,7 +3,7 @@ export default function ({ $axios, redirect, app, $i18n }) {
     //   console.log(app.i18n.localeProperties.code)
       config.params = {
         ...config.params,
-        LANG: app.i18n.localeProperties.code,
+        lang: app.i18n.localeProperties.code,
       };
     });
 }

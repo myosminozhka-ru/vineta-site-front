@@ -147,13 +147,14 @@ export default {
 <style lang="scss" scoped>
 .contacts {
     padding: rem(30) rem(240) rem(120);
+    background: #fff;
     @media all and (max-width: 840px) {
         overflow: hidden;
     }
-    @media all and (max-width: 1440px) {
-        padding-right: 150px;
-        padding-left: 150px;
-    }
+    // @media all and (max-width: 1440px) {
+    //     padding-right: 150px;
+    //     padding-left: 150px;
+    // }
     @media all and (max-width: 1280px) {
         padding: 30px 20px;
     }
@@ -200,7 +201,7 @@ export default {
     &__right {
         @media all and (min-width: 1281px) {
           width: 100%;
-          margin-left: rem(20);
+          // margin-left: rem(20);
           position: absolute;
           left: 0;
           right: 0;

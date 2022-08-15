@@ -19,7 +19,7 @@
                         <div class="catalog__item" v-for="item in getCatalog" :key="item.index">
                             <div class="catalog__item_in">
                                 <div class="image">
-                                    <img :src="$vareibles.remote + item.PICTURE" width="100%" alt="">
+                                    <img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="">
                                 </div>
                                 <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: item.CODE}})" class="text">{{ item.NAME }}</nuxt-link>
                             </div>

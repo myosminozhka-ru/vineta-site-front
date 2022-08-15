@@ -15,6 +15,9 @@
       <osm-seventh-section :class="{'isActive': activeIndex === 6}" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>
       <osm-footer-section :class="{'isActive': activeIndex === 7}" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"/>
       <osm-preloader />
+      <ClientOnly>
+        <LightGallery :images="imagesGallery" :index="galleryIndex" :disable-scroll="true" @close="setGalleryIndex(null)" v-if="isMounted" />
+      </ClientOnly>
     </div>
   </div>
 </template>
@@ -22,7 +25,7 @@
 <script>
 // import $ from 'jquery';
 // import 'pagepiling-js-version-kostyast/jquery.pagepiling.min.js';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'IndexPage',
   components: {
@@ -41,10 +44,18 @@ export default {
     activeIndex: -1,
     sections: [],
     isInProgress: false,
+    isMounted: false
   }),
   computed: {
     ...mapGetters(['getMain']),
     ...mapGetters(['getMainMore']),
+    ...mapGetters(['getLicenses']),
+    ...mapGetters(['galleryIndex']),
+    imagesGallery() {
+        return this.getLicenses.map(item => {
+            return this.$vareibles.remote + item.PREVIEW_PICTURE;
+        });
+    },
     activeSection: {
       get() {
         return this.activeIndex;
@@ -61,7 +72,7 @@ export default {
     });
   },
   mounted() {
-    
+    this.isMounted = true;
     // console.log('getMainMore', this.getMainMore)
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1;
@@ -89,6 +100,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['setGalleryIndex']),
     change(direction) {
       if (this.isInProgress) return;
       

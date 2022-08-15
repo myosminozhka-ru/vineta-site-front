@@ -18,8 +18,10 @@
         <div class="productPage__text--title">Основные характеристики</div>
         <div class="productPage__texts" v-if="'PROPERIES' in product[0]">
           <div class="productPage__text" v-for="item in product[0].PROPERIES" :key="item.index">
-            <div class="title">{{ item.NAME }}</div>
-            <div class="value">{{ item.VALUE }}</div>
+            <template v-if="item.NAME.replace(/\s/g, '') !== ''">
+              <div class="title">{{ item.NAME }}</div>
+              <div class="value">{{ item.VALUE }}</div>
+            </template>
           </div>
         </div>
         <div class="productPage__buttons">
@@ -353,8 +355,10 @@
                   <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                   <div class="products__item_properties">
                     <div class="products__item_property" v-for="property in prod.PROPERIES" :key="property.index">
-                      <div class="name">{{ property.NAME }}</div>
-                      <div class="value">{{ property.VALUE }}</div>
+                      <template v-if="property.NAME.replace(/\s/g, '') !== ''">
+                        <div class="name">{{ property.NAME }}</div>
+                        <div class="value">{{ property.VALUE }}</div>
+                      </template>
                     </div>
                   </div>
                 </div>
@@ -443,6 +447,11 @@
       this.addBreadcrumbs([
         {
             name: 'Главная',
+            link: 'index',
+            isLink: true
+        },
+        {
+            name: 'Каталог',
             link: 'catalog',
             isLink: true
         },

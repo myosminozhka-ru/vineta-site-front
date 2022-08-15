@@ -63,6 +63,11 @@ export default {
         this.detail = await this.$axios.$get(`news-detail.php?code=${this.$route.params.newsId}`);
         this.addBreadcrumbs([
             {
+                name: 'Главная',
+                link: 'index',
+                isLink: true
+            },
+            {
                 name: 'Новости',
                 link: 'news',
                 isLink: true

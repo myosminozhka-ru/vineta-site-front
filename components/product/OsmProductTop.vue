@@ -1,6 +1,9 @@
 <template>
     <div class="product__header">
-        <h1 class="product__header_left" v-if="data">{{ data.NAME }}</h1>
+        <div class="product__header_row">
+            <h1 class="product__header_left" v-if="'NAME' in data">{{ data.NAME }}</h1>
+            <div class="product__header_mods hide_on_tablet">13 модификаций</div>
+        </div>
         <div class="product__header_right">
             
             <span class="product__header_btn hide_on_mobile" @click="printSection">
@@ -34,6 +37,20 @@ export default {
 
 <style lang="scss" scoped>
 .product {
+    &__header_row {
+        display: flex;
+        align-items: center;
+    }
+    &__header_mods {
+        padding: rem(10) rem(17);
+        margin-left: rem(40);
+        border: 1px solid #D7DCE1;
+        font-style: normal;
+        font-weight: 400;
+        font-size: rem(14);
+        line-height: 140%;
+        color: #555F76;
+    }
     &__header {
         display: flex;
         align-items: center;

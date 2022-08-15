@@ -47,6 +47,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.products {
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
 .products__item_button {
     width: calc(100% + #{rem(40)});
     margin-top: rem(20);
