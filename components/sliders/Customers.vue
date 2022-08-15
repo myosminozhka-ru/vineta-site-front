@@ -1,5 +1,6 @@
 <template>
-    <div class="customers glide">
+    <div class="customers glide" v-if="fivethData.filter(item => item.PREVIEW_PICTURE).length">
+    <!-- <pre>{{ fivethData.filter(item => item.PREVIEW_PICTURE) }}</pre> -->
         <client-only>
             <osm-h2 class="customers__top">
                 <osm-h2 class="customers__title">Заказчики</osm-h2>

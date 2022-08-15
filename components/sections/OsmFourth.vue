@@ -1,13 +1,13 @@
 <template>
-    <section class="section section__item section__item--fourth">
+    <section class="section section__item section__item--fourth" v-if="fourthData">
         <!-- <pre style="font-size: 15rem">{{ fourthData }}</pre> -->
-        <div class="section__left" v-if="fourthData">
+        <div class="section__left">
             <template v-if="'PROPERIES' in fourthData">
                 <video v-if="'VIDEO' in fourthData.PROPERIES" controls="false" :src="$vareibles.remote + fourthData.PROPERIES.VIDEO.SRC"
                 :type="fourthData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" :poster="'VIDEO_PREVIEW' in fourthData.PROPERIES ? $vareibles.remote + fourthData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC : require('~/assets/img/product.noimage.png')" />
             </template>
         </div>
-        <div class="section__right" v-if="fourthData">
+        <div class="section__right">
             <!-- <pre style="font-size: 15rem">{{ getMainMore }}</pre> -->
             <div class="section__content">
                 <osm-h1 class="section__title">{{ fourthData.NAME }}</osm-h1>

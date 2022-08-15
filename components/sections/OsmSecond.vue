@@ -1,5 +1,5 @@
 <template>
-  <section class="section section__item section__item--second section__item--dark" v-if="secondData">
+  <section class="section section__item section__item--second section__item--dark">
     <div class="section__left section__left--fullwidth">
       <div class="section__left_image_wrap">
         <svg v-if="isMounted" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
@@ -1014,7 +1014,7 @@
       <!-- <img :src="$vareibles.remote + secondData.PREVIEW_PICTURE" alt="first" width="100%"> -->
     </div>
     <div class="section__right">
-      <div class="section__content">
+      <div class="section__content" v-if="'PROPERIES' in secondData">
         <div class="mobile_left">
           <osm-h1 class="section__title">{{ secondData.NAME }}</osm-h1>
           <div class="section__text">

@@ -1,17 +1,16 @@
 <template>
     <div class="wrapper">
         <osm-header />
-        <!-- <pre style="font-size: 15rem;">
-          {{ contacts }}
-        </pre> -->
-        <div class="contacts" v-if="getContacts">
+        <!-- <pre>{{ getContacts }}</pre> -->
+        <div class="contacts" v-if="'0' in getContacts">
             <div class="header_padding">
                 <osm-breadcrumbs />
                 <div class="contacts__top">
                     <div class="contacts__left">
-                        <div class="contacts__title">{{ getContacts[0].NAME }}</div>
-                        <div class="contacts__items">
-                          <div class="contacts__item" v-for="contact in contacts" :key="contact.index">
+                        <div class="contacts__title">{{ getContacts['0'].NAME }}</div>
+                        <div class="contacts__items" v-if="'PROPERIES' in getContacts['0']">
+                          <div class="contacts__item" v-for="contact in getContacts['0'].PROPERIES" :key="contact.CODE">
+                            
                             <template v-if="contact.CODE === 'PHONE'">                              
                               <a :href="`tel:${contact.VALUE}`" class="contacts__item_in">
                                 <div class="icon">
@@ -44,15 +43,14 @@
                                   <div class="text">{{ contact.VALUE }}</div>
                               </div>
                             </template>
-                            <template v-else-if="contact.CODE === 'NAME_EMAIL'"><span></span></template>
-                            <template v-else>
+                            <!-- <template v-else>
                               <div class="contacts__item_in">
                                   <div class="icon">
                                       <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
                                   </div>
                                   <div class="text">{{ contact.VALUE }}</div>
                               </div>
-                            </template>
+                            </template> -->
                             <!-- {{ contact.CODE }} -->
                             <!-- <a href="mailto:info@vineta.ru" class="contacts__item_in">
                                 <div class="icon">
@@ -62,16 +60,18 @@
                             </a> -->
                           </div>
                         </div>
-                        <a :href="$vareibles.remote + getDownloads[0].PROPERIES[0].VALUE.SRC" target="_blank" class="button contacts__button">
-                            <div class="contacts__button_in">
-                                <div class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 21 28" fill="none">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.44661 19.2741L9.44661 0H11.5207L11.5207 19.2741L16.35 14.4448C16.755 14.0398 17.4116 14.0398 17.8166 14.4448C18.2216 14.8498 18.2216 15.5064 17.8166 15.9114L11.2169 22.5111C10.812 22.9161 10.1553 22.9161 9.75036 22.5111L3.15069 15.9114C2.7457 15.5064 2.7457 14.8498 3.15069 14.4448C3.55568 14.0398 4.2123 14.0398 4.61728 14.4448L9.44661 19.2741ZM20.854 26.963C20.854 27.5357 20.3897 28 19.817 28H1.15032C0.577579 28 0.113281 27.5357 0.113281 26.963V26.963C0.113281 26.3902 0.577579 25.9259 1.15032 25.9259H19.817C20.3897 25.9259 20.854 26.3902 20.854 26.963V26.963Z" fill="white"/>
-                                    </svg>
-                                </div>
-                                <div class="text">Скачать реквизиты</div>
-                            </div>
-                        </a>
+                        <template v-if="getDownloads['rekvizity']">
+                          <a v-if="'PROPERIES' in getDownloads['rekvizity']" :href="$vareibles.remote + getDownloads['rekvizity'].PROPERIES[0].VALUE.SRC" target="_blank" class="button contacts__button">
+                              <div class="contacts__button_in">
+                                  <div class="icon">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 21 28" fill="none">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.44661 19.2741L9.44661 0H11.5207L11.5207 19.2741L16.35 14.4448C16.755 14.0398 17.4116 14.0398 17.8166 14.4448C18.2216 14.8498 18.2216 15.5064 17.8166 15.9114L11.2169 22.5111C10.812 22.9161 10.1553 22.9161 9.75036 22.5111L3.15069 15.9114C2.7457 15.5064 2.7457 14.8498 3.15069 14.4448C3.55568 14.0398 4.2123 14.0398 4.61728 14.4448L9.44661 19.2741ZM20.854 26.963C20.854 27.5357 20.3897 28 19.817 28H1.15032C0.577579 28 0.113281 27.5357 0.113281 26.963V26.963C0.113281 26.3902 0.577579 25.9259 1.15032 25.9259H19.817C20.3897 25.9259 20.854 26.3902 20.854 26.963V26.963Z" fill="white"/>
+                                      </svg>
+                                  </div>
+                                  <div class="text">Скачать реквизиты</div>
+                              </div>
+                          </a>
+                        </template>
                     </div>
                     <div class="contacts__right">
                         <osm-map />

@@ -18,11 +18,9 @@
             </div>
         </nuxt-link>
         <div class="header__langs hide_on_mobile">
-            {{ $i18n.locale }}
-            <nuxt-link
-            v-for="locale in availableLocales"
-            :key="locale.code"
-            :to="switchLocalePath(locale.code)">{{ locale.name }}</nuxt-link>
+            <nuxt-link :to="switchLocalePath('en')" :class="{'isActive': $i18n.locale === 'en'}">En</nuxt-link>
+            <div class="delim">/</div>
+            <nuxt-link :to="switchLocalePath('ru')" :class="{'isActive': $i18n.locale === 'ru'}">Ру</nuxt-link>
             <!-- <nuxt-link :to="{ name: 'index' }" class="isActive">Ру</nuxt-link>
             <div class="delim">/</div>
             <nuxt-link :to="{ name: 'index' }">En</nuxt-link> -->

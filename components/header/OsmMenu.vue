@@ -37,22 +37,22 @@
             </li>
           </ul>
         </div>
-        <div class="menu__modal_bottom">
+        <div class="menu__modal_bottom" v-if="getDownloads['katalog-produktsii']">
           <osm-h2 class="menu__modal_title">Загрузки</osm-h2>
-          <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC" class="menu__modal_file">
+          <a target="_blank" v-if="'PROPERIES' in getDownloads['katalog-produktsii']" :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" class="menu__modal_file">
             <div class="icon">
               <img src="~/assets/img/download.svg" width="100%" alt="">
             </div>
             <div class="text">
-              <div class="top">{{ getMainMore.downloads[0].NAME }}</div>
+              <div class="top">{{ getDownloads['katalog-produktsii'].NAME }}</div>
               <div class="bottom">
-                <span>PDF</span>
+                <span>DOCX</span>
                 <div class="delim">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
                     <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599"/>
                   </svg>
                 </div>
-                <span>30.2 МБ</span>
+                <span>30 КБ</span>
               </div>
             </div>
           </a>
@@ -72,14 +72,14 @@
             </li>
           </ul>
         </div>
-        <div class="menu__modal_bottom">
+        <div class="menu__modal_bottom" v-if="getDownloads['katalog-produktsii']">
           <osm-h2 class="menu__modal_title">Загрузки</osm-h2>
-          <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC" class="menu__modal_file">
+          <a target="_blank" v-if="'PROPERIES' in getDownloads['katalog-produktsii']" :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" class="menu__modal_file">
             <div class="icon">
               <img src="~/assets/img/download.svg" width="100%" alt="">
             </div>
             <div class="text">
-              <div class="top">{{ getMainMore.downloads[0].NAME }}</div>
+              <div class="top">{{ getDownloads['katalog-produktsii'].NAME }}</div>
               <div class="bottom">
                 <span>DOCX</span>
                 <div class="delim">
@@ -129,6 +129,7 @@ import { mapGetters ,mapActions } from 'vuex';
       },
       ...mapGetters(['getCatalog']),
       ...mapGetters(['getMainMore']),
+      ...mapGetters(['getDownloads']),
       ...mapGetters('localStorage', ['getFavorites']),
     },
     data: () => ({

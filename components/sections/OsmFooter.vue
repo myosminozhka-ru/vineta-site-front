@@ -52,13 +52,16 @@
         <osm-footer class="section__footer hide_on_desktop" />
         <div class="section__popup hide_on_tablet">
             <div class="section__popup_left">ООО “Винета”, 2012-2022</div>
-            <div class="section__popup_right">
-                <ul>
-                    <li v-if="getDownloads[1]"><a :href="$vareibles.remote + getDownloads[1].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a></li>
-                    <!-- <li><a href="#">Пользовательское соглашение</a></li>
-                    <li><a href="#">Карта сайта</a></li> -->
-                </ul>
-            </div>
+            
+            <template v-if="getDownloads['politika-konfedentsialnosti']">
+                <div class="section__popup_right" v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']">
+                    <ul>
+                        <li><a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a></li>
+                        <!-- <li><a href="#">Пользовательское соглашение</a></li>
+                        <li><a href="#">Карта сайта</a></li> -->
+                    </ul>
+                </div>
+            </template>
             <a href="https://myosminozhka.ru/" target="_blank" class="section__popup_link">
                 <img src="~/assets/img/osm_logo.svg" width="100%" alt="">
             </a>

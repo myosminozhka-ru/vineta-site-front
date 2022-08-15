@@ -1,7 +1,5 @@
 <template>
     <div class="news__content_in">
-        <!-- <pre style="font-size: 15rem">{{ getNews }}</pre>
-        <pre style="font-size: 15rem">{{ getSelectedNewsType }}</pre> -->
         <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
             <template v-if="key === 0">
                 <div class="news__image">
@@ -133,7 +131,7 @@ export default {
         ...mapGetters(['getNews']),
         ...mapGetters(['getSelectedNewsType']),
         news() {
-            return this.getNews.filter(item => item.PROPERIES[1].VALUE.replace(/\s/g, '') === this.getSelectedNewsType.replace(/\s/g, ''))
+            return this.getNews.filter(item => item.PROPERIES[1].VALUE.replace(/\s/g, '').toLowerCase().includes(this.getSelectedNewsType.replace(/\s/g, '').toLowerCase()));
         }
     }
 }

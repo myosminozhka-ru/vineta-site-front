@@ -56,16 +56,17 @@ export default {
   i18n: {
     locales: [
       {
-        code: 'en',
-        name: 'English'
+        code: 'ru',
+        name: 'RU'
       },
       {
-        code: 'ru',
-        name: 'Русский'
+        code: 'en',
+        name: 'EN'
       },
     ],
     defaultLocale: 'ru',
     strategy: 'prefix',
+    detectBrowserLanguage: false
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

@@ -2,20 +2,20 @@
     <div class="wrapper">
         <osm-header />
         <div class="partners">
-            <!-- <pre style="font-size: 15rem;">{{ getPartners }}</pre> -->
+            <pre style="font-size: 15rem;">{{ getPartners }}</pre>
             <div class="header_padding" v-if="getPartners">
                 <osm-breadcrumbs />
                 <div class="partners__title">Основные заказчики и партнёры</div>
                 <div class="partners__items">
                     <div class="partners__item" v-for="item in getPartners" :key="item.index">
                         <div class="partners__item_top">
-                            <div class="partners__item_logo">
+                            <div class="partners__item_logo" v-if="'PREVIEW_PICTURE' in item">
                                 <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                             </div>
-                            <div class="partners__item_text">
-                                С 2008 года «Альфеус-Фидс» является официальным дистрибьютором компании «Coppens International» (Нидерланды) на территории Российской Федерации.
+                            <div class="partners__item_text" v-if="'PREVIEW_TEXT' in item">
+                                {{ item.PREVIEW_TEXT }}
                             </div>
-                            <div class="partners__contact_items">
+                            <div class="partners__contact_items" v-if="'PROPERIES' in item">
                                 <div class="partners__contact_item">
                                     <div class="icon">
                                         <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
@@ -87,6 +87,49 @@
 import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "LicensesPage",
+    head() {
+      return {
+        title: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.TITLE : '',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.DESCRIPTION : 'DESCRIPTION'
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.KEYWORDS : ''
+          },
+          {
+            hid: 'twitter:card',
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
+            hid: 'twitter:url',
+            name: 'twitter:url',
+            content: 'https://vineta.fvds.ru/'
+          },
+          {
+            hid: 'twitter:title',
+            name: 'twitter:title',
+            content: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.TITLE : '',
+          },
+          {
+            hid: 'twitter:description',
+            name: 'twitter:description',
+            content: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.DESCRIPTION : '',
+          },
+          {
+            hid: 'twitter:imag',
+            name: 'twitter:imag',
+            content: this.getPartners && 'PREVIEW_PICTURE' in this.getPartners ? this.$vareibles.remote + this.getPartners.PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          },
+        ]
+      }
+    },
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),

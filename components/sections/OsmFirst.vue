@@ -1,5 +1,5 @@
 <template>
-  <section class="section section__item section__item--first" v-if="firstData">
+  <section class="section section__item section__item--first">
     <div class="section__left">
       <div class="section__left_image_wrap">
         <svg v-if="isMounted" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
@@ -1600,16 +1600,15 @@
 
         <img :class="{'isClipped': isMounted}" class="section__left_image_clipped" :src="require('~/assets/img/sections/first.png')"
           height="100%" alt="">
-        <!-- <img class="section__left_image_clipped" :src="$vareibles.remote + firstData.PREVIEW_PICTURE" alt="first"> -->
       </div>
     </div>
     <div class="section__right">
-      <div class="section__content">
+      <div class="section__content" v-if="'PROPERIES' in firstData">
         <osm-h1 class="section__title">{{ firstData.NAME }}</osm-h1>
         <div class="section__text">
           {{ firstData.PREVIEW_TEXT }}
         </div>
-        <osm-button v-if="firstData.PROPERIES" class="section__button" link="catalog">{{ firstData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
+        <osm-button v-if="'NAME_BUTTON' in firstData.PROPERIES" class="section__button" link="catalog">{{ firstData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
       </div>
     </div>
   </section>
@@ -1636,7 +1635,7 @@
 	},
     components: {
       OsmH1: () => import('~/components/global/OsmH1.vue'),
-      OsmButton: () => import('~/components/global/OsmButton.vue'),
+    //   OsmButton: () => import('~/components/global/OsmButton.vue'),
     },
     computed: {
       ...mapGetters(['getMain']),

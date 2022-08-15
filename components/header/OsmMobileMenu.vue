@@ -4,9 +4,9 @@
       <div>
         <div class="menu__top">
           <div class="menu__langs">
-            <nuxt-link :to="{ name: 'index' }" class="isActive">Ру</nuxt-link>
+            <nuxt-link :to="switchLocalePath('en')" :class="{'isActive': $i18n.locale === 'en'}">En</nuxt-link>
             <div class="delim">/</div>
-            <nuxt-link :to="{ name: 'index' }">En</nuxt-link>
+            <nuxt-link :to="switchLocalePath('ru')" :class="{'isActive': $i18n.locale === 'ru'}">Ру</nuxt-link>
           </div>
           <div class="menu__closer" @click="closeMenu">
             <img :src="require('~/assets/img/closer.svg')" width="100%" alt="">

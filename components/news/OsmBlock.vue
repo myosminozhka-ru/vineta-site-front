@@ -30,8 +30,7 @@
                     </div>
                     <div class="news__item_right">
                         <div class="news__item_top">
-                            <!-- <pre>{{ item }}</pre> -->
-                            <div class="news__date" v-if="item.PROPERIES[0]">{{ item.PROPERIES[0].VALUE }}</div>
+                            <div class="news__date" v-if="'PROPERIES' in item">{{ item.PROPERIES[0].VALUE }}</div>
                             <div class="news__text">
                                 {{ item.NAME }}
                             </div>
@@ -103,25 +102,27 @@ export default {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   data: () => ({
-    slider: new Glide('.news__slider', {
-        perView: 2,
-        gap: 20,
-        type: 'carousel',
-        breakpoints: {
-            1280: {
-                perView: 2,
-            },
-            840: {
-                perView: 1,
-            }
-        }
-    }),
+    slider: null,
   }),
   computed: {
     ...mapGetters(['getNews']),
   },
   mounted() {
-    this.slider.mount();
+    if (document.querySelector('.news__slider')) {
+        this.slider = new Glide('.news__slider', {
+            perView: 2,
+            gap: 20,
+            type: 'carousel',
+            breakpoints: {
+                1280: {
+                    perView: 2,
+                },
+                840: {
+                    perView: 1,
+                }
+            }
+        }).mount();
+    }
   }
 }
 </script>

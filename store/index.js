@@ -132,6 +132,7 @@ export const actions = {
         .then((response) => {
           resolve(response);
           context.commit('addMain', response);
+          console.log('addMain', response);
         })
         .catch((error) => {
           reject(error)
@@ -145,6 +146,7 @@ export const actions = {
         .then((response) => {
           resolve(response);
           context.commit('addMainMore', response);
+          console.log('addMainMore', response);
         })
         .catch((error) => {
           reject(error)

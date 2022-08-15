@@ -1,5 +1,6 @@
 <template>
     <div class="osmMap">
+        <!-- <pre>{{ getContacts }}</pre> -->
         <div class="osmMap__in" id="osmMap"></div>
     </div>
 </template>
@@ -8,17 +9,15 @@
 
 <script>
 import mapboxgl from 'mapbox-gl';
+import { mapGetters } from 'vuex';
 export default {
     head: {
         link: [
             {rel: 'stylesheet', type: 'text/css', href: 'https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css'},
         ],
-        // script: [
-        //     {
-        //         src: "https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js",
-        //         // body: true,
-        //     },
-        // ],
+    },
+    computed: {
+        ...mapGetters(['getContacts']),
     },
     data: () => ({
         accessToken: 'pk.eyJ1IjoiZGVubnk3NDMiLCJhIjoiY2w2ZW9pcjk3MjhrcDNqcnozZmVweThkYiJ9.WY4UqSfHsmv4noUwv5pePQ', // your access token. Needed if you using Mapbox maps
@@ -30,7 +29,7 @@ export default {
             const map = new mapboxgl.Map({
                 container: 'osmMap', // container ID
                 style: 'mapbox://styles/denny743/cl6kl37wt001014o322cb10ah', // style URL
-                center: [30.5, 50.5], // starting position [lng, lat]
+                center: '0' in this.getContacts && 'GEO' in this.getContacts['0'] ? [30.5, 50.5] : [30.5, 50.5], // starting position [lng, lat]
                 zoom: 15, // starting zoom
                 projection: 'globe' // display the map as a 3D globe
             });
