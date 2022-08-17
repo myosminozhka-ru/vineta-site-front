@@ -7,42 +7,45 @@
                 <osm-breadcrumbs />
                 <div class="partners__title">Основные заказчики и партнёры</div>
                 <div class="partners__items">
-                    <div class="partners__item" v-for="item in getPartners" :key="item.index">
-                        <div class="partners__item_top">
-                            <div class="partners__item_logo" v-if="'PREVIEW_PICTURE' in item">
-                                <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
-                            </div>
-                            <div class="partners__item_text" v-if="'PREVIEW_TEXT' in item">
-                                {{ item.PREVIEW_TEXT }}
-                            </div>
-                            <div class="partners__contact_items" v-if="'PROPERIES' in item">
-                                <div class="partners__contact_item">
-                                    <div class="icon">
-                                        <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
-                                    </div>
-                                    <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
+                    <div v-for="item in getPartners" :key="item.index">
+                        <div class="partners__item" v-if="'PROPERIES' in item">
+                            <!-- <pre>{{ item }}</pre> -->
+                            <div class="partners__item_top">
+                                <div class="partners__item_logo" v-if="'PREVIEW_PICTURE' in item">
+                                    <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                                 </div>
-                                <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item">
-                                    <div class="icon">
-                                        <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
+                                <div class="partners__item_text" v-if="'PREVIEW_TEXT' in item">
+                                    {{ item.PREVIEW_TEXT }}
+                                </div>
+                                <div class="partners__contact_items" v-if="'PROPERIES' in item">
+                                    <div class="partners__contact_item">
+                                        <div class="icon">
+                                            <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
+                                        </div>
+                                        <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                                     </div>
-                                    <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
-                                </a>
-                                <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item">
-                                    <div class="icon">
-                                        <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
+                                    <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item">
+                                        <div class="icon">
+                                            <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
+                                        </div>
+                                        <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
+                                    </a>
+                                    <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item">
+                                        <div class="icon">
+                                            <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
+                                        </div>
+                                        <div class="text">{{item.PROPERIES[3].VALUE}}</div>
+                                    </a>
+                                    <div class="partners__contact_item">
+                                        <div class="icon">
+                                            <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="">
+                                        </div>
+                                        <div class="text">{{ item.PROPERIES[4].VALUE }}</div>
                                     </div>
-                                    <div class="text">{{item.PROPERIES[3].VALUE}}</div>
-                                </a>
-                                <div class="partners__contact_item">
-                                    <div class="icon">
-                                        <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="">
-                                    </div>
-                                    <div class="text">{{ item.PROPERIES[4].VALUE }}</div>
                                 </div>
                             </div>
+                            <osm-button link="catalog">В каталог</osm-button>
                         </div>
-                        <osm-button link="catalog">В каталог</osm-button>
                     </div>
                 </div>
                 <div class="partners__title">Дочерние предприятия</div>
@@ -79,6 +82,7 @@
                 </div>
             </div>
         </div>
+        <osm-footer />
         <osm-preloader />
     </div>
 </template>
@@ -132,12 +136,16 @@ export default {
     },
     components: {
         OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     },
     computed: {
         ...mapGetters(['getPartners']), 
+        // filteredPartners() {
+        //     return this.getPartners.filter(item => 'PROPERIES' in item);
+        // }
     },
     created() {
       this.addBreadcrumbs([
@@ -201,6 +209,7 @@ export default {
         }
     }
     &__item {
+        height: 100%;
         padding: rem(20);
         border: 1px solid #D7DCE1;
         display: flex;
@@ -214,6 +223,8 @@ export default {
         align-items: center;
         @media all and (max-width: 840px) {
             margin-bottom: 25px;
+            height: auto;
+            // justify-content: center;
         }
         img {
             max-height: 100%;

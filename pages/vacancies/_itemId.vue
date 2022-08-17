@@ -38,6 +38,7 @@
                     </ul>
                 </div> -->
             </div>
+            <osm-apply-modal :property="vacancy[0].NAME" />
         </div>
         <osm-response />
     </div>
@@ -50,6 +51,50 @@ export default {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmResponse: () => import('~/components/vacancies/OsmResponse.vue'),
+        OsmApplyModal: () => import('~/components/modals/apply.vue'), 
+    },
+    head() {
+      return {
+        title: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.DESCRIPTION : 'DESCRIPTION'
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.KEYWORDS : ''
+          },
+          {
+            hid: 'twitter:card',
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
+            hid: 'twitter:url',
+            name: 'twitter:url',
+            content: 'https://vineta.fvds.ru/'
+          },
+          {
+            hid: 'twitter:title',
+            name: 'twitter:title',
+            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
+          },
+          {
+            hid: 'twitter:description',
+            name: 'twitter:description',
+            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.DESCRIPTION : '',
+          },
+          {
+            hid: 'twitter:imag',
+            name: 'twitter:imag',
+            content: this.vacancy[0] && 'PREVIEW_PICTURE' in this.vacancy[0] ? this.$vareibles.remote + this.vacancy[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          },
+        ]
+      }
     },
     data: () => ({
         vacancy: null,

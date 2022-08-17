@@ -25,6 +25,49 @@
 import { mapGetters, mapActions } from 'vuex';
   export default {
     name: 'AboutPage',
+    head() {
+      return {
+        title: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.TITLE : '',
+        meta: [
+          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+          {
+            hid: 'description',
+            name: 'description',
+            content: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.DESCRIPTION : 'DESCRIPTION'
+          },
+          {
+            hid: 'keywords',
+            name: 'keywords',
+            content: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.KEYWORDS : ''
+          },
+          {
+            hid: 'twitter:card',
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
+            hid: 'twitter:url',
+            name: 'twitter:url',
+            content: 'https://vineta.fvds.ru/'
+          },
+          {
+            hid: 'twitter:title',
+            name: 'twitter:title',
+            content: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.TITLE : '',
+          },
+          {
+            hid: 'twitter:description',
+            name: 'twitter:description',
+            content: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.DESCRIPTION : '',
+          },
+          {
+            hid: 'twitter:imag',
+            name: 'twitter:imag',
+            content: this.getVacancies && 'PREVIEW_PICTURE' in this.getVacancies ? this.$vareibles.remote + this.getVacancies.PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          },
+        ]
+      }
+    },
     components: {
       OsmAdvantagies: () => import('~/components/vacancies/OsmAdvantagies.vue'),
       OsmResponse: () => import('~/components/vacancies/OsmResponse.vue'),

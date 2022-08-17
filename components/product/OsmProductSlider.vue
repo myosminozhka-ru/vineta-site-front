@@ -202,9 +202,9 @@ export default {
     }),
     mounted() {
         this.isMounted = true;
-        // setTimeout(() => {
-        //     this.slider.mount();
-        // }, 500)
+        setTimeout(() => {
+            this.slideTo(1);
+        }, 500)
     },
     methods: {
         slideTo(index) {

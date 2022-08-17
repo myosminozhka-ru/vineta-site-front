@@ -8,11 +8,14 @@
             </div>
             <form class="modal__form" @submit.prevent="sendForm" ref="buy_form">
                 <div class="modal__form_in" v-if="!isSuccess">
-                    <div class="modal__title">Оставить заявку</div>
+                    <div class="modal__title">Оставить заявку </div>
                     <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
                         <!-- <pre>{{ field }}</pre> -->
                         <template v-if="field.SID === 'VACANCY'">
-                            <input type="hidden" v-model="formData[field.SID]">
+                            <input type="hidden" v-model="formData[field.SID]" :name="field.SID">
+                        </template>
+                        <template v-else-if="field.SID === 'VACANCY_NAME'">
+                            <input type="hidden" v-model="formData[field.SID]" :name="field.SID">
                         </template>
                         <template v-else-if="field.FIELD_TYPE === 'file'">
                             <label>
@@ -44,6 +47,12 @@
 import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "OsmApplyModal",
+    props: {
+        property: {
+            type: String,
+            default: ''
+        }
+    },
     data: () => ({
         isSended: false,
         result: null,
@@ -68,6 +77,9 @@ export default {
     },
     mounted() {
         this.formData.VACANCY = window.location.href;
+        this.formData.VACANCY_NAME = this.property;
+
+        console.log(this.formData)
     },
     methods: {
       ...mapActions(['toggleModal']),

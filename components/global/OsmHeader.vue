@@ -40,5 +40,9 @@ export default {
         padding: 35px 20px 0;
         position: relative;
     }
+    @media all and (max-width: 860px) {
+        padding: 23px 20px 0;
+        position: relative;
+    }
 }
 </style>

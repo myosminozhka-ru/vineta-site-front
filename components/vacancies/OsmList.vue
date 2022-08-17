@@ -159,6 +159,9 @@ export default {
             margin-top: 30px;
             max-width: 209px;
         }
+        @media all and (max-width: 1280px) {
+            max-width: 100%;
+        }
     }
 }
 </style>

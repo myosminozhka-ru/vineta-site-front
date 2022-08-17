@@ -6,7 +6,6 @@
     </div>
     <osm-footer />
     <osm-preloader />
-    <osm-apply-modal />
   </div>
 </template>
 <script>
@@ -14,8 +13,7 @@
     name: 'AboutPage',
     components: {
       OsmHeader: () => import('~/components/global/OsmHeader.vue'),
-      OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-      OsmApplyModal: () => import('~/components/modals/apply.vue'),     
+      OsmFooter: () => import('~/components/global/OsmFooter.vue'),    
       OsmPreloader: () => import('~/components/global/OsmPreloader.vue')      
     },
   }

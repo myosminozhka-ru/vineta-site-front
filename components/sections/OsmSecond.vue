@@ -1021,7 +1021,7 @@
             {{ secondData.PREVIEW_TEXT }}
           </div>
           <div class="section__buttons hide_on_desktop hide_on_mobile">
-            <osm-button link="index" v-if="'NAME_BUTTON' in secondData.PROPERIES">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
+            <osm-button link="index" class="section__button" v-if="'NAME_BUTTON' in secondData.PROPERIES">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
             <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC"
               class="section__downloads">
               <div class="section__pdf">
@@ -1144,15 +1144,15 @@
 <style lang="scss" scoped>
   .section {
     &__left_image_wrap {
-      padding-left: rem(90);
-      padding-right: rem(90);
-      height: rem(600);
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      width: 100%;
+		padding-left: rem(90);
+		padding-right: rem(90);
+		height: rem(600);
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		width: 100%;
 		transform: rotate(-90deg);
       img {
         width: auto;
@@ -1175,7 +1175,9 @@
     //   padding-bottom: rem(25);
     }
     &:not(.isActive) &__left_image_clipped {
-        opacity: 0;
+        @media all and (min-width: 861px) {
+			opacity: 0;
+		}
 		transition: 1s clip-path 0.3s ease;
     }
     &.isActive &__left_image_clipped {
@@ -1262,6 +1264,7 @@
         flex-wrap: wrap;
       }
     }
+	
 
     &__downloads {
       display: flex;

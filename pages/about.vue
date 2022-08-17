@@ -861,10 +861,11 @@
 
     @media all and (max-width: 1280px) {
       padding: rem(80) 0;
+      overflow: auto;
     }
 
-    @media all and (max-width: 1280px) {
-      overflow: auto;
+    @media all and (max-width: 860px) {
+      flex-direction: column;
     }
 
     &__side {
@@ -877,6 +878,9 @@
 
       @media all and (max-width: 1280px) {
         min-width: 314px;
+      }
+      @media all and (max-width: 860px) {
+        width: 100%;
       }
     }
 
@@ -978,6 +982,9 @@
 
       @media all and (max-width: 1280px) {
         width: 183px;
+      }
+      @media all and (max-width: 860px) {
+        width: 100%;
       }
     }
   }

@@ -121,6 +121,14 @@ height: 100%;
             @media all and (max-width: 1280px) {
                 top: -65px;
             }
+            @media all and (max-width: 860px) {
+                font-size: 200px;
+top: -50px;
+            }
+            @media all and (max-width: 860px) {
+                font-size: 200px;
+top: -50px;
+            }
             &:after {
                 content: "";
                 position: absolute;
@@ -145,7 +153,7 @@ overflow: auto;
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
-                font-size: 30px;
+                font-size: 20px;
                 margin-bottom: 30px;
             }
         }

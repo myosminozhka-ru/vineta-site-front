@@ -1598,7 +1598,9 @@
           </path>
         </svg>
 
-        <img :class="{'isClipped': isMounted}" class="section__left_image_clipped" :src="require('~/assets/img/sections/first.png')"
+        <img :class="{'isClipped': isMounted}" class="section__left_image_clipped hide_on_mobile" :src="require('~/assets/img/sections/first.png')"
+          height="100%" alt="">
+		  <img class="hide_off_mobile" :src="require('~/assets/img/sections/first.png')"
           height="100%" alt="">
       </div>
     </div>
@@ -1661,9 +1663,17 @@
 	  transform: rotate(-90deg);
       width: 100%;
         @media all and (max-width: 1280px) {
-        padding-top: 150px;
-        padding-bottom: 150px;
-      }
+			padding-top: 150px;
+			padding-bottom: 150px;
+		}
+		@media all and (max-width: 860px) {
+			padding-top: 0px;
+			padding-bottom: 0px;
+			padding-left: 4px;
+			padding-right: 4px;
+			height: 100%;
+			width: 200px;
+		}
       img {
         width: auto;
         -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
@@ -1688,7 +1698,10 @@
       padding-top: rem(30);
       padding-bottom: rem(25);
 	  &:not(.isClipped) {
-			opacity: 0;
+			@media all and (min-width: 861px) {
+				opacity: 0;
+				width: 100%;
+			}
 			transition: 1s clip-path 0.3s ease;
 		}
 
@@ -1702,6 +1715,10 @@
       @media all and (max-width: 1280px) {
         height: 470px;
         width: 495px;
+      }
+	  @media all and (max-width: 860px) {
+        min-height: 200px !important;
+        width: 100%;
       }
     }
 

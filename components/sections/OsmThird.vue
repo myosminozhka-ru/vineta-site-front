@@ -101,6 +101,9 @@
       @media all and (max-width: 1280px) {
         width: 223px;
       }
+      @media all and (max-width: 860px) {
+          width: 100%;
+      }
     }
     &__bullets {
         position: absolute;

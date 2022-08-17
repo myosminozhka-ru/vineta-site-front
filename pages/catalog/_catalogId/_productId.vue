@@ -713,6 +713,7 @@
       @media all and (max-width: 840px) {
         margin-left: 0;
         margin-top: 0;
+        justify-content: center;
       }
 
       .text {
