@@ -26,4 +26,6 @@ export default {
         ...mapActions(['addBreadcrumbs']), 
     }
 }
+
+
 </script>
