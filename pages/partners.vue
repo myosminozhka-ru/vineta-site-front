@@ -217,7 +217,7 @@ export default {
         justify-content: space-between;
     }
     &__item_logo {
-        height: rem(54);
+        height: rem(70);
         margin-bottom: rem(40);
         display: flex;
         align-items: center;

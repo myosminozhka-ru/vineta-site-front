@@ -1,11 +1,8 @@
 <template>
     <div class="vacancy">
-        <div class="vacancy__in" v-if="vacancy">
+        <div class="vacancy__in" v-if="vacancy.length > 0">
             <osm-breadcrumbs />
             <div class="vacancy__top">
-                <!-- <pre style="font-size: 15rem;">
-                    {{ vacancy }}
-                </pre> -->
                 <div class="vacancy__title">{{ vacancy[0].NAME }}</div>
                 <div class="vacancy__button hide_on_mobile" @click="openApplyModal">
                     <osm-button>Откликнуться</osm-button>
@@ -27,16 +24,6 @@
                         </template>
                     </div>
                 </div>
-                <!-- <div class="vacancy__item" v-for="item in 3" :key="item.index">
-                    <div class="title">Требования:</div>
-                    <ul class="list">
-                        <li>Среднее специальное/среднее техническое /высшее образование (по специальности);</li>
-                        <li>Среднее специальное/среднее техническое /высшее образование (по специальности);</li>
-                        <li>Среднее специальное/среднее техническое /высшее образование (по специальности);</li>
-                        <li>Среднее специальное/среднее техническое /высшее образование (по специальности);</li>
-                        <li>Среднее специальное/среднее техническое /высшее образование (по специальности);</li>
-                    </ul>
-                </div> -->
             </div>
             <osm-apply-modal :property="vacancy[0].NAME" />
         </div>
@@ -55,18 +42,18 @@ export default {
     },
     head() {
       return {
-        title: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
+        title: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
         meta: [
           // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
             hid: 'description',
             name: 'description',
-            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.DESCRIPTION : 'DESCRIPTION'
+            content: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.DESCRIPTION : 'DESCRIPTION'
           },
           {
             hid: 'keywords',
             name: 'keywords',
-            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.KEYWORDS : ''
+            content: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.KEYWORDS : ''
           },
           {
             hid: 'twitter:card',
@@ -81,23 +68,23 @@ export default {
           {
             hid: 'twitter:title',
             name: 'twitter:title',
-            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
+            content: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
           },
           {
             hid: 'twitter:description',
             name: 'twitter:description',
-            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.DESCRIPTION : '',
+            content: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.DESCRIPTION : '',
           },
           {
             hid: 'twitter:imag',
             name: 'twitter:imag',
-            content: this.vacancy[0] && 'PREVIEW_PICTURE' in this.vacancy[0] ? this.$vareibles.remote + this.vacancy[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+            content: this.vacancy.length > 0 && 'PREVIEW_PICTURE' in this.vacancy[0] ? this.$vareibles.remote + this.vacancy[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
           },
         ]
       }
     },
     data: () => ({
-        vacancy: null,
+        vacancy: [],
         isMounted: false
     }),
     async fetch() {

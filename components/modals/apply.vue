@@ -36,7 +36,8 @@
                     <osm-button class="modal__button" :large="true" type="submit">Отправить</osm-button>
                 </div>
                 <div class="modal__form_in" v-else>
-                    <div class="modal__title">Спасибо за заявку! Мы свяжемся с Вами в ближайшее время.</div>
+                    <div class="modal__title">Спасибо за заявку!</div>
+                    <div class="modal__subtitle">Мы свяжемся с Вами в ближайшее время.</div>
                 </div>
             </form>
         </div>
@@ -189,6 +190,13 @@ export default {
         font-weight: 600;
         font-size: rem(40);
         margin-bottom: rem(30);
+        line-height: 140%;
+        color: #172242;
+    }
+    &__subtitle {
+        font-style: normal;
+        font-weight: 400;
+        font-size: rem(25);
         line-height: 140%;
         color: #172242;
     }

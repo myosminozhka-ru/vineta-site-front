@@ -128,8 +128,9 @@ height: 100%;
                 top: -65px;
             }
             @media all and (max-width: 860px) {
-                font-size: 200px;
+                font-size: 190px;
 top: -50px;
+right: 10px;
             }
             &:after {
                 content: "";

@@ -45,13 +45,13 @@ export default {
         font-size: rem(40);
         margin-bottom: rem(30);
         @media all and (max-width: 1280px) {
-            color: #fff;
+            color: #fff !important;
         }
     }
     &__text {
         
         @media all and (max-width: 1280px) {
-            color: #fff;
+            color: #fff !important;
         }
     }
     &__button {

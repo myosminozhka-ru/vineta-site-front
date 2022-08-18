@@ -21,12 +21,7 @@
             </div>
             <div class="second__text">
               <p>{{ getAbout.banners.second.PREVIEW_TEXT }}</p>
-              <p v-if="isTextShowed">Современные технологии достигли такого уровня, что дальнейшее развитие различных
-                форм деятельности не
-                даёт нам иного выбора, кроме определения благоприятных перспектив. Высокий уровень вовлечения
-                представителей целевой аудитории является четким доказательством простого факта: разбавленное изрядной
-                долей эмпатии, рациональное мышление, в своём классическом представлении, допускает внедрение
-                инновационных.</p>
+              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT">{{ getAbout.banners.second.DETAIL_TEXT }}</p>
             </div>
           </div>
           <div class="second__buttons" @click="isTextShowed = !isTextShowed">
@@ -64,7 +59,7 @@
               <nuxt-link v-for="link in getAbout.sections" :key="link.index"
                 :to="localePath({name: 'catalog-catalogId', params: {catalogId: link.CODE}})" class="second__item">
                 <div class="icon">
-                  <img :src="require('~/assets/img/about/cat_icon.svg')" width="100%" alt="">
+                  <img :src="$vareibles.remote + link.PICTURE" width="100%" alt="">
                 </div>
                 <div class="text">{{ link.NAME }}</div>
               </nuxt-link>

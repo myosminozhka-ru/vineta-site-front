@@ -5,9 +5,12 @@
             <div class="favorites">
                 <osm-breadcrumbs />
                 <div class="favorites__title">Избранное</div>
-                <osm-catalog-products />
+                <osm-catalog-products v-if="products.length"/>
+                <div class="favorites__subtitle" v-else>
+                    Вы пока ничего не добавили в избранное.
+                </div>
                 <div class="favorites__buttons">
-                    <span @click="printSection">
+                    <span @click="printSection" v-if="products.length">
                         <osm-button class="favorites__button" :large="true" :outlined="true">Выгрузить</osm-button>
                     </span>
                     <osm-button class="favorites__button" :large="true" link="catalog">В каталог</osm-button>
@@ -21,7 +24,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     name: "FavoritesPage",
     components: {
@@ -46,6 +49,13 @@ export default {
           },
       ])
     },
+    computed: {
+        ...mapGetters(['getProducts']),
+        ...mapGetters('localStorage', ['getFavorites']),
+        products() {
+            return this.getProducts.filter(item => this.getFavorites.includes(+item.ID))
+        }
+    },
     methods: {
       ...mapActions(['addBreadcrumbs']),
       printSection() {
@@ -66,6 +76,17 @@ export default {
         font-style: normal;
         font-weight: 600;
         font-size: rem(40);
+        margin-bottom: rem(30);
+        line-height: 140%;
+        color: #172242;
+        @media print {
+            display: none;
+        }
+    }
+    &__subtitle {
+        font-style: normal;
+        font-weight: 600;
+        font-size: rem(20);
         margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
