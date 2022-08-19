@@ -47,7 +47,7 @@
             <li>
                 <span>Пн-Пт с 9:00 до 18:00</span>
             </li>
-            <div class="footer__top_socials hide_on_desktop">
+            <div class="footer__top_socials hide_on_desktop" v-if="false">
                 <a :href="social.link" target="_blank" class="footer__top_social" v-for="social in socials" :key="social.index">
                     <img :src="social.icon" width="100%" alt="">
                 </a>

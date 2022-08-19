@@ -154,7 +154,7 @@
       <section class="sixth">
         <customers :has-button="true" />
       </section>
-      <section class="seventh">
+      <section class="seventh" v-if="false">
         <div class="seventh__title">Карта</div>
         <div class="seventh__map">
           <img :src="require('~/assets/img/about/map.svg')" width="100%" alt="">
@@ -833,7 +833,7 @@
 
   .eighth {
     overflow: hidden;
-    padding: rem(120) rem(240);
+    padding: rem(0) rem(240) rem(120);
     background: #F2F2F2;
 
     @media all and (max-width: 1440px) {

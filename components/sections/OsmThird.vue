@@ -1,14 +1,13 @@
 <template>
   <section class="section section__item section__item--third" v-if="thirdData">
     <div class="section__left section__left--fullwidth hide_on_mobile">
-      <!-- <img v-if="thirdData.PREVIEW_PICTURE" :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first"> -->
-      <img v-if="'index' in slider" :src="require(`~/assets/img/techs/${slider.index + 1}.jpg`)" alt="arrow">
+      <scene />
     </div>
     <div class="section__right section__slider glide">
       <div class="section__content">
         <div class="glide__track" data-glide-el="track">
           <div class="glide__slides">
-            <div v-for="item in 6" :key="item.index" class="section__slide glide__slide">
+            <div v-for="item in 1" :key="item.index" class="section__slide glide__slide">
               <osm-h1 class="section__title">{{ thirdData.NAME }}</osm-h1>
               <div class="section__text">
                 {{ thirdData.PREVIEW_TEXT }}
@@ -17,15 +16,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="section__right-image hide_off_mobile">
-        <!-- <img :src="$vareibles.remote + thirdData.PREVIEW_PICTURE" alt="first"> -->
-        <!-- {{ slider.index }} -->
-        <img v-if="slider.index" :src="require(`~/assets/img/techs/${slider.index}.jpg`)" alt="arrow">
-        <!-- <img :src="require(`~/assets/img/techs/${slider.index}.jpg`)" alt="first">  -->
-      </div>
-      <div class="section__bullets" data-glide-el="controls[nav]">
-        <button v-for="(key, item) in 6" :key="item.index" class="section__bullet" :data-glide-dir="`=${key-1}`">{{ key }}</button>
       </div>
     </div>
   </section>
@@ -41,6 +31,7 @@
     components: {
       OsmH1: () => import('~/components/global/OsmH1.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue'),
+      Scene: () => import('~/components/sections/Scene.vue'),
     },
     computed: {
       ...mapGetters(['getMain']),
@@ -63,6 +54,9 @@
 
 <style lang="scss" scoped>
   .section {
+    &__left {
+      position: relative;
+    }
     &__right {
       padding-top: rem(100);
       padding-bottom: 0;

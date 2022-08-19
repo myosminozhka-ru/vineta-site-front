@@ -13,7 +13,16 @@
                 <!-- {{ currentCategory }} -->
                 <!-- {{ getCatalog }} -->
                 <!-- {{ $route.params.catalogId }} -->
-                <osm-catalog-products /> 
+                <osm-catalog-products />
+
+                <div class="pagination">
+                    <div class="pagination__in">
+                        <div class="pagination__item isActive">1</div>
+                        <div class="pagination__item">2</div>
+                        <div class="pagination__item">3</div>
+                        <div class="pagination__item">4</div>
+                    </div>
+                </div>
             </div>
         </div>
           

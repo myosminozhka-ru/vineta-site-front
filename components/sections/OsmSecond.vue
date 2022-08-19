@@ -1156,8 +1156,8 @@
 		transform: rotate(-90deg);
       img {
         width: auto;
-        -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
-        filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
+        // -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
+        // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
       }
     }
 
@@ -1169,7 +1169,7 @@
       top: 0;
       bottom: 0;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) scale(1.2);
       transition: 1s clip-path 2.3s ease;
     //   padding-top: rem(30);
     //   padding-bottom: rem(25);

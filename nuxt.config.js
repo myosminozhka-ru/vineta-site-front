@@ -29,6 +29,7 @@ export default {
     '~/plugins/vars.js',
     '~/plugins/i18n.js',
     '~/plugins/axios.js',
+    '~/plugins/vue-3d-loader.js',
     // '~/plugins/vue-meta.js',
     { src: '~/plugins/print.js', ssr: false },
     { src: '~/plugins/lightgallery.js', ssr: false }

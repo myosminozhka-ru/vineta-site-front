@@ -23,7 +23,7 @@
     </ul>
     <div class="menu__modals hide_on_mobile">
       <div class="menu__modal" :data-modal-id="123">
-        <div class="menu__modal_top">
+        <div class="menu__modal_top" @mousewheel.stop>
           <osm-h2 class="menu__modal_title">Выпускаемая продукция</osm-h2>
           <ul class="menu__modal_menu">
             <li v-for="category in getCatalog" :key="category.ID">
@@ -245,6 +245,10 @@ import { mapGetters ,mapActions } from 'vuex';
     &__modal_top {
       padding: rem(62) rem(70) rem(38);
       background: #fff;
+      @media all and (min-width: 1281px) {
+        max-height: 500px;
+        overflow: auto;
+      }
       @media all and (max-width: 1280px) {
         padding: 30px 20px;
       }

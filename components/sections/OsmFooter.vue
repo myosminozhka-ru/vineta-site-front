@@ -27,7 +27,7 @@
             <div class="section__content">
                 <div class="section__row">
                     <osm-h1 class="section__title">Контакты</osm-h1>
-                    <div class="section__socials">
+                    <div class="section__socials" v-if="false">
                         <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
                             <img :src="social.icon" width="100%" alt="">
                         </a>
