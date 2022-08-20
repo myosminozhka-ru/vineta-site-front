@@ -105,6 +105,10 @@ import { mapGetters, mapActions } from 'vuex';
     display: flex;
     align-items: center;
     padding: rem(20) rem(240) rem(20) rem(240);
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
     background: #D7DCE1;
     @media all and (max-width: 1280px) {
       padding: 20px 146px 20px 20px;

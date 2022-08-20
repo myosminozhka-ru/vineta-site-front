@@ -148,6 +148,10 @@ export default {
 .contacts {
     padding: rem(30) rem(240) rem(120);
     background: #fff;
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
     @media all and (max-width: 840px) {
         overflow: hidden;
     }
@@ -285,6 +289,10 @@ export default {
     @media all and (max-width: 1440px) {
         padding-right: 150px;
         padding-left: 150px;
+    }
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
     }
     @media all and (max-width: 1280px) {
       padding: 80px 20px;

@@ -1,6 +1,5 @@
 <template>
     <div class="news__content_in">
-        <pre>{{ getNews }}</pre>
         <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
             <template v-if="key === 0">
                 <div class="news__image">
@@ -275,12 +274,17 @@ export default {
         }
     }
     &__item &__item_left {
-        // height: rem(185);
+        height: rem(345);
         margin-bottom: rem(20);
     }
     &__item &__image {
         width: 100%;
         height: 100%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
     &__item &__item_right {
         flex: 1 1 auto;

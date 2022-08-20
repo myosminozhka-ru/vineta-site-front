@@ -1242,6 +1242,10 @@
         padding-top: 100px !important;
         padding-bottom: 80px !important;
       }
+	  @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+    //   padding-left: rem(50);
+      padding-right: rem(50);
+    }
 
       @media all and (max-width: 1280px) {
         width: 100% !important;

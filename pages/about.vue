@@ -219,6 +219,10 @@
     align-items: center;
     padding: rem(20) rem(240) rem(20) rem(240);
     background: #D7DCE1;
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
 
     @media all and (max-width: 1280px) {
       padding: 20px 146px 20px 20px;
@@ -280,6 +284,10 @@
         @media all and (max-width: 1440px) {
           padding-left: 150px;
         }
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+          padding-left: rem(50);
+          // padding-right: rem(50);
+        }
 
         @media all and (max-width: 1280px) {
           padding: 40px 20px;
@@ -296,6 +304,10 @@
 
         @media all and (max-width: 1440px) {
           padding-right: 150px;
+        }
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+          // padding-left: rem(50);
+          padding-right: rem(50);
         }
 
         @media all and (max-width: 1280px) {
@@ -500,6 +512,10 @@
       padding-right: 150px;
       padding-left: 150px;
     }
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
 
     @media all and (max-width: 1280px) {
       padding: 80px 20px;
@@ -588,6 +604,10 @@
       padding-right: 150px;
       padding-left: 150px;
     }
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
 
     @media all and (max-width: 1280px) {
       padding: 0 20px;
@@ -641,6 +661,10 @@
     @media all and (max-width: 1440px) {
       padding-right: 150px;
       padding-left: 150px;
+    }
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
     }
 
     @media all and (max-width: 1280px) {
@@ -780,6 +804,10 @@
       padding-right: 150px;
       padding-left: 150px;
     }
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
+    }
 
     @media all and (max-width: 1280px) {
       padding: 80px 20px;
@@ -796,6 +824,10 @@
     @media all and (max-width: 1440px) {
       padding-right: 150px;
       padding-left: 150px;
+    }
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
     }
 
     @media all and (max-width: 1280px) {
@@ -839,6 +871,10 @@
     @media all and (max-width: 1440px) {
       padding-right: 150px;
       padding-left: 150px;
+    }
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+      padding-left: rem(50);
+      padding-right: rem(50);
     }
 
     @media all and (max-width: 1280px) {
@@ -884,7 +920,10 @@
       padding-right: rem(240);
       position: relative;
       background: url('~assets/img/about/about_history.jpg') 50% 50% / cover no-repeat;
-
+      @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+        padding-left: rem(50);
+        padding-right: rem(50);
+      }
       @media all and (max-width: 1280px) {
         padding-left: rem(20);
         padding-right: rem(20);
@@ -905,6 +944,11 @@
     &__right {
       padding-left: rem(131);
       padding-right: rem(350);
+
+      @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+        padding-left: rem(50);
+        padding-right: rem(50);
+      }
 
       @media all and (max-width: 1280px) {
         padding-left: rem(20);
