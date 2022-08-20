@@ -18,7 +18,9 @@
     "boats": "Boats speedboats",
     "download_catalog": "Download the catalog",
     "buy": "Order",
-    "up": "up"
+    "up": "up",
+    "to_favorites": "To favorites",
+    "checkout": "Proceed to checkout"
   },
   "menu": {
     "products": "Manufactured products"

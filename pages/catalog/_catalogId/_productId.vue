@@ -26,25 +26,30 @@
         </div>
         <div class="productPage__buttons">
           <div @click="openBuy">
-            <osm-button class="productPage__buttons--buy">Заказать</osm-button>
+            <osm-button class="productPage__buttons--buy">{{$t('buttons.checkout') }}</osm-button>
           </div>
           <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
             <osm-button class="productPage__buttons--fav" :outlined="true">
               <div class="icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 28 28" fill="none">
-                  <path
-                    d="M21 2.33325H7C6.07174 2.33325 5.1815 2.702 4.52513 3.35838C3.86875 4.01476 3.5 4.90499 3.5 5.83325V18.6666C3.5 19.5948 3.86875 20.4851 4.52513 21.1415C5.1815 21.7978 6.07174 22.1666 7 22.1666H10.0217L13.1717 25.3283C13.2807 25.4364 13.41 25.5219 13.5521 25.58C13.6943 25.638 13.8465 25.6675 14 25.6666C14.2781 25.6666 14.547 25.5673 14.7583 25.3866L18.515 22.1666H21C21.9283 22.1666 22.8185 21.7978 23.4749 21.1415C24.1313 20.4851 24.5 19.5948 24.5 18.6666V5.83325C24.5 4.90499 24.1313 4.01476 23.4749 3.35838C22.8185 2.702 21.9283 2.33325 21 2.33325ZM22.1667 18.6666C22.1667 18.976 22.0438 19.2728 21.825 19.4915C21.6062 19.7103 21.3094 19.8333 21 19.8333H18.0833C17.8053 19.8332 17.5363 19.9325 17.325 20.1133L14.0583 22.9133L11.3283 20.1716C11.2193 20.0635 11.09 19.9779 10.9479 19.9199C10.8057 19.8618 10.6535 19.8324 10.5 19.8333H7C6.69058 19.8333 6.39383 19.7103 6.17504 19.4915C5.95625 19.2728 5.83333 18.976 5.83333 18.6666V5.83325C5.83333 5.52383 5.95625 5.22709 6.17504 5.00829C6.39383 4.7895 6.69058 4.66659 7 4.66659H21C21.3094 4.66659 21.6062 4.7895 21.825 5.00829C22.0438 5.22709 22.1667 5.52383 22.1667 5.83325V18.6666Z"
-                    fill="#172242" />
+                <svg data-v-7e17c130="" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
+                  <rect data-v-7e17c130="" width="30" height="30" rx="15" fill="none"></rect>
+                  <path data-v-7e17c130=""
+                    d="M22.9788 12.7966C22.9243 12.6295 22.7767 12.5102 22.602 12.4916L17.4819 11.972L15.4058 7.26423C15.3348 7.10463 15.1757 7 15.0001 7C14.8245 7 14.6654 7.10374 14.5945 7.26512L12.5179 11.9725L7.39867 12.4916C7.22399 12.5093 7.07592 12.6299 7.02183 12.7966C6.9673 12.9638 7.01695 13.1473 7.14818 13.2643L10.9839 16.6949L9.89642 21.7236C9.85962 21.8952 9.92701 22.0725 10.0693 22.1758C10.1469 22.2321 10.2382 22.2605 10.33 22.2605C10.4067 22.2605 10.4838 22.2406 10.553 22.1998L15.0005 19.6107L19.4472 22.1998C19.5988 22.2871 19.7886 22.2787 19.9309 22.1736C20.0728 22.0721 20.141 21.893 20.1042 21.7214L19.0167 16.6922L22.8529 13.2621C22.9833 13.1469 23.0334 12.9633 22.9788 12.7966ZM18.2325 16.2054C18.1137 16.3118 18.0609 16.4737 18.0946 16.6297L19.0243 20.9278L15.2231 18.7156C15.0852 18.6349 14.915 18.6349 14.7771 18.7156L10.9751 20.9278L11.9047 16.6297C11.9384 16.4737 11.8857 16.3118 11.7669 16.2054L8.48794 13.2736L12.8637 12.8294C13.0224 12.8139 13.1598 12.7124 13.2245 12.567L14.9997 8.54281L16.7743 12.567C16.8391 12.7124 16.9765 12.8139 17.1352 12.8294L21.5109 13.2736L18.2325 16.2054Z"
+                    fill="#172242" stroke="none"></path>
                 </svg>
               </div>
-              <div class="text">В избранное</div>
+              <div class="text">{{$t('buttons.to_favorites') }}</div>
             </osm-button>
           </div>
           <template v-if="getDownloads['katalog-produktsii']">
-          <a v-if="'PROPERIES' in getDownloads['katalog-produktsii']" :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank" class="productPage__link">
+            <a v-if="'PROPERIES' in getDownloads['katalog-produktsii']"
+              :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank"
+              class="productPage__link">
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 15 21" fill="none">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.33396 17.2091L6.33396 0H8.18582L8.18581 17.2091L12.4977 12.8972C12.8593 12.5356 13.4456 12.5356 13.8072 12.8972C14.1688 13.2588 14.1688 13.845 13.8072 14.2066L7.91462 20.0992C7.55302 20.4608 6.96676 20.4608 6.60516 20.0992L0.712604 14.2066C0.351007 13.845 0.351007 13.2588 0.712604 12.8972C1.0742 12.5356 1.66046 12.5356 2.02206 12.8972L6.33396 17.2091Z" fill="#FF0040"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M6.33396 17.2091L6.33396 0H8.18582L8.18581 17.2091L12.4977 12.8972C12.8593 12.5356 13.4456 12.5356 13.8072 12.8972C14.1688 13.2588 14.1688 13.845 13.8072 14.2066L7.91462 20.0992C7.55302 20.4608 6.96676 20.4608 6.60516 20.0992L0.712604 14.2066C0.351007 13.845 0.351007 13.2588 0.712604 12.8972C1.0742 12.5356 1.66046 12.5356 2.02206 12.8972L6.33396 17.2091Z"
+                    fill="#FF0040" />
                 </svg>
               </div>
               <div class="text">
@@ -73,7 +78,8 @@
             </div>
           </div>
           <div class="tabs">
-            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0]">
+            <div class="productPage__mods--tab productPage__mods--bg"
+              v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0]">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
@@ -173,7 +179,8 @@
         </div>
         <div class="productPage__mods--tabs hide_on_desktop">
           <div class="tabs">
-            <div v-if="'DETAIL_TEXT' in product[0]" class="tabs__opener" :class="{'isActive': tabs.selected === 1}" @click.prevent="tabs.selected = 1">
+            <div v-if="'DETAIL_TEXT' in product[0]" class="tabs__opener" :class="{'isActive': tabs.selected === 1}"
+              @click.prevent="tabs.selected = 1">
               <div class="text">Описание</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
@@ -182,7 +189,8 @@
                 </svg>
               </div>
             </div>
-            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0]">
+            <div class="productPage__mods--tab productPage__mods--bg"
+              v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0]">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
@@ -256,12 +264,13 @@
               </div>
             </div>
             <div v-if="tabs.selected === 3">
-              <div class="productPage__mods--tab productPage__mods--bg" v-for="(mod, key, index) in product[0].OFFERS" :key="key" @click="tabs.openedMod = index">
+              <div class="productPage__mods--tab productPage__mods--bg" v-for="(mod, key, index) in product[0].OFFERS"
+                :key="key" @click="tabs.openedMod = index">
                 <div class="title title__opener">
                   <span>Режим {{ index+1 }}</span>
                   <div class="arrow">
-                    <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
-                      fill="none">
+                    <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10"
+                      viewBox="0 0 19 10" fill="none">
                       <path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path>
                     </svg>
                   </div>
@@ -272,7 +281,8 @@
                       <div class="productPage__mods--mod">
                         <div class="productPage__mods--mods_items">
                           <div class="productPage__mods--mods_item">
-                            <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES" :key="proper.index">
+                            <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES"
+                              :key="proper.index">
                               <div class="productPage__mods--mods_val_title">
                                 {{ proper.NAME }}
                               </div>
@@ -329,7 +339,8 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <a :href="`/catalog/${prod.SECTION.CODE}/${prod.CODE}`" class="products__item" v-for="prod in getProducts.slice(0, 4)" :key="prod.index">
+              <a :href="`/catalog/${prod.SECTION.CODE}/${prod.CODE}`" class="products__item"
+                v-for="prod in getProducts.slice(0, 4)" :key="prod.index">
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
                   <div class="image_container">
@@ -406,7 +417,8 @@
           {
             hid: 'twitter:imag',
             name: 'twitter:imag',
-            content: this.product && 'PREVIEW_PICTURE' in this.product[0] ? this.$vareibles.remote + this.product[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+            content: this.product && 'PREVIEW_PICTURE' in this.product[0] ? this.$vareibles.remote + this.product[0]
+              .PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
           },
         ]
       }
@@ -422,7 +434,7 @@
       ...mapGetters(['getProducts']),
       ...mapGetters(['getDownloads']),
     },
-    
+
     data: () => ({
       tabs: {
         selected: 1,
@@ -433,26 +445,27 @@
     }),
     async fetch() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
-      this.addBreadcrumbs([
-        {
-            name: 'Главная',
-            link: 'index',
-            isLink: true
+      this.addBreadcrumbs([{
+          name: 'Главная',
+          link: 'index',
+          isLink: true
         },
         {
-            name: 'Каталог',
-            link: 'catalog',
-            isLink: true
+          name: 'Каталог',
+          link: 'catalog',
+          isLink: true
         },
         {
-            name: this.product[0].SECTION.NAME,
-            link: 'catalog-catalogId',
-            params: {catalogId: this.product[0].SECTION.CODE},
-            isLink: true
+          name: this.product[0].SECTION.NAME,
+          link: 'catalog-catalogId',
+          params: {
+            catalogId: this.product[0].SECTION.CODE
+          },
+          isLink: true
         },
         {
-            name: this.product[0].NAME,
-            isLink: false
+          name: this.product[0].NAME,
+          isLink: false
         },
       ])
       // console.log(this.product);
@@ -464,7 +477,7 @@
           this.prodsSlider = new Glide('.productPage__analogs .values.glide', {
             perView: 3,
             type: 'carousel',
-            
+
             breakpoints: {
               860: {
                 perView: 1,
@@ -515,6 +528,7 @@
 
     &__analogs {
       margin-top: rem(118);
+
       @media print {
         display: none;
       }
@@ -576,6 +590,7 @@
 
     &__mods {
       padding-top: rem(60);
+
       @media print {
         display: none;
       }
@@ -588,6 +603,7 @@
         justify-content: space-between;
         margin-bottom: rem(22);
         width: calc(828rem + 98rem + 24rem - 240rem);
+
         div {
           &:last-child .productPage__mods--opener {
             margin-right: 0;
@@ -656,6 +672,7 @@
         margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
+
         @media all and (max-width: 860px) {
           font-size: 18px;
         }
@@ -757,6 +774,7 @@
         transition: all .3s ease;
         display: flex;
         justify-content: center;
+
         // svg {
         //   transform: translateY(100%);
         // }
@@ -765,6 +783,7 @@
           margin-right: 10px;
         }
       }
+
       &:hover .icon svg {
         animation: flow .3s ease forwards;
       }
@@ -774,6 +793,7 @@
       margin-top: rem(40);
       display: flex;
       align-items: center;
+
       @media print {
         display: none;
       }
@@ -947,9 +967,11 @@
 
     &__mods--char {
       padding: rem(10) 0;
+
       &:not(:last-child) {
         border-bottom: 1px solid #F2F2F2;
       }
+
       @media all and (max-width: 840px) {
         // display: flex;
         // align-self: start;
@@ -961,6 +983,7 @@
     &__mods--mods {
       overflow: auto;
     }
+
     &__mods--mod:not(:first-child) &__mods--mods_titles {
       display: none;
     }
@@ -1035,9 +1058,11 @@
       padding: rem(15) 0;
       border-top: 1px solid #D7DCE1;
       width: fit-content;
+
       @media all and (max-width: 1280px) {
         width: 100%;
       }
+
       &:last-child {
         border-bottom: 1px solid #D7DCE1;
       }
@@ -1130,13 +1155,16 @@
       }
     }
   }
+
   .title__opener {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0 !important;
   }
-  .title__opener + .value {
+
+  .title__opener+.value {
     margin-top: 20px;
   }
+
 </style>
