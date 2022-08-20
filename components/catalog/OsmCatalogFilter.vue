@@ -2,7 +2,7 @@
     <div class="filter" :class="{'opened': isFilterOpened}">
         <div class="filter__in">
             <div class="filter__title" v-if="currentCategory[0]">
-                Параметры поиска
+                {{ $t('filter.title') }}
                 <div class="arrow hide_on_desktop">
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
                         <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
@@ -30,7 +30,7 @@
             </div>
             <button class="filter__clear hide_on_tablet" v-if="currentCategory[0]" @click="clearFilter">Сбросить</button>
             <div class="filter__title" v-if="!currentCategory[0]">
-                Нет доступных фильтров для этой категории
+                {{ $t('filter.empty') }}
             </div>
         </div>
         <div></div>

@@ -1,6 +1,6 @@
 <template>
     <div class="gallery">
-        <div class="gallery__title">Лицензии и сертификаты</div>
+        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.title') }}</div>
         <!-- <pre style="font-size: 15rem;">
             {{ imagesGallery }}
         </pre> -->

@@ -27,7 +27,7 @@
             </nuxt-link>
         </div>
         <div class="products__none" v-else>
-            Нет товаров
+           {{ $t('catalog.empty') }}
         </div>
     </div>
 </template>

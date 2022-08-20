@@ -8,7 +8,7 @@
             </div>
             <form class="modal__form" @submit.prevent="sendForm" ref="buy_form">
                 <div class="modal__form_in" v-if="!isSuccess">
-                    <div class="modal__title">Оставить заявку</div>
+                    <div class="modal__title">{{ this.$t('sections.footer.request') }}</div>
                     <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
                         <!-- <pre>
                         {{ field }} 

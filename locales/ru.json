@@ -16,7 +16,9 @@
     "read_news": "Читать ность",
     "main": "Главная",
     "boats": "Лодки катера",
-    "download_catalog": "Скачать каталог"
+    "download_catalog": "Скачать каталог",
+    "buy": "Заказать",
+    "up": "наверх"
   },
   "menu": {
     "products": "Выпускаемая продукция"
@@ -46,5 +48,15 @@
   },
   "footer": {
     "address": "620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500"
+  },
+  "filter": {
+    "title": "Параметры поиска",
+    "empty": "No filters available for this category"
+  },
+  "catalog": {
+    "empty": "Нет товаров"
+  },
+  "counter": {
+    "title": "Количество"
   }
 }

@@ -16,7 +16,9 @@
     "read_news": "Read news",
     "main": "Homepage",
     "boats": "Boats speedboats",
-    "download_catalog": "Download the catalog"
+    "download_catalog": "Download the catalog",
+    "buy": "Order",
+    "up": "up"
   },
   "menu": {
     "products": "Manufactured products"
@@ -46,5 +48,15 @@
   },
   "footer": {
     "address": "620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500"
+  },
+  "filter": {
+    "title": "Search options",
+    "empty": "Нет доступных фильтров для этой категории"
+  },
+  "catalog": {
+    "empty": " No products"
+  },
+  "counter": {
+    "title": "Quantity"
   }
 }
