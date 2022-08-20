@@ -1,6 +1,6 @@
 <template>
     <div class="osm__counter">
-        <div class="osm__title">Количество:</div>
+        <div class="osm__title">{{ $t('counter.title') }}:</div>
         <div class="osm__buttons">
             <button type="button" class="osm__button" @click="minus">
                 <div class="icon">

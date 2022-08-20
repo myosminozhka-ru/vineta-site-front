@@ -12,7 +12,7 @@
                 <span class="products__item_name">{{ product.NAME }}</span>
                 <!-- <div class="products__item_sku">ТУ 3683-005-54116265-2011</div> -->
                 <div @click="openFavModal">
-                    <osm-button class="products__item_button" :large="true">Заказать</osm-button>
+                    <osm-button class="products__item_button" :large="true">{{ $t('buttons.buy') }}</osm-button>
                 </div>
             </div>
         </div>
