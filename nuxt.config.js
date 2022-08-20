@@ -58,16 +58,20 @@ export default {
     locales: [
       {
         code: 'ru',
-        name: 'RU'
+        name: 'RU',
+        file: 'ru.json'
       },
       {
         code: 'en',
-        name: 'EN'
+        name: 'EN',
+        file: 'en.json'
       },
     ],
     defaultLocale: 'ru',
     strategy: 'prefix',
-    detectBrowserLanguage: false
+    detectBrowserLanguage: false,
+    // lazy: true,
+    langDir: 'locales'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

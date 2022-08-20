@@ -48,7 +48,7 @@
                 </svg>
               </div>
               <div class="text">
-                Скачать каталог
+                {{$t('buttons.download_catalog')}}
               </div>
             </a>
           </template>

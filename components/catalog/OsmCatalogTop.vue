@@ -4,7 +4,7 @@
     <div class="catalog__header_right">
       <!-- <pre style="font-size: 15rem">{{ getDownloads }}</pre> -->
       <a href="https://vinetaboat.ru/" target="_blank" class="catalog__header_btn hide_on_mobile">
-        <div class="text">Лодки и катера</div>
+        <div class="text">{{$t('buttons.boats')}}</div>
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="a" viewBox="0 0 72 72">
             <defs>
@@ -38,7 +38,7 @@
             </svg>
           </div>
           <div class="text">
-            Скачать каталог
+            {{$t('buttons.download_catalog')}}
           </div>
         </a>
       </template>

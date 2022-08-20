@@ -1,5 +1,6 @@
 <template>
     <div class="news__content_in">
+        <pre>{{ getNews }}</pre>
         <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
             <template v-if="key === 0">
                 <div class="news__image">
@@ -13,7 +14,7 @@
                     <div class="news__text">
                         {{ item.NAME }}
                     </div>
-                    <osm-button :link="item.link">Подробнее</osm-button>
+                    <osm-button :link="item.link">{{ $t('buttons.more') }}</osm-button>
                 </div>
             </template>
             <template v-else>
@@ -35,7 +36,7 @@
             </template>
         </nuxt-link>
         <div class="filter__title hide_off_mobile" :class="{'isActive': tabs.selected === 1}" @click="tabs.selected = 1">
-            Новости
+            {{ $t('buttons.news') }}
             <div class="arrow hide_on_desktop">
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
                     <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
@@ -131,7 +132,7 @@ export default {
         ...mapGetters(['getNews']),
         ...mapGetters(['getSelectedNewsType']),
         news() {
-            return this.getNews.filter(item => item.PROPERIES[1].VALUE.replace(/\s/g, '').toLowerCase().includes(this.getSelectedNewsType.replace(/\s/g, '').toLowerCase()));
+            return this.getNews.filter(item => 'PROPERIES' in item && item.PROPERIES[1].VALUE.replace(/\s/g, '').toLowerCase().includes(this.getSelectedNewsType.replace(/\s/g, '').toLowerCase()));
         }
     }
 }

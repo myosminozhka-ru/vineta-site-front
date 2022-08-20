@@ -3,7 +3,7 @@
         <div class="category__background">
             <img :src="require('~/assets/img/cat.jpg')" alt="">
         </div>
-        <div class="category__name">Лодки и катера</div>
+        <div class="category__name">{{$t('buttons.boats')}}</div>
     </a>
 </template>
 

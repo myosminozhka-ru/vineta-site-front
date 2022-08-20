@@ -2,19 +2,19 @@
     <nav class="footer__menu">
         <ul>
             <li>
-                <nuxt-link :to="localePath({name: 'about'})">О компании</nuxt-link>
+                <nuxt-link :to="localePath({name: 'about'})">{{ $t('buttons.about') }}</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="localePath({name: 'catalog'})">Каталог</nuxt-link>
+                <nuxt-link :to="localePath({name: 'catalog'})">{{ $t('buttons.catalog') }}</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="localePath({name: 'news'})">Новости</nuxt-link>
+                <nuxt-link :to="localePath({name: 'news'})">{{ $t('buttons.news') }}</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="localePath({name: 'vacancies'})">Вакансии</nuxt-link>
+                <nuxt-link :to="localePath({name: 'vacancies'})">{{ $t('buttons.vacancies') }}</nuxt-link>
             </li>
             <li>
-                <nuxt-link :to="localePath({name: 'contacts'})">Контакты</nuxt-link>
+                <nuxt-link :to="localePath({name: 'contacts'})">{{ $t('buttons.contacts') }}</nuxt-link>
             </li>
         </ul>
         <ul>
@@ -22,7 +22,7 @@
                 <nuxt-link :to="{name: 'index'}">Заказчикам</nuxt-link>
             </li> -->
             <li>
-                <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC">Скачать каталог</a>
+                <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC">{{$t('buttons.download_catalog')}}</a>
             </li>
             <!-- <li>
                 <nuxt-link :to="{name: 'index'}">Скачать презентацию</nuxt-link>
@@ -33,10 +33,10 @@
         </ul>
         <ul class="opened">
             <li>
-                <nuxt-link :to="localePath({name: 'index'})">Контакты</nuxt-link>
+                <nuxt-link :to="localePath({name: 'contacts'})">{{ $t('buttons.contacts') }}</nuxt-link>
             </li>
             <li>
-                <span>620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500</span>
+                <span>{{ $t('footer.address') }}</span>
             </li>
             <li>
                 <a href="tel:78124935048">+7(812)493-50-48</a>
@@ -45,7 +45,7 @@
                 <a href="mailto:info@vineta.ru">info@vineta.ru</a>
             </li>
             <li>
-                <span>Пн-Пт с 9:00 до 18:00</span>
+                <span>{{ $t('sections.footer.worktime') }}</span>
             </li>
             <div class="footer__top_socials hide_on_desktop" v-if="false">
                 <a :href="social.link" target="_blank" class="footer__top_social" v-for="social in socials" :key="social.index">

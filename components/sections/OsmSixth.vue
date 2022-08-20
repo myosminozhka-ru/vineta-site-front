@@ -2,7 +2,7 @@
     <section class="section section__item section__item--sixth catalog hide_on_mobile">
         <div class="catalog__wrap">
             <div class="catalog__left">
-                <osm-h1 class="catalog__title">Каталог</osm-h1>
+                <osm-h1 class="catalog__title">{{ this.$t('buttons.catalog') }}</osm-h1>
                 <!-- <pre style="font-size: 15rem">{{ getCatalog }}</pre> -->
                 <div class="catalog__points">
                     <div class="catalog__point" v-for="(point, key) in getCatalog" :key="point.index" @click="catalog.slider.go(`=${key}`)">

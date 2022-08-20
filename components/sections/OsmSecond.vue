@@ -1035,7 +1035,7 @@
                 <div class="text">{{ secondData.PROPERIES.NAME_FILE.VALUE }}</div>
               </div>
               <div class="section__plank">
-                / PDF 12 МБ
+                / PDF 12 {{$t('sections.second.mb')}}
               </div>
             </a>
           </div>

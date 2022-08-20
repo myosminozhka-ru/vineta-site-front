@@ -12,18 +12,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     data: () => ({
         isMounted: false,
         isAnimated: false
     }),
+    computed: {
+      ...mapGetters(['getLoadedStatus'])
+    },
     beforeDestroy() {
         this.isMounted = false;
         this.isAnimated = false;
     },
     mounted() {
-      let stateCheck = setInterval(() => {
-        if (document.readyState === 'complete') {
+      const stateCheck = setInterval(() => {
+        if (document.readyState === 'complete' && this.getLoadedStatus) {
             clearInterval(stateCheck);
             setTimeout(() => {
               this.isMounted = true

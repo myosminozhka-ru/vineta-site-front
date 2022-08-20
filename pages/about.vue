@@ -68,7 +68,7 @@
           <div class="second__buttons">
             <a href="https://vinetaboat.ru/" target="_blank" class="second__button button">
               <div class="text">
-                Лодки и катера
+                {{$t('buttons.boats')}}
               </div>
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="a" viewBox="0 0 72 72">
@@ -140,7 +140,7 @@
             <div class="history__line"></div>
             <div class="history__text">{{getAbout.banners.fifth.PREVIEW_TEXT}}</div>
           </div>
-          <osm-button class="history__button" link="history">Подробнее</osm-button>
+          <osm-button class="history__button" link="history">{{ $t('buttons.more') }}</osm-button>
         </div>
         <div class="history__side history__right">
           <div class="history__top">
@@ -148,7 +148,7 @@
             <div class="history__line"></div>
             <div class="history__text">{{getAbout.banners.sixth.PREVIEW_TEXT}}</div>
           </div>
-          <osm-button class="history__button" :outlined="true" link="techs">Подробнее</osm-button>
+          <osm-button class="history__button" :outlined="true" link="techs">{{ $t('buttons.more') }}</osm-button>
         </div>
       </section>
       <section class="sixth">

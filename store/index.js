@@ -15,6 +15,7 @@ export const state = () => ({
   downloads: [],
   breadcrumbs: [],
   galleryIndex: null,
+  isDataLoaded: false,
   modals: {
     buy: {
       isOpened: false
@@ -35,6 +36,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+  setLoadedStatus(state, data) {
+    state.isDataLoaded = data
+  },
   setGalleryIndex(state, data) {
     state.galleryIndex = data
   },
@@ -101,6 +105,9 @@ export const mutations = {
 }
 
 export const actions = {
+  setLoadedStatus(context) {
+    context.commit('setLoadedStatus', true);
+  },
   addBreadcrumbs(context, data) {
     context.commit('addBreadcrumbs', data);
   },
@@ -304,6 +311,7 @@ export const actions = {
     await dispatch('addPartners');
     await dispatch('addProducts');
     await dispatch('addDownloads');
+    await dispatch('setLoadedStatus');
     console.log('fetch data');
   }
 }
@@ -359,5 +367,8 @@ export const getters = {
   },
   galleryIndex(state) {
     return state.galleryIndex;
+  },
+  getLoadedStatus(state) {
+    return state.isDataLoaded;
   },
 }

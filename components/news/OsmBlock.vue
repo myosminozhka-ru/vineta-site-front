@@ -1,8 +1,8 @@
 <template>
     <div class="news__wrap" :class="{'innerPage': inner}">
         <div class="news__top">
-            <osm-h1 class="news__title">Новости</osm-h1>
-            <osm-button class="news__button_top" link="news" :outlined="true">Все новости</osm-button>
+            <osm-h1 class="news__title">{{ this.$t('buttons.news') }}</osm-h1>
+            <osm-button class="news__button_top" link="news" :outlined="true">{{ this.$t('buttons.all_news') }}</osm-button>
         </div>
         <div class="news__bottom hide_on_tablet">
             <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
@@ -18,7 +18,7 @@
                         <div class="news__text">
                             {{ item.NAME }}
                         </div>
-                        <span class="button" >Читать новость</span>
+                        <span class="button" >{{ $t('buttons.read_news') }}</span>
                     </div>
                 </template>
                 <template v-else>
@@ -35,7 +35,7 @@
                                 {{ item.NAME }}
                             </div>
                         </div>
-                        <span class="news__link" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">Читать новость</span>
+                        <span class="news__link" :to="{name: 'news-newsId', params: {newsId: item.CODE}}">{{ $t('buttons.read_news') }}</span>
                     </div>
                 </template>
             </nuxt-link>
@@ -55,9 +55,9 @@
                             <div class="news__text">
                                 {{ item.NAME }}
                             </div>
-                            <osm-button :link="item.link" class="hide_on_mobile">Подробнее</osm-button>
+                            <osm-button :link="item.link" class="hide_on_mobile">{{ $t('buttons.more') }}</osm-button>
                             <div class="mobile_link hide_off_mobile">
-                                <nuxt-link class="more" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})">Читать новость</nuxt-link>
+                                <nuxt-link class="more" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})">{{ $t('buttons.read_news') }}</nuxt-link>
                             </div>
                         </div>
                     </div>

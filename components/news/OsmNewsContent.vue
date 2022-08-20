@@ -12,7 +12,7 @@
                     <div class="news__text">
                         {{ item.text }}
                     </div>
-                    <osm-button :link="item.link">Подробнее</osm-button>
+                    <osm-button :link="item.link">{{ $t('buttons.more') }}</osm-button>
                 </div>
             </template>
             <template v-else>

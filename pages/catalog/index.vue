@@ -1,11 +1,11 @@
 <template>
   <div class="pageWrap">
     <osm-breadcrumbs />
-    <osm-catalog-top />
+    <osm-catalog-top :title="$t('buttons.catalog')" />
     <osm-catalog-categories />
     <div class="catalog__header_right hide_off_mobile">
       <a href="https://vinetaboat.ru/" target="_blank" class="catalog__header_btn">
-        <div class="text">Лодки и катера</div>
+        <div class="text">{{$t('buttons.boats')}}</div>
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="a" viewBox="0 0 72 72">
             <defs>
@@ -38,7 +38,7 @@
           </svg>
         </div>
         <div class="text">
-          Скачать каталог
+          {{$t('buttons.download_catalog')}}
         </div>
       </nuxt-link>
     </div>
@@ -57,12 +57,12 @@
     created() {
         this.addBreadcrumbs([
             {
-                name: 'Главная',
+                name: this.$t('buttons.main'),
                 link: 'index',
                 isLink: true
             },
             {
-                name: 'Каталог',
+                name: this.$t('buttons.catalog'),
                 isLink: false
             },
         ])

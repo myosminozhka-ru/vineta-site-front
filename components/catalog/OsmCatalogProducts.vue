@@ -62,7 +62,7 @@ export default {
         if (this.currentCategory[0]) {
             this.addBreadcrumbs([
                 {
-                    name: 'Каталог',
+                    name: this.$t('buttons.catalog'),
                     link: 'catalog',
                     isLink: true
                 },

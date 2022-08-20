@@ -14,7 +14,7 @@
                 <div class="section__text">
                     {{ fourthData.PREVIEW_TEXT }}
                 </div>
-                <osm-button class="section__button" link="techs">Подробнее</osm-button>
+                <osm-button class="section__button" link="techs">{{ $t('buttons.more') }}</osm-button>
             </div>
         </div>
     </section>

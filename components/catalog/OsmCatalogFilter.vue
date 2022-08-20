@@ -60,6 +60,7 @@ export default {
         isFilterOpened: false
     }),
     mounted() {
+        console.log(this.getCatalog);
         this.setFilterOpener();
     },
     methods: {

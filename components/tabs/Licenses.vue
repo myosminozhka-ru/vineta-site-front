@@ -1,6 +1,6 @@
 <template>
   <div class="licenses">
-    <osm-h2 class="licenses__title">Лицензии и сертификаты</osm-h2>
+    <osm-h2 class="licenses__title">{{ this.$t('sections.fiveth.tabs.title') }}</osm-h2>
     
     <tabs class="hide_on_mobile" @clicked="tabClicked" @changed="tabChanged" :options="{ useUrlFragment: false }">
       <tab v-for="tab in tabs" :key="tab.index" :name="tab">
@@ -97,7 +97,6 @@
       OsmH2: () => import('~/components/global/OsmH2.vue'),
     },
     data: () => ({
-      tabs: ['Лицензии и сертификаты', 'Благодарственные письма и отзывы', 'Отчеты СОУП и аттестации'],
       slider: null,
       isMounted: false,
       index: null,
@@ -105,6 +104,9 @@
     computed: {
         ...mapGetters(['getLicenses']),
         ...mapGetters(['galleryIndex']),
+        tabs() {
+          return  [this.$t('sections.fiveth.tabs.first'), this.$t('sections.fiveth.tabs.second'), this.$t('sections.fiveth.tabs.third')]
+        },
         imagesGallery() {
             return this.getLicenses.map(item => {
                 return this.$vareibles.remote + item.PREVIEW_PICTURE;
