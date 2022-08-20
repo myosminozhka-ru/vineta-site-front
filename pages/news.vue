@@ -11,11 +11,14 @@
                             <nuxt-child />
                         </div>
                         <div class="news__content_right">
-                            <div class="news__content_bottons">
-                                <osm-button class="news__content_botton" :large="true" link="catalog">В каталог</osm-button>
-                                <osm-button class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
+                            <div class="news__content_right_in">
+                                <div class="news__content_bottons">
+                                    <osm-button class="news__content_botton" :large="true" link="catalog">В каталог</osm-button>
+                                    <osm-button class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
+                                </div>
+                                <osm-category />
                             </div>
-                            <osm-category />
+                            <div></div>
                         </div>
                     </main>
                 </div>
@@ -55,11 +58,12 @@ export default {
     }
     &__content {
         display: flex;
-        align-items: flex-start;
+        // align-items: flex-start;
         @media all and (max-width: 1280px) {
             display: block;
         }
     }
+    
     &__content_left {
         width: calc(100% - #{rem(345)} - #{rem(20)});
         @media all and (max-width: 1280px) {
@@ -72,9 +76,17 @@ export default {
     &__content_right {
         width: rem(345);
         margin-left: rem(20);
+        position: relative;
         @media all and (max-width: 1280px) {
             width: 100%;
             margin-left: 0;
+        }
+    }
+    &__content_right_in {
+        position: sticky;
+        top: rem(200);
+        @media all and (max-width: 1280px) {
+            position: static;
         }
     }
     &__content_bottons {
