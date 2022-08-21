@@ -269,7 +269,9 @@
     &__modal_top {
       padding: rem(62) rem(70) rem(38);
       background: #fff;
-
+      @media all and (max-width: 1450px) {
+        padding: 12rem 50rem 10rem;
+      }
       @media all and (min-width: 1281px) {
         max-height: 400px;
         overflow: auto;
@@ -283,6 +285,9 @@
     &__modal_bottom {
       background: #F2F2F2;
       padding: rem(62) rem(70);
+      @media all and (max-width: 1450px) {
+        padding: rem(34) rem(51);
+      }
 
       @media all and (max-width: 1280px) {
         padding: 30px 20px;
@@ -291,9 +296,12 @@
 
     &__modal_title {
       margin-bottom: rem(50) !important;
+      @media all and (max-width: 1450px) {
+      margin-bottom: rem(30) !important;
+      }
 
       @media all and (max-width: 1280px) {
-        margin-bottom: 30px !important;
+        margin-bottom: 20px !important;
       }
     }
 
