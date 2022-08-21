@@ -83,9 +83,12 @@ export default {
             img {
                 width: 100%;
             }
-            @media all and (max-width: 1280px) {
+            @media all and (max-width: 1440px) {
                 width: calc(100% / 4 - 20px * 3 / 4);
                 padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 &:not(:nth-child(6n+6)) {
                     margin-right: 0;
                 }
