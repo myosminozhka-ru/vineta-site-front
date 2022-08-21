@@ -378,9 +378,11 @@ body .wrapper .full-page-indicators {
   
   &__item_image {
       background: #D7DCE1;
+      overflow: hidden;
       .image_container {
           position: relative;
-          padding-top: 58%;
+          // padding-top: 58%;
+          padding-top: 56%;
       }
       img {
           position: absolute;

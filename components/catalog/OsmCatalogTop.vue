@@ -106,13 +106,16 @@ import { mapGetters } from 'vuex';
       display: flex;
       align-items: center;
       text-decoration: none;
-      padding: rem(20) rem(40);
+      padding: 20px 10px;
       background: #FF0040;
       transition: all .3s ease;
+        max-width: rem(203);
+        flex: 0 0 rem(203);
+        width: 100%;
+        text-align: center;
+        padding-left: 20px;
+        width: 100%;
 
-      @media all and (max-width: 1280px) {
-        padding: 20px 40px;
-      }
 
       @media all and (max-width: 840px) {
         width: 100%;
