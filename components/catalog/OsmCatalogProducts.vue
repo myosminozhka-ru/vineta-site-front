@@ -17,10 +17,10 @@
                             <!-- <pre>
                                 {{ property }}
                             </pre> -->
-                            <!-- <template v-if="property.NAME.replace(/\s/g, '') !== ''">
+                            <template v-if="'NAME' in property && property.NAME">
                                 <div class="name">{{ property.NAME }}</div>
                                 <div class="value">{{ property.VALUE }}</div>
-                            </template> -->
+                            </template>
                         </div>
                     </div>
                 </div>
