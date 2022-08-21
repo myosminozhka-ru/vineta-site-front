@@ -122,15 +122,30 @@ export default {
         height: rem(50);
         cursor: pointer;
         transition: all .3s ease-out;
+        position: absolute;
+        top: 60px;
+        right: 60px;    
         &:hover {
             filter: hue-rotate(29deg);
         }
         &:active {
             filter: hue-rotate(45deg);
         }
+        @media all and (max-width: 1440px) {
+            top: 50px;
+            right: 50px;
+        }
         @media all and (max-width: 1280px) {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
+        }
+        @media all and (max-width: 960px) {
+            top: 40px;
+            right: 20px;
+        }
+        @media all and (max-width: 420px) {
+            top: 30px;
+            right: 15px;
         }
     }
     &__form {

@@ -106,12 +106,12 @@ export default {
         }
         &:hover {
             svg rect {
-                fill: #32D2E8;
+                fill: #3A68B7;
             }
         }
         &:active {
             svg rect {
-                fill: #128D9E;
+                fill: #295196;
             }
         }
     }
