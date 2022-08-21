@@ -522,21 +522,31 @@
       color: #D7DCE1;
       text-decoration: none;
       padding: rem(47) 0;
+      span {
+        position: relative;
+        display: inline-block;
 
+        &:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 100%;
+          bottom: rem(-5);
+          height: 1px;
+          background: #FF004D;
+          transition: all .3s ease;
+        }
+      }
+      &:hover {
+        span {
+          &:after {
+            right: 0;
+          }
+        }
+      }
       @media all and (max-width: 1440px) {
         padding-top: 30px;
         padding-bottom: 30px;
-      }
-
-      &:after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 0;
-        background: #fff;
-        transition: all .3s ease;
       }
 
       @media all and (max-width: 1280px) {

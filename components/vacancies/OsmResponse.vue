@@ -125,7 +125,35 @@ export default {
                 margin: 10px 0;
             }
         }
-        .phones,
+        .phones {
+            a {
+                font-style: normal;
+                font-weight: 400;
+                font-size: rem(20);
+                line-height: rem(20);
+                color: #FFFFFF;
+                text-decoration: none;
+                position: relative;
+                transition: all .3s ease;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom: rem(-5);
+                    left: 0;
+                    right: 0;
+                    height: 0;
+                    background: #fff;
+                    border-radius: 4px;
+                    transition: all .3s ease;
+                }
+                &:hover {
+                    color: #fff;
+                    &:after {
+                        height: 2px;
+                    }
+                }
+            }
+        }
         .email {
             a {
                 font-style: normal;

@@ -272,10 +272,24 @@ export default {
                 margin-bottom: 20px;
             }
         }
+        &:hover {
+            .news__item_right {
+                border-color: #FF0040;
+            }
+            .news__link {
+                color: #DF0043;
+                border-color: #DF0043;
+            }
+        }
+        &:active {
+            .news__link {
+                color: #A70032;
+                border-color: #A70032;
+            }
+        }
     }
     &__item &__item_left {
         height: rem(345);
-        margin-bottom: rem(20);
     }
     &__item &__image {
         width: 100%;
@@ -289,9 +303,12 @@ export default {
     &__item &__item_right {
         flex: 1 1 auto;
         padding: rem(20);
+        padding-top: rem(40);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        border: 1px solid #D7DCE1;
+        transition: all .3s ease-out;
     }
     &__item &__item_top {
         margin-bottom: rem(42);

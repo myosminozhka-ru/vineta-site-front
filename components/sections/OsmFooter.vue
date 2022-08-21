@@ -289,11 +289,27 @@ export default {
         font-size: rem(25);
         line-height: 140%;
         color: #FFFFFF;
-        display: block;
+        display: inline-block;
         margin-bottom: rem(10);
+        position: relative;
         @media all and (max-width: 1280px) {
             font-size: 20px;
             margin-bottom: 20px;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -5rem;
+            height: 1px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        &:hover {
+            &:after {
+                right: 0;
+            }
         }
     }
     &__contacts_worktime {
@@ -394,11 +410,11 @@ export default {
                     right: 100%;
                     bottom: rem(-5);
                     height: rem(2);
-                    background: #32D2E8;
+                    background: #fff;
                     transition: all .3s ease;
                 }
                 &:hover {
-                    color: #32D2E8;
+                    color: #fff;
                 }
                 &:hover:after {
                     right: 0;

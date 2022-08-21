@@ -294,6 +294,9 @@ body .wrapper .full-page-indicators {
 .header_padding {
   background: #fff;
   @media all and (min-width: 1281px) {
+    padding-top: rem(92);
+  }
+  @media all and (min-width: 1441px) {
     padding-top: rem(117);
   }
   @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
@@ -557,6 +560,9 @@ body .wrapper .full-page-indicators {
     display: none;
     visibility: hidden;
     user-select: none;
+  }
+  &:hover, &:focus, &:active {
+    border-color: #172242;
   }
   @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
     height: 40px;
