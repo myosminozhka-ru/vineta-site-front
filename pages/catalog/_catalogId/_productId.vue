@@ -18,7 +18,7 @@
         <div class="productPage__text--title">Основные характеристики</div>
         <div class="productPage__texts" v-if="'PROPERIES' in product[0]">
           <div class="productPage__text" v-for="item in product[0].PROPERIES" :key="item.index">
-            <template v-if="item.NAME.replace(/\s/g, '') !== ''">
+            <template v-if="'NAME' in product[0] && product[0].NAME">
               <div class="title">{{ item.NAME }}</div>
               <div class="value">{{ item.VALUE }}</div>
             </template>
@@ -357,7 +357,7 @@
                   <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                   <div class="products__item_properties">
                     <div class="products__item_property" v-for="property in prod.PROPERIES" :key="property.index">
-                      <template v-if="property.NAME.replace(/\s/g, '') !== ''">
+                      <template v-if="'NAME' in property && property.NAME">
                         <div class="name">{{ property.NAME }}</div>
                         <div class="value">{{ property.VALUE }}</div>
                       </template>

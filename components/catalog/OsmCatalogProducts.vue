@@ -1,6 +1,6 @@
 <template>
     <div class="products">
-        <div class="products__items" v-if="products">
+        <div class="products__items" v-if="filteredProducts">
             <nuxt-link class="products__item" v-for="product in filteredProducts" :key="product.ID" :to="localePath({name: 'catalog-catalogId-productId', params: {productId: product.CODE}})">
                 <!-- <pre style="font-size: 15rem">{{ product }}</pre> -->
                 <div class="products__item_image">
@@ -14,9 +14,6 @@
                     <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                     <div class="products__item_properties">
                         <div class="products__item_property" v-for="property in product.PROPERIES" :key="property.index">
-                            <!-- <pre>
-                                {{ property }}
-                            </pre> -->
                             <template v-if="'NAME' in property && property.NAME">
                                 <div class="name">{{ property.NAME }}</div>
                                 <div class="value">{{ property.VALUE }}</div>

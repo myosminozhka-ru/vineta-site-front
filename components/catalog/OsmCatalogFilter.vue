@@ -1,14 +1,15 @@
 <template>
     <div class="filter" :class="{'opened': isFilterOpened}">
         <div class="filter__in">
-            <!-- <div class="filter__title">
+            <div class="filter__title">
                 {{ $t('filter.title') }}
                 <div class="arrow hide_on_desktop">
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
                         <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
                     </svg>
                 </div>
-            </div> -->
+            </div>
+            {{ parametrs }}
             <!-- <div class="filter__params" v-if="currentCategory[0]" @click.stop>
                 <div class="filter__params_block">
                     <div class="filter__params_title">{{ currentCategory[0].NAME }}</div>
@@ -61,11 +62,29 @@ export default {
         }
     },
     data: () => ({
-        isFilterOpened: false
+        isFilterOpened: false,
+        products: [],
+        parametrs: []
     }),
-    mounted() {
+    async mounted() {
         console.log(this.getCatalog);
         this.setFilterOpener();
+        this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
+        this.products.map(item => {
+            if ('PROPERIES_FILTER' in item) {
+                console.log(item.NAME);
+                item.PROPERIES_FILTER.map(prop => {
+                    console.log(this.parametrs.includes(prop));
+                    console.log(prop);
+                    if (!this.parametrs.includes(prop)) {
+                        this.parametrs.push(prop);
+                    }
+                    return prop;
+                })
+                
+            }
+            return item;
+        })
     },
     methods: {
         ...mapActions(['addFilters']),
