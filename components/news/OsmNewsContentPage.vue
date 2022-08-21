@@ -289,7 +289,13 @@ export default {
         }
     }
     &__item &__item_left {
-        height: rem(345);
+        // height: rem(345);
+        position: relative;
+        padding-top: 50%;
+        img {
+            position: absolute;
+            top: 0;
+        }
     }
     &__item &__image {
         width: 100%;

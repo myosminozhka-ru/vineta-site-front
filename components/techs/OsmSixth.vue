@@ -16,9 +16,11 @@
                         <div class="index">05</div>
                         <div class="texts">
                             <div class="title">Контрольно-сдаточный этап</div>
-                            
+
                             <p class="text">
-                                Предприятие располагает стендом для проведения гидравлических испытаний макс. давлением до 500 кг. Аттестат №180/4.
+                            Предприятие располагает стендом для проведения гидравлических
+                            испытаний макс.давлением до 500 кгс/см.кв. (Аттестат №180/4).<br>
+                            Оборудована лаборатория неразрушающего контроля.
                             </p>
                         </div>
                     </div>
@@ -47,6 +49,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1480px) {
+            padding: rem(30) rem(50) rem(40) rem(107);
+        }
         @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }

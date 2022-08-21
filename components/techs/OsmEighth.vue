@@ -8,8 +8,44 @@
                 <div class="section__customers--tech">
                     <div class="title">Заказчики</div>
                     <div class="items">
-                        <div class="item" v-for="item in 20" :key="item.index">
-                            <img :src="require('~/assets/img/techs/alfeus_logo.svg')" alt="">
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/a1alfeus_logo_v31_RU_D 1.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/2gir.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/3ord_tech.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/4balt_zav.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/5adminral_verf.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/6krasnoe.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/7ssz.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/8oksk.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/9amur.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/91sevmash.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/92yan.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/93verf.png')" alt="">
+                        </div>
+                        <div class="item">
+                            <img src="require('~/assets/img/techs/94zvezd.png')" alt="">
                         </div>
                     </div>
                 </div>
@@ -37,6 +73,9 @@ export default {
         display: flex;
         flex-direction: column;
         padding: rem(30) rem(260) rem(40) rem(107);
+        @media all and (max-width: 1480px) {
+            padding: rem(30) rem(50) rem(40) rem(107);
+        }
         @media all and (max-width: 1280px) {
             padding: 30px 20px 40px;
         }

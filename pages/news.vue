@@ -84,9 +84,12 @@ export default {
     }
     &__content_right_in {
         position: sticky;
-        top: rem(200);
+        top: rem(110);
         @media all and (max-width: 1280px) {
             position: static;
+        }
+        @media all and (min-width: 1440px) {
+            top: rem(130);
         }
     }
     &__content_bottons {
