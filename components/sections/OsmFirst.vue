@@ -1693,10 +1693,14 @@
       top: 0;
       bottom: 0;
       left: 50%;
-      transform: translateX(-50%) scale(1.2);
+		transform: translateX(-50%) rotate(3deg) scale(1.01);	
+		@media all and (max-width: 1280px) {
+			transform: translateX(-50%) scale(1.2);
+		}
       transition: 1s clip-path 2.3s ease;
-      padding-top: rem(30);
-      padding-bottom: rem(25);
+    //   padding-top: rem(30);
+    //   padding-bottom: rem(25);
+	      padding: 24px;
 	  &:not(.isClipped) {
 			@media all and (min-width: 861px) {
 				opacity: 0;
