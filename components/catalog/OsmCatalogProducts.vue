@@ -11,7 +11,6 @@
                 </div>
                 <div class="products__item_data">
                     <span class="products__item_name">{{product.NAME}}</span>
-                    <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                     <div class="products__item_properties">
                         <div class="products__item_property" v-for="property in product.PROPERIES" :key="property.index">
                             <!-- <pre>

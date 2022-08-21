@@ -21,10 +21,10 @@
             </div>
             <div class="second__text">
               <p>{{ getAbout.banners.second.PREVIEW_TEXT }}</p>
-              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT">{{ getAbout.banners.second.DETAIL_TEXT }}</p>
+              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT.length>4">{{ getAbout.banners.second.DETAIL_TEXT }}</p>
             </div>
           </div>
-          <div class="second__buttons" @click="isTextShowed = !isTextShowed">
+          <div v-if="getAbout.banners.second.DETAIL_TEXT.length>4" class="second__buttons 12345" @click="isTextShowed = !isTextShowed">
             <osm-button class="second__button">
               <div class="icon" :class="{'isOpened': isTextShowed}">
                 <svg width="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +59,7 @@
               <nuxt-link v-for="link in getAbout.sections" :key="link.index"
                 :to="localePath({name: 'catalog-catalogId', params: {catalogId: link.CODE}})" class="second__item">
                 <div class="icon">
-                  <img :src="$vareibles.remote + link.PICTURE" width="100%" alt="">
+                  <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="">
                 </div>
                 <div class="text">{{ link.NAME }}</div>
               </nuxt-link>

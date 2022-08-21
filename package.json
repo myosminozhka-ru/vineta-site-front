@@ -20,6 +20,7 @@
     "@nuxtjs/i18n": "^7.2.3",
     "@openafg/nuxt-fullpage": "^1.0.5",
     "core-js": "^3.19.3",
+    "forever": "^4.0.3",
     "hooper": "^0.3.4",
     "mapbox-gl": "^2.9.2",
     "nuxt": "^2.15.8",

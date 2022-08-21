@@ -1,7 +1,7 @@
 <template>
     <div class="filter" :class="{'opened': isFilterOpened}">
         <div class="filter__in">
-            <div class="filter__title" v-if="currentCategory[0]">
+            <div class="filter__title" v-if="currentCategory[0].CHILD.length>0">
                 {{ $t('filter.title') }}
                 <div class="arrow hide_on_desktop">
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -29,7 +29,7 @@
                 <button class="filter__clear hide_on_desktop" @click="clearFilter">Сбросить</button>
             </div>
             <button class="filter__clear hide_on_tablet" v-if="currentCategory[0]" @click="clearFilter">Сбросить</button>
-            <div class="filter__title" v-if="!currentCategory[0]">
+            <div class="filter__title" v-if="!currentCategory[0].CHILD.length>0">
                 {{ $t('filter.empty') }}
             </div>
         </div>
