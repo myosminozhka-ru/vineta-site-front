@@ -159,6 +159,13 @@ export default {
         width: rem(50);
         height: rem(50);
         cursor: pointer;
+        transition: all .3s ease-out;
+        &:hover {
+            filter: hue-rotate(29deg);
+        }
+        &:active {
+            filter: hue-rotate(45deg);
+        }
         @media all and (max-width: 1280px) {
             width: 30px;
             height: 30px;

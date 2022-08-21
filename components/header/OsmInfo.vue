@@ -165,9 +165,25 @@ export default {
             font-weight: inherit;
             font-size: inherit;
             line-height: inherit;
+            position: relative;
             color: inherit;
             &.isActive {
                 font-weight: 600;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 100%;
+                bottom: -5rem;
+                height: 1px;
+                background: #D7DCE1;
+                transition: all 0.3s ease;
+            }
+            &:hover {
+                &:after {
+                    right: 0;
+                }
             }
         }
     }
@@ -177,12 +193,29 @@ export default {
         font-size: rem(20);
         line-height: 140%;
         color: #D7DCE1;
+        display: inline-block;
         text-decoration: none;
+        position: relative;
         @media all and (max-width: 1280px) {
             font-size: 20px;
         }
         @media all and (max-width: 530px) {
             font-size: 18px;
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 100%;
+            bottom: -5rem;
+            height: 1px;
+            background: #D7DCE1;
+            transition: all 0.3s ease;
+        }
+        &:hover {
+            &:after {
+                right: 0;
+            }
         }
     }
     object {
