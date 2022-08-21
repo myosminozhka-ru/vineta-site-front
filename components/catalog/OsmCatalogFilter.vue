@@ -9,34 +9,30 @@
                     </svg>
                 </div>
             </div>
-            {{ parametrs }}
-            <!-- <div class="filter__params" v-if="currentCategory[0]" @click.stop>
-                <div class="filter__params_block">
-                    <div class="filter__params_title">{{ currentCategory[0].NAME }}</div>
+            {{ currentCategoryParams }}
+            <div class="filter__params" @click.stop>
+                <div class="filter__params_block" v-for="item in parametrs" :key="item.index">
+                    <div class="filter__params_title">{{ item }}</div>
                     <div class="filter__params_items" @click.stop>
-                        <template v-if="'CHILD' in currentCategory[0]">
-                            <label class="filter__params_item" v-for="item in currentCategory[0].CHILD" :key="item.index" @click.stop>
-                                <input type="checkbox" class="checkbox" :value="item.CODE" v-model="filters" name="asdasd">
-                                <div class="filter__params_checkbox">
-                                    <div class="check">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 12" fill="none">
-                                            <path d="M1 5.5L5.5 10L14.5 1" stroke="white" stroke-width="2"/>
-                                        </svg>
-                                    </div>
+                        <label class="filter__params_item" v-for="param in item" :key="param.index" @click.stop>
+                            <input type="checkbox" class="checkbox" :value="param" v-model="filters" name="asdasd">
+                            <div class="filter__params_checkbox">
+                                <div class="check">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 12" fill="none">
+                                        <path d="M1 5.5L5.5 10L14.5 1" stroke="white" stroke-width="2"/>
+                                    </svg>
                                 </div>
-                                <div class="filter__params_name">{{ item.NAME }}</div>
-                            </label>
-                        </template>
+                            </div>
+                            <div class="filter__params_name">{{ param }}</div>
+                        </label>
                     </div>
                 </div>
                 <button class="filter__clear hide_on_desktop" @click="clearFilter">Сбросить</button>
             </div>
-            <template v-if="'CHILD' in currentCategory[0]">
-                <button class="filter__clear hide_on_tablet" v-if="currentCategory[0]" @click="clearFilter">Сбросить</button>
-                <div class="filter__title" v-if="!currentCategory[0].CHILD.length>0">
-                    {{ $t('filter.empty') }}
-                </div>
-            </template> -->
+            <button class="filter__clear hide_on_tablet" v-if="parametrs" @click="clearFilter">Сбросить</button>
+            <div class="filter__title" v-if="!parametrs">
+                {{ $t('filter.empty') }}
+            </div>
         </div>
         <div></div>
     </div>
@@ -57,6 +53,9 @@ export default {
                 this.addFilters(newValue)
             }
         },
+        currentCategoryParams() {
+            return this.parametrs;
+        },
         currentCategory() {
             return this.getCatalog.filter(category => category.CODE === this.$route.params.catalogId);
         }
@@ -74,11 +73,25 @@ export default {
             if ('PROPERIES_FILTER' in item) {
                 console.log(item.NAME);
                 item.PROPERIES_FILTER.map(prop => {
-                    console.log(this.parametrs.includes(prop));
-                    console.log(prop);
-                    if (!this.parametrs.includes(prop)) {
-                        this.parametrs.push(prop);
+                    if (!this.parametrs[prop.NAME]) {
+                        this.parametrs[prop.NAME] = [];
                     }
+                    prop.VALUE.map(item => {
+                        if (!this.parametrs[prop.NAME].includes(item)) {
+                            this.parametrs[prop.NAME] = [
+                                ...this.parametrs[prop.NAME],
+                                item
+                            ];
+                        }
+                        return item;
+                    })
+                    
+                    console.log(this.parametrs);
+                    // console.log(this.parametrs.includes(prop));
+                    // console.log(prop);
+                    // if (!this.parametrs.includes(prop)) {
+                    //     this.parametrs.push(prop);
+                    // }
                     return prop;
                 })
                 
