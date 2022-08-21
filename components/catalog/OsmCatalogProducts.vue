@@ -11,15 +11,16 @@
                 </div>
                 <div class="products__item_data">
                     <span class="products__item_name">{{product.NAME}}</span>
+                    <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                     <div class="products__item_properties">
                         <div class="products__item_property" v-for="property in product.PROPERIES" :key="property.index">
                             <!-- <pre>
                                 {{ property }}
                             </pre> -->
-                            <template v-if="property.NAME.replace(/\s/g, '') !== ''">
+                            <!-- <template v-if="property.NAME.replace(/\s/g, '') !== ''">
                                 <div class="name">{{ property.NAME }}</div>
                                 <div class="value">{{ property.VALUE }}</div>
-                            </template>
+                            </template> -->
                         </div>
                     </div>
                 </div>

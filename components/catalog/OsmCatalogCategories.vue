@@ -8,7 +8,7 @@
                 </div>
             </nuxt-link >
             <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: category.CODE}})" class="categories__item_name">{{ category.NAME }}</nuxt-link>
-            <ul class="categories__item_childs" v-if="category.CHILD">
+            <ul class="categories__item_childs" v-if="'CHILD' in category">
                 <li class="categories__item_child" v-for="child in category.CHILD" :key="child.index">
                     <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: child.CODE}})">{{ child.NAME }}</nuxt-link>
                 </li>

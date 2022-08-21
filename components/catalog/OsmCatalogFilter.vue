@@ -1,37 +1,41 @@
 <template>
     <div class="filter" :class="{'opened': isFilterOpened}">
         <div class="filter__in">
-            <div class="filter__title" v-if="currentCategory[0].CHILD.length>0">
+            <!-- <div class="filter__title">
                 {{ $t('filter.title') }}
                 <div class="arrow hide_on_desktop">
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
                         <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"/>
                     </svg>
                 </div>
-            </div>
-            <div class="filter__params" v-if="currentCategory[0]" @click.stop>
+            </div> -->
+            <!-- <div class="filter__params" v-if="currentCategory[0]" @click.stop>
                 <div class="filter__params_block">
                     <div class="filter__params_title">{{ currentCategory[0].NAME }}</div>
                     <div class="filter__params_items" @click.stop>
-                        <label class="filter__params_item" v-for="item in currentCategory[0].CHILD" :key="item.index" @click.stop>
-                            <input type="checkbox" class="checkbox" :value="item.CODE" v-model="filters" name="asdasd">
-                            <div class="filter__params_checkbox">
-                                <div class="check">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 12" fill="none">
-                                        <path d="M1 5.5L5.5 10L14.5 1" stroke="white" stroke-width="2"/>
-                                    </svg>
+                        <template v-if="'CHILD' in currentCategory[0]">
+                            <label class="filter__params_item" v-for="item in currentCategory[0].CHILD" :key="item.index" @click.stop>
+                                <input type="checkbox" class="checkbox" :value="item.CODE" v-model="filters" name="asdasd">
+                                <div class="filter__params_checkbox">
+                                    <div class="check">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 12" fill="none">
+                                            <path d="M1 5.5L5.5 10L14.5 1" stroke="white" stroke-width="2"/>
+                                        </svg>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="filter__params_name">{{ item.NAME }}</div>
-                        </label>
+                                <div class="filter__params_name">{{ item.NAME }}</div>
+                            </label>
+                        </template>
                     </div>
                 </div>
                 <button class="filter__clear hide_on_desktop" @click="clearFilter">Сбросить</button>
             </div>
-            <button class="filter__clear hide_on_tablet" v-if="currentCategory[0]" @click="clearFilter">Сбросить</button>
-            <div class="filter__title" v-if="!currentCategory[0].CHILD.length>0">
-                {{ $t('filter.empty') }}
-            </div>
+            <template v-if="'CHILD' in currentCategory[0]">
+                <button class="filter__clear hide_on_tablet" v-if="currentCategory[0]" @click="clearFilter">Сбросить</button>
+                <div class="filter__title" v-if="!currentCategory[0].CHILD.length>0">
+                    {{ $t('filter.empty') }}
+                </div>
+            </template> -->
         </div>
         <div></div>
     </div>
