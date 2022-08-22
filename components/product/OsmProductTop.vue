@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="product__header_buttons hide_on_mobile">
-            <div class="product__header_mods">{{ offersCount.length }} модификаций</div>
+            <div class="product__header_mods" v-if="offersCount.length">Модификаций ({{ offersCount.length }})</div>
             <template v-if="getDownloads['katalog-produktsii']">
             <a v-if="'PROPERIES' in getDownloads['katalog-produktsii']"
               :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank"
