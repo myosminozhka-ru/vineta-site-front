@@ -116,7 +116,8 @@
           <div class="fiveth__item" v-for="item in managment" :key="item.index">
             <div class="avatar">
               <div class="avatar__in">
-                <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
+                <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
+                <img v-else :src="require('~/assets/img/product.noimage.png')" alt=""></img>
               </div>
             </div>
             <div class="name">{{ item.NAME }}</div>
@@ -128,9 +129,9 @@
       </section>
       <section class="fourth">
         <img :src="require('~/assets/img/about/people2.jpg')" width="100%" alt="">
-        <div class="play">
+        <div class="play" v-if="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" fill="none">
-            <rect width="100%" height="100%" fill="#FF004D" />
+            <rect width="100%" height="100%" fill="#FF004D"  />
             <path d="M61.6673 50L38.334 33.3334V66.6667L61.6673 50Z" fill="white" />
           </svg>
         </div>
@@ -207,7 +208,7 @@
     computed: {
       ...mapGetters(['getAbout']),
       managment() {
-        return this.getAbout.peoples.filter(item => item.PREVIEW_PICTURE)
+        return this.getAbout.peoples
       }
     },
   }
@@ -556,7 +557,7 @@
     &__item {
       width: calc(100% / 4 - #{rem(60)} / 4);
 
-      @media all and (max-width: 1280px) {}
+      
 
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
@@ -706,7 +707,11 @@
     &__item {
       width: calc(100% / 4 - #{rem(60)} / 4);
 
-      @media all and (max-width: 1280px) {}
+      @media all and (min-width: 841px) {
+        &:nth-child(n+5) {
+          margin-top: rem(40);
+        }
+      }
 
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
