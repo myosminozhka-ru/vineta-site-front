@@ -11,15 +11,16 @@
       <osm-product-slider :data="product[0]" />
       <div class="productPage__info">
         <!-- <pre style="font-size: 15rem">{{ product[0] }}</pre> -->
-        <div class="productPage__description" v-if="product[0].DETAIL_TEXT">
+        <!-- <div class="productPage__description" v-if="product[0].DETAIL_TEXT"> -->
+        <div class="productPage__description" v-if="false">
           <div class="title">Описание</div>
           <div class="value">{{ product[0].DETAIL_TEXT }}</div>
         </div>
         <div class="productPage__text--title">Основные характеристики</div>
         <div class="productPage__texts" v-if="'PROPERIES' in product[0]">
           <div class="productPage__text" v-for="item in product[0].PROPERIES" :key="item.index">
-            <template v-if="'NAME' in product[0] && product[0].NAME">
-              <div class="title">{{ item.NAME }}</div>
+            <template v-if="'NAME' in item && item.NAME">
+              <div class="title фывфыв">{{ item.NAME }}</div>
               <div class="value">{{ item.VALUE }}</div>
             </template>
           </div>
@@ -64,22 +65,22 @@
       <div class="productPage__mods">
         <div class="productPage__mods--tabs hide_on_tablet">
           <div class="titles">
-            <div @click.prevent="tabs.selected = 1" v-if="'DETAIL_TEXT' in product[0]">
-              <osm-button class="productPage__mods--opener" :class="{'isActive': tabs.selected === 1}" :outlined="true">
+            <div @click.prevent="tabs.selected = 1" v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
+              <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 1}" :outlined="true">
                 Описание</osm-button>
             </div>
             <div @click.prevent="tabs.selected = 2">
-              <osm-button class="productPage__mods--opener" :class="{'isActive': tabs.selected === 2}" :outlined="true">
+              <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 2}" :outlined="true">
                 Характеристики</osm-button>
             </div>
             <div @click.prevent="tabs.selected = 3">
-              <osm-button class="productPage__mods--opener" :class="{'isActive': tabs.selected === 3}" :outlined="true">
+              <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 3}" :outlined="true">
                 Модификации (5)</osm-button>
             </div>
           </div>
           <div class="tabs">
             <div class="productPage__mods--tab productPage__mods--bg"
-              v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0]">
+              v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
@@ -109,8 +110,10 @@
                 <!-- <pre style="font-size: 15rem">{{product[0]}}</pre> -->
                 <div class="productPage__mods--chars">
                   <div class="productPage__mods--char" v-for="prop in product[0].PROPERIES" :key="prop.index">
-                    <div class="productPage__mods--char_title">{{ prop.NAME }}</div>
-                    <div class="productPage__mods--char_value">{{ prop.VALUE }}</div>
+                    <template v-if="'NAME' in prop && prop.NAME">
+                      <div class="productPage__mods--char_title">{{ prop.NAME }}</div>
+                      <div class="productPage__mods--char_value">{{ prop.VALUE }}</div>
+                    </template>
                   </div>
                 </div>
               </div>
@@ -173,7 +176,7 @@
         </div>
         <div class="productPage__mods--tabs hide_on_desktop">
           <div class="tabs">
-            <div v-if="'DETAIL_TEXT' in product[0]" class="tabs__opener" :class="{'isActive': tabs.selected === 1}"
+            <div v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="tabs__opener" :class="{'isActive': tabs.selected === 1}"
               @click.prevent="tabs.selected = 1">
               <div class="text">Описание</div>
               <div class="arrow">
@@ -184,7 +187,7 @@
               </div>
             </div>
             <div class="productPage__mods--tab productPage__mods--bg"
-              v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0]">
+              v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
@@ -460,6 +463,9 @@
     },
     mounted() {
       // console.log('this.product', this.product)
+      if ('DETAIL_TEXT' in this.product[0] && !this.product[0].DETAIL_TEXT) {
+        this.tabs.selected = 2;
+      }
       if (window.innerWidth <= 1280) {
         setTimeout(() => {
           this.prodsSlider = new Glide('.productPage__analogs .values.glide', {
@@ -593,6 +599,7 @@
         width: calc(828rem + 98rem + 24rem - 240rem);
 
         div {
+          flex: 1 1 auto;
           &:last-child .productPage__mods--opener {
             margin-right: 0;
           }
@@ -955,6 +962,9 @@
 
     &__mods--char {
       padding: rem(10) 0;
+      &:empty {
+        display: none;
+      }
 
       &:not(:last-child) {
         border-bottom: 1px solid #F2F2F2;
