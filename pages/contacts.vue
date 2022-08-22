@@ -148,7 +148,7 @@ export default {
 .contacts {
     padding: rem(30) rem(240) rem(120);
     background: #fff;
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
@@ -312,7 +312,7 @@ export default {
         padding-right: 150px;
         padding-left: 150px;
     }
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }

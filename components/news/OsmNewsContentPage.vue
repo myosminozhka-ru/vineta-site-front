@@ -173,7 +173,7 @@ export default {
         grid-template-areas: 
             'big big big'
             'first second third';
-        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
             grid-template-columns: repeat(2, 1fr );
             grid-template-areas: 
                 'big big'

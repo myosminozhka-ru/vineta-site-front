@@ -140,7 +140,7 @@ export default {
     &__title {
         font-size: rem(40);
         margin-bottom: 0 !important;
-        // @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+        // @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
         //     margin-bottom: 5px !important;
         // }
     }

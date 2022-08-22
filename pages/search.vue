@@ -95,7 +95,7 @@ export default {
 <style lang="scss" scoped>
 .search {
     padding: rem(30) rem(240) rem(120);
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
