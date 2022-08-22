@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper footerOnBottom">
-    <osm-header />
+    <!-- <osm-header /> -->
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
         {{ getAbout }}
@@ -120,7 +120,9 @@
               </div>
             </div>
             <div class="name">{{ item.NAME }}</div>
-
+            <div v-if="item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST').length" class="position">{{ item.PROPERIES.filter(elem => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
+              <a v-if="item.PROPERIES.filter(elem => elem.CODE === 'PHONE').length" :href="`tel:${item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE}`" class="phone">{{ item.PROPERIES.filter(elem => elem.CODE === 'PHONE')[0].VALUE }}</a>
+              <a v-if="item.PROPERIES.filter(elem => elem.CODE === 'EMAIL').length" :href="`mailto:${item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE}`" class="email">{{ item.PROPERIES.filter(elem => elem.CODE === 'EMAIL')[0].VALUE }}</a>
           </div>
         </div>
       </section>
@@ -176,7 +178,7 @@
   export default {
     name: 'AboutPage',
     components: {
-      OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+      // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue'),
       Customers: () => import('~/components/sliders/Customers.vue'),

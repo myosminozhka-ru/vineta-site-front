@@ -14,7 +14,9 @@
                             <div class="news__content_right_in">
                                 <div class="news__content_bottons">
                                     <osm-button class="news__content_botton" :large="true" link="catalog">В каталог</osm-button>
-                                    <osm-button class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
+                                    <osm-button v-if="false"  class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
+                                    <pre style="font-size: 12px;">{{ getDownloads }}</pre>
+                                    <a v-if="'prezentatsiya' in getDownloads" :href="$vareibles.remote + getDownloads.prezentatsiya.PROPERIES[0].SRC" class="button isOutlined isLarge but_prez">Презентация компании</a>
                                 </div>
                                 <osm-category />
                             </div>
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: "NewsPage",
     components: {
@@ -38,12 +41,75 @@ export default {
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmNewsTop: () => import('~/components/news/OsmNewsTop.vue'),
         OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
+    },
+    computed: {
+        ...mapGetters(['getDownloads']),
     }
 }
 </script>
 
 <style lang="scss" scoped>
 .news {
+    .but_prez {
+        &.isOutlined {
+            padding: rem(18) rem(30);
+            background: transparent;
+            color: #172242;
+            border: rem(2) solid #FF004D;
+            position: relative;
+            &:before {
+                content: "";
+                position: absolute;
+                bottom: rem(-2);
+                left: 0;
+                height: rem(3);
+                background: #fff;
+                width: 0;
+                transition: all .3s ease;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                top: rem(-2);
+                right: 0;
+                height: rem(3);
+                background: #fff;
+                width: 0;
+                transition: all .3s ease;
+            }
+            @media all and (max-width: 1280px) {
+                border-width: 2px;
+                padding: 18px 30px;
+            }
+            svg {
+                // fill: #fff;
+                path {
+                    transition: all .3s ease;
+                }
+            }
+            &:hover {
+                // color: #fff;
+                background: #fff;
+                // svg {
+                //     // fill: #fff;
+                //     path {
+                //         fill: #fff;
+                //     }
+                // }
+                &:before,
+                &:after {
+                    width: 70%;
+                }
+            }
+            &:active {
+                border-color: #A70032;
+                &:before,
+                &:after {
+                    width: 0;
+                }
+            }
+        }
+    }
     padding: rem(30) rem(240) rem(120);
     @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
       padding-left: rem(50);
