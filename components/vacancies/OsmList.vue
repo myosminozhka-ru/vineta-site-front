@@ -171,3 +171,18 @@ export default {
     }
 }
 </style>
+
+<style lang="scss">
+.list {
+    &__item_info--item {
+        .text {
+            ul li {
+                display: none;
+                &:nth-child(1), &:nth-child(2) {
+                    display: list-item;
+                }
+            }
+        }
+    }
+}
+</style>
