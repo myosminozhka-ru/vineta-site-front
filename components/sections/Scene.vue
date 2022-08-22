@@ -22,6 +22,8 @@ import { ModelObj } from 'vue-3d-model';
     mounted() {
         this.link = document.location.origin;
         this.isMounted = true;
+
+        console.log(document.location.origin);
     },
   }
 
