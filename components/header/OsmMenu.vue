@@ -29,12 +29,12 @@
           <ul class="menu__modal_menu">
             <li v-for="category in getCatalog" :key="category.ID">
               <!-- <pre style="font-size: 15rem">{{ category }}</pre> -->
-              <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: category.CODE }})">
+              <a :href="localePath({name: 'catalog-catalogId', params: {catalogId: category.CODE }})">
                 <div class="icon">
                   <img :src="$vareibles.remote + category.PICTURE" width="100%" alt="">
                 </div>
                 <div class="text">{{ category.NAME }}</div>
-              </nuxt-link>
+              </a>
             </li>
           </ul>
         </div>
