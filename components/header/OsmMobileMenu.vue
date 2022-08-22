@@ -63,11 +63,11 @@
           </ul>
         </nav>
       </div>
-      <div class="menu__socials">
+      <!-- <div class="menu__socials">
         <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
             <img :src="social.icon" width="100%" alt="">
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

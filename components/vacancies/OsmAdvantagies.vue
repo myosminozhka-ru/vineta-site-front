@@ -6,8 +6,10 @@
                 <div class="icon">
                     <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                 </div>
-                <div class="title">{{ item.NAME }}</div>
-                <div class="text">{{ item.PREVIEW_TEXT }}</div>
+                <div class="advantages__item__info">
+                    <div class="title">{{ item.NAME }}</div>
+                    <div class="text">{{ item.PREVIEW_TEXT }}</div>
+                </div>
             </div>
         </div>
         <div class="advantages__button">
@@ -74,6 +76,26 @@ export default {
             font-size: rem(16);
             line-height: 140%;
             color: #555F76;
+        }
+    }
+    &__item {
+        @media all and (max-width: 840px) {
+            display: flex;
+            align-items: center;
+            .icon {
+                margin-bottom: 0;
+                margin-right: 20px;
+                flex: 0 0 40px;
+            }
+            .advantages__item__info {
+                width: 100%;
+            }
+            .title {
+                margin-bottom: 0;
+            }
+            .text {
+                margin-top: rem(10);
+            }
         }
     }
     &__button {
