@@ -14,7 +14,6 @@
                                 <div class="text" v-html="decodeHTML(prop.VALUE.TEXT)"></div>
                             </template>
                             <template v-if="!prop.VALUE.TEXT" >
-                                <!-- {{ prop.VALUE }} -->
                                 <div class="text" v-html="decodeHTML(prop.VALUE)"></div>
                             </template>
                         </template>
@@ -51,31 +50,6 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-.list {
-&__item_info--item {
-        .text {
-            font-size: 0;
-            p {
-                font-style: normal;
-                font-weight: 400;
-                font-size: rem(20);
-                line-height: 140%;
-                color: #172242;
-                margin: 0;
-                &:not(:last-child) {
-                    margin-bottom: 5px;
-                }
-                @media all and (max-width: 1280px) {
-                    font-size: 16px;
-                }
-            }
-            // white-space: pre-wrap;
-        }
-    }
-}
-</style>
 
 <style lang="scss" scoped>
 .list {
@@ -154,6 +128,17 @@ export default {
             margin-bottom: rem(5);
             line-height: 140%;
             color: #555F76;
+        }
+        .text {
+            font-style: normal;
+            font-weight: 400;
+            font-size: rem(20);
+            line-height: 140%;
+            color: #172242;
+            // white-space: pre-wrap;
+            @media all and (max-width: 1280px) {
+                font-size: 16px;
+            }
         }
         // &:nth-child(1) {
         //     max-width: rem(158);
