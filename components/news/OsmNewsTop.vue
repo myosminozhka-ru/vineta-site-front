@@ -27,6 +27,7 @@ import { mapGetters, mapActions } from 'vuex';
     },
     computed: {
       ...mapGetters(['getSelectedNewsType']),
+      ...mapGetters(['getNews']),
     },
     data: () => ({
       tabs: {

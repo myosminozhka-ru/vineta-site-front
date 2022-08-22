@@ -29,14 +29,14 @@ export default {
             const map = new mapboxgl.Map({
                 container: 'osmMap', // container ID
                 style: 'mapbox://styles/denny743/cl6kl37wt001014o322cb10ah', // style URL
-                center: '0' in this.getContacts && 'GEO' in this.getContacts['0'] ? [30.5, 50.5] : [30.5, 50.5], // starting position [lng, lat]
+                center: '0' in this.getContacts && 'GEO' in this.getContacts['0'] ? [30.31667, 59.95] : [30.31667, 59.95], // starting position [lng, lat]
                 zoom: 15, // starting zoom
                 projection: 'globe' // display the map as a 3D globe
             });
             const marker = new mapboxgl.Marker({
                 color: "#FFFFFF",
                 draggable: true
-            }).setLngLat([30.5, 50.5]).setDraggable(false).setPopup(new mapboxgl.Popup().setHTML("<h1>Hello World!</h1>")).addTo(map);
+            }).setLngLat([30.31667, 59.95]).setDraggable(false).setPopup(new mapboxgl.Popup().setHTML("<h1>Винета</h1>")).addTo(map);
             console.log(marker);
             map.on('style.load', () => {
                 map.setFog({}); // Set the default atmosphere style
