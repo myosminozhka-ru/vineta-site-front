@@ -139,6 +139,9 @@
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0] }}</pre> -->
                 <div class="productPage__mods--mods">
+                  <pre>
+                    {{ product[0].OFFERS.length }}
+                  </pre>
                   <div class="productPage__mods--mod" v-for="mod in product[0].OFFERS" :key="mod.index">
                     <div class="productPage__mods--mods_titles">
                       <div class="productPage__mods--mods_title" v-for="proper in mod.PROPERTIES" :key="proper.index">

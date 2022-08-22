@@ -389,26 +389,16 @@ export default {
         transition: all .3s ease;
         width: rem(98) !important;
         height: rem(98) !important;
-        &:not(:last-child) {
-            // margin-bottom: rem(20);
-            // @media all and (max-width: 1280px) {
-            //     margin-bottom: 0;
-                // margin-right: 40px;
-            // }
-        }
         &:hover,
         &.is-current {
             border-color: #D7DCE1;
         }
-        // @media all and (max-width: 1280px) {
-        //     width: 73px;
-        // }
-        // @media all and (max-width: 840px) {
-        //     width: 60px;
-        //     // &:nth-child(n+3) {
-        //     //     display: none;
-        //     // }
-        // }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 50%;
+        }
     }
     &__slider-buttons {
         margin-top: rem(20);

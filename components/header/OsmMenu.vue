@@ -106,7 +106,7 @@
     <div @click="openSearch" class="header__button header__button--search hide_off_mobile">
       <object :data="require(`~/assets/img/search.svg`)" width="100%" />
     </div>
-    <nuxt-link class="header__button header__button--favorites hide_off_mobile" :to="{ name: 'favorites' }">
+    <nuxt-link class="header__button header__button--favorites hide_off_mobile" :to="localePath({ name: 'favorites' })">
       <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none">
         <rect width="30" height="30" rx="15" fill="#2E5599" />
         <path

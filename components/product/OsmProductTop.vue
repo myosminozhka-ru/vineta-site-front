@@ -27,6 +27,11 @@ export default {
             default: null
         }
     },
+    mounted() {
+        // console.log('data', this.data.OFFERS.map(item => {
+        //     return item;
+        // }))
+    },
     methods: {
       printSection() {
         window.print();
