@@ -6,10 +6,10 @@
         <osm-breadcrumbs />
         <osm-catalog-top v-if="'NAME' in currentCategory" :title="currentCategory.NAME" />
         <div class="catalog__in">         
-            <div class="catalog__in-left">
+            <div class="catalog__in-left" v-if="hasFilters">
                 <osm-catalog-filter />
             </div>
-            <div class="catalog__in-right">
+            <div class="catalog__in-right" :class="{ 'notHasFilters': !hasFilters }">
                 <!-- {{ currentCategory }} -->
                 <!-- {{ getCatalog }} -->
                 <!-- {{ $route.params.catalogId }} -->
@@ -40,7 +40,8 @@ export default {
         OsmCatalogFilter: () => import('~/components/catalog/OsmCatalogFilter.vue'),
     },
     data: () => ({
-        currentCategory: {}
+        currentCategory: {},
+        hasFilters: true,
     }),
     head() {
         // console.log(this.currentCategory);
@@ -88,12 +89,18 @@ export default {
     },
     computed: {
         ...mapGetters(['getCatalog']),
+        uri() {
+            return this.$route.params.catalogId;
+        }
     },
     // beforeCreate() {
     //     this.currentCategory = this.getCatalog.filter(category => category.CODE === this.$route.params.catalogId);
     // },    
     created() {
         // this.currentCategory
+        if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochie1' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
+            this.hasFilters = false;
+        }
         this.getCatalog.map(category => {
             if (category.CODE === this.$route.params.catalogId) {
                 this.currentCategory = category;
@@ -131,6 +138,30 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+.catalog {
+    &__in-right.notHasFilters {
+        @media all and (min-width: 1281px) {
+            width: 100% !important;
+            .products__item {
+                &:not(:nth-child(3n+3)) {
+                    margin-right: 0;
+                }
+                &:nth-child(n+4) {
+                    margin-top: 0;
+                }
+                &:nth-child(n+5) {
+                    margin-top: rem(20);
+                }
+                &:not(:nth-child(4n+4)) {
+                    margin-right: rem(20);
+                }
+                width: calc(100% / 4 - 60rem / 4);
+            }
+        }
+    }
+}
+</style>
 
 <style lang="scss" scoped>
 .catalog {

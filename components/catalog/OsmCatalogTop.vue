@@ -179,6 +179,7 @@ import { mapGetters } from 'vuex';
         line-height: 1;
         color: #FF0040;
         position: relative;
+        white-space: nowrap;
 
         &:after {
           content: "";
