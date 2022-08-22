@@ -64,6 +64,7 @@ export default {
         params: {}
     }),
     async mounted() {
+        this.clearFilter();
         this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
         const params = {};
         this.products.map(item => {
