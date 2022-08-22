@@ -45,7 +45,7 @@
           <template v-if="getDownloads['katalog-produktsii']">
             <a v-if="'PROPERIES' in getDownloads['katalog-produktsii']"
               :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank"
-              class="productPage__link">
+              class="productPage__link hide_off_mobile">
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 15 21" fill="none">
                   <path fill-rule="evenodd" clip-rule="evenodd"
