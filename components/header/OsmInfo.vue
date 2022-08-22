@@ -54,7 +54,7 @@ export default {
                 type: 'search'
             });
             if (document.getElementById('seacrhModal__input')) {
-                console.log(123123123123123);
+                // console.log(123123123123123);
                 setTimeout(() => {
                     document.getElementById('seacrhModal__input').focus();
                 }, 0)

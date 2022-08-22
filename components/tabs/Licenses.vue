@@ -123,7 +123,7 @@
         this.isMounted = true;
       }, 1000);
       // this.setGalleryIndex(2);
-      console.log('galleryIndex', this.galleryIndex);
+      // console.log('galleryIndex', this.galleryIndex);
     },
     methods: {
       ...mapActions(['setGalleryIndex']),

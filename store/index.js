@@ -16,6 +16,7 @@ export const state = () => ({
   breadcrumbs: [],
   galleryIndex: null,
   isDataLoaded: false,
+  catalogFilters: [],
   modals: {
     buy: {
       isOpened: false
@@ -38,6 +39,10 @@ export const state = () => ({
 export const mutations = {
   setLoadedStatus(state, data) {
     state.isDataLoaded = data
+  },
+  setCatalogFilters(state, data) {
+    console.log(data);
+    state.catalogFilters = data;
   },
   setGalleryIndex(state, data) {
     state.galleryIndex = data
@@ -105,6 +110,9 @@ export const mutations = {
 }
 
 export const actions = {
+  setCatalogFilters(context, data) {
+    context.commit('setCatalogFilters', data);
+  },
   setLoadedStatus(context) {
     context.commit('setLoadedStatus', true);
   },
@@ -139,7 +147,7 @@ export const actions = {
         .then((response) => {
           resolve(response);
           context.commit('addMain', response);
-          console.log('addMain', response);
+          // console.log('addMain', response);
         })
         .catch((error) => {
           reject(error)
@@ -148,12 +156,12 @@ export const actions = {
   },
   addMainMore(context) {
     return new Promise((resolve, reject) => {
-      console.log('addMainMore');
+      // console.log('addMainMore');
       this.$axios.$get('main.php')
         .then((response) => {
           resolve(response);
           context.commit('addMainMore', response);
-          console.log('addMainMore', response);
+          // console.log('addMainMore', response);
         })
         .catch((error) => {
           reject(error)
@@ -370,5 +378,8 @@ export const getters = {
   },
   getLoadedStatus(state) {
     return state.isDataLoaded;
+  },
+  getCatalogFilters(state) {
+    return state.catalogFilters;
   },
 }

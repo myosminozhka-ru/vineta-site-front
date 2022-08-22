@@ -48,7 +48,7 @@ export default {
         ...mapGetters(['getProducts']),
         ...mapGetters(['getModals']),
         productsResult() {
-            return this.getProducts.filter(product => product.NAME.includes(this.searchText) && this.searchText);
+            return this.getProducts.filter(product => product.NAME.toLowerCase().includes(this.searchText.toLowerCase()) && this.searchText);
         }
     },
     data: () => ({

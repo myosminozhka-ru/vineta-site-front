@@ -9,9 +9,9 @@
                     </svg>
                 </div>
             </div>
-            {{ currentCategoryParams }}
+            {{ getCatalogFilters }}
             <div class="filter__params" @click.stop>
-                <div class="filter__params_block" v-for="item in parametrs" :key="item.index">
+                <div class="filter__params_block" v-for="item in getCatalogFilters" :key="item.index">
                     <div class="filter__params_title">{{ item }}</div>
                     <div class="filter__params_items" @click.stop>
                         <label class="filter__params_item" v-for="param in item" :key="param.index" @click.stop>
@@ -29,8 +29,8 @@
                 </div>
                 <button class="filter__clear hide_on_desktop" @click="clearFilter">Сбросить</button>
             </div>
-            <button class="filter__clear hide_on_tablet" v-if="parametrs" @click="clearFilter">Сбросить</button>
-            <div class="filter__title" v-if="!parametrs">
+            <button class="filter__clear hide_on_tablet" v-if="getCatalogFilters" @click="clearFilter">Сбросить</button>
+            <div class="filter__title" v-if="!getCatalogFilters">
                 {{ $t('filter.empty') }}
             </div>
         </div>
@@ -44,6 +44,7 @@ export default {
     computed: {
         ...mapGetters(['getCatalog']),
         ...mapGetters(['getFilters']),
+        ...mapGetters(['getCatalogFilters']),
         filters: {
             get() {
                 return this.getFilters;
@@ -53,9 +54,6 @@ export default {
                 this.addFilters(newValue)
             }
         },
-        currentCategoryParams() {
-            return this.parametrs;
-        },
         currentCategory() {
             return this.getCatalog.filter(category => category.CODE === this.$route.params.catalogId);
         }
@@ -63,44 +61,42 @@ export default {
     data: () => ({
         isFilterOpened: false,
         products: [],
-        parametrs: []
+        params: []
     }),
-    async mounted() {
-        console.log(this.getCatalog);
-        this.setFilterOpener();
+    async beforeMount() {
         this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
+        const params = [];
         this.products.map(item => {
             if ('PROPERIES_FILTER' in item) {
-                console.log(item.NAME);
                 item.PROPERIES_FILTER.map(prop => {
-                    if (!this.parametrs[prop.NAME]) {
-                        this.parametrs[prop.NAME] = [];
+                    if (!params[prop.NAME]) {
+                        params[prop.NAME] = [];
                     }
                     prop.VALUE.map(item => {
-                        if (!this.parametrs[prop.NAME].includes(item)) {
-                            this.parametrs[prop.NAME] = [
-                                ...this.parametrs[prop.NAME],
+                        if (!params[prop.NAME].includes(item)) {
+                            params[prop.NAME] = [
+                                ...params[prop.NAME],
                                 item
                             ];
                         }
                         return item;
                     })
-                    
-                    console.log(this.parametrs);
-                    // console.log(this.parametrs.includes(prop));
-                    // console.log(prop);
-                    // if (!this.parametrs.includes(prop)) {
-                    //     this.parametrs.push(prop);
-                    // }
                     return prop;
-                })
-                
+                });
             }
             return item;
-        })
+        });
+        console.log(typeof params);
+        this.setCatalogFilters(params);
+        console.log(this.getCatalogFilters)
+    },
+    mounted() {
+        console.log(this.getCatalog);
+        this.setFilterOpener();
     },
     methods: {
         ...mapActions(['addFilters']),
+        ...mapActions(['setCatalogFilters']),
         setFilterOpener() {
             if (!document.querySelector('.filter__title')) return;
             document.querySelector('.filter__title').addEventListener('click', (event) => {

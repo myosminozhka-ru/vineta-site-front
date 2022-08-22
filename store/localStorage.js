@@ -13,7 +13,7 @@ export const mutations = {
     },
     clearFavorites(state) {
         state.favorites = [];
-        console.log(state.favorites)
+        // console.log(state.favorites)
         // console.log(state.favorites, data);
     },
 }

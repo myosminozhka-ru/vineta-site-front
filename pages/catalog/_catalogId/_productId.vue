@@ -459,7 +459,7 @@
       // console.log(this.product);
     },
     mounted() {
-      console.log('this.product', this.product)
+      // console.log('this.product', this.product)
       if (window.innerWidth <= 1280) {
         setTimeout(() => {
           this.prodsSlider = new Glide('.productPage__analogs .values.glide', {

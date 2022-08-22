@@ -84,7 +84,7 @@ export default {
           if (item.querySelector('.section__top--tech') && item.querySelector('.section__middle--tech')) {
             const top = item.querySelector('.section__top--tech').clientHeight;
             const middle = item.querySelector('.section__middle--tech').clientHeight;
-            console.log(top, middle, 'asdasdasd');
+            // console.log(top, middle, 'asdasdasd');
             item.querySelector('.section__bottom--tech').style.height = `calc(100% - ${top}px - ${middle}px)`
           }
         })

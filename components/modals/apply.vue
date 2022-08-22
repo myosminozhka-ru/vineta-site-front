@@ -80,7 +80,7 @@ export default {
         this.formData.VACANCY = window.location.href;
         this.formData.VACANCY_NAME = this.property;
 
-        console.log(this.formData)
+        // console.log(this.formData)
     },
     methods: {
       ...mapActions(['toggleModal']),

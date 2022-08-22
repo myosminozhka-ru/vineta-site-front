@@ -36,7 +36,7 @@ export default {
     methods: {
         ...mapActions(['toggleModal']),
         openFavModal() {
-            console.log('openFavModal');
+            // console.log('openFavModal');
             this.toggleModal({
                 isOpened: true,
                 type: 'favorites'
