@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper footerOnBottom">
-    <!-- <osm-header /> -->
+    <osm-header />
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
         {{ getAbout }}
@@ -113,7 +113,7 @@
       <section class="fiveth">
         <div class="fiveth__title">Руководство</div>
         <div class="fiveth__items">
-          <div class="fiveth__item" v-for="item in getAbout.peoples" :key="item.index">
+          <div class="fiveth__item" v-for="item in managment" :key="item.index">
             <div class="avatar">
               <div class="avatar__in">
                 <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
@@ -176,7 +176,7 @@
   export default {
     name: 'AboutPage',
     components: {
-      // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+      OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue'),
       Customers: () => import('~/components/sliders/Customers.vue'),
@@ -204,6 +204,9 @@
     },
     computed: {
       ...mapGetters(['getAbout']),
+      managment() {
+        return this.getAbout.peoples.filter(item => item.PREVIEW_PICTURE)
+      }
     },
   }
 
@@ -219,7 +222,7 @@
     align-items: center;
     padding: rem(20) rem(240) rem(20) rem(240);
     background: #D7DCE1;
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
@@ -284,7 +287,7 @@
         @media all and (max-width: 1440px) {
           padding-left: 150px;
         }
-        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
           padding-left: rem(50);
           // padding-right: rem(50);
         }
@@ -305,7 +308,7 @@
         @media all and (max-width: 1440px) {
           padding-right: 150px;
         }
-        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
           // padding-left: rem(50);
           padding-right: rem(50);
         }
@@ -512,7 +515,7 @@
       padding-right: 150px;
       padding-left: 150px;
     }
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
@@ -604,7 +607,7 @@
       padding-right: 150px;
       padding-left: 150px;
     }
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
@@ -662,7 +665,7 @@
       padding-right: 150px;
       padding-left: 150px;
     }
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
@@ -804,7 +807,7 @@
       padding-right: 150px;
       padding-left: 150px;
     }
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
@@ -825,7 +828,7 @@
       padding-right: 150px;
       padding-left: 150px;
     }
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
@@ -872,7 +875,7 @@
       padding-right: 150px;
       padding-left: 150px;
     }
-    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+    @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
       padding-left: rem(50);
       padding-right: rem(50);
     }
@@ -920,7 +923,7 @@
       padding-right: rem(240);
       position: relative;
       background: url('~assets/img/about/about_history.jpg') 50% 50% / cover no-repeat;
-      @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+      @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
         padding-left: rem(50);
         padding-right: rem(50);
       }
@@ -945,7 +948,7 @@
       padding-left: rem(131);
       padding-right: rem(350);
 
-      @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+      @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
         padding-left: rem(50);
         padding-right: rem(50);
       }
