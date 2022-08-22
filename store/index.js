@@ -41,8 +41,8 @@ export const mutations = {
     state.isDataLoaded = data
   },
   setCatalogFilters(state, data) {
-    console.log(data);
-    state.catalogFilters = data;
+    console.log('setCatalogFiltersMutation', JSON.parse(data));
+    state.catalogFilters = JSON.parse(data);
   },
   setGalleryIndex(state, data) {
     state.galleryIndex = data

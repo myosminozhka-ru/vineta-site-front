@@ -49,7 +49,36 @@ export default {
         },
         filteredProducts() {
             if (this.getFilters.length) {
-                return this.products.filter(product => this.getFilters.includes(product.SECTION.CODE));
+                return this.products.filter(product => {
+                    let params = [];
+                    this.products.map(item => {
+                        if ('PROPERIES_FILTER' in item) {
+                            item.PROPERIES_FILTER.map(prop => {
+                                if (!params) {
+                                    params = {};
+                                }
+                                prop.VALUE.map(item => {
+                                    if (!params.includes(item)) {
+                                        params = [
+                                            ...params,
+                                            item
+                                        ];
+                                    }
+                                    return item;
+                                })
+                                return prop;
+                            });
+                        }
+                        return item;
+                    });
+                    console.log(this.findCommonElements(params, this.getFilters));
+                    if (this.findCommonElements(params, this.getFilters)) {
+                        console.log(this.getFilters, params)
+                        return product;
+                    } else {
+                        return false;
+                    }
+                });
             } else {
                 return this.products;
             }
@@ -74,6 +103,9 @@ export default {
         this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
     },
     methods: {
+        findCommonElements(arr1, arr2) {
+            return arr1.some(item => arr2.includes(item))
+        },
         ...mapActions(['addBreadcrumbs'])
     }
 }

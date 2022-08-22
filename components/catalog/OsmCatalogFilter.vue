@@ -9,10 +9,10 @@
                     </svg>
                 </div>
             </div>
-            {{ getCatalogFilters }}
+            <!-- {{ getCatalogFilters }} -->
             <div class="filter__params" @click.stop>
-                <div class="filter__params_block" v-for="item in getCatalogFilters" :key="item.index">
-                    <div class="filter__params_title">{{ item }}</div>
+                <div class="filter__params_block" v-for="(item, key) in getCatalogFilters" :key="item.index">
+                    <div class="filter__params_title">{{ key }}</div>
                     <div class="filter__params_items" @click.stop>
                         <label class="filter__params_item" v-for="param in item" :key="param.index" @click.stop>
                             <input type="checkbox" class="checkbox" :value="param" v-model="filters" name="asdasd">
@@ -61,21 +61,22 @@ export default {
     data: () => ({
         isFilterOpened: false,
         products: [],
-        params: []
+        params: {}
     }),
-    async beforeMount() {
+    async mounted() {
+        this.clearFilter();
         this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
-        const params = [];
+        const params = {};
         this.products.map(item => {
             if ('PROPERIES_FILTER' in item) {
                 item.PROPERIES_FILTER.map(prop => {
-                    if (!params[prop.NAME]) {
-                        params[prop.NAME] = [];
+                    if (!params[`${prop.NAME}`]) {
+                        params[`${prop.NAME}`] = [];
                     }
                     prop.VALUE.map(item => {
-                        if (!params[prop.NAME].includes(item)) {
-                            params[prop.NAME] = [
-                                ...params[prop.NAME],
+                        if (!params[`${prop.NAME}`].includes(item)) {
+                            params[`${prop.NAME}`] = [
+                                ...params[`${prop.NAME}`],
                                 item
                             ];
                         }
@@ -86,12 +87,10 @@ export default {
             }
             return item;
         });
-        console.log(typeof params);
-        this.setCatalogFilters(params);
+        this.setCatalogFilters(JSON.stringify(params));
         console.log(this.getCatalogFilters)
-    },
-    mounted() {
-        console.log(this.getCatalog);
+        console.log('this.getCatalog', this.getCatalogFilters);
+
         this.setFilterOpener();
     },
     methods: {
