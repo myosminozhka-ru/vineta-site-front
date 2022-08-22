@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper footerOnBottom">
-    <osm-header />
+    <!-- <osm-header /> -->
     <div class="header_padding">
       <nuxt-child />
     </div>
@@ -12,7 +12,7 @@
   export default {
     name: 'AboutPage',
     components: {
-      OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+      // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),    
       OsmPreloader: () => import('~/components/global/OsmPreloader.vue')      
     },

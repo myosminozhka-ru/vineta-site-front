@@ -1,6 +1,6 @@
 <template>
     <div class="history">
-        <osm-header />
+        <!-- <osm-header /> -->
         <div class="header_padding">
             <!-- <pre style="font-size: 15rem;">
                 {{ getHistory }}
@@ -71,7 +71,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
     name: 'HistoryPage',
     components: {
-        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmPreloader: () => import('~/components/global/OsmPreloader.vue')

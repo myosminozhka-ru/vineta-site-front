@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <osm-header />
+        <!-- <osm-header /> -->
         <div class="licenses">
             <div class="header_padding">
                 <osm-breadcrumbs />
@@ -20,7 +20,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "LicensesPage",
     components: {
-        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmGallery: () => import('~/components/licenses/OsmGallery.vue'),

@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <osm-header />
+        <!-- <osm-header /> -->
         <div class="partners">
             <!-- <pre style="font-size: 15rem;">{{ getPartners }}</pre> -->
             <div class="header_padding" v-if="getPartners">
@@ -135,7 +135,7 @@ export default {
       }
     },
     components: {
-        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),

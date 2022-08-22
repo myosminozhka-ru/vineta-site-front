@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <osm-header />
+        <!-- <osm-header /> -->
         <div class="header_padding">
             <div class="search">
                 <osm-breadcrumbs />
@@ -56,7 +56,7 @@ export default {
       }
     },
     components: {
-        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProductsSearch.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue'),

@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <osm-header />
+        <!-- <osm-header /> -->
         <!-- <pre>{{ getContacts }}</pre> -->
         <div class="contacts" v-if="'0' in getContacts">
             <div class="header_padding">
@@ -107,7 +107,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
     name: "LicensesPage",
     components: {
-        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
         // OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),

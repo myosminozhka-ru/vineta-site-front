@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper footerOnBottom" id="wrapper">
-        <osm-header />
+        <!-- <osm-header /> -->
         <nuxt-child />
         <osm-footer />
         <osm-preloader />
@@ -11,7 +11,7 @@
 export default {
     name: 'CatalogTemplate',
     components: {
-        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+        // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     }

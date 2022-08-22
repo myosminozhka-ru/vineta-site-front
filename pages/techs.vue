@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <osm-header />
+    <!-- <osm-header /> -->
     <div class="full-page-indicators" :class="{'white': +activeIndex === 5}">
       <div class="indicator" v-for="(indicator, key) in sections" :key="indicator.index" :class="{'active': +activeIndex === +key}" @click="activeIndex = key"><span></span></div>
     </div>
@@ -26,7 +26,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'IndexPage',
   components: {
-    OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFirstSection: () => import('~/components/techs/OsmFirst.vue'),
     OsmSecondSection: () => import('~/components/techs/OsmSecond.vue'),
     OsmThirdSection: () => import('~/components/techs/OsmThird.vue'),

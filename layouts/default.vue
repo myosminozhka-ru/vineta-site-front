@@ -1,5 +1,6 @@
 <template>
-    <div class="asdasdsdasdasd">
+    <div>
+        <osm-header />
         <nuxt />
     </div>
 </template>
@@ -8,6 +9,9 @@
 // import {mapActions} from 'vuex';
 export default {
     name: "defaultLayout",
+    components: {
+        OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+    }
     // watch: {
     //     $route(to, from) {
     //         console.log('route change to', to)

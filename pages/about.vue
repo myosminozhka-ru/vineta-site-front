@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper footerOnBottom">
-    <osm-header />
+    <!-- <osm-header /> -->
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
         {{ getAbout }}
@@ -176,7 +176,7 @@
   export default {
     name: 'AboutPage',
     components: {
-      OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+      // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmFooter: () => import('~/components/global/OsmFooter.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue'),
       Customers: () => import('~/components/sliders/Customers.vue'),
