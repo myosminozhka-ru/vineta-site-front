@@ -2,7 +2,7 @@
   <section class="section section__item section__item--second section__item--dark">
     <div class="section__left section__left--fullwidth">
       <div class="section__left_image_wrap">
-        <svg v-if="isMounted" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
+        <svg v-if="isMounted && isSvgVisible" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1988 2724"
           style="enable-background:new 0 0 1988 2724;" xml:space="preserve">
           <style type="text/css">
@@ -1122,8 +1122,20 @@
         default: false
       }
     },
+	watch: {
+		isMounted(newIsMounted, oldIsMounted) {
+			if (newIsMounted === true) {
+				setTimeout(() => {
+					this.isSvgVisible = false;
+				}, 3000)
+			} else {
+				this.isSvgVisible = true;
+			}
+		}
+	},
     data: () => ({
-      isVideoPlayed: false
+      isVideoPlayed: false,
+	  isSvgVisible: false
     }),
     computed: {
       ...mapGetters(['getMain']),
@@ -1169,7 +1181,7 @@
       top: 0;
       bottom: 0;
       left: 50%;
-      transform: translateX(-50%) scale(1.2);
+      transform: translateX(-50%);
       transition: 1s clip-path 2.3s ease;
     //   padding-top: rem(30);
     //   padding-bottom: rem(25);

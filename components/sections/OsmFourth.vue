@@ -3,8 +3,9 @@
         <!-- <pre style="font-size: 15rem">{{ fourthData }}</pre> -->
         <div class="section__left">
             <template v-if="'PROPERIES' in fourthData">
-                <video v-if="'VIDEO' in fourthData.PROPERIES" controls="false" :src="$vareibles.remote + fourthData.PROPERIES.VIDEO.SRC"
-                :type="fourthData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" :poster="'VIDEO_PREVIEW' in fourthData.PROPERIES ? $vareibles.remote + fourthData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC : require('~/assets/img/product.noimage.png')" />
+                <!-- <video v-if="'VIDEO' in fourthData.PROPERIES" controls="false" :src="$vareibles.remote + fourthData.PROPERIES.VIDEO.SRC"
+                :type="fourthData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" ref="secondVideo" :poster="'VIDEO_PREVIEW' in fourthData.PROPERIES ? $vareibles.remote + fourthData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC : require('~/assets/img/product.noimage.png')" /> -->
+                <img :src="$vareibles.remote + fourthData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC" alt="">
             </template>
         </div>
         <div class="section__right">

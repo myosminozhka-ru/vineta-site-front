@@ -2,7 +2,10 @@
   <section class="section section__item section__item--first">
     <div class="section__left">
       <div class="section__left_image_wrap">
-        <svg v-if="isMounted" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
+
+		<img :class="{'isClipped': isMounted}" class="section__left_image_clipped hide_on_mobile" :src="require('~/assets/img/sections/first.png')"
+          height="100%" alt="">
+        <svg v-if="isMounted && isSvgVisible" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 3259 5289"
           style="enable-background:new 0 0 3259 5289;" xml:space="preserve">
           <style type="text/css">
@@ -1598,8 +1601,7 @@
           </path>
         </svg>
 
-        <img :class="{'isClipped': isMounted}" class="section__left_image_clipped hide_on_mobile" :src="require('~/assets/img/sections/first.png')"
-          height="100%" alt="">
+        
 		  <img class="hide_off_mobile" :src="require('~/assets/img/sections/first.png')"
           height="100%" alt="">
       </div>
@@ -1627,13 +1629,26 @@
         default: false
       }
     },
+	watch: {
+		isMounted(newIsMounted, oldIsMounted) {
+			if (newIsMounted === true) {
+				setTimeout(() => {
+					this.isSvgVisible = false;
+				}, 3000)
+			} else {
+				this.isSvgVisible = true;
+			}
+		}
+	},
 	data: () => ({
-		isClipped: false
+		isClipped: false,
+		isSvgVisible: false
 	}),
 	mounted() {
 		document.addEventListener('DOMContentLoaded', () => {
 			this.isClipped = true
-		})
+		});
+		
 	},
     components: {
       OsmH1: () => import('~/components/global/OsmH1.vue'),
@@ -1693,9 +1708,9 @@
       top: 0;
       bottom: 0;
       left: 50%;
-		transform: translateX(-50%) rotate(3deg) scale(1.01);	
+		transform: translateX(-50%) rotate(3deg);	
 		@media all and (max-width: 1280px) {
-			transform: translateX(-50%) scale(1.2);
+			transform: translateX(-50%);
 		}
       transition: 1s clip-path 2.3s ease;
     //   padding-top: rem(30);
@@ -1710,7 +1725,7 @@
 		}
 
 		&.isClipped {
-		clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+			clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
 		}
     }
     
