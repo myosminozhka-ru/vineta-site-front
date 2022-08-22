@@ -10,9 +10,13 @@
                     <osm-breadcrumbs :white="true" />
                 </div>
                 <div class="history__bottom">
-                    <div class="history__text">
+                    <div class="history__text" @click="isTextShowed = !isTextShowed">
                         <div class="history__text--left" v-for="(item, key) in getHistory" :key="item.index" :class="{'isActive': key === selectedTime}">
-                            <p v-html="decodeHTML(item.PREVIEW_TEXT)" />
+                            <p v-if="item.PREVIEW_TEXT.length>4" v-html="decodeHTML(item.PREVIEW_TEXT)" />
+                            <div class="text button isOutlined">
+                                <template v-if="!isTextShowed">Развернуть</template>
+                                <template v-else>Свернуть</template>
+                            </div>
                         </div>
                         <div class="history__text--buttons hide_on_tablet">
                             <div @click="prev">

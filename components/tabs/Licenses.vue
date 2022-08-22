@@ -36,7 +36,7 @@
       </tab>
     </tabs>
     <div class="licenses__accordions hide_off_mobile">
-      <div class="licenses__accordion" v-for="tab in tabs" :key="tab.index">
+      <div class="licenses__accordion opened" v-for="tab in tabs" :key="tab.index">
         <div class="title">
           <div class="text">{{ tab }}</div>
           <div class="arrow">

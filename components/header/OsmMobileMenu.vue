@@ -15,8 +15,8 @@
         <nav class="menu__links">
           <ul>
             <li class="menu__links_li has-child">
-              <nuxt-link :to="localePath({name: 'catalog'})">
-                  <div class="text">Каталог</div>
+              <div>
+                  <nuxt-link :to="localePath({name: 'catalog'})" class="text">Каталог</nuxt-link>
                   <div class="arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
                       <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2"/>
@@ -25,7 +25,7 @@
                   <!-- <div v-if="link.childs" class="header__arrow">
                       <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
                   </div> -->
-              </nuxt-link>
+              </div>
               <ul v-if="getCatalog">
                 <li v-for="child in getCatalog" :key="child.index">
                   <a :href="localePath({name: 'catalog-catalogId', params: {catalogId: child.CODE}})">
@@ -38,8 +38,8 @@
               </ul>
             </li>
             <li v-for="link in menu" :key="link.index" class="menu__links_li" :class="{'has-child': link.childs, 'isOpened': link.isOpened}">
-              <nuxt-link :to="localePath({name: link.url})">
-                  <div class="text">{{ link.text }}</div>
+              <div>
+                  <nuxt-link :to="localePath({name: link.url})" class="text">{{ link.text }}</nuxt-link>
                   <div class="arrow" v-if="link.childs">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
                       <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2"/>
@@ -48,7 +48,7 @@
                   <!-- <div v-if="link.childs" class="header__arrow">
                       <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow">
                   </div> -->
-              </nuxt-link>
+              </div>
               <ul v-if="link.childs">
                 <li v-for="child in link.childs" :key="child.index">
                   <nuxt-link :to="localePath({name: child.url})">
@@ -108,7 +108,7 @@ import { mapGetters, mapActions } from 'vuex';
           {
             url: 'partners',
             icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Партнеры'
+            text: 'Заказчики'
           },
           {
             url: 'licenses',
@@ -144,7 +144,7 @@ import { mapGetters, mapActions } from 'vuex';
     },
     methods: {
       openChilds() {
-        document.querySelectorAll('.menu__links_li.has-child > a').forEach(item => {
+        document.querySelectorAll('.menu__links_li.has-child > div > .arrow').forEach(item => {
           item.addEventListener('click', (e) => {
             e.preventDefault();
             item.closest('li').classList.toggle('isOpened');
@@ -280,13 +280,6 @@ import { mapGetters, mapActions } from 'vuex';
       a.nuxt-link-exact-active + ul {
         display: block;
       }
-      & > a {
-        font-style: normal;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 22px;
-        color: #172242;
-        justify-content: space-between;
         .arrow {
           width: 22px;
           height: 22px;
@@ -301,6 +294,18 @@ import { mapGetters, mapActions } from 'vuex';
             width: 10px;
           }
         }
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      & > a {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: #172242;
+        justify-content: space-between;
       }
     }
     &__socials {

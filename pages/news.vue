@@ -15,7 +15,6 @@
                                 <div class="news__content_bottons">
                                     <osm-button class="news__content_botton" :large="true" link="catalog">В каталог</osm-button>
                                     <osm-button v-if="false"  class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
-                                    <pre style="font-size: 12px;">{{ getDownloads }}</pre>
                                     <a v-if="'prezentatsiya' in getDownloads" :href="$vareibles.remote + getDownloads.prezentatsiya.PROPERIES[0].SRC" class="button isOutlined isLarge but_prez">Презентация компании</a>
                                 </div>
                                 <osm-category />

@@ -1,6 +1,6 @@
 <template>
     <nav class="footer__menu">
-        <ul>
+        <ul class="opened isOpened">
             <li>
                 <nuxt-link :to="localePath({name: 'about'})">{{ $t('buttons.about') }}</nuxt-link>
             </li>
@@ -17,7 +17,7 @@
                 <nuxt-link :to="localePath({name: 'contacts'})">{{ $t('buttons.contacts') }}</nuxt-link>
             </li>
         </ul>
-        <ul>
+        <ul class="opened isOpened">
             <!-- <li>
                 <nuxt-link :to="{name: 'index'}">Заказчикам</nuxt-link>
             </li> -->
@@ -31,7 +31,7 @@
                 <nuxt-link :to="{name: 'index'}">Катера и лодки</nuxt-link>
             </li> -->
         </ul>
-        <ul class="opened">
+        <ul class="opened isOpened">
             <li>
                 <nuxt-link :to="localePath({name: 'contacts'})">{{ $t('buttons.contacts') }}</nuxt-link>
             </li>
