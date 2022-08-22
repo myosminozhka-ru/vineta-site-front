@@ -83,11 +83,6 @@
                                 <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
                             </span>
                         </slide>
-                        <!-- <template v-if="data.MORE_PHOTO">
-                            <slide class="productPage__slider-preview" @click="slideTo(0)" v-for="(item, key) in data.MORE_PHOTO.VALUE" :key="item.index">
-                                slide {{ key }}
-                            </slide>
-                        </template> -->
                     </hooper>
                     <!-- <div class="productPage__slider-preview" @click="slideTo(0)" v-if="data.PREVIEW_PICTURE" @click="slider.go(`=0`)">
                         <img :src="$vareibles.remote + data.PREVIEW_PICTURE" alt="">
