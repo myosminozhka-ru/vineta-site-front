@@ -288,12 +288,18 @@ import { mapGetters, mapActions } from 'vuex';
         color: #172242;
         justify-content: space-between;
         .arrow {
-          width: 12px;
-          height: 6px;
+          width: 22px;
+          height: 22px;
           font-size: 0;
           display: flex;
           align-items: center;
           justify-content: center;
+          flex: 0 0 22px;
+          position: relative;
+          z-index: 10;
+          svg {
+            width: 10px;
+          }
         }
       }
     }

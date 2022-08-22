@@ -342,6 +342,9 @@ export default {
         position: relative;
         z-index: 2;
         margin-bottom: rem(70);
+        @media all and (max-width: 840px) {
+            margin-bottom: 0 !important;
+        }
     }
     &__item_big &__item_bottom {
         position: relative;

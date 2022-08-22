@@ -130,7 +130,8 @@ export default {
     background: rgba(23, 34, 66, 0.8);
     z-index: 1000;
     text-align: center;
-    padding: 58px 0;
+    // padding: 58px 0;
+    padding: 10px 0;
     box-sizing: border-box;
     opacity: 0;
     visibility: hidden;
@@ -147,7 +148,8 @@ export default {
     }
     &__in {
         background: #FFFFFF;
-        padding: rem(40);
+        // padding: rem(40);
+        padding: rem(20);
         max-width: rem(710);
         width: 100%;
         display: inline-flex;
