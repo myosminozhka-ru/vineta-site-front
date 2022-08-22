@@ -464,6 +464,11 @@ body .wrapper .full-page-indicators {
   }
 }
 
+.partners .button {
+  @media all and (max-width: 768px) {
+      display: none !important;
+  }
+}
 .button {
   display: inline-flex;
   align-items: center;
