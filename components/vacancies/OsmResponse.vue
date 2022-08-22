@@ -20,6 +20,7 @@
                 <osm-button>Откликнуться</osm-button>
             </div>
         </div>
+        <osm-apply-modal property='Откликнуться на вакансию' />
     </div>
 </template>
 
@@ -27,6 +28,7 @@
 import { mapActions } from 'vuex';
 export default {
     components: {
+        OsmApplyModal: () => import('~/components/modals/apply.vue'),
         OsmButton: () => import('~/components/global/OsmButton.vue')
     },
     methods: {
