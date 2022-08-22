@@ -43,8 +43,14 @@ export default {
         catalogId() {
             return this.$route.params.catalogId
         },
-        currentCategory() {
-            return this.getCatalog.filter(item => item.CODE === this.catalogId)
+        currentCategory: {
+            get() {
+                return this.getCatalog.filter(item => item.CODE === this.catalogId);
+            },
+            set(newValue) {
+                console.log(newValue);
+                return this.getCatalog.filter(item => item.CODE === this.catalogId);
+            }
         },
         filteredProducts() {
             if (this.getFilters.length) {

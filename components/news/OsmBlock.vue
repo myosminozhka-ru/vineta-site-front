@@ -386,6 +386,9 @@ export default {
         width: rem(220);
         height: rem(185);
         margin-right: rem(20);
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+            height: rem(170);
+        }
     }
     &__item &__image {
         width: 100%;
@@ -405,6 +408,9 @@ export default {
     }
     &__item &__item_top {
         margin-bottom: rem(42);
+        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
+            margin-bottom: rem(10);
+        }
     }
     &__item &__date {
         font-style: normal;

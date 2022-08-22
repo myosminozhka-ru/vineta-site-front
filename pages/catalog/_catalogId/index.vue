@@ -98,7 +98,7 @@ export default {
     // },    
     created() {
         // this.currentCategory
-        if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochie1' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
+        if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochee-oborudovanie' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
             this.hasFilters = false;
         }
         this.getCatalog.map(category => {

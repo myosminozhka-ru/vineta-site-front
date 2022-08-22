@@ -204,6 +204,9 @@ export default {
         @media all and (max-width: 1440px) {
             padding-left: 160px;
         }
+        @media all and (max-width: 1366px) {
+            padding-left: 30px;
+        }
         @media all and (max-width: 1280px) {
             padding: 266px 30px 30px 100px;
             height: auto;
