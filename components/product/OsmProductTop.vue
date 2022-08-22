@@ -2,7 +2,7 @@
     <div class="product__header">
         <div class="product__header_row">
             <h1 class="product__header_left" v-if="'NAME' in data">{{ data.NAME }}</h1>
-            <div class="product__header_mods hide_on_tablet">13 модификаций</div>
+            <div class="product__header_mods hide_on_tablet">{{ offersCount.length }} модификаций</div>
         </div>
         <div class="product__header_right">
             
@@ -27,10 +27,14 @@ export default {
             default: null
         }
     },
-    mounted() {
-        // console.log('data', this.data.OFFERS.map(item => {
-        //     return item;
-        // }))
+    computed: {
+        offersCount() {
+            if ('OFFERS' in this.data) {
+                return Object.values(this.data.OFFERS);
+            } else {
+                return [];
+            }
+        }
     },
     methods: {
       printSection() {

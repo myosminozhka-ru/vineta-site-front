@@ -75,7 +75,7 @@
             </div>
             <div @click.prevent="tabs.selected = 3">
               <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 3}" :outlined="true">
-                Модификации (5)</osm-button>
+                Модификации {{ offersCount.length }}</osm-button>
             </div>
           </div>
           <div class="tabs">
@@ -135,13 +135,13 @@
               </div>
             </div>
             <div class="productPage__mods--tab" v-if="tabs.selected === 3">
-              <div class="title">Модификации (5)</div>
+              <div class="title">Модификации {{ offersCount.length }}</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0] }}</pre> -->
                 <div class="productPage__mods--mods">
-                  <pre>
+                  <!-- <pre>
                     {{ product[0].OFFERS.length }}
-                  </pre>
+                  </pre> -->
                   <div class="productPage__mods--mod" v-for="mod in product[0].OFFERS" :key="mod.index">
                     <div class="productPage__mods--mods_titles">
                       <div class="productPage__mods--mods_title" v-for="proper in mod.PROPERTIES" :key="proper.index">
@@ -228,8 +228,10 @@
               <div class="value">
                 <div class="productPage__mods--chars">
                   <div class="productPage__mods--char" v-for="prop in product[0].PROPERIES" :key="prop.index">
-                    <div class="productPage__mods--char_title">{{ prop.NAME }}</div>
-                    <div class="productPage__mods--char_value">{{ prop.VALUE }}</div>
+                    <template v-if="'NAME' in prop && prop.NAME">
+                      <div class="productPage__mods--char_title">{{ prop.NAME }}</div>
+                      <div class="productPage__mods--char_value">{{ prop.VALUE }}</div>
+                    </template>
                   </div>
                 </div>
               </div>
@@ -251,7 +253,7 @@
               </div>
             </div>
             <div class="tabs__opener" :class="{'isActive': tabs.selected === 3}" @click.prevent="tabs.selected = 3">
-              <div class="text">Модификации (13)</div>
+              <div class="text">Модификации {{ offersCount.length }}</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
                   fill="none">
@@ -435,7 +437,8 @@
         openedMod: 0
       },
       product: null,
-      prodsSlider: null
+      prodsSlider: null,
+      offersCount: []
     }),
     async mounted() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
@@ -465,6 +468,9 @@
       // console.log('this.product', this.product)
       if ('DETAIL_TEXT' in this.product[0] && !this.product[0].DETAIL_TEXT) {
         this.tabs.selected = 2;
+      }
+      if ('OFFERS' in this.product[0]) {
+          this.offersCount = Object.values(this.product[0].OFFERS);
       }
       if (window.innerWidth <= 1280) {
         setTimeout(() => {

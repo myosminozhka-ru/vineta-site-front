@@ -4,7 +4,7 @@
             <osm-up />
             <div class="footer__top_left">
                <osm-logo-footer />
-               <div class="footer__top_socials hide_on_tablet">
+               <div class="footer__top_socials hide_on_tablet" v-if="false">
                     <a :href="social.link" target="_blank" class="footer__top_social" v-for="social in socials" :key="social.index">
                         <img :src="social.icon" width="100%" alt="">
                     </a>
