@@ -350,7 +350,7 @@
                   <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                   <div class="products__item_properties">
                     <div class="products__item_property" v-for="property in prod.PROPERIES" :key="property.index">
-                      <template v-if="'NAME' in property && property.NAME">
+                      <template v-if="'NAME' in property && property.NAME && property.NAME === 'Назначение'">
                         <div class="name">{{ property.NAME }}</div>
                         <div class="value">{{ property.VALUE }}</div>
                       </template>
