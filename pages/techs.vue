@@ -12,8 +12,8 @@
       <osm-fiveth-section :class="{'isActive': activeIndex === 4}" :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-sixth-section :class="{'isActive': activeIndex === 5}" :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-seventh-section :class="{'isActive': activeIndex === 6}" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
-      <osm-eighth-section :class="{'isActive': activeIndex === 7}" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
-      <osm-footer-section class="techs_footer" :class="{'isActive': activeIndex === 8}" :style="`${activeIndex >= 8 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"/>
+      <osm-eighth-section v-if="false" :class="{'isActive': activeIndex === 7}" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
+      <osm-footer-section class="techs_footer" :class="{'isActive': activeIndex === 7}" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"/>
       <osm-preloader />
     </div>
   </div>
