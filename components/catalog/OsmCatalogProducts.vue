@@ -2,7 +2,6 @@
     <div class="products">
         <div class="products__items" v-if="filteredProducts">
             <nuxt-link class="products__item" v-for="product in filteredProducts" :key="product.ID" :to="localePath({name: 'catalog-catalogId-productId', params: {productId: product.CODE}})">
-                <!-- <pre style="font-size: 15rem">{{ product }}</pre> -->
                 <div class="products__item_image">
                     <div class="image_container">
                         <img v-if="product.PREVIEW_PICTURE" :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
@@ -51,33 +50,39 @@ export default {
             if (this.getFilters.length) {
                 return this.products.filter(product => {
                     let params = [];
-                    this.products.map(item => {
-                        if ('PROPERIES_FILTER' in item) {
-                            item.PROPERIES_FILTER.map(prop => {
-                                if (!params) {
-                                    params = {};
+                    if ('PROPERIES_FILTER' in product) {
+                        product.PROPERIES_FILTER.map(prop => {
+                            if (!params) {
+                                params = {};
+                            }
+                            prop.VALUE.map(item => {
+                                if (!params.includes(item)) {
+                                    params = [
+                                        ...params,
+                                        item
+                                    ];
                                 }
-                                prop.VALUE.map(item => {
-                                    if (!params.includes(item)) {
-                                        params = [
-                                            ...params,
-                                            item
-                                        ];
-                                    }
-                                    return item;
-                                })
-                                return prop;
-                            });
-                        }
-                        return item;
-                    });
-                    console.log(this.findCommonElements(params, this.getFilters));
-                    if (this.findCommonElements(params, this.getFilters)) {
-                        console.log(this.getFilters, params)
-                        return product;
-                    } else {
-                        return false;
+                                return item;
+                            })
+                            return prop;
+                        });
                     }
+                    // console.log(this.findCommonElements(params, this.getFilters));
+                    console.log(params);
+                    for (const filterParam in this.getFilters) {
+                        if (params.includes(this.getFilters[filterParam])) {
+                            console.log('filterParam', this.getFilters[filterParam], params);
+                            return product;
+                        }
+                    }
+                    return false;
+                    // if (this.findCommonElements(this.getFilters, params)) {
+                    //     // console.log(this.getFilters, params)
+                    //     console.log('product', product);
+                    //     return product;
+                    // } else {
+                    //     return false;
+                    // }
                 });
             } else {
                 return this.products;
@@ -104,7 +109,16 @@ export default {
     },
     methods: {
         findCommonElements(arr1, arr2) {
-            return arr1.some(item => arr2.includes(item))
+            // console.log(arr1, arr2);
+            return arr1.some(item => {
+                // console.log(item);
+                if (arr2.includes(item)) {
+                    arr2.includes(item);
+                    return item;
+                } else {
+                    return false;
+                }
+            })
         },
         ...mapActions(['addBreadcrumbs'])
     }
