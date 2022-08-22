@@ -83,7 +83,7 @@
         <section class="fiveth">
           <div class="fiveth__title">Руководство</div>
           <div class="fiveth__items">
-            <div class="fiveth__item" v-for="item in getAbout.peoples.slice(0, 4)" :key="item.index">
+            <div class="fiveth__item" v-for="item in managment.slice(0, 4)" :key="item.index">
               <div class="avatar">
                 <div class="avatar__in">
                   <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
@@ -123,6 +123,9 @@ export default {
       contacts() {
         return this.getContacts
         // return this.getContacts[0].PROPERIES.filter(contact => contact.CODE !== 'VK' && contact.CODE !== 'INSTAGRAM' && contact.CODE !== 'TELEGRAM' && contact.CODE !== 'FACEBOOK' && contact.CODE !== 'TWITTER')
+      },
+      managment() {
+        return this.getAbout.peoples.filter(item => item.PREVIEW_PICTURE)
       }
     },
     created() {
