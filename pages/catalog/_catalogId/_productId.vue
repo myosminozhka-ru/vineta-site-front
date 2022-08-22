@@ -434,7 +434,7 @@
       product: null,
       prodsSlider: null
     }),
-    async fetch() {
+    async beforeMount() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
       this.addBreadcrumbs([{
           name: 'Главная',
