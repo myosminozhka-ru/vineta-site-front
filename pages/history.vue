@@ -13,7 +13,7 @@
                     <div class="history__text" @click="isTextShowed = !isTextShowed">
                         <div class="history__text--left" v-for="(item, key) in getHistory" :key="item.index" :class="{'isActive': key === selectedTime}">
                             <p v-if="item.PREVIEW_TEXT.length>4" v-html="decodeHTML(item.PREVIEW_TEXT)" />
-                            <div class="text">
+                            <div class="text button isOutlined">
                                 <template v-if="!isTextShowed">Развернуть</template>
                                 <template v-else>Свернуть</template>
                             </div>
