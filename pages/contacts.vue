@@ -12,7 +12,7 @@
                           <div class="contacts__item" v-for="contact in getContacts['0'].PROPERIES" :key="contact.CODE">
                             
                             <template v-if="contact.CODE === 'PHONE'">                              
-                              <a :href="`tel:${contact.VALUE}`" class="contacts__item_in">
+                              <a :href="`tel:${contact.VALUE}`" class="contacts__item_in phone">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
                                 </div>
@@ -20,7 +20,7 @@
                               </a>
                             </template>
                             <template v-else-if="contact.CODE === 'EMAIL'">                              
-                              <a :href="`mailto:${contact.VALUE}`" class="contacts__item_in">
+                              <a :href="`mailto:${contact.VALUE}`" class="contacts__item_in email">
                                 <div class="icon">
                                     <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
                                 </div>
@@ -28,7 +28,7 @@
                               </a>
                             </template>
                             <template v-else-if="contact.CODE === 'GEO'">                              
-                              <div class="contacts__item_in">
+                              <div class="contacts__item_in geo">
                                   <div class="icon">
                                       <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
                                   </div>
@@ -36,7 +36,7 @@
                               </div>
                             </template>
                             <template v-else-if="contact.CODE === 'NAME_PHONE'">                              
-                              <div class="contacts__item_in">
+                              <div class="contacts__item_in name_phone">
                                   <div class="icon">
                                       <img :src="require('~/assets/img/contacts/NAME_PHONE.svg')" width="100%" alt="">
                                   </div>
@@ -227,6 +227,28 @@ export default {
         margin-bottom: rem(20);
         @media all and (max-width: 1280px) {
             margin-bottom: 20px;
+        }
+      }
+      .phone, .email {
+        .text {
+            display: inline-block;
+            width: max-content;
+            position: relative;
+            &:after {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 100%;
+              bottom: -5rem;
+              height: 1px;
+              background: #172242;
+              transition: all 0.3s ease;
+            }
+            &:hover {
+              &:after {
+                right: 0;
+              }
+            }
         }
       }
     }

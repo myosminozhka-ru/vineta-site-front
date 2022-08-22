@@ -337,6 +337,13 @@ export default {
         font-size: rem(20);
         line-height: 140%;
         color: #172242;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -ms-line-clamp: 3;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
     }
     &__item &__link {
         align-self: start;

@@ -24,13 +24,13 @@
                                         </div>
                                         <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                                     </div>
-                                    <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item">
+                                    <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item email">
                                         <div class="icon">
                                             <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="">
                                         </div>
                                         <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
                                     </a>
-                                    <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item">
+                                    <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item phone">
                                         <div class="icon">
                                             <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="">
                                         </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="partners__title">Дочерние предприятия</div>
                 <div class="partners__child_items">
-                    <div class="partners__child_item" v-for="item in 4" :key="item.index">
+                    <div class="partners__child_item" v-for="item in 1" :key="item.index">
                         <div class="partners__item_name">ОАО «Севмаш»</div>
                         <div class="partners__contact_items">
                             <div class="partners__contact_item">
@@ -219,6 +219,28 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+      .phone, .email {
+        .text {
+            display: inline-block;
+            width: max-content;
+            position: relative;
+            &:after {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 100%;
+              bottom: -5rem;
+              height: 1px;
+              background: #172242;
+              transition: all 0.3s ease;
+            }
+            &:hover {
+              &:after {
+                right: 0;
+              }
+            }
+        }
+      }
     }
     &__item_logo {
         height: rem(70);
