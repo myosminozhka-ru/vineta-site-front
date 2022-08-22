@@ -17,7 +17,7 @@
                 {{ getFavorites.length }}
             </div>
         </nuxt-link>
-        <div class="header__langs hide_on_mobile">
+        <div class="header__langs hide_on_mobile" v-if="false">
             <nuxt-link :to="switchLocalePath('en')" :class="{'isActive': $i18n.locale === 'en'}">En</nuxt-link>
             <div class="delim">/</div>
             <nuxt-link :to="switchLocalePath('ru')" :class="{'isActive': $i18n.locale === 'ru'}">Ру</nuxt-link>

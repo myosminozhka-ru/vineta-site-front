@@ -123,7 +123,7 @@
             </defs>
         </svg>
     </div>
-    <osm-header />
+    <!-- <osm-header /> -->
     <div class="errorPage">
       <div class="errorPage__in">
         <div class="errorPage__code">
@@ -146,7 +146,7 @@
   export default {
     name: "ErrorPage",
     components: {
-      OsmHeader: () => import('~/components/global/OsmHeader.vue'),
+      // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
       OsmButton: () => import('~/components/global/OsmButton.vue')
     }
   }
