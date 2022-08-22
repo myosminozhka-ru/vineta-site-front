@@ -434,7 +434,7 @@
       product: null,
       prodsSlider: null
     }),
-    async beforeMount() {
+    async mounted() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
       this.addBreadcrumbs([{
           name: 'Главная',
@@ -459,9 +459,6 @@
           isLink: false
         },
       ])
-      // console.log(this.product);
-    },
-    mounted() {
       // console.log('this.product', this.product)
       if ('DETAIL_TEXT' in this.product[0] && !this.product[0].DETAIL_TEXT) {
         this.tabs.selected = 2;
