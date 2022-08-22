@@ -139,6 +139,12 @@ export default {
             @media all and (max-width: 1280px) {
                 font-size: 16px;
             }
+            ul li {
+                display: none !important;
+                &:nth-child(1), &:nth-child(2) {
+                    display: block !important;
+                }
+            }
         }
         // &:nth-child(1) {
         //     max-width: rem(158);
