@@ -53,7 +53,7 @@ export default {
     '@openafg/nuxt-fullpage',
     'nuxt-vuex-localstorage',
     '@nuxtjs/i18n',
-    'nuxt-lazy-load'
+    // 'nuxt-lazy-load'
   ],
 
   i18n: {
