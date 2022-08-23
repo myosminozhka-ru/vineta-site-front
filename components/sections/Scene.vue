@@ -4,7 +4,7 @@
             :src="`${link}/models/zavod2.obj`"
             :mtlPath="`${link}/models/zavod2.mtl`"
             :cameraPosition="{ x: 0, y: 0, z: 0 }"
-            :rotation="{ x: 0.3, y: 0.7, z: 0 }"
+            :rotation="{ x: 0.2, y: 0.9, z: 0 }"
             :scale="{ x: 2.5, y: 2.5, z: 2.5 }"
         />
   </div>
