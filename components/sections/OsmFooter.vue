@@ -184,6 +184,8 @@ export default {
         }
         @media all and (max-width: 840px) {
             height: auto !important;
+            padding: 20px;  
+            min-height: 1px;
         }
     }
     &__left &__title {
@@ -247,6 +249,10 @@ export default {
             padding: 80px 20px !important;
             // padding: 90px 0 0 0 !important;
             // padding: 80px 20px !important;
+        }
+        @media all and (max-width: 840px) {
+            padding: 20px !important;  
+            min-height: 1px !important;
         }
     }
     &__row {

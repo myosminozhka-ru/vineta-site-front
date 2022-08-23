@@ -74,6 +74,11 @@ import { mapGetters } from 'vuex';
       @media all and (max-width: 1280px) {
         margin-bottom: 30px;
       }
+
+      @media all and (max-width: 640px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     &__header_left {
@@ -170,6 +175,9 @@ import { mapGetters } from 'vuex';
       @media all and (max-width: 840px) {
         margin-left: 0;
         margin-top: 0;
+      }
+      @media all and (max-width: 640px) {
+        margin-top: 5px;
       }
 
       .text {

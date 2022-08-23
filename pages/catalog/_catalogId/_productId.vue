@@ -154,13 +154,13 @@
                   </pre> -->
                   <div class="productPage__mods--mod" v-for="mod in product[0].OFFERS" :key="mod.index">
                     <div class="productPage__mods--mods_titles">
-                      <div class="productPage__mods--mods_title" v-for="proper in mod.PROPERTIES" :key="proper.index">
+                      <div class="productPage__mods--mods_title" v-for="proper in mod.PROPERTIES && mod.PROPERTIES[0].proper.VALUE" :key="proper.index">
                         {{ proper.NAME }}
                       </div>
                     </div>
                     <div class="productPage__mods--mods_items">
                       <div class="productPage__mods--mods_item">
-                        <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES" :key="proper.index">
+                        <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES && mod.PROPERTIES[0].proper.VALUE" :key="proper.index">
                           {{ proper.VALUE }}
                         </div>
                       </div>

@@ -1267,6 +1267,10 @@
         width: 100% !important;
         padding: 80px 20px;
       }
+        @media all and (max-width: 840px) {
+            padding: 20px !important;  
+            min-height: 1px !important;
+        }
     }
 
     &__left {
