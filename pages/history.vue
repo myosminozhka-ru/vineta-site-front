@@ -10,11 +10,11 @@
                     <osm-breadcrumbs :white="true" />
                 </div>
                 <div class="history__bottom">
-                    <div class="history__text" >
-                        <div class="history__text--left" v-for="(item, key) in modifyedHistory" :key="item.index" :class="{'isActive': key === selectedTime, 'isOpened': item.isTextShowed}">
-                            <p v-html="decodeHTML(item.PREVIEW_TEXT)" />
-                            <div class="text button" @click="item.isTextShowed = !item.isTextShowed">
-                                <template v-if="!item.isTextShowed">Развернуть</template>
+                    <div class="history__text" @click="isTextShowed = !isTextShowed">
+                        <div class="history__text--left" v-for="(item, key) in getHistory" :key="item.index" :class="{'isActive': key === selectedTime}">
+                            <p v-if="item.PREVIEW_TEXT.length>4" v-html="decodeHTML(item.PREVIEW_TEXT)" />
+                            <div class="text button isOutlined">
+                                <template v-if="!isTextShowed">Развернуть</template>
                                 <template v-else>Свернуть</template>
                             </div>
                         </div>
@@ -82,20 +82,9 @@ export default {
     },
     data: () => ({
         selectedTime: 0,
-        modifyedHistory: [],
     }),
     computed: {
-        ...mapGetters(['getHistory']),
-    },
-    mounted() {
-        console.log('modifyedHistory', this.modifyedHistory);
-
-        this.modifyedHistory = this.getHistory.map(item => {
-            return {
-                ...item,
-                isTextShowed: false,
-            }
-        })
+        ...mapGetters(['getHistory']), 
     },
     created() {
       this.addBreadcrumbs([
@@ -172,6 +161,20 @@ export default {
         @media all and (max-width: 1280px) {
             width: 100%;
             margin-right: 0;
+        }
+        text-overflow: ellipsis;
+        overflow: hidden;
+        -ms-line-clamp: 3;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        &.isOpened {
+            line-clamp: unset;
+            display: block;
+            overflow: unset;
+
+
         }
         &.isActive {
             display: block;
