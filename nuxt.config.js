@@ -63,13 +63,14 @@ export default {
         name: 'RU',
         file: 'ru.json'
       },
-      {
-        code: 'en',
-        name: 'EN',
-        file: 'en.json'
-      },
+      // {
+      //   code: 'en',
+      //   name: 'EN',
+      //   file: 'en.json'
+      // },
     ],
     defaultLocale: 'ru',
+    fallbackLocale: 'ru',
     strategy: 'prefix',
     detectBrowserLanguage: false,
     // lazy: true,

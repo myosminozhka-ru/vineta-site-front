@@ -73,7 +73,7 @@
               <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 2}" :outlined="true">
                 Характеристики</osm-button>
             </div>
-            <div @click.prevent="tabs.selected = 3">
+            <div @click.prevent="tabs.selected = 3" v-if="offersCount.length > 1">
               <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 3}" :outlined="true">
                 Модификации ({{ offersCount.length }})</osm-button>
             </div>
@@ -115,6 +115,16 @@
                       <div class="productPage__mods--char_value">{{ prop.VALUE }}</div>
                     </template>
                   </div>
+                  <template v-if="offersCount.length === 1">
+                    <div v-for="item in product[0].OFFERS" :key="item.index">
+                      <div class="productPage__mods--char" v-for="prop in item.PROPERTIES" :key="prop.index">
+                        <template >
+                          <div class="productPage__mods--char_title">{{ prop.NAME }}</div>
+                          <div class="productPage__mods--char_value">{{ prop.VALUE }}</div>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
                 </div>
               </div>
               <div class="productPage__buttons">
@@ -134,7 +144,7 @@
 
               </div>
             </div>
-            <div class="productPage__mods--tab" v-if="tabs.selected === 3">
+            <div class="productPage__mods--tab" v-if="tabs.selected === 3" >
               <div class="title">Модификации ({{ offersCount.length }})</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0] }}</pre> -->
@@ -233,6 +243,16 @@
                       <div class="productPage__mods--char_value">{{ prop.VALUE }}</div>
                     </template>
                   </div>
+                  <template v-if="offersCount.length === 1">
+                    <div v-for="item in product[0].OFFERS" :key="item.index">
+                      <div class="productPage__mods--char" v-for="prop in item.PROPERTIES" :key="prop.index">
+                        <template >
+                          <div class="productPage__mods--char_title">{{ prop.NAME }}</div>
+                          <div class="productPage__mods--char_value">{{ prop.VALUE }}</div>
+                        </template>
+                      </div>
+                    </div>
+                  </template>
                 </div>
               </div>
               <div class="productPage__buttons">
@@ -252,7 +272,7 @@
 
               </div>
             </div>
-            <div class="tabs__opener" :class="{'isActive': tabs.selected === 3}" @click.prevent="tabs.selected = 3">
+            <div class="tabs__opener" :class="{'isActive': tabs.selected === 3}" @click.prevent="tabs.selected = 3" v-if="offersCount.length > 1">
               <div class="text">Модификации ({{ offersCount.length }})</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"

@@ -21,26 +21,24 @@ export default {
     },
     data: () => ({
         accessToken: 'pk.eyJ1IjoiZGVubnk3NDMiLCJhIjoiY2w2ZW9pcjk3MjhrcDNqcnozZmVweThkYiJ9.WY4UqSfHsmv4noUwv5pePQ', // your access token. Needed if you using Mapbox maps
+        map: null
     }),
 
     mounted() {
         // document.addEventListener("DOMContentLoaded", () => {
             mapboxgl.accessToken = this.accessToken;
-            const map = new mapboxgl.Map({
+            this.map = new mapboxgl.Map({
                 container: 'osmMap', // container ID
                 style: 'mapbox://styles/denny743/cl6kl37wt001014o322cb10ah', // style URL
-                center: '0' in this.getContacts && 'GEO' in this.getContacts['0'] ? [30.31667, 59.95] : [30.31667, 59.95], // starting position [lng, lat]
-                zoom: 15, // starting zoom
+                center: '0' in this.getContacts && 'GEO' in this.getContacts['0'] ? [30.814556, 59.691678] : [30.814556, 59.691678], // starting position [lng, lat]
+                zoom: 16, // starting zoom
                 projection: 'globe' // display the map as a 3D globe
             });
-            const marker = new mapboxgl.Marker({
-                color: "#FFFFFF",
-                draggable: true
-            }).setLngLat([30.31667, 59.95]).setDraggable(false).setPopup(new mapboxgl.Popup().setHTML("<h1>Винета</h1>")).addTo(map);
-            console.log(marker);
-            map.on('style.load', () => {
-                map.setFog({}); // Set the default atmosphere style
-            });
+            // const marker = new mapboxgl.Marker({
+            //     color: "#FFFFFF",
+            //     draggable: true
+            // }).setLngLat([30.814556, 59.691678]).setDraggable(false).setPopup(new mapboxgl.Popup().setHTML("<h1>Винета</h1>")).addTo(this.map);
+            // console.log(marker);
         // })
     }
 }
