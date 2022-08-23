@@ -68,6 +68,9 @@ export default {
             max-width: 100%;
             width: 100%;
         }
+        @media all and (max-width:  840px) {
+            min-height: 235px;
+        }
     }
 }
 </style>
