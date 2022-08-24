@@ -45,7 +45,7 @@
   mounted() {
     setTimeout(() => {
       this.slider.mount();
-      console.log('slider.index', this.slider.index)
+      // console.log('slider.index', this.slider.index)
     }, 500);
   }
   }

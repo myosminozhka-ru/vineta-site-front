@@ -1,7 +1,7 @@
 export default function ({ app }) {
     // onBeforeLanguageSwitch called right before setting a new locale
     app.i18n.onBeforeLanguageSwitch = async (oldLocale, newLocale, isInitialSetup) => {
-        console.log(oldLocale, newLocale, isInitialSetup, app.store)
+        // console.log(oldLocale, newLocale, isInitialSetup, app.store)
         await app.store.dispatch('addMain');
         await app.store.dispatch('addMainMore');
         await app.store.dispatch('addCatalog');
@@ -16,7 +16,7 @@ export default function ({ app }) {
         await app.store.dispatch('addDownloads');
     }
     // onLanguageSwitched called right after a new locale has been set
-    app.i18n.onLanguageSwitched = (oldLocale, newLocale) => {
-      console.log(oldLocale, newLocale, app.store)
-    }
+    // app.i18n.onLanguageSwitched = (oldLocale, newLocale) => {
+    //   console.log(oldLocale, newLocale, app.store)
+    // }
 }

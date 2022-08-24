@@ -78,9 +78,9 @@ export default {
             },
         ])
     },
-    mounted() {
-        console.log('Данные страницы новости', this.detail);
-    },
+    // mounted() {
+    //     console.log('Данные страницы новости', this.detail);
+    // },
     methods: {
         ...mapActions(['addBreadcrumbs']), 
     }

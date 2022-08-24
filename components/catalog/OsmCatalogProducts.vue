@@ -48,7 +48,7 @@ export default {
                 return this.getCatalog.filter(item => item.CODE === this.catalogId);
             },
             set(newValue) {
-                console.log(newValue);
+                // console.log(newValue);
                 return this.getCatalog.filter(item => item.CODE === this.catalogId);
             }
         },
@@ -74,10 +74,10 @@ export default {
                         });
                     }
                     // console.log(this.findCommonElements(params, this.getFilters));
-                    console.log(params);
+                    // console.log(params);
                     for (const filterParam in this.getFilters) {
                         if (params.includes(this.getFilters[filterParam])) {
-                            console.log('filterParam', this.getFilters[filterParam], params);
+                            // console.log('filterParam', this.getFilters[filterParam], params);
                             return product;
                         }
                     }
@@ -111,7 +111,7 @@ export default {
         }
     },
     async mounted() {
-        console.log('mounted')
+        // console.log('mounted')
         this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`);
     },
     methods: {

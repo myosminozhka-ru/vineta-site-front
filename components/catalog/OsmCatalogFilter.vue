@@ -88,8 +88,8 @@ export default {
             return item;
         });
         this.setCatalogFilters(JSON.stringify(params));
-        console.log(this.getCatalogFilters)
-        console.log('this.getCatalog', this.getCatalogFilters);
+        // console.log(this.getCatalogFilters)
+        // console.log('this.getCatalog', this.getCatalogFilters);
 
         this.setFilterOpener();
     },

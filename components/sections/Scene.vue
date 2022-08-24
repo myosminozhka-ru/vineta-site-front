@@ -24,7 +24,7 @@ import { ModelObj } from 'vue-3d-model';
         this.link = document.location.origin;
         this.isMounted = true;
 
-        console.log(document.location.origin);
+        // console.log(document.location.origin);
     },
   }
 

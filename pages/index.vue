@@ -66,18 +66,8 @@ export default {
     }
   },
   beforeDestroy() {
-    // console.log('beforeDestroy')
-    document.removeEventListener('mousewheel', function() {
-      // console.log('mousewheel event removed')
-    });
+    document.removeEventListener('mousewheel', function() {});
   },
-  // async fetch() {
-  //   await this.addMain();
-  // },
-  // created() {
-  //   // console.log('created');
-  //   this.addMain();
-  // },
   mounted() {
     this.isMounted = true;
     // console.log('getMainMore', this.getMainMore)
