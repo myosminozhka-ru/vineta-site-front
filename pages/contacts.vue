@@ -133,11 +133,14 @@ export default {
     },
     async fetch() {
         await this.addContacts();
+        await this.addVacancies();
+        await this.addAbout();
     },
-    created() {
-      this.addContacts().then(result => {
-        this.isDataLoaded = true;
-      });
+    async created() {
+      await this.addContacts();
+      await this.addVacancies();
+      await this.addAbout();
+      this.isDataLoaded = true;
       this.addBreadcrumbs([
           {
               name: 'Главная',
@@ -152,7 +155,9 @@ export default {
     },
     methods: {
       ...mapActions(['addBreadcrumbs']),
-      ...mapActions(['addContacts'])
+      ...mapActions(['addContacts']),
+      ...mapActions(['addVacancies']),
+      ...mapActions(['addAbout']),
     },
 }
 </script>
