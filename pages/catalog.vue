@@ -14,6 +14,6 @@ export default {
         // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
-    }
+    },
 }
 </script>

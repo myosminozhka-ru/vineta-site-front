@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" v-if="isDataLoaded">
         <!-- <osm-header /> -->
         <!-- <pre>{{ getContacts }}</pre> -->
         <div class="contacts" v-if="'0' in getContacts">
@@ -115,6 +115,9 @@ export default {
         OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
         OsmMap: () => import('~/components/global/OsmMap.vue'),
     },
+    data: () => ({
+      isDataLoaded: false
+    }),
     computed: {
       ...mapGetters(['getContacts']),
       ...mapGetters(['getVacancies']),
@@ -128,7 +131,13 @@ export default {
         return this.getAbout.peoples
       }
     },
+    async fetch() {
+        await this.addContacts();
+    },
     created() {
+      this.addContacts().then(result => {
+        this.isDataLoaded = true;
+      });
       this.addBreadcrumbs([
           {
               name: 'Главная',
@@ -142,7 +151,8 @@ export default {
       ])
     },
     methods: {
-      ...mapActions(['addBreadcrumbs'])
+      ...mapActions(['addBreadcrumbs']),
+      ...mapActions(['addContacts'])
     },
 }
 </script>

@@ -41,7 +41,7 @@ export const mutations = {
     state.isDataLoaded = data
   },
   setCatalogFilters(state, data) {
-    console.log('setCatalogFiltersMutation', JSON.parse(data));
+    // console.log('setCatalogFiltersMutation', JSON.parse(data));
     state.catalogFilters = JSON.parse(data);
   },
   setGalleryIndex(state, data) {
@@ -142,6 +142,7 @@ export const actions = {
     });
   },
   addMain(context) {
+    // console.log('addMain');
     return new Promise((resolve, reject) => {
       this.$axios.$get('slider.php')
         .then((response) => {
@@ -307,20 +308,18 @@ export const actions = {
     }
   },
   async nuxtServerInit ({ dispatch }) {
+    
     await dispatch('addMain');
     await dispatch('addMainMore');
     await dispatch('addCatalog');
-    await dispatch('addVacancies');
-    await dispatch('addContacts');
-    await dispatch('addAbout');
-    await dispatch('addHistory');
+    // await dispatch('addContacts');
     await dispatch('addLicenses');
     await dispatch('addNews');
     await dispatch('addPartners');
     await dispatch('addProducts');
     await dispatch('addDownloads');
     await dispatch('setLoadedStatus');
-    console.log('fetch data');
+    // console.log('fetch data');
   }
 }
 

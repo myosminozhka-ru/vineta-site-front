@@ -1,5 +1,5 @@
 <template>
-    <div class="history">
+    <div class="history" v-if="isDataLoaded">
         <!-- <osm-header /> -->
         <div class="header_padding">
             <!-- <pre style="font-size: 15rem;">
@@ -83,12 +83,13 @@ export default {
     data: () => ({
         selectedTime: 0,
         modifyedHistory: [],
+        isDataLoaded: false
     }),
     computed: {
         ...mapGetters(['getHistory']),
     },
     mounted() {
-        console.log('modifyedHistory', this.modifyedHistory);
+        // console.log('modifyedHistory', this.modifyedHistory);
 
         this.modifyedHistory = this.getHistory.map(item => {
             return {
@@ -97,7 +98,13 @@ export default {
             }
         })
     },
-    created() {
+    async fetch() {
+        await this.addHistory();
+    },
+    async created() {
+        await this.addHistory().then(result => {
+            this.isDataLoaded = true;
+        });
       this.addBreadcrumbs([
           {
               name: 'Главная',
@@ -112,6 +119,7 @@ export default {
     },
     methods: {
         ...mapActions(['addBreadcrumbs']),
+        ...mapActions(['addHistory']),
         next() {
             if (this.selectedTime >= this.getHistory.length - 1) return;
             this.selectedTime++;

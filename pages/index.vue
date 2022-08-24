@@ -71,6 +71,13 @@ export default {
       // console.log('mousewheel event removed')
     });
   },
+  // async fetch() {
+  //   await this.addMain();
+  // },
+  // created() {
+  //   // console.log('created');
+  //   this.addMain();
+  // },
   mounted() {
     this.isMounted = true;
     // console.log('getMainMore', this.getMainMore)
@@ -101,6 +108,7 @@ export default {
   },
   methods: {
     ...mapActions(['setGalleryIndex']),
+    ...mapActions(['addMain']),
     change(direction) {
       if (this.isInProgress) return;
       

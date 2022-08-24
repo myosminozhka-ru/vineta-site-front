@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper footerOnBottom">
+  <div class="wrapper footerOnBottom" v-if="isDataLoaded">
     <!-- <osm-header /> -->
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
@@ -188,8 +188,15 @@
     },
     data: () => ({
       isTextShowed: false,
+      isDataLoaded: false
     }),
+    async fetch() {
+      await this.addAbout()
+    },
     created() {
+      this.addAbout().then(result => {
+        this.isDataLoaded = true;
+      });
       this.addBreadcrumbs([
           {
               name: 'Главная',
@@ -203,7 +210,8 @@
       ])
     },
     methods: {
-      ...mapActions(['addBreadcrumbs'])
+      ...mapActions(['addBreadcrumbs']),
+      ...mapActions(['addAbout'])
     },
     computed: {
       ...mapGetters(['getAbout']),

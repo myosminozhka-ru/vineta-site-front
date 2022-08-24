@@ -4,7 +4,7 @@
         <div class="advantages__items">
             <div class="advantages__item" v-for="item in bennefits" :key="item.index">
                 <div class="icon">
-                    <img :src="$vareibles.remote + item.PREVIEW_PICTURE" v-lazy-load width="100%" alt="">
+                    <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
                 </div>
                 <div class="advantages__item__info">
                     <div class="title">{{ item.NAME }}</div>
