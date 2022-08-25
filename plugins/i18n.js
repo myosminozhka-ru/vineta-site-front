@@ -15,8 +15,4 @@ export default function ({ app }) {
         await app.store.dispatch('addProducts');
         await app.store.dispatch('addDownloads');
     }
-    // onLanguageSwitched called right after a new locale has been set
-    // app.i18n.onLanguageSwitched = (oldLocale, newLocale) => {
-    //   console.log(oldLocale, newLocale, app.store)
-    // }
 }

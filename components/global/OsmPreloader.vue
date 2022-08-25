@@ -26,17 +26,21 @@ export default {
         this.isAnimated = false;
     },
     mounted() {
-      const stateCheck = setInterval(() => {
-        if (document.readyState === 'complete' && this.getLoadedStatus) {
-            clearInterval(stateCheck);
-            setTimeout(() => {
-              this.isMounted = true
-          }, 0);
-          setTimeout(() => {
-              this.isAnimated = true
-          }, 1000);
-          }
-      }, 100);
+      this.isMounted = true
+      setTimeout(() => {
+        this.isAnimated = true
+      }, 1000);
+      // const stateCheck = setInterval(() => {
+      //   if (document.readyState === 'complete' && this.getLoadedStatus) {
+      //       clearInterval(stateCheck);
+      //       setTimeout(() => {
+      //         this.isMounted = true
+      //     }, 0);
+      //     setTimeout(() => {
+      //         this.isAnimated = true
+      //     }, 1000);
+      //     }
+      // }, 100);
         
     }
 }
