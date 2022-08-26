@@ -21,10 +21,10 @@
             </div>
             <div class="second__text">
               <p>{{ getAbout.banners.second.PREVIEW_TEXT }}</p>
-              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT.length>4">{{ getAbout.banners.second.DETAIL_TEXT }}</p>
+              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT">{{ getAbout.banners.second.DETAIL_TEXT }}</p>
             </div>
           </div>
-          <div v-if="getAbout.banners.second.DETAIL_TEXT.length>4" class="second__buttons 12345" @click="isTextShowed = !isTextShowed">
+          <div v-if="getAbout.banners.second.DETAIL_TEXT" class="second__buttons 12345" @click="isTextShowed = !isTextShowed">
             <osm-button class="second__button">
               <div class="icon" :class="{'isOpened': isTextShowed}">
                 <svg width="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">

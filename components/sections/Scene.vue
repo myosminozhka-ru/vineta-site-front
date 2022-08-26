@@ -31,25 +31,20 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
         this.isMounted = true;
         const sceneRef = this.$refs.scene;
 
-
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera( 45, sceneRef.clientWidth / sceneRef.clientHeight, 1, 2000 );
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         const controls = new OrbitControls( camera, renderer.domElement );
         const HemisphereLight = new THREE.HemisphereLight(0xB1E1FF, 0xB97A20, 0.6);
         const DirectionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.6);
-        // let object = null;
-
 
         DirectionalLight.position.set(0, 10, 0);
         DirectionalLight.target.position.set(-5, 0, 0);
         scene.add(DirectionalLight);
         scene.add(DirectionalLight.target);
 
-        // const loader = new OBJLoader();
         const mtlLoader = new MTLLoader();
 
-        // camera.position.set( 0, 20, 100 );
         camera.position.set( 206.33037545454508, 84.72297202548734, 704.3471129107609 );
         HemisphereLight.position.set( 206.33037545454508, 84.72297202548734, 704.3471129107609 );
         controls.update();
@@ -74,6 +69,10 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
                   },
                   (xhr) => {
                       console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+                      if ((xhr.loaded / xhr.total) * 100 > 99) {
+                        animate();
+                        window.addEventListener('resize', onWindowResize, false)
+                      }
                   }
               )
           },
@@ -81,58 +80,25 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
               console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
           }
       )
-        // loader.load(
-        //   // resource URL
-        //   `${this.link}/models/zavod5.obj`,
-        //   // called when resource is loaded
-        //   function ( object ) {
-
-        //     scene.add( object );
-
-        //   },
-        //   // called when loading is in progresses
-        //   function ( xhr ) {
-
-        //     console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
-        //   },
-        // );
-
-
-
-
         
-        renderer.setSize( sceneRef.clientWidth, sceneRef.clientHeight );
-        sceneRef.appendChild( renderer.domElement );
-        console.log(scene);
-        function animate() {
-          requestAnimationFrame( animate );
-          controls.update();
-          if (camera.position.z > -700) {
-            camera.position.z -= 0.6;
-          }
-          // DirectionalLight.position.x = camera.position.x;
-          // DirectionalLight.position.y = camera.position.y;
-          // DirectionalLight.position.z = camera.position.z;
-          // console.log('camera.position', camera.position);
-          renderer.render( scene, camera );
-        }
-        animate();
+      renderer.setSize( sceneRef.clientWidth, sceneRef.clientHeight );
+      sceneRef.appendChild( renderer.domElement );
 
-        window.addEventListener('resize', onWindowResize, false)
-        function onWindowResize() {
-            camera.aspect = sceneRef.clientWidth / sceneRef.clientHeight
-            camera.updateProjectionMatrix();
-            renderer.setSize(sceneRef.clientWidth, sceneRef.clientHeight);
-            animate();
+      function animate() {
+        requestAnimationFrame( animate );
+        controls.update();
+        if (camera.position.z > -700) {
+          camera.position.z -= 0.6;
         }
-        // console.log(document.location.origin);
+        renderer.render( scene, camera );
+      }
+      function onWindowResize() {
+          camera.aspect = sceneRef.clientWidth / sceneRef.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(sceneRef.clientWidth, sceneRef.clientHeight);
+          animate();
+      }
     },
-    methods: {
-      // tratata(intersects) {
-      //   console.log(intersects);
-      // }
-    }
   }
 
 </script>
