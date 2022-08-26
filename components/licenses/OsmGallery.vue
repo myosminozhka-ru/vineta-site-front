@@ -1,6 +1,6 @@
 <template>
     <div class="gallery">
-        <div class="gallery__title">{{ title }}</div>
+        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.title') }}</div>
         <!-- <pre style="font-size: 15rem;">
             {{ imagesGallery }}
         </pre> -->
@@ -12,7 +12,7 @@
                 @close="index = null"
             />
         </no-ssr>
-        <div class="gallery__items dd">
+        <div class="gallery__items">
             <div class="gallery__item" v-for="(image, key) in images" :key="image.index" @click="index = key">
                 <div class="gallery__item_image">
                     <img :src="$vareibles.remote + image.PREVIEW_PICTURE" width="100%" alt="">
@@ -22,15 +22,6 @@
                         <img :src="require('~/assets/img/licenses/search_icon.svg')" width="100%" alt="">
                     </div>
                     <div class="text">{{ image.NAME }}</div>
-                    <a 
-                      v-if="image.PROPERIES" 
-                      :href="$vareibles.remote + image.PROPERIES.PDF.SRC" 
-                      download="true" 
-                      target="_blank"
-                      class="pdf"
-                    >
-                        <img :src="require('~/assets/img/pdf.png')" alt="">
-                    </a>
                 </div>
             </div>
         </div>
@@ -43,10 +34,6 @@ export default {
         images: {
             type: Array,
             default: () => ([]),
-        },
-        title: {
-          type: String,
-          default: ''
         }
     },
     computed: {
@@ -128,21 +115,10 @@ export default {
         .text {
             font-style: normal;
             font-weight: 600;
-            font-size: rem(13);
+            font-size: rem(16);
             line-height: 140%;
             text-align: center;
             color: #FFFFFF;
-        }
-        .pdf {
-          width: 30px;
-          position: absolute;
-          top: 15px;
-          right: 12px;
-          z-index: 10;
-          img {
-            width: 100%;
-            height: auto;
-          }
         }
     }
     &__item:hover &__item_overlay {
