@@ -76,53 +76,6 @@
             <div class="section__contacts_worktime">
               Пн-Пт с 8:00 до 17:00
               <!-- {{ $t('sections.footer.worktime') }} -->
-    <section class="section section__item section__item--footer section__item--dark">
-        <div class="section__left">
-            <div class="section__left_top">
-                <osm-h1 class="section__title">
-                    <template v-if="!isSuccess">
-                        {{ $t('sections.footer.request') }}
-                    </template>
-                    <template v-else>
-                        {{ $t('sections.footer.thanks') }}
-                    </template>
-                </osm-h1>
-                <div class="section__text" v-if="false">
-                    Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные
-                </div>
-            </div>
-            <form @submit.prevent="sendForm" class="section__left_form" v-if="!isSuccess">
-                <!-- <pre>
-                    {{ fields.value }}
-                </pre> -->
-                <div v-for="field in filteredFields" :key="field.index" class="osm__form_field">
-                    <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
-                    <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input section__input" v-model="formData[field.VARNAME]">
-                    <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
-                </div>
-                <osm-button class="section__button" :large="true" type="submit">{{ $t('sections.footer.send') }}</osm-button>
-            </form>
-        </div>
-        <div class="section__right hide_on_mobile">
-            <div class="section__content">
-                <div class="section__row">
-                    <osm-h1 class="section__title">{{ $t('buttons.contacts') }}</osm-h1>
-                    <div class="section__socials" v-if="false">
-                        <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
-                            <img :src="social.icon" width="100%" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="section__contacts">
-                    <div class="section__contacts_side">
-                        <a href="tel:78124935048" class="section__contact">+7 (812) 493-50-48</a>
-                        <div class="section__contacts_worktime">{{ $t('sections.footer.worktime') }}</div>
-                    </div>
-                    <div class="section__contacts_side">
-                        <a href="mailto:info@vineta.ru" class="section__contact">info@vineta.ru</a>
-                        <div class="section__contacts_info">{{ $t('sections.footer.response') }}</div>
-                    </div>
-                </div>
             </div>
           </div>
           <div class="section__contacts_side">
@@ -187,9 +140,6 @@ export default {
   },
   computed: {
     ...mapGetters(['getDownloads']),
-    filteredFields() {
-        return this.fields.value.filter(field => field.SID !== 'COUNT' && field.SID !== 'GOOD')
-    }
   },
 
   data: () => ({
@@ -219,35 +169,7 @@ export default {
     sendForm() {
       const formObj = { ...this.formData }
       const form = new FormData()
-        fields: {
-            value: []
-        },
-        formData: {},
-        errors: {},
-        isSuccess: false,
-      socials: [
-            {
-                icon: require('~/assets/img/socials/vk.svg'),
-                link: '#',
-            },
-            {
-                icon: require('~/assets/img/socials/telegram.svg'),
-                link: '#',
-            },
-            {
-                icon: require('~/assets/img/socials/twitter.svg'),
-                link: '#',
-            }
-        ]
-    }),
-    async mounted() {
-        this.fields = await this.$axios.$get('forms/request.php');
-        console.log(this.fields);
-    },
-    methods: {
-        sendForm() {
-            const formObj = {...this.formData}
-            const form = new FormData();
+
       for (const key in formObj) {
         form.append(key, formObj[key])
       }
