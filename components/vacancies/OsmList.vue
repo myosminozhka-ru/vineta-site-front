@@ -4,11 +4,18 @@
         <div class="list__title">Вакансии</div>
         <div class="list__items" v-if="isMounted">
             <div class="list__item" v-for="item in vacancies" :key="item.index">
+                <!-- <pre>
+                    {{ item }}
+                </pre> -->
                 <div class="list__item_title">{{ item.NAME }}</div>
-                <div v-if="'OKLAD' in item" class="list__item_price">{{ item.OKLAD.VALUE }}</div>
+                <!-- <div v-if="'OKLAD' in item" class="list__item_price">{{ item.OKLAD.VALUE }}</div> -->
                 <div class="list__item_info">
-                    <div class="list__item_info--item" v-for="prop in item.PROPERIES" :key="prop.index">
-                        <template v-if="prop.CODE !== 'YSL'">
+                    <div class="list__item_info--item" v-if="'OKLAD' in item">
+                        <div class="title">{{ item.OKLAD.NAME }}</div>
+                        <div class="text">{{ item.OKLAD.VALUE }}</div>
+                    </div>
+                    <div class="list__item_info--item" v-for="prop in item.PROPERIES.filter(element => element.CODE !== 'YSL' && element.CODE !== 'TR' && element.CODE !== 'OBZ')" :key="prop.index">
+                        <template>
                             <div class="title">{{ prop.NAME }}</div>
                             <template v-if="prop.VALUE.TEXT" >
                                 <div class="text" v-html="decodeHTML(prop.VALUE.TEXT)"></div>
@@ -61,7 +68,7 @@ export default {
     }
     &__items {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
         grid-gap: rem(20);
         @media all and (max-width: 860px) {
             grid-template-columns: repeat(1, 1fr);
@@ -106,16 +113,16 @@ export default {
         color: #172242;
     }
     &__item_info {
-        // display: grid;
-        // grid-template-columns: repeat(4, 1fr );
-        // grid-gap: rem(30);
-        // @media all and (max-width: 1280px) {
-        //     grid-template-columns: repeat(3, 1fr );
-        // }
-        // @media all and (max-width: 840px) {
-        //     grid-template-columns: repeat(1, 1fr );
-        //     grid-gap: rem(10);
-        // }
+        display: grid;
+        grid-template-columns: repeat(3, 1fr );
+        grid-gap: rem(30);
+        @media all and (max-width: 1280px) {
+            grid-template-columns: repeat(3, 1fr );
+        }
+        @media all and (max-width: 840px) {
+            grid-template-columns: repeat(1, 1fr );
+            grid-gap: rem(10);
+        }
     }
     &__item_info--item {
         &:not(:last-child) {

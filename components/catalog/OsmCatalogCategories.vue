@@ -8,11 +8,29 @@
                 </div>
             </nuxt-link >
             <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: category.CODE}})" class="categories__item_name">{{ category.NAME }}</nuxt-link>
-            <ul class="categories__item_childs" v-if="'CHILD' in category">
-                <li class="categories__item_child" v-for="child in category.CHILD" :key="child.index">
-                    <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: child.CODE}})">{{ child.NAME }}</nuxt-link>
-                </li>
-            </ul>
+            <template v-if="'CHILD' in category">
+                <ul class="categories__item_childs" v-if="'CHILD' in category">
+                    <li v-for="child in category.CHILD" :key="child.index">
+                        <nuxt-link class="categories__item_category" :to="localePath({name: 'catalog-catalogId', params: {catalogId: child.CODE}})">{{ child.NAME }}</nuxt-link>
+                        <ul>
+                            <li class="categories__item_child" v-for="product in getProducts.filter(element => element.SECTION.CODE === child.CODE)" :key="product.index">
+                                <nuxt-link :to="localePath(`/catalog/${child.CODE}/${product.CODE}`)">— {{ product.NAME }}</nuxt-link>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </template>
+            <template v-else>
+                <ul class="categories__item_childs">
+                    <li>
+                        <ul>
+                            <li class="categories__item_child" v-for="product in getProducts.filter(element => element.SECTION.CODE === category.CODE)" :key="product.index">
+                                <nuxt-link :to="localePath(`/catalog/${category.CODE}/${product.CODE}`)">— {{ product.NAME }}</nuxt-link>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </template>
         </div>
     </div>
 </template>
@@ -22,6 +40,7 @@ import { mapGetters } from 'vuex';
 export default {
     computed: {
         ...mapGetters(['getCatalog']),
+        ...mapGetters(['getProducts']),
     },
 }
 </script>
@@ -104,9 +123,35 @@ export default {
             color: #FF0040;
         }
     }
+    &__item_category {
+        margin-bottom: rem(15);
+        display: block;
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 600;
+        font-size: rem(16);
+        line-height: 140%;
+        color: #172242;
+        transition: all .3s ease;
+        @media all and (max-width: 1280px) {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        &:hover {
+            color: #FF0040;
+        }
+    }
     &__item_childs {
         margin: 0;
-        padding: 0 0 0 rem(23);
+        padding: 0;
+        list-style: none;
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+        & > li:not(:last-child) {
+            margin-bottom: rem(15);
+        }
         @media all and (max-width: 1280px) {
             padding: 0 0 0 23px;
         }

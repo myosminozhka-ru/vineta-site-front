@@ -42,6 +42,7 @@ export default {
     data: () => ({
         currentCategory: {},
         hasFilters: true,
+        parent: null
     }),
     head() {
         // console.log(this.currentCategory);
@@ -110,6 +111,7 @@ export default {
             category.CHILD.map(child => {
                 // console.log(child)
                 if (child.CODE === this.$route.params.catalogId) {
+                    this.parent = category;
                     this.currentCategory = child;
                 }
                 return child;
@@ -127,10 +129,18 @@ export default {
                 link: 'catalog',
                 isLink: true
             },
-            // {
-            //     name: this.currentCategory.NAME,
-            //     isLink: false
-            // },
+            {
+                name: this.parent ? this.parent.NAME : '',
+                link: 'catalog-catalogId',
+                params: {
+                    catalogId: this.parent ? this.parent.CODE : ''
+                },
+                isLink: true
+            },
+            {
+                name: this.currentCategory.NAME,
+                isLink: false
+            },
         ])
     },
     methods: {

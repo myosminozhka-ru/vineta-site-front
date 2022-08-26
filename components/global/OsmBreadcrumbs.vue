@@ -8,10 +8,10 @@
         </div>
         <li class="breadcrumbs__item" v-for="(br, key) in getBreadcrumbs" :key="br.index" :class="{'hide_on_mobile': key > 0}">
             <template v-if="br.isLink && !br.params">
-                <nuxt-link :to="localePath({name: br.link})">{{ br.name }}</nuxt-link>
+                <a :href="localePath({name: br.link})">{{ br.name }}</a>
             </template>
             <template v-else-if="br.isLink && br.params">
-                <nuxt-link :to="localePath({name: br.link, params: br.params})">{{ br.name }}</nuxt-link>
+                <a :href="localePath({name: br.link, params: br.params})">{{ br.name }}</a>
             </template>
             <template v-else>
                 <span>{{ br.name }}</span>
@@ -22,7 +22,7 @@
             
         </li> 
         <li class="breadcrumbs__item hideOffMobile">
-            <nuxt-link :to="{name: getBreadcrumbs[0].link}">{{ getBreadcrumbs[0].name }}</nuxt-link>
+            <a :href="{name: getBreadcrumbs[0].link}">{{ getBreadcrumbs[0].name }}</a>
         </li> -->
     </ul>
 </template>
@@ -76,7 +76,7 @@ export default {
             text-decoration: none;
             font-style: normal;
             font-weight: 400;
-            font-size: rem(14);
+            font-size: rem(16);
             line-height: 140%;
             color: #555F76;
             @media all and (max-width: 1280px) {

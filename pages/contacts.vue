@@ -9,6 +9,14 @@
                     <div class="contacts__left">
                         <div class="contacts__title">{{ getContacts['0'].NAME }}</div>
                         <div class="contacts__items" v-if="'PROPERIES' in getContacts['0']">
+                          <div class="contacts__item">
+                            <div class="contacts__item_in">
+                                <div class="icon">
+                                    <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
+                                </div>
+                                <div class="text">187026, Санкт-Петербург, Ленинградская обл., Тосненский район, г. Никольское, Ульяновское шоссе, 5Ж</div>
+                            </div>
+                          </div>
                           <div class="contacts__item" v-for="contact in getContacts['0'].PROPERIES" :key="contact.CODE">
                             
                             <template v-if="contact.CODE === 'PHONE'">                              
