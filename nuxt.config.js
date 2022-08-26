@@ -89,6 +89,9 @@ export default {
       config.resolve.symlinks = false
     },
     extractCSS: true,
+    transpile: [
+      'three'
+    ],
   },
   components: true,
   styleResources: {
