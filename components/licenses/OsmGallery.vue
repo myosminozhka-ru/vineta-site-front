@@ -21,9 +21,7 @@
                     <div class="icon">
                         <img :src="require('~/assets/img/licenses/search_icon.svg')" width="100%" alt="">
                     </div>
-                    <div class="text">
-                        Благодарственное письмо от АО "СПМБМ "Малахит"
-                    </div>
+                    <div class="text">{{ image.NAME }}</div>
                 </div>
             </div>
         </div>
@@ -74,7 +72,7 @@ export default {
         margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1280px) {;
+        @media all and (max-width: 1280px) {
             font-size: 30px;
             margin-bottom: 30px;
         }

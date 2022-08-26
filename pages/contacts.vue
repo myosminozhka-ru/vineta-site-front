@@ -83,7 +83,7 @@
         <section class="fiveth">
           <div class="fiveth__title">Руководство</div>
           <div class="fiveth__items">
-            <div class="fiveth__item" v-for="item in managment.slice(0, 4)" :key="item.index">
+            <div class="fiveth__item" v-for="item in managment" :key="item.index">
               <div class="avatar">
                 <div class="avatar__in">
                   <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
@@ -361,6 +361,7 @@ export default {
     }
     &__item {
       width: calc(100% / 4 - #{rem(60)} / 4);
+      margin-top: rem(40);
       @media all and (max-width: 1280px) {}
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
