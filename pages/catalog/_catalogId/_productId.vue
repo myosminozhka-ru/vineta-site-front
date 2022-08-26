@@ -18,9 +18,9 @@
         <!-- <div class="productPage__description" v-if="product[0].DETAIL_TEXT"> -->
         <div class="productPage__description" v-if="false">
           <div class="title">Описание</div>
-          <div class="value" v-html="decodeHTML(product[0].DETAIL_TEXT)" />
+          <div class="value">{{ product[0].DETAIL_TEXT }}</div>
         </div>
-        <div class="productPage__text--title" v-if="product[0].PROPERIES.filter(prop => prop.NAME).length">Основные характеристики</div>
+        <div class="productPage__text--title">Основные характеристики</div>
         <div class="productPage__texts" v-if="'PROPERIES' in product[0]">
           <div
             class="productPage__text"
@@ -121,9 +121,15 @@
                 Описание</osm-button
               >
             </div>
-            <div @click.prevent="tabs.selected = 2" v-if="product[0].PROPERIES || offersCount === 1">
-              <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 2}" :outlined="true">
-                Характеристики</osm-button>
+            <div @click.prevent="tabs.selected = 2">
+              <osm-button
+                class="productPage__mods--opener"
+                :large="true"
+                :class="{ isActive: tabs.selected === 2 }"
+                :outlined="true"
+              >
+                Характеристики</osm-button
+              >
             </div>
             <div
               @click.prevent="tabs.selected = 3"
@@ -150,7 +156,9 @@
             >
               <div class="title">Описание</div>
               <div class="value">
-                <div class="value__in" v-html="decodeHTML(product[0].DETAIL_TEXT)" />
+                <div class="value__in">
+                  {{ product[0].DETAIL_TEXT }}
+                </div>
               </div>
               <div class="productPage__buttons">
                 <div @click="openBuy">
@@ -260,7 +268,7 @@
                 </div>
               </div>
             </div>
-            <div class="productPage__mods--tab" v-show="tabs.selected === 3" >
+            <div class="productPage__mods--tab" v-if="tabs.selected === 3">
               <div class="title">Модификации ({{ offersCount.length }})</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0] }}</pre> -->
@@ -274,12 +282,23 @@
                     :key="mod.index"
                   >
                     <div class="productPage__mods--mods_titles">
+                      <div
+                        class="productPage__mods--mods_title"
+                        v-for="proper in mod.PROPERTIES &&
+                        mod.PROPERTIES[0].proper.VALUE"
+                        :key="proper.index"
+                      >
                         {{ proper.NAME }}
                       </div>
                     </div>
                     <div class="productPage__mods--mods_items">
                       <div class="productPage__mods--mods_item">
-                        <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES" :key="proper.index">
+                        <div
+                          class="productPage__mods--mods_val"
+                          v-for="proper in mod.PROPERTIES &&
+                          mod.PROPERTIES[0].proper.VALUE"
+                          :key="proper.index"
+                        >
                           {{ proper.VALUE }}
                         </div>
                       </div>
@@ -359,7 +378,9 @@
             >
               <div class="title">Описание</div>
               <div class="value">
-                <div class="value__in" v-html="decodeHTML(product[0].DETAIL_TEXT)" />
+                <div class="value__in">
+                  {{ product[0].DETAIL_TEXT }}
+                </div>
               </div>
               <div class="productPage__buttons">
                 <div @click="openBuy">
@@ -394,7 +415,11 @@
                 </div>
               </div>
             </div>
-            <div class="tabs__opener" :class="{'isActive': tabs.selected === 2}" @click.prevent="tabs.selected = 2" v-if="product[0].PROPERIES || offersCount === 1">
+            <div
+              class="tabs__opener"
+              :class="{ isActive: tabs.selected === 2 }"
+              @click.prevent="tabs.selected = 2"
+            >
               <div class="text">Характеристики</div>
               <div class="arrow">
                 <svg
@@ -513,9 +538,13 @@
                 </svg>
               </div>
             </div>
-            <div v-show="tabs.selected === 3" class="print">
-              <div class="productPage__mods--tab productPage__mods--bg" v-for="(mod, key, index) in product[0].OFFERS"
-                :key="key" @click="tabs.openedMod = index">
+            <div v-if="tabs.selected === 3">
+              <div
+                class="productPage__mods--tab productPage__mods--bg"
+                v-for="(mod, key, index) in product[0].OFFERS"
+                :key="key"
+                @click="tabs.openedMod = index"
+              >
                 <div class="title title__opener">
                   <span>Режим {{ index + 1 }}</span>
                   <div class="arrow">
@@ -536,7 +565,7 @@
                     </svg>
                   </div>
                 </div>
-                <div class="value" @click.stop v-show="tabs.openedMod === index">
+                <div class="value" @click.stop v-if="tabs.openedMod === index">
                   <div class="value__in">
                     <div class="productPage__mods--mods">
                       <div class="productPage__mods--mod">
@@ -809,13 +838,6 @@ export default {
     // console.log('this.product', this.product)
     if ('DETAIL_TEXT' in this.product[0] && !this.product[0].DETAIL_TEXT) {
       this.tabs.selected = 2
-      decodeHTML(html) {
-        if (document) {
-            const txt = document.createElement("textarea");
-            txt.innerHTML = html;
-            return txt.value;
-        }
-      }
     }
     if ('OFFERS' in this.product[0]) {
       this.offersCount = Object.values(this.product[0].OFFERS)
@@ -877,14 +899,6 @@ export default {
 
   @media all and (max-width: 1280px) {
     padding: 30px 20px;
-  @media print {
-    @page { 
-      size: auto;
-      margin: 0 1.2cm;
-    }
-    .print {
-      display: block !important;
-    }
   }
 
   &__print-up {
@@ -1320,40 +1334,12 @@ export default {
     line-height: 140%;
     color: #172242;
 
-  &__mods--chars {
-      padding: rem(40);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: rem(30);
-
-      @media all and (max-width: 1440px) {
-        grid-template-columns: repeat(3, 1fr);
-        padding: 30px;
-      }
-
     @media all and (max-width: 1440px) {
       padding-left: 60px;
     }
 
     @media all and (max-width: 1280px) {
       padding-left: 0;
-      
-    &__mods--char {
-      padding: rem(10) 0;
-      &:empty {
-        display: none;
-      }
-
-      // &:not(:last-child) {
-      //   border-bottom: 1px solid #F2F2F2;
-      // }
-
-      @media all and (max-width: 840px) {
-        // display: flex;
-        // align-self: start;
-        // padding-bottom: 15px;
-        border-bottom: 2px solid #D7DCE1;
-      }
     }
 
     @media print {
@@ -1462,27 +1448,6 @@ export default {
 
     @media print {
       font-size: rem(11);
-
-      @media all and (max-width: 1280px) {
-        min-width: 100%;
-        max-width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top: 1px solid #D7DCE1;
-        padding-top: 15px;
-        margin-bottom: 15px;
-
-        &:last-child {
-          border-bottom: 1px solid #D7DCE1;
-          padding-bottom: 15px;
-          margin-bottom: 0;
-        }
-      }
-
-      @media print {
-        font-size: rem(11);
-      }
     }
 
     // @media all and (max-width: 860px) {
@@ -1590,20 +1555,6 @@ export default {
   &__analogs_top_arrows {
     display: flex;
     align-items: center;
-    margin-bottom: 0 !important;
-    .arrow {
-      @media print {
-        display: none;
-      }
-    }
-  }
-
-  .title__opener+.value {
-    margin-top: 20px;
-    @media print {
-      margin-top: 0;
-      display: block !important;
-    }
   }
 
   &__arrow {
