@@ -146,7 +146,7 @@
 
               </div>
             </div>
-            <div class="productPage__mods--tab" v-if="tabs.selected === 3" >
+            <div class="productPage__mods--tab" v-show="tabs.selected === 3" >
               <div class="title">Модификации ({{ offersCount.length }})</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0] }}</pre> -->
@@ -281,7 +281,7 @@
                 </svg>
               </div>
             </div>
-            <div v-if="tabs.selected === 3">
+            <div v-show="tabs.selected === 3" class="print">
               <div class="productPage__mods--tab productPage__mods--bg" v-for="(mod, key, index) in product[0].OFFERS"
                 :key="key" @click="tabs.openedMod = index">
                 <div class="title title__opener">
@@ -293,7 +293,7 @@
                     </svg>
                   </div>
                 </div>
-                <div class="value" @click.stop v-if="tabs.openedMod === index">
+                <div class="value" @click.stop v-show="tabs.openedMod === index">
                   <div class="value__in">
                     <div class="productPage__mods--mods">
                       <div class="productPage__mods--mod">
@@ -546,6 +546,9 @@
     @page { 
       size: auto;
       margin: 0 1.2cm;
+    }
+    .print {
+      display: block !important;
     }
   }
   .productPage {
@@ -1199,6 +1202,10 @@
           margin-bottom: 0;
         }
       }
+
+      @media print {
+        font-size: rem(11);
+      }
     }
 
     &__analogs_top {
@@ -1257,10 +1264,19 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 0 !important;
+    .arrow {
+      @media print {
+        display: none;
+      }
+    }
   }
 
   .title__opener+.value {
     margin-top: 20px;
+    @media print {
+      margin-top: 0;
+      display: block !important;
+    }
   }
 
 </style>

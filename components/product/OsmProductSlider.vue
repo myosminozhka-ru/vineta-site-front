@@ -311,8 +311,6 @@ export default {
         }
         @media print {
             width: 400px;
-            .hooper-list,
-            .hooper-track,
             .productPage__slider-item__in,
             .productPage__slider-item__imege,
             img {
@@ -326,6 +324,9 @@ export default {
             }
             img {
               width: 100% !important;
+            }
+            &::v-deep .hooper-track {
+              transform: translate(0px, 0px) !important;
             }
         }
     }
