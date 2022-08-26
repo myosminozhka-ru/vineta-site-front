@@ -284,8 +284,7 @@
                     <div class="productPage__mods--mods_titles">
                       <div
                         class="productPage__mods--mods_title"
-                        v-for="proper in mod.PROPERTIES &&
-                        mod.PROPERTIES[0].proper.VALUE"
+                        v-for="proper in mod.PROPERTIES"
                         :key="proper.index"
                       >
                         {{ proper.NAME }}
@@ -295,8 +294,7 @@
                       <div class="productPage__mods--mods_item">
                         <div
                           class="productPage__mods--mods_val"
-                          v-for="proper in mod.PROPERTIES &&
-                          mod.PROPERTIES[0].proper.VALUE"
+                          v-for="proper in mod.PROPERTIES"
                           :key="proper.index"
                         >
                           {{ proper.VALUE }}
