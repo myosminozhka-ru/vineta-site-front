@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <osm-button link="https://yandex.ru/" type="native-link">Перейти на сайт</osm-button>
+                            <a class="button" :href="`http://${item.PROPERIES[4].VALUE}`" target="_blank">Перейти на сайт</a>
                         </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@ export default {
         // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
         OsmFooter: () => import('~/components/global/OsmFooter.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
-        OsmButton: () => import('~/components/global/OsmButton.vue'),
+        // OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
     },
     computed: {
