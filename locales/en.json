@@ -46,6 +46,9 @@
       "send": "Send",
       "response": "We will respond within a working day or the next working day",
       "worktime": "Mon-Fri from 9:00 to 18:00"
+    },
+    "modals": {
+      "apply_vacancy": "Откликнуться на вакансию"
     }
   },
   "footer": {

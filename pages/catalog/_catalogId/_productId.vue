@@ -18,9 +18,9 @@
         <!-- <div class="productPage__description" v-if="product[0].DETAIL_TEXT"> -->
         <div class="productPage__description" v-if="false">
           <div class="title">Описание</div>
-          <div class="value">{{ product[0].DETAIL_TEXT }}</div>
+          <div class="value" v-html="decodeHTML(product[0].DETAIL_TEXT)" />
         </div>
-        <div class="productPage__text--title">Основные характеристики</div>
+        <div class="productPage__text--title" v-if="product[0].PROPERIES.filter(prop => prop.NAME).length">Основные характеристики</div>
         <div class="productPage__texts" v-if="'PROPERIES' in product[0]">
           <div class="productPage__text" v-for="item in product[0].PROPERIES" :key="item.index">
             <template v-if="'NAME' in item && item.NAME">
@@ -73,7 +73,7 @@
               <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 1}" :outlined="true">
                 Описание</osm-button>
             </div>
-            <div @click.prevent="tabs.selected = 2">
+            <div @click.prevent="tabs.selected = 2" v-if="product[0].PROPERIES || offersCount === 1">
               <osm-button class="productPage__mods--opener" :large="true" :class="{'isActive': tabs.selected === 2}" :outlined="true">
                 Характеристики</osm-button>
             </div>
@@ -87,9 +87,7 @@
               v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
               <div class="title">Описание</div>
               <div class="value">
-                <div class="value__in">
-                  {{ product[0].DETAIL_TEXT }}
-                </div>
+                <div class="value__in" v-html="decodeHTML(product[0].DETAIL_TEXT)" />
               </div>
               <div class="productPage__buttons">
                 <div @click="openBuy">
@@ -158,13 +156,13 @@
                   </pre> -->
                   <div class="productPage__mods--mod" v-for="mod in product[0].OFFERS" :key="mod.index">
                     <div class="productPage__mods--mods_titles">
-                      <div class="productPage__mods--mods_title" v-for="proper in mod.PROPERTIES && mod.PROPERTIES[0].proper.VALUE" :key="proper.index">
+                      <div class="productPage__mods--mods_title" v-for="proper in mod.PROPERTIES" :key="proper.index">
                         {{ proper.NAME }}
                       </div>
                     </div>
                     <div class="productPage__mods--mods_items">
                       <div class="productPage__mods--mods_item">
-                        <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES && mod.PROPERTIES[0].proper.VALUE" :key="proper.index">
+                        <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES" :key="proper.index">
                           {{ proper.VALUE }}
                         </div>
                       </div>
@@ -207,9 +205,7 @@
               v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
               <div class="title">Описание</div>
               <div class="value">
-                <div class="value__in">
-                  {{ product[0].DETAIL_TEXT }}
-                </div>
+                <div class="value__in" v-html="decodeHTML(product[0].DETAIL_TEXT)" />
               </div>
               <div class="productPage__buttons">
                 <div @click="openBuy">
@@ -228,7 +224,7 @@
 
               </div>
             </div>
-            <div class="tabs__opener" :class="{'isActive': tabs.selected === 2}" @click.prevent="tabs.selected = 2">
+            <div class="tabs__opener" :class="{'isActive': tabs.selected === 2}" @click.prevent="tabs.selected = 2" v-if="product[0].PROPERIES || offersCount === 1">
               <div class="text">Характеристики</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10"
@@ -532,6 +528,13 @@
         if (!this.prodsSlider) return;
         this.prodsSlider.go('>');
       },
+      decodeHTML(html) {
+        if (document) {
+            const txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+      }
     }
   }
 
@@ -1030,11 +1033,11 @@
     &__mods--chars {
       padding: rem(40);
       display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      // grid-gap: rem(30);
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: rem(30);
 
       @media all and (max-width: 1440px) {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         padding: 30px;
       }
 
@@ -1053,9 +1056,9 @@
         display: none;
       }
 
-      &:not(:last-child) {
-        border-bottom: 1px solid #F2F2F2;
-      }
+      // &:not(:last-child) {
+      //   border-bottom: 1px solid #F2F2F2;
+      // }
 
       @media all and (max-width: 840px) {
         // display: flex;
