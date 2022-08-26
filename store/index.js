@@ -320,7 +320,13 @@ export const actions = {
     await dispatch('addDownloads');
     await dispatch('setLoadedStatus');
     // console.log('fetch data');
-  }
+  },
+  // getLicenses(state, type) {
+  //   if (type) {
+  //     return state.licenses.filter(i => i.SECTION === type)
+  //   }
+  //   return state.licenses;
+  // },
 }
 
 export const getters = {
