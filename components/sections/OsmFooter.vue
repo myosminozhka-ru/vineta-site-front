@@ -15,7 +15,10 @@
                 </div>
             </div>
             <form @submit.prevent="sendForm" class="section__left_form" v-if="!isSuccess">
-                <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
+                <!-- <pre>
+                    {{ fields.value }}
+                </pre> -->
+                <div v-for="field in filteredFields" :key="field.index" class="osm__form_field">
                     <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
                     <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input section__input" v-model="formData[field.VARNAME]">
                     <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
@@ -80,11 +83,16 @@ export default {
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
   computed: {
-    ...mapGetters(['getDownloads']), 
+    ...mapGetters(['getDownloads']),
+    filteredFields() {
+        return this.fields.value.filter(field => field.SID !== 'COUNT' && field.SID !== 'GOOD')
+    }
   },
   
   data: () => ({
-        fields: [],
+        fields: {
+            value: []
+        },
         formData: {},
         errors: {},
         isSuccess: false,
@@ -105,6 +113,7 @@ export default {
     }),
     async mounted() {
         this.fields = await this.$axios.$get('forms/request.php');
+        console.log(this.fields);
     },
     methods: {
         sendForm() {
