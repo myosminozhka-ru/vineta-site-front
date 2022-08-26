@@ -1,6 +1,7 @@
 <template>
     <div>
-        <nuxt-link v-if="link" :to="localePath({ name: link })" class="button" :class="{'isOutlined': outlined, 'isLarge': large}"><slot/></nuxt-link>
+        <a v-if="type === 'native-link'" :href="link" class="button" :class="{'isOutlined': outlined, 'isLarge': large}" target="_blank"><slot/></a>
+        <nuxt-link v-else-if="link" :to="localePath({ name: link })" class="button" :class="{'isOutlined': outlined, 'isLarge': large}"><slot/></nuxt-link>
         <button v-else class="button" :class="{'isOutlined': outlined, 'isLarge': large}" :type="type"><slot/></button>
     </div>
 </template>
