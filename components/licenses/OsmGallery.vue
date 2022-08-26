@@ -21,9 +21,7 @@
                     <div class="icon">
                         <img :src="require('~/assets/img/licenses/search_icon.svg')" width="100%" alt="">
                     </div>
-                    <div class="text">
-                        {{ image.NAME }}
-                    </div>
+                    <div class="text">{{ image.NAME }}</div>
                     <a 
                       v-if="image.PROPERIES" 
                       :href="$vareibles.remote + image.PROPERIES.PDF.SRC" 
