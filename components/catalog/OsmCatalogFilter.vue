@@ -11,6 +11,22 @@
             </div>
             <!-- {{ getCatalogFilters }} -->
             <div class="filter__params" @click.stop>
+                <div class="filter__params_block" v-if="currentCategory[0] && 'CHILD' in currentCategory[0]">
+                    <div class="filter__params_title">Тип</div>
+                    <div class="filter__params_items" @click.stop>
+                        <label class="filter__params_item" v-for="param in currentCategory[0].CHILD" :key="param.index" @click.stop>
+                            <input type="checkbox" class="checkbox" :value="param.CODE" v-model="filters" name="asdasd">
+                            <div class="filter__params_checkbox">
+                                <div class="check">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 12" fill="none">
+                                        <path d="M1 5.5L5.5 10L14.5 1" stroke="white" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="filter__params_name">{{ param.NAME }}</div>
+                        </label>
+                    </div>
+                </div>
                 <div class="filter__params_block" v-for="(item, key) in getCatalogFilters" :key="item.index">
                     <div class="filter__params_title">{{ key }}</div>
                     <div class="filter__params_items" @click.stop>
@@ -255,7 +271,7 @@ export default {
     &__params_name {
         font-style: normal;
         font-weight: 400;
-        font-size: rem(14);
+        font-size: rem(16);
         line-height: 140%;
         color: #555F76;
         width: calc(100% - #{rem(24)} - #{rem(10)});

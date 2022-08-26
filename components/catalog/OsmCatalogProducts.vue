@@ -2,6 +2,7 @@
     <div class="products">
         <div class="products__items" v-if="filteredProducts">
             <nuxt-link class="products__item" v-for="product in filteredProducts" :key="product.ID" :to="localePath({name: 'catalog-catalogId-productId', params: {productId: product.CODE}})">
+                <!-- {{product.SECTION.CODE}} -->
                 <div class="products__item_image">
                     <div class="image_container">
                         <img v-if="product.PREVIEW_PICTURE" :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
@@ -76,7 +77,8 @@ export default {
                     // console.log(this.findCommonElements(params, this.getFilters));
                     // console.log(params);
                     for (const filterParam in this.getFilters) {
-                        if (params.includes(this.getFilters[filterParam])) {
+                        console.log(product.SECTION.CODE);
+                        if (params.includes(this.getFilters[filterParam]) || this.getFilters.includes(product.SECTION.CODE)) {
                             // console.log('filterParam', this.getFilters[filterParam], params);
                             return product;
                         }
