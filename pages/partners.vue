@@ -5,7 +5,7 @@
             <!-- <pre style="font-size: 15rem;">{{ getPartners }}</pre> -->
             <div class="header_padding" v-if="getPartners">
                 <osm-breadcrumbs />
-                <div class="partners__title">Основные заказчики и партнёры</div>
+                <div class="partners__title">Основные заказчики</div>
                 <div class="partners__items">
                     <div v-for="item in getPartners" :key="item.index">
                         <div class="partners__item" v-if="'PROPERIES' in item">
@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <osm-button link="catalog">В каталог</osm-button>
+                            <osm-button link="https://yandex.ru/" type="native-link">Перейти на сайт</osm-button>
                         </div>
                     </div>
                 </div>

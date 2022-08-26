@@ -35,7 +35,7 @@
                 </div>
                 <div class="section__contacts">
                     <div class="section__contacts_side">
-                        <a href="tel:78124935048" class="section__contact">+7(812)493-50-48</a>
+                        <a href="tel:78124935048" class="section__contact">+7 (812) 493-50-48</a>
                         <div class="section__contacts_worktime">{{ $t('sections.footer.worktime') }}</div>
                     </div>
                     <div class="section__contacts_side">

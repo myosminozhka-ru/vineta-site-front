@@ -563,10 +563,9 @@
     }
 
     &__item {
-      width: calc(100% / 4 - #{rem(60)} / 4);
-
+      width: calc(100% / 2 - #{rem(60)} / 4);
+      text-align: center;
       
-
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
 
