@@ -25,7 +25,7 @@
         v-if="!isSuccess"
       >
         <div
-          v-for="field in fields.value"
+          v-for="field in filteredFileds"
           :key="field.index"
           class="osm__form_field"
         >
@@ -140,10 +140,15 @@ export default {
   },
   computed: {
     ...mapGetters(['getDownloads']),
+    filteredFileds() {
+      return this.fields.value.filter(field => field.SID !== 'COUNT' && field.SID !== 'GOOD')
+    }
   },
 
   data: () => ({
-    fields: [],
+    fields: {
+      value: []
+    },
     formData: {},
     errors: {},
     isSuccess: false,
