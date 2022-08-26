@@ -309,9 +309,31 @@ export default {
             margin-left: -20px;
             margin-right: -20px;
         }
+        @media print {
+            width: 400px;
+            .hooper-list,
+            .hooper-track,
+            .productPage__slider-item__in,
+            .productPage__slider-item__imege,
+            img {
+              position: static !important;
+              padding: 0 !important;
+              margin: 0 !important;
+              display: block !important;
+              width: auto !important;
+              height: auto !important;
+              transform: translate(0px, 0px) !important;
+            }
+            img {
+              width: 100% !important;
+            }
+        }
     }
     &__slider-item {
         background: #D7DCE1;
+        @media print {
+            width: 400px !important;
+        }
     }
     &__slider-item__in {
         position: relative;
