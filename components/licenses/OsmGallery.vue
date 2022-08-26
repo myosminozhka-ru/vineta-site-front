@@ -1,6 +1,6 @@
 <template>
     <div class="gallery">
-        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.title') }}</div>
+        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.first') }}</div>
         <!-- <pre style="font-size: 15rem;">
             {{ imagesGallery }}
         </pre> -->
@@ -12,7 +12,7 @@
                 @close="index = null"
             />
         </no-ssr>
-        <div class="gallery__items">
+        <div class="gallery__items dd">
             <div class="gallery__item" v-for="(image, key) in images" :key="image.index" @click="index = key">
                 <div class="gallery__item_image">
                     <img :src="$vareibles.remote + image.PREVIEW_PICTURE" width="100%" alt="">
@@ -27,6 +27,9 @@
                 </div>
             </div>
         </div>
+
+        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.second') }}</div>
+        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.third') }}</div>
     </div>
 </template>
 
