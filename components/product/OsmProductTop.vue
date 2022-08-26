@@ -191,6 +191,10 @@ export default {
         @media all and (max-width: 1280px) {
             font-size: 30px;
         }
+
+        @media print {
+          font-size: rem(20);
+        }
     }
     &__header_right {
         display: flex;

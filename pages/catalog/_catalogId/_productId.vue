@@ -3,6 +3,10 @@
     <!-- <pre style="font-size: 15rem;">
       {{ product[0] }}
     </pre> -->
+    <div class="productPage__print-up">
+      <img src="@/assets/img/logo.svg" alt="" class="img">
+      <p class="title" v-html="printUpText"></p>
+    </div>
     <div class="productPage__container">
       <osm-breadcrumbs />
       <osm-product-top :data="product[0]" />
@@ -80,7 +84,7 @@
           </div>
           <div class="tabs">
             <div class="productPage__mods--tab productPage__mods--bg"
-              v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
+              v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
@@ -104,7 +108,7 @@
 
               </div>
             </div>
-            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 2">
+            <div class="productPage__mods--tab productPage__mods--bg" v-show="tabs.selected === 2">
               <div class="title">Характеристики</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0]}}</pre> -->
@@ -200,7 +204,7 @@
               </div>
             </div>
             <div class="productPage__mods--tab productPage__mods--bg"
-              v-if="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
+              v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
@@ -233,7 +237,7 @@
                 </svg>
               </div>
             </div>
-            <div class="productPage__mods--tab productPage__mods--bg" v-if="tabs.selected === 2">
+            <div class="productPage__mods--tab productPage__mods--bg" v-show="tabs.selected === 2">
               <div class="title">Характеристики</div>
               <div class="value">
                 <div class="productPage__mods--chars">
@@ -397,7 +401,7 @@
     name: 'CatalogPage',
     head() {
       return {
-        title: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.TITLE : '',
+        title: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.TITLE : "",
         meta: [
           // hid is used as unique identifier. Do not use `vmid` for it as it will not work
           {
@@ -458,7 +462,8 @@
       },
       product: null,
       prodsSlider: null,
-      offersCount: []
+      offersCount: [],
+      printUpText: '187026, Санкт-Петербург, Ленинградская обл., Тосненский район, <br>г. Никольское, Ульяновское шоссе, 5Г <br>тел./факс: +7(812) 493-50-48info@vineta.ru'
     }),
     async mounted() {
       this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`);
@@ -526,13 +531,20 @@
       nextSlide() {
         if (!this.prodsSlider) return;
         this.prodsSlider.go('>');
-      }
+      },
     }
   }
 
 </script>
 
 <style lang="scss" scoped>
+
+  @media print {
+    @page { 
+      size: auto;
+      margin: 0 1.2cm;
+    }
+  }
   .productPage {
     padding: rem(150) 0 rem(150);
     max-width: 100%;
@@ -544,6 +556,23 @@
 
     @media all and (max-width: 1280px) {
       padding: 30px 20px;
+    }
+
+    &__print-up {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      top: 0;
+      left: 0;
+      width: 100%;
+      .title {
+        text-align: right;
+        font-size: 15px;
+      }
+
+      @media print {
+        display: flex;
+      }
     }
 
     &__analogs {
@@ -610,10 +639,6 @@
 
     &__mods {
       padding-top: rem(60);
-
-      @media print {
-        display: none;
-      }
     }
 
     &__mods--tabs {
@@ -681,11 +706,20 @@
               }
             }
           }
+
+          @media print {
+            display: none;
+          }
         }
       }
     }
 
     &__mods--tab {
+      @media print {
+        padding-top: 0;
+        display: block !important;
+      }
+
       .title {
         font-style: normal;
         font-weight: 600;
@@ -696,6 +730,11 @@
 
         @media all and (max-width: 860px) {
           font-size: 18px;
+        }
+
+        @media print {
+          font-size: rem(13);
+          margin-bottom: rem(5);
         }
       }
 
@@ -715,6 +754,10 @@
           @media all and (max-width: 860px) {
             font-size: 16px;
             padding: 20px;
+          }
+
+          @media print {
+            font-size: rem(11);
           }
         }
       }
@@ -867,6 +910,16 @@
       @media all and (max-width: 1280px) {
         flex-direction: column;
       }
+
+      @media print {
+        flex-direction: row;
+      }
+    }
+
+    &__in {
+      @media print {
+        width: 60%;
+      }
     }
 
     &__info {
@@ -880,6 +933,10 @@
       @media all and (max-width: 1280px) {
         width: 100%;
         margin-left: 0;
+      }
+
+      @media print {
+        width: 40%;
       }
     }
 
@@ -940,6 +997,10 @@
 
       @media all and (max-width: 1280px) {
         padding-left: 0;
+      }
+
+      @media print {
+        font-size: rem(15);
       }
     }
 
@@ -1020,6 +1081,10 @@
       line-height: 110%;
       color: #172242;
 
+      @media print {
+        font-size: rem(13);
+      }
+
       // @media all and (max-width: 860px) {
       //   width: 50%;
       //   margin-right: 10px;
@@ -1037,6 +1102,10 @@
       font-size: rem(16);
       line-height: 140%;
       color: #555F76;
+
+      @media print {
+        font-size: rem(11);
+      }
 
       // @media all and (max-width: 860px) {
       //   width: calc(50% - 10px);
