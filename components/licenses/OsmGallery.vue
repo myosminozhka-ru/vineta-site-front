@@ -1,6 +1,6 @@
 <template>
     <div class="gallery">
-        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.first') }}</div>
+        <div class="gallery__title">{{ title }}</div>
         <!-- <pre style="font-size: 15rem;">
             {{ imagesGallery }}
         </pre> -->
@@ -22,14 +22,20 @@
                         <img :src="require('~/assets/img/licenses/search_icon.svg')" width="100%" alt="">
                     </div>
                     <div class="text">
-                        Благодарственное письмо от АО "СПМБМ "Малахит"
+                        {{ image.NAME }}
                     </div>
+                    <a 
+                      v-if="image.PROPERIES" 
+                      :href="$vareibles.remote + image.PROPERIES.PDF.SRC" 
+                      download="true" 
+                      target="_blank"
+                      class="pdf"
+                    >
+                        <img :src="require('~/assets/img/pdf.png')" alt="">
+                    </a>
                 </div>
             </div>
         </div>
-
-        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.second') }}</div>
-        <div class="gallery__title">{{ this.$t('sections.fiveth.tabs.third') }}</div>
     </div>
 </template>
 
@@ -39,6 +45,10 @@ export default {
         images: {
             type: Array,
             default: () => ([]),
+        },
+        title: {
+          type: String,
+          default: ''
         }
     },
     computed: {
@@ -77,7 +87,7 @@ export default {
         margin-bottom: rem(30);
         line-height: 140%;
         color: #172242;
-        @media all and (max-width: 1280px) {;
+        @media all and (max-width: 1280px) {
             font-size: 30px;
             margin-bottom: 30px;
         }
@@ -120,10 +130,21 @@ export default {
         .text {
             font-style: normal;
             font-weight: 600;
-            font-size: rem(16);
+            font-size: rem(13);
             line-height: 140%;
             text-align: center;
             color: #FFFFFF;
+        }
+        .pdf {
+          width: 30px;
+          position: absolute;
+          top: 15px;
+          right: 12px;
+          z-index: 10;
+          img {
+            width: 100%;
+            height: auto;
+          }
         }
     }
     &__item:hover &__item_overlay {

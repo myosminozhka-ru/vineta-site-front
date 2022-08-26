@@ -7,7 +7,9 @@
                 <!-- <pre style="font-size: 15rem;">
                     {{ getLicenses }}
                 </pre> -->
-                <osm-gallery :images="getLicenses" />
+                <osm-gallery :images="filterBySection('Лицензии и сертификаты')" :title="$t('sections.fiveth.tabs.first')"/>
+                <osm-gallery :images="filterBySection('Благодарственные письма и отзывы')" :title="$t('sections.fiveth.tabs.second')"/>
+                <osm-gallery :images="filterBySection('Отчеты СОУП и аттестации')" :title="$t('sections.fiveth.tabs.third')"/>
             </div>
         </div>
         <osm-footer />
@@ -43,7 +45,10 @@ export default {
       ])
     },
     methods: {
-      ...mapActions(['addBreadcrumbs'])
+      ...mapActions(['addBreadcrumbs']),
+      filterBySection(type) {
+        return this.getLicenses.filter(i => i.SECTION === type)
+      }
     },
 }
 </script>
