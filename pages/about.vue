@@ -21,10 +21,10 @@
             </div>
             <div class="second__text">
               <p>{{ getAbout.banners.second.PREVIEW_TEXT }}</p>
-              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT.length>4" v-html="getAbout.banners.second.DETAIL_TEXT">{{ getAbout.banners.second.DETAIL_TEXT }}</p>
+              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT">{{ getAbout.banners.second.DETAIL_TEXT }}</p>
             </div>
           </div>
-          <div v-if="getAbout.banners.second.DETAIL_TEXT.length>4" class="second__buttons 12345" @click="isTextShowed = !isTextShowed">
+          <div v-if="getAbout.banners.second.DETAIL_TEXT" class="second__buttons 12345" @click="isTextShowed = !isTextShowed">
             <osm-button class="second__button">
               <div class="icon" :class="{'isOpened': isTextShowed}">
                 <svg width="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -317,7 +317,7 @@
         background: #2E5599;
 
         @media all and (max-width: 1440px) {
-          padding-right: 100px;
+          padding-right: 150px;
         }
         @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
           // padding-left: rem(50);
@@ -480,7 +480,6 @@
         font-size: 0;
         width: rem(24);
         margin: rem(10);
-        flex-shrink: 0;
 
         @media all and (max-width: 1280px) {
           width: 24px;
@@ -491,7 +490,7 @@
       .text {
         font-style: normal;
         font-weight: 400;
-        font-size: rem(18);
+        font-size: rem(16);
         line-height: 140%;
         color: #FFFFFF;
         // width: calc(100% - #{rem(34)});
