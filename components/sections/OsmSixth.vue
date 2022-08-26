@@ -16,14 +16,14 @@
             <div class="catalog__right catalog__slider glide">
                 <div class="glide__track" data-glide-el="track">
                     <div class="glide__slides">
-                        <div class="catalog__item" v-for="item in getCatalog" :key="item.index">
+                        <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: item.CODE}})" class="catalog__item" v-for="item in getCatalog" :key="item.index">
                             <div class="catalog__item_in">
                                 <div class="image">
                                     <img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="">
                                 </div>
-                                <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: item.CODE}})" class="text">{{ item.NAME }}</nuxt-link>
+                                <span class="text">{{ item.NAME }}</span>
                             </div>
-                        </div>
+                        </nuxt-link>
                     </div>
                 </div>
             </div>
