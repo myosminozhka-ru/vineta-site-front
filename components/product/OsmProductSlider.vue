@@ -311,8 +311,6 @@ export default {
         }
         @media print {
             width: 400px;
-            .hooper-list,
-            .hooper-track,
             .productPage__slider-item__in,
             .productPage__slider-item__imege,
             img {
@@ -327,6 +325,9 @@ export default {
             img {
               width: 100% !important;
             }
+            &::v-deep .hooper-track {
+              transform: translate(0px, 0px) !important;
+            }
         }
     }
     &__slider-item {
@@ -337,7 +338,7 @@ export default {
     }
     &__slider-item__in {
         position: relative;
-        padding-top: 56%;
+        padding-top: 50%;
         @media all and (max-width: 1280px) {
             padding-top: 56%;
             width: 100%;

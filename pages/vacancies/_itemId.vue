@@ -37,7 +37,7 @@ export default {
     components: {
         OsmButton: () => import('~/components/global/OsmButton.vue'),
         OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
-        OsmResponse: () => import('~/components/vacancies/OsmResponse.vue'),
+        OsmResponse: () => import('~/components/vacancies/OsmResponseIn.vue'),
         OsmApplyModal: () => import('~/components/modals/apply.vue'), 
     },
     head() {

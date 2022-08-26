@@ -1,9 +1,9 @@
 <template>
   <div class="catalog__header">
     <h1 class="catalog__header_left">{{ title }}</h1>
-    <div class="catalog__header_right">
+    <div class="catalog__header_right hide_on_mobile">
       <!-- <pre style="font-size: 15rem">{{ getDownloads }}</pre> -->
-      <a href="https://vinetaboat.ru/" target="_blank" class="catalog__header_btn hide_on_mobile">
+      <a href="https://vinetaboat.ru/" target="_blank" class="catalog__header_btn">
         <div class="text">{{$t('buttons.boats')}}</div>
         <div class="icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="a" viewBox="0 0 72 72">
@@ -115,7 +115,7 @@ import { mapGetters } from 'vuex';
       background: #FF0040;
       transition: all .3s ease;
         max-width: rem(203);
-        flex: 0 0 rem(203);
+        // flex: 0 0 rem(203);
         width: 100%;
         text-align: center;
         padding-left: 20px;

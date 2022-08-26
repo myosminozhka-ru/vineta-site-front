@@ -8,9 +8,9 @@
             </div>
             <form class="modal__form" @submit.prevent="sendForm" ref="buy_form">
                 <div class="modal__form_in" v-if="!isSuccess">
-                    <div class="modal__title">{{ this.$t('sections.footer.request') }} </div>
+                    <div class="modal__title">{{ this.$t('sections.modals.apply_vacancy') }} </div>
                     <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
-                        <!-- <pre>{{ field }}</pre> -->
+                        <!-- <pre>{{ formData }}</pre> -->
                         <template v-if="field.SID === 'VACANCY'">
                             <input type="hidden" v-model="formData[field.SID]" :name="field.SID">
                         </template>
@@ -54,6 +54,16 @@ export default {
             default: ''
         }
     },
+    watch: {
+        property: {
+            // this.formData.VACANCY_NAME = newVal;
+            immediate: true, 
+            handler (val, oldVal) {
+                this.formData.VACANCY_NAME = val;
+            }
+        },
+        
+    },
     data: () => ({
         isSended: false,
         result: null,
@@ -79,6 +89,7 @@ export default {
     mounted() {
         this.formData.VACANCY = window.location.href;
         this.formData.VACANCY_NAME = this.property;
+        console.log(this.property);
 
         // console.log(this.formData)
     },

@@ -1,6 +1,5 @@
 <template>
     <div class="osmMap">
-        <!-- <pre>{{ getContacts }}</pre> -->
         <div class="osmMap__in" id="osmMap"></div>
     </div>
 </template>
@@ -25,21 +24,14 @@ export default {
     }),
 
     mounted() {
-        // document.addEventListener("DOMContentLoaded", () => {
             mapboxgl.accessToken = this.accessToken;
             this.map = new mapboxgl.Map({
                 container: 'osmMap', // container ID
                 style: 'mapbox://styles/denny743/cl6kl37wt001014o322cb10ah', // style URL
-                center: '0' in this.getContacts && 'GEO' in this.getContacts['0'] ? [30.814556, 59.691678] : [30.814556, 59.691678], // starting position [lng, lat]
+                center: '0' in this.getContacts && 'GEO' in this.getContacts['0'] ? [30.8100757441552, 59.69096635] : [30.8100757441552, 59.69096635], // starting position [lng, lat]
                 zoom: 16, // starting zoom
                 projection: 'globe' // display the map as a 3D globe
             });
-            // const marker = new mapboxgl.Marker({
-            //     color: "#FFFFFF",
-            //     draggable: true
-            // }).setLngLat([30.814556, 59.691678]).setDraggable(false).setPopup(new mapboxgl.Popup().setHTML("<h1>Винета</h1>")).addTo(this.map);
-            // console.log(marker);
-        // })
     }
 }
 </script>

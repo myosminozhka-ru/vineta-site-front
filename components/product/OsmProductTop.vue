@@ -210,6 +210,9 @@ export default {
         @media all and (max-width: 1280px) {
             padding: 20px 40px;
         }
+        @media all and (max-width: 840px) {
+            width: 100%;
+        }
         &:hover {
             background: #DF0043;
         }
