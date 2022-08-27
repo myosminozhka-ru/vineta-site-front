@@ -794,6 +794,9 @@
     }
 
     &__mods--tabs {
+      @media print {
+        display: none;
+      }
       .titles {
         display: flex;
         align-items: center;
