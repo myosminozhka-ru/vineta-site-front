@@ -176,7 +176,7 @@ overflow: auto;
             li {
                 font-style: normal;
                 font-weight: 400;
-                font-size: rem(16);
+                font-size: rem(18);
                 line-height: 140%;
                 color: #555F76;
                 @media all and (max-width: 1280px) {
@@ -194,7 +194,7 @@ overflow: auto;
         .subtitle {
             font-style: normal;
             font-weight: 600;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #172242;
             @media all and (max-width: 1280px) {
@@ -211,7 +211,7 @@ overflow: auto;
             margin: 0;
             font-style: normal;
             font-weight: 400;
-            font-size: rem(16);
+            font-size: rem(18);
             line-height: 140%;
             color: #555F76;
             @media all and (max-width: 1280px) {
