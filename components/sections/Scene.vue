@@ -40,18 +40,24 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
         camera.position.set( 206.33037545454508, 84.72297202548734, 704.3471129107609 );
 
-        const HemisphereLight = new THREE.HemisphereLight(0xB1E1FF, 0xB97A20, 0.8);
-        const DirectionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.4);
+        const HemisphereLight = new THREE.HemisphereLight(0xFFFFFF, 0xB97A20, 0.2);
+        const DirectionalLight = new THREE.DirectionalLight(0xFFFFFF, 1);
+        const SpotLight = new THREE.SpotLight(0xffff00, 1, 100, Math.PI/6, 25)
 
-        DirectionalLight.position.copy( camera.position );
+        DirectionalLight.position.set(2, 5, 3);
         DirectionalLight.castShadow = true;
         DirectionalLight.shadow.radius = 8;
+
+
+        SpotLight.position.set(5, 5, 5)
+        SpotLight.target.position.set(0, 0, 0)
 
         // DirectionalLight.shadow.mapSize.width = 1024;
         // DirectionalLight.shadow.mapSize.height = 1024;
         // DirectionalLight.shadow.camera.near = 1;
         // DirectionalLight.shadow.camera.far = 1000;
         scene.add(DirectionalLight);
+        scene.add(SpotLight);
 
         const mtlLoader = new MTLLoader();
         controls.update();
