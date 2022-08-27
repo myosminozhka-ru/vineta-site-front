@@ -13,10 +13,15 @@
                         <!-- <pre>
                         {{ field }} 
                         </pre> -->
+                        <!-- {{ field.VARNAME }} -->
                         <div class="osm__error" v-if="errors[field.VARNAME]">{{ errors[field.VARNAME] }}</div>
                         <template v-if="field.VARNAME === 'GOOD'">
                             <input type="hidden" v-model="formData[field.VARNAME]"/>
                         </template>
+                        <template v-else-if="field.VARNAME === 'NUMBER'">
+                            <osm-counter class="modal__input"/>
+                        </template>
+                        
                         <template v-else>
                             <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{'hasError': errors[field.VARNAME]}" class="osm__input modal__input" v-model="formData[field.VARNAME]">
                         </template>
@@ -25,8 +30,9 @@
                     <!-- <osm-input class="modal__input" placeholder="Компания *" :required="true"/> -->
                     <!-- <osm-input class="modal__input" placeholder="Телефон *" type="tel" :required="true"/>
                     <osm-input class="modal__input" placeholder="E-mail *" type="email" :required="true"/>
-                    <osm-counter class="modal__input"/>
+                    
                     <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
+                    
                     <osm-button class="modal__button" :large="true" type="submit">Отправить</osm-button>
                 </div>
                 <div class="modal__form_in" v-else>

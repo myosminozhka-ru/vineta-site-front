@@ -2,7 +2,9 @@
   <section class="section section__item section__item--second section__item--dark">
     <div class="section__left section__left--fullwidth">
       <div class="section__left_image_wrap">
-        <svg v-if="isMounted && isSvgVisible" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
+		<img :class="{'isClipped': isMounted}" class="section__left_image_clipped hide_on_mobile" :src="require('~/assets/img/sections/second.png')"
+          height="100%" alt="">
+        <svg version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1988 2724"
           style="enable-background:new 0 0 1988 2724;" xml:space="preserve">
           <style type="text/css">
@@ -1006,8 +1008,7 @@
         </svg>
         <img class="hide_on_desktop" :src="require('~/assets/img/sections/detail2.svg')"
           height="100%" alt="">
-        <img :class="{isMounted}" class="section__left_image_clipped" :src="require('~/assets/img/sections/second.png')"
-          height="100%" alt="">
+        
 
         <!-- <img class="section__left_image_clipped" :src="$vareibles.remote + firstData.PREVIEW_PICTURE" alt="first"> -->
       </div>
@@ -1156,44 +1157,73 @@
 <style lang="scss" scoped>
   .section {
     &__left_image_wrap {
-		padding-left: rem(90);
-		padding-right: rem(90);
-		height: rem(600);
-		box-sizing: border-box;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		width: 100%;
-		transform: rotate(-90deg);
+      padding-left: rem(90);
+      padding-right: rem(90);
+      height: rem(600);
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+	  transform: rotate(-90deg);
+      width: 100%;
+        @media all and (max-width: 1280px) {
+			padding-top: 150px;
+			padding-bottom: 150px;
+		}
+		@media all and (max-width: 860px) {
+			padding-top: 0px;
+			padding-bottom: 0px;
+			padding-left: 4px;
+			padding-right: 4px;
+			height: 100%;
+			width: 200px;
+		}
       img {
         width: auto;
         // -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
         // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
       }
     }
+	svg {
+		transition: all .3s ease;
+	}
 
     &__left_image_clipped {
-        @media all and (min-width: 1281px) {
+      @media all and (min-width: 1281px) {
         clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+      }
+      @media all and (max-width: 1280px) {
+        padding-top: 165px;
+        padding-bottom: 165px;
       }
       position: absolute;
       top: 0;
       bottom: 0;
       left: 50%;
-      transform: translateX(-50%);
+		transform: translateX(-50%) rotate(3deg);	
+		@media all and (max-width: 1280px) {
+			transform: translateX(-50%);
+		}
       transition: 1s clip-path 2.3s ease;
     //   padding-top: rem(30);
     //   padding-bottom: rem(25);
-    }
-    &:not(.isActive) &__left_image_clipped {
-        @media all and (min-width: 861px) {
-			opacity: 0;
+	      padding: 24px;
+	  &:not(.isClipped) {
+			@media all and (min-width: 861px) {
+				opacity: 0;
+				width: 100%;
+			}
+			transition: 1s clip-path 0.3s ease;
 		}
-		transition: 1s clip-path 0.3s ease;
-    }
-    &.isActive &__left_image_clipped {
-      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+
+		&.isClipped {
+			clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+			& + svg {
+				opacity: 0;
+				transition: 1s all 2.3s ease;
+			}
+		}
     }
 
     &__more {

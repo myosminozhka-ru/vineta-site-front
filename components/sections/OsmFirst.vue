@@ -2,10 +2,10 @@
   <section class="section section__item section__item--first">
     <div class="section__left">
       <div class="section__left_image_wrap">
-
+		{{ isSvgVisible }}
 		<img :class="{'isClipped': isMounted}" class="section__left_image_clipped hide_on_mobile" :src="require('~/assets/img/sections/first.png')"
           height="100%" alt="">
-        <svg v-if="isMounted && isSvgVisible" version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
+        <svg version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 3259 5289"
           style="enable-background:new 0 0 3259 5289;" xml:space="preserve">
           <style type="text/css">
@@ -1695,6 +1695,9 @@
         // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
       }
     }
+	svg {
+		transition: all .3s ease;
+	}
 
     &__left_image_clipped {
       @media all and (min-width: 1281px) {
@@ -1726,6 +1729,10 @@
 
 		&.isClipped {
 			clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+			& + svg {
+				opacity: 0;
+				transition: 1s all 2.3s ease;
+			}
 		}
     }
     
