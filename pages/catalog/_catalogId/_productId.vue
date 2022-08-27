@@ -676,6 +676,7 @@
     // display: none;
     color: #172242;
     font-size: 10px;
+    display: none;
 
     table {
       width: 100%;
