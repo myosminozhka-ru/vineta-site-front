@@ -216,10 +216,9 @@
                     </template>
                   </div>
                   <template v-if="offersCount.length === 1">
-                    <div v-for="item in product[0].OFFERS" :key="item.index">
                       <div
                         class="productPage__mods--char"
-                        v-for="prop in item.PROPERTIES"
+                        v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES"
                         :key="prop.index"
                       >
                         <template>
@@ -231,7 +230,6 @@
                           </div>
                         </template>
                       </div>
-                    </div>
                   </template>
                 </div>
               </div>
@@ -459,10 +457,9 @@
                     </template>
                   </div>
                   <template v-if="offersCount.length === 1">
-                    <div v-for="item in product[0].OFFERS" :key="item.index">
                       <div
                         class="productPage__mods--char"
-                        v-for="prop in item.PROPERTIES"
+                        v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES"
                         :key="prop.index"
                       >
                         <template>
@@ -474,7 +471,6 @@
                           </div>
                         </template>
                       </div>
-                    </div>
                   </template>
                 </div>
               </div>
@@ -628,6 +624,7 @@
           </div>
         </div>
       </div>
+      
       <div class="productPage__analogs">
         <div class="productPage__analogs_top">
           <div class="title">Аналоги</div>
@@ -1371,11 +1368,11 @@ export default {
   &__mods--chars {
     padding: rem(40);
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    // grid-gap: rem(30);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: rem(20);
 
     @media all and (max-width: 1440px) {
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       padding: 30px;
     }
 
@@ -1394,9 +1391,9 @@ export default {
       display: none;
     }
 
-    &:not(:last-child) {
-      border-bottom: 1px solid #f2f2f2;
-    }
+    // &:not(:last-child) {
+    //   border-bottom: 1px solid #f2f2f2;
+    // }
 
     @media all and (max-width: 840px) {
       // display: flex;

@@ -4,6 +4,15 @@
 //   }
 // }
 
+
+
+.show_on_print {
+  display: none;
+  @media print {
+      display: block;
+  }
+}
+
 html {
   font-size: 0.05208333333vw;
   @media all and (max-width: 1440px) {

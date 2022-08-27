@@ -20,8 +20,8 @@
               <div class="text">{{ getAbout.banners.second.NAME }}</div>
             </div>
             <div class="second__text">
-              <p>{{ getAbout.banners.second.PREVIEW_TEXT }}</p>
-              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT">{{ getAbout.banners.second.DETAIL_TEXT }}</p>
+              <p v-html="decodeHTML(getAbout.banners.second.PREVIEW_TEXT)" />
+              <p v-if="isTextShowed && getAbout.banners.second.DETAIL_TEXT" v-html="decodeHTML(getAbout.banners.second.DETAIL_TEXT)" />
             </div>
           </div>
           <div v-if="getAbout.banners.second.DETAIL_TEXT" class="second__buttons 12345" @click="isTextShowed = !isTextShowed">
@@ -211,7 +211,14 @@
     },
     methods: {
       ...mapActions(['addBreadcrumbs']),
-      ...mapActions(['addAbout'])
+      ...mapActions(['addAbout']),
+      decodeHTML(html) {
+          if (document) {
+              const txt = document.createElement("textarea");
+              txt.innerHTML = html;
+              return txt.value;
+          }
+      }
     },
     computed: {
       ...mapGetters(['getAbout']),
@@ -565,6 +572,7 @@
     &__item {
       width: calc(100% / 2 - #{rem(60)} / 4);
       text-align: center;
+      margin-top: 20px;
       
       @media all and (max-width: 840px) {
         width: calc(100% / 2 - 10px);
