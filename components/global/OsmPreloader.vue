@@ -1,53 +1,55 @@
 <template>
-    <div class="preloader" :class="{isMounted, isAnimated}">
-        <span class="circle circle-1"></span>
-        <span class="circle circle-2"></span>
-        <span class="circle circle-3"></span>
-        <span class="circle circle-4"></span>
-        <span class="circle circle-5"></span>
-        <span class="circle circle-6"></span>
-        <span class="circle circle-7"></span>
-        <span class="circle circle-8"></span>
-    </div>
+  <div
+    class="preloader"
+    :class="[isMounted, getLoadedStatus ? 'isAnimated' : '']"
+  >
+    <span class="circle circle-1"></span>
+    <span class="circle circle-2"></span>
+    <span class="circle circle-3"></span>
+    <span class="circle circle-4"></span>
+    <span class="circle circle-5"></span>
+    <span class="circle circle-6"></span>
+    <span class="circle circle-7"></span>
+    <span class="circle circle-8"></span>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex'
 export default {
-    data: () => ({
-        isMounted: false,
-        isAnimated: false
-    }),
-    computed: {
-      ...mapGetters(['getLoadedStatus'])
-    },
-    beforeDestroy() {
-        this.isMounted = false;
-        this.isAnimated = false;
-    },
-    mounted() {
-      this.isMounted = true
-      setTimeout(() => {
-        this.isAnimated = true
-      }, 1000);
-      // const stateCheck = setInterval(() => {
-      //   if (document.readyState === 'complete' && this.getLoadedStatus) {
-      //       clearInterval(stateCheck);
-      //       setTimeout(() => {
-      //         this.isMounted = true
-      //     }, 0);
-      //     setTimeout(() => {
-      //         this.isAnimated = true
-      //     }, 1000);
-      //     }
-      // }, 100);
-        
-    }
+  data: () => ({
+    isMounted: false,
+    isAnimated: false,
+  }),
+  computed: {
+    ...mapGetters(['getLoadedStatus']),
+  },
+  beforeDestroy() {
+    this.isMounted = false
+    this.isAnimated = false
+  },
+  mounted() {
+    this.isMounted = true
+    setTimeout(() => {
+      this.isAnimated = true
+    }, 1000)
+    // const stateCheck = setInterval(() => {
+    //   if (document.readyState === 'complete' && this.getLoadedStatus) {
+    //       clearInterval(stateCheck);
+    //       setTimeout(() => {
+    //         this.isMounted = true
+    //     }, 0);
+    //     setTimeout(() => {
+    //         this.isAnimated = true
+    //     }, 1000);
+    //     }
+    // }, 100);
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.preloader{
+.preloader {
   position: fixed;
   top: 0;
   left: 0;
@@ -57,7 +59,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #F2F2F2;
+  background: #f2f2f2;
   transition: opacity 1s ease;
   opacity: 1;
   visibility: visible;
@@ -69,52 +71,52 @@ export default {
     pointer-events: none;
   }
 }
-.circle{
+.circle {
   display: inline-block;
   width: 15px;
   height: 15px;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   border-radius: 50%;
-  animation: loading 1.5s cubic-bezier(.8, .5, .2, 1.4) infinite;
+  animation: loading 1.5s cubic-bezier(0.8, 0.5, 0.2, 1.4) infinite;
   transform-origin: bottom center;
   position: relative;
 }
-@keyframes loading{
-  0%{
+@keyframes loading {
+  0% {
     transform: translateY(0px);
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
   }
-  50%{
+  50% {
     transform: translateY(50px);
-    background-color: #FF0040;
+    background-color: #ff0040;
   }
-  100%{
+  100% {
     transform: translateY(0px);
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
   }
 }
-.circle-1{
+.circle-1 {
   animation-delay: 0.1s;
 }
-.circle-2{
+.circle-2 {
   animation-delay: 0.2s;
 }
-.circle-3{
+.circle-3 {
   animation-delay: 0.3s;
 }
-.circle-4{
+.circle-4 {
   animation-delay: 0.4s;
 }
-.circle-5{
+.circle-5 {
   animation-delay: 0.5s;
 }
-.circle-6{
+.circle-6 {
   animation-delay: 0.6s;
 }
-.circle-7{
+.circle-7 {
   animation-delay: 0.7s;
 }
-.circle-8{
+.circle-8 {
   animation-delay: 0.8s;
 }
 </style>

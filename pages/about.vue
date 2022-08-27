@@ -56,13 +56,25 @@
               </nuxt-link>
             </div>
             <div class="second__items">
-              <nuxt-link v-for="link in getAbout.sections" :key="link.index"
-                :to="localePath({name: 'catalog-catalogId', params: {catalogId: link.CODE}})" class="second__item">
-                <div class="icon">
-                  <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="">
-                </div>
-                <div class="text">{{ link.NAME }}</div>
-              </nuxt-link>
+              <div class="second__items_col">
+                <nuxt-link v-for="link in getAbout.sections.slice(0, 5)" :key="link.index"
+                  :to="localePath({name: 'catalog-catalogId', params: {catalogId: link.CODE}})" class="second__item">
+                  <div class="icon">
+                    <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="">
+                  </div>
+                  <div class="text">{{ link.NAME }}</div>
+                </nuxt-link>
+              </div>
+              <div class="second__items_col">
+                <nuxt-link v-for="link in getAbout.sections.slice(5, -1)" :key="link.index"
+                  :to="localePath({name: 'catalog-catalogId', params: {catalogId: link.CODE}})" class="second__item">
+                  <div class="icon">
+                    <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="">
+                  </div>
+                  <div class="text">{{ link.NAME }}</div>
+                </nuxt-link>
+              </div>
+              
             </div>
           </div>
           <div class="second__buttons">
@@ -456,15 +468,26 @@
 
     &__items {
       display: flex;
-      align-items: flex-start;
+      justify-content: space-between;
       flex-wrap: wrap;
+
+      &_col {
+        display: flex;
+        flex-direction: column;
+        width: 45%;
+        @media all and (max-width: 1280px) {
+          min-width: 270px;
+        }
+      }
     }
+    
 
     &__item {
-      width: 50%;
       display: flex;
       align-items: center;
       text-decoration: none;
+      margin-bottom: 20px;
+
 
       @media all and (max-width: 1280px) {
         &:not(:last-child) {
@@ -478,8 +501,9 @@
 
       .icon {
         font-size: 0;
-        width: rem(24);
+        width: rem(30);
         margin: rem(10);
+        flex-shrink: 0;
 
         @media all and (max-width: 1280px) {
           width: 24px;
@@ -490,7 +514,7 @@
       .text {
         font-style: normal;
         font-weight: 400;
-        font-size: rem(16);
+        font-size: rem(18);
         line-height: 140%;
         color: #FFFFFF;
         // width: calc(100% - #{rem(34)});

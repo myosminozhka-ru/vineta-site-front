@@ -804,11 +804,14 @@ export default {
       )
     },
   },
-
+  created() {
+    this.setLoadedStatus(false)
+  },
   async mounted() {
     this.product = await this.$axios.$get(
       `catalog/detail.php?code=${this.$route.params.productId}`
     )
+    this.setLoadedStatus(true)
     this.addBreadcrumbs([
       {
         name: 'Главная',
@@ -860,7 +863,7 @@ export default {
   methods: {
     ...mapActions(['toggleModal']),
     ...mapActions('localStorage', ['addFavorites']),
-    ...mapActions(['addBreadcrumbs']),
+    ...mapActions(['addBreadcrumbs', 'setLoadedStatus']),
     openBuy() {
       this.toggleModal({
         isOpened: true,
