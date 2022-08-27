@@ -57,7 +57,7 @@
             </div>
             <div class="second__items">
               <div class="second__items_col">
-                <nuxt-link v-for="link in getAbout.sections.slice(0, 5)" :key="link.index"
+                <nuxt-link v-for="link in filteredFirstAboutSections" :key="link.index"
                   :to="localePath({name: 'catalog-catalogId', params: {catalogId: link.CODE}})" class="second__item">
                   <div class="icon">
                     <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="">
@@ -66,7 +66,7 @@
                 </nuxt-link>
               </div>
               <div class="second__items_col">
-                <nuxt-link v-for="link in getAbout.sections.slice(5, -1)" :key="link.index"
+                <nuxt-link v-for="link in filteredSecondAboutSections" :key="link.index"
                   :to="localePath({name: 'catalog-catalogId', params: {catalogId: link.CODE}})" class="second__item">
                   <div class="icon">
                     <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="">
@@ -200,7 +200,9 @@
     },
     data: () => ({
       isTextShowed: false,
-      isDataLoaded: false
+      isDataLoaded: false,
+      filteredFirstAboutSections: [],
+      filteredSecondAboutSections: []
     }),
     async fetch() {
       await this.addAbout()
@@ -221,6 +223,9 @@
           },
       ])
     },
+    mounted() {
+      this.filterAboutSections()
+    },
     methods: {
       ...mapActions(['addBreadcrumbs']),
       ...mapActions(['addAbout']),
@@ -230,6 +235,43 @@
               txt.innerHTML = html;
               return txt.value;
           }
+      },
+      filterAboutSections() {
+        const firstArray = []
+        const secondArray = []
+        this.getAbout.sections.forEach(i => {
+          switch(i.ID) {
+            case "16":
+              firstArray[0] = i
+              break;
+            case "3":
+              firstArray[1] = i
+              break;
+            case "33":
+              firstArray[2] = i
+              break;
+            case "2":
+              firstArray[3] = i
+              break;
+            case "9":
+              firstArray[4] = i
+              break;
+            case "1":
+              secondArray[0] = i
+              break;
+            case "29":
+              secondArray[1] = i
+              break;
+            case "34":
+              secondArray[2] = i
+              break;
+            case "8":
+              secondArray[3] = i
+              break;
+          }
+        })
+        this.filteredFirstAboutSections = firstArray
+        this.filteredSecondAboutSections = secondArray
       }
     },
     computed: {
