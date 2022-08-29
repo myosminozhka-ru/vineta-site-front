@@ -114,7 +114,6 @@ export const actions = {
     context.commit('setCatalogFilters', data)
   },
   setLoadedStatus(context, data = true) {
-    console.log(45444445, data)
     context.commit('setLoadedStatus', data)
   },
   addBreadcrumbs(context, data) {
