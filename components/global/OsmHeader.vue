@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header class="header" v-show="getLoadedStatus">
         <osm-logo />
         <osm-menu />
         <osm-info />
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
     components: {
         OsmLogo: () => import('~/components/header/OsmLogo.vue'),
@@ -16,7 +18,10 @@ export default {
         OsmInfo: () => import('~/components/header/OsmInfo.vue'),
         OsmMobileMenu: () => import('~/components/header/OsmMobileMenu.vue'),
         OsmSearch: () => import('~/components/search/OsmSearchPopup.vue'),
-    }
+    },
+    computed: {
+        ...mapGetters(['getLoadedStatus']),
+    },
 }
 </script>
 

@@ -35,91 +35,50 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 export default {
   name: 'OsmScene',
   // components: { ModelObj },
-  props: {
-    isStart: {
-      type: Boolean,
-      default: false,
-    },
-  },
   data: () => ({
     isMounted: false,
     link: '',
     object: null,
-    loadingPercentage: 0,
-    isShowLoader: true,
-    isPauseAnimate: false,
-
-    controls: null,
-    camera: null,
-    DirectionalLight: null,
-    renderer: null,
-    scene: null,
   }),
-  watch: {
-    isStart: {
-      immediate: true,
-      deep: true,
-      handler(newValue, oldValue) {
-        if (newValue === true && this.loadingPercentage === 100) {
-          this.isPauseAnimate = false
-        } else {
-          this.isPauseAnimate = true
-        }
-
-        this.animate()
-      },
-    },
-  },
   mounted() {
     this.link = document.location.origin
     this.isMounted = true
     const sceneRef = this.$refs.scene
 
-    // const scene = new THREE.Scene()
-    this.scene = new THREE.Scene()
-    this.camera = new THREE.PerspectiveCamera(
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(
       45,
       sceneRef.clientWidth / sceneRef.clientHeight,
       1,
       2000
     )
-    // const camera = new THREE.PerspectiveCamera(
-    //   45,
-    //   sceneRef.clientWidth / sceneRef.clientHeight,
-    //   1,
-    //   2000
-    // )
-    // const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-    this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-    // const controls = new OrbitControls(camera, renderer.domElement)
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+    const controls = new OrbitControls(camera, renderer.domElement)
 
-    this.camera.position.set(
+    camera.position.set(
       206.33037545454508,
       84.72297202548734,
       704.3471129107609
     )
 
     const HemisphereLight = new THREE.HemisphereLight(0xb1e1ff, 0xb97a20, 0.8)
-    // const DirectionalLight = new THREE.DirectionalLight(0xffffff, 0.4)
-    this.DirectionalLight = new THREE.DirectionalLight(0xffffff, 0.8)
+    const DirectionalLight = new THREE.DirectionalLight(0xffffff, 0.4)
 
-    this.DirectionalLight.position.copy(this.camera.position)
-    this.DirectionalLight.castShadow = true
-    this.DirectionalLight.shadow.radius = 8
+    DirectionalLight.position.copy(camera.position)
+    DirectionalLight.castShadow = true
+    DirectionalLight.shadow.radius = 8
 
     // DirectionalLight.shadow.mapSize.width = 1024;
     // DirectionalLight.shadow.mapSize.height = 1024;
     // DirectionalLight.shadow.camera.near = 1;
     // DirectionalLight.shadow.camera.far = 1000;
-    this.scene.add(this.DirectionalLight)
+    scene.add(DirectionalLight)
 
     const mtlLoader = new MTLLoader()
-    // controls.update()
-    this.controls.update()
+    controls.update()
 
-    this.scene.add(HemisphereLight)
-    this.scene.add(this.camera)
+    scene.add(HemisphereLight)
+    scene.add(camera)
 
     mtlLoader.load(
       `${this.link}/models/zavod3.mtl`,
