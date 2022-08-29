@@ -6,7 +6,10 @@
                 <path d="M14.4004 7.2002L10.2004 12.0002L14.4004 16.8002" stroke="white" stroke-width="2"/>
             </svg>
         </div>
-        <li class="breadcrumbs__item" v-for="(br, key) in getBreadcrumbs" :key="br.index" :class="{'hide_on_mobile': key > 0}">
+        <li class="breadcrumbs__item" v-for="(br, key) in getBreadcrumbs" :key="br.index" 
+          :class="{'hide_on_mobile': isBCrumbsOnMobileProductPage() ? key !== 2 : false || key > 0}"
+        >
+            {{ isBCrumbsOnMobileProductPage() && key == 2 }}
             <template v-if="br.isLink && !br.params">
                 <a :href="localePath({name: br.link})">{{ br.name }}</a>
             </template>
@@ -38,6 +41,11 @@ export default {
     },
     computed: {
         ...mapGetters(['getBreadcrumbs']),
+    },
+    methods: {
+      isBCrumbsOnMobileProductPage() {
+        return this.$route.matched.length === 3 && this.$route.matched[2].path === '/ru/catalog/:catalogId/:productId'
+      }
     }
 }
 </script>

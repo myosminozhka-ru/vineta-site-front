@@ -126,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal" v-show="treeDView.isOpened" @click="treeDView.isOpened = false">
+        <div class="modal" v-if="treeDView.isOpened" @click="treeDView.isOpened = false">
             <div class="modal__in" @click.stop>
                 <iframe width="100%" height="500" allowfullscreen src="https://www.blend4web.com/apps/webplayer/webplayer.html?load=/assets/tutorials/web_page_integration/apple.json"></iframe>
             </div>

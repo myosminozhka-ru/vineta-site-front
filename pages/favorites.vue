@@ -10,7 +10,7 @@
                     Вы пока ничего не добавили в избранное.
                 </div>
                 <div class="favorites__buttons">
-                    <span @click="printSection" v-if="products.length">
+                    <span @click="printSection" v-if="false">
                         <osm-button class="favorites__button" :large="true" :outlined="true">Выгрузить</osm-button>
                     </span>
                     <osm-button class="favorites__button" :large="true" link="catalog">В каталог</osm-button>

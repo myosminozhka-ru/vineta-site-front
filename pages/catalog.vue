@@ -1,9 +1,9 @@
 <template>
     <div class="wrapper footerOnBottom" id="wrapper">
+        <osm-preloader />
         <!-- <osm-header /> -->
         <nuxt-child />
         <osm-footer />
-        <osm-preloader />
     </div>
 </template>
 <script>
