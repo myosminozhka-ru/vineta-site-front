@@ -407,7 +407,7 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <a :href="`/catalog/${prod.SECTION.CODE}/${prod.CODE}`" class="products__item"
+              <nuxt-link :to="localePath(`/catalog/${prod.SECTION.CODE}/${prod.CODE}`)" class="products__item"
                 v-for="prod in analogsItems.slice(0, 4)" :key="prod.index">
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
@@ -432,7 +432,7 @@
                     </div>
                   </div>
                 </div>
-              </a>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -512,16 +512,25 @@
       OsmButton: () => import('~/components/global/OsmButton.vue'),
       OsmModalsBuy: () => import('~/components/modals/buy.vue'),
     },
-    data: () => ({
-      tabs: {
-        selected: 1,
-        openedMod: 0,
-      },
-      product: null,
-      prodsSlider: null,
-      offersCount: [],
-      printUpText: '187026, Санкт-Петербург, Ленинградская обл., Тосненский район, <br>г. Никольское, Ульяновское шоссе, 5Г <br>тел./факс: +7(812) 493-50-48info@vineta.ru',
-    }),
+    data() {
+      return {
+        tabs: {
+          selected: 1,
+          openedMod: 0,
+        },
+        product: null,
+        prodsSlider: null,
+        offersCount: [],
+        printUpText: '187026, Санкт-Петербург, Ленинградская обл., Тосненский район, <br>г. Никольское, Ульяновское шоссе, 5Г <br>тел./факс: +7(812) 493-50-48info@vineta.ru',
+      }
+    },
+    async fetch() {
+      await this.setLoadedStatus(false)
+      this.product = await this.$axios.$get(
+        `catalog/detail.php?code=${this.$route.params.productId}`
+      )
+      await this.setLoadedStatus(true)
+    },
     head() {
       return {
         title: this.product && 'SEO' in this.product[0] ?
@@ -586,14 +595,18 @@
         )
       },
     },
+    watch: {
+      '$route.params.productId': {
+        handler() {
+           this.$fetch()
+        },
+      }
+    },
     created() {
-      this.setLoadedStatus(false)
+      //  this.setLoadedStatus(false)
     },
     async mounted() {
-      this.product = await this.$axios.$get(
-        `catalog/detail.php?code=${this.$route.params.productId}`
-      )
-      this.setLoadedStatus(true)
+      await this.$fetch()
       this.addBreadcrumbs([{
           name: 'Главная',
           link: 'index',
@@ -659,7 +672,7 @@
         if (!this.prodsSlider) return
         this.prodsSlider.go('>')
       },
-    },
+    }
   }
 
 </script>

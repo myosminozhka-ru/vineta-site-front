@@ -26,9 +26,9 @@
             <nuxt-link :to="{ name: 'index' }">En</nuxt-link> -->
         </div>
         <a href="tel:+78124935048" class="header__phone">+7 (812) 493-50-48</a>
-        <div class="header__button header__button--phone hide_off_mobile">
+        <a class="header__button header__button--phone hide_off_mobile" href="tel:+78124935048">
             <object :data="require(`~/assets/img/phone.svg`)" width="100%" />
-        </div>
+        </a>
     </div>
 </template>
 
