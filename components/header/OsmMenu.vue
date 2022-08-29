@@ -34,7 +34,7 @@
           @click.stop=""
         >
           <span>{{ link.text }}</span>
-          <div v-if="link.childs" class="header__arrow">
+          <div v-show="link.childs" class="header__arrow">
             <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow" />
           </div>
         </nuxt-link>
@@ -69,7 +69,7 @@
         </div>
         <div
           class="menu__modal_bottom"
-          v-if="getDownloads['katalog-produktsii']"
+          v-show="getDownloads['katalog-produktsii']"
         >
           <osm-h2 class="menu__modal_title">
             {{ $t('buttons.downloads') }}
@@ -77,7 +77,7 @@
           <div class="menu__modal_list">
             <a
               target="_blank"
-              v-if="'PROPERIES' in getDownloads['katalog-produktsii']"
+              v-show="'PROPERIES' in getDownloads['katalog-produktsii']"
               :href="
                 $vareibles.remote +
                 getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC
@@ -136,7 +136,7 @@
         </div>
         <div
           class="menu__modal_bottom"
-          v-if="getDownloads['katalog-produktsii']"
+          v-show="getDownloads['katalog-produktsii']"
         >
           <osm-h2 class="menu__modal_title">
             {{ $t('buttons.downloads') }}
@@ -144,7 +144,7 @@
           <div class="menu__modal_list">
             <a
               target="_blank"
-              v-if="'PROPERIES' in getDownloads['katalog-produktsii']"
+              v-show="'PROPERIES' in getDownloads['katalog-produktsii']"
               :href="
                 $vareibles.remote +
                 getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC
@@ -332,7 +332,7 @@
           fill="white"
         />
       </svg>
-      <div v-if="getFavorites.length" class="header__count">
+      <div v-show="getFavorites.length" class="header__count">
         {{ getFavorites.length }}
       </div>
     </nuxt-link>

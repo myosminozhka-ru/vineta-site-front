@@ -13,9 +13,7 @@
               class="section__slide glide__slide"
             >
               <osm-h1 class="section__title">{{ thirdData.NAME }}</osm-h1>
-              <div class="section__text">
-                {{ thirdData.PREVIEW_TEXT }}
-              </div>
+              <div class="section__text" v-html="thirdData.PREVIEW_TEXT" />
               <osm-button class="section__button" link="history">{{
                 $t('buttons.more')
               }}</osm-button>
