@@ -81,7 +81,7 @@ export default {
     scene.add(camera)
 
     mtlLoader.load(
-      `${this.link}/models/zavod3.mtl`,
+      `${this.link}/models/zavod5.mtl`,
       (materials) => {
         materials.preload()
         console.log(materials)
@@ -89,7 +89,7 @@ export default {
         materials.receiveShadow = true
         objLoader.setMaterials(materials)
         objLoader.load(
-          `${this.link}/models/zavod3.obj`,
+          `${this.link}/models/zavod5.obj`,
           (object) => {
             object.castShadow = true
             object.receiveShadow = true
