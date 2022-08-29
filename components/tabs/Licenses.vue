@@ -8,7 +8,7 @@
           <div class="licensesSlid__slider">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(item, key) in getLicenses" :key="item.index" class="licensesSlid__slide glide__slide"
+                <li v-for="(item, key) in filterBySection(tab)" :key="item.index" class="licensesSlid__slide glide__slide"
                   @click="setGalleryIndex(key)">
                   <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                 </li>
@@ -50,7 +50,7 @@
             <div class="licensesSlid__slider">
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-                  <li v-for="(item, key) in getLicenses" :key="item.index" class="licensesSlid__slide glide__slide"
+                  <li v-for="(item, key) in filterBySection(tab)" :key="item.index" class="licensesSlid__slide glide__slide"
                     @click="setGalleryIndex(key)">
                     <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
                   </li>
@@ -155,6 +155,9 @@
             event.target.closest('.licenses__accordion').classList.toggle('opened')
           })
         })
+      },
+      filterBySection(type) {
+        return this.getLicenses.filter(i => i.SECTION.toUpperCase().trim() === type.toUpperCase().trim())
       }
     }
   }

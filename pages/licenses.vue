@@ -47,7 +47,7 @@ export default {
     methods: {
       ...mapActions(['addBreadcrumbs']),
       filterBySection(type) {
-        return this.getLicenses.filter(i => i.SECTION === type)
+        return this.getLicenses.filter(i => i.SECTION.toUpperCase().trim() === type.toUpperCase().trim())
       }
     },
 }
