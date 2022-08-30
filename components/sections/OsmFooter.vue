@@ -1,50 +1,27 @@
 <template>
-  <section
-    class="section section__item section__item--footer section__item--dark"
-  >
+  <section class="section section__item section__item--footer section__item--dark">
     <div class="section__left">
       <div class="section__left_top">
         <osm-h1 class="section__title">
           <template v-if="!isSuccess">
             {{ $t('sections.footer.request') }}
+            <div>Вы можете направить нам запрос в электронном виде, используя нижеприведенную форму, или позвонить по указанному телефону</div>
           </template>
           <template v-else>
             {{ $t('sections.footer.thanks') }}
           </template>
         </osm-h1>
-        <div class="section__text" v-if="false">
-          Безусловно, постоянное информационно-пропагандистское обеспечение
-          нашей деятельности однозначно фиксирует необходимость соответствующих
-          условий активизации. А ещё реплицированные с зарубежных источников,
-          современные
-        </div>
+        <div class="section__text" v-if="false">Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные</div>
       </div>
-      <form
-        @submit.prevent="sendForm"
-        class="section__left_form"
-        v-if="!isSuccess"
-      >
-        <div
-          v-for="field in filteredFileds"
-          :key="field.index"
-          class="osm__form_field"
-        >
+      <form @submit.prevent="sendForm" class="section__left_form" v-if="!isSuccess">
+        <div v-for="field in filteredFileds" :key="field.index" class="osm__form_field">
           <div class="osm__error" v-if="errors[field.VARNAME]">
             {{ errors[field.VARNAME] }}
           </div>
-          <input
-            :type="field.FIELD_TYPE"
-            :placeholder="field.TITLE"
-            :required="field.REQUIRED === 'Y'"
-            :class="{ hasError: errors[field.VARNAME] }"
-            class="osm__input section__input"
-            v-model="formData[field.VARNAME]"
-          />
+          <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input section__input" v-model="formData[field.VARNAME]" />
           <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
         </div>
-        <osm-button class="section__button" :large="true" type="submit">{{
-          $t('sections.footer.send')
-        }}</osm-button>
+        <osm-button class="section__button" :large="true" type="submit">{{ $t('sections.footer.send') }}</osm-button>
       </form>
     </div>
     <div class="section__right hide_on_mobile">
@@ -53,35 +30,22 @@
           <osm-h1 class="section__title">{{ $t('buttons.contacts') }}</osm-h1>
 
           <div class="section__socials" v-if="false">
-            <a
-              :href="social.link"
-              class="section__social"
-              target="_blank"
-              v-for="social in socials"
-              :key="social.index"
-            >
+            <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
               <img :src="social.icon" width="100%" alt="" />
             </a>
           </div>
         </div>
         <div class="section__contacts">
           <div class="section__contacts_side">
-            <a href="tel:78124935048" class="section__contact">
-              +7 (812) 493 - 50 - 48
-            </a>
-            <p class="section__contacts_info">
-              187026, Ленинградская обл., Тосненский район, г. Никольское,
-              Ульяновское шоссе 5Ж
-            </p>
+            <a href="tel:78124935048" class="section__contact"> +7 (812) 493-50-48 </a>
+            <p class="section__contacts_info">187026, Ленинградская обл., Тосненский район, г. Никольское, Ульяновское шоссе 5Ж</p>
             <div class="section__contacts_worktime">
               Пн-Пт с 8:00 до 17:00
               <!-- {{ $t('sections.footer.worktime') }} -->
             </div>
           </div>
           <div class="section__contacts_side">
-            <a href="mailto:info@vineta.ru" class="section__contact">
-              info@vineta.ru
-            </a>
+            <a href="mailto:info@vineta.ru" class="section__contact"> info@vineta.ru </a>
             <div class="section__contacts_info">
               {{ $t('sections.footer.response') }}
             </div>
@@ -97,31 +61,17 @@
       <div class="section__popup_left">ООО “Винета”, 2012-2022</div>
 
       <template v-if="getDownloads['politika-konfedentsialnosti']">
-        <div
-          class="section__popup_right"
-          v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']"
-        >
+        <div class="section__popup_right" v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']">
           <ul>
             <li>
-              <a
-                :href="
-                  $vareibles.remote +
-                  getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE
-                    .SRC
-                "
-                >Политика конфидециальности</a
-              >
+              <a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a>
             </li>
             <!-- <li><a href="#">Пользовательское соглашение</a></li>
                         <li><a href="#">Карта сайта</a></li> -->
           </ul>
         </div>
       </template>
-      <a
-        href="https://myosminozhka.ru/"
-        target="_blank"
-        class="section__popup_link"
-      >
+      <a href="https://myosminozhka.ru/" target="_blank" class="section__popup_link">
         <img src="~/assets/img/osm_logo.svg" width="100%" alt="" />
       </a>
     </div>
@@ -141,13 +91,13 @@ export default {
   computed: {
     ...mapGetters(['getDownloads']),
     filteredFileds() {
-      return this.fields.value.filter(field => field.SID !== 'COUNT' && field.SID !== 'GOOD')
-    }
+      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD')
+    },
   },
 
   data: () => ({
     fields: {
-      value: []
+      value: [],
     },
     formData: {},
     errors: {},
@@ -204,6 +154,12 @@ export default {
   &__title {
     font-size: rem(40);
     margin-bottom: 0 !important;
+
+    div {
+      font-size: rem(16);
+      line-height: normal;
+      font-weight: normal;
+    }
     // @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
     //     margin-bottom: 5px !important;
     // }

@@ -2,12 +2,9 @@
   <section class="section section__item section__item--first">
     <div class="section__left">
       <div class="section__left_image_wrap">
-		{{ isSvgVisible }}
-		<img :class="{'isClipped': isMounted}" class="section__left_image_clipped hide_on_mobile" :src="require('~/assets/img/sections/first.png')"
-          height="100%" alt="">
-        <svg version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 3259 5289"
-          style="enable-background:new 0 0 3259 5289;" xml:space="preserve">
+        {{ isSvgVisible }}
+        <img :class="{ isClipped: isMounted }" class="section__left_image_clipped hide_on_mobile" :src="require('~/assets/img/sections/first.png')" height="100%" alt="" />
+        <svg version="1.1" id="Слой_1" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 3259 5289" style="enable-background: new 0 0 3259 5289" xml:space="preserve">
           <style type="text/css">
             .st0 {
               display: none;
@@ -32,9 +29,15 @@
                 stroke-dashoffset: 0;
               }
             }
-
           </style>
-          <path class="path" fill="none" stroke-dashoffset="0" stroke-dasharray="0" stroke="transparent" stroke-width="3" d="M2837.2,4278.8c-2.7-6.8-4.5-9.3-9.9-13.4c-6.3-4.9-13.9-8.2-26.5-11.5c-8.3-2.2-26.4-5.6-35-6.6
+          <path
+            class="path"
+            fill="none"
+            stroke-dashoffset="0"
+            stroke-dasharray="0"
+            stroke="transparent"
+            stroke-width="3"
+            d="M2837.2,4278.8c-2.7-6.8-4.5-9.3-9.9-13.4c-6.3-4.9-13.9-8.2-26.5-11.5c-8.3-2.2-26.4-5.6-35-6.6
 	c-2.8-0.3-8.3-1.6-12.4-2.8l-7.4-2.2l-9.4-11l-9.4-11V4147c0-40.3-0.3-76.1-0.6-79.5c-0.9-8.7-5.5-22.3-10.5-31.5
 	c-4.8-8.7-14.5-21.5-21.3-28.2l-4.6-4.5v-11.7c0-10.9-0.2-11.9-2.4-14.6l-2.4-2.9l34.2-6l34.2-6l3-5.6c1.7-3.1,3.3-5.9,3.7-6.3
 	c0.3-0.3,1.9,1.6,3.5,4.4l2.8,5.1h13.2h13.2l0.3,40.2l0.3,40.2l14.4,0.3c9.7,0.2,14.8-0.1,15.8-0.9c1.1-0.9,1.4-5.9,1.4-25
@@ -1593,17 +1596,14 @@
 	l11.2,0.3l11.2,0.3v-8.6v-8.6L415.1,4008.9 M415.4,4032.7h-10.9l-1.1,6.9c-0.6,3.8-1.1,9.7-1.1,13.1s0.5,9.2,1.1,13.1l1.1,6.9h10.9
 	h10.9v-20v-20H415.4 M415.3,4078.7c-10.9,0-11,0-12,2.6c-1.3,3.4-1.2,7.4,0.1,11.3l1.1,3.1h10.9h10.9v-8.5v-8.5H415.3 M22.6-59.5
 	c-0.2,1.2-0.2,3,0,4s0.4-0.1,0.4-2.3C23-60,22.8-60.8,22.6-59.5 M22.6-48.5c-0.2,2.9-0.2,7.6,0,10.5c0.2,2.9,0.4,0.5,0.4-5.2
-	S22.8-51.4,22.6-48.5">
-            <animate attributeName="fill" from="#fefefe" to="#000" begin="2s" dur="1s" fill="freeze"
-              repeatCount="1" />
-              <animate attributeName="stroke" from="#fefefe" to="#000" begin="0s" dur="0.3s" fill="freeze"
-              repeatCount="1" />
+	S22.8-51.4,22.6-48.5"
+          >
+            <animate attributeName="fill" from="#fefefe" to="#000" begin="2s" dur="1s" fill="freeze" repeatCount="1" />
+            <animate attributeName="stroke" from="#fefefe" to="#000" begin="0s" dur="0.3s" fill="freeze" repeatCount="1" />
           </path>
         </svg>
 
-        
-		  <img class="hide_off_mobile" :src="require('~/assets/img/sections/first.png')"
-          height="100%" alt="">
+        <img class="hide_off_mobile" :src="require('~/assets/img/sections/first.png')" height="100%" alt="" />
       </div>
     </div>
     <div class="section__right">
@@ -1612,158 +1612,167 @@
         <div class="section__text">
           {{ firstData.PREVIEW_TEXT }}
         </div>
-        <osm-button v-if="'NAME_BUTTON' in firstData.PROPERIES" class="section__button" link="catalog">{{ firstData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
+        <div class="section__list-btn">
+          <osm-button v-if="'NAME_BUTTON' in firstData.PROPERIES" class="section__button" link="catalog">
+            {{ firstData.PROPERIES.NAME_BUTTON.VALUE }}
+          </osm-button>
+          <osm-button class="section__button" link="about"> Подробнее </osm-button>
+        </div>
       </div>
     </div>
   </section>
 </template>
 <script>
-  import {
-    mapGetters
-  } from 'vuex';
-  export default {
-    name: 'OsmFirstSection',
-    props: {
-      isMounted: {
-        type: Boolean,
-        default: false
+import { mapGetters } from 'vuex'
+export default {
+  name: 'OsmFirstSection',
+  props: {
+    isMounted: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  watch: {
+    isMounted(newIsMounted, oldIsMounted) {
+      if (newIsMounted === true) {
+        setTimeout(() => {
+          this.isSvgVisible = false
+        }, 3000)
+      } else {
+        this.isSvgVisible = true
       }
     },
-	watch: {
-		isMounted(newIsMounted, oldIsMounted) {
-			if (newIsMounted === true) {
-				setTimeout(() => {
-					this.isSvgVisible = false;
-				}, 3000)
-			} else {
-				this.isSvgVisible = true;
-			}
-		}
-	},
-	data: () => ({
-		isClipped: false,
-		isSvgVisible: false
-	}),
-	mounted() {
-		document.addEventListener('DOMContentLoaded', () => {
-			this.isClipped = true
-		});
-		
-	},
-    components: {
-      OsmH1: () => import('~/components/global/OsmH1.vue'),
+  },
+  data: () => ({
+    isClipped: false,
+    isSvgVisible: false,
+  }),
+  mounted() {
+    document.addEventListener('DOMContentLoaded', () => {
+      this.isClipped = true
+    })
+  },
+  components: {
+    OsmH1: () => import('~/components/global/OsmH1.vue'),
     //   OsmButton: () => import('~/components/global/OsmButton.vue'),
+  },
+  computed: {
+    ...mapGetters(['getMain']),
+    firstData() {
+      return this.getMain[0]
     },
-    computed: {
-      ...mapGetters(['getMain']),
-      firstData() {
-        return this.getMain[0]
-      }
-    },
-  }
-
+  },
+}
 </script>
 
 <style lang="scss" scoped>
-  .section {
-    &__left_image_wrap {
-      padding-left: rem(90);
-      padding-right: rem(90);
-      height: rem(600);
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-	  transform: rotate(-90deg);
-      width: 100%;
-        @media all and (max-width: 1280px) {
-			padding-top: 150px;
-			padding-bottom: 150px;
-		}
-		@media all and (max-width: 860px) {
-			padding-top: 0px;
-			padding-bottom: 0px;
-			padding-left: 4px;
-			padding-right: 4px;
-			height: 100%;
-			width: 200px;
-		}
-      img {
-        width: auto;
-        // -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
-        // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
-      }
+.section {
+  &__left_image_wrap {
+    padding-left: rem(90);
+    padding-right: rem(90);
+    height: rem(600);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform: rotate(-90deg);
+    width: 100%;
+    @media all and (max-width: 1280px) {
+      padding-top: 150px;
+      padding-bottom: 150px;
     }
-	svg {
-		transition: all .3s ease;
-	}
+    @media all and (max-width: 860px) {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 4px;
+      padding-right: 4px;
+      height: 100%;
+      width: 200px;
+    }
+    img {
+      width: auto;
+      // -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
+      // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
+    }
+  }
+  svg {
+    transition: all 0.3s ease;
+  }
 
-    &__left_image_clipped {
-      @media all and (min-width: 1281px) {
-        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-      }
-      @media all and (max-width: 1280px) {
-        padding-top: 165px;
-        padding-bottom: 165px;
-      }
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-		transform: translateX(-50%) rotate(3deg);	
-		@media all and (max-width: 1280px) {
-			transform: translateX(-50%);
-		}
-      transition: 1s clip-path 2.3s ease;
+  &__left_image_clipped {
+    @media all and (min-width: 1281px) {
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    }
+    @media all and (max-width: 1280px) {
+      padding-top: 165px;
+      padding-bottom: 165px;
+    }
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) rotate(3deg);
+    @media all and (max-width: 1280px) {
+      transform: translateX(-50%);
+    }
+    transition: 1s clip-path 2.3s ease;
     //   padding-top: rem(30);
     //   padding-bottom: rem(25);
-	      padding: 24px;
-	  &:not(.isClipped) {
-			@media all and (min-width: 861px) {
-				opacity: 0;
-				width: 100%;
-			}
-			transition: 1s clip-path 0.3s ease;
-		}
-
-		&.isClipped {
-			clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
-			& + svg {
-				opacity: 0;
-				transition: 1s all 2.3s ease;
-			}
-		}
-    }
-    
-
-    &__left {
-      @media all and (max-width: 1280px) {
-        height: 470px;
-        width: 495px;
-      }
-	  @media all and (max-width: 860px) {
-        min-height: 200px !important;
+    padding: 24px;
+    &:not(.isClipped) {
+      @media all and (min-width: 861px) {
+        opacity: 0;
         width: 100%;
       }
+      transition: 1s clip-path 0.3s ease;
     }
 
-    &__right {
-      @media all and (max-width: 1280px) {
-        padding: 20px;
-      }
-    }
-
-    &__title {
-      margin-bottom: rem(30);
-    }
-
-    &__button {
-      width: 192px;
-      @media all and (max-width: 840px) {
-        width: 100%;
+    &.isClipped {
+      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0% 100%);
+      & + svg {
+        opacity: 0;
+        transition: 1s all 2.3s ease;
       }
     }
   }
 
+  &__left {
+    @media all and (max-width: 1280px) {
+      height: 470px;
+      width: 495px;
+    }
+    @media all and (max-width: 860px) {
+      min-height: 200px !important;
+      width: 100%;
+    }
+  }
+
+  &__right {
+    @media all and (max-width: 1280px) {
+      padding: 20px;
+    }
+  }
+
+  &__title {
+    margin-bottom: rem(30);
+  }
+
+  &__button {
+    width: 192px;
+    @media all and (max-width: 840px) {
+      width: 100%;
+    }
+  }
+}
+
+.section__list-btn {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: rem(-10) rem(-15);
+  > * {
+    margin: rem(10) rem(15);
+  }
+}
 </style>
