@@ -4,10 +4,7 @@
             {{ currentCategory }}
         </pre> -->
     <osm-breadcrumbs />
-    <osm-catalog-top
-      v-if="'NAME' in currentCategory"
-      :title="currentCategory.NAME"
-    />
+    <osm-catalog-top v-if="'NAME' in currentCategory" :title="currentCategory.NAME" />
     <div class="catalog__in">
       <div class="catalog__in-left" v-if="hasFilters">
         <osm-catalog-filter />
@@ -38,8 +35,7 @@ export default {
   components: {
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmCatalogTop: () => import('~/components/catalog/OsmCatalogTop.vue'),
-    OsmCatalogProducts: () =>
-      import('~/components/catalog/OsmCatalogProducts.vue'),
+    OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProducts.vue'),
     OsmCatalogFilter: () => import('~/components/catalog/OsmCatalogFilter.vue'),
   },
   data: () => ({
@@ -50,27 +46,18 @@ export default {
   head() {
     // console.log(this.currentCategory);
     return {
-      title:
-        'SEO' in this.currentCategory
-          ? this.currentCategory.SEO.META.TITLE
-          : '',
+      title: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.TITLE : '',
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
           hid: 'description',
           name: 'description',
-          content:
-            'SEO' in this.currentCategory
-              ? this.currentCategory.SEO.META.DESCRIPTION
-              : 'DESCRIPTION',
+          content: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.DESCRIPTION : 'DESCRIPTION',
         },
         {
           hid: 'keywords',
           name: 'keywords',
-          content:
-            'SEO' in this.currentCategory
-              ? this.currentCategory.SEO.META.KEYWORDS
-              : '',
+          content: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.KEYWORDS : '',
         },
         {
           hid: 'twitter:card',
@@ -85,27 +72,17 @@ export default {
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content:
-            'SEO' in this.currentCategory
-              ? this.currentCategory.SEO.META.TITLE
-              : '',
+          content: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.TITLE : '',
         },
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content:
-            'SEO' in this.currentCategory
-              ? this.currentCategory.SEO.META.DESCRIPTION
-              : '',
+          content: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.DESCRIPTION : '',
         },
         {
           hid: 'twitter:imag',
           name: 'twitter:imag',
-          content:
-            'SEO' in this.currentCategory &&
-            'DETAIL_PICTURE' in this.currentCategory
-              ? this.$vareibles.remote + this.currentCategory.DETAIL_PICTURE
-              : require('~/assets/img/product.noimage.png'),
+          content: 'SEO' in this.currentCategory && 'DETAIL_PICTURE' in this.currentCategory ? this.$vareibles.remote + this.currentCategory.DETAIL_PICTURE : require('~/assets/img/product.noimage.png'),
         },
       ],
     }
@@ -121,15 +98,10 @@ export default {
   // },
   created() {
     // this.currentCategory
-    if (
-      this.uri === 'oborudovanie-vozdukho-i-gazoochistki' ||
-      this.uri === 'sudovaya-armatura' ||
-      this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' ||
-      this.uri === 'prochee-oborudovanie' ||
-      this.uri === 'oborudovanie-sistem-vodosnabzheniya'
-    ) {
+    if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochee-oborudovanie' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
       this.hasFilters = false
     }
+    console.log(this.getCatalog)
     this.getCatalog.map((category) => {
       if (category.CODE === this.$route.params.catalogId) {
         this.currentCategory = category
