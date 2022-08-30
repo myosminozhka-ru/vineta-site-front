@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper footerOnBottom" v-if="isDataLoaded">
+  <div class="wrapper footerOnBottom" v-if="isMounted">
     <!-- <osm-header /> -->
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
@@ -202,7 +202,8 @@
       isTextShowed: false,
       isDataLoaded: false,
       filteredFirstAboutSections: [],
-      filteredSecondAboutSections: []
+      filteredSecondAboutSections: [],
+      isMounted: false
     }),
     async fetch() {
       await this.addAbout()
@@ -224,6 +225,7 @@
       ])
     },
     mounted() {
+      this.isMounted = true;
       this.filterAboutSections()
     },
     methods: {
