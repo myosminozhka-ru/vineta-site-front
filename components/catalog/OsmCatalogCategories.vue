@@ -38,18 +38,18 @@
               </div>
               <!-- <ul v-if="arrayShowColumns.includes(child.CODE)"> -->
               <ul v-if="arrayShowColumns.includes(child.CODE)">
-                <li v-for="product in getProducts.filter((element) => element.SECTION === child.CODE)" :key="product.index" class="categories__item_child">
+                <li v-for="product in child.ELEMENTS" :key="product.index" class="categories__item_child">
                   <nuxt-link :to="localePath(`/catalog/${child.CODE}/${product.CODE}`)"> — {{ product.NAME }} </nuxt-link>
                 </li>
               </ul>
             </li>
           </ul>
         </template>
-        <template v-else>
+        <template v-if="'ELEMENTS' in category">
           <ul class="categories__item_childs">
             <li>
               <ul>
-                <li v-for="product in getProducts.filter((element) => element.SECTION === category.CODE)" :key="product.index" class="categories__item_child">
+                <li v-for="product in category.ELEMENTS" :key="product.index" class="categories__item_child">
                   <nuxt-link :to="localePath(`/catalog/${category.CODE}/${product.CODE}`)">— {{ product.NAME }}</nuxt-link>
                 </li>
               </ul>

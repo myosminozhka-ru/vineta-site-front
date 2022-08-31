@@ -179,8 +179,7 @@ export const actions = {
   addCatalog(context) {
     return new Promise((resolve, reject) => {
       this.$axios
-        .$get('catalog/sections.php')
-        // .$get('catalog/tree.php')
+        .$get('catalog/tree.php')
         .then((response) => {
           context.commit('addCatalog', response)
           resolve(response)
