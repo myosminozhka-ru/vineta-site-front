@@ -8,6 +8,7 @@
       <section class="first">
         <div class="first__text">
           {{ getAbout.banners.first.NAME }}
+          <span class="first__small-text">судоремонта, атомной промышленности, транспорта и предприятий топливно-энергетического комплекса</span>
         </div>
         <div class="first__image hide_on_mobile">
           <img :src="$vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="">
@@ -324,6 +325,17 @@
 
       @media all and (max-width: 840px) {
         width: 100%;
+      }
+    }
+
+    &__small-text {
+      font-size: rem(30);
+      display: block;
+      line-height: normal;
+      margin-top: rem(10);
+
+      @media all and (max-width: 1280px) {
+        font-size: 20px;
       }
     }
 

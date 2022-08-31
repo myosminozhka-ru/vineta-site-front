@@ -683,6 +683,10 @@ export default {
       display: none;
     }
 
+    .glide__track {
+      min-width: 100%;
+    }
+
     * {
       white-space: normal;
     }
