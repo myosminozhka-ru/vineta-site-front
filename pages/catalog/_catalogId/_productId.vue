@@ -1,5 +1,5 @@
 <template>
-  <div class="productPage" v-if="product">
+  <div v-if="product" class="productPage">
     <!-- <pre style="font-size: 15rem;">
       {{ product[0] }}
     </pre> -->
@@ -16,7 +16,7 @@
       <div class="productPage__info">
         <!-- <pre style="font-size: 15rem">{{ product[0] }}</pre> -->
         <!-- <div class="productPage__description" v-if="product[0].DETAIL_TEXT"> -->
-        <div class="productPage__description" v-if="false">
+        <div v-if="false" class="productPage__description">
           <div class="title">Описание</div>
           <div class="value">{{ product[0].DETAIL_TEXT }}</div>
         </div>
@@ -33,8 +33,8 @@
             </div>
           </div>
         </div>
-        <div class="productPage__texts" v-if="'PROPERIES' in product[0]">
-          <div class="productPage__text" v-for="item in product[0].PROPERIES" :key="item.index">
+        <div v-if="'PROPERIES' in product[0]" class="productPage__texts">
+          <div v-for="item in product[0].PROPERIES" :key="item.index" class="productPage__text">
             <template v-if="'NAME' in item && item.NAME">
               <div class="title">{{ item.NAME }}</div>
               <div class="value">{{ item.VALUE }}</div>
@@ -45,7 +45,7 @@
           <div @click="openBuy">
             <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
           </div>
-          <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
+          <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
             <osm-button class="productPage__buttons--fav" :outlined="true">
               <div class="icon">
                 <svg data-v-7e17c130="" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
@@ -75,18 +75,18 @@
       <div id="modifications" class="productPage__mods">
         <div class="productPage__mods--tabs hide_on_tablet">
           <div class="titles">
-            <div @click.prevent="tabs.selected = 1" v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
+            <div v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" @click.prevent="tabs.selected = 1">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 1 }" :outlined="true"> Описание</osm-button>
             </div>
             <div @click.prevent="tabs.selected = 2">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 2 }" :outlined="true"> Характеристики </osm-button>
             </div>
-            <div @click.prevent="tabs.selected = 3" v-if="offersCount.length > 1">
+            <div v-if="offersCount.length > 1" @click.prevent="tabs.selected = 3">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 3 }" :outlined="true"> Модификации ({{ offersCount.length }})</osm-button>
             </div>
           </div>
           <div class="tabs">
-            <div class="productPage__mods--tab productPage__mods--bg" v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
+            <div v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in" v-html="product[0].DETAIL_TEXT"></div>
@@ -95,7 +95,7 @@
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
+                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,12 +107,12 @@
                 </div>
               </div>
             </div>
-            <div class="productPage__mods--tab productPage__mods--bg" v-show="tabs.selected === 2">
+            <div v-show="tabs.selected === 2" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">Характеристики</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0]}}</pre> -->
                 <div class="productPage__mods--chars">
-                  <div class="productPage__mods--char" v-for="prop in product[0].PROPERIES" :key="prop.index">
+                  <div v-for="prop in product[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
                     <template v-if="'NAME' in prop && prop.NAME">
                       <div class="productPage__mods--char_title">
                         {{ prop.NAME }}
@@ -123,7 +123,7 @@
                     </template>
                   </div>
                   <template v-if="offersCount.length === 1">
-                    <div class="productPage__mods--char" v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index">
+                    <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__mods--char">
                       <template>
                         <div class="productPage__mods--char_title">
                           {{ prop.NAME }}
@@ -140,7 +140,7 @@
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
+                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -152,7 +152,7 @@
                 </div>
               </div>
             </div>
-            <div class="productPage__mods--tab" v-if="tabs.selected === 3">
+            <div v-if="tabs.selected === 3" class="productPage__mods--tab">
               <div class="title">Модификации ({{ offersCount.length }})</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0] }}</pre> -->
@@ -160,15 +160,15 @@
                   <!-- <pre>
                     {{ product[0].OFFERS.length }}
                   </pre> -->
-                  <div class="productPage__mods--mod" v-for="mod in product[0].OFFERS" :key="mod.index">
+                  <div v-for="mod in product[0].OFFERS" :key="mod.index" class="productPage__mods--mod">
                     <div class="productPage__mods--mods_titles">
-                      <div class="productPage__mods--mods_title" v-for="proper in mod.PROPERTIES" :key="proper.index">
+                      <div v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_title">
                         {{ proper.NAME }}
                       </div>
                     </div>
                     <div class="productPage__mods--mods_items">
                       <div class="productPage__mods--mods_item">
-                        <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES" :key="proper.index">
+                        <div v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_val">
                           {{ proper.VALUE }}
                         </div>
                       </div>
@@ -180,7 +180,7 @@
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
+                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -204,7 +204,7 @@
                 </svg>
               </div>
             </div>
-            <div class="productPage__mods--tab productPage__mods--bg" v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT">
+            <div v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">Описание</div>
               <div class="value">
                 <div class="value__in">
@@ -215,7 +215,7 @@
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
+                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -235,11 +235,11 @@
                 </svg>
               </div>
             </div>
-            <div class="productPage__mods--tab productPage__mods--bg" v-show="tabs.selected === 2">
+            <div v-show="tabs.selected === 2" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">Характеристики</div>
               <div class="value">
                 <div class="productPage__mods--chars">
-                  <div class="productPage__mods--char" v-for="prop in product[0].PROPERIES" :key="prop.index">
+                  <div v-for="prop in product[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
                     <template v-if="'NAME' in prop && prop.NAME">
                       <div class="productPage__mods--char_title">
                         {{ prop.NAME }}
@@ -250,7 +250,7 @@
                     </template>
                   </div>
                   <template v-if="offersCount.length === 1">
-                    <div class="productPage__mods--char" v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index">
+                    <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__mods--char">
                       <template>
                         <div class="productPage__mods--char_title">
                           {{ prop.NAME }}
@@ -267,7 +267,7 @@
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
+                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -279,7 +279,7 @@
                 </div>
               </div>
             </div>
-            <div class="tabs__opener" :class="{ isActive: tabs.selected === 3 }" @click.prevent="tabs.selected = 3" v-if="offersCount.length > 1">
+            <div v-if="offersCount.length > 1" class="tabs__opener" :class="{ isActive: tabs.selected === 3 }" @click.prevent="tabs.selected = 3">
               <div class="text">Модификации ({{ offersCount.length }})</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -288,7 +288,7 @@
               </div>
             </div>
             <div v-if="tabs.selected === 3">
-              <div class="productPage__mods--tab productPage__mods--bg" v-for="(mod, key, index) in product[0].OFFERS" :key="key" @click="tabs.openedMod = index">
+              <div v-for="(mod, key, index) in product[0].OFFERS" :key="key" class="productPage__mods--tab productPage__mods--bg" @click="tabs.openedMod = index">
                 <div class="title title__opener">
                   <span>Режим {{ index + 1 }}</span>
                   <div class="arrow">
@@ -297,13 +297,13 @@
                     </svg>
                   </div>
                 </div>
-                <div class="value" @click.stop v-if="tabs.openedMod === index">
+                <div v-if="tabs.openedMod === index" class="value" @click.stop>
                   <div class="value__in">
                     <div class="productPage__mods--mods">
                       <div class="productPage__mods--mod">
                         <div class="productPage__mods--mods_items">
                           <div class="productPage__mods--mods_item">
-                            <div class="productPage__mods--mods_val" v-for="proper in mod.PROPERTIES" :key="proper.index">
+                            <div v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_val">
                               <div class="productPage__mods--mods_val_title">
                                 {{ proper.NAME }}
                               </div>
@@ -317,11 +317,11 @@
                     </div>
                   </div>
                 </div>
-                <div class="productPage__buttons" @click.stop v-if="tabs.openedMod === index">
+                <div v-if="tabs.openedMod === index" class="productPage__buttons" @click.stop>
                   <div @click="openBuy">
                     <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                   </div>
-                  <div @click="addFavorites(product[0].ID)" :data-product_id="product[0].ID">
+                  <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
                     <osm-button class="productPage__buttons--fav" :outlined="true">
                       <div class="icon">
                         <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -342,7 +342,7 @@
         <div class="productPage__analogs_top">
           <div class="title">Аналоги</div>
           <div class="productPage__analogs_top_arrows hide_on_desktop">
-            <button class="productPage__arrow productPage__arrow--left" @click="prevSlide" data-glide-dir="<">
+            <button class="productPage__arrow productPage__arrow--left" data-glide-dir="<" @click="prevSlide">
               <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
                 <rect width="40" height="40" fill="#FF004D" />
                 <path d="M24 12L17 20L24 28" stroke="white" stroke-width="2" />
@@ -359,7 +359,7 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <nuxt-link :to="localePath(`/catalog/${prod.SECTION.CODE}/${prod.CODE}`)" class="products__item" v-for="prod in analogsItems.slice(0, 4)" :key="prod.index">
+              <nuxt-link v-for="prod in analogsItems.slice(0, 4)" :key="prod.index" :to="localePath(`/catalog/${prod.SECTION.CODE}/${prod.CODE}`)" class="products__item">
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
                   <div class="image_container">
@@ -372,7 +372,7 @@
                   </span>
                   <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                   <div class="products__item_properties">
-                    <div class="products__item_property" v-for="property in prod.PROPERIES.slice(0, 3)" :key="property.index">
+                    <div v-for="property in prod.PROPERIES.slice(0, 3)" :key="property.index" class="products__item_property">
                       <template v-if="'NAME' in property && property.NAME">
                         <div class="name">{{ property.NAME }}</div>
                         <div class="value">{{ property.VALUE }}</div>
@@ -386,7 +386,7 @@
         </div>
       </div>
     </div>
-    <div class="mods_for_print" v-if="product[0] && 'OFFERS' in product[0]">
+    <div v-if="product[0] && 'OFFERS' in product[0]" class="mods_for_print">
       <h3>Модификации ({{ offersCount.length }})</h3>
       <!-- <div>
         <table class="titles" v-for="mod in product[0].OFFERS" :key="mod.index">
@@ -618,7 +618,18 @@ export default {
   display: none;
 
   @media print {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100vw;
+
+    & > div {
+      display: flex;
+    }
+
+    .productPage__mods--char_title {
+      margin-right: 10px;
+    }
   }
 }
 
@@ -1021,7 +1032,8 @@ export default {
     }
 
     @media print {
-      flex-direction: row;
+      // flex-direction: row;
+      display: block;
     }
   }
 
@@ -1045,7 +1057,8 @@ export default {
     }
 
     @media print {
-      width: 40%;
+      // width: 40%;
+      width: 100%;
     }
   }
 

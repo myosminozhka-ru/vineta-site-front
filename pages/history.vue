@@ -12,9 +12,9 @@
         <div class="history__bottom">
           <div class="history__text">
             <div
-              class="history__text--left"
               v-for="(item, key) in modifyedHistory"
               :key="item.index"
+              class="history__text--left"
               :class="{
                 isActive: key === selectedTime,
                 isOpened: item.isTextShowed,
@@ -47,9 +47,9 @@
           </div>
           <div class="history__timeline">
             <div
-              class="history__timeline_item"
               v-for="(item, key) in getHistory"
               :key="item.index"
+              class="history__timeline_item"
               :class="{
                 isActive: key <= selectedTime,
                 isTransformed: key === selectedTime,
@@ -105,8 +105,26 @@ export default {
     isDataLoaded: false,
     isMounted: false,
   }),
+  head() {
+    return {
+      title: this.getSeo.history.SEO.META.TITLE,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.getSeo.history.SEO.META.DESCRIPTION,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.getSeo.history.SEO.META.KEYWORDS,
+        },
+      ],
+    }
+  },
   computed: {
     ...mapGetters(['getHistory']),
+    ...mapGetters(['getSeo']),
   },
   mounted() {
     this.isMounted = true

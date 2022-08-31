@@ -1,6 +1,9 @@
 <template>
   <div class="categories">
-    <div class="categories__item" v-for="category in getCatalog" :key="category.ID">
+    <!-- <pre>
+      {{ 'okhladiteli-masla-i-vody' }}
+    </pre> -->
+    <div v-for="category in getCatalog" :key="category.ID" class="categories__item">
       <nuxt-link
         :to="
           localePath({
@@ -33,8 +36,9 @@
               <div class="categories__item_category" @click="toggleColumns(child.CODE)">
                 {{ child.NAME }}
               </div>
+              <!-- <ul v-if="arrayShowColumns.includes(child.CODE)"> -->
               <ul v-if="arrayShowColumns.includes(child.CODE)">
-                <li v-for="product in getProducts.filter((element) => element.SECTION.CODE === child.CODE)" :key="product.index" class="categories__item_child">
+                <li v-for="product in getProducts.filter((element) => element.SECTION === child.CODE)" :key="product.index" class="categories__item_child">
                   <nuxt-link :to="localePath(`/catalog/${child.CODE}/${product.CODE}`)"> — {{ product.NAME }} </nuxt-link>
                 </li>
               </ul>
@@ -45,7 +49,7 @@
           <ul class="categories__item_childs">
             <li>
               <ul>
-                <li class="categories__item_child" v-for="product in getProducts.filter((element) => element.SECTION.CODE === category.CODE)" :key="product.index">
+                <li v-for="product in getProducts.filter((element) => element.SECTION === category.CODE)" :key="product.index" class="categories__item_child">
                   <nuxt-link :to="localePath(`/catalog/${category.CODE}/${product.CODE}`)">— {{ product.NAME }}</nuxt-link>
                 </li>
               </ul>

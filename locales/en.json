@@ -19,6 +19,7 @@
     "download_catalog": "Download the catalog",
     "buy": "Order",
     "up": "up",
+    "down": "down",
     "to_favorites": "To favorites",
     "checkout": "Proceed to checkout"
   },

@@ -3,21 +3,21 @@
     <!-- <osm-header /> -->
     <div class="partners">
       <!-- <pre style="font-size: 15rem;">{{ getPartners }}</pre> -->
-      <div class="header_padding" v-if="getPartners">
+      <div v-if="getPartners" class="header_padding">
         <osm-breadcrumbs />
         <div class="partners__title">Основные заказчики</div>
         <div class="partners__items">
           <div v-for="item in getPartners" :key="item.index">
-            <div class="partners__item" v-if="'PROPERIES' in item">
+            <div v-if="'PROPERIES' in item" class="partners__item">
               <!-- <pre>{{ item }}</pre> -->
               <div class="partners__item_top">
-                <div class="partners__item_logo" v-if="'PREVIEW_PICTURE' in item">
+                <div v-if="'PREVIEW_PICTURE' in item" class="partners__item_logo">
                   <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
                 </div>
-                <div class="partners__item_text" v-if="'PREVIEW_TEXT' in item">
+                <div v-if="'PREVIEW_TEXT' in item" class="partners__item_text">
                   {{ item.PREVIEW_TEXT }}
                 </div>
-                <div class="partners__contact_items" v-if="'PROPERIES' in item">
+                <div v-if="'PROPERIES' in item" class="partners__contact_items">
                   <div class="partners__contact_item">
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="" />
@@ -50,7 +50,7 @@
         </div>
         <div class="partners__title partners__hidden">Дочерние предприятия</div>
         <div class="partners__child_items partners__hidden">
-          <div class="partners__child_item" v-for="item in 1" :key="item.index">
+          <div v-for="item in 1" :key="item.index" class="partners__child_item">
             <div class="partners__item_name">ОАО «Севмаш»</div>
             <div class="partners__contact_items">
               <div class="partners__contact_item">
@@ -91,49 +91,6 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LicensesPage',
-  head() {
-    return {
-      title: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.TITLE : '',
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.DESCRIPTION : 'DESCRIPTION',
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.KEYWORDS : '',
-        },
-        {
-          hid: 'twitter:card',
-          name: 'twitter:card',
-          content: 'summary_large_image',
-        },
-        {
-          hid: 'twitter:url',
-          name: 'twitter:url',
-          content: 'https://vineta.fvds.ru/',
-        },
-        {
-          hid: 'twitter:title',
-          name: 'twitter:title',
-          content: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.TITLE : '',
-        },
-        {
-          hid: 'twitter:description',
-          name: 'twitter:description',
-          content: this.getPartners && 'SEO' in this.getPartners ? this.getPartners.SEO.META.DESCRIPTION : '',
-        },
-        {
-          hid: 'twitter:imag',
-          name: 'twitter:imag',
-          content: this.getPartners && 'PREVIEW_PICTURE' in this.getPartners ? this.$vareibles.remote + this.getPartners.PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
-        },
-      ],
-    }
-  },
   components: {
     // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
@@ -141,8 +98,26 @@ export default {
     // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
+  head() {
+    return {
+      title: this.getSeo.partners.SEO.META.TITLE,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.getSeo.partners.SEO.META.DESCRIPTION,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.getSeo.partners.SEO.META.KEYWORDS,
+        },
+      ],
+    }
+  },
   computed: {
     ...mapGetters(['getPartners']),
+    ...mapGetters(['getSeo']),
     // filteredPartners() {
     //     return this.getPartners.filter(item => 'PROPERIES' in item);
     // }
