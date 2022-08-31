@@ -2,29 +2,19 @@
   <nav class="footer__menu">
     <ul class="opened isOpened">
       <li>
-        <nuxt-link :to="localePath({ name: 'about' })">{{
-          $t('buttons.about')
-        }}</nuxt-link>
+        <nuxt-link :to="localePath({ name: 'about' })">{{ $t('buttons.about') }}</nuxt-link>
       </li>
       <li>
-        <nuxt-link :to="localePath({ name: 'catalog' })">{{
-          $t('buttons.catalog')
-        }}</nuxt-link>
+        <nuxt-link :to="localePath({ name: 'catalog' })">{{ $t('buttons.catalog') }}</nuxt-link>
       </li>
       <li>
-        <nuxt-link :to="localePath({ name: 'news' })">{{
-          $t('buttons.news')
-        }}</nuxt-link>
+        <nuxt-link :to="localePath({ name: 'news' })">{{ $t('buttons.news') }}</nuxt-link>
       </li>
       <li>
-        <nuxt-link :to="localePath({ name: 'vacancies' })">{{
-          $t('buttons.vacancies')
-        }}</nuxt-link>
+        <nuxt-link :to="localePath({ name: 'vacancies' })">{{ $t('buttons.vacancies') }}</nuxt-link>
       </li>
       <li>
-        <nuxt-link :to="localePath({ name: 'contacts' })">{{
-          $t('buttons.contacts')
-        }}</nuxt-link>
+        <nuxt-link :to="localePath({ name: 'contacts' })">{{ $t('buttons.contacts') }}</nuxt-link>
       </li>
     </ul>
     <ul class="opened isOpened">
@@ -32,14 +22,7 @@
         <nuxt-link :to="localePath({ name: 'partners' })">Заказчикам</nuxt-link>
       </li>
       <li>
-        <a
-          v-if="'PROPERIES' in getMainMore.downloads[0]"
-          :href="
-            $vareibles.remote +
-            getMainMore.downloads[0].PROPERIES.FILE.VALUE.SRC
-          "
-          >{{ $t('buttons.download_catalog') }}</a
-        >
+        <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC">{{ $t('buttons.download_catalog') }}</a>
       </li>
       <li>
         <a href="//vinetaboat.ru/" target="_blank">Катера и лодки</a>
@@ -47,12 +30,10 @@
     </ul>
     <ul class="opened isOpened">
       <li>
-        <nuxt-link :to="localePath({ name: 'contacts' })">{{
-          $t('buttons.contacts')
-        }}</nuxt-link>
+        <nuxt-link :to="localePath({ name: 'contacts' })">{{ $t('buttons.contacts') }}</nuxt-link>
       </li>
       <li>
-        <span>{{ $t('footer.address') }}</span>
+        <span>{{ getContacts[0].ADRESS.VALUE }}</span>
       </li>
       <li>
         <a href="tel:78124935048">+7(812)493-50-48</a>
@@ -63,14 +44,8 @@
       <li>
         <span>{{ $t('sections.footer.worktime') }}</span>
       </li>
-      <div class="footer__top_socials hide_on_desktop" v-if="false">
-        <a
-          :href="social.link"
-          target="_blank"
-          class="footer__top_social"
-          v-for="social in socials"
-          :key="social.index"
-        >
+      <div v-if="false" class="footer__top_socials hide_on_desktop">
+        <a v-for="social in socials" :key="social.index" :href="social.link" target="_blank" class="footer__top_social">
           <img :src="social.icon" width="100%" alt="" />
         </a>
       </div>
@@ -99,6 +74,8 @@ export default {
   }),
   computed: {
     ...mapGetters(['getMainMore']),
+    ...mapGetters(['getDownloads']),
+    ...mapGetters(['getContacts']),
   },
   mounted() {
     this.initCollapse()
@@ -106,11 +83,9 @@ export default {
   methods: {
     initCollapse() {
       document.querySelectorAll('.footer__menu ul').forEach((item) => {
-        item
-          .querySelector('li:first-child')
-          .addEventListener('click', (event) => {
-            event.target.closest('ul').classList.toggle('opened')
-          })
+        item.querySelector('li:first-child').addEventListener('click', (event) => {
+          event.target.closest('ul').classList.toggle('opened')
+        })
       })
     },
   },

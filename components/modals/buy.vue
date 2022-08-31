@@ -6,29 +6,35 @@
           <img :src="require('~/assets/img/closer.svg')" width="100%" alt="" />
         </div>
       </div>
-      <form class="modal__form" @submit.prevent="sendForm" ref="buy_form">
-        <div class="modal__form_in" v-if="!isSuccess">
+      <form ref="buy_form" class="modal__form" @submit.prevent="sendForm">
+        <div v-if="!isSuccess" class="modal__form_in">
           <div class="modal__title">
-            {{ this.$t('sections.footer.request') }}
+            {{ $t('sections.footer.request') }}
           </div>
-          <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
+
+          <div v-for="field in fields.value?.filter((item) => item.SID === 'GOOD')" :key="field.index" class="osm__form_field">
+            <div v-if="errors[field.VARNAME]" class="osm__error">
+              {{ errors[field.VARNAME] }}
+            </div>
+            <input v-model="formData[field.VARNAME]" disabled :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
+          </div>
+          <!-- 
+          <input v-model="formData[field.VARNAME.GOOD]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" /> -->
+          <div v-for="field in fields.value?.filter((item) => item.SID !== 'GOOD')" :key="field.index" class="osm__form_field">
             <!-- <pre>
                         {{ field }} 
                         </pre> -->
             <!-- {{ field.VARNAME }} -->
-            <div class="osm__error" v-if="errors[field.VARNAME]">
+            <div v-if="errors[field.VARNAME]" class="osm__error">
               {{ errors[field.VARNAME] }}
             </div>
-            <template v-if="field.VARNAME === 'GOOD'">
-              <input type="hidden" v-model="formData[field.VARNAME]" />
+            <template v-if="field.VARNAME !== 'NUMBER'">
+              <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
             </template>
-            <template v-else-if="field.VARNAME === 'NUMBER'">
+            <template v-else>
               <osm-counter class="modal__input" />
             </template>
 
-            <template v-else>
-              <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" v-model="formData[field.VARNAME]" />
-            </template>
             <!-- <osm-input class="modal__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
           </div>
           <!-- <osm-input class="modal__input" placeholder="Компания *" :required="true"/> -->
@@ -36,14 +42,14 @@
                     <osm-input class="modal__input" placeholder="E-mail *" type="email" :required="true"/>
                     
                     <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
-          <p style="font-size: 10rem">
+          <p style="font-size: 12rem">
             Заполняя данную форму, вы принимаете условия
             <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
             об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
           </p>
           <osm-button class="modal__button" :large="true" type="submit">Отправить</osm-button>
         </div>
-        <div class="modal__form_in" v-else>
+        <div v-else class="modal__form_in">
           <div class="modal__title">Спасибо за заявку!</div>
           <div class="modal__subtitle">Мы свяжемся с Вами в ближайшее время.</div>
         </div>
@@ -64,6 +70,9 @@ export default {
     errors: {},
     isSuccess: false,
   }),
+  async fetch() {
+    this.fields = await this.$axios.$get('forms/order.php')
+  },
   computed: {
     ...mapGetters(['getModals', 'getProducts']),
     // formData() {
@@ -78,9 +87,6 @@ export default {
   mounted() {
     const codeProduct = window.location.href.split('/')
     this.formData.GOOD = this.getProducts.find((item) => item.CODE === codeProduct[codeProduct.length - 1]).NAME
-  },
-  async fetch() {
-    this.fields = await this.$axios.$get('forms/order.php')
   },
   methods: {
     ...mapActions(['toggleModal']),

@@ -10,7 +10,7 @@ export const state = () => ({
   news: [],
   partners: [],
   products: [],
-  filters: [],
+  filters: {},
   selectedNewsType: 'Новости',
   downloads: [],
   breadcrumbs: [],
@@ -34,6 +34,7 @@ export const state = () => ({
       isOpened: false,
     },
   },
+  seo: {},
 })
 
 export const mutations = {
@@ -107,6 +108,9 @@ export const mutations = {
   toggleApply(state, data) {
     state.modals.apply = data
   },
+  addSeo(state, data) {
+    state.seo = data
+  },
 }
 
 export const actions = {
@@ -176,6 +180,7 @@ export const actions = {
     return new Promise((resolve, reject) => {
       this.$axios
         .$get('catalog/sections.php')
+        // .$get('catalog/tree.php')
         .then((response) => {
           context.commit('addCatalog', response)
           resolve(response)
@@ -319,10 +324,24 @@ export const actions = {
       })
     }
   },
+  addSeo(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .$get('seo.php')
+        .then((response) => {
+          context.commit('addSeo', response)
+          resolve(response)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
   async nuxtServerInit({ dispatch }) {
     await dispatch('addMain')
     await dispatch('addMainMore')
     await dispatch('addCatalog')
+    await dispatch('addContacts')
     // await dispatch('addContacts');
     await dispatch('addLicenses')
     await dispatch('addNews')
@@ -330,6 +349,7 @@ export const actions = {
     await dispatch('addProducts')
     await dispatch('addDownloads')
     await dispatch('setLoadedStatus')
+    await dispatch('addSeo')
     // console.log('fetch data');
   },
   // getLicenses(state, type) {
@@ -397,5 +417,12 @@ export const getters = {
   },
   getCatalogFilters(state) {
     return state.catalogFilters
+  },
+  getSeo(state) {
+    const result = {}
+    for (const key in state.seo) {
+      result[key] = state.seo[key]
+    }
+    return result
   },
 }

@@ -6,29 +6,29 @@
           <img :src="require('~/assets/img/closer.svg')" width="100%" alt="" />
         </div>
       </div>
-      <form class="modal__form" @submit.prevent="sendForm" ref="buy_form">
-        <div class="modal__form_in" v-if="!isSuccess">
+      <form ref="buy_form" class="modal__form" @submit.prevent="sendForm">
+        <div v-if="!isSuccess" class="modal__form_in">
           <div class="modal__title">
-            {{ this.$t('sections.modals.apply_vacancy') }}
+            {{ $t('sections.modals.apply_vacancy') }}
           </div>
           <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
             <!-- <pre>{{ formData }}</pre> -->
             <template v-if="field.SID === 'VACANCY'">
-              <input type="hidden" v-model="formData[field.SID]" :name="field.SID" />
+              <input v-model="formData[field.SID]" type="hidden" :name="field.SID" />
             </template>
             <template v-else-if="field.SID === 'VACANCY_NAME'">
-              <input type="hidden" v-model="formData[field.SID]" :name="field.SID" />
+              <input v-model="formData[field.SID]" type="hidden" :name="field.SID" />
             </template>
             <template v-else-if="field.FIELD_TYPE === 'file'">
               <label>
-                <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" v-model="formData[field.VARNAME]" :name="field.SID" />
+                <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" :name="field.SID" />
               </label>
             </template>
             <template v-else>
-              <div class="osm__error" v-if="errors[field.VARNAME]">
+              <div v-if="errors[field.VARNAME]" class="osm__error">
                 {{ errors[field.VARNAME] }}
               </div>
-              <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" v-model="formData[field.VARNAME]" :name="field.SID" />
+              <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" :name="field.SID" />
             </template>
             <!-- <osm-input class="modal__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
           </div>
@@ -37,14 +37,14 @@
                     <osm-input class="modal__input" placeholder="E-mail *" type="email" :required="true"/>
                     <osm-counter class="modal__input"/>
                     <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
-          <p style="font-size: 10rem">
+          <p style="font-size: 12rem">
             Заполняя данную форму, вы принимаете условия
             <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
             об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
           </p>
           <osm-button class="modal__button" :large="true" type="submit">Откликнуться на вакансию</osm-button>
         </div>
-        <div class="modal__form_in" v-else>
+        <div v-else class="modal__form_in">
           <div class="modal__title">Спасибо за заявку!</div>
           <div class="modal__subtitle">Мы свяжемся с Вами в ближайшее время.</div>
         </div>
@@ -63,6 +63,14 @@ export default {
       default: '',
     },
   },
+  data: () => ({
+    isSended: false,
+    result: null,
+    fields: [],
+    formData: {},
+    errors: {},
+    isSuccess: false,
+  }),
   watch: {
     property: {
       // this.formData.VACANCY_NAME = newVal;
@@ -72,14 +80,6 @@ export default {
       },
     },
   },
-  data: () => ({
-    isSended: false,
-    result: null,
-    fields: [],
-    formData: {},
-    errors: {},
-    isSuccess: false,
-  }),
   computed: {
     ...mapGetters(['getModals']),
     // formData() {

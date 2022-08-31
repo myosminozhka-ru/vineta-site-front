@@ -9,7 +9,7 @@
                 </pre> -->
         <osm-gallery :images="filterBySection('Лицензии и сертификаты')" :title="$t('sections.fiveth.tabs.first')" />
         <osm-gallery :images="filterBySection('Благодарственные письма и отзывы')" :title="$t('sections.fiveth.tabs.second')" />
-        <osm-gallery :images="filterBySection('Отчеты СОУП и аттестации')" :title="$t('sections.fiveth.tabs.third')" />
+        <osm-gallery :images="filterBySection('Отчеты по СОУТ')" :title="$t('sections.fiveth.tabs.third')" />
       </div>
     </div>
     <osm-footer />
@@ -28,8 +28,26 @@ export default {
     OsmGallery: () => import('~/components/licenses/OsmGallery.vue'),
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
+  head() {
+    return {
+      title: this.getSeo.licenses.SEO.META.TITLE,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.getSeo.licenses.SEO.META.DESCRIPTION,
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: this.getSeo.licenses.SEO.META.KEYWORDS,
+        },
+      ],
+    }
+  },
   computed: {
     ...mapGetters(['getLicenses']),
+    ...mapGetters(['getSeo']),
   },
   created() {
     this.addBreadcrumbs([
