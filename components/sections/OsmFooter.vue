@@ -91,7 +91,7 @@ export default {
   computed: {
     ...mapGetters(['getDownloads']),
     filteredFileds() {
-      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD')
+      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD' && field.SID !== 'COMPANY')
     },
   },
 
