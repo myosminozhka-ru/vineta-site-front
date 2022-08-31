@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isMounted" class="history">
+  <div v-if="isMounted && isDataLoaded" class="history">
     <!-- <osm-header /> -->
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
