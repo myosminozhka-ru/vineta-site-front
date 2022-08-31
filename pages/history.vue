@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isDataLoaded" class="history">
+  <div v-if="isMounted" class="history">
     <!-- <osm-header /> -->
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
@@ -103,11 +103,13 @@ export default {
     selectedTime: 0,
     modifyedHistory: [],
     isDataLoaded: false,
+    isMounted: false,
   }),
   computed: {
     ...mapGetters(['getHistory']),
   },
   mounted() {
+    this.isMounted = true
     // console.log('modifyedHistory', this.modifyedHistory);
     this.modifyedHistory = this.getHistory.map((item) => {
       return {
