@@ -349,6 +349,7 @@ export const actions = {
     await dispatch('addDownloads')
     await dispatch('setLoadedStatus')
     await dispatch('addSeo')
+    await dispatch('addAbout')
     // console.log('fetch data');
   },
   // getLicenses(state, type) {
