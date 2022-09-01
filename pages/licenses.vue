@@ -7,9 +7,9 @@
         <!-- <pre style="font-size: 15rem;">
                     {{ getLicenses }}
                 </pre> -->
-        <osm-gallery :images="filterBySection('Лицензии и сертификаты')" :title="$t('sections.fiveth.tabs.first')" />
-        <osm-gallery :images="filterBySection('Благодарственные письма и отзывы')" :title="$t('sections.fiveth.tabs.second')" />
-        <osm-gallery :images="filterBySection('Отчеты по СОУТ')" :title="$t('sections.fiveth.tabs.third')" />
+        <osm-gallery :images="filterBySection('litsenzii-i-sertifikaty')" :title="$t('sections.fiveth.tabs.first')" />
+        <osm-gallery :images="filterBySection('blagodarstvennye-pisma-i-otzyvy')" :title="$t('sections.fiveth.tabs.second')" />
+        <osm-gallery :images="filterBySection('otchety-po-sout')" :title="$t('sections.fiveth.tabs.third')" />
       </div>
     </div>
     <osm-footer />
