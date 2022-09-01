@@ -27,6 +27,22 @@
       <li>
         <a href="//vinetaboat.ru/" target="_blank">Катера и лодки</a>
       </li>
+
+      <li>
+        <a :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank"> Каталог продукции </a>
+      </li>
+      <li>
+        <a href="~/assets/files/vineta_book_TP_rus_001.pdf" target="_blank">Оборудование топливоподготовки</a>
+      </li>
+      <li>
+        <a href="~/assets/files/Vineta_book_VO_rus_ver012.pdf" target="_blank">Оборудование водоподготовки и водоочистки</a>
+      </li>
+      <li>
+        <a href="~/assets/files/vineta_book_TO_002.pdf" target="_blank">Теплообменное оборудование</a>
+      </li>
+      <li>
+        <a href="~/assets/files/Vineta_book_VGO_ru_002.pdf" target="_blank">Оборудование воздухо и газоочистки</a>
+      </li>
     </ul>
     <ul class="opened isOpened">
       <li>
@@ -121,13 +137,16 @@ export default {
     ul {
       margin: 0;
       padding: 0;
+      flex-shrink: 0;
+      flex-grow: 1;
+      flex-basis: 0;
       @media all and (max-width: 840px) {
         padding-top: 20px;
         width: 100%;
         border-top: 1px solid #b4b9c1;
       }
       &:not(:last-child) {
-        margin-right: rem(160);
+        margin-right: rem(130);
         @media all and (max-width: 1280px) {
           margin-right: 86px;
         }

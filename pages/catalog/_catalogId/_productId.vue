@@ -653,6 +653,7 @@ export default {
 
   @media print {
     display: block;
+    margin-top: -60px;
   }
 }
 
@@ -1032,8 +1033,10 @@ export default {
     }
 
     @media print {
-      // flex-direction: row;
-      display: block;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      // display: block;
     }
   }
 
