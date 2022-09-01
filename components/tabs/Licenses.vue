@@ -1,16 +1,16 @@
 <template>
   <div class="licenses">
-    <osm-h2 class="licenses__title">{{ this.$t('sections.fiveth.tabs.title') }}</osm-h2>
+    <osm-h2 class="licenses__title">{{ $t('sections.fiveth.tabs.title') }}</osm-h2>
 
-    <tabs class="hide_on_mobile" @clicked="tabClicked" @changed="tabChanged" :options="{ useUrlFragment: false }">
-      <tab v-for="tab in tabs" :key="tab.index" :name="tab">
+    <tabs class="hide_on_mobile" :options="{ useUrlFragment: false }" @clicked="tabClicked" @changed="tabChanged">
+      <tab v-for="tab in tabs" :key="tab.index" :name="tab.title">
         <div class="licensesSlid glide">
           <div class="licensesSlid__slider">
             <div class="glide__track" data-glide-el="track">
               <ul class="glide__slides">
-                <li v-for="(item, key) in filterBySection(tab)" :key="item.index" class="licensesSlid__slide glide__slide" @click="setGalleryIndex(key)">
+                <li v-for="(item, key) in filterBySection(tab.filter)" :key="item.index" class="licensesSlid__slide glide__slide" @click="setGalleryIndex(key)">
                   <template v-if="item.PREVIEW_PICTURE">
-                    <div v-if="tab === 'Отчеты СОУП и аттестации ' || tab === 'Отчеты по СОУТ'" class="gallery__item">
+                    <div v-if="tab.filter === 'otchety-po-sout'" class="gallery__item">
                       <div class="gallery__item_image">
                         <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" />
                       </div>
@@ -52,9 +52,9 @@
       </tab>
     </tabs>
     <div class="licenses__accordions hide_off_mobile">
-      <div class="licenses__accordion opened" v-for="tab in tabs" :key="tab.index">
+      <div v-for="(tab, i) in tabs" :key="i" class="licenses__accordion opened">
         <div class="title">
-          <div class="text">{{ tab }}</div>
+          <div class="text">{{ tab.title }}</div>
           <div class="arrow">
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
               <path d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2" />
@@ -66,7 +66,7 @@
             <div class="licensesSlid__slider">
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-                  <li v-for="(item, key) in filterBySection(tab)" :key="item.index" class="licensesSlid__slide glide__slide" @click="setGalleryIndex(key)">
+                  <li v-for="(item, key) in filterBySection(tab.filter)" :key="item.index" class="licensesSlid__slide glide__slide" @click="setGalleryIndex(key)">
                     <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
                   </li>
                   <nuxt-link :to="localePath({ name: 'licenses' })" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
@@ -116,8 +116,20 @@ export default {
     ...mapGetters(['getLicenses']),
     ...mapGetters(['galleryIndex']),
     tabs() {
-      // FIXME: Удалить, когда поменяют в бэке "Отчеты по СОУТ"
-      return [this.$t('sections.fiveth.tabs.first'), this.$t('sections.fiveth.tabs.second'), 'Отчеты по СОУТ' || this.$t('sections.fiveth.tabs.third')]
+      return [
+        {
+          title: this.$t('sections.fiveth.tabs.first'),
+          filter: 'litsenzii-i-sertifikaty',
+        },
+        {
+          title: this.$t('sections.fiveth.tabs.second'),
+          filter: 'blagodarstvennye-pisma-i-otzyvy',
+        },
+        {
+          title: this.$t('sections.fiveth.tabs.third'),
+          filter: 'otchety-po-sout',
+        },
+      ]
     },
     imagesGallery() {
       return this.getLicenses.map((item) => {
