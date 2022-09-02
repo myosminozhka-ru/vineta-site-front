@@ -93,16 +93,14 @@ export default {
     this.$nextTick().then(() => {
       seeThru.create('#first-video')
       this.video = document.getElementById('first-video')
-
-      if (window.innerWidth <= 1280) {
-        this.video.play()
-      }
     })
 
     // this.$nextTick().then(() => {
     //   this.video = document.getElementById('first-video')
 
-    //
+    //   if (window.innerWidth <= 1280) {
+    //     this.video.play()
+    //   }
     // })
   },
 
@@ -112,19 +110,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.seeThru-display {
-  @media all and (max-width: 1280px) {
-    max-height: 100%;
-  }
-}
-</style>
-
 <style lang="scss" scoped>
-.section__left_video {
-  max-height: 100%;
+.first__gif {
+  width: auto;
 }
-
 .section {
   &__left_image_wrap {
     padding-left: rem(90);
