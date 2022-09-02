@@ -100,6 +100,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    padding-bottom: 30px;
     @media all and (max-width: 1280px) {
       height: 470px;
       width: 495px;
@@ -110,7 +111,7 @@ export default {
     }
   }
   &__left_video {
-    width: 100%;
+    width: 120%;
   }
   &__right {
     padding-top: rem(100);

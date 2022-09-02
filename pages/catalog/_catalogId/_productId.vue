@@ -207,8 +207,7 @@
             <div v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">Описание</div>
               <div class="value">
-                <div class="value__in">
-                  {{ product[0].DETAIL_TEXT }}
+                <div class="value__in" v-html="product[0].DETAIL_TEXT">
                 </div>
               </div>
               <div class="productPage__buttons">
@@ -529,7 +528,7 @@ export default {
     ...mapGetters(['getProducts']),
     ...mapGetters(['getDownloads']),
     analogsItems() {
-      return this.getProducts.filter((elem) => elem.SECTION.CODE === this.product[0].SECTION.CODE)
+      return this.getProducts.filter((elem) => elem.SECTION === this.product[0].SECTION)
     },
   },
   watch: {
