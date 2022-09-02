@@ -288,7 +288,7 @@
             <div v-if="hasMod && tabs.selected === 3">
               <div v-for="(mod, key, index) in product[0].OFFERS" :key="key" class="productPage__mods--tab productPage__mods--bg" @click="tabs.openedMod = index">
                 <div class="title title__opener">
-                  <span>Режим {{ index + 1 }}</span>
+                  <span>Модификация {{ index + 1 }}</span>
                   <div class="arrow">
                     <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
                       <path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path>

@@ -29,7 +29,7 @@
               {{ errors[field.VARNAME] }}
             </div>
             <template v-if="field.VARNAME !== 'NUMBER'">
-              <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
+              <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input test" />
             </template>
             <template v-else>
               <osm-counter class="modal__input" />

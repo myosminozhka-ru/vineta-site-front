@@ -105,7 +105,6 @@ export default {
     transition: all 0.3s ease;
     max-width: rem(203);
     // flex: 0 0 rem(203);
-    width: 100%;
     text-align: center;
     padding-left: 20px;
     width: 100%;
@@ -130,6 +129,7 @@ export default {
       font-size: rem(20);
       line-height: 140%;
       color: #ffffff;
+      white-space: nowrap;
 
       @media all and (max-width: 1280px) {
         font-size: 20px;

@@ -95,7 +95,6 @@ export default {
   //   margin-left: rem(-20);
   //   margin-right: rem(-20);
   @media all and (max-width: 1280px) {
-    width: calc(100% + 40px);
     margin-top: 20px;
     // margin-bottom: -20px;
     // margin-left: -20px;

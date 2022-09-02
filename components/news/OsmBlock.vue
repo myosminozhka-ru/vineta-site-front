@@ -294,13 +294,6 @@ export default {
         grid-template-columns: repeat(2, 50%);
         grid-gap: rem(20);
     }
-    &__button_top {
-        @media (max-width: 1280px) {
-            &::v-deep .button {
-                font-size: 26px;
-            }
-        }
-    }
     &__title {
         font-size: rem(40);
     }
@@ -380,9 +373,6 @@ export default {
         @media all and (max-width: 1280px) {
             white-space: normal;
             font-size: 20px;
-        }
-        @media all and (max-width: 1280px) {
-            font-size: 14px;
         }
     }
     &__item {

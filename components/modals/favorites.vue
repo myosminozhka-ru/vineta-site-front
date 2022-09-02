@@ -27,7 +27,7 @@
                     <osm-button class="modal__button" :large="true" type="submit">Отправить</osm-button>
                 </div>
                 <div class="modal__form_in" v-else>
-                    <div class="modal__title">Спасибо за заказ! Мы свяжемся с Вами в ближайшее время.</div>
+                    <div class="modal__title">Спасибо за заказ!<br> Мы свяжемся с Вами в ближайшее время.</div>
                 </div>
             </form>
         </div>

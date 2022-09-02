@@ -110,7 +110,7 @@ export default {
     }
   }
   &__left_video {
-    width: 120%;
+    width: 100%;
     @media all and (max-width: 860px) {
       width: 100%;
     }

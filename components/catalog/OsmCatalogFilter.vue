@@ -325,6 +325,12 @@ export default {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    &:hover {
+      background: #00234A;
+    }
+    &:active {
+      background: #00234A;
+    }
     @media all and (max-width: 1280px) {
       height: 68px;
       font-size: 20px;
