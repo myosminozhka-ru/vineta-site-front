@@ -340,7 +340,7 @@ export default {
         position: relative;
         padding-top: 50%;
         @media all and (max-width: 1280px) {
-            padding-top: 56%;
+            padding-top: 45%;
             width: 100%;
         }
         @media all and (max-width: 840px) {

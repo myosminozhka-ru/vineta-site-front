@@ -1,7 +1,9 @@
 <template>
   <section class="section section__item section__item--third" v-if="thirdData">
-    <div class="section__left section__left--fullwidth hide_on_mobile">
-      <scene :is-start="isActive" />
+    <div class="section__left">
+      <video id="third-video" muted class="section__left_video">
+        <source type="video/webm" src="~/assets/video/factory.webm" />
+      </video>
     </div>
     <div class="section__right section__slider glide">
       <div class="section__content">
@@ -25,38 +27,78 @@
   </section>
 </template>
 <script>
-import Glide from '@glidejs/glide'
 import { mapGetters } from 'vuex'
 export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
-    Scene: () => import('~/components/sections/Scene.vue'),
   },
   props: {
     isActive: {
       type: Boolean,
       default: false,
     },
+    isMounted: {
+      type: Boolean,
+      default: false,
+    },
+    isStart: {
+      type: Boolean,
+      default: true,
+    },
   },
   data: () => ({
-    slider: new Glide('.section__slider'),
+    video: null,
   }),
   computed: {
     ...mapGetters(['getMain']),
     thirdData() {
       return this.getMain[2]
     },
+    combined() {
+      return `${this.isStart}|${this.video}`
+    },
+  },
+  methods: {
+    playVideo() {
+      this.isVideoPlayed = true
+      this.$refs.secondVideo.play()
+    },
   },
   beforeDestroy() {
-    this.slider.destroy()
+    this.video = null
   },
   mounted() {
-    setTimeout(() => {
-      this.slider.mount()
-      // console.log('slider.index', this.slider.index)
-    }, 500)
+    this.$nextTick().then(() => {
+      this.video = document.getElementById('third-video')
+    })
+  },
+  watch: {
+    isMounted(newIsMounted, oldIsMounted) {
+      if (newIsMounted === true) {
+        setTimeout(() => {
+          this.isSvgVisible = false
+        }, 3000)
+      } else {
+        this.isSvgVisible = true
+      }
+    },
+
+    combined: {
+      immediate: true,
+      deep: true,
+      handler(newVal, oldVal) {
+        const [newPropertyA, newProvertyB] = newVal.split('|')
+
+        if (newProvertyB !== 'null' && newPropertyA === 'true') {
+          this.video.play()
+        } else if (newProvertyB !== 'null' && newProvertyB !== 'true') {
+          this.video.pause()
+          this.video.load()
+        }
+      },
+    },
   },
 }
 </script>
@@ -64,7 +106,17 @@ export default {
 <style lang="scss" scoped>
 .section {
   &__left {
-    position: relative;
+    @media all and (max-width: 1280px) {
+      height: 470px;
+      width: 495px;
+    }
+    @media all and (max-width: 860px) {
+      min-height: 200px !important;
+      width: 100%;
+    }
+  }
+  &__left_video {
+    width: 100%;
   }
   &__right {
     padding-top: rem(100);
