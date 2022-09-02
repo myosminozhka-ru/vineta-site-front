@@ -44,52 +44,29 @@
       <div class="menu__modal" :data-modal-id="123">
         <div class="menu__modal_top" @mousewheel.stop>
           <osm-h2 class="menu__modal_title">{{ $t('menu.products') }}</osm-h2>
-          <div class="menu__modal_menu-wrap">
-            <ul class="menu__modal_menu">
-              <li v-for="category in filteredFirstCatalog" :key="category.ID">
-                <!-- <pre style="font-size: 15rem">{{ category }}</pre> -->
-                <a
-                  :href="
-                    localePath({
-                      name: 'catalog-catalogId',
-                      params: { catalogId: category.CODE },
-                    })
-                  "
-                >
-                  <div class="icon">
-                    <img
-                      :src="$vareibles.remote + category.PICTURE"
-                      width="100%"
-                      alt=""
-                    />
-                  </div>
-                  <div class="text">{{ category.NAME }}</div>
-                </a>
-              </li>
-            </ul>
-            <ul class="menu__modal_menu">
-              <li v-for="category in filteredSecondCatalog" :key="category.ID">
-                <!-- <pre style="font-size: 15rem">{{ category }}</pre> -->
-                <a
-                  :href="
-                    localePath({
-                      name: 'catalog-catalogId',
-                      params: { catalogId: category.CODE },
-                    })
-                  "
-                >
-                  <div class="icon">
-                    <img
-                      :src="$vareibles.remote + category.PICTURE"
-                      width="100%"
-                      alt=""
-                    />
-                  </div>
-                  <div class="text">{{ category.NAME }}</div>
-                </a>
-              </li>
-            </ul>
-          </div>
+          
+          <ul class="menu__modal_menu menu__modal_menu--catalog">
+            <li v-for="category in getCatalog" :key="category.ID">
+              <!-- <pre style="font-size: 15rem">{{ category }}</pre> -->
+              <a
+                :href="
+                  localePath({
+                    name: 'catalog-catalogId',
+                    params: { catalogId: category.CODE },
+                  })
+                "
+              >
+                <div class="icon">
+                  <img
+                    :src="$vareibles.remote + category.PICTURE"
+                    width="100%"
+                    alt=""
+                  />
+                </div>
+                <div class="text">{{ category.NAME }}</div>
+              </a>
+            </li>
+          </ul>
         </div>
         <div
           class="menu__modal_bottom"
@@ -525,7 +502,6 @@ export default {
       })
       this.filteredFirstCatalog = firstArray
       this.filteredSecondCatalog = secondArray
-      debugger
     },
   },
 }
@@ -599,24 +575,31 @@ export default {
     }
   }
 
-  &__modal_menu-wrap {
-    display: flex;
-  }
-
   &__modal_menu {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &--catalog {
+      flex-direction: column;
+      max-height: 300px;
+      @media all and (max-width: 1280px) {
+        max-height: 300px;
+      }
+    }
 
     li {
-      width: 100%;
+      width: calc(100% / 3 - #{rem(20)});
 
       &:not(:last-child) {
         margin-bottom: rem(30);
       }
 
       @media all and (max-width: 1280px) {
-        width: 100%;
+        width: calc(100% / 2 - 30px);
 
         &:not(:last-child) {
           margin-bottom: 20px;
