@@ -84,6 +84,7 @@
                 getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC
               "
               class="menu__modal_file"
+              :download="getDownloads['katalog-produktsii'].NAME === 'Каталог продукции' ? 'catalogue_Vineta' : ''"
             >
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />

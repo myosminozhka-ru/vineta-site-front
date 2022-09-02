@@ -130,7 +130,7 @@ export default {
         isLink: true,
       },
       {
-        name: 'Основные заказчики и партнёры',
+        name: 'Основные заказчики',
         isLink: false,
       },
     ])
