@@ -207,7 +207,9 @@
             <div v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">Описание</div>
               <div class="value">
-                <div class="value__in" v-html="product[0].DETAIL_TEXT"></div>
+                <div class="value__in">
+                  {{ product[0].DETAIL_TEXT }}
+                </div>
               </div>
               <div class="productPage__buttons">
                 <div @click="openBuy">
@@ -288,7 +290,7 @@
             <div v-if="tabs.selected === 3">
               <div v-for="(mod, key, index) in product[0].OFFERS" :key="key" class="productPage__mods--tab productPage__mods--bg" @click="tabs.openedMod = index">
                 <div class="title title__opener">
-                  <span>Режим {{ index + 1 }}</span>
+                  <span>Модификация {{ index + 1 }}</span>
                   <div class="arrow">
                     <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
                       <path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path>
@@ -357,7 +359,15 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <nuxt-link v-for="prod in analogsItems.slice(0, 4)" :key="prod.index" :to="localePath(`/catalog/${prod.SECTION.CODE}/${prod.CODE}`)" class="products__item">
+              <nuxt-link v-for="prod in analogsItems.slice(0, 4)" :key="prod.index" 
+                :to="
+                  localePath({
+                    name: 'catalog-catalogId-productId',
+                    params: { productId: prod.CODE },
+                  })
+                "
+                class="products__item"
+              >
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
                   <div class="image_container">
@@ -608,7 +618,7 @@ export default {
 @media print {
   @page {
     size: auto;
-    margin: 0 1.2cm;
+    margin: 0.5cm 1.2cm;
   }
 }
 
@@ -678,7 +688,7 @@ export default {
 
     .title {
       text-align: right;
-      font-size: 15px;
+      font-size: 12px;
     }
 
     @media print {
