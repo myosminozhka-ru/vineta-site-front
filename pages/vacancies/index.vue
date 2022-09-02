@@ -135,7 +135,15 @@ export default {
 
   &__image {
     width: rem(419);
+    height: 100%;
+    padding: 30px 0;
     font-size: 0;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
     @media all and (max-width: 1280px) {
       width: calc(100% - 446px);
     }

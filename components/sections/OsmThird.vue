@@ -110,7 +110,10 @@ export default {
     }
   }
   &__left_video {
-    width: 100%;
+    width: 120%;
+    @media all and (max-width: 860px) {
+      width: 100%;
+    }
   }
   &__right {
     padding-top: rem(100);
