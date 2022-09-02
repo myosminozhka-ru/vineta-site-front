@@ -1,7 +1,7 @@
 <template>
   <section class="section section__item section__item--third" v-if="thirdData">
     <div class="section__left">
-      <video id="third-video" muted class="section__left_video">
+      <video id="third-video" muted loop autoplay class="section__left_video">
         <source type="video/webm" src="~/assets/video/factory.webm" />
       </video>
     </div>
@@ -45,7 +45,7 @@ export default {
     },
     isStart: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   data: () => ({
@@ -57,7 +57,7 @@ export default {
       return this.getMain[2]
     },
     combined() {
-      return `${this.isStart}|${this.video}`
+      return `${this.isActive}|${this.video}`
     },
   },
   methods: {
@@ -75,20 +75,11 @@ export default {
     })
   },
   watch: {
-    isMounted(newIsMounted, oldIsMounted) {
-      if (newIsMounted === true) {
-        setTimeout(() => {
-          this.isSvgVisible = false
-        }, 3000)
-      } else {
-        this.isSvgVisible = true
-      }
-    },
-
     combined: {
       immediate: true,
       deep: true,
       handler(newVal, oldVal) {
+        console.log('combined')
         const [newPropertyA, newProvertyB] = newVal.split('|')
 
         if (newProvertyB !== 'null' && newPropertyA === 'true') {
@@ -106,6 +97,9 @@ export default {
 <style lang="scss" scoped>
 .section {
   &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     @media all and (max-width: 1280px) {
       height: 470px;
       width: 495px;

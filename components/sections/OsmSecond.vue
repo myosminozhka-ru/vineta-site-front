@@ -196,7 +196,7 @@ export default {
   }
 
   &__left_video {
-    width: 130%;
+    width: 160%;
     pointer-events: none;
     transform: rotate(-90deg);
   }
