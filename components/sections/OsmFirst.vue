@@ -2,8 +2,14 @@
   <section class="section section__item section__item--first">
     <div class="section__left">
       <video id="first-video" muted class="section__left_video">
-        <source type="video/webm" src="~/assets/video/1.webm" />
+        <source type="video/mp4" src="~/assets/video/group1.mp4" />
       </video>
+      <!-- <video id="first-video--black" muted loop autoplay class="section__left_video" style="display: none">
+        <source type="video/mp4" src="~/assets/video/1_BW.mp4" />
+      </video> -->
+      <!-- <video id="first-video" muted class="section__left_video">
+        <source type="video/webm" src="~/assets/video/1.webm" />
+      </video> -->
     </div>
     <div class="section__right">
       <div v-if="'PROPERIES' in firstData" class="section__content">
@@ -23,6 +29,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
+import seeThru from '~/plugins/seeThru'
 export default {
   name: 'OsmFirstSection',
   components: {
@@ -59,10 +66,6 @@ export default {
         setTimeout(() => {
           this.isSvgVisible = false
         }, 3000)
-        // console.log('start: ', this.isStart)
-        // setTimeout(() => {
-        //   document.getElementById('first-video').play()
-        // }, 1500)
       } else {
         this.isSvgVisible = true
       }
@@ -72,8 +75,6 @@ export default {
       deep: true,
       handler(newVal, oldVal) {
         const [newPropertyA, newProvertyB] = newVal.split('|')
-        console.log('newPropertyA: ', newPropertyA)
-        console.log('newProvertyB: ', newProvertyB)
         if (newProvertyB !== 'null' && newPropertyA === 'true' && window.innerWidth > 1280) {
           this.video.play()
         } else if (newProvertyB !== 'null' && newProvertyB !== 'true' && window.innerWidth > 1280) {
@@ -90,12 +91,17 @@ export default {
     })
 
     this.$nextTick().then(() => {
+      seeThru.create('#first-video')
       this.video = document.getElementById('first-video')
-
-      if (window.innerWidth <= 1280) {
-        this.video.play()
-      }
     })
+
+    // this.$nextTick().then(() => {
+    //   this.video = document.getElementById('first-video')
+
+    //   if (window.innerWidth <= 1280) {
+    //     this.video.play()
+    //   }
+    // })
   },
 
   beforeDestroy() {
@@ -190,11 +196,11 @@ export default {
     }
   }
 
-  &__left_video {
-    width: 130%;
-    pointer-events: none;
-    transform: rotate(-90deg);
-  }
+  //   &__left_video {
+  //     width: 130%;
+  //     pointer-events: none;
+  //     transform: rotate(-90deg);
+  //   }
 
   &__right {
     @media all and (max-width: 1280px) {
