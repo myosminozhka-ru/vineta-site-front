@@ -2,7 +2,7 @@
   <section class="section section__item section__item--second section__item--dark">
     <div class="section__left section__left--fullwidth">
       <video id="second-video" muted class="section__left_video">
-        <source type="video/webm" src="~/assets/video/2.webm" />
+        <source type="video/webm" src="~/assets/video/1.webm" />
       </video>
       <!-- <img :src="$vareibles.remote + secondData.PREVIEW_PICTURE" alt="first" width="100%"> -->
     </div>

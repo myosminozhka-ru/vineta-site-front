@@ -2,7 +2,7 @@
   <section class="section section__item section__item--first">
     <div class="section__left">
       <video id="first-video" muted class="section__left_video">
-        <source type="video/webm" src="~/assets/video/1.webm" />
+        <source type="video/webm" src="~/assets/video/2.webm" />
       </video>
     </div>
     <div class="section__right">

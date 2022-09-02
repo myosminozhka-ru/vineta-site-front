@@ -85,7 +85,7 @@ export default {
         isLink: true,
       },
       {
-        name: 'Технология производства',
+        name: 'Технологии производства',
         isLink: false,
       },
     ])
