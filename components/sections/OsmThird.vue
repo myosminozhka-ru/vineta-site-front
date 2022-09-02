@@ -108,10 +108,14 @@ export default {
     @media all and (max-width: 860px) {
       min-height: 200px !important;
       width: 100%;
+      padding-bottom: 0;
     }
   }
   &__left_video {
     width: 120%;
+    @media all and (max-width: 860px) {
+      width: 100%;
+    }
   }
   &__right {
     padding-top: rem(100);
