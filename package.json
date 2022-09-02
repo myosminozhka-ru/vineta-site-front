@@ -24,6 +24,7 @@
     "draco3d": "^1.5.3",
     "forever": "^4.0.3",
     "hooper": "^0.3.4",
+    "jquery": "^3.6.1",
     "mapbox-gl": "^2.9.2",
     "nuxt": "^2.15.8",
     "nuxt-lazy-load": "^1.2.9",
