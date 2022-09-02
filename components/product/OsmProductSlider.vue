@@ -376,7 +376,6 @@ export default {
             display: none;
         }
         @media all and (max-width: 1440px) {
-            width: 77px;
             margin-left: 20px;
         }
         @media all and (max-width: 1280px) {
