@@ -22,29 +22,29 @@
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="" />
                     </div>
-                    <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
+                    <div class="text">{{ item.ADRESS.VALUE }}</div>
                   </div>
-                  <a :href="`mailto:${item.PROPERIES[2].VALUE}`" class="partners__contact_item email">
+                  <a :href="`mailto:${item.PROPERIES[1].VALUE}`" class="partners__contact_item email">
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="" />
                     </div>
-                    <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
+                    <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                   </a>
-                  <a :href="`tel:${item.PROPERIES[3].VALUE}`" class="partners__contact_item phone">
+                  <a :href="`tel:${item.PROPERIES[2].VALUE}`" class="partners__contact_item phone">
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="" />
                     </div>
-                    <div class="text">{{ item.PROPERIES[3].VALUE }}</div>
+                    <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
                   </a>
                   <div class="partners__contact_item">
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="" />
                     </div>
-                    <div class="text">{{ item.PROPERIES[4].VALUE }}</div>
+                    <div class="text">{{ item.PROPERIES[3].VALUE }}</div>
                   </div>
                 </div>
               </div>
-              <a class="button" :href="`http://${item.PROPERIES[4].VALUE}`" target="_blank">Перейти на сайт</a>
+              <a class="button" :href="`http://${item.PROPERIES[3].VALUE}`" target="_blank">Перейти на сайт</a>
             </div>
           </div>
         </div>
