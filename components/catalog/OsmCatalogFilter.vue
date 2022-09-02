@@ -43,7 +43,10 @@
             </label>
           </div>
         </div>
-        <button class="filter__clear hide_on_desktop" @click="clearFilter">Сбросить</button>
+        <div class="filter__controlls">
+            <button class="filter__start hide_on_desktop" @click="isFilterOpened = false">Применить</button>
+            <button class="filter__clear hide_on_desktop" @click="clearFilter">Сбросить</button>
+        </div>
       </div>
       <button v-if="getCatalogFilters" class="filter__clear hide_on_tablet" @click="clearFilter">Сбросить</button>
       <div v-if="!getCatalogFilters" class="filter__title">
@@ -299,6 +302,33 @@ export default {
       margin-left: 10px;
       padding-top: 3px;
       font-size: 14px;
+    }
+  }
+  &__controlls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button {
+      width: calc(50% - 10px);
+    }
+  }
+  &__start {
+    width: 100%;
+    height: rem(68);
+    margin-top: rem(40);
+    font-style: normal;
+    font-weight: 600;
+    font-size: rem(20);
+    line-height: 140%;
+    color: #ffffff;
+    background-color: #2E5599;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    @media all and (max-width: 1280px) {
+      height: 68px;
+      font-size: 20px;
+      margin-top: 0;
     }
   }
   &__clear {

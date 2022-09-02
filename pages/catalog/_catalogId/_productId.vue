@@ -78,10 +78,10 @@
             <div v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" @click.prevent="tabs.selected = 1">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 1 }" :outlined="true"> Описание</osm-button>
             </div>
-            <div @click.prevent="tabs.selected = 2">
+            <div v-if="hasChar" @click.prevent="tabs.selected = 2">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 2 }" :outlined="true"> Характеристики </osm-button>
             </div>
-            <div v-if="offersCount.length > 1" @click.prevent="tabs.selected = 3">
+            <div v-if="hasMod" @click.prevent="tabs.selected = 3">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 3 }" :outlined="true"> Модификации ({{ offersCount.length }})</osm-button>
             </div>
           </div>
@@ -107,7 +107,7 @@
                 </div>
               </div>
             </div>
-            <div v-show="tabs.selected === 2" class="productPage__mods--tab productPage__mods--bg">
+            <div v-if="hasChar" v-show="tabs.selected === 2" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">Характеристики</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0]}}</pre> -->
@@ -152,7 +152,7 @@
                 </div>
               </div>
             </div>
-            <div v-if="tabs.selected === 3" class="productPage__mods--tab">
+            <div v-if="hasMod && tabs.selected === 3" class="productPage__mods--tab">
               <div class="title">Модификации ({{ offersCount.length }})</div>
               <div class="value">
                 <!-- <pre style="font-size: 15rem">{{product[0] }}</pre> -->
@@ -207,8 +207,7 @@
             <div v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">Описание</div>
               <div class="value">
-                <div class="value__in" v-html="product[0].DETAIL_TEXT">
-                </div>
+                <div class="value__in" v-html="product[0].DETAIL_TEXT"></div>
               </div>
               <div class="productPage__buttons">
                 <div @click="openBuy">
@@ -226,7 +225,7 @@
                 </div>
               </div>
             </div>
-            <div class="tabs__opener" :class="{ isActive: tabs.selected === 2 }" @click.prevent="tabs.selected = 2">
+            <div v-if="hasChar" class="tabs__opener" :class="{ isActive: tabs.selected === 2 }" @click.prevent="tabs.selected = 2">
               <div class="text">Характеристики</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -234,8 +233,8 @@
                 </svg>
               </div>
             </div>
-            <div v-show="tabs.selected === 2" class="productPage__mods--tab productPage__mods--bg">
-              <div class="title">Характеристики</div>
+            <div v-if="hasChar" v-show="tabs.selected === 2" class="productPage__mods--tab productPage__mods--bg">
+              <div class="title">Характеристики {{ hasChar }}</div>
               <div class="value">
                 <div class="productPage__mods--chars">
                   <div v-for="prop in product[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
@@ -278,7 +277,7 @@
                 </div>
               </div>
             </div>
-            <div v-if="offersCount.length > 1" class="tabs__opener" :class="{ isActive: tabs.selected === 3 }" @click.prevent="tabs.selected = 3">
+            <div v-if="hasMod" class="tabs__opener" :class="{ isActive: tabs.selected === 3 }" @click.prevent="tabs.selected = 3">
               <div class="text">Модификации ({{ offersCount.length }})</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -286,10 +285,10 @@
                 </svg>
               </div>
             </div>
-            <div v-if="tabs.selected === 3">
+            <div v-if="hasMod && tabs.selected === 3">
               <div v-for="(mod, key, index) in product[0].OFFERS" :key="key" class="productPage__mods--tab productPage__mods--bg" @click="tabs.openedMod = index">
                 <div class="title title__opener">
-                  <span>Модификация {{ index + 1 }}</span>
+                  <span>Режим {{ index + 1 }}</span>
                   <div class="arrow">
                     <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
                       <path data-v-975c5a0e="" d="M17.5 1.5L9.5 8.5L1.5 1.5" stroke="#555F76" stroke-width="2"></path>
@@ -358,15 +357,7 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <nuxt-link v-for="prod in analogsItems.slice(0, 4)" :key="prod.index" 
-                :to="
-                  localePath({
-                    name: 'catalog-catalogId-productId',
-                    params: { productId: prod.CODE },
-                  })
-                "
-                class="products__item"
-              >
+              <nuxt-link v-for="prod in analogsItems.slice(0, 4)" :key="prod.index" :to="localePath(`/catalog/${prod.SECTION.CODE}/${prod.CODE}`)" class="products__item">
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
                   <div class="image_container">
@@ -528,8 +519,16 @@ export default {
     ...mapGetters(['getProducts']),
     ...mapGetters(['getDownloads']),
     analogsItems() {
-      return this.getProducts.filter((elem) => elem.SECTION === this.product[0].SECTION)
+      return this.getProducts.filter((elem) => elem.SECTION.CODE === this.product[0].SECTION.CODE)
     },
+    hasChar() {
+      const first = !!(this.product[0].PROPERIES && this.product[0].PROPERIES.find(i => i.NAME !== null))
+      const second = !!(this.offersCount.length === 1)
+      return !(first === false && second === false)
+    },
+    hasMod() {
+      return !!(this.offersCount.length > 1)
+    }
   },
   watch: {
     '$route.params.productId': {
@@ -617,7 +616,7 @@ export default {
 @media print {
   @page {
     size: auto;
-    margin: 0.5cm 1.2cm;
+    margin: 0 1.2cm;
   }
 }
 
@@ -687,7 +686,7 @@ export default {
 
     .title {
       text-align: right;
-      font-size: 12px;
+      font-size: 15px;
     }
 
     @media print {
@@ -758,6 +757,10 @@ export default {
         margin-top: 0;
         margin-right: 0;
       }
+    }
+    .products__item_name {
+      height: rem(81);
+      overflow: hidden;
     }
   }
 

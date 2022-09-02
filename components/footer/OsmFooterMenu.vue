@@ -27,10 +27,6 @@
       <li>
         <a href="//vinetaboat.ru/" target="_blank">Катера и лодки</a>
       </li>
-
-      <li>
-        <a :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank"> Каталог продукции </a>
-      </li>
       <li>
         <a href="/static/files/vineta_book_TP_rus_001.pdf" download target="_blank">Оборудование топливоподготовки</a>
       </li>

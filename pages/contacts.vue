@@ -9,7 +9,7 @@
           <div class="contacts__left">
             <div class="contacts__title">{{ getContacts['0'].NAME }}</div>
             <div v-if="'PROPERIES' in getContacts['0']" class="contacts__items">
-              <div class="contacts__item">
+              <div class="contacts__item contacts__item--address">
                 <div class="contacts__item_in">
                   <div class="icon">
                     <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="" />
@@ -17,55 +17,40 @@
                   <div class="text">187026, Санкт-Петербург, Ленинградская обл., Тосненский район, г. Никольское, Ульяновское шоссе, 5Ж</div>
                 </div>
               </div>
-              <div v-for="contact in getContacts['0'].PROPERIES" :key="contact.CODE" class="contacts__item">
-                <template v-if="contact.CODE === 'PHONE'">
-                  <a :href="`tel:${contact.VALUE}`" class="contacts__item_in phone">
-                    <div class="icon">
-                      <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="" />
+              <template v-for="contact in getContacts['0'].PROPERIES">
+                <div class="contacts__item contacts__item--schedule" :key="contact.CODE"  v-if="contact.CODE === 'NAME_PHONE'">
+                    <div class="contacts__item_in name_phone">
+                      <div class="icon">
+                        <img :src="require('~/assets/img/contacts/NAME_PHONE.svg')" width="100%" alt="" />
+                      </div>
+                      <div class="text">{{ contact.VALUE }}</div>
                     </div>
-                    <div class="text">{{ contact.VALUE }}</div>
-                  </a>
-                </template>
-                <template v-else-if="contact.CODE === 'EMAIL'">
+                </div>
+                <div class="contacts__item" :key="contact.CODE"  v-else-if="contact.CODE === 'PHONE'">
+                    <a :href="`tel:${contact.VALUE}`" class="contacts__item_in phone">
+                      <div class="icon">
+                        <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="" />
+                      </div>
+                      <div class="text">{{ contact.VALUE }}</div>
+                    </a>
+                </div>
+                <div class="contacts__item" :key="contact.CODE"  v-else-if="contact.CODE === 'GEO'">
+                    <div class="contacts__item_in geo">
+                      <div class="icon">
+                        <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="" />
+                      </div>
+                      <div class="text">{{ contact.VALUE }}</div>
+                    </div>
+                </div>
+                <div class="contacts__item" :key="contact.CODE"  v-else-if="contact.CODE === 'EMAIL'">
                   <a :href="`mailto:${contact.VALUE}`" class="contacts__item_in email">
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="" />
                     </div>
                     <div class="text">{{ contact.VALUE }}</div>
                   </a>
-                </template>
-                <template v-else-if="contact.CODE === 'GEO'">
-                  <div class="contacts__item_in geo">
-                    <div class="icon">
-                      <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="" />
-                    </div>
-                    <div class="text">{{ contact.VALUE }}</div>
-                  </div>
-                </template>
-                <template v-else-if="contact.CODE === 'NAME_PHONE'">
-                  <div class="contacts__item_in name_phone">
-                    <div class="icon">
-                      <img :src="require('~/assets/img/contacts/NAME_PHONE.svg')" width="100%" alt="" />
-                    </div>
-                    <div class="text">{{ contact.VALUE }}</div>
-                  </div>
-                </template>
-                <!-- <template v-else>
-                              <div class="contacts__item_in">
-                                  <div class="icon">
-                                      <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="">
-                                  </div>
-                                  <div class="text">{{ contact.VALUE }}</div>
-                              </div>
-                            </template> -->
-                <!-- {{ contact.CODE }} -->
-                <!-- <a href="mailto:info@vineta.ru" class="contacts__item_in">
-                                <div class="icon">
-                                    <img :src="require('~/assets/img/contacts/map.svg')" width="100%" alt="">
-                                </div>
-                                <div class="text">info@vineta.ru</div>
-                            </a> -->
-              </div>
+                </div>
+              </template>
             </div>
             <template v-if="getDownloads['rekvizity']">
               <a v-if="'PROPERIES' in getDownloads['rekvizity']" :href="$vareibles.remote + getDownloads['rekvizity'].PROPERIES[0].VALUE.SRC" target="_blank" class="button contacts__button">
@@ -132,6 +117,9 @@ export default {
     await this.addContacts()
     await this.addVacancies()
     await this.addAbout()
+    if (process.client) {
+      this.createDinamycHeight()
+    }
   },
   head() {
     return {
@@ -229,6 +217,12 @@ export default {
   @media all and (max-width: 1280px) {
     padding: 30px 20px;
   }
+  #contact-slider {
+    margin-top: 30px;
+    @media all and (max-width: 1280px) {
+      margin-top: 30px;
+    }
+  }
   &__top {
     display: flex;
     // align-items: center;
@@ -289,12 +283,22 @@ export default {
       height: 410px;
     }
   }
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
   &__item {
     &:not(:last-child) {
       margin-bottom: rem(20);
       @media all and (max-width: 1280px) {
         margin-bottom: 20px;
       }
+    }
+    &--address {
+      order: -2;
+    }
+    &--schedule {
+      order: -1;
     }
     .phone,
     .email {
@@ -350,7 +354,9 @@ export default {
     margin-top: rem(30);
     width: 100%;
     @media all and (max-width: 1280px) {
-      // width: 300px;
+      width: 330px;
+      display: flex;
+      margin: 0 auto;
       margin-top: 30px;
     }
     @media all and (max-width: 840px) {
