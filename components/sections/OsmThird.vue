@@ -2,7 +2,7 @@
   <section class="section section__item section__item--third" v-if="thirdData">
     <div class="section__left">
       <video id="third-video" muted loop autoplay class="section__left_video">
-        <source type="video/webm" src="~/assets/video/factory.webm" />
+        <source type="video/webm" src="~/assets/video/5.webm" />
       </video>
     </div>
     <div class="section__right section__slider glide">
@@ -105,7 +105,7 @@ export default {
       width: 495px;
     }
     @media all and (max-width: 860px) {
-      min-height: 200px !important;
+      min-height: 80vw !important;
       width: 100%;
     }
   }
