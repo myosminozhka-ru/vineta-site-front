@@ -120,8 +120,10 @@
                 <img v-else :src="require('~/assets/img/product.noimage.png')" alt="" />
               </div>
             </div>
-            <div class="name">{{ item.NAME }}</div>
-            <div v-if="item.PROPERIES.filter((elem) => elem.CODE === 'DOLJNOST').length" class="position">{{ item.PROPERIES.filter((elem) => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
+            <div class="height" :style="'height:' + maxHeight">
+              <div class="name">{{ item.NAME }}</div>
+              <div v-if="item.PROPERIES.filter((elem) => elem.CODE === 'DOLJNOST').length" class="position">{{ item.PROPERIES.filter((elem) => elem.CODE === 'DOLJNOST')[0].VALUE }}</div>
+            </div>
             <a v-if="item.PROPERIES.filter((elem) => elem.CODE === 'PHONE').length" :href="`tel:${item.PROPERIES.filter((elem) => elem.CODE === 'PHONE')[0].VALUE}`" class="phone">{{ item.PROPERIES.filter((elem) => elem.CODE === 'PHONE')[0].VALUE }}</a>
             <a v-if="item.PROPERIES.filter((elem) => elem.CODE === 'EMAIL').length" :href="`mailto:${item.PROPERIES.filter((elem) => elem.CODE === 'EMAIL')[0].VALUE}`" class="email">{{ item.PROPERIES.filter((elem) => elem.CODE === 'EMAIL')[0].VALUE }}</a>
           </div>
@@ -189,9 +191,13 @@ export default {
     filteredFirstAboutSections: [],
     filteredSecondAboutSections: [],
     isMounted: false,
+    maxHeight: 'auto',
   }),
   async fetch() {
     await this.addAbout()
+    if (process.client) {
+      this.createDinamycHeight()
+    }
   },
   head() {
     return {
@@ -237,6 +243,11 @@ export default {
   mounted() {
     this.isMounted = true
     this.filterAboutSections()
+    this.createDinamycHeight()
+    window.addEventListener('resize', this.createDinamycHeight)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.createDinamycHeight)
   },
   methods: {
     ...mapActions(['addBreadcrumbs']),
@@ -285,11 +296,29 @@ export default {
       this.filteredFirstAboutSections = firstArray
       this.filteredSecondAboutSections = secondArray
     },
+    createDinamycHeight() {
+      this.maxHeight = 'auto'
+
+      setTimeout(() => {
+        const panels = document.querySelectorAll('.fiveth .height')
+        let maxHeight = 0
+        const heights = Array.prototype.slice.call(panels).map(function (panel) {
+          return panel.offsetHeight
+        })
+        heights.forEach((el) => (maxHeight = Math.max(el, maxHeight)))
+
+        this.maxHeight = maxHeight + 'px'
+      }, 150)
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.height {
+  margin-bottom: 10px;
+}
+
 .header_padding {
   background: #fff;
 }

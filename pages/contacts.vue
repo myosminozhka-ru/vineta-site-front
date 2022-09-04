@@ -174,6 +174,7 @@ export default {
     ])
   },
   mounted() {
+    this.createDinamycHeight()
     window.addEventListener('resize', this.createDinamycHeight)
   },
   destroyed() {
@@ -204,9 +205,9 @@ export default {
 
 <style lang="scss" scoped>
 
-  .height {
-    margin-bottom: 10px;
-  }
+.height {
+  margin-bottom: 10px;
+}
 .contacts {
   padding: rem(30) rem(240) rem(120);
   background: #fff;

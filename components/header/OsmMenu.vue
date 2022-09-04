@@ -94,7 +94,7 @@
                   {{ getDownloads['katalog-produktsii'].NAME }}
                 </div>
                 <div class="bottom">
-                  <span>DOCX</span>
+                  <span>PDF</span>
                   <div class="delim">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@
                       />
                     </svg>
                   </div>
-                  <span>30 КБ</span>
+                  <span>28.8 МБ</span>
                 </div>
               </div>
             </a>
@@ -161,7 +161,7 @@
                   {{ getDownloads['katalog-produktsii'].NAME }}
                 </div>
                 <div class="bottom">
-                  <span>DOCX</span>
+                  <span>PDF</span>
                   <div class="delim">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +176,7 @@
                       />
                     </svg>
                   </div>
-                  <span>30 КБ</span>
+                  <span>28.8 МБ</span>
                 </div>
               </div>
             </a>
