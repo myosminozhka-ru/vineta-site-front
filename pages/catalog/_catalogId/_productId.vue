@@ -519,7 +519,7 @@ export default {
     ...mapGetters(['getProducts']),
     ...mapGetters(['getDownloads']),
     analogsItems() {
-      return this.getProducts.filter((elem) => elem.SECTION.CODE === this.product[0].SECTION.CODE)
+      return this.getProducts.filter((elem) => elem.SECTION === this.product[0].SECTION)
     },
     hasChar() {
       const first = !!(this.product[0].PROPERIES && this.product[0].PROPERIES.find(i => i.NAME !== null))
