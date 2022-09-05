@@ -234,7 +234,7 @@
               </div>
             </div>
             <div v-if="hasChar" v-show="tabs.selected === 2" class="productPage__mods--tab productPage__mods--bg">
-              <div class="title">Характеристики {{ hasChar }}</div>
+              <div class="title">Характеристики</div>
               <div class="value">
                 <div class="productPage__mods--chars">
                   <div v-for="prop in product[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
