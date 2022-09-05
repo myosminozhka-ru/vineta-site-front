@@ -303,7 +303,7 @@
                           <div class="productPage__mods--mods_item">
                             <div v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_val">
                               <div class="productPage__mods--mods_val_title">
-                                {{ proper.NAME }}
+                                <b>{{ proper.NAME }}</b>
                               </div>
                               <div class="productPage__mods--mods_val_value">
                                 {{ proper.VALUE }}
@@ -1332,28 +1332,37 @@ export default {
     }
 
     @media all and (max-width: 1280px) {
-      min-width: 100%;
+      min-width: auto;
       max-width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid #d7dce1;
-      padding-top: 15px;
-      margin-bottom: 15px;
+      padding: rem(10) 0;
+      margin-bottom: 20px;
+      font-size: rem(18);
+      margin-bottom: rem(10);
+      line-height: 110%;
+      border-bottom: 2px solid #d7dce1;
 
-      &:last-child {
-        border-bottom: 1px solid #d7dce1;
-        padding-bottom: 15px;
-        margin-bottom: 0;
-      }
-    }
-
-    @media all and (max-width: 860px) {
-      display: block;
       &:first-child {
         border-top: none;
       }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
+  }
+
+  &__mods--mods_val_title {
+      font-size: rem(18);
+      margin-bottom: rem(10);
+      line-height: 110%;
+      font-weight: 600;
+      color: #172242;
+  }
+
+  &__mods--mods_val_value {
+      font-size: rem(16);
+      line-height: 140%;
+      font-weight: 400;
+      color: #555f76;
   }
 
   &__analogs_top {
