@@ -38,7 +38,7 @@
         <div class="section__contacts">
           <div class="section__contacts_side">
             <a href="tel:78124935048" class="section__contact"> +7 (812) 493-50-48 </a>
-            <p class="section__contacts_info">187026, Ленинградская обл., Тосненский район, г. Никольское, Ульяновское шоссе 5Ж</p>
+            <div class="section__contacts_info">187026, Ленинградская обл., Тосненский район, г. Никольское, Ульяновское шоссе 5Ж</div>
             <div class="section__contacts_worktime">
               Пн-Пт с 8:00 до 17:00
               <!-- {{ $t('sections.footer.worktime') }} -->
@@ -91,7 +91,7 @@ export default {
   computed: {
     ...mapGetters(['getDownloads']),
     filteredFileds() {
-      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD' && field.SID !== 'COMPANY')
+      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD')
     },
   },
 
