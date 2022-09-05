@@ -22,7 +22,7 @@
         <nuxt-link :to="localePath({ name: 'partners' })">Заказчикам</nuxt-link>
       </li>
       <li>
-        <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" download target="_black">{{ $t('buttons.download_catalog') }}</a>
+        <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" download="catalogue_Vineta" target="_black">{{ $t('buttons.download_catalog') }}</a>
       </li>
       <li>
         <a href="//vinetaboat.ru/" target="_blank">Катера и лодки</a>

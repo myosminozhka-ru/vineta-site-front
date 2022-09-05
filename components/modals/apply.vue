@@ -10,7 +10,6 @@
         <div v-if="!isSuccess" class="modal__form_in">
           <div class="modal__title">
             {{ $t('sections.modals.apply_vacancy') }}
-            {{ property }}
           </div>
           <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
             <!-- <pre>{{ formData }}</pre> -->
