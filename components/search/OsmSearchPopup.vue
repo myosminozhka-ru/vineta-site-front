@@ -25,7 +25,17 @@
                 </template>
             </div>
             <div class="seacrhModal__items">
-                <a :href="localePath(`/catalog/${product.SECTION.CODE}/${product.CODE}`)" class="seacrhModal__item" v-for="product in productsResult.slice(0, 4)" :key="product.index">
+                <nuxt-link 
+                    class="seacrhModal__item" 
+                    v-for="product in productsResult.slice(0, 4)" 
+                    :key="product.index"
+                    :to="
+                      localePath({
+                        name: 'catalog-catalogId-productId',
+                        params: { productId: product.CODE },
+                      })
+                    "
+                >
                     <div class="products__item_image">
                         <div class="image_container">
                             <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="">
@@ -35,7 +45,7 @@
                         <span class="products__item_name">{{ product.NAME }}</span>
                         <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
                     </div>
-                </a>
+                </nuxt-link>
             </div>
         </div>
     </div>

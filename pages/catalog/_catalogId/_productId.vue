@@ -357,7 +357,17 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <nuxt-link v-for="prod in analogsItems.slice(0, 4)" :key="prod.index" :to="localePath(`/catalog/${prod.SECTION.CODE}/${prod.CODE}`)" class="products__item">
+              <nuxt-link 
+                v-for="prod in analogsItems.slice(0, 4)" 
+                :key="prod.index"
+                class="products__item"
+                :to="
+                  localePath({
+                    name: 'catalog-catalogId-productId',
+                    params: { productId: prod.CODE },
+                  })
+                "
+              >
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
                   <div class="image_container">
