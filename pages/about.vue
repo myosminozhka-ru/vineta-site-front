@@ -334,7 +334,7 @@ export default {
   }
 
   @media all and (max-width: 1280px) {
-    padding: 20px 146px 20px 20px;
+    padding: 20px 20px 20px 20px;
     height: calc(100vh - 170px);
   }
 

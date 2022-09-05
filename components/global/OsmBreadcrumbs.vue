@@ -7,7 +7,11 @@
       </svg>
     </div>
     <ul class="breadcrumbs__list">
-      <li v-for="(item, index) in listItems" :key="index" class="breadcrumbs__item">
+      <li 
+        v-for="(item, index) in getBreadcrumbs" 
+        :key="index" class="breadcrumbs__item" 
+        :class="{hide_on_mobile: index !== getBreadcrumbs.length - 1}"
+      >
         <template v-if="item.isLink && !item.params">
           <a :href="localePath({ name: item.link })">{{ item.name }}</a>
           <span class="breadcrumbs__item--delim hide_on_mobile">/</span>
@@ -21,25 +25,6 @@
         </template>
       </li>
     </ul>
-    <!-- <li v-for="(br, key) in getBreadcrumbs" :key="br.index" class="breadcrumbs__item" :class="{ hide_on_mobile: isBCrumbsOnMobileProductPage() ? key !== 2 : false || key > 0 }">
-      {{ isBCrumbsOnMobileProductPage() && key == 2 }}
-      <template v-if="br.isLink && !br.params">
-        <a :href="localePath({ name: br.link })">{{ br.name }}</a>
-      </template>
-      <template v-else-if="br.isLink && br.params">
-        <a :href="localePath({ name: br.link, params: br.params })">{{ br.name }}</a>
-      </template>
-      <template v-else>
-        <span>{{ br.name }}</span>
-      </template>
-      <span v-if="key !== getBreadcrumbs.length - 1" class="breadcrumbs__item--delim hide_on_mobile">/</span>
-    </li> -->
-    <!-- <li class="breadcrumbs__item breadcrumbs__item--delim hide_on_mobile">
-            
-        </li> 
-        <li class="breadcrumbs__item hideOffMobile">
-            <a :href="{name: getBreadcrumbs[0].link}">{{ getBreadcrumbs[0].name }}</a>
-        </li> -->
   </div>
 </template>
 
@@ -53,16 +38,9 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['getBreadcrumbs']),
-    listItems() {
-      return this.getBreadcrumbs.filter((item) => item.name !== undefined)
-    },
+    ...mapGetters(['getBreadcrumbs'])
   },
   methods: {
-    isBCrumbsOnMobileProductPage() {
-      // return this.$route.matched.length === 3 && this.$route.matched[2].path === '/ru/catalog/:catalogId/:productId'
-      return false
-    },
     toBack() {
       const arrayPath = this.$route.path.split('/')
 

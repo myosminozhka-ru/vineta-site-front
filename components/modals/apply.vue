@@ -10,6 +10,7 @@
         <div v-if="!isSuccess" class="modal__form_in">
           <div class="modal__title">
             {{ $t('sections.modals.apply_vacancy') }}
+            {{ property }}
           </div>
           <div v-for="field in fields.value" :key="field.index" class="osm__form_field">
             <!-- <pre>{{ formData }}</pre> -->
@@ -17,7 +18,7 @@
               <input v-model="formData[field.SID]" type="hidden" :name="field.SID" />
             </template>
             <template v-else-if="field.SID === 'VACANCY_NAME'">
-              <input v-model="formData[field.SID]" type="hidden" :name="field.SID" />
+              <input :value="formData.VACANCY_NAME" type="text" :name="field.SID" class="osm__input modal__input" disabled />
             </template>
             <template v-else-if="field.FIELD_TYPE === 'file'">
               <label>
