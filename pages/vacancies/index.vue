@@ -125,7 +125,7 @@ export default {
     line-height: 140%;
     color: #172242;
     @media all and (max-width: 1280px) {
-      width: 446px;
+      width: 745px;
       font-size: 30px;
     }
     @media all and (max-width: 840px) {

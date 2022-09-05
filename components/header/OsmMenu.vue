@@ -79,10 +79,7 @@
             <a
               target="_blank"
               v-show="'PROPERIES' in getDownloads['katalog-produktsii']"
-              :href="
-                $vareibles.remote +
-                getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC
-              "
+              :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC"
               class="menu__modal_file"
               :download="getDownloads['katalog-produktsii'].NAME === 'Каталог продукции' ? 'catalogue_Vineta' : ''"
             >
@@ -147,11 +144,9 @@
             <a
               target="_blank"
               v-show="'PROPERIES' in getDownloads['katalog-produktsii']"
-              :href="
-                $vareibles.remote +
-                getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC
-              "
-              class="menu__modal_file"
+              :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC"
+              class="menu__modal_file" 
+              download="catalogue_Vineta"
             >
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />

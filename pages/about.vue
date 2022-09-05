@@ -352,7 +352,7 @@ export default {
     color: #172242;
 
     @media all and (max-width: 1280px) {
-      width: 446px;
+      width: 745px;
       font-size: 30px;
     }
 
