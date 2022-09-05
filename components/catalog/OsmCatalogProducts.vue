@@ -205,7 +205,6 @@ export default {
     this.products = []
   },
   async mounted() {
-    console.log('mounted', this.$route.params.catalogId)
     this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`)
 
     setTimeout(() => {

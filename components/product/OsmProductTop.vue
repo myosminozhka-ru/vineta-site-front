@@ -20,7 +20,7 @@
     <div class="product__header_buttons hide_on_mobile">
       <div v-if="offersCount.length > 1" class="product__header_mods" @click="scrollToModifications">Модификаций ({{ offersCount.length }})</div>
       <template v-if="getDownloads['katalog-produktsii']">
-        <a v-if="'PROPERIES' in getDownloads['katalog-produktsii']" :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank" class="product__link">
+        <a v-if="'PROPERIES' in getDownloads['katalog-produktsii']" :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank" download="catalogue_Vineta" class="product__link">
           <div class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="0 0 15 21" fill="none">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M6.33396 17.2091L6.33396 0H8.18582L8.18581 17.2091L12.4977 12.8972C12.8593 12.5356 13.4456 12.5356 13.8072 12.8972C14.1688 13.2588 14.1688 13.845 13.8072 14.2066L7.91462 20.0992C7.55302 20.4608 6.96676 20.4608 6.60516 20.0992L0.712604 14.2066C0.351007 13.845 0.351007 13.2588 0.712604 12.8972C1.0742 12.5356 1.66046 12.5356 2.02206 12.8972L6.33396 17.2091Z" fill="#FF0040" />

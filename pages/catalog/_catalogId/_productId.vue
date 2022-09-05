@@ -628,7 +628,7 @@ export default {
 @media print {
   @page {
     size: auto;
-    margin: 0 1.2cm;
+    margin: 0.7cm 1.2cm;
   }
 }
 

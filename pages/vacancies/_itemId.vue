@@ -116,7 +116,7 @@ export default {
             // console.log('openApplyModal');
             this.toggleModal({
                 isOpened: true,
-                type: 'apply'
+                type: 'apply',
             });
         },
         ...mapActions(['addBreadcrumbs']),
