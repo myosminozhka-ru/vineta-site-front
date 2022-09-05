@@ -114,6 +114,7 @@ export default {
     background: #d7dce1;
     margin-bottom: rem(40);
     display: block;
+    padding: 20px;
     @media all and (max-width: 1280px) {
       margin-bottom: 30px;
     }
@@ -136,10 +137,10 @@ export default {
     img {
       position: absolute;
       top: 0;
+      left: 0;
       width: 100%;
-      left: 50%;
       height: 100%;
-      transform: translateX(-50%);
+      object-fit: contain;
     }
   }
   &__item_name {
