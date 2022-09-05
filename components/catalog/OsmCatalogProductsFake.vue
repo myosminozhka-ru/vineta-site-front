@@ -9,7 +9,7 @@
         </svg>
       </div>
       <div class="products__item-wrap">
-        <nuxt-link class="products__item-content" :to="localePath(`/catalog/${product.SECTION.CODE}/${product.CODE}`)">
+        <nuxt-link class="products__item-content" :to="localePath(`/catalog/${product.SECTION}/${product.CODE}`)">
           <div class="products__item_image">
             <div class="image_container">
               <img v-if="product.PREVIEW_PICTURE" :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" />

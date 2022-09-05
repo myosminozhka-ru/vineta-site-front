@@ -160,20 +160,22 @@
                   <!-- <pre>
                     {{ product[0].OFFERS.length }}
                   </pre> -->
-                  <div v-for="mod in product[0].OFFERS" :key="mod.index" class="productPage__mods--mod">
-                    <div class="productPage__mods--mods_titles">
-                      <div v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_title">
-                        {{ proper.NAME }}
-                      </div>
-                    </div>
-                    <div class="productPage__mods--mods_items">
-                      <div class="productPage__mods--mods_item">
-                        <div v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_val">
+                  <table class="productPage__mods--mods_table">
+                    <thead>
+                      <tr>
+                        <td v-for="(proper, index) in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="index" class="productPage__mods--mods_title-table">
+                          {{ proper.NAME }}
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="mod in product[0].OFFERS" :key="mod.index" class="productPage__mods--mod-table">
+                        <td v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_val-table">
                           {{ proper.VALUE }}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div class="productPage__buttons">
@@ -1221,6 +1223,12 @@ export default {
     display: none;
   }
 
+  &__mods--mods_table {
+    td {
+      border-bottom: 1px solid #d7dce1;
+    }
+  }
+
   &__mods--char_title {
     font-style: normal;
     font-weight: 600;
@@ -1266,7 +1274,8 @@ export default {
     // }
   }
 
-  &__mods--mods_title {
+  &__mods--mods_title,
+  &__mods--mods_title-table {
     font-style: normal;
     font-weight: 400;
     font-size: rem(16);
@@ -1319,7 +1328,8 @@ export default {
     }
   }
 
-  &__mods--mods_val {
+  &__mods--mods_val,
+  &__mods--mods_val-table {
     min-width: rem(223);
     max-width: rem(223);
     font-style: normal;
