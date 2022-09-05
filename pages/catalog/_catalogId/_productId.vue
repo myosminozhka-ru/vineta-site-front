@@ -472,6 +472,7 @@ export default {
         openedMod: 0,
       },
       product: null,
+      products: [],
       prodsSlider: null,
       offersCount: [],
       printUpText: '187026, Санкт-Петербург, Ленинградская обл., Тосненский район, <br>г. Никольское, Ульяновское шоссе, 5Г <br>тел./факс: +7(812) 493-50-48 info@vineta.ru',
@@ -480,6 +481,7 @@ export default {
   async fetch() {
     await this.setLoadedStatus(false)
     this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`)
+    this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`)
     await this.setLoadedStatus(true)
   },
   head() {
@@ -526,10 +528,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getProducts']),
     ...mapGetters(['getDownloads']),
     analogsItems() {
-      return this.getProducts.filter((elem) => elem.SECTION === this.product[0].SECTION)
+      return this.products.slice(1, 5)
     },
     hasChar() {
       const first = !!(this.product[0].PROPERIES && this.product[0].PROPERIES.find(i => i.NAME !== null))
@@ -551,6 +552,7 @@ export default {
     //  this.setLoadedStatus(false)
   },
   async mounted() {
+    console.log('mounted', this.$route.params)
     await this.$fetch()
     this.addBreadcrumbs([
       {
@@ -564,10 +566,10 @@ export default {
         isLink: true,
       },
       {
-        name: this.product[0].SECTION.NAME,
+        name: this.product[0].NAME,
         link: 'catalog-catalogId',
         params: {
-          catalogId: this.product[0].SECTION.CODE,
+          catalogId: this.product[0].SECTION,
         },
         isLink: true,
       },
