@@ -1312,8 +1312,7 @@ export default {
     }
 
     @media all and (max-width: 1280px) {
-      display: flex;
-      flex-direction: column;
+      display: block;
       border: none !important;
     }
   }
@@ -1346,6 +1345,13 @@ export default {
         border-bottom: 1px solid #d7dce1;
         padding-bottom: 15px;
         margin-bottom: 0;
+      }
+    }
+
+    @media all and (max-width: 860px) {
+      display: block;
+      &:first-child {
+        border-top: none;
       }
     }
   }

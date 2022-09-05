@@ -26,15 +26,10 @@
             </div>
             <div class="seacrhModal__items">
                 <nuxt-link 
-                    class="seacrhModal__item" 
                     v-for="product in productsResult.slice(0, 4)" 
-                    :key="product.index"
-                    :to="
-                      localePath({
-                        name: 'catalog-catalogId-productId',
-                        params: { productId: product.CODE },
-                      })
-                    "
+                    :key="product.ID"
+                    :to="localePath(`/catalog/${product.SECTION}/${product.CODE}`)" 
+                    class="seacrhModal__item" 
                 >
                     <div class="products__item_image">
                         <div class="image_container">
