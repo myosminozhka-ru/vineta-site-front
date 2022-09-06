@@ -40,6 +40,9 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
+  data: () => ({
+    searchText: '',
+  }),
   computed: {
     ...mapGetters(['getProducts']),
     ...mapGetters(['getModals']),
@@ -47,12 +50,17 @@ export default {
       return this.getProducts.filter((product) => product.NAME.toLowerCase().includes(this.searchText.toLowerCase()) && this.searchText)
     },
   },
-  data: () => ({
-    searchText: '',
-  }),
-  mounted() {
-    // console.log(this.getProducts);
+  watch: {
+    '$route.params': {
+      handler() {
+        this.closeSearch()
+      },
+      deep: true,
+      immediate: true,
+    },
   },
+  mounted() {},
+
   methods: {
     ...mapActions(['toggleModal']),
     closeSearch() {
@@ -167,6 +175,10 @@ export default {
         font-size: 20px;
       }
     }
+
+    @media all and (max-width: 960px) {
+      width: calc(100% - 70px);
+    }
   }
   &__button {
     width: rem(50);
@@ -178,6 +190,11 @@ export default {
     padding: 10px;
     box-sizing: border-box;
     cursor: pointer;
+
+    @media all and (max-width: 960px) {
+      flex-shrink: 0;
+      margin-right: 20px;
+    }
   }
   &__result {
     margin-top: rem(40);
