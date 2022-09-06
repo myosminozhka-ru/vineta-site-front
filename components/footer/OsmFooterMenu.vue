@@ -28,16 +28,16 @@
         <a href="//vinetaboat.ru/" target="_blank">Катера и лодки</a>
       </li>
       <li>
-        <a href="/static/files/vineta_book_TP_rus_001.pdf" download target="_blank">Оборудование топливоподготовки</a>
+        <a href="/files/vineta_book_TP_rus_001.pdf" download target="_blank">Оборудование топливоподготовки</a>
       </li>
       <li>
-        <a href="/static/files/Vineta_book_VO_rus_ver012.pdf" download target="_blank">Оборудование водоподготовки и водоочистки</a>
+        <a href="/files/Vineta_book_VO_rus_ver012.pdf" download target="_blank">Оборудование водоподготовки и водоочистки</a>
       </li>
       <li>
-        <a href="/static/files/vineta_book_TO_002.pdf" download target="_blank">Теплообменное оборудование</a>
+        <a href="/files/vineta_book_TO_002.pdf" download target="_blank">Теплообменное оборудование</a>
       </li>
       <li>
-        <a href="/static/files/Vineta_book_VGO_ru_002.pdf" download target="_blank">Оборудование воздухо и газоочистки</a>
+        <a href="/files/Vineta_book_VGO_ru_002.pdf" download target="_blank">Оборудование воздухо и газоочистки</a>
       </li>
     </ul>
     <ul class="opened isOpened">

@@ -20,8 +20,8 @@
           <div class="title">Описание</div>
           <div class="value">{{ product[0].DETAIL_TEXT }}</div>
         </div>
-        <div class="productPage__text--title">Основные характеристики</div>
-        <div v-if="offersCount.length === 1">
+        <div class="productPage__text--title no-print">Основные характеристики</div>
+        <div v-if="offersCount.length === 1" class="no-print">
           <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__print--stat">
             <div>
               <div class="productPage__mods--char_title">
@@ -33,7 +33,7 @@
             </div>
           </div>
         </div>
-        <div v-if="'PROPERIES' in product[0]" class="productPage__texts">
+        <div v-if="'PROPERIES' in product[0]" class="productPage__texts no-print">
           <div v-for="item in product[0].PROPERIES" :key="item.index" class="productPage__text">
             <template v-if="'NAME' in item && item.NAME">
               <div class="title">{{ item.NAME }}</div>
@@ -483,7 +483,7 @@ export default {
       products: [],
       prodsSlider: null,
       offersCount: [],
-      printUpText: '187026, Санкт-Петербург, Ленинградская обл., Тосненский район, <br>г. Никольское, Ульяновское шоссе, 5Г <br>тел./факс: +7(812) 493-50-48 info@vineta.ru',
+      printUpText: '187026, Санкт-Петербург, Ленинградская обл., Тосненский район, <br>г. Никольское, Ульяновское шоссе, 5Ж <br>тел./факс: +7(812) 493-50-48 info@vineta.ru',
     }
   },
   async fetch() {
@@ -607,6 +607,33 @@ export default {
       }, 500)
     }
   },
+  updated() {
+    this.addBreadcrumbs([
+      {
+        name: 'Главная',
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: 'Каталог',
+        link: 'catalog',
+        isLink: true,
+      },
+      {
+        name: this.product[0].SECTION_ARRAY.NAME,
+        link: 'catalog-catalogId',
+        params: {
+          catalogId: this.product[0].SECTION,
+        },
+        isLink: true,
+      },
+      {
+        name: this.product[0].NAME,
+        isLink: false,
+      },
+    ])
+
+  },
   methods: {
     ...mapActions(['toggleModal']),
     ...mapActions('localStorage', ['addFavorites']),
@@ -638,7 +665,7 @@ export default {
       } else {
         this.tabs.openedMod = index
       }
-    }
+    },
   },
 }
 </script>
@@ -648,6 +675,11 @@ export default {
   @page {
     size: auto;
     margin: 0.7cm 1.2cm;
+  }
+}
+.no-print {
+  @media print {
+    display: none !important;
   }
 }
 

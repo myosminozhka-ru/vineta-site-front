@@ -17,7 +17,9 @@
               <input v-model="formData[field.SID]" type="hidden" :name="field.SID" />
             </template>
             <template v-else-if="field.SID === 'VACANCY_NAME'">
-              <input :value="property" type="text" :name="field.SID" class="osm__input modal__input" disabled />
+              <template v-if="property">
+                <input :value="property" type="text" :name="field.SID" class="osm__input modal__input" disabled />
+              </template>
             </template>
             <template v-else-if="field.FIELD_TYPE === 'file'">
               <label>
