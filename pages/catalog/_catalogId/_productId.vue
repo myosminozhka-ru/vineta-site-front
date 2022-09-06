@@ -344,7 +344,7 @@
         </div>
       </div>
 
-      <div class="productPage__analogs">
+      <div class="productPage__analogs" v-show="false && analogsItems.length">
         <div class="productPage__analogs_top">
           <div class="title">Аналоги</div>
           <div class="productPage__analogs_top_arrows hide_on_desktop">
@@ -365,11 +365,11 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <nuxt-link 
+              <a 
                 v-for="prod in analogsItems.slice(0, 4)" 
-                :key="prod.index"
+                :key="prod.CODE"
                 class="products__item"
-                :to="
+                :href="
                   localePath({
                     name: 'catalog-catalogId-productId',
                     params: { productId: prod.CODE },
@@ -396,7 +396,7 @@
                     </div>
                   </div>
                 </div>
-              </nuxt-link>
+              </a>
             </div>
           </div>
         </div>
@@ -538,7 +538,7 @@ export default {
   computed: {
     ...mapGetters(['getDownloads']),
     analogsItems() {
-      return this.products.slice(1, 5)
+      return this.products.filter(i => i.ID !== this.product[0].ID).slice(0, 4)
     },
     hasChar() {
       const first = !!(this.product[0].PROPERIES && this.product[0].PROPERIES.find(i => i.NAME !== null))
@@ -595,7 +595,7 @@ export default {
       setTimeout(() => {
         this.prodsSlider = new Glide('.productPage__analogs .values.glide', {
           perView: 3,
-          type: 'carousel',
+          type: 'slider',
 
           breakpoints: {
             860: {
@@ -632,7 +632,7 @@ export default {
         isLink: false,
       },
     ])
-
+    
   },
   methods: {
     ...mapActions(['toggleModal']),
