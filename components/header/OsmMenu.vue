@@ -111,7 +111,7 @@
               </div>
             </a>
 
-            <a target="_blank" href="~/assets/files/vineta_book_TP_rus_001.pdf" class="menu__modal_file" download="">
+            <a target="_blank" href="/files/vineta_book_TP_rus_001.pdf" class="menu__modal_file" download="">
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />
               </div>
@@ -129,7 +129,7 @@
               </div>
             </a>
 
-            <a target="_blank" href="~/assets/files/Vineta_book_VO_rus_ver012.pdf" class="menu__modal_file" download="">
+            <a target="_blank" href="/files/Vineta_book_VO_rus_ver012.pdf" class="menu__modal_file" download="">
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />
               </div>
@@ -147,7 +147,7 @@
               </div>
             </a>
 
-            <a target="_blank" href="~/assets/files/vineta_book_TO_002.pdf" class="menu__modal_file" download="">
+            <a target="_blank" href="/files/vineta_book_TO_002.pdf" class="menu__modal_file" download="">
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />
               </div>
@@ -165,7 +165,7 @@
               </div>
             </a>
 
-            <a target="_blank" href="~/assets/files/Vineta_book_VGO_ru_002.pdf" class="menu__modal_file" download="">
+            <a target="_blank" href="/files/Vineta_book_VGO_ru_002.pdf" class="menu__modal_file" download="">
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />
               </div>
