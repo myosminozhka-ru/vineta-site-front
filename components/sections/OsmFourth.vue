@@ -11,10 +11,8 @@
         <div class="section__right">
             <!-- <pre style="font-size: 15rem">{{ getMainMore }}</pre> -->
             <div class="section__content">
-                <osm-h1 class="section__title">{{ fourthData.NAME }}</osm-h1>
-                <div class="section__text">
-                    {{ fourthData.PREVIEW_TEXT }}
-                </div>
+                <osm-h1 class="section__title" v-html="fourthData.NAME"></osm-h1>
+                <div class="section__text" v-html="fourthData.PREVIEW_TEXT"></div>
                 <osm-button class="section__button" link="techs">{{ $t('buttons.more') }}</osm-button>
             </div>
         </div>
