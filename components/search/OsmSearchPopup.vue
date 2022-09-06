@@ -120,6 +120,10 @@ export default {
     display: flex;
     justify-content: flex-end;
     margin-bottom: rem(9);
+
+    @media all and (max-width: 960px) {
+      margin-bottom: rem(50);
+    }
   }
   &__closer {
     width: rem(50);
@@ -177,7 +181,7 @@ export default {
     }
 
     @media all and (max-width: 960px) {
-      width: calc(100% - 70px);
+      width: calc(100% - 80px);
     }
   }
   &__button {
