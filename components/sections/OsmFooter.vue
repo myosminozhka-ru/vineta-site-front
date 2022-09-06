@@ -21,7 +21,7 @@
           <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input section__input" v-model="formData[field.VARNAME]" />
           <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
         </div>
-        <p style="font-size: 12rem">
+          <p style="font-size: 12rem">
             Заполняя данную форму, вы принимаете условия
             <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
             об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных

@@ -20,8 +20,8 @@
           <div class="title">Описание</div>
           <div class="value">{{ product[0].DETAIL_TEXT }}</div>
         </div>
-        <div class="productPage__text--title no-print">Основные характеристики</div>
-        <div v-if="offersCount.length === 1" class="no-print">
+        <div class="productPage__text--title">Основные характеристики</div>
+        <div v-if="offersCount.length === 1">
           <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__print--stat">
             <div>
               <div class="productPage__mods--char_title">
@@ -344,7 +344,7 @@
         </div>
       </div>
 
-      <div class="productPage__analogs" v-show="false && analogsItems.length">
+      <div class="productPage__analogs" v-show="analogsItems && analogsItems.length">
         <div class="productPage__analogs_top">
           <div class="title">Аналоги</div>
           <div class="productPage__analogs_top_arrows hide_on_desktop">
