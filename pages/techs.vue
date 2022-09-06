@@ -6,7 +6,7 @@
     </div>
     <div class="sections" :data-id="activeIndex">
       <osm-first-section :class="{ isActive: activeIndex === 0 }" :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" @toNext="goToNext" />
-      <osm-second-section :class="{ isActive: activeIndex === 1 }" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
+      <osm-second-section id="second" :class="{ isActive: activeIndex === 1 }" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-third-section :class="{ isActive: activeIndex === 2 }" :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-fourth-section :class="{ isActive: activeIndex === 3 }" :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-fiveth-section :class="{ isActive: activeIndex === 4 }" :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
@@ -94,6 +94,7 @@ export default {
     setTimeout(() => {
       if (window.innerWidth <= 1024) {
         this.activeIndex = -1
+        this.scollTo()
       }
       if (window.innerWidth > 1024) {
         this.sections = document.querySelectorAll('.section')
@@ -115,6 +116,10 @@ export default {
             this.isInProgress = true
           }
         })
+
+        if (this.$route.hash === '#second') {
+          this.activeIndex = 1
+        }
       }
     }, 500)
   },
@@ -136,17 +141,20 @@ export default {
         this.isInProgress = false
       }, 500)
     },
+    scollTo() {
+      const sectionBottom = document.querySelector('.section__bottom--tech .title')
+      const elementPosition = sectionBottom.getBoundingClientRect().top
+
+      window.scrollBy({
+        top: elementPosition,
+        behavior: 'smooth',
+      })
+    },
     goToNext() {
       if (window.innerWidth > 1024) {
         this.activeIndex = 1
       } else {
-        const sectionBottom = document.querySelector('.section__bottom--tech .title')
-        const elementPosition = sectionBottom.getBoundingClientRect().top
-
-        window.scrollBy({
-          top: elementPosition,
-          behavior: 'smooth',
-        })
+        this.scollTo()
       }
     },
   },
