@@ -21,7 +21,7 @@
         <template v-else> Ничего не найдено </template>
       </div>
       <div class="seacrhModal__items">
-        <nuxt-link v-for="product in productsResult.slice(0, 4)" :key="product.ID" :to="localePath(`/catalog/${product.SECTION}/${product.CODE}`)" class="seacrhModal__item">
+        <a v-for="product in productsResult.slice(0, 4)" :key="product.ID" :href="localePath(`/catalog/${product.SECTION}/${product.CODE}`)" class="seacrhModal__item">
           <div class="products__item_image">
             <div class="image_container">
               <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" />
@@ -31,7 +31,7 @@
             <span class="products__item_name">{{ product.NAME }}</span>
             <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
           </div>
-        </nuxt-link>
+        </a>
       </div>
     </div>
   </div>
