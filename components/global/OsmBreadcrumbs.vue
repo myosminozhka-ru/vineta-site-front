@@ -9,7 +9,7 @@
     <ul class="breadcrumbs__list">
       <li 
         v-for="(item, index) in getBreadcrumbs" 
-        :key="index" class="breadcrumbs__item" 
+        :key="item.name" class="breadcrumbs__item" 
         :class="{hide_on_mobile: index !== getBreadcrumbs.length - 1}"
       >
         <template v-if="item.isLink && !item.params">
@@ -52,6 +52,11 @@ export default {
       //   this.$router.go(-1)
     },
   },
+  watch: {
+    '$route' (to, from){
+        this.$forceUpdate();
+    }
+  }
 }
 </script>
 
