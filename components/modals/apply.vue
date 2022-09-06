@@ -112,6 +112,7 @@ export default {
         isOpened: false,
         type: 'apply',
       })
+      this.$emit('close')
     },
     sendForm() {
       const formObj = { ...this.formData }
