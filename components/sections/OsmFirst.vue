@@ -72,8 +72,6 @@ export default {
       deep: true,
       handler(newVal, oldVal) {
         const [newPropertyA, newProvertyB] = newVal.split('|')
-        console.log('newPropertyA: ', newPropertyA)
-        console.log('newProvertyB: ', newProvertyB)
         if (newProvertyB !== 'null' && newPropertyA === 'true' && window.innerWidth > 1280) {
           this.video.play()
         } else if (newProvertyB !== 'null' && newProvertyB !== 'true' && window.innerWidth > 1280) {
