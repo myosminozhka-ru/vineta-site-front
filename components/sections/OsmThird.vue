@@ -1,5 +1,5 @@
 <template>
-  <section class="section section__item section__item--third" v-if="thirdData">
+  <section v-if="thirdData" class="section section__item section__item--third">
     <div class="section__left">
       <video id="third-video" muted loop autoplay class="section__left_video">
         <source type="video/webm" src="~/assets/video/5.webm" />
@@ -9,16 +9,10 @@
       <div class="section__content">
         <div class="glide__track" data-glide-el="track">
           <div class="glide__slides">
-            <div
-              v-for="item in 1"
-              :key="item.index"
-              class="section__slide glide__slide"
-            >
+            <div v-for="item in 1" :key="item.index" class="section__slide glide__slide">
               <osm-h1 class="section__title">{{ thirdData.NAME }}</osm-h1>
               <div class="section__text" v-html="thirdData.PREVIEW_TEXT" />
-              <osm-button class="section__button" link="history">{{
-                $t('buttons.more')
-              }}</osm-button>
+              <osm-button class="section__button" link="history">{{ $t('buttons.more') }}</osm-button>
             </div>
           </div>
         </div>
@@ -60,10 +54,20 @@ export default {
       return `${this.isActive}|${this.video}`
     },
   },
-  methods: {
-    playVideo() {
-      this.isVideoPlayed = true
-      this.$refs.secondVideo.play()
+  watch: {
+    combined: {
+      immediate: true,
+      deep: true,
+      handler(newVal, oldVal) {
+        const [newPropertyA, newProvertyB] = newVal.split('|')
+
+        if (newProvertyB !== 'null' && newPropertyA === 'true') {
+          this.video.play()
+        } else if (newProvertyB !== 'null' && newProvertyB !== 'true') {
+          this.video.pause()
+          this.video.load()
+        }
+      },
     },
   },
   beforeDestroy() {
@@ -74,21 +78,10 @@ export default {
       this.video = document.getElementById('third-video')
     })
   },
-  watch: {
-    combined: {
-      immediate: true,
-      deep: true,
-      handler(newVal, oldVal) {
-        console.log('combined')
-        const [newPropertyA, newProvertyB] = newVal.split('|')
-
-        if (newProvertyB !== 'null' && newPropertyA === 'true') {
-          this.video.play()
-        } else if (newProvertyB !== 'null' && newProvertyB !== 'true') {
-          this.video.pause()
-          this.video.load()
-        }
-      },
+  methods: {
+    playVideo() {
+      this.isVideoPlayed = true
+      this.$refs.secondVideo.play()
     },
   },
 }
