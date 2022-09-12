@@ -2,6 +2,7 @@
   <nav class="header__menu" @mouseleave="closeModals">
     <!-- <pre style="font-size: 15rem">
       {{ getMainMore.downloads }}
+      test
     </pre> -->
     <ul class="header__ul hide_on_mobile">
       <li class="header__li has-child" @mouseenter.stop="openModal(123)" :data-modal-to-open="123">
