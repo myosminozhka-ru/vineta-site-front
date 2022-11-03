@@ -10,11 +10,16 @@
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
+<<<<<<< HEAD
                         <img :src="require('~/assets/img/techs/6.jpg')" alt="">
+=======
+                        <img :src="dataObject.PREVIEW_PICTURE" alt="">
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">05</div>
                         <div class="texts">
+<<<<<<< HEAD
                             <div class="title">Контрольно-сдаточный этап</div>
 
                             <p class="text">
@@ -22,6 +27,17 @@
                             испытаний макс.давлением до 500 кгс/см.кв. (Аттестат №180/4).<br>
                             Оборудована лаборатория неразрушающего контроля.
                             </p>
+=======
+                            <div class="title">{{ dataObject.NAME }}</div>
+
+                            <div v-html="dataObject.PREVIEW_TEXT"></div>
+
+<!--                            <p class="text">-->
+<!--                            Предприятие располагает стендом для проведения гидравлических-->
+<!--                            испытаний макс.давлением до 500 кгс/см.кв. (Аттестат №180/4).<br>-->
+<!--                            Оборудована лаборатория неразрушающего контроля.-->
+<!--                            </p>-->
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                         </div>
                     </div>
                 </div>
@@ -37,9 +53,114 @@ export default {
     // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')
   },
+<<<<<<< HEAD
 }
 </script>
 
+=======
+  props: {
+    dataObject: {
+      type: Object,
+      default: () => ({})
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: rem(30);
+    margin-bottom: rem(30);
+    line-height: 140%;
+    color: #172242;
+    @media all and (max-width: 1280px) {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+}
+.list {
+    padding: 0;
+    margin: 0;
+    padding-left: rem(24);
+    @media all and (max-width: 1280px) {
+        padding-left: 24px;
+    }
+    &:not(:last-child) {
+        margin-bottom: rem(40);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 40px;
+        }
+    }
+    li {
+        font-style: normal;
+        font-weight: 400;
+        font-size: rem(18);
+        line-height: 140%;
+        color: #555F76;
+        @media all and (max-width: 1280px) {
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        &:not(:last-child) {
+            margin-bottom: rem(10);
+            @media all and (max-width: 1280px) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+.subtitle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: rem(18);
+    line-height: 140%;
+    color: #172242;
+    @media all and (max-width: 1280px) {
+        font-size: 16px;
+    }
+    &:not(:last-child) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 20px;
+        }
+    }
+}
+.text {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: rem(18);
+    line-height: 140%;
+    color: #555F76;
+    @media all and (max-width: 1280px) {
+        font-size: 16px;
+    }
+    &:not(:last-child) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 20px;
+        }
+    }
+}
+.line {
+    height: rem(2);
+    background: #D7DCE1;
+    border-radius: 20px;
+    @media all and (max-width: 1280px) {
+        height: 2px;
+    }
+    &:not(:last-child) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 20px;
+        }
+    }
+}
+</style>
+
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 <style lang="scss" scoped>
 .section {
     background: #fff;
@@ -261,4 +382,8 @@ overflow: auto;
     width: 100%;
     box-sizing: border-box;
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e

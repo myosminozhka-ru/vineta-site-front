@@ -18,6 +18,10 @@
     "@glidejs/glide": "^3.5.2",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/i18n": "^7.2.3",
+<<<<<<< HEAD
+=======
+    "@nuxtjs/recaptcha": "^1.1.1",
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
     "@openafg/nuxt-fullpage": "^1.0.5",
     "core-js": "^3.19.3",
     "dat.gui": "^0.7.9",
@@ -46,6 +50,10 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
+<<<<<<< HEAD
+=======
+    "@nuxt/types": "~2.15.0",
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
     "@nuxtjs/eslint-config": "^8.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/style-resources": "^1.2.1",

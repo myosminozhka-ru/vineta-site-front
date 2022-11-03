@@ -92,12 +92,26 @@ export default {
     ...mapActions(['toggleModal']),
     closeBuy() {
       this.isSuccess = false
+<<<<<<< HEAD
       this.formData = {}
+=======
+      this.clearFormData()
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
       this.toggleModal({
         isOpened: false,
         type: 'buy',
       })
     },
+<<<<<<< HEAD
+=======
+    clearFormData(){
+      for (const k in this.formData) {
+        if (k !== 'GOOD') {
+            delete this.formData[k];
+        }
+      }
+    },
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
     sendForm() {
       const formObj = { ...this.formData }
       // const form = this.formData.filter(item => item);
@@ -122,6 +136,11 @@ export default {
         }
         if (result.success) {
           this.isSuccess = true
+<<<<<<< HEAD
+=======
+          this.clearFormData()
+          this.errors = {}
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
         }
       })
     },

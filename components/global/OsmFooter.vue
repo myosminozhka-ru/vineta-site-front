@@ -22,7 +22,11 @@
       <template v-if="getDownloads['politika-konfedentsialnosti']">
         <div v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']" class="footer__bottom_right">
           <ul>
+<<<<<<< HEAD
             <li><a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a></li>
+=======
+            <li><a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">Политика конфиденциальности</a></li>
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
             <!-- <li><a href="#">Пользовательское соглашение</a></li>
                         <li><a href="#">Карта сайта</a></li> -->
           </ul>

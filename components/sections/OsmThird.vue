@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
   <section class="section section__item section__item--third" v-if="thirdData">
+=======
+  <section v-if="thirdData" class="section section__item section__item--third">
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
     <div class="section__left">
       <video id="third-video" muted loop autoplay class="section__left_video">
         <source type="video/webm" src="~/assets/video/5.webm" />
@@ -9,6 +13,7 @@
       <div class="section__content">
         <div class="glide__track" data-glide-el="track">
           <div class="glide__slides">
+<<<<<<< HEAD
             <div
               v-for="item in 1"
               :key="item.index"
@@ -19,6 +24,12 @@
               <osm-button class="section__button" link="history">{{
                 $t('buttons.more')
               }}</osm-button>
+=======
+            <div v-for="item in 1" :key="item.index" class="section__slide glide__slide">
+              <osm-h1 class="section__title">{{ thirdData.NAME }}</osm-h1>
+              <div class="section__text" v-html="thirdData.PREVIEW_TEXT" />
+              <osm-button class="section__button" link="history">{{ $t('buttons.more') }}</osm-button>
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
             </div>
           </div>
         </div>
@@ -60,6 +71,7 @@ export default {
       return `${this.isActive}|${this.video}`
     },
   },
+<<<<<<< HEAD
   methods: {
     playVideo() {
       this.isVideoPlayed = true
@@ -74,12 +86,17 @@ export default {
       this.video = document.getElementById('third-video')
     })
   },
+=======
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
   watch: {
     combined: {
       immediate: true,
       deep: true,
       handler(newVal, oldVal) {
+<<<<<<< HEAD
         console.log('combined')
+=======
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
         const [newPropertyA, newProvertyB] = newVal.split('|')
 
         if (newProvertyB !== 'null' && newPropertyA === 'true') {
@@ -91,6 +108,23 @@ export default {
       },
     },
   },
+<<<<<<< HEAD
+=======
+  beforeDestroy() {
+    this.video = null
+  },
+  mounted() {
+    this.$nextTick().then(() => {
+      this.video = document.getElementById('third-video')
+    })
+  },
+  methods: {
+    playVideo() {
+      this.isVideoPlayed = true
+      this.$refs.secondVideo.play()
+    },
+  },
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 }
 </script>
 

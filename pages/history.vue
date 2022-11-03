@@ -60,7 +60,11 @@
                 <div class="line"></div>
                 <div class="sqare"></div>
               </div>
+<<<<<<< HEAD
               <div class="bottom" @click="selectedTime = key">
+=======
+              <div class="bottom" @click="clickOnDotted(key)">
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                 {{ item.NAME }}
               </div>
             </div>
@@ -167,10 +171,18 @@ export default {
     next() {
       if (this.selectedTime >= this.getHistory.length - 1) return
       this.selectedTime++
+<<<<<<< HEAD
+=======
+      this.closeMore()
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
     },
     prev() {
       if (this.selectedTime <= 0) return
       this.selectedTime--
+<<<<<<< HEAD
+=======
+      this.closeMore()
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
     },
     decodeHTML(html) {
       if (document) {
@@ -179,6 +191,18 @@ export default {
         return txt.value
       }
     },
+<<<<<<< HEAD
+=======
+    closeMore() {
+      this.modifyedHistory.forEach((item) => {
+        item.isTextShowed = false;
+      })
+    },
+    clickOnDotted(key) {
+      this.selectedTime = key;
+      this.closeMore()
+    }
+>>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
   },
 }
 </script>
