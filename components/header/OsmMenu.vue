@@ -50,44 +50,25 @@
             {{ $t('buttons.downloads') }}
           </osm-h2>
           <div class="menu__modal_list">
-<<<<<<< HEAD
-            <a v-show="'PROPERIES' in getDownloads['katalog-produktsii']" target="_blank" :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" class="menu__modal_file" :download="getDownloads['katalog-produktsii'].NAME === 'Каталог продукции' ? 'catalogue_Vineta' : ''">
-=======
 
             <a target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" v-for="item in catalogDownloadLinks" :key="item.CODE" download="">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />
               </div>
               <div class="text">
-<<<<<<< HEAD
-                <div class="top">
-                  {{ getDownloads['katalog-produktsii'].NAME }}
-                </div>
-                <div class="bottom">
-                  <span>PDF</span>
-=======
                 <div class="top">{{ item.NAME }}</div>
                 <div class="bottom">
                   <span>{{ (item.PROPERIES[0].VALUE.FILE_NAME)?.split('.')[1].toUpperCase() }}</span>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                   <div class="delim">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
                       <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
                     </svg>
                   </div>
-<<<<<<< HEAD
-                  <span>28.8 МБ</span>
-                </div>
-              </div>
-            </a>
-=======
                   <span>{{ sizeFile(item.PROPERIES[0].VALUE.FILE_SIZE) }}</span>
                 </div>
               </div>
             </a>
 
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
           </div>
         </div>
       </div>
@@ -105,118 +86,26 @@
             </li>
           </ul>
         </div>
-<<<<<<< HEAD
-        <div v-show="getDownloads['katalog-produktsii']" class="menu__modal_bottom">
-=======
         <div v-show="Object.keys(getDownloads).length" class="menu__modal_bottom">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
           <osm-h2 class="menu__modal_title">
             {{ $t('buttons.downloads') }}
           </osm-h2>
           <div class="menu__modal_list">
-<<<<<<< HEAD
-            <a v-show="'PROPERIES' in getDownloads['katalog-produktsii']" target="_blank" :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" class="menu__modal_file" download="catalogue_Vineta">
-              <div class="icon">
-                <img src="~/assets/img/download.svg" width="100%" alt="" />
-              </div>
-              <div class="text">
-                <div class="top">
-                  {{ getDownloads['katalog-produktsii'].NAME }}
-                </div>
-                <div class="bottom">
-                  <span>PDF</span>
-                  <div class="delim">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
-                      <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
-                    </svg>
-                  </div>
-                  <span>28.8 МБ</span>
-                </div>
-              </div>
-            </a>
-
-            <a target="_blank" href="/files/vineta_book_TP_rus_001.pdf" class="menu__modal_file" download="">
-              <div class="icon">
-                <img src="~/assets/img/download.svg" width="100%" alt="" />
-              </div>
-              <div class="text">
-                <div class="top">Оборудование топливоподготовки</div>
-                <div class="bottom">
-                  <span>PDF</span>
-                  <div class="delim">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
-                      <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
-                    </svg>
-                  </div>
-                  <span>3.7 МБ</span>
-                </div>
-              </div>
-            </a>
-
-            <a target="_blank" href="/files/Vineta_book_VO_rus_ver012.pdf" class="menu__modal_file" download="">
-              <div class="icon">
-                <img src="~/assets/img/download.svg" width="100%" alt="" />
-              </div>
-              <div class="text">
-                <div class="top">Оборудование водоподготовки и водоочистки</div>
-                <div class="bottom">
-                  <span>PDF</span>
-                  <div class="delim">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
-                      <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
-                    </svg>
-                  </div>
-                  <span>2.87 МБ</span>
-                </div>
-              </div>
-            </a>
-
-            <a target="_blank" href="/files/vineta_book_TO_002.pdf" class="menu__modal_file" download="">
-              <div class="icon">
-                <img src="~/assets/img/download.svg" width="100%" alt="" />
-              </div>
-              <div class="text">
-                <div class="top">Теплообменное оборудование</div>
-                <div class="bottom">
-                  <span>PDF</span>
-                  <div class="delim">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
-                      <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
-                    </svg>
-                  </div>
-                  <span>2.65 МБ</span>
-                </div>
-              </div>
-            </a>
-
-            <a target="_blank" href="/files/Vineta_book_VGO_ru_002.pdf" class="menu__modal_file" download="">
-=======
 
             <a target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" v-for="item in aboutDownloadLinks" :key="item.CODE" download="">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />
               </div>
               <div class="text">
-<<<<<<< HEAD
-                <div class="top">Оборудование воздухо и газоочистки</div>
-                <div class="bottom">
-                  <span>PDF</span>
-=======
                 <div class="top">{{ item.NAME }}</div>
                 <div class="bottom">
                   <span>{{ (item.PROPERIES[0].VALUE.FILE_NAME)?.split('.')[1].toUpperCase() }}</span>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                   <div class="delim">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
                       <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
                     </svg>
                   </div>
-<<<<<<< HEAD
-                  <span>1 МБ</span>
-=======
                   <span>{{ sizeFile(item.PROPERIES[0].VALUE.FILE_SIZE) }}</span>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                 </div>
               </div>
             </a>
@@ -303,8 +192,6 @@ export default {
     ...mapGetters(['getMainMore']),
     ...mapGetters(['getDownloads']),
     ...mapGetters('localStorage', ['getFavorites']),
-<<<<<<< HEAD
-=======
     catalogDownloadLinks() {
       const filterArray = [];
       for (const key in this.getDownloads) {
@@ -323,7 +210,6 @@ export default {
       }
       return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file');
     }
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
   },
   data: () => ({
     favoritesCount: 4,
@@ -407,8 +293,6 @@ export default {
       this.filteredFirstCatalog = firstArray
       this.filteredSecondCatalog = secondArray
     },
-<<<<<<< HEAD
-=======
     sizeFile(size) {
       if (size === 0) {
         return '0';
@@ -419,7 +303,6 @@ export default {
         return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
       }
     }
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
   },
 }
 </script>

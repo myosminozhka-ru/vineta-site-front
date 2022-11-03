@@ -7,11 +7,7 @@
         <osm-breadcrumbs />
         <div class="partners__title">Основные заказчики</div>
         <div class="partners__items">
-<<<<<<< HEAD
-          <div v-for="item in getPartners" :key="item.index">
-=======
           <div v-for="item in getPartners" :key="item.index" style="min-width: 0">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
             <div v-if="'PROPERIES' in item" class="partners__item">
               <!-- <pre>{{ item }}</pre> -->
               <div class="partners__item_top">
@@ -28,31 +24,19 @@
                     </div>
                     <div class="text">{{ item.ADRESS.VALUE }}</div>
                   </div>
-<<<<<<< HEAD
-                  <a :href="`mailto:${item.PROPERIES[1].VALUE}`" class="partners__contact_item email">
-=======
                   <a v-if="item.PROPERIES[1]" :href="`mailto:${item.PROPERIES[1].VALUE}`" class="partners__contact_item email">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="" />
                     </div>
                     <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                   </a>
-<<<<<<< HEAD
-                  <a :href="`tel:${item.PROPERIES[2].VALUE}`" class="partners__contact_item phone">
-=======
                   <a v-if="item.PROPERIES[2]" :href="`tel:${item.PROPERIES[2].VALUE}`" class="partners__contact_item phone">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="" />
                     </div>
                     <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
                   </a>
-<<<<<<< HEAD
-                  <div class="partners__contact_item">
-=======
                   <div v-if="item.PROPERIES[3]" class="partners__contact_item">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="" />
                     </div>
@@ -60,11 +44,7 @@
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
-              <a class="button" :href="`http://${item.PROPERIES[3].VALUE}`" target="_blank">Перейти на сайт</a>
-=======
               <a v-if="item.PROPERIES[3]" class="button" :href="`http://${item.PROPERIES[3].VALUE}`" target="_blank">Перейти на сайт</a>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
             </div>
           </div>
         </div>
@@ -250,10 +230,7 @@ export default {
     }
     img {
       max-height: 100%;
-<<<<<<< HEAD
-=======
       max-width: 100%;
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
     }
   }
   &__item_text {

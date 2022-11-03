@@ -10,33 +10,11 @@
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
-<<<<<<< HEAD
-                        <img :src="require('~/assets/img/techs/3.jpg')" alt="">
-=======
                         <img :src="dataObject.PREVIEW_PICTURE" alt="">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">02</div>
                         <div class="texts">
-<<<<<<< HEAD
-                            <div class="title">Заготовительный этап</div>
-                            <div class="subtitle">На данном этапе происходит вырезка/вырубка заготовок для последующей обработки.
-                            Заготовительный участок оснащен следующим оборудованием:</div>
-                            <ul class="list">
-                                <li>Установки воздушно-плазменной и гидроабразивной резки;</li>
-                                <li>Вальцы листогибочные 3-х и 4-х валковые;</li>
-                                <li>Оборудование, позволяющее выполнять штамповку эллиптических и сферических донышек;</li>
-                                <li>Ленточнопильные станки для резки сортового, фасонного и других видов проката;</li>
-                                <li>Ножницы листовые гильотинные для рубки заготовок;</li>
-                                <li>Трубогибочные станки для гибки труб;</li>>
-                                <li>Машина листогибочная для гибки листа;</li>
-                                <li>Прессы гидравлические для штамповки.</li>
-                            </ul>
-                            <div class="text">
-                              Оснастка на имеющееся оборудование проектируется и изготовляется собственными силами, что гарантирует индивидуальный подход к решению поставленной задачи.
-                            </div>
-=======
                           <div class="title">{{ dataObject.NAME }}</div>
 
                           <div v-html="dataObject.PREVIEW_TEXT"></div>
@@ -56,7 +34,6 @@
 <!--                            <div class="text">-->
 <!--                              Оснастка на имеющееся оборудование проектируется и изготовляется собственными силами, что гарантирует индивидуальный подход к решению поставленной задачи.-->
 <!--                            </div>-->
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                         </div>
                     </div>
                 </div>
@@ -72,11 +49,6 @@ export default {
     // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')
   },
-<<<<<<< HEAD
-}
-</script>
-
-=======
   props: {
     dataObject: {
       type: Object,
@@ -179,7 +151,6 @@ export default {
 }
 </style>
 
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 <style lang="scss" scoped>
 .section {
     background: #fff;
@@ -401,8 +372,4 @@ overflow: auto;
     width: 100%;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e

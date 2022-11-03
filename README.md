@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# vineta
-=======
 # vineta site front
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 
 ## Build Setup
 

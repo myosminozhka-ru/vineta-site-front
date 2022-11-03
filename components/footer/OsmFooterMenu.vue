@@ -21,28 +21,8 @@
       <li>
         <nuxt-link :to="localePath({ name: 'partners' })">Заказчикам</nuxt-link>
       </li>
-<<<<<<< HEAD
-      <li>
-        <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" download="catalogue_Vineta" target="_black">{{ $t('buttons.download_catalog') }}</a>
-      </li>
-      <li>
-        <a href="//vinetaboat.ru/" target="_blank">Катера и лодки</a>
-      </li>
-      <li>
-        <a href="/files/vineta_book_TP_rus_001.pdf" download target="_blank">Оборудование топливоподготовки</a>
-      </li>
-      <li>
-        <a href="/files/Vineta_book_VO_rus_ver012.pdf" download target="_blank">Оборудование водоподготовки и водоочистки</a>
-      </li>
-      <li>
-        <a href="/files/vineta_book_TO_002.pdf" download target="_blank">Теплообменное оборудование</a>
-      </li>
-      <li>
-        <a href="/files/Vineta_book_VGO_ru_002.pdf" download target="_blank">Оборудование воздухо и газоочистки</a>
-=======
       <li v-for="link in aboutDownloadLinks" :key="link.ID">
         <a :href="link.PROPERIES[0].SRC" :download="link.CODE" target="_black">{{ link.NAME }}</a>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
       </li>
     </ul>
     <ul class="opened isOpened">
@@ -93,8 +73,6 @@ export default {
     ...mapGetters(['getMainMore']),
     ...mapGetters(['getDownloads']),
     ...mapGetters(['getContacts']),
-<<<<<<< HEAD
-=======
     aboutDownloadLinks() {
       const filterArray = [];
       for (const key in this.getDownloads) {
@@ -104,7 +82,6 @@ export default {
       }
       return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file');
     },
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
   },
   mounted() {
     this.initCollapse()

@@ -10,24 +10,11 @@
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
-<<<<<<< HEAD
-                        <img :src="require('~/assets/img/techs/image.jpg')" alt="">
-=======
                         <img :src="dataObject.PREVIEW_PICTURE" alt="">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">06</div>
                         <div class="texts">
-<<<<<<< HEAD
-                            <div class="title">Отгрузка</div>
-                            <p class="text">
-                            Транспортировка деталей, заготовок и готовой продукции
-                            производится подъемным оборудованием, г/п до 10 тонн.<br>
-                            Упаковка изделий и оформление сопроводительной документации
-                            выполняется в соответствии с действующими стандартами.
-                            </p>
-=======
                             <div class="title">{{ dataObject.NAME }}</div>
 
                           <div v-html="dataObject.PREVIEW_TEXT"></div>
@@ -38,7 +25,6 @@
 <!--                            Упаковка изделий и оформление сопроводительной документации-->
 <!--                            выполняется в соответствии с действующими стандартами.-->
 <!--                            </p>-->
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                         </div>
                     </div>
                 </div>
@@ -54,11 +40,6 @@ export default {
     // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')
   },
-<<<<<<< HEAD
-}
-</script>
-
-=======
   props: {
     dataObject: {
       type: Object,
@@ -161,7 +142,6 @@ export default {
 }
 </style>
 
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 <style lang="scss" scoped>
 .section {
     background: #fff;
@@ -383,8 +363,4 @@ overflow: auto;
     width: 100%;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e

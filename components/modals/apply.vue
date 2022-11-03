@@ -16,15 +16,12 @@
             <template v-if="field.SID === 'VACANCY'">
               <input v-model="formData[field.SID]" type="hidden" :name="field.SID" />
             </template>
-<<<<<<< HEAD
-=======
             <template v-else-if="field.SID === 'PHONE'">
               <div v-if="errors[field.VARNAME]" class="osm__error">
                 {{ errors[field.VARNAME] }}
               </div>
               <input v-model="formData[field.VARNAME]" v-mask="'+_ (___) ___-__-__'" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" :name="field.SID" />
             </template>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
             <template v-else-if="field.SID === 'VACANCY_NAME'">
               <template v-if="property">
                 <input :value="property" type="text" :name="field.SID" class="osm__input modal__input" disabled />
@@ -32,12 +29,8 @@
             </template>
             <template v-else-if="field.FIELD_TYPE === 'file'">
               <label>
-<<<<<<< HEAD
-                <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" :name="field.SID" />
-=======
                 <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" :name="field.SID" accept=".doc,.docs,.rtf,.pdf" @change="onChangeFiles($event, field.VARNAME)" />
                 <span class="modal__input-info">Максимальный размер файла – 7 МВ</span>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
               </label>
             </template>
             <template v-else>
@@ -128,22 +121,15 @@ export default {
       })
       this.$emit('close')
     },
-<<<<<<< HEAD
-    sendForm() {
-=======
     async sendForm() {
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
       const formObj = { ...this.formData }
       const form = new FormData()
 
       for (const key in formObj) {
         form.append(key, formObj[key])
       }
-<<<<<<< HEAD
-=======
       const token = await this.$recaptcha.execute('submit')
       form.append('token', token)
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
       // this.formData.map(item => {
       //     const [key, value] = item;
       //     console.log(key, value);
@@ -161,15 +147,12 @@ export default {
         }
       })
     },
-<<<<<<< HEAD
-=======
     onChangeFiles(event, filedName) {
       if (event.target.files[0].size > 7340032) {
         event.target.value = "";
         delete this.formData[filedName]
       }
     }
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
   },
 }
 </script>
@@ -272,8 +255,6 @@ export default {
   &__textarea {
     margin-bottom: rem(20);
   }
-<<<<<<< HEAD
-=======
 
   &__input {
     &-info {
@@ -282,6 +263,5 @@ export default {
       font-size: 15rem;
     }
   }
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 }
 </style>

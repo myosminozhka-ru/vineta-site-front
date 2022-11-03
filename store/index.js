@@ -35,10 +35,7 @@ export const state = () => ({
     },
   },
   seo: {},
-<<<<<<< HEAD
-=======
   technology: {}
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 })
 
 export const mutations = {
@@ -115,12 +112,9 @@ export const mutations = {
   addSeo(state, data) {
     state.seo = data
   },
-<<<<<<< HEAD
-=======
   addTechnology(state, data) {
     state.technology = data
   }
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 }
 
 export const actions = {
@@ -346,8 +340,6 @@ export const actions = {
         })
     })
   },
-<<<<<<< HEAD
-=======
   addTechnology(context) {
     return new Promise((resolve, reject) => {
       this.$axios
@@ -361,7 +353,6 @@ export const actions = {
         })
     })
   },
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
   async nuxtServerInit({ dispatch }) {
     await dispatch('addMain')
     await dispatch('addMainMore')
@@ -451,8 +442,6 @@ export const getters = {
     }
     return result
   },
-<<<<<<< HEAD
-=======
   getDownloadsByCode(state) {
     const result = {}
     for (const key in state.downloads) {
@@ -470,5 +459,4 @@ export const getters = {
     }
     return result
   }
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 }

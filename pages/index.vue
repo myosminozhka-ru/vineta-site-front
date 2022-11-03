@@ -122,15 +122,6 @@ export default {
       if (this.isInProgress) return
 
       if (direction === 'down' && this.activeIndex < this.sections.length - 1) {
-<<<<<<< HEAD
-        this.activeIndex++
-      }
-      if (direction === 'up') {
-        this.activeIndex--
-      }
-      if (this.activeIndex < 1) {
-        this.activeIndex = 0
-=======
         setTimeout(() => {
           this.activeIndex++
         }, 300)
@@ -139,7 +130,6 @@ export default {
         setTimeout(() => {
           this.activeIndex > 1 ? this.activeIndex-- : (this.activeIndex = 0)
         }, 300)
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
       }
       setTimeout(() => {
         this.isInProgress = false

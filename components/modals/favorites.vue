@@ -11,27 +11,19 @@
                     <div class="modal__title">{{ this.$t('sections.footer.request') }}</div>
                     <div v-for="field in fields.value?.filter((item) => item.SID !== 'GOOD' && item.SID !== 'NUMBER')" :key="field.index" class="osm__form_field">
                       <!-- <pre>
-<<<<<<< HEAD
-                                  {{ field }} 
-=======
                                   {{ field }}
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                                   </pre> -->
                       <!-- {{ field.VARNAME }} -->
                       <div v-if="errors[field.VARNAME]" class="osm__error">
                         {{ errors[field.VARNAME] }}
                       </div>
                       <template v-if="field.VARNAME !== 'NUMBER'">
-<<<<<<< HEAD
-                        <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input test" />
-=======
                         <template v-if="field.VARNAME !== 'PHONE'">
                           <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
                         </template>
                         <template v-else>
                           <input v-model="formData[field.VARNAME]" v-mask="'+_ (___) ___-__-__'" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
                         </template>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                       </template>
                       <template v-else>
                         <osm-counter class="modal__input" />
@@ -92,11 +84,6 @@ export default {
       ...mapActions(['toggleModal']),
       ...mapActions('localStorage', ['clearFavorites']),
       closeBuy() {
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
         this.toggleModal({
           isOpened: false,
           type: 'favorites'
@@ -104,11 +91,7 @@ export default {
         this.isSuccess = false;
         this.formData = {};
       },
-<<<<<<< HEAD
-      sendForm() {
-=======
       async sendForm() {
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
         const formObj = {...this.formData}
         // const form = this.formData.filter(item => item);
         // console.log(form)
@@ -118,11 +101,8 @@ export default {
         for ( const key in formObj ) {
             form.append(key, formObj[key]);
         }
-<<<<<<< HEAD
-=======
         const token = await this.$recaptcha.execute('submit')
         form.append('token', token)
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
         // this.formData.map(item => {
         //     const [key, value] = item;
         //     console.log(key, value);
@@ -237,8 +217,4 @@ export default {
         margin-bottom: rem(20);
     }
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e

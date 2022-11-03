@@ -10,28 +10,11 @@
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
-<<<<<<< HEAD
-                        <img :src="require('~/assets/img/techs/4.jpg')" alt="">
-=======
                         <img :src="dataObject.PREVIEW_PICTURE" alt="">
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">03</div>
                         <div class="texts">
-<<<<<<< HEAD
-                            <div class="title">Этап механической обработки</div>  
-                            <p class="subtitle">
-                                Предприятие располагает большим станочным парком современного оборудования для выполнения различных операций:
-                            </p>
-                            <div class="text">
-                                Токарная обработка деталей токарно-винторезными станками;
-                                Фрезерная обработка на вертикально-фрезерных обрабатывающих центрах;
-                                Станки сверлильной группы (вертикально-сверлильные, радиально-сверлильные);
-                                Расточная обработка крупногабаритных деталей производится на горизонтально-расточных станках;
-                                Современный станочных парк позволяет выполнять широкий спектр задач любой сложности, обеспечивать высокую производительность и точность обработки деталей, а также надежность и безопасность эксплуатации
-                            </div>
-=======
                           <div class="title">{{ dataObject.NAME }}</div>
 
                           <div v-html="dataObject.PREVIEW_TEXT"></div>
@@ -46,7 +29,6 @@
 <!--                                Расточная обработка крупногабаритных деталей производится на горизонтально-расточных станках;-->
 <!--                                Современный станочных парк позволяет выполнять широкий спектр задач любой сложности, обеспечивать высокую производительность и точность обработки деталей, а также надежность и безопасность эксплуатации-->
 <!--                            </div>-->
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
                         </div>
                     </div>
                 </div>
@@ -62,11 +44,6 @@ export default {
     // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')
   },
-<<<<<<< HEAD
-}
-</script>
-
-=======
   props: {
     dataObject: {
       type: Object,
@@ -169,7 +146,6 @@ export default {
 }
 </style>
 
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 <style lang="scss" scoped>
 .section {
     background: #fff;
@@ -391,8 +367,4 @@ overflow: auto;
     width: 100%;
     box-sizing: border-box;
 }
-<<<<<<< HEAD
 </style>
-=======
-</style>
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e

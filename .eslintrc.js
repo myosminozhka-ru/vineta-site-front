@@ -13,11 +13,7 @@ module.exports = {
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
   plugins: [],
   // add your custom rules here
-<<<<<<< HEAD
-  rules: {},
-=======
-  rules: {
-    'no-console': 'off',
+
+  'no-console': 'off',
   },
->>>>>>> 0b99a1df6726a552c775289950725fcc6512a58e
 }
