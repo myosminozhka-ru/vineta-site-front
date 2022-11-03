@@ -15,7 +15,7 @@
       <div class="productPage__slider-right">
         <hooper :settings="hooperSettings" group="product_items" class="productPage__slider-previews">
           <slide class="productPage__slider-preview" v-for="(picture, idx) in data.GALLERY" :key="`picture_${idx}`">
-            <span @click="slideTo(0)">
+            <span @click="slideTo(idx)">
               <img :src="$vareibles.remote + picture" :alt="`picture_${idx}`" />
             </span>
           </slide>
