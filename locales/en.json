@@ -1,0 +1,68 @@
+{
+  "message": "Hello!",
+  "buttons": {
+    "catalog": "Store",
+    "about": "About",
+    "downloads": "Downloads",
+    "news": "News",
+    "vacancies": "Vacancies",
+    "contacts": "Contacts",
+    "techs": "Production technologies",
+    "history": "History",
+    "partners": "Partners",
+    "licenses": "Licenses",
+    "more": "Details",
+    "all_news": "All news",
+    "read_news": "Read news",
+    "main": "Homepage",
+    "boats": "Boats speedboats",
+    "download_catalog": "Download the catalog",
+    "buy": "Order",
+    "up": "up",
+    "down": "down",
+    "to_favorites": "To favorites",
+    "checkout": "Proceed to checkout"
+  },
+  "menu": {
+    "products": "Manufactured products"
+  },
+  "sections": {
+    "second": {
+      "mb": "MB"
+    },
+    "fiveth": {
+      "customers": {
+        "title": "Customers"
+      },
+      "tabs": {
+        "first": "Licenses and certificates",
+        "second": "Thank you letters and reviews",
+        "third": "Reports and attestations",
+        "title": "Licenses and certificates"
+      }
+    },
+    "footer": {
+      "request": "Leave a request",
+      "thanks": "Thanks for your request",
+      "send": "Send",
+      "response": "We will respond within a working day or the next working day",
+      "worktime": "Mon-Fri from 8:00 to 17:00"
+    },
+    "modals": {
+      "apply_vacancy": "Откликнуться на вакансию"
+    }
+  },
+  "footer": {
+    "address": "620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500"
+  },
+  "filter": {
+    "title": "Search options",
+    "empty": "Нет доступных фильтров для этой категории"
+  },
+  "catalog": {
+    "empty": " No products"
+  },
+  "counter": {
+    "title": "Quantity"
+  }
+}

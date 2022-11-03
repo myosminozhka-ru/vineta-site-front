@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" id="a" viewBox="0 0 72 72"><defs><style>
+              .b {
+                fill: none;
+                stroke: #fff;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 2.7px;
+              }
+
+            </style></defs> <polygon points="52.32 48.01 10.37 48.01 7.26 33.98 64.74 33.98 52.32 48.01" class="b"></polygon> <path d="M35.77,18.74H12.12v15.24H52.59l-11.07-12.64c-1.45-1.66-3.55-2.61-5.75-2.61Z" class="b"></path> <line x1="18.94" y1="26.36" x2="12.12" y2="26.36" class="b"></line> <line x1="28.26" y1="26.97" x2="46.45" y2="26.97" class="b"></line> <line x1="17.92" y1="8.89" x2="17.92" y2="18.74" class="b"></line> <line x1="26.02" y1="12.67" x2="26.02" y2="18.74" class="b"></line> <path d="M64.55,60.06c-8.2,0-7.84-4.92-14.16-4.92-6.32,0-5.96,4.92-14.16,4.92h0c-8.2,0-7.84-4.92-14.16-4.92-6.32,0-5.96,4.92-14.16,4.92" class="b"></path></svg>
