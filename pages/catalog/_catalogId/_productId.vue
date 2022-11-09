@@ -172,7 +172,7 @@
                     </thead>
                     <tbody>
                       <tr v-for="mod in product[0].OFFERS" :key="mod.index" class="productPage__mods--mod-table">
-                        <td v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_val-table">
+                        <td v-for="proper in checkProperty(mod.PROPERTIES)" :key="proper.index" class="productPage__mods--mods_val-table">
                           {{ proper.VALUE }}
                         </td>
                       </tr>
@@ -365,8 +365,8 @@
         <div class="values glide">
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
-              <a 
-                v-for="prod in analogsItems.slice(0, 4)" 
+              <a
+                v-for="prod in analogsItems.slice(0, 4)"
                 :key="prod.CODE"
                 class="products__item"
                 :href="
@@ -538,16 +538,16 @@ export default {
   computed: {
     ...mapGetters(['getDownloads']),
     analogsItems() {
-      return this.products.filter(i => i.ID !== this.product[0].ID).slice(0, 4)
+      return this.products.filter((i) => i.ID !== this.product[0].ID).slice(0, 4)
     },
     hasChar() {
-      const first = !!(this.product[0].PROPERIES && this.product[0].PROPERIES.find(i => i.NAME !== null))
+      const first = !!(this.product[0].PROPERIES && this.product[0].PROPERIES.find((i) => i.NAME !== null))
       const second = !!(this.offersCount && this.offersCount.length === 1)
       return !(first === false && second === false)
     },
     hasMod() {
       return !!(this.offersCount && this.offersCount.length > 1)
-    }
+    },
   },
   watch: {
     '$route.params.productId': {
@@ -632,12 +632,21 @@ export default {
         isLink: false,
       },
     ])
-    
   },
   methods: {
     ...mapActions(['toggleModal']),
     ...mapActions('localStorage', ['addFavorites']),
     ...mapActions(['addBreadcrumbs', 'setLoadedStatus']),
+    checkProperty(array) {
+      console.log('Содержание нефтепродуктов в очищенной воде'.includes('Содержание нефтепродуктов в очищенной воде, мг/л, не более, для международных вод'))
+      const uniqueNames = []
+      const unique = array.filter((element) => {
+        if (uniqueNames.includes(element.NAME.slice(0, 36))) return false
+        uniqueNames.push(element.NAME.slice(0, 36))
+        return true
+      })
+      return unique
+    },
     openBuy() {
       this.toggleModal({
         isOpened: true,
@@ -1324,7 +1333,7 @@ export default {
   &__mods--mod-table {
     position: relative;
     &::after {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       bottom: 0;
@@ -1424,18 +1433,18 @@ export default {
   }
 
   &__mods--mods_val_title {
-      font-size: rem(18);
-      margin-bottom: rem(10);
-      line-height: 110%;
-      font-weight: 600;
-      color: #172242;
+    font-size: rem(18);
+    margin-bottom: rem(10);
+    line-height: 110%;
+    font-weight: 600;
+    color: #172242;
   }
 
   &__mods--mods_val_value {
-      font-size: rem(16);
-      line-height: 140%;
-      font-weight: 400;
-      color: #555f76;
+    font-size: rem(16);
+    line-height: 140%;
+    font-weight: 400;
+    color: #555f76;
   }
 
   &__analogs_top {
