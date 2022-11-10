@@ -165,14 +165,14 @@
                   <table class="productPage__mods--mods_table">
                     <thead>
                       <tr>
-                        <td v-for="(proper, index) in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="index" class="productPage__mods--mods_title-table">
+                        <td v-for="(proper, index) in Object.values(product[0].OFFERS)[longestLength].PROPERTIES" :key="index" class="productPage__mods--mods_title-table">
                           {{ proper.NAME }}
                         </td>
                       </tr>
                     </thead>
                     <tbody>
                       <tr v-for="mod in product[0].OFFERS" :key="mod.index" class="productPage__mods--mod-table">
-                        <td v-for="proper in checkProperty(mod.PROPERTIES)" :key="proper.index" class="productPage__mods--mods_val-table">
+                        <td v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_val-table">
                           {{ proper.VALUE }}
                         </td>
                       </tr>
@@ -484,6 +484,7 @@ export default {
       prodsSlider: null,
       offersCount: [],
       printUpText: '187026, Санкт-Петербург, Ленинградская обл., Тосненский район, <br>г. Никольское, Ульяновское шоссе, 5Ж <br>тел./факс: +7(812) 493-50-48 info@vineta.ru',
+      longestLength: 0,
     }
   },
   async fetch() {
@@ -561,6 +562,9 @@ export default {
   },
   async mounted() {
     await this.$fetch()
+    const properties = Object.values(this.product[0].OFFERS).map((ele) => [...ele?.PROPERTIES])
+    this.longestLength = properties.map((a) => a.length).indexOf(Math.max(...properties.map((a) => a.length)))
+    console.log(this.longestLength)
     this.addBreadcrumbs([
       {
         name: 'Главная',
@@ -637,16 +641,6 @@ export default {
     ...mapActions(['toggleModal']),
     ...mapActions('localStorage', ['addFavorites']),
     ...mapActions(['addBreadcrumbs', 'setLoadedStatus']),
-    checkProperty(array) {
-      console.log('Содержание нефтепродуктов в очищенной воде'.includes('Содержание нефтепродуктов в очищенной воде, мг/л, не более, для международных вод'))
-      const uniqueNames = []
-      const unique = array.filter((element) => {
-        if (uniqueNames.includes(element.NAME.slice(0, 36))) return false
-        uniqueNames.push(element.NAME.slice(0, 36))
-        return true
-      })
-      return unique
-    },
     openBuy() {
       this.toggleModal({
         isOpened: true,
