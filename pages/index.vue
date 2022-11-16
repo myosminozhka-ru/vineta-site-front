@@ -150,7 +150,7 @@ export default {
       }
       setTimeout(() => {
         this.isInProgress = false
-      }, 500)
+      }, 2000)
     },
   },
 }

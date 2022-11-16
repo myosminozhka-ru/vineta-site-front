@@ -4,7 +4,7 @@
     <div class="productPage__slider" v-if="data">
       <hooper :itemsToShow="1" ref="carousel" group="product_items" class="productPage__slider-left">
         <slide class="productPage__slider-item" v-for="(picture, idx) in data.GALLERY" :key="`picture_${idx}`">
-          <div class="productPage__slider-item__in" @click="elementOpened = 0">
+          <div class="productPage__slider-item__in" @click="elementOpened = idx">
             <div class="productPage__slider-item__imege">
               <img :src="$vareibles.remote + picture" :alt="`picture_${idx}`" />
             </div>
