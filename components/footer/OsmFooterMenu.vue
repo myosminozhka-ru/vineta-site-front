@@ -32,11 +32,11 @@
       <li>
         <span>{{ getContacts[0].ADRESS?.VALUE }}</span>
       </li>
-      <li>
-        <a href="tel:78124935048">+7(812)493-50-48</a>
+      <li v-for="contact in getContacts['0'].PROPERIES" :key="contact.CODE">
+        <a :href="`tel:${contact.VALUE}`" v-if="contact.CODE === 'PHONE'">{{contact.VALUE}}</a>
       </li>
-      <li>
-        <a href="mailto:info@vineta.ru">info@vineta.ru</a>
+      <li v-for="contact in getContacts['0'].PROPERIES" :key="contact.CODE">
+        <a :href="`mailto:${contact.VALUE}`" v-if="contact.CODE === 'EMAIL'">{{contact.VALUE}}</a>
       </li>
       <li>
         <span>{{ $t('sections.footer.worktime') }}</span>
