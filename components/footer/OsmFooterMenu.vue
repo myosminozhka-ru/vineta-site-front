@@ -21,7 +21,7 @@
       <li>
         <nuxt-link :to="localePath({ name: 'partners' })">Заказчикам</nuxt-link>
       </li>
-      <li v-for="link in aboutDownloadLinks" :key="link.ID">
+      <li v-for="link in []" :key="link.ID">
         <a :href="link.PROPERIES[0].SRC" :download="link.CODE" target="_black">{{ link.NAME }}</a>
       </li>
     </ul>
@@ -30,7 +30,7 @@
         <nuxt-link :to="localePath({ name: 'contacts' })">{{ $t('buttons.contacts') }}</nuxt-link>
       </li>
       <li>
-        <span>{{ getContacts[0].ADRESS.VALUE }}</span>
+        <span>{{ getContacts[0].ADRESS?.VALUE }}</span>
       </li>
       <li>
         <a href="tel:78124935048">+7(812)493-50-48</a>
@@ -76,11 +76,11 @@ export default {
     aboutDownloadLinks() {
       const filterArray = [];
       for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES.length > 1) {
+        if (this.getDownloads[key].PROPERIES?.length > 1) {
           filterArray.push(this.getDownloads[key])
         }
       }
-      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file');
+      return filterArray.filter((item) => item?.PROPERIES[1]?.VALUE === 'about_file');
     },
   },
   mounted() {

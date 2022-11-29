@@ -1,53 +1,25 @@
 <template>
-  <div
-    class="menu hide_off_mobile"
-    :class="{ isOpened: getModals.mobileMenu.isOpened }"
-    @click="closeMenu"
-  >
+  <div class="menu hide_off_mobile" :class="{ isOpened: getModals.mobileMenu.isOpened }" @click="closeMenu">
     <div class="menu__in" @click.stop>
       <div>
         <div class="menu__top">
-          <div class="menu__langs" v-if="false">
-            <nuxt-link
-              :to="switchLocalePath('en')"
-              :class="{ isActive: $i18n.locale === 'en' }"
-              >En</nuxt-link
-            >
+          <div class="menu__langs">
+            <nuxt-link :to="switchLocalePath('en')" :class="{ isActive: $i18n.locale === 'en' }">En</nuxt-link>
             <div class="delim">/</div>
-            <nuxt-link
-              :to="switchLocalePath('ru')"
-              :class="{ isActive: $i18n.locale === 'ru' }"
-              >Ру</nuxt-link
-            >
+            <nuxt-link :to="switchLocalePath('ru')" :class="{ isActive: $i18n.locale === 'ru' }">Ру</nuxt-link>
           </div>
           <div class="menu__closer" @click="closeMenu">
-            <img
-              :src="require('~/assets/img/closer.svg')"
-              width="100%"
-              alt=""
-            />
+            <img :src="require('~/assets/img/closer.svg')" width="100%" alt="" />
           </div>
         </div>
         <nav class="menu__links">
           <ul>
             <li class="menu__links_li has-child">
               <div>
-                <nuxt-link :to="localePath({ name: 'catalog' })" class="text"
-                  >Каталог</nuxt-link
-                >
+                <nuxt-link :to="localePath({ name: 'catalog' })" class="text">Каталог</nuxt-link>
                 <div class="arrow">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 11 7"
-                    fill="none"
-                  >
-                    <path
-                      d="M1 6L5.5 2L10 6"
-                      stroke="#172242"
-                      stroke-width="2"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
+                    <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2" />
                   </svg>
                 </div>
                 <!-- <div v-if="link.childs" class="header__arrow">
@@ -65,40 +37,19 @@
                     "
                   >
                     <div class="icon">
-                      <img
-                        :src="$vareibles.remote + child.PICTURE"
-                        width="100%"
-                        alt=""
-                      />
+                      <img :src="$vareibles.remote + child.PICTURE" width="100%" alt="" />
                     </div>
                     <div class="text">{{ child.NAME }}</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li
-              v-for="link in menu"
-              :key="link.index"
-              class="menu__links_li"
-              :class="{ 'has-child': link.childs, isOpened: link.isOpened }"
-            >
+            <li v-for="link in menu" :key="link.index" class="menu__links_li" :class="{ 'has-child': link.childs, isOpened: link.isOpened }">
               <div>
-                <nuxt-link :to="localePath({ name: link.url })" class="text">{{
-                  link.text
-                }}</nuxt-link>
+                <nuxt-link :to="localePath({ name: link.url })" class="text">{{ link.text }}</nuxt-link>
                 <div class="arrow" v-if="link.childs">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 11 7"
-                    fill="none"
-                  >
-                    <path
-                      d="M1 6L5.5 2L10 6"
-                      stroke="#172242"
-                      stroke-width="2"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
+                    <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2" />
                   </svg>
                 </div>
                 <!-- <div v-if="link.childs" class="header__arrow">
@@ -210,14 +161,12 @@ export default {
 
   methods: {
     openChilds() {
-      document
-        .querySelectorAll('.menu__links_li.has-child > div > .arrow')
-        .forEach((item) => {
-          item.addEventListener('click', (e) => {
-            e.preventDefault()
-            item.closest('li').classList.toggle('isOpened')
-          })
+      document.querySelectorAll('.menu__links_li.has-child > div > .arrow').forEach((item) => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault()
+          item.closest('li').classList.toggle('isOpened')
         })
+      })
       // console.log(item)
       // if (!item) return;
       // item.isOpened = !item.isOpened;
@@ -229,6 +178,9 @@ export default {
         type: 'mobileMenu',
       })
     },
+    // switchLocalePath(path) {
+    //   console.log(path)
+    // },
   },
 }
 </script>

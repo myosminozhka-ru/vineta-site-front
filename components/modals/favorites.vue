@@ -84,7 +84,6 @@ export default {
       ...mapActions(['toggleModal']),
       ...mapActions('localStorage', ['clearFavorites']),
       closeBuy() {
-
         this.toggleModal({
           isOpened: false,
           type: 'favorites'

@@ -18,23 +18,18 @@
             </div>
             <input v-model="formData[field.VARNAME]" disabled :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
           </div>
-          <!--
+          <!-- 
           <input v-model="formData[field.VARNAME.GOOD]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" /> -->
           <div v-for="field in fields.value?.filter((item) => item.SID !== 'GOOD')" :key="field.index" class="osm__form_field">
             <!-- <pre>
-                        {{ field }}
+                        {{ field }} 
                         </pre> -->
             <!-- {{ field.VARNAME }} -->
             <div v-if="errors[field.VARNAME]" class="osm__error">
               {{ errors[field.VARNAME] }}
             </div>
             <template v-if="field.VARNAME !== 'NUMBER'">
-              <template v-if="field.VARNAME !== 'PHONE'">
-                <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
-              </template>
-              <template v-else>
-                <input v-model="formData[field.VARNAME]" v-mask="'+_ (___) ___-__-__'" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
-              </template>
+              <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input test" />
             </template>
             <template v-else>
               <osm-counter class="modal__input" />
@@ -45,7 +40,7 @@
           <!-- <osm-input class="modal__input" placeholder="Компания *" :required="true"/> -->
           <!-- <osm-input class="modal__input" placeholder="Телефон *" type="tel" :required="true"/>
                     <osm-input class="modal__input" placeholder="E-mail *" type="email" :required="true"/>
-
+                    
                     <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
           <p style="font-size: 12rem">
             Заполняя данную форму, вы принимаете условия
@@ -97,13 +92,20 @@ export default {
     ...mapActions(['toggleModal']),
     closeBuy() {
       this.isSuccess = false
-      this.formData = {}
+      this.clearFormData()
       this.toggleModal({
         isOpened: false,
         type: 'buy',
       })
     },
-    async sendForm() {
+    clearFormData(){
+      for (const k in this.formData) {
+        if (k !== 'GOOD') {
+            delete this.formData[k];
+        }
+      }
+    },
+    sendForm() {
       const formObj = { ...this.formData }
       // const form = this.formData.filter(item => item);
       // console.log(form)
@@ -113,8 +115,6 @@ export default {
       for (const key in formObj) {
         form.append(key, formObj[key])
       }
-      const token = await this.$recaptcha.execute('submit')
-      form.append('token', token)
       // this.formData.map(item => {
       //     const [key, value] = item;
       //     console.log(key, value);
@@ -129,6 +129,8 @@ export default {
         }
         if (result.success) {
           this.isSuccess = true
+          this.clearFormData()
+          this.errors = {}
         }
       })
     },
