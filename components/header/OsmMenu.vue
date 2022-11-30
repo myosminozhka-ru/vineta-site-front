@@ -50,7 +50,6 @@
             {{ $t('buttons.downloads') }}
           </osm-h2>
           <div class="menu__modal_list">
-
             <a target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" v-for="item in catalogDownloadLinks" :key="item.CODE" download="">
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />
@@ -58,7 +57,7 @@
               <div class="text">
                 <div class="top">{{ item.NAME }}</div>
                 <div class="bottom">
-                  <span>{{ (item.PROPERIES[0].VALUE.FILE_NAME)?.split('.')[1].toUpperCase() }}</span>
+                  <span>{{ item.PROPERIES[0].VALUE.FILE_NAME?.split('.')[1].toUpperCase() }}</span>
                   <div class="delim">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
                       <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
@@ -68,7 +67,6 @@
                 </div>
               </div>
             </a>
-
           </div>
         </div>
       </div>
@@ -91,7 +89,6 @@
             {{ $t('buttons.downloads') }}
           </osm-h2>
           <div class="menu__modal_list">
-
             <a target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" v-for="item in aboutDownloadLinks" :key="item.CODE" download="">
               <div class="icon">
                 <img src="~/assets/img/download.svg" width="100%" alt="" />
@@ -99,7 +96,7 @@
               <div class="text">
                 <div class="top">{{ item.NAME }}</div>
                 <div class="bottom">
-                  <span>{{ (item.PROPERIES[0].VALUE.FILE_NAME)?.split('.')[1].toUpperCase() }}</span>
+                  <span>{{ item.PROPERIES[0].VALUE.FILE_NAME?.split('.')[1].toUpperCase() }}</span>
                   <div class="delim">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
                       <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
@@ -193,23 +190,23 @@ export default {
     ...mapGetters(['getDownloads']),
     ...mapGetters('localStorage', ['getFavorites']),
     catalogDownloadLinks() {
-      const filterArray = [];
+      const filterArray = []
       for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES.length > 1) {
+        if (this.getDownloads[key].PROPERIES?.length > 1) {
           filterArray.push(this.getDownloads[key])
         }
       }
-      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'catalog_file');
+      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'catalog_file')
     },
     aboutDownloadLinks() {
-      const filterArray = [];
+      const filterArray = []
       for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES.length > 1) {
+        if (this.getDownloads[key].PROPERIES?.length > 1) {
           filterArray.push(this.getDownloads[key])
         }
       }
-      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file');
-    }
+      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file')
+    },
   },
   data: () => ({
     favoritesCount: 4,
@@ -295,14 +292,14 @@ export default {
     },
     sizeFile(size) {
       if (size === 0) {
-        return '0';
+        return '0'
       } else {
-        const k = 1024;
-        const sizes = ['Байт', 'КБ', 'МБ', 'ГБ', 'ТБ'];
-        const i = Math.floor(Math.log(size) / Math.log(k));
-        return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        const k = 1024
+        const sizes = ['Байт', 'КБ', 'МБ', 'ГБ', 'ТБ']
+        const i = Math.floor(Math.log(size) / Math.log(k))
+        return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
       }
-    }
+    },
   },
 }
 </script>
