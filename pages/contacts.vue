@@ -122,6 +122,7 @@ export default {
     if (process.client) {
       this.createDinamycHeight()
     }
+    console.log('getContacts', this.getContacts);
   },
   head() {
     return {
