@@ -35,6 +35,7 @@ export const state = () => ({
     },
   },
   seo: {},
+  technology: {}
 })
 
 export const mutations = {
@@ -111,6 +112,9 @@ export const mutations = {
   addSeo(state, data) {
     state.seo = data
   },
+  addTechnology(state, data) {
+    state.technology = data
+  }
 }
 
 export const actions = {
@@ -336,6 +340,19 @@ export const actions = {
         })
     })
   },
+  addTechnology(context) {
+    return new Promise((resolve, reject) => {
+      this.$axios
+        .$get('technology.php')
+        .then((response) => {
+          context.commit('addTechnology', response)
+          resolve(response)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
   async nuxtServerInit({ dispatch }) {
     await dispatch('addMain')
     await dispatch('addMainMore')
@@ -425,4 +442,21 @@ export const getters = {
     }
     return result
   },
+  getDownloadsByCode(state) {
+    const result = {}
+    for (const key in state.downloads) {
+      result[key] = state.seo[key]
+    }
+    return result
+  },
+  getTechnology(state) {
+    return state.technology.technology
+  },
+  getTechnologyByIndex(state){
+    const result = {}
+    for (const key in state.technology.technology) {
+      result[key] = state.technology.technology[key]
+    }
+    return result
+  }
 }

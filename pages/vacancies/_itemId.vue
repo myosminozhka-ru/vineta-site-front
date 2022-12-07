@@ -27,12 +27,12 @@
       </div>
       <osm-apply-modal v-if="isShowApplyModal" :property="vacancy[0].NAME" @close="isShowApplyModal = false" />
     </div>
-    <osm-response />
+    <osm-response @onOpenModal="isShowApplyModal = true" :data-array="getVacancies.persons" />
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   components: {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
@@ -107,6 +107,9 @@ export default {
       ],
     }
   },
+  computed: {
+    ...mapGetters(['getVacancies']),
+  },
   mounted() {
     window.scrollTo(0, 0)
     this.isMounted = true
@@ -128,7 +131,7 @@ export default {
         txt.innerHTML = html
         return txt.value
       }
-    },
+    }
   },
 }
 </script>

@@ -14,7 +14,7 @@
                   <div class="icon">
                     <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="" />
                   </div>
-                  <div class="text">187026, Санкт-Петербург, Ленинградская обл., Тосненский район, г. Никольское, Ульяновское шоссе, 5Ж</div>
+                  <div class="text">{{getContacts['0'].ADRESS.VALUE}}</div>
                 </div>
               </div>
               <template v-for="contact in getContacts['0'].PROPERIES">
@@ -122,6 +122,7 @@ export default {
     if (process.client) {
       this.createDinamycHeight()
     }
+    console.log('getContacts', this.getContacts);
   },
   head() {
     return {

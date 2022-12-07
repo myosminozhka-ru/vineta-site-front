@@ -11,21 +11,26 @@
             {{ $t('sections.footer.thanks') }}
           </template>
         </osm-h1>
-        <div class="section__text" v-if="false">Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные</div>
+        <div v-if="false" class="section__text">Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные</div>
       </div>
-      <form @submit.prevent="sendForm" class="section__left_form" v-if="!isSuccess">
+      <form class="section__left_form" @submit.prevent="sendForm">
         <div v-for="field in filteredFileds" :key="field.index" class="osm__form_field">
-          <div class="osm__error" v-if="errors[field.VARNAME]">
+          <div v-if="errors[field.VARNAME]" class="osm__error">
             {{ errors[field.VARNAME] }}
           </div>
-          <input :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input section__input" v-model="formData[field.VARNAME]" />
+          <template v-if="field.VARNAME !== 'PHONE'">
+            <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input section__input" />
+          </template>
+          <template v-else>
+            <input v-model="formData[field.VARNAME]" v-mask="'+_ (___) ___-__-__'" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input section__input" />
+          </template>
           <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
         </div>
-          <p style="font-size: 12rem">
-            Заполняя данную форму, вы принимаете условия
-            <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
-            об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
-          </p>
+        <p style="font-size: 12rem">
+          Заполняя данную форму, вы принимаете условия
+          <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
+          об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
+        </p>
         <osm-button class="section__button" :large="true" type="submit">{{ $t('sections.footer.send') }}</osm-button>
       </form>
     </div>
@@ -34,8 +39,8 @@
         <div class="section__row">
           <osm-h1 class="section__title">{{ $t('buttons.contacts') }}</osm-h1>
 
-          <div class="section__socials" v-if="false">
-            <a :href="social.link" class="section__social" target="_blank" v-for="social in socials" :key="social.index">
+          <div v-if="false" class="section__socials">
+            <a v-for="social in socials" :key="social.index" :href="social.link" class="section__social" target="_blank">
               <img :src="social.icon" width="100%" alt="" />
             </a>
           </div>
@@ -66,7 +71,7 @@
       <div class="section__popup_left">ООО “Винета”, 2012-2022</div>
 
       <template v-if="getDownloads['politika-konfedentsialnosti']">
-        <div class="section__popup_right" v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']">
+        <div v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']" class="section__popup_right">
           <ul>
             <li>
               <a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a>
@@ -124,15 +129,20 @@ export default {
   }),
   async mounted() {
     this.fields = await this.$axios.$get('forms/request.php')
-  },
+   },
   methods: {
-    sendForm() {
+    async sendForm() {
       const formObj = { ...this.formData }
       const form = new FormData()
 
       for (const key in formObj) {
         form.append(key, formObj[key])
+        this.formData[key] = ''
       }
+
+      const token = await this.$recaptcha.execute('submit')
+      form.append('token', token)
+
       this.$axios.$post('forms/result_request.php', form).then((result) => {
         // console.log(result);
         if (result.error) {
@@ -140,6 +150,9 @@ export default {
         }
         if (result.success) {
           this.isSuccess = true
+          for (const key in this.formData) {
+            this.formData[key] = ''
+          }
         }
       })
     },

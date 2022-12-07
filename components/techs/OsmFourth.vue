@@ -10,22 +10,25 @@
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
-                        <img :src="require('~/assets/img/techs/4.jpg')" alt="">
+                        <img :src="dataObject.PREVIEW_PICTURE" alt="">
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">03</div>
                         <div class="texts">
-                            <div class="title">Этап механической обработки</div>  
-                            <p class="subtitle">
-                                Предприятие располагает большим станочным парком современного оборудования для выполнения различных операций:
-                            </p>
-                            <div class="text">
-                                Токарная обработка деталей токарно-винторезными станками;
-                                Фрезерная обработка на вертикально-фрезерных обрабатывающих центрах;
-                                Станки сверлильной группы (вертикально-сверлильные, радиально-сверлильные);
-                                Расточная обработка крупногабаритных деталей производится на горизонтально-расточных станках;
-                                Современный станочных парк позволяет выполнять широкий спектр задач любой сложности, обеспечивать высокую производительность и точность обработки деталей, а также надежность и безопасность эксплуатации
-                            </div>
+                          <div class="title">{{ dataObject.NAME }}</div>
+
+                          <div v-html="dataObject.PREVIEW_TEXT"></div>
+
+<!--                            <p class="subtitle">-->
+<!--                                Предприятие располагает большим станочным парком современного оборудования для выполнения различных операций:-->
+<!--                            </p>-->
+<!--                            <div class="text">-->
+<!--                                Токарная обработка деталей токарно-винторезными станками;-->
+<!--                                Фрезерная обработка на вертикально-фрезерных обрабатывающих центрах;-->
+<!--                                Станки сверлильной группы (вертикально-сверлильные, радиально-сверлильные);-->
+<!--                                Расточная обработка крупногабаритных деталей производится на горизонтально-расточных станках;-->
+<!--                                Современный станочных парк позволяет выполнять широкий спектр задач любой сложности, обеспечивать высокую производительность и точность обработки деталей, а также надежность и безопасность эксплуатации-->
+<!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -41,8 +44,107 @@ export default {
     // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')
   },
+  props: {
+    dataObject: {
+      type: Object,
+      default: () => ({})
+    }
+  }
 }
 </script>
+
+<style lang="scss">
+.title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: rem(30);
+    margin-bottom: rem(30);
+    line-height: 140%;
+    color: #172242;
+    @media all and (max-width: 1280px) {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+}
+.list {
+    padding: 0;
+    margin: 0;
+    padding-left: rem(24);
+    @media all and (max-width: 1280px) {
+        padding-left: 24px;
+    }
+    &:not(:last-child) {
+        margin-bottom: rem(40);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 40px;
+        }
+    }
+    li {
+        font-style: normal;
+        font-weight: 400;
+        font-size: rem(18);
+        line-height: 140%;
+        color: #555F76;
+        @media all and (max-width: 1280px) {
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+        &:not(:last-child) {
+            margin-bottom: rem(10);
+            @media all and (max-width: 1280px) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+.subtitle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: rem(18);
+    line-height: 140%;
+    color: #172242;
+    @media all and (max-width: 1280px) {
+        font-size: 16px;
+    }
+    &:not(:last-child) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 20px;
+        }
+    }
+}
+.text {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: rem(18);
+    line-height: 140%;
+    color: #555F76;
+    @media all and (max-width: 1280px) {
+        font-size: 16px;
+    }
+    &:not(:last-child) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 20px;
+        }
+    }
+}
+.line {
+    height: rem(2);
+    background: #D7DCE1;
+    border-radius: 20px;
+    @media all and (max-width: 1280px) {
+        height: 2px;
+    }
+    &:not(:last-child) {
+        margin-bottom: rem(20);
+        @media all and (max-width: 1280px) {
+            margin-bottom: 20px;
+        }
+    }
+}
+</style>
 
 <style lang="scss" scoped>
 .section {

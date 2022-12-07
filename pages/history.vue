@@ -60,7 +60,7 @@
                 <div class="line"></div>
                 <div class="sqare"></div>
               </div>
-              <div class="bottom" @click="selectedTime = key">
+              <div class="bottom" @click="clickOnDotted(key)">
                 {{ item.NAME }}
               </div>
             </div>
@@ -167,10 +167,12 @@ export default {
     next() {
       if (this.selectedTime >= this.getHistory.length - 1) return
       this.selectedTime++
+      this.closeMore()
     },
     prev() {
       if (this.selectedTime <= 0) return
       this.selectedTime--
+      this.closeMore()
     },
     decodeHTML(html) {
       if (document) {
@@ -179,6 +181,15 @@ export default {
         return txt.value
       }
     },
+    closeMore() {
+      this.modifyedHistory.forEach((item) => {
+        item.isTextShowed = false;
+      })
+    },
+    clickOnDotted(key) {
+      this.selectedTime = key;
+      this.closeMore()
+    }
   },
 }
 </script>

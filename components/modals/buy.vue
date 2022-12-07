@@ -92,11 +92,18 @@ export default {
     ...mapActions(['toggleModal']),
     closeBuy() {
       this.isSuccess = false
-      this.formData = {}
+      this.clearFormData()
       this.toggleModal({
         isOpened: false,
         type: 'buy',
       })
+    },
+    clearFormData(){
+      for (const k in this.formData) {
+        if (k !== 'GOOD') {
+            delete this.formData[k];
+        }
+      }
     },
     sendForm() {
       const formObj = { ...this.formData }
@@ -122,6 +129,8 @@ export default {
         }
         if (result.success) {
           this.isSuccess = true
+          this.clearFormData()
+          this.errors = {}
         }
       })
     },

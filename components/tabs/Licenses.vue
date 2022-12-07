@@ -141,8 +141,8 @@ export default {
     if (this.slider) this.slider.destroy()
   },
   mounted() {
+    this.initSlider()
     setTimeout(() => {
-      this.initSlider()
       this.initAccordions()
       this.isMounted = true
     }, 1000)

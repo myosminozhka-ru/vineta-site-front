@@ -101,15 +101,21 @@ export default {
             this.activeIndex = 0
             this.sections = document.querySelectorAll('.section')
             this.activeIndex = 0
-            document.addEventListener('mousewheel', (event) => {
-              if (event.wheelDelta > 0 || event.detail < 0) {
-                this.change('up')
-                this.isInProgress = true
+            if (document.addEventListener) {
+              if ('onwheel' in document) {
+                // IE9+, FF17+, Ch31+
+                document.addEventListener('wheel', this.onWheel)
+              } else if ('onmousewheel' in document) {
+                // устаревший вариант события
+                document.addEventListener('mousewheel', this.onWheel)
               } else {
-                this.change('down')
-                this.isInProgress = true
+                // Firefox < 17
+                document.addEventListener('MozMousePixelScroll', this.onWheel)
               }
-            })
+            } else {
+              // IE8-
+              document.attachEvent('onmousewheel', this.onWheel)
+            }
           }, 1000)
         }
       }, 100)
@@ -118,21 +124,33 @@ export default {
   methods: {
     ...mapActions(['setGalleryIndex']),
     ...mapActions(['addMain']),
+    onWheel(event) {
+      event = event || window.event
+      const delta = event.deltaX || event.detail || event.wheelDelta
+      if (delta > 0 || event.detail < 0) {
+        this.change('up')
+        this.isInProgress = true
+      } else {
+        this.change('down')
+        this.isInProgress = true
+      }
+    },
     change(direction) {
       if (this.isInProgress) return
 
       if (direction === 'down' && this.activeIndex < this.sections.length - 1) {
-        this.activeIndex++
+        setTimeout(() => {
+          this.activeIndex++
+        }, 300)
       }
       if (direction === 'up') {
-        this.activeIndex--
-      }
-      if (this.activeIndex < 1) {
-        this.activeIndex = 0
+        setTimeout(() => {
+          this.activeIndex > 1 ? this.activeIndex-- : (this.activeIndex = 0)
+        }, 300)
       }
       setTimeout(() => {
         this.isInProgress = false
-      }, 500)
+      }, 2000)
     },
   },
 }

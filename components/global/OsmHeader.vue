@@ -22,6 +22,13 @@ export default {
   computed: {
     ...mapGetters(['getLoadedStatus']),
   },
+  async mounted() {
+    try {
+      await this.$recaptcha.init()
+    } catch (e) {
+      console.log(e);
+    }
+  },
 }
 </script>
 

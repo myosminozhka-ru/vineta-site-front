@@ -3,7 +3,7 @@
     <!-- <pre style="font-size: 15rem;">
         {{ getVacancies }}
       </pre> -->
-    <section class="first" v-if="getVacancies.banners.first">
+    <section v-if="getVacancies.banners.first" class="first">
       <div class="first__text">
         {{ getVacancies.banners.first.NAME }}
       </div>
@@ -15,7 +15,7 @@
     <div class="vacancies__slider">
       <osm-slider :gallery="getVacancies.gallery" />
     </div>
-    <osm-response />
+    <osm-response :data-array="getVacancies.persons" />
     <osm-list :vacancies="getVacancies.vacancy" />
   </div>
 </template>
@@ -24,6 +24,15 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AboutPage',
+  components: {
+    OsmAdvantagies: () => import('~/components/vacancies/OsmAdvantagies.vue'),
+    OsmResponse: () => import('~/components/vacancies/OsmResponse.vue'),
+    OsmList: () => import('~/components/vacancies/OsmList.vue'),
+    OsmSlider: () => import('~/components/contacts/OsmSlider.vue'),
+  },
+  data: () => ({
+    isTextShowed: false,
+  }),
   head() {
     return {
       title: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.TITLE : '',
@@ -67,15 +76,6 @@ export default {
       ],
     }
   },
-  components: {
-    OsmAdvantagies: () => import('~/components/vacancies/OsmAdvantagies.vue'),
-    OsmResponse: () => import('~/components/vacancies/OsmResponse.vue'),
-    OsmList: () => import('~/components/vacancies/OsmList.vue'),
-    OsmSlider: () => import('~/components/contacts/OsmSlider.vue'),
-  },
-  data: () => ({
-    isTextShowed: false,
-  }),
   created() {
     this.addBreadcrumbs([
       {

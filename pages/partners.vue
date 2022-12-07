@@ -7,7 +7,7 @@
         <osm-breadcrumbs />
         <div class="partners__title">Основные заказчики</div>
         <div class="partners__items">
-          <div v-for="item in getPartners" :key="item.index">
+          <div v-for="item in getPartners" :key="item.index" style="min-width: 0">
             <div v-if="'PROPERIES' in item" class="partners__item">
               <!-- <pre>{{ item }}</pre> -->
               <div class="partners__item_top">
@@ -24,19 +24,19 @@
                     </div>
                     <div class="text">{{ item.ADRESS.VALUE }}</div>
                   </div>
-                  <a :href="`mailto:${item.PROPERIES[1].VALUE}`" class="partners__contact_item email">
+                  <a v-if="item.PROPERIES[1]" :href="`mailto:${item.PROPERIES[1].VALUE}`" class="partners__contact_item email">
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="" />
                     </div>
                     <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                   </a>
-                  <a :href="`tel:${item.PROPERIES[2].VALUE}`" class="partners__contact_item phone">
+                  <a v-if="item.PROPERIES[2]" :href="`tel:${item.PROPERIES[2].VALUE}`" class="partners__contact_item phone">
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="" />
                     </div>
                     <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
                   </a>
-                  <div class="partners__contact_item">
+                  <div v-if="item.PROPERIES[3]" class="partners__contact_item">
                     <div class="icon">
                       <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="" />
                     </div>
@@ -44,7 +44,7 @@
                   </div>
                 </div>
               </div>
-              <a class="button" :href="`http://${item.PROPERIES[3].VALUE}`" target="_blank">Перейти на сайт</a>
+              <a v-if="item.PROPERIES[3]" class="button" :href="`http://${item.PROPERIES[3].VALUE}`" target="_blank">Перейти на сайт</a>
             </div>
           </div>
         </div>
@@ -230,6 +230,7 @@ export default {
     }
     img {
       max-height: 100%;
+      max-width: 100%;
     }
   }
   &__item_text {
