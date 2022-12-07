@@ -21,9 +21,9 @@
       <li>
         <nuxt-link :to="localePath({ name: 'partners' })">Заказчикам</nuxt-link>
       </li>
-      <li v-for="link in []" :key="link.ID">
+      <!-- <li v-for="link in []" :key="link.ID">
         <a :href="link.PROPERIES[0].SRC" :download="link.CODE" target="_black">{{ link.NAME }}</a>
-      </li>
+      </li> -->
     </ul>
     <ul class="opened isOpened">
       <li>
@@ -32,10 +32,10 @@
       <li>
         <span>{{ getContacts[0].ADRESS?.VALUE }}</span>
       </li>
-      <li v-for="contact in getContacts['0'].PROPERIES" :key="contact.CODE">
+      <li v-for="contact in getContacts['0']?.PROPERIES" :key="contact.CODE">
         <a :href="`tel:${contact.VALUE}`" v-if="contact.CODE === 'PHONE'">{{contact.VALUE}}</a>
       </li>
-      <li v-for="contact in getContacts['0'].PROPERIES" :key="contact.CODE">
+      <li v-for="contact in getContacts['0']?.PROPERIES" :key="contact.CODE">
         <a :href="`mailto:${contact.VALUE}`" v-if="contact.CODE === 'EMAIL'">{{contact.VALUE}}</a>
       </li>
       <li>
