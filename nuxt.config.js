@@ -4,7 +4,7 @@ export default {
   // },
   server: {
     host: '127.0.0.1', // default: localhost
-    port: '3000',
+    port: '3020',
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
