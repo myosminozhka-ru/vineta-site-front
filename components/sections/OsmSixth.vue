@@ -161,6 +161,11 @@ export default {
     .icon {
       width: rem(40);
       margin-right: rem(20);
+
+      img {
+        width: 100%;
+      }
+
       @media all and (max-width: 1280px) {
         width: 30px;
       }
