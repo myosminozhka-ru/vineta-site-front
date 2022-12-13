@@ -1,5 +1,5 @@
 <template>
-  <section class="section section__item section__item--sixth catalog hide_on_mobile" v-if="isActive">
+  <section class="section section__item section__item--sixth catalog hide_on_mobile">
     <div class="catalog__wrap">
       <div class="catalog__left">
         <osm-h1 class="catalog__title">{{ $t('buttons.catalog') }}</osm-h1>
@@ -101,8 +101,12 @@ export default {
   computed: {
     ...mapGetters(['getCatalog']),
   },
-  mounted() {
-    this.catalog.slider.mount()
+  watch: {
+    isActive: function(newVal, oldVal) { // watch it
+      if (newVal) {
+        this.catalog.slider.mount()
+      }
+    }
   },
 }
 </script>
