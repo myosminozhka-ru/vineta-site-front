@@ -1,5 +1,5 @@
 <template>
-  <section class="section section__item section__item--sixth catalog hide_on_mobile">
+  <section class="section section__item section__item--sixth catalog hide_on_mobile" v-if="isActive">
     <div class="catalog__wrap">
       <div class="catalog__left">
         <osm-h1 class="catalog__title">{{ $t('buttons.catalog') }}</osm-h1>
@@ -28,6 +28,7 @@
               <div class="catalog__item_in">
                 <div class="image">
                   <nuxt-img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="" loading="lazy" />
+                  {{ $vareibles.remote }}
                 </div>
                 <span class="text">{{ item.NAME }}</span>
               </div>
@@ -45,6 +46,12 @@ export default {
   name: 'OsmSixthSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
+  },
+  props: {
+    isActive: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => ({
     catalog: {
