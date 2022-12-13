@@ -39,7 +39,6 @@ export default {
   methods: {
     ...mapActions(['toggleModal']),
     openApplyModal() {
-      // console.log('openApplyModal');
       this.toggleModal({
         isOpened: true,
         type: 'apply',

@@ -1,7 +1,7 @@
 <template>
     <a href="https://vinetaboat.ru/" target="_blank" class="category">
         <div class="category__background">
-            <img :src="require('~/assets/img/cat.jpg')" alt="">
+            <nuxt-img src="/cat.jpg" alt="" loading="lazy" />
         </div>
         <div class="category__name">{{$t('buttons.boats')}}</div>
     </a>

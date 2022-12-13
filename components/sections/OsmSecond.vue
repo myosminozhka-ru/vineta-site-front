@@ -47,7 +47,7 @@
             </div>
             <template v-if="'MORE_PHOTO' in secondData.PROPERIES">
               <div v-for="morePhoto in secondData.PROPERIES.MORE_PHOTO.VALUE" :key="morePhoto.ID" class="tiles__item">
-                <img :src="$vareibles.remote + morePhoto.SRC" alt="" />
+                <nuxt-img :src="$vareibles.remote + morePhoto.SRC" alt="" loading="lazy" />
               </div>
             </template>
           </div>
@@ -90,7 +90,6 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    //   OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   props: {
     isMounted: {
@@ -187,8 +186,6 @@ export default {
     }
     img {
       width: auto;
-      // -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
-      // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
     }
   }
   svg {
@@ -218,8 +215,6 @@ export default {
       transform: translateX(-50%);
     }
     transition: 1s clip-path 2.3s ease;
-    //   padding-top: rem(30);
-    //   padding-bottom: rem(25);
     padding: 24px;
     &:not(.isClipped) {
       @media all and (min-width: 861px) {
@@ -291,8 +286,6 @@ export default {
 
   &__right {
     padding-right: rem(122);
-    //   padding-top: 0;
-    //   padding-bottom: 0;
     background: #2e5599;
     display: flex;
     flex-direction: column;
@@ -302,7 +295,6 @@ export default {
       padding-bottom: 0 !important;
     }
     @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
-      //   padding-left: rem(50);
       padding-right: rem(50);
     }
 

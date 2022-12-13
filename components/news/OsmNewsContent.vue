@@ -3,7 +3,7 @@
         <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: 'test'}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
             <template v-if="key === 0">
                 <div class="news__image">
-                    <img :src="item.image" width="100%" alt="">
+                    <nuxt-img :src="item.image" width="100%" alt="" loading="lazy" />
                 </div>
                 <div class="news__item_top">
                     <div class="news__date">{{ item.date }}</div>
@@ -18,7 +18,7 @@
             <template v-else>
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img :src="item.image" width="100%" alt="">
+                        <nuxt-img :src="item.image" width="100%" alt="" loading="lazy" />
                     </div>
                 </div>
                 <div class="news__item_right">
@@ -76,12 +76,12 @@ export default {
         display: grid;
         grid-gap: rem(20);
         grid-template-columns: repeat(3, 1fr );
-        grid-template-areas: 
+        grid-template-areas:
             'big big big'
             'first second third';
         @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
             grid-template-columns: repeat(2, 1fr );
-            grid-template-areas: 
+            grid-template-areas:
                 'big big'
                 'first second';
         }
@@ -170,7 +170,6 @@ export default {
         text-decoration: none;
     }
     &__item &__item_left {
-        // height: rem(185);
         margin-bottom: rem(20);
     }
     &__item &__image {

@@ -24,7 +24,7 @@
         <a v-for="product in productsResult.slice(0, 4)" :key="product.ID" :href="localePath(`/catalog/${product.SECTION}/${product.CODE}`)" class="seacrhModal__item">
           <div class="products__item_image">
             <div class="image_container">
-              <img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" />
+              <nuxt-img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" loading="lazy" />
             </div>
           </div>
           <div class="products__item_data">
@@ -101,7 +101,6 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // align-items: center;
     width: 100%;
     max-width: rem(1480);
     margin: 0 auto;

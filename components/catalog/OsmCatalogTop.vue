@@ -104,7 +104,6 @@ export default {
     background: #ff0040;
     transition: all 0.3s ease;
     max-width: rem(203);
-    // flex: 0 0 rem(203);
     text-align: center;
     padding-left: 20px;
     width: 100%;
@@ -210,9 +209,6 @@ export default {
       transition: all 0.3s ease;
       display: flex;
       justify-content: center;
-      // svg {
-      //   transform: translateY(100%);
-      // }
       @media all and (max-width: 1280px) {
         width: 25px;
         margin-right: 10px;

@@ -27,7 +27,6 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    //   OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   props: {
     isMounted: {
@@ -59,10 +58,6 @@ export default {
         setTimeout(() => {
           this.isSvgVisible = false
         }, 3000)
-        // console.log('start: ', this.isStart)
-        // setTimeout(() => {
-        //   document.getElementById('first-video').play()
-        // }, 1500)
       } else {
         this.isSvgVisible = true
       }
@@ -132,8 +127,6 @@ export default {
     }
     img {
       width: auto;
-      // -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
-      // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
     }
   }
   svg {
@@ -157,8 +150,6 @@ export default {
       transform: translateX(-50%);
     }
     transition: 1s clip-path 2.3s ease;
-    //   padding-top: rem(30);
-    //   padding-bottom: rem(25);
     padding: 24px;
     &:not(.isClipped) {
       @media all and (min-width: 861px) {

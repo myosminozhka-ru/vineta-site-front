@@ -6,11 +6,11 @@
                     <osm-breadcrumbs />
                 </div>
                 <div class="section__middle--tech">
-                    <osm-h1 class="section__title">Технологии производства</osm-h1>
+                    <osm-h1 class="section__title">{{ $t('buttons.techs') }}</osm-h1>
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
-                        <img :src="dataObject.PREVIEW_PICTURE" alt="">
+                        <nuxt-img :src="$vareibles.remote + dataObject.PREVIEW_PICTURE" alt="" loading="lazy" />
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">02</div>
@@ -18,22 +18,6 @@
                           <div class="title">{{ dataObject.NAME }}</div>
 
                           <div v-html="dataObject.PREVIEW_TEXT"></div>
-
-<!--                            <div class="subtitle">На данном этапе происходит вырезка/вырубка заготовок для последующей обработки.-->
-<!--                            Заготовительный участок оснащен следующим оборудованием:</div>-->
-<!--                            <ul class="list">-->
-<!--                                <li>Установки воздушно-плазменной и гидроабразивной резки;</li>-->
-<!--                                <li>Вальцы листогибочные 3-х и 4-х валковые;</li>-->
-<!--                                <li>Оборудование, позволяющее выполнять штамповку эллиптических и сферических донышек;</li>-->
-<!--                                <li>Ленточнопильные станки для резки сортового, фасонного и других видов проката;</li>-->
-<!--                                <li>Ножницы листовые гильотинные для рубки заготовок;</li>-->
-<!--                                <li>Трубогибочные станки для гибки труб;</li>>-->
-<!--                                <li>Машина листогибочная для гибки листа;</li>-->
-<!--                                <li>Прессы гидравлические для штамповки.</li>-->
-<!--                            </ul>-->
-<!--                            <div class="text">-->
-<!--                              Оснастка на имеющееся оборудование проектируется и изготовляется собственными силами, что гарантирует индивидуальный подход к решению поставленной задачи.-->
-<!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -46,7 +30,6 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')
   },
   props: {
@@ -57,100 +40,6 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.title {
-    font-style: normal;
-    font-weight: 600;
-    font-size: rem(30);
-    margin-bottom: rem(30);
-    line-height: 140%;
-    color: #172242;
-    @media all and (max-width: 1280px) {
-        font-size: 20px;
-        margin-bottom: 30px;
-    }
-}
-.list {
-    padding: 0;
-    margin: 0;
-    padding-left: rem(24);
-    @media all and (max-width: 1280px) {
-        padding-left: 24px;
-    }
-    &:not(:last-child) {
-        margin-bottom: rem(40);
-        @media all and (max-width: 1280px) {
-            margin-bottom: 40px;
-        }
-    }
-    li {
-        font-style: normal;
-        font-weight: 400;
-        font-size: rem(18);
-        line-height: 140%;
-        color: #555F76;
-        @media all and (max-width: 1280px) {
-            margin-bottom: 40px;
-            font-size: 16px;
-        }
-        &:not(:last-child) {
-            margin-bottom: rem(10);
-            @media all and (max-width: 1280px) {
-                margin-bottom: 10px;
-            }
-        }
-    }
-}
-.subtitle {
-    font-style: normal;
-    font-weight: 600;
-    font-size: rem(18);
-    line-height: 140%;
-    color: #172242;
-    @media all and (max-width: 1280px) {
-        font-size: 16px;
-    }
-    &:not(:last-child) {
-        margin-bottom: rem(20);
-        @media all and (max-width: 1280px) {
-            margin-bottom: 20px;
-        }
-    }
-}
-.text {
-    margin: 0;
-    font-style: normal;
-    font-weight: 400;
-    font-size: rem(18);
-    line-height: 140%;
-    color: #555F76;
-    @media all and (max-width: 1280px) {
-        font-size: 16px;
-    }
-    &:not(:last-child) {
-        margin-bottom: rem(20);
-        @media all and (max-width: 1280px) {
-            margin-bottom: 20px;
-        }
-    }
-}
-.line {
-    height: rem(2);
-    background: #D7DCE1;
-    border-radius: 20px;
-    @media all and (max-width: 1280px) {
-        height: 2px;
-    }
-    &:not(:last-child) {
-        margin-bottom: rem(20);
-        @media all and (max-width: 1280px) {
-            margin-bottom: 20px;
-        }
-    }
-}
-</style>
-
 <style lang="scss" scoped>
 .section {
     background: #fff;
@@ -209,8 +98,7 @@ export default {
     }
     &__right--tech {
         width: calc(100% - #{rem(602)} - #{rem(128)});
-height: 100%;
-        // margin-left: rem(128);
+        height: 100%;
         position: relative;
         @media all and (max-width: 1280px) {
             width: 100%;
@@ -249,102 +137,6 @@ right: 10px;
                 background: linear-gradient(180deg, rgba(255, 255, 255, 0) -12.5%, #FFFFFF 56.04%);
             }
         }
-        .texts {
-            position: relative;
-            z-index: 2;
-height: 100%;
-overflow: auto;
-        }
-        .title {
-            font-style: normal;
-            font-weight: 600;
-            font-size: rem(30);
-            margin-bottom: rem(30);
-            line-height: 140%;
-            color: #172242;
-            @media all and (max-width: 1280px) {
-                font-size: 20px;
-                margin-bottom: 30px;
-            }
-        }
-        .list {
-            padding: 0;
-            margin: 0;
-            padding-left: rem(24);
-            @media all and (max-width: 1280px) {
-                padding-left: 24px;
-            }
-            &:not(:last-child) {
-                margin-bottom: rem(40);
-                @media all and (max-width: 1280px) {
-                    margin-bottom: 40px;
-                }
-            }
-            li {
-                font-style: normal;
-                font-weight: 400;
-                font-size: rem(18);
-                line-height: 140%;
-                color: #555F76;
-                @media all and (max-width: 1280px) {
-                    margin-bottom: 40px;
-                    font-size: 16px;
-                }
-                &:not(:last-child) {
-                    margin-bottom: rem(10);
-                    @media all and (max-width: 1280px) {
-                        margin-bottom: 10px;
-                    }
-                }
-            }
-        }
-        .subtitle {
-            font-style: normal;
-            font-weight: 600;
-            font-size: rem(18);
-            line-height: 140%;
-            color: #172242;
-            @media all and (max-width: 1280px) {
-                font-size: 16px;
-            }
-            &:not(:last-child) {
-                margin-bottom: rem(20);
-                @media all and (max-width: 1280px) {
-                    margin-bottom: 20px;
-                }
-            }
-        }
-        .text {
-            margin: 0;
-            font-style: normal;
-            font-weight: 400;
-            font-size: rem(18);
-            line-height: 140%;
-            color: #555F76;
-            @media all and (max-width: 1280px) {
-                font-size: 16px;
-            }
-            &:not(:last-child) {
-                margin-bottom: rem(20);
-                @media all and (max-width: 1280px) {
-                    margin-bottom: 20px;
-                }
-            }
-        }
-        .line {
-            height: rem(2);
-            background: #D7DCE1;
-            border-radius: 20px;
-            @media all and (max-width: 1280px) {
-                height: 2px;
-            }
-            &:not(:last-child) {
-                margin-bottom: rem(20);
-                @media all and (max-width: 1280px) {
-                    margin-bottom: 20px;
-                }
-            }
-        }
         .bg_text {
             padding: rem(20);
             background: #D7DCE1;
@@ -371,5 +163,96 @@ overflow: auto;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+}
+
+.title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: rem(30);
+  margin-bottom: rem(30);
+  line-height: 140%;
+  color: #172242;
+  @media all and (max-width: 1280px) {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+}
+:deep(.list) {
+  padding: 0;
+  margin: 0;
+  padding-left: rem(24);
+  @media all and (max-width: 1280px) {
+    padding-left: 24px;
+  }
+  &:not(:last-child) {
+    margin-bottom: rem(40);
+    @media all and (max-width: 1280px) {
+      margin-bottom: 40px;
+    }
+  }
+  li {
+    font-style: normal;
+    font-weight: 400;
+    font-size: rem(18);
+    line-height: 140%;
+    color: #555F76;
+    @media all and (max-width: 1280px) {
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+    &:not(:last-child) {
+      margin-bottom: rem(10);
+      @media all and (max-width: 1280px) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+:deep(.subtitle) {
+  font-style: normal;
+  font-weight: 600;
+  font-size: rem(18);
+  line-height: 140%;
+  color: #172242;
+  @media all and (max-width: 1280px) {
+    font-size: 16px;
+  }
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+    @media all and (max-width: 1280px) {
+      margin-bottom: 20px;
+    }
+  }
+}
+:deep(.text) {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: rem(18);
+  line-height: 140%;
+  color: #555F76;
+  @media all and (max-width: 1280px) {
+    font-size: 16px;
+  }
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+    @media all and (max-width: 1280px) {
+      margin-bottom: 20px;
+    }
+  }
+}
+.line {
+  height: rem(2);
+  background: #D7DCE1;
+  border-radius: 20px;
+  @media all and (max-width: 1280px) {
+    height: 2px;
+  }
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+    @media all and (max-width: 1280px) {
+      margin-bottom: 20px;
+    }
+  }
 }
 </style>

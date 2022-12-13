@@ -14,8 +14,8 @@
         class="categories__item_image"
       >
         <div class="image_container">
-          <img v-if="category.DETAIL_PICTURE" :src="$vareibles.remote + category.DETAIL_PICTURE" alt="" />
-          <img v-else :src="require('~/assets/img/product.noimage.png')" alt="" />
+          <nuxt-img v-if="category.DETAIL_PICTURE" :src="$vareibles.remote + category.DETAIL_PICTURE" alt="" loading="lazy" />
+          <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
         </div>
       </nuxt-link>
       <nuxt-link

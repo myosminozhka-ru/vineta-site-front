@@ -14,8 +14,8 @@
       >
         <div class="products__item_image">
           <div class="image_container">
-            <img v-if="product.PREVIEW_PICTURE" :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" />
-            <img v-else :src="require('~/assets/img/product.noimage.png')" alt="" />
+            <nuxt-img v-if="product.PREVIEW_PICTURE" :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" loading="lazy" />
+            <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
           </div>
         </div>
         <div class="products__item_data">
@@ -56,7 +56,6 @@ export default {
         return this.getCatalog.filter((item) => item.CODE === this.catalogId)
       },
       set(newValue) {
-        // console.log(newValue);
         return this.getCatalog.filter((item) => item.CODE === this.catalogId)
       },
     },
@@ -145,44 +144,6 @@ export default {
       } else {
         return this.products
       }
-
-      // if (this.getFilters.length) {
-      //   return this.products.filter((product) => {
-      //     let params = []
-      //     if ('PROPERIES_FILTER' in product) {
-      //       product.PROPERIES_FILTER.map((prop) => {
-      //         if (!params) {
-      //           params = {}
-      //         }
-      //         prop.VALUE.map((item) => {
-      //           if (!params.includes(item)) {
-      //             params = [...params, item]
-      //           }
-      //           return item
-      //         })
-      //         return prop
-      //       })
-      //     }
-      //     // console.log(this.findCommonElements(params, this.getFilters));
-      //     // console.log(params);
-      //     for (const filterParam in this.getFilters) {
-      //       if (params.includes(this.getFilters[filterParam])) {
-      //         // console.log('filterParam', this.getFilters[filterParam], params);
-      //         return product
-      //       }
-      //     }
-      //     return false
-      //     // if (this.findCommonElements(this.getFilters, params)) {
-      //     //     // console.log(this.getFilters, params)
-      //     //     console.log('product', product);
-      //     //     return product;
-      //     // } else {
-      //     //     return false;
-      //     // }
-      //   })
-      // } else {
-      //   return this.products
-      // }
     },
   },
   created() {
@@ -228,9 +189,7 @@ export default {
       }, 150)
     },
     findCommonElements(arr1, arr2) {
-      // console.log(arr1, arr2);
       return arr1.some((item) => {
-        // console.log(item);
         if (arr2.includes(item)) {
           arr2.includes(item)
           return item

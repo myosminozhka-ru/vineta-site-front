@@ -8,7 +8,7 @@
         <nuxt-link class="header__link" :to="localePath({ name: 'catalog' })" @click.stop="">
           <span>{{ $t('buttons.catalog') }}</span>
           <div class="header__arrow">
-            <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow" />
+            <nuxt-img src="/arrow.svg" alt="arrow" loading="lazy" />
           </div>
         </nuxt-link>
       </li>
@@ -16,7 +16,7 @@
         <nuxt-link class="header__link" :to="localePath({ name: link.url })" @click.stop="">
           <span>{{ link.text }}</span>
           <div v-show="link.childs" class="header__arrow">
-            <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow" />
+            <nuxt-img src="/arrow.svg" alt="arrow" loading="lazy" />
           </div>
         </nuxt-link>
       </li>
@@ -38,7 +38,7 @@
                 "
               >
                 <div class="icon">
-                  <img :src="$vareibles.remote + category.PICTURE" width="100%" alt="" />
+                  <nuxt-img :src="$vareibles.remote + category.PICTURE" alt="" loading="lazy" />
                 </div>
                 <div class="text">{{ category.NAME }}</div>
               </a>
@@ -50,9 +50,9 @@
             {{ $t('buttons.downloads') }}
           </osm-h2>
           <div class="menu__modal_list">
-            <a target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" v-for="item in catalogDownloadLinks" :key="item.CODE" download="">
+            <a v-for="item in catalogDownloadLinks" :key="item.CODE" target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" download="">
               <div class="icon">
-                <img src="~/assets/img/download.svg" width="100%" alt="" />
+                <nuxt-img src="/download.svg" width="100%" alt="" loading="lazy" />
               </div>
               <div class="text">
                 <div class="top">{{ item.NAME }}</div>
@@ -77,7 +77,7 @@
             <li v-for="item in submenu.childs" :key="item.index">
               <nuxt-link :to="localePath({ name: item.url })">
                 <div class="icon">
-                  <img :src="item.icon" width="100%" alt="" />
+                  <nuxt-img :src="item.icon" width="100%" alt="" loading="lazy" />
                 </div>
                 <div class="text">{{ item.text }}</div>
               </nuxt-link>
@@ -86,12 +86,12 @@
         </div>
         <div v-show="Object.keys(getDownloads).length" class="menu__modal_bottom">
           <osm-h2 class="menu__modal_title">
-            {{ $t('buttons.downloads') }}
+              {{ $t('buttons.downloads') }}
           </osm-h2>
           <div class="menu__modal_list">
-            <a target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" v-for="item in aboutDownloadLinks" :key="item.CODE" download="">
+            <a v-for="item in aboutDownloadLinks" :key="item.CODE" target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" download="">
               <div class="icon">
-                <img src="~/assets/img/download.svg" width="100%" alt="" />
+                <nuxt-img src="/download.svg" width="100%" alt="" loading="lazy" />
               </div>
               <div class="text">
                 <div class="top">{{ item.NAME }}</div>
@@ -139,6 +139,11 @@ export default {
   components: {
     OsmH2: () => import('~/components/global/OsmH2.vue'),
   },
+  data: () => ({
+    favoritesCount: 4,
+    filteredFirstCatalog: [],
+    filteredSecondCatalog: [],
+  }),
   computed: {
     menu() {
       return [
@@ -208,11 +213,6 @@ export default {
       return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file')
     },
   },
-  data: () => ({
-    favoritesCount: 4,
-    filteredFirstCatalog: [],
-    filteredSecondCatalog: [],
-  }),
   mounted() {
     document.addEventListener('click', () => {
       this.closeModals()
@@ -412,6 +412,10 @@ export default {
       .icon {
         width: rem(40);
         margin-right: rem(20);
+
+        img {
+          max-width: 100%;
+        }
 
         @media all and (max-width: 1280px) {
           width: 30px;

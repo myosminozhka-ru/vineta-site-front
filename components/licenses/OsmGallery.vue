@@ -8,17 +8,17 @@
       <LightGallery :images="imagesGallery" :index="index" :disable-scroll="true" @close="index = null" />
     </no-ssr>
     <div class="gallery__items">
-      <div class="gallery__item" v-for="(image, key) in images" :key="image.index" @click="index = key">
+      <div v-for="(image, key) in images" :key="image.index" class="gallery__item" @click="index = key">
         <div class="gallery__item_image">
-          <img :src="$vareibles.remote + image.PREVIEW_PICTURE" width="100%" alt="" />
+          <nuxt-img :src="$vareibles.remote + image.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
         </div>
         <div class="gallery__item_overlay">
           <div class="icon">
-            <img :src="require('~/assets/img/licenses/search_icon.svg')" width="100%" alt="" />
+            <nuxt-img src="/licenses/search_icon.svg" width="100%" alt="" loading="lazy" />
           </div>
           <div class="text">{{ image.NAME }}</div>
           <a v-if="image.PROPERIES" :href="$vareibles.remote + image.PROPERIES.PDF.SRC" download="true" target="_blank" class="pdf">
-            <img :src="require('~/assets/img/pdf.png')" alt="" />
+            <nuxt-img src="/pdf.png" alt="" loading="lazy" />
           </a>
         </div>
       </div>
@@ -41,11 +41,11 @@ export default {
   // prettier-ignore
   data: () => ({
     gallery: [
-        require('~/assets/img/licenses/license2.png'), 
-        require('~/assets/img/licenses/license2.png'), 
-        require('~/assets/img/licenses/license2.png'), 
-        require('~/assets/img/licenses/license2.png'), 
-        require('~/assets/img/licenses/license2.png'), 
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
+        require('~/assets/img/licenses/license2.png'),
         require('~/assets/img/licenses/license2.png')
     ],
     index: null,

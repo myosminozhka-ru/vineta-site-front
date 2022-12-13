@@ -6,45 +6,42 @@
     </div>
     <div class="sections" :data-id="activeIndex">
       <osm-first-section :class="{ isActive: activeIndex === 0 }" :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" @toNext="goToNext" />
-      <osm-second-section 
-        id="second" :class="{ isActive: activeIndex === 1 }" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" 
-        :dataObject="getTechnology && getTechnology[0]"
+      <osm-second-section
+        id="second" :class="{ isActive: activeIndex === 1 }" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+        :data-object="getTechnology && getTechnology[0]"
       />
-      <osm-third-section 
-        :class="{ isActive: activeIndex === 2 }" :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" 
-        :dataObject="getTechnology && getTechnology[1]"
+      <osm-third-section
+        :class="{ isActive: activeIndex === 2 }" :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+        :data-object="getTechnology && getTechnology[1]"
       />
-      <osm-fourth-section 
-        :class="{ isActive: activeIndex === 3 }" :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" 
-        :dataObject="getTechnology && getTechnology[2]"
+      <osm-fourth-section
+        :class="{ isActive: activeIndex === 3 }" :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+        :data-object="getTechnology && getTechnology[2]"
       />
-      <osm-fiveth-section 
-        :class="{ isActive: activeIndex === 4 }" :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" 
-        :dataObject="getTechnology && getTechnology[3]"
+      <osm-fiveth-section
+        :class="{ isActive: activeIndex === 4 }" :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+        :data-object="getTechnology && getTechnology[3]"
       />
-      <osm-sixth-section 
-        :class="{ isActive: activeIndex === 5 }" :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" 
-        :dataObject="getTechnology && getTechnology[4]"
+      <osm-sixth-section
+        :class="{ isActive: activeIndex === 5 }" :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+        :data-object="getTechnology && getTechnology[4]"
       />
-      <osm-seventh-section 
-        :class="{ isActive: activeIndex === 6 }" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" 
-        :dataObject="getTechnology && getTechnology[5]"
+      <osm-seventh-section
+        :class="{ isActive: activeIndex === 6 }" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+        :data-object="getTechnology && getTechnology[5]"
       />
       <osm-eighth-section v-if="false" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-footer-section class="techs_footer" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
-      <osm-preloader />
+      <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
     </div>
   </div>
 </template>
 
 <script>
-// import $ from 'jquery';
-// import 'pagepiling-js-version-kostyast/jquery.pagepiling.min.js';
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'IndexPage',
+  name: 'TechsPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFirstSection: () => import('~/components/techs/OsmFirst.vue'),
     OsmSecondSection: () => import('~/components/techs/OsmSecond.vue'),
     OsmThirdSection: () => import('~/components/techs/OsmThird.vue'),
@@ -60,6 +57,7 @@ export default {
     activeIndex: null,
     sections: [],
     isInProgress: false,
+    isMounted: false
   }),
   head() {
     return {
@@ -92,7 +90,6 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener('mousewheel', () => {
-      // console.log('mousewheel event removed')
     })
   },
   created() {
@@ -148,6 +145,7 @@ export default {
     }
 
     this.addTechnology()
+    this.isMounted = true;
   },
   methods: {
     ...mapActions(['addBreadcrumbs', 'addTechnology']),
@@ -190,4 +188,102 @@ export default {
 .wrapper {
   background: #fff;
 }
+
+:deep(.texts) {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  overflow: auto;
+}
+:deep(.title) {
+  font-style: normal;
+  font-weight: 600;
+  font-size: rem(30);
+  margin-bottom: rem(30);
+  line-height: 140%;
+  color: #172242;
+  @media all and (max-width: 1280px) {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+}
+:deep(.list) {
+  padding: 0;
+  margin: 0;
+  padding-left: rem(24);
+  @media all and (max-width: 1280px) {
+    padding-left: 24px;
+  }
+  &:not(:last-child) {
+    margin-bottom: rem(40);
+    @media all and (max-width: 1280px) {
+      margin-bottom: 40px;
+    }
+  }
+  li {
+    font-style: normal;
+    font-weight: 400;
+    font-size: rem(18);
+    line-height: 140%;
+    color: #555f76;
+    @media all and (max-width: 1280px) {
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+    &:not(:last-child) {
+      margin-bottom: rem(10);
+      @media all and (max-width: 1280px) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+:deep(.subtitle) {
+  font-style: normal;
+  font-weight: 600;
+  font-size: rem(18);
+  line-height: 140%;
+  color: #172242;
+  @media all and (max-width: 1280px) {
+    font-size: 16px;
+  }
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+    @media all and (max-width: 1280px) {
+      margin-bottom: 20px;
+    }
+  }
+}
+:deep(.text) {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: rem(18);
+  line-height: 140%;
+  color: #555f76;
+  @media all and (max-width: 1280px) {
+    font-size: 16px;
+  }
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+    @media all and (max-width: 1280px) {
+      margin-bottom: 20px;
+    }
+  }
+}
+:deep(.line) {
+  height: rem(2);
+  background: #d7dce1;
+  border-radius: 20px;
+  @media all and (max-width: 1280px) {
+    height: 2px;
+  }
+  &:not(:last-child) {
+    margin-bottom: rem(20);
+    @media all and (max-width: 1280px) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
 </style>

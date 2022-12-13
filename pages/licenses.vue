@@ -13,7 +13,7 @@
       </div>
     </div>
     <osm-footer />
-    <osm-preloader />
+    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 
@@ -22,12 +22,14 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LicensesPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmGallery: () => import('~/components/licenses/OsmGallery.vue'),
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
+  data: () => ({
+    isMounted: false
+  }),
   head() {
     return {
       title: this.getSeo.licenses.SEO.META.TITLE,
@@ -61,6 +63,9 @@ export default {
         isLink: false,
       },
     ])
+  },
+  mounted() {
+    this.isMounted = true;
   },
   methods: {
     ...mapActions(['addBreadcrumbs']),

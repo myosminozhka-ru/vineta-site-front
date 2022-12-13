@@ -43,7 +43,6 @@ export const mutations = {
     state.isDataLoaded = data
   },
   setCatalogFilters(state, data) {
-    // console.log('setCatalogFiltersMutation', JSON.parse(data));
     state.catalogFilters = JSON.parse(data)
   },
   setGalleryIndex(state, data) {
@@ -134,7 +133,6 @@ export const actions = {
     context.commit('addSelectedNewsType', data)
   },
   addFilters(context, data) {
-    // console.log('addFilters', data)
     context.commit('addFilters', data)
   },
   addDownloads(context) {
@@ -151,14 +149,12 @@ export const actions = {
     })
   },
   addMain(context) {
-    // console.log('addMain');
     return new Promise((resolve, reject) => {
       this.$axios
         .$get('slider.php')
         .then((response) => {
           resolve(response)
           context.commit('addMain', response)
-          // console.log('addMain', response);
         })
         .catch((error) => {
           reject(error)
@@ -167,13 +163,11 @@ export const actions = {
   },
   addMainMore(context) {
     return new Promise((resolve, reject) => {
-      // console.log('addMainMore');
       this.$axios
         .$get('main.php')
         .then((response) => {
           resolve(response)
           context.commit('addMainMore', response)
-          // console.log('addMainMore', response);
         })
         .catch((error) => {
           reject(error)
@@ -309,19 +303,16 @@ export const actions = {
       })
     }
     if (data.type === 'search') {
-      // console.log(data)
       context.commit('toggleSearch', {
         isOpened: data.isOpened,
       })
     }
     if (data.type === 'favorites') {
-      // console.log(data)
       context.commit('toggleFavorites', {
         isOpened: data.isOpened,
       })
     }
     if (data.type === 'apply') {
-      // console.log(data)
       context.commit('toggleApply', {
         isOpened: data.isOpened,
       })
@@ -358,7 +349,6 @@ export const actions = {
     await dispatch('addMainMore')
     await dispatch('addCatalog')
     await dispatch('addContacts')
-    // await dispatch('addContacts');
     await dispatch('addLicenses')
     await dispatch('addNews')
     await dispatch('addPartners')
@@ -367,14 +357,7 @@ export const actions = {
     await dispatch('setLoadedStatus')
     await dispatch('addSeo')
     await dispatch('addAbout')
-    // console.log('fetch data');
   },
-  // getLicenses(state, type) {
-  //   if (type) {
-  //     return state.licenses.filter(i => i.SECTION === type)
-  //   }
-  //   return state.licenses;
-  // },
 }
 
 export const getters = {

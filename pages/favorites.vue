@@ -16,7 +16,7 @@
       </div>
     </div>
     <osm-footer />
-    <osm-preloader />
+    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
     <osm-favorites-modal />
   </div>
 </template>
@@ -26,7 +26,6 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'FavoritesPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProductsFake.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
@@ -34,7 +33,9 @@ export default {
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
     OsmFavoritesModal: () => import('~/components/modals/favorites.vue'),
   },
-
+  data: () => ({
+    isMounted: false,
+  }),
   head() {
     return {
       title: this.getSeo.favorites.SEO.META.TITLE,
@@ -73,11 +74,12 @@ export default {
       },
     ])
   },
-
+  mounted() {
+    this.isMounted = true;
+  },
   methods: {
     ...mapActions(['addBreadcrumbs']),
     printSection() {
-      // this.$htmlToPaper("wrapper");
       window.print()
     },
   },

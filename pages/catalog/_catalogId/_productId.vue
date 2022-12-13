@@ -4,7 +4,7 @@
       {{ product[0] }}
     </pre> -->
     <div class="productPage__print-up">
-      <img src="@/assets/img/logo.svg" alt="" class="img" />
+      <nuxt-img src="/logo.svg" alt="" class="img" loading="lazy" />
       <p class="title" v-html="printUpText"></p>
     </div>
     <div class="productPage__container">
@@ -75,13 +75,13 @@
       <div id="modifications" class="productPage__mods">
         <div class="productPage__mods--tabs hide_on_tablet">
           <div class="titles">
-            <div v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" @click.prevent="tabsSelect(1)" :class="{ isActive: tabs.selected === 1 || tabs.selected === null }">
+            <div v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" :class="{ isActive: tabs.selected === 1 || tabs.selected === null }" @click.prevent="tabsSelect(1)">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 1 || tabs.selected === null }" :outlined="true"> Описание</osm-button>
             </div>
-            <div v-if="hasChar" @click.prevent="tabsSelect(2)" :class="{ isActive: tabs.selected === 2 }">
+            <div v-if="hasChar" :class="{ isActive: tabs.selected === 2 }" @click.prevent="tabsSelect(2)">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 2 }" :outlined="true"> Характеристики </osm-button>
             </div>
-            <div v-if="hasMod" @click.prevent="tabsSelect(3)" :class="{ isActive: tabs.selected === 3 }">
+            <div v-if="hasMod" :class="{ isActive: tabs.selected === 3 }" @click.prevent="tabsSelect(3)">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 3 }" :outlined="true"> Модификации ({{ offersCount.length }})</osm-button>
             </div>
           </div>
@@ -125,14 +125,12 @@
                   </div>
                   <template v-if="offersCount.length === 1">
                     <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__mods--char">
-                      <template>
-                        <div class="productPage__mods--char_title">
-                          {{ prop.NAME }}
-                        </div>
-                        <div class="productPage__mods--char_value">
-                          {{ prop.VALUE }}
-                        </div>
-                      </template>
+                      <div class="productPage__mods--char_title">
+                        {{ prop.NAME }}
+                      </div>
+                      <div class="productPage__mods--char_value">
+                        {{ prop.VALUE }}
+                      </div>
                     </div>
                   </template>
                 </div>
@@ -255,14 +253,12 @@
                   </div>
                   <template v-if="offersCount.length === 1">
                     <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__mods--char">
-                      <template>
-                        <div class="productPage__mods--char_title">
-                          {{ prop.NAME }}
-                        </div>
-                        <div class="productPage__mods--char_value">
-                          {{ prop.VALUE }}
-                        </div>
-                      </template>
+                      <div class="productPage__mods--char_title">
+                        {{ prop.NAME }}
+                      </div>
+                      <div class="productPage__mods--char_value">
+                        {{ prop.VALUE }}
+                      </div>
                     </div>
                   </template>
                 </div>
@@ -344,7 +340,7 @@
         </div>
       </div>
 
-      <div class="productPage__analogs" v-show="analogsItems && analogsItems.length">
+      <div v-show="analogsItems && analogsItems.length" class="productPage__analogs">
         <div class="productPage__analogs_top">
           <div class="title">Аналоги</div>
           <div class="productPage__analogs_top_arrows hide_on_desktop">
@@ -379,7 +375,7 @@
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
                   <div class="image_container">
-                    <img :src="$vareibles.remote + prod.PREVIEW_PICTURE" alt="" />
+                    <nuxt-img :src="$vareibles.remote + prod.PREVIEW_PICTURE" alt="" loading="lazy" />
                   </div>
                 </div>
                 <div class="products__item_data">
@@ -406,7 +402,7 @@
       <h3>Модификации ({{ offersCount.length }})</h3>
       <!-- <div>
         <table class="titles" v-for="mod in product[0].OFFERS" :key="mod.index">
-          
+
         </table>
       </div> -->
       <table>
@@ -497,7 +493,6 @@ export default {
     return {
       title: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.TITLE : '',
       meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
           hid: 'description',
           name: 'description',
@@ -557,14 +552,10 @@ export default {
       },
     },
   },
-  created() {
-    //  this.setLoadedStatus(false)
-  },
   async mounted() {
     await this.$fetch()
     const properties = Object.values(this.product[0].OFFERS).map((ele) => [...ele?.PROPERTIES])
     this.longestLength = properties.map((a) => a.length).indexOf(Math.max(...properties.map((a) => a.length)))
-    console.log(this.longestLength)
     this.addBreadcrumbs([
       {
         name: 'Главная',
@@ -706,7 +697,6 @@ export default {
 }
 
 .mods_for_print {
-  // display: none;
   color: #172242;
   font-size: 10px;
   display: none;
@@ -813,10 +803,6 @@ export default {
         &:not(:nth-child(3n + 3)) {
           margin-right: 20px;
         }
-
-        // &:nth-child(n+4){
-        //   display: none;
-        // }
       }
 
       @media all and (max-width: 840px) {
@@ -1040,9 +1026,6 @@ export default {
       display: flex;
       justify-content: center;
 
-      // svg {
-      //   transform: translateY(100%);
-      // }
       @media all and (max-width: 1280px) {
         width: 25px;
         margin-right: 10px;
@@ -1116,7 +1099,6 @@ export default {
       flex-direction: column;
       align-items: flex-start;
       justify-content: flex-start;
-      // display: block;
     }
   }
 
@@ -1140,7 +1122,6 @@ export default {
     }
 
     @media print {
-      // width: 40%;
       width: 100%;
     }
   }
@@ -1259,14 +1240,8 @@ export default {
       display: none;
     }
 
-    // &:not(:last-child) {
-    //   border-bottom: 1px solid #f2f2f2;
-    // }
 
     @media all and (max-width: 840px) {
-      // display: flex;
-      // align-self: start;
-      // padding-bottom: 15px;
       border-bottom: 2px solid #d7dce1;
     }
   }
@@ -1290,16 +1265,6 @@ export default {
     @media print {
       font-size: rem(13);
     }
-
-    // @media all and (max-width: 860px) {
-    //   width: 50%;
-    //   margin-right: 10px;
-    //   font-style: normal;
-    //   font-weight: 400;
-    //   font-size: 12px;
-    //   line-height: 140%;
-    //   color: #172242;
-    // }
   }
 
   &__mods--char_value {
@@ -1313,15 +1278,6 @@ export default {
       font-size: rem(11);
     }
 
-    // @media all and (max-width: 860px) {
-    //   width: calc(50% - 10px);
-    //   font-style: normal;
-    //   font-weight: 400;
-    //   font-size: 12px;
-    //   line-height: 140%;
-    //   text-align: right;
-    //   color: #555F76;
-    // }
   }
 
   &__mods--mod-table {
@@ -1346,8 +1302,6 @@ export default {
     line-height: 140%;
     color: #172242;
     min-width: 0;
-    // min-width: rem(223);
-    // max-width: rem(223);
 
     @media all and (max-width: 1440px) {
       min-width: 173px;
@@ -1362,21 +1316,14 @@ export default {
 
   &__mods--mods_titles,
   &__mods--mods_item {
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: flex-start;
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
   }
 
   &__mods--mods_item {
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: flex-start;
     padding: rem(15) 0;
     border-top: 1px solid #d7dce1;
-    // width: fit-content;
 
     @media all and (max-width: 1280px) {
       width: 100%;

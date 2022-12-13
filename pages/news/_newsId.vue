@@ -1,10 +1,10 @@
 <template>
-  <div class="news__inner" v-if="detail">
+  <div v-if="detail" class="news__inner">
     <!-- <pre style="font-size: 15rem;">
             {{ detail }}
         </pre> -->
     <div class="news__image">
-      <img :src="$vareibles.remote + detail[0].PREVIEW_PICTURE" alt="" />
+      <nuxt-img :src="$vareibles.remote + detail[0].PREVIEW_PICTURE" alt="" loading="lazy" />
     </div>
     <div class="news__buttons">
       <osm-button class="news__button" style="pointer-events: none">{{
@@ -27,24 +27,18 @@
       <div class="news__more--title">Смотрите так же</div>
       <div class="news__more--items">
         <a
-          :href="localePath(`/news/${item.CODE}`)"
           v-for="(item, key) in news"
           :key="key"
-          class="news__item"
-        >
+          :href="localePath(`/news/${item.CODE}`)"
+          class="news__item" >
           <div class="news__item_left">
             <div class="news__image">
-              <img
+              <nuxt-img
                 v-if="item.PREVIEW_PICTURE"
                 :src="$vareibles.remote + item.PREVIEW_PICTURE"
-                width="100%"
                 alt=""
-              />
-              <img
-                v-else
-                :src="require('~/assets/img/product.noimage.png')"
-                alt=""
-              />
+                loading="lazy" />
+              <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
             </div>
           </div>
           <div class="news__item_right">
@@ -54,11 +48,9 @@
                 {{ item.NAME }}
               </div>
             </div>
-            <span
-              class="news__link"
-              :to="{ name: item.link, params: { newsId: item.CODE } }"
-              >Читать новость</span
-            >
+            <NuxtLink :to="{ name: item.link, params: { newsId: item.CODE } }" class="news__link">
+              Читать новость
+            </NuxtLink>
           </div>
         </a>
       </div>
@@ -75,17 +67,6 @@ export default {
   data: () => ({
     detail: null,
   }),
-  computed: {
-    ...mapGetters(['getNews']),
-    news() {
-      return this.getNews.filter(
-        (item) => item.CODE !== this.$route.params.newsId
-      )
-    },
-  },
-  beforeDestroy() {
-    this.detail = null
-  },
   async fetch() {
     this.detail = await this.$axios.$get(
       `news-detail.php?code=${this.$route.params.newsId}`
@@ -107,9 +88,17 @@ export default {
       },
     ])
   },
-  // mounted() {
-  //     console.log('Данные страницы новости', this.detail);
-  // },
+  computed: {
+    ...mapGetters(['getNews']),
+    news() {
+      return this.getNews.filter(
+        (item) => item.CODE !== this.$route.params.newsId
+      )
+    },
+  },
+  beforeDestroy() {
+    this.detail = null
+  },
   methods: {
     ...mapActions(['addBreadcrumbs']),
   },
@@ -190,7 +179,6 @@ export default {
     position: relative;
   }
   &__item &__item_left {
-    // height: rem(185);
     margin-bottom: rem(20);
   }
   &__item &__image {

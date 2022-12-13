@@ -9,7 +9,7 @@
             <nuxt-link :to="switchLocalePath('ru')" :class="{ isActive: $i18n.locale === 'ru' }">Ру</nuxt-link>
           </div>
           <div class="menu__closer" @click="closeMenu">
-            <img :src="require('~/assets/img/closer.svg')" width="100%" alt="" />
+            <nuxt-img src="/closer.svg" width="100%" alt="" loading="lazy" />
           </div>
         </div>
         <nav class="menu__links">
@@ -37,7 +37,7 @@
                     "
                   >
                     <div class="icon">
-                      <img :src="$vareibles.remote + child.PICTURE" width="100%" alt="" />
+                      <nuxt-img :src="$vareibles.remote + child.PICTURE" width="100%" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ child.NAME }}</div>
                   </a>
@@ -47,7 +47,7 @@
             <li v-for="link in menu" :key="link.index" class="menu__links_li" :class="{ 'has-child': link.childs, isOpened: link.isOpened }">
               <div>
                 <nuxt-link :to="localePath({ name: link.url })" class="text">{{ link.text }}</nuxt-link>
-                <div class="arrow" v-if="link.childs">
+                <div v-if="link.childs" class="arrow">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
                     <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2" />
                   </svg>
@@ -60,7 +60,7 @@
                 <li v-for="child in link.childs" :key="child.index">
                   <nuxt-link :to="localePath({ name: child.url })">
                     <div class="icon">
-                      <img :src="child.icon" width="100%" alt="" />
+                      <nuxt-img :src="child.icon" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ child.text }}</div>
                   </nuxt-link>
@@ -142,6 +142,11 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapGetters(['getModals']),
+    ...mapGetters(['getCatalog']),
+    ...mapGetters(['getMainMore']),
+  },
   watch: {
     $route(to, from) {
       if (to !== from) {
@@ -153,12 +158,6 @@ export default {
     this.closeMenu()
     this.openChilds()
   },
-  computed: {
-    ...mapGetters(['getModals']),
-    ...mapGetters(['getCatalog']),
-    ...mapGetters(['getMainMore']),
-  },
-
   methods: {
     openChilds() {
       document.querySelectorAll('.menu__links_li.has-child > div > .arrow').forEach((item) => {
@@ -167,9 +166,6 @@ export default {
           item.closest('li').classList.toggle('isOpened')
         })
       })
-      // console.log(item)
-      // if (!item) return;
-      // item.isOpened = !item.isOpened;
     },
     ...mapActions(['toggleModal']),
     closeMenu() {
@@ -178,9 +174,6 @@ export default {
         type: 'mobileMenu',
       })
     },
-    // switchLocalePath(path) {
-    //   console.log(path)
-    // },
   },
 }
 </script>

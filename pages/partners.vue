@@ -12,7 +12,7 @@
               <!-- <pre>{{ item }}</pre> -->
               <div class="partners__item_top">
                 <div v-if="'PREVIEW_PICTURE' in item" class="partners__item_logo">
-                  <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
+                  <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                 </div>
                 <div v-if="'PREVIEW_TEXT' in item" class="partners__item_text">
                   {{ item.PREVIEW_TEXT }}
@@ -20,25 +20,25 @@
                 <div v-if="'PROPERIES' in item" class="partners__contact_items">
                   <div class="partners__contact_item">
                     <div class="icon">
-                      <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="" />
+                      <nuxt-img src="/contacts/MAP.svg" width="100%" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ item.ADRESS.VALUE }}</div>
                   </div>
                   <a v-if="item.PROPERIES[1]" :href="`mailto:${item.PROPERIES[1].VALUE}`" class="partners__contact_item email">
                     <div class="icon">
-                      <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="" />
+                      <nuxt-img src="/contacts/EMAIL.svg" width="100%" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                   </a>
                   <a v-if="item.PROPERIES[2]" :href="`tel:${item.PROPERIES[2].VALUE}`" class="partners__contact_item phone">
                     <div class="icon">
-                      <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="" />
+                      <nuxt-img src="/contacts/PHONE.svg" width="100%" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
                   </a>
                   <div v-if="item.PROPERIES[3]" class="partners__contact_item">
                     <div class="icon">
-                      <img :src="require('~/assets/img/contacts/SITE.svg')" width="100%" alt="" />
+                      <nuxt-img src="/contacts/SITE.svg" width="100%" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ item.PROPERIES[3].VALUE }}</div>
                   </div>
@@ -55,25 +55,25 @@
             <div class="partners__contact_items">
               <div class="partners__contact_item">
                 <div class="icon">
-                  <img :src="require('~/assets/img/contacts/MAP.svg')" width="100%" alt="" />
+                  <nuxt-img src="/contacts/MAP.svg" width="100%" alt="" loading="lazy" />
                 </div>
                 <div class="text">620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500</div>
               </div>
               <a href="mailto:info@vineta.ru" class="partners__contact_item">
                 <div class="icon">
-                  <img :src="require('~/assets/img/contacts/EMAIL.svg')" width="100%" alt="" />
+                  <nuxt-img src="/contacts/EMAIL.svg" width="100%" alt="" loading="lazy" />
                 </div>
                 <div class="text">info@vineta.ru</div>
               </a>
               <a href="tel:+7(812)493-50-48" class="partners__contact_item">
                 <div class="icon">
-                  <img :src="require('~/assets/img/contacts/PHONE.svg')" width="100%" alt="" />
+                  <nuxt-img src="/contacts/PHONE.svg" width="100%" alt="" loading="lazy" />
                 </div>
                 <div class="text">+7(812)493-50-48</div>
               </a>
               <div class="partners__contact_item">
                 <div class="icon">
-                  <img :src="require('~/assets/img/contacts/WATCH.svg')" width="100%" alt="" />
+                  <nuxt-img src="/contacts/WATCH.svg" width="100%" alt="" loading="lazy" />
                 </div>
                 <div class="text">Пн-Пт с 9:00 до 18:00</div>
               </div>
@@ -83,21 +83,22 @@
       </div>
     </div>
     <osm-footer />
-    <osm-preloader />
+    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'LicensesPage',
+  name: 'PartnersPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
-    // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
+  data: () => ({
+    isMounted: false
+  }),
   head() {
     return {
       title: this.getSeo.partners.SEO.META.TITLE,
@@ -118,9 +119,6 @@ export default {
   computed: {
     ...mapGetters(['getPartners']),
     ...mapGetters(['getSeo']),
-    // filteredPartners() {
-    //     return this.getPartners.filter(item => 'PROPERIES' in item);
-    // }
   },
   created() {
     this.addBreadcrumbs([
@@ -134,6 +132,9 @@ export default {
         isLink: false,
       },
     ])
+  },
+  mounted() {
+    this.isMounted = true
   },
   methods: {
     ...mapActions(['addBreadcrumbs']),
@@ -226,7 +227,6 @@ export default {
     @media all and (max-width: 840px) {
       margin-bottom: 25px;
       height: auto;
-      // justify-content: center;
     }
     img {
       max-height: 100%;

@@ -30,7 +30,7 @@
               <div @click="prev">
                 <osm-button :outlined="true" class="history__text--button">
                   <div class="arrow">
-                    <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="" />
+                    <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                   </div>
                   <div class="text">В прошлое</div>
                 </osm-button>
@@ -38,7 +38,7 @@
               <div @click="next">
                 <osm-button :outlined="true" class="history__text--button history__text--button--fwd">
                   <div class="arrow">
-                    <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="" />
+                    <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                   </div>
                   <div class="text">В Настоящее</div>
                 </osm-button>
@@ -69,7 +69,7 @@
             <div @click="prev">
               <osm-button :outlined="true" class="history__text--button">
                 <div class="arrow">
-                  <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="" />
+                  <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                 </div>
                 <div class="text">В прошлое</div>
               </osm-button>
@@ -77,7 +77,7 @@
             <div @click="next">
               <osm-button :outlined="false" class="history__text--button history__text--button--fwd">
                 <div class="arrow">
-                  <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="" />
+                  <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                 </div>
                 <div class="text">В Настоящее</div>
               </osm-button>
@@ -86,7 +86,7 @@
         </div>
       </div>
     </div>
-    <osm-preloader />
+    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 <script>
@@ -94,7 +94,6 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'HistoryPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
@@ -105,6 +104,15 @@ export default {
     isDataLoaded: false,
     isMounted: false,
   }),
+  async fetch() {
+    await this.addHistory()
+    this.modifyedHistory = this.getHistory.map((item) => {
+      return {
+        ...item,
+        isTextShowed: false,
+      }
+    })
+  },
   head() {
     return {
       title: this.getSeo.history.SEO.META.TITLE,
@@ -128,16 +136,6 @@ export default {
   },
   mounted() {
     this.isMounted = true
-    // console.log('modifyedHistory', this.modifyedHistory);
-    this.modifyedHistory = this.getHistory.map((item) => {
-      return {
-        ...item,
-        isTextShowed: false,
-      }
-    })
-  },
-  async fetch() {
-    await this.addHistory()
     this.modifyedHistory = this.getHistory.map((item) => {
       return {
         ...item,
@@ -228,7 +226,6 @@ export default {
     justify-content: space-between;
   }
   &__text--left {
-    // width: rem(588);
     flex: 1 1 auto;
     margin-right: rem(20);
     display: none;
@@ -359,9 +356,6 @@ export default {
     }
     @media all and (max-width: 1280px) {
       transform: none;
-      // min-width: 190px;
-    }
-    .top {
     }
     .line {
       height: 2px;

@@ -5,7 +5,7 @@
                 <li class="glide__slide" v-for="item in gallery" :key="item.index">
                     <div class="contacts__slider_item">
                         <div class="contacts__slider_item_in">
-                            <img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="">
+                            <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                         </div>
                     </div>
                 </li>
@@ -63,7 +63,7 @@ export default {
 <style lang="scss" scoped>
 .contacts {
     &__slider {
-        
+
         @media all and (max-width: 840px) {
             overflow: hidden;
             margin-right: -20px;
@@ -91,9 +91,8 @@ export default {
     }
     &__arrows {
         @media all and (max-width: 840px) {
-            
+
             display: none;
-            // display: flex;
             align-items: center;
             justify-content: space-between;
             margin-top: 20px;

@@ -1,7 +1,7 @@
 <template>
     <div class="list">
         <!-- <pre style="font-size: 15rem;">{{ vacancies }}</pre> -->
-        <div class="list__title">Вакансии</div>
+        <div class="list__title">{{ $t('buttons.vacancies') }}</div>
         <div class="list__items" v-if="isMounted">
             <div class="list__item" v-for="item in vacancies" :key="item.index">
                 <!-- <pre>
@@ -62,7 +62,7 @@ export default {
 .list {
     padding: rem(120) rem(240);
     background: #F2F2F2;
-    
+
     @media all and (max-width: 1280px) {
         padding: 60px 20px;
     }
@@ -89,9 +89,7 @@ export default {
     &__item {
         background: #fff;
         padding: rem(40) rem(50);
-        // &:not(:last-child) {
-            //     margin-bottom: rem(10);
-        // }
+
         @media all and (max-width: 860px) {
             padding: 30px;
         }
@@ -142,7 +140,6 @@ export default {
             font-size: rem(20);
             line-height: 140%;
             color: #172242;
-            // white-space: pre-wrap;
             @media all and (max-width: 1280px) {
                 font-size: 16px;
             }
@@ -153,14 +150,8 @@ export default {
                 }
             }
         }
-        // &:nth-child(1) {
-        //     max-width: rem(158);
-        // }
-        // &:nth-child(3) {
-        //     max-width: rem(310);
-        // }
+
         @media all and (max-width: 1280px) {
-            // max-width: 100% !important;
             &:not(:last-child) {
                 margin-bottom: 20px;
             }
