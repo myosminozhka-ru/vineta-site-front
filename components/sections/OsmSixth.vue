@@ -28,7 +28,6 @@
               <div class="catalog__item_in">
                 <div class="image">
                   <nuxt-img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="" loading="lazy" />
-                  {{ $vareibles.remote }}
                 </div>
                 <span class="text">{{ item.NAME }}</span>
               </div>
@@ -256,6 +255,11 @@ export default {
       top: rem(-73);
       left: rem(-108);
       width: rem(358);
+
+      img {
+        width: 100%;
+      }
+
       @media all and (max-width: 1280px) {
         width: 510px;
         height: 510px;
