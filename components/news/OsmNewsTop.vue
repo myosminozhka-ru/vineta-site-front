@@ -1,6 +1,6 @@
 <template>
     <div class="news__top">
-        <div class="news__top_title">Новости</div>
+        <div class="news__top_title">{{ $t('buttons.news') }}</div>
         <div class="news__top_buttons hide_on_mobile" v-if="$route.name === 'news___ru'">
             <div @click.prevent="addSelectedNewsType('Новости')">
               <osm-button class="news__mods--opener" :class="{'isActive': getSelectedNewsType === 'Новости'}" :outlined="true">

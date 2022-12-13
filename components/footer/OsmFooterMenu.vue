@@ -32,20 +32,14 @@
       <li>
         <span>{{ getContacts[0].ADRESS?.VALUE }}</span>
       </li>
-      <li v-for="contact in getContacts['0']?.PROPERIES" :key="contact.CODE">
-        <a :href="`tel:${contact.VALUE}`" v-if="contact.CODE === 'PHONE'">{{contact.VALUE}}</a>
-      </li>
-      <li v-for="contact in getContacts['0']?.PROPERIES" :key="contact.CODE">
-        <a :href="`mailto:${contact.VALUE}`" v-if="contact.CODE === 'EMAIL'">{{contact.VALUE}}</a>
-      </li>
+      <template v-if="getPhoneAndEmail.length">
+        <li v-for="(contact, index) in getPhoneAndEmail" :key="index">
+          <a :href=" contact.CODE === 'PHONE' ? `tel:${contact.VALUE}` : `mailto:${contact.VALUE}`">{{contact.VALUE}}</a>
+        </li>
+      </template>
       <li>
         <span>{{ $t('sections.footer.worktime') }}</span>
       </li>
-      <div v-if="false" class="footer__top_socials hide_on_desktop">
-        <a v-for="social in socials" :key="social.index" :href="social.link" target="_blank" class="footer__top_social">
-          <img :src="social.icon" width="100%" alt="" />
-        </a>
-      </div>
     </ul>
   </nav>
 </template>
@@ -82,6 +76,14 @@ export default {
       }
       return filterArray.filter((item) => item?.PROPERIES[1]?.VALUE === 'about_file');
     },
+    /**
+     * Получение телефона и почты
+     * @function
+     * @return {{}[] | []}
+     */
+    getPhoneAndEmail() {
+      return this.getContacts[0]?.PROPERIES.filter((item) => item.CODE === 'PHONE' || item.CODE === 'EMAIL') || []
+    }
   },
   mounted() {
     this.initCollapse()

@@ -3,7 +3,7 @@
     <div class="modal__in" @click.stop>
       <div class="modal__top">
         <div class="modal__closer" @click="closeBuy">
-          <img :src="require('~/assets/img/closer.svg')" width="100%" alt="" />
+          <nuxt-img src="/closer.svg" width="100%" alt="" loading="lazy" />
         </div>
       </div>
       <form ref="buy_form" class="modal__form" @submit.prevent="sendForm">
@@ -80,35 +80,23 @@ export default {
     errors: {},
     isSuccess: false,
   }),
+  async fetch() {
+    this.fields = await this.$axios.$get('forms/vacancy.php')
+  },
+  computed: {
+    ...mapGetters(['getModals']),
+  },
   watch: {
     property: {
-      // this.formData.VACANCY_NAME = newVal;
       immediate: true,
       handler(val, oldVal) {
         this.formData.VACANCY_NAME = val
       },
     },
   },
-  computed: {
-    ...mapGetters(['getModals']),
-    // formData() {
-    //     return this.fields.value.map(item => {
-    //         return {
-    //             name: item.VARNAME,
-    //             value: ""
-    //         }
-    //     })
-    // }
-  },
-  async fetch() {
-    this.fields = await this.$axios.$get('forms/vacancy.php')
-  },
   mounted() {
     this.formData.VACANCY = window.location.href
     this.formData.VACANCY_NAME = this.property
-    console.log(this.property)
-
-    // console.log(this.formData)
   },
   methods: {
     ...mapActions(['toggleModal']),
@@ -130,15 +118,7 @@ export default {
       }
       const token = await this.$recaptcha.execute('submit')
       form.append('token', token)
-      // this.formData.map(item => {
-      //     const [key, value] = item;
-      //     console.log(key, value);
-      //     return item;
-      // })
-      // const form = new FormData(this.formData);
-      // console.log(form);
       this.$axios.$post('forms/result_vacancy.php', form).then((result) => {
-        // console.log(result);
         if (result.error) {
           this.errors = result.error
         }
@@ -167,7 +147,6 @@ export default {
   background: rgba(23, 34, 66, 0.8);
   z-index: 1000;
   text-align: center;
-  // padding: 58px 0;
   padding: 10px 0;
   box-sizing: border-box;
   opacity: 0;
@@ -185,7 +164,6 @@ export default {
   }
   &__in {
     background: #ffffff;
-    // padding: rem(40);
     padding: rem(20);
     max-width: rem(710);
     width: 100%;
@@ -249,9 +227,6 @@ export default {
   .osm__form_field {
     margin-bottom: rem(20);
   }
-  // &__input {
-  //     margin-bottom: rem(20);
-  // }
   &__textarea {
     margin-bottom: rem(20);
   }

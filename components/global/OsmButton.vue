@@ -91,20 +91,12 @@ export default {
       padding: 18px 30px;
     }
     svg {
-      // fill: #fff;
       path {
         transition: all 0.3s ease;
       }
     }
     &:hover {
-      // color: #fff;
       background: #fff;
-      // svg {
-      //     // fill: #fff;
-      //     path {
-      //         fill: #fff;
-      //     }
-      // }
       &:before,
       &:after {
         width: 70%;

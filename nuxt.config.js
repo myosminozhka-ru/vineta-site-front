@@ -25,9 +25,10 @@ export default {
     '~/plugins/vars.js',
     '~/plugins/i18n.js',
     '~/plugins/axios.js',
-    '~/plugins/vue-3d-loader.js',
+    // '~/plugins/vue-3d-loader.js',
     // '~/plugins/vue-meta.js',
     { src: '~/plugins/print.js', ssr: false },
+    { src: '~/plugins/phone-mask.js', ssr: false },
     { src: '~/plugins/lightgallery.js', ssr: false },
   ],
 
@@ -48,6 +49,7 @@ export default {
     '@openafg/nuxt-fullpage',
     'nuxt-vuex-localstorage',
     '@nuxtjs/i18n',
+    '@nuxt/image',
     // 'nuxt-lazy-load',
   ],
 
@@ -75,13 +77,21 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'https://vineta.ru/local/api/',
+    // baseURL: 'https://vineta.ru/local/api/',
+    baseURL: 'https://vineta.fvds.ru/local/api/',
+  },
+
+  image: {
+    dir: 'assets/img'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extend(config, ctx) {
       config.resolve.symlinks = false
+    },
+    filenames: {
+      chunk: () => '[name].[id].[contenthash].js'
     },
     extractCSS: true,
     transpile: ['three'],

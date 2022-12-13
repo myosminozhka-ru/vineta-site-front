@@ -9,46 +9,46 @@
                     <div class="title">Заказчики</div>
                     <div class="items">
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_1_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_1_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_2_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_2_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_3_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_3_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_4_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_4_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_5_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_5_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_6_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_6_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_7_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_7_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_8_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_8_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_9_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_9_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_10_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_10_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_11_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_11_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_12_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_12_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_13_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_13_f.png" alt="" loading="lazy" />
                         </div>
                         <div class="item">
-                            <img :src="require('~/assets/img/techs/tech_14_f.png')" alt="">
+                            <nuxt-img src="/techs/tech_14_f.png" alt="" loading="lazy" />
                         </div>
                     </div>
                 </div>
@@ -60,8 +60,6 @@
 export default {
   name: 'OsmFirstSection',
   components: {
-    // OsmH1: () => import('~/components/global/OsmH1.vue'),
-    // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')
   },
 }

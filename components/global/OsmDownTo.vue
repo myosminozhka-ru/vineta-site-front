@@ -22,7 +22,7 @@ export default {
   mounted() {
     window.addEventListener('scroll', () => {
       if (this.elementTo) {
-        const elementPosition = document.getElementById(this.elementTo).getBoundingClientRect().top
+        const elementPosition = document.getElementById(this.elementTo)?.getBoundingClientRect().top
         this.isShow = window.scrollY < elementPosition
       }
     })

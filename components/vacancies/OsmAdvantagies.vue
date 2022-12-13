@@ -1,10 +1,10 @@
 <template>
   <div class="advantages" v-if="bennefits">
-    <div class="advantages__title">Преимущества работы с нами</div>
+    <div class="advantages__title">{{ $t('vacancies.advantages') }}</div>
     <div class="advantages__items">
       <div class="advantages__item" v-for="item in bennefits" :key="item.index">
         <div class="icon">
-          <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" />
+          <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
         </div>
         <div class="advantages__item__info">
           <div class="title">{{ item.NAME }}</div>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="advantages__button">
-      <osm-button link="about">О компании</osm-button>
+      <osm-button link="about">{{ $t('buttons.about') }}</osm-button>
     </div>
   </div>
 </template>

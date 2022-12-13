@@ -41,7 +41,7 @@
 
           <div v-if="false" class="section__socials">
             <a v-for="social in socials" :key="social.index" :href="social.link" class="section__social" target="_blank">
-              <img :src="social.icon" width="100%" alt="" />
+              <nuxt-img :src="social.icon" width="100%" alt="" loading="lazy" />
             </a>
           </div>
         </div>
@@ -82,7 +82,7 @@
         </div>
       </template>
       <a href="https://myosminozhka.ru/" target="_blank" class="section__popup_link">
-        <img src="~/assets/img/osm_logo.svg" width="100%" alt="" />
+        <nuxt-img src="/osm_logo.svg" width="100%" alt="" loading="lazy" />
       </a>
     </div>
   </section>
@@ -93,18 +93,10 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    // OsmInput: () => import('~/components/global/OsmInput.vue'),
     OsmMap: () => import('~/components/global/OsmMap.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
-  computed: {
-    ...mapGetters(['getDownloads']),
-    filteredFileds() {
-      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD')
-    },
-  },
-
   data: () => ({
     fields: {
       value: [],
@@ -127,6 +119,12 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapGetters(['getDownloads']),
+    filteredFileds() {
+      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD')
+    },
+  },
   async mounted() {
     this.fields = await this.$axios.$get('forms/request.php')
    },
@@ -144,7 +142,6 @@ export default {
       form.append('token', token)
 
       this.$axios.$post('forms/result_request.php', form).then((result) => {
-        // console.log(result);
         if (result.error) {
           this.errors = result.error
         }
@@ -178,9 +175,6 @@ export default {
       line-height: normal;
       font-weight: normal;
     }
-    // @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
-    //     margin-bottom: 5px !important;
-    // }
   }
   &__content {
     margin-bottom: rem(31);
@@ -263,30 +257,18 @@ export default {
     width: 100%;
   }
   &__right {
-    // padding-right: rem(240);
-    // padding-left: rem(71);
-
-    // padding-bottom: rem(121);
     padding: 0;
     background: #2e5599;
     width: calc(100% - #{rem(900)} + #{rem(133)});
     flex-direction: column;
 
-    // @media all and (max-width: 1440px) {
-    //     padding: 90px 150px 120px 70px !important;
-    //     width: 778px;
-    // }
     @media all and (max-width: 1440px) {
       width: 778px;
       padding: 0 !important;
-      // padding: 90px 0 0 0 !important;
-      // padding: 80px 20px !important;
     }
     @media all and (max-width: 1280px) {
       width: 100% !important;
       padding: 80px 20px !important;
-      // padding: 90px 0 0 0 !important;
-      // padding: 80px 20px !important;
     }
     @media all and (max-width: 840px) {
       padding: 20px !important;
@@ -301,18 +283,10 @@ export default {
   }
   &__right &__title {
     color: #fff;
-    // margin-bottom: rem(30);
-    // @media all and (max-width: 1280px) {
-    //     margin-bottom: 30px;
-    // }
   }
   &__contacts {
     display: flex;
     align-items: flex-start;
-    // margin-bottom: rem(54);
-    // @media all and (max-width: 1280px) {
-    //     margin-bottom: 60px;
-    // }
   }
   &__contacts_side {
     width: rem(240);

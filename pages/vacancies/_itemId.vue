@@ -68,7 +68,6 @@ export default {
     return {
       title: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
       meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
           hid: 'description',
           name: 'description',
@@ -117,7 +116,6 @@ export default {
   methods: {
     ...mapActions(['toggleModal']),
     openApplyModal() {
-      // console.log('openApplyModal');
       this.toggleModal({
         isOpened: true,
         type: 'apply',

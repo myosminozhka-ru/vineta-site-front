@@ -6,11 +6,11 @@
           <osm-breadcrumbs />
         </div>
         <div class="section__middle--tech">
-          <osm-h1 class="section__title">Технологии производства</osm-h1>
+          <osm-h1 class="section__title">{{ $t('buttons.techs') }}</osm-h1>
         </div>
         <div class="section__bottom--tech">
           <div class="section__left--tech">
-            <img :src="require('~/assets/img/techs/1.jpg')" alt="" />
+            <nuxt-img src="/techs/1.jpg" alt="" loading="lazy" />
           </div>
           <div class="section__right--tech" @mousewheel.stop>
             <div class="index"></div>
@@ -26,7 +26,7 @@
                 <li>Отгрузка</li>
               </ol>
               <div @click="$emit('toNext')">
-                <osm-button>Подробнее</osm-button>
+                <osm-button>{{ $t('buttons.more') }}</osm-button>
               </div>
             </div>
           </div>
@@ -40,7 +40,6 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    // OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
   },
 }
@@ -99,7 +98,6 @@ export default {
   &__right--tech {
     width: calc(100% - #{rem(602)} - #{rem(128)});
     height: 100%;
-    // margin-left: rem(128);
     position: relative;
     @media all and (max-width: 1280px) {
       width: 100%;
@@ -136,102 +134,6 @@ export default {
         right: 0;
         bottom: 0;
         background: linear-gradient(180deg, rgba(255, 255, 255, 0) -12.5%, #ffffff 56.04%);
-      }
-    }
-    .texts {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      overflow: auto;
-    }
-    .title {
-      font-style: normal;
-      font-weight: 600;
-      font-size: rem(30);
-      margin-bottom: rem(30);
-      line-height: 140%;
-      color: #172242;
-      @media all and (max-width: 1280px) {
-        font-size: 20px;
-        margin-bottom: 30px;
-      }
-    }
-    .list {
-      padding: 0;
-      margin: 0;
-      padding-left: rem(24);
-      @media all and (max-width: 1280px) {
-        padding-left: 24px;
-      }
-      &:not(:last-child) {
-        margin-bottom: rem(40);
-        @media all and (max-width: 1280px) {
-          margin-bottom: 40px;
-        }
-      }
-      li {
-        font-style: normal;
-        font-weight: 400;
-        font-size: rem(18);
-        line-height: 140%;
-        color: #555f76;
-        @media all and (max-width: 1280px) {
-          margin-bottom: 40px;
-          font-size: 16px;
-        }
-        &:not(:last-child) {
-          margin-bottom: rem(10);
-          @media all and (max-width: 1280px) {
-            margin-bottom: 10px;
-          }
-        }
-      }
-    }
-    .subtitle {
-      font-style: normal;
-      font-weight: 600;
-      font-size: rem(18);
-      line-height: 140%;
-      color: #172242;
-      @media all and (max-width: 1280px) {
-        font-size: 16px;
-      }
-      &:not(:last-child) {
-        margin-bottom: rem(20);
-        @media all and (max-width: 1280px) {
-          margin-bottom: 20px;
-        }
-      }
-    }
-    .text {
-      margin: 0;
-      font-style: normal;
-      font-weight: 400;
-      font-size: rem(18);
-      line-height: 140%;
-      color: #555f76;
-      @media all and (max-width: 1280px) {
-        font-size: 16px;
-      }
-      &:not(:last-child) {
-        margin-bottom: rem(20);
-        @media all and (max-width: 1280px) {
-          margin-bottom: 20px;
-        }
-      }
-    }
-    .line {
-      height: rem(2);
-      background: #d7dce1;
-      border-radius: 20px;
-      @media all and (max-width: 1280px) {
-        height: 2px;
-      }
-      &:not(:last-child) {
-        margin-bottom: rem(20);
-        @media all and (max-width: 1280px) {
-          margin-bottom: 20px;
-        }
       }
     }
     .bg_text {

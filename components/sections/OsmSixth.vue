@@ -2,12 +2,11 @@
   <section class="section section__item section__item--sixth catalog hide_on_mobile">
     <div class="catalog__wrap">
       <div class="catalog__left">
-        <osm-h1 class="catalog__title">{{ this.$t('buttons.catalog') }}</osm-h1>
-        <!-- <pre style="font-size: 15rem">{{ getCatalog }}</pre> -->
+        <osm-h1 class="catalog__title">{{ $t('buttons.catalog') }}</osm-h1>
         <div class="catalog__points">
-          <div class="catalog__point" v-for="(point, key) in getCatalog" :key="point.index" @click="catalog.slider.go(`=${key}`)">
+          <div v-for="(point, key) in getCatalog" :key="point.index" class="catalog__point"  @click="catalog.slider.go(`=${key}`)">
             <div class="icon">
-              <img :src="$vareibles.remote + point.PICTURE" width="100%" alt="" />
+              <nuxt-img :src="$vareibles.remote + point.PICTURE" width="100%" alt="" loading="lazy" />
             </div>
             <div class="text">{{ point.NAME }}</div>
           </div>
@@ -17,19 +16,18 @@
         <div class="glide__track" data-glide-el="track">
           <div class="glide__slides">
             <nuxt-link
+              v-for="item in getCatalog"
+              :key="item.index"
               :to="
                 localePath({
                   name: 'catalog-catalogId',
                   params: { catalogId: item.CODE },
                 })
               "
-              class="catalog__item"
-              v-for="item in getCatalog"
-              :key="item.index"
-            >
+              class="catalog__item">
               <div class="catalog__item_in">
                 <div class="image">
-                  <img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="" />
+                  <nuxt-img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="" loading="lazy" />
                 </div>
                 <span class="text">{{ item.NAME }}</span>
               </div>
@@ -47,9 +45,6 @@ export default {
   name: 'OsmSixthSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-  },
-  computed: {
-    ...mapGetters(['getCatalog']),
   },
   data: () => ({
     catalog: {
@@ -96,6 +91,9 @@ export default {
       ],
     },
   }),
+  computed: {
+    ...mapGetters(['getCatalog']),
+  },
   mounted() {
     this.catalog.slider.mount()
   },
@@ -198,7 +196,6 @@ export default {
   }
   &__item_in {
     position: relative;
-    // background: #F2F2F2 url('~assets/img/catalog/catalog_bg.svg') 0 50% / auto 150% no-repeat;
     background-color: #f2f2f2;
     background-image: url('~assets/img/catalog/catalog_bg.svg');
     background-position: 0 50%;

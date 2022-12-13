@@ -5,20 +5,25 @@
       <nuxt-child />
     </div>
     <osm-footer />
-    <osm-preloader />
+    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'AboutPage',
+  name: 'VacanciesPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     isDataLoaded: false,
+    /**
+     * Скрыть лоадер
+     * @type {boolean}
+     * @default false
+     */
+     isMounted: false,
   }),
   async fetch() {
     await this.addVacancies()
@@ -51,6 +56,9 @@ export default {
   methods: {
     ...mapActions(['addVacancies']),
   },
+  mounted() {
+    this.isMounted = true;
+  }
 }
 </script>
 

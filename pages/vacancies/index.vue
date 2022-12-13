@@ -8,7 +8,7 @@
         {{ getVacancies.banners.first.NAME }}
       </div>
       <div class="first__image hide_on_mobile">
-        <img :src="$vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="" />
+        <nuxt-img :src="$vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
       </div>
     </section>
     <osm-advantagies :bennefits="getVacancies.bennefits" />
@@ -37,7 +37,6 @@ export default {
     return {
       title: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.TITLE : '',
       meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
           hid: 'description',
           name: 'description',

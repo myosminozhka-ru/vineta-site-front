@@ -58,7 +58,6 @@ export default {
   methods: {
     printSection() {
       window.print()
-      // this.$htmlToPaper("wrapper");
     },
     scrollToModifications() {
       const headerHeight = document.querySelector('.header').clientHeight
@@ -144,9 +143,6 @@ export default {
       display: flex;
       justify-content: center;
 
-      // svg {
-      //   transform: translateY(100%);
-      // }
       @media all and (max-width: 1280px) {
         width: 25px;
         margin-right: 10px;
@@ -166,7 +162,6 @@ export default {
   }
   &__header_mods {
     padding: rem(10) rem(17);
-    // margin-right: rem(40);
     border: 1px solid #d7dce1;
     font-style: normal;
     font-weight: 400;

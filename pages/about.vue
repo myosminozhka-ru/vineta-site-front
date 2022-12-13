@@ -11,7 +11,7 @@
           <span class="first__small-text">судоремонта, атомной промышленности, транспорта и предприятий топливно-энергетического комплекса</span>
         </div>
         <div class="first__image hide_on_mobile">
-          <img :src="$vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="" />
+          <nuxt-img :src="$vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
         </div>
       </section>
       <section v-if="getAbout.banners.second" class="second">
@@ -60,7 +60,7 @@
               <div class="second__items_col">
                 <nuxt-link v-for="link in filteredFirstAboutSections" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
                   <div class="icon">
-                    <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" />
+                    <nuxt-img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
                   </div>
                   <div class="text">{{ link.NAME }}</div>
                 </nuxt-link>
@@ -68,7 +68,7 @@
               <div class="second__items_col">
                 <nuxt-link v-for="link in filteredSecondAboutSections" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
                   <div class="icon">
-                    <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" />
+                    <nuxt-img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
                   </div>
                   <div class="text">{{ link.NAME }}</div>
                 </nuxt-link>
@@ -108,7 +108,7 @@
         </div>
       </section>
       <section v-if="getAbout.banners.third" class="fourth">
-        <img :src="$vareibles.remote + getAbout.banners.third.PREVIEW_PICTURE" width="100%" alt="" />
+        <nuxt-img :src="$vareibles.remote + getAbout.banners.third.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
       </section>
       <section class="fiveth">
         <div class="fiveth__title">Руководство</div>
@@ -116,8 +116,8 @@
           <div v-for="item in managment" :key="item.index" class="fiveth__item">
             <div class="avatar">
               <div class="avatar__in">
-                <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
-                <img v-else :src="require('~/assets/img/product.noimage.png')" alt="" />
+                <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
+                <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
               </div>
             </div>
             <div class="height" :style="'height:' + maxHeight">
@@ -130,7 +130,7 @@
         </div>
       </section>
       <section class="fourth">
-        <img :src="require('~/assets/img/about/people2.jpg')" width="100%" alt="" />
+        <nuxt-img src="/about/people2.jpg" width="100%" alt="" loading="lazy" />
         <div v-if="false" class="play">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" fill="none">
             <rect width="100%" height="100%" fill="#FF004D" />
@@ -162,7 +162,7 @@
       <section v-if="false" class="seventh">
         <div class="seventh__title">Карта</div>
         <div class="seventh__map">
-          <img :src="require('~/assets/img/about/map.svg')" width="100%" alt="" />
+          <nuxt-img src="/about/map.svg" width="100%" alt="" loading="lazy" />
         </div>
       </section>
       <section class="eighth">
@@ -170,7 +170,7 @@
       </section>
     </div>
     <osm-footer />
-    <osm-preloader />
+    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 <script>
@@ -178,7 +178,6 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AboutPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     Customers: () => import('~/components/sliders/Customers.vue'),
@@ -417,7 +416,6 @@ export default {
       }
       @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
         padding-left: rem(50);
-        // padding-right: rem(50);
       }
 
       @media all and (max-width: 1280px) {
@@ -437,7 +435,6 @@ export default {
         padding-right: 150px;
       }
       @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
-        // padding-left: rem(50);
         padding-right: rem(50);
       }
 
@@ -620,7 +617,6 @@ export default {
       font-size: rem(18);
       line-height: 140%;
       color: #ffffff;
-      // width: calc(100% - #{rem(34)});
       position: relative;
 
       &:after {
@@ -635,7 +631,6 @@ export default {
       }
 
       @media all and (max-width: 1280px) {
-        // width: calc(100% - 34px);
         font-size: 16px;
       }
     }

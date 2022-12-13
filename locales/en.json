@@ -1,16 +1,16 @@
 {
   "message": "Hello!",
   "buttons": {
-    "catalog": "Store",
-    "about": "About",
+    "catalog": "Catalogue",
+    "about": "About us",
     "downloads": "Downloads",
     "news": "News",
     "vacancies": "Vacancies",
-    "contacts": "Contacts",
-    "techs": "Production technologies",
-    "history": "History",
-    "partners": "Partners",
-    "licenses": "Licenses",
+    "contacts": "Contact us",
+    "techs": "Our technologies",
+    "history": "Our history",
+    "partners": "Our Clients",
+    "licenses": "Licenses and Certificates",
     "more": "Details",
     "all_news": "All news",
     "read_news": "Read news",
@@ -21,10 +21,12 @@
     "up": "up",
     "down": "down",
     "to_favorites": "To favorites",
-    "checkout": "Proceed to checkout"
+    "checkout": "Proceed to checkout",
+    "apply": "Apply",
+    "company_presentation": "Company presentation"
   },
   "menu": {
-    "products": "Manufactured products"
+    "products": "Manufacturing range"
   },
   "sections": {
     "second": {
@@ -49,20 +51,27 @@
       "worktime": "Mon-Fri from 8:00 to 17:00"
     },
     "modals": {
-      "apply_vacancy": "Откликнуться на вакансию"
+      "apply_vacancy": "Apply for a job"
     }
   },
   "footer": {
-    "address": "620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500"
+    "address": "5 G, Ulyanovskaya road,Tosno region, Nikolskoe 187026, Russian Federation"
   },
   "filter": {
     "title": "Search options",
-    "empty": "Нет доступных фильтров для этой категории"
+    "empty": "There are no filters available for this category"
   },
   "catalog": {
     "empty": " No products"
   },
   "counter": {
     "title": "Quantity"
+  },
+  "contacts": {
+    "guide": "Guide"
+  },
+  "vacancies": {
+    "advantages": "Advantages of working with us",
+    "respond": "Respond to a vacancy"
   }
 }

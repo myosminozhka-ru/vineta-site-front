@@ -1,7 +1,6 @@
 export default function ({ app }) {
   // onBeforeLanguageSwitch called right before setting a new locale
   app.i18n.onBeforeLanguageSwitch = async (oldLocale, newLocale) => {
-    // console.log(oldLocale, newLocale, isInitialSetup, app.store)
     await Promise.all([
       app.store.dispatch('addDownloads'),
       app.store.dispatch('addMain'),

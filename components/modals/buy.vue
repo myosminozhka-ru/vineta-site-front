@@ -3,7 +3,7 @@
     <div class="modal__in" @click.stop>
       <div class="modal__top">
         <div class="modal__closer" @click="closeBuy">
-          <img :src="require('~/assets/img/closer.svg')" width="100%" alt="" />
+          <nuxt-img src="/closer.svg" width="100%" alt="" loading="lazy" />
         </div>
       </div>
       <form ref="buy_form" class="modal__form" @submit.prevent="sendForm">
@@ -18,11 +18,11 @@
             </div>
             <input v-model="formData[field.VARNAME]" disabled :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
           </div>
-          <!-- 
+          <!--
           <input v-model="formData[field.VARNAME.GOOD]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" /> -->
           <div v-for="field in fields.value?.filter((item) => item.SID !== 'GOOD')" :key="field.index" class="osm__form_field">
             <!-- <pre>
-                        {{ field }} 
+                        {{ field }}
                         </pre> -->
             <!-- {{ field.VARNAME }} -->
             <div v-if="errors[field.VARNAME]" class="osm__error">
@@ -40,7 +40,7 @@
           <!-- <osm-input class="modal__input" placeholder="Компания *" :required="true"/> -->
           <!-- <osm-input class="modal__input" placeholder="Телефон *" type="tel" :required="true"/>
                     <osm-input class="modal__input" placeholder="E-mail *" type="email" :required="true"/>
-                    
+
                     <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
           <p style="font-size: 12rem">
             Заполняя данную форму, вы принимаете условия
@@ -75,14 +75,6 @@ export default {
   },
   computed: {
     ...mapGetters(['getModals', 'getProducts']),
-    // formData() {
-    //     return this.fields.value.map(item => {
-    //         return {
-    //             name: item.VARNAME,
-    //             value: ""
-    //         }
-    //     })
-    // }
   },
   mounted() {
     const codeProduct = window.location.href.split('/')
@@ -107,23 +99,12 @@ export default {
     },
     sendForm() {
       const formObj = { ...this.formData }
-      // const form = this.formData.filter(item => item);
-      // console.log(form)
-      // const data = new FormData(this.$refs.buy_form);
       const form = new FormData()
 
       for (const key in formObj) {
         form.append(key, formObj[key])
       }
-      // this.formData.map(item => {
-      //     const [key, value] = item;
-      //     console.log(key, value);
-      //     return item;
-      // })
-      // const form = new FormData(this.formData);
-      // console.log(form);
       this.$axios.$post('forms/result_order.php', form).then((result) => {
-        // console.log(result);
         if (result.error) {
           this.errors = result.error
         }
@@ -148,7 +129,6 @@ export default {
   background: rgba(23, 34, 66, 0.8);
   z-index: 1000;
   text-align: center;
-  // padding: 58px 0;
   padding: 10px 0;
   box-sizing: border-box;
   opacity: 0;
@@ -166,7 +146,6 @@ export default {
   }
   &__in {
     background: #ffffff;
-    // padding: rem(40);
     padding: rem(20);
     max-width: rem(710);
     width: 100%;
@@ -230,9 +209,6 @@ export default {
   .osm__form_field {
     margin-bottom: rem(20);
   }
-  // &__input {
-  //     margin-bottom: rem(20);
-  // }
   &__textarea {
     margin-bottom: rem(20);
   }

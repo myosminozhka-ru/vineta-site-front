@@ -49,7 +49,6 @@ export default {
         arrayPath.pop()
         this.$router.push({ path: '/' + arrayPath.join('/') })
       }
-      //   this.$router.go(-1)
     },
   },
   watch: {

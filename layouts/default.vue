@@ -26,7 +26,6 @@
 </template>
 
 <script>
-// import {mapActions} from 'vuex';
 export default {
     name: "defaultLayout",
     components: {
@@ -34,8 +33,6 @@ export default {
     },
     watch: {
         $route(to, from) {
-            // console.log('route change to', to)
-            // console.log('route change from', from)
             if (window) {
                 window.scrollTo({
                     top: 0,

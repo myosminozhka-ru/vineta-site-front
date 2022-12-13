@@ -3,12 +3,12 @@
         <div class="modal__in" @click.stop>
             <div class="modal__top">
                 <div class="modal__closer" @click="closeBuy">
-                    <img :src="require('~/assets/img/closer.svg')" width="100%" alt="">
+                    <nuxt-img src="/closer.svg" width="100%" alt="" loading="lazy" />
                 </div>
             </div>
-            <form class="modal__form" @submit.prevent="sendForm" ref="buy_form">
-                <div class="modal__form_in" v-if="!isSuccess">
-                    <div class="modal__title">{{ this.$t('sections.footer.request') }}</div>
+            <form ref="buy_form" class="modal__form" @submit.prevent="sendForm">
+                <div v-if="!isSuccess" class="modal__form_in">
+                    <div class="modal__title">{{ $t('sections.footer.request') }}</div>
                     <div v-for="field in fields.value?.filter((item) => item.SID !== 'GOOD' && item.SID !== 'NUMBER')" :key="field.index" class="osm__form_field">
                       <!-- <pre>
                                   {{ field }}
@@ -42,7 +42,7 @@
                   </p>
                     <osm-button class="modal__button" :large="true" type="submit">Отправить</osm-button>
                 </div>
-                <div class="modal__form_in" v-else>
+                <div v-else class="modal__form_in">
                     <div class="modal__title">Спасибо за заказ!<br> Мы свяжемся с Вами в ближайшее время.</div>
                 </div>
             </form>
@@ -53,29 +53,21 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 export default {
-    name: "OsmApplyModal",
-    data: () => ({
-        isSended: false,
-        result: null,
-        fields: [],
-        formData: {},
-        errors: {},
-        isSuccess: false
-    }),
-    computed: {
+  name: "OsmApplyModal",
+  data: () => ({
+      isSended: false,
+      result: null,
+      fields: [],
+      formData: {},
+      errors: {},
+      isSuccess: false
+  }),
+  async fetch() {
+    this.fields = await this.$axios.$get('forms/order.php');
+  },
+  computed: {
         ...mapGetters(['getModals']),
         ...mapGetters('localStorage', ['getFavorites']),
-        // formData() {
-        //     return this.fields.value.map(item => {
-        //         return {
-        //             name: item.VARNAME,
-        //             value: ""
-        //         }
-        //     })
-        // }
-    },
-    async fetch() {
-        this.fields = await this.$axios.$get('forms/order.php');
     },
     mounted() {
         this.formData.ITEMS = this.getFavorites;
@@ -93,9 +85,6 @@ export default {
       },
       async sendForm() {
         const formObj = {...this.formData}
-        // const form = this.formData.filter(item => item);
-        // console.log(form)
-        // const data = new FormData(this.$refs.buy_form);
         const form = new FormData();
 
         for ( const key in formObj ) {
@@ -103,15 +92,7 @@ export default {
         }
         const token = await this.$recaptcha.execute('submit')
         form.append('token', token)
-        // this.formData.map(item => {
-        //     const [key, value] = item;
-        //     console.log(key, value);
-        //     return item;
-        // })
-        // const form = new FormData(this.formData);
-        // console.log(form);
         this.$axios.$post('forms/result_favorites.php', form).then(result => {
-            // console.log(result);
             if (result.error) {
                 this.errors = result.error
             }
@@ -135,7 +116,6 @@ export default {
     background: rgba(23, 34, 66, 0.8);
     z-index: 1000;
     text-align: center;
-    // padding: 58px 0;
     padding: 10px 0;
     box-sizing: border-box;
     opacity: 0;
@@ -153,7 +133,6 @@ export default {
     }
     &__in {
         background: #FFFFFF;
-        // padding: rem(40);
         padding: rem(20);
         max-width: rem(710);
         width: 100%;
@@ -210,9 +189,6 @@ export default {
     .osm__form_field {
         margin-bottom: rem(20);
     }
-    // &__input {
-    //     margin-bottom: rem(20);
-    // }
     &__textarea {
         margin-bottom: rem(20);
     }

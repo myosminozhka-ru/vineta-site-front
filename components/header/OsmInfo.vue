@@ -41,7 +41,6 @@ export default {
   computed: {
     ...mapGetters('localStorage', ['getFavorites']),
     availableLocales() {
-      // return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale)
       return this.$i18n.locales
     },
   },
@@ -53,7 +52,6 @@ export default {
         type: 'search',
       })
       if (document.getElementById('seacrhModal__input')) {
-        // console.log(123123123123123);
         setTimeout(() => {
           document.getElementById('seacrhModal__input').focus()
         }, 0)

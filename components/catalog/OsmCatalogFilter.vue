@@ -69,7 +69,6 @@ export default {
         return this.getFilters
       },
       set(newValue) {
-        // console.log(newValue)
         this.addFilters(this.filterObj)
       },
     },
@@ -108,9 +107,6 @@ export default {
       return item
     })
     this.setCatalogFilters(JSON.stringify(params))
-    // console.log(this.getCatalogFilters)
-    // console.log('this.getCatalog', this.getCatalogFilters);
-
     this.setFilterOpener()
   },
   methods: {
