@@ -15,16 +15,8 @@
           <div class="section__right--tech" @mousewheel.stop>
             <div class="index"></div>
             <div class="texts">
-              <div class="subtitle">За сравнительно короткий период своего активного развития ООО «Винета» стало современным производством полного цикла: от разработки конструкторской документации до выпуска готовой продукции, обеспечивая контроль качества на всех этапах технологического процесса. Это снижает риск возникновения брака до минимума и позволяет повысить производительность труда в целом.</div>
-              <div class="subtitle">Технологический процесс состоит из нескольких последовательных этапов:</div>
-              <ol class="list">
-                <li>Входной контроль</li>
-                <li>Заготовительный этап</li>
-                <li>Этап механической обработки</li>
-                <li>Сборочно-сварочный этап</li>
-                <li>Контрольно-сдаточный этап</li>
-                <li>Отгрузка</li>
-              </ol>
+              <div v-html="dataObject.PREVIEW_TEXT"></div>
+
               <div @click="$emit('toNext')">
                 <osm-button>{{ $t('buttons.more') }}</osm-button>
               </div>
@@ -42,6 +34,12 @@ export default {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
   },
+  props: {
+    dataObject: {
+      type: Object,
+      default: () => ({})
+    }
+  }
 }
 </script>
 
