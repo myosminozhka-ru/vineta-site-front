@@ -11,19 +11,19 @@
     "history": "Our history",
     "partners": "Our Clients",
     "licenses": "Licenses and Certificates",
-    "more": "Details",
+    "more": "Know more",
     "all_news": "All news",
-    "read_news": "Read news",
+    "read_news": "Read",
     "main": "Homepage",
     "boats": "Boats speedboats",
     "download_catalog": "Download the catalog",
     "buy": "Order",
-    "up": "up",
+    "up": "top",
     "down": "down",
     "to_favorites": "To favorites",
     "checkout": "Proceed to checkout",
     "apply": "Apply",
-    "company_presentation": "Company presentation",
+    "company_presentation": "Presentation",
     "view_all": "View all",
     "reset": "Reset",
     "apply2": "Apply",
@@ -34,7 +34,7 @@
     "at_present": "At Present",
     "go_to_the_website": "Go to the website",
     "upload": "Upload",
-    "to_catalogue": "To catalogue"
+    "to_catalogue": "Catalogue"
   },
   "menu": {
     "products": "Manufacturing range"
@@ -49,18 +49,18 @@
       },
       "tabs": {
         "first": "Licenses and certificates",
-        "second": "Thank you letters and reviews",
-        "third": "Reports and attestations",
+        "second": "Appreciation letters",
+        "third": "Reports on special assessment of working conditions",
         "title": "Licenses and certificates"
       }
     },
     "footer": {
-      "request": "Leave a request",
+      "request": "Submit your application",
       "description": "Please feel free to contact us via form below or by phone",
       "thanks": "Thanks for your request",
-      "send": "Send",
-      "response": "We will respond within a working day or the next working day",
-      "worktime": "Mon-Fri from 8:00 to 17:00",
+      "send": "Submit",
+      "response": "We will respond within one business day",
+      "worktime": "Mo – Fr 8.00 AM – 5:00 PM",
       "policy_before_link": "By filling out this form, you accept the terms of the",
       "policy_link": "Data Protection Guidelines",
       "policy_after_link": "on the website terms of use as to processing and use of personal data",
@@ -99,11 +99,11 @@
     "title": "Quantity"
   },
   "contacts": {
-    "guide": "Guide"
+    "guide": "Administration"
   },
   "vacancies": {
     "advantages": "Advantages of working with us",
-    "respond": "Respond to a vacancy"
+    "respond": "Submit"
   },
   "about": {
     "small_text": "ship repair, nuclear industry, transport and fuel and energy complex enterprises",
