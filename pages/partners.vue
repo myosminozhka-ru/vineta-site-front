@@ -5,7 +5,7 @@
       <!-- <pre style="font-size: 15rem;">{{ getPartners }}</pre> -->
       <div v-if="getPartners" class="header_padding">
         <osm-breadcrumbs />
-        <div class="partners__title">Основные заказчики</div>
+        <div class="partners__title">{{ $t('partners.partners_title') }}</div>
         <div class="partners__items">
           <div v-for="item in getPartners" :key="item.index" style="min-width: 0">
             <div v-if="'PROPERIES' in item" class="partners__item">
@@ -44,11 +44,13 @@
                   </div>
                 </div>
               </div>
-              <a v-if="item.PROPERIES[3]" class="button" :href="`http://${item.PROPERIES[3].VALUE}`" target="_blank">Перейти на сайт</a>
+              <a v-if="item.PROPERIES[3]" class="button" :href="`http://${item.PROPERIES[3].VALUE}`" target="_blank">
+                {{ $t('buttons.go_to_the_website') }}
+              </a>
             </div>
           </div>
         </div>
-        <div class="partners__title partners__hidden">Дочерние предприятия</div>
+        <div class="partners__title partners__hidden">{{ $t('partners.partners_title_hidden') }}</div>
         <div class="partners__child_items partners__hidden">
           <div v-for="item in 1" :key="item.index" class="partners__child_item">
             <div class="partners__item_name">ОАО «Севмаш»</div>

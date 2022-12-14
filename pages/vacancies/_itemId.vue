@@ -5,12 +5,12 @@
       <div class="vacancy__top">
         <div class="vacancy__title">{{ vacancy[0].NAME }}</div>
         <div class="vacancy__button hide_on_mobile" @click="openApplyModal">
-          <osm-button>Откликнуться</osm-button>
+          <osm-button>{{ $t('buttons.apply') }}</osm-button>
         </div>
       </div>
       <div class="vacancy__price">от 45 000 до 65 000 руб. до вычета налогов</div>
       <div class="vacancy__button hide_off_mobile" @click="openApplyModal">
-        <osm-button>Откликнуться</osm-button>
+        <osm-button>{{ $t('buttons.apply') }}</osm-button>
       </div>
       <div class="vacancy__items">
         <div v-if="isMounted" class="vacancy__item">

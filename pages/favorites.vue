@@ -4,14 +4,14 @@
     <div class="header_padding">
       <div class="favorites">
         <osm-breadcrumbs />
-        <div class="favorites__title">Избранное</div>
+        <div class="favorites__title">{{ $t('favourites.title') }}</div>
         <osm-catalog-products v-if="products.length" />
-        <div v-else class="favorites__subtitle">Вы пока ничего не добавили в избранное.</div>
+        <div v-else class="favorites__subtitle">{{ $t('favourites.subtitle') }}</div>
         <div class="favorites__buttons">
           <span v-if="false" @click="printSection">
-            <osm-button class="favorites__button" :large="true" :outlined="true">Выгрузить</osm-button>
+            <osm-button class="favorites__button" :large="true" :outlined="true">{{ $t('buttons.upload') }}</osm-button>
           </span>
-          <osm-button class="favorites__button" :large="true" link="catalog">В каталог</osm-button>
+          <osm-button class="favorites__button" :large="true" link="catalog">{{ $t('buttons.to_catalogue') }}</osm-button>
         </div>
       </div>
     </div>

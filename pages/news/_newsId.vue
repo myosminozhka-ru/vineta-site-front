@@ -24,7 +24,7 @@
       <p v-html="detail[0].DETAIL_TEXT" />
     </div>
     <div class="news__more">
-      <div class="news__more--title">Смотрите так же</div>
+      <div class="news__more--title">{{ $t('news.news_more_title') }}</div>
       <div class="news__more--items">
         <a
           v-for="(item, key) in news"
@@ -49,7 +49,7 @@
               </div>
             </div>
             <NuxtLink :to="{ name: item.link, params: { newsId: item.CODE } }" class="news__link">
-              Читать новость
+              {{ $t('buttons.read_news') }}
             </NuxtLink>
           </div>
         </a>

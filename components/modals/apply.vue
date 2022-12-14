@@ -30,7 +30,7 @@
             <template v-else-if="field.FIELD_TYPE === 'file'">
               <label>
                 <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" :name="field.SID" accept=".doc,.docs,.rtf,.pdf" @change="onChangeFiles($event, field.VARNAME)" />
-                <span class="modal__input-info">Максимальный размер файла – 7 МВ</span>
+                <span class="modal__input-info">{{ $t('sections.modals.max_size') }}</span>
               </label>
             </template>
             <template v-else>
@@ -47,15 +47,15 @@
                     <osm-counter class="modal__input"/>
                     <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
           <p style="font-size: 12rem">
-            Заполняя данную форму, вы принимаете условия
-            <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
-            об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
+            {{ $t('sections.modals.policy_before_link') }}
+            <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> {{ $t('sections.modals.policy_link') }} </a>
+            {{ $t('sections.modals.policy_after_link') }}
           </p>
-          <osm-button class="modal__button" :large="true" type="submit">Откликнуться на вакансию</osm-button>
+          <osm-button class="modal__button" :large="true" type="submit">{{ $t('sections.modals.apply_vacancy') }}</osm-button>
         </div>
         <div v-else class="modal__form_in">
-          <div class="modal__title">Спасибо за заявку!</div>
-          <div class="modal__subtitle">Мы свяжемся с Вами в ближайшее время.</div>
+          <div class="modal__title">{{ $t('sections.modals.thank_application') }}</div>
+          <div class="modal__subtitle">{{ $t('sections.modals.we_you_shortly') }}</div>
         </div>
       </form>
     </div>

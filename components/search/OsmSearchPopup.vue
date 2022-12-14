@@ -9,7 +9,7 @@
         </div>
       </div>
       <form class="seacrhModal__form" @submit.prevent>
-        <input id="seacrhModal__input" v-model="searchText" type="text" autofocus class="seacrhModal__input" placeholder="Поиск по сайту" />
+        <input id="seacrhModal__input" v-model="searchText" type="text" autofocus class="seacrhModal__input" :placeholder="$t('search.placeholder')" />
         <div class="seacrhModal__button">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 27 27" fill="none">
             <path d="M24.3451 22.656L20.2229 18.5671C21.823 16.572 22.5979 14.0397 22.3882 11.4908C22.1786 8.94188 21.0003 6.5702 19.0957 4.86338C17.1911 3.15655 14.7049 2.24434 12.1483 2.31429C9.59181 2.38425 7.15923 3.43106 5.35081 5.23948C3.54239 7.04791 2.49558 9.48048 2.42562 12.037C2.35566 14.5936 3.26788 17.0797 4.9747 18.9844C6.68152 20.889 9.05321 22.0672 11.6021 22.2769C14.151 22.4866 16.6833 21.7117 18.6784 20.1116L22.7673 24.2004C22.8706 24.3046 22.9935 24.3872 23.1289 24.4437C23.2643 24.5001 23.4095 24.5291 23.5562 24.5291C23.7029 24.5291 23.8481 24.5001 23.9835 24.4437C24.1189 24.3872 24.2418 24.3046 24.3451 24.2004C24.5454 23.9933 24.6573 23.7164 24.6573 23.4282C24.6573 23.1401 24.5454 22.8632 24.3451 22.656V22.656ZM12.4451 20.1116C10.9068 20.1116 9.40304 19.6554 8.124 18.8008C6.84495 17.9461 5.84805 16.7314 5.25937 15.3102C4.67069 13.889 4.51666 12.3251 4.81677 10.8164C5.11687 9.30766 5.85764 7.92179 6.94538 6.83405C8.03312 5.74631 9.41899 5.00555 10.9277 4.70544C12.4365 4.40533 14.0003 4.55936 15.4215 5.14804C16.8427 5.73672 18.0575 6.73362 18.9121 8.01267C19.7667 9.29172 20.2229 10.7955 20.2229 12.3338C20.2229 14.3966 19.4034 16.3749 17.9448 17.8335C16.4862 19.2921 14.5079 20.1116 12.4451 20.1116V20.1116Z" fill="black" />
@@ -17,8 +17,8 @@
         </div>
       </form>
       <div v-if="searchText" class="seacrhModal__result">
-        <template v-if="productsResult.length"> Найдено {{ productsResult.length }} результата </template>
-        <template v-else> Ничего не найдено </template>
+        <template v-if="productsResult.length"> {{ $t('search.text_before_count') }} {{ productsResult.length }} {{ $t('search.text_after_count') }} </template>
+        <template v-else> {{ $t('search.null_result') }} </template>
       </div>
       <div class="seacrhModal__items">
         <a v-for="product in productsResult.slice(0, 4)" :key="product.ID" :href="localePath(`/catalog/${product.SECTION}/${product.CODE}`)" class="seacrhModal__item">
