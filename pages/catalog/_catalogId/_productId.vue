@@ -559,12 +559,12 @@ export default {
     this.longestLength = properties.map((a) => a.length).indexOf(Math.max(...properties.map((a) => a.length)))
     this.addBreadcrumbs([
       {
-        name: 'Главная',
+        name: this.$t('buttons.main'),
         link: 'index',
         isLink: true,
       },
       {
-        name: 'Каталог',
+        name: this.$t('buttons.catalog'),
         link: 'catalog',
         isLink: true,
       },
@@ -606,12 +606,12 @@ export default {
   updated() {
     this.addBreadcrumbs([
       {
-        name: 'Главная',
+        name: this.$t('buttons.main'),
         link: 'index',
         isLink: true,
       },
       {
-        name: 'Каталог',
+        name: this.$t('buttons.catalog'),
         link: 'catalog',
         isLink: true,
       },

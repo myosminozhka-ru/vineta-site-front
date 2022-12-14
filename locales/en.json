@@ -121,7 +121,8 @@
     "placeholder": "Site Search",
     "text_before_count": "Found",
     "text_after_count": "result",
-    "null_result": "Nothing found"
+    "null_result": "Nothing found",
+    "title": "Search results"
   },
   "favourites": {
     "title": "Favourites",

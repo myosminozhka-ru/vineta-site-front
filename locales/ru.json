@@ -121,7 +121,8 @@
     "placeholder": "Поиск по сайту",
     "text_before_count": "Найдено",
     "text_after_count": "результата",
-    "null_result": "Ничего не найдено"
+    "null_result": "Ничего не найдено",
+    "title": "Результаты поиска"
   },
   "favourites": {
     "title": "Избранное",
