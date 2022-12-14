@@ -29,7 +29,7 @@
           </div>
           <div class="products__item_data">
             <span class="products__item_name">{{ product.NAME }}</span>
-            <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
+            <div v-if="product.SKU" class="products__item_sku">{{ product.SKU }}</div>
           </div>
         </a>
       </div>

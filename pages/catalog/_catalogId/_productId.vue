@@ -383,7 +383,7 @@
                   <span class="products__item_name">
                     {{ prod.NAME }}
                   </span>
-                  <div class="products__item_sku">ТУ 3683-005-54116265-2011</div>
+                  <div v-if="prod.SKU" class="products__item_sku">{{ prod.SKU }}</div>
                   <div class="products__item_properties">
                     <div v-for="property in prod.PROPERIES.slice(0, 3)" :key="property.index" class="products__item_property">
                       <template v-if="'NAME' in property && property.NAME">
