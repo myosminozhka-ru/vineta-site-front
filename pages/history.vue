@@ -149,12 +149,12 @@ export default {
     })
     this.addBreadcrumbs([
       {
-        name: 'Главная',
+        name: this.$t('buttons.main'),
         link: 'index',
         isLink: true,
       },
       {
-        name: 'История',
+        name: this.$t('buttons.history'),
         isLink: false,
       },
     ])

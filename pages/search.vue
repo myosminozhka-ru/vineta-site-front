@@ -75,12 +75,12 @@ export default {
   created() {
     this.addBreadcrumbs([
         {
-            name: 'Главная',
+            name: this.$t('buttons.main'),
             link: 'index',
             isLink: true
         },
         {
-            name: 'Результаты поиска',
+            name: this.$t('search.title'),
             isLink: false
         },
     ])
