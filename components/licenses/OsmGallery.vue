@@ -93,6 +93,10 @@ export default {
   }
   &__item {
     position: relative;
+
+    img {
+      max-width: 100%;
+    }
   }
   &__item_overlay {
     position: absolute;
@@ -133,6 +137,10 @@ export default {
         width: 100%;
         height: auto;
       }
+    }
+
+    img {
+      max-width: 100%;
     }
   }
   &__item:hover &__item_overlay {
