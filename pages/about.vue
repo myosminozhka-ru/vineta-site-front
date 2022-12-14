@@ -151,7 +151,7 @@
           <div class="history__top">
             <div class="history__title">{{ getAbout.banners.sixth.NAME }}</div>
             <div class="history__line"></div>
-            <div class="history__text">{{ getAbout.banners.sixth.PREVIEW_TEXT }}</div>
+            <div class="history__text" v-html="getAbout.banners.sixth.PREVIEW_TEXT"></div>
           </div>
           <osm-button class="history__button" :outlined="true" link="techs">{{ $t('buttons.more') }}</osm-button>
         </div>
