@@ -29,7 +29,7 @@
                   </template>
                 </li>
                 <nuxt-link :to="localePath({ name: 'licenses' })" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
-                  <div class="text">Смотреть все</div>
+                  <div class="text">{{ $t('buttons.view_all') }}</div>
                 </nuxt-link>
               </ul>
             </div>
@@ -70,13 +70,13 @@
                     <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                   </li>
                   <nuxt-link :to="localePath({ name: 'licenses' })" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
-                    <div class="text">Смотреть все</div>
+                    <div class="text">{{ $t('buttons.view_all') }}</div>
                   </nuxt-link>
                 </ul>
               </div>
             </div>
             <div class="licensesSlid__arrows">
-              <nuxt-link :to="localePath({ name: 'licenses' })" class="more">Смотреть все</nuxt-link>
+              <nuxt-link :to="localePath({ name: 'licenses' })" class="more">{{ $t('buttons.view_all') }}</nuxt-link>
               <div class="licensesSlid__arrows-in" data-glide-el="controls">
                 <button class="licensesSlid__arrow licensesSlid__arrow--left" data-glide-dir="<">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">

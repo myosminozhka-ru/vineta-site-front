@@ -13,6 +13,6 @@ module.exports = {
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
   plugins: [],
   rules: {
-    "vue/no-v-html": false
+    "vue/no-v-html": 0
   }
 }
