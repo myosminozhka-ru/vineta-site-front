@@ -8,7 +8,7 @@
       <section class="first">
         <div class="first__text">
           {{ getAbout.banners.first.NAME }}
-          <span class="first__small-text">судоремонта, атомной промышленности, транспорта и предприятий топливно-энергетического комплекса</span>
+          <span class="first__small-text">{{ $t('about.small_text') }}</span>
         </div>
         <div class="first__image hide_on_mobile">
           <nuxt-img :src="$vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
@@ -40,8 +40,8 @@
                 </svg>
               </div>
               <div class="text">
-                <template v-if="!isTextShowed">Развернуть</template>
-                <template v-else>Свернуть</template>
+                <template v-if="!isTextShowed">{{ $t('buttons.unwrap') }}</template>
+                <template v-else>{{ $t('buttons.roll_up') }}</template>
               </div>
             </osm-button>
           </div>
@@ -49,7 +49,7 @@
         <div class="second__side second__side--right">
           <div class="second__side_top">
             <div class="second__title">
-              <div class="text">Каталог</div>
+              <div class="text">{{ $t('buttons.catalog') }}</div>
               <nuxt-link :to="localePath({ name: 'catalog' })" class="second__title_button">
                 <svg width="100%" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L8 9L1 17" stroke="white" stroke-width="2" />
@@ -99,7 +99,7 @@
         </div>
       </section>
       <section class="third">
-        <div class="third__title">О компании в цифрах</div>
+        <div class="third__title">{{ $t('about.third_title') }}</div>
         <div class="third__items">
           <div v-for="item in getAbout.numbers" :key="item.index" class="third__item">
             <div class="number">{{ item.PROPERIES[0].VALUE }}</div>
@@ -111,7 +111,7 @@
         <nuxt-img :src="$vareibles.remote + getAbout.banners.third.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
       </section>
       <section class="fiveth">
-        <div class="fiveth__title">Руководство</div>
+        <div class="fiveth__title">{{ $t('contacts.guide') }}</div>
         <div class="fiveth__items">
           <div v-for="item in managment" :key="item.index" class="fiveth__item">
             <div class="avatar">
@@ -160,7 +160,7 @@
         <customers :has-button="true" />
       </section>
       <section v-if="false" class="seventh">
-        <div class="seventh__title">Карта</div>
+        <div class="seventh__title">{{ $t('about.map') }}</div>
         <div class="seventh__map">
           <nuxt-img src="/about/map.svg" width="100%" alt="" loading="lazy" />
         </div>
@@ -604,6 +604,10 @@ export default {
       width: rem(30);
       margin: rem(10);
       flex-shrink: 0;
+
+      img {
+        width: 100%;
+      }
 
       @media all and (max-width: 1280px) {
         width: 24px;

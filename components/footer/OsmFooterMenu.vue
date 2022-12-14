@@ -19,7 +19,7 @@
     </ul>
     <ul class="opened isOpened">
       <li>
-        <nuxt-link :to="localePath({ name: 'partners' })">Заказчикам</nuxt-link>
+        <nuxt-link :to="localePath({ name: 'partners' })">{{ $t('sections.footer.to_customers') }}</nuxt-link>
       </li>
       <!-- <li v-for="link in []" :key="link.ID">
         <a :href="link.PROPERIES[0].SRC" :download="link.CODE" target="_black">{{ link.NAME }}</a>

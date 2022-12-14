@@ -22,8 +22,8 @@
             >
               <p v-html="decodeHTML(item.PREVIEW_TEXT)" />
               <div class="text button" @click="item.isTextShowed = !item.isTextShowed">
-                <template v-if="!item.isTextShowed">Развернуть</template>
-                <template v-else>Свернуть</template>
+                <template v-if="!item.isTextShowed">{{ $t('buttons.unwrap') }}</template>
+                <template v-else>{{ $t('buttons.roll_up') }}</template>
               </div>
             </div>
             <div class="history__text--buttons hide_on_tablet">
@@ -32,7 +32,7 @@
                   <div class="arrow">
                     <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                   </div>
-                  <div class="text">В прошлое</div>
+                  <div class="text">{{ $t('buttons.into_the_past') }}</div>
                 </osm-button>
               </div>
               <div @click="next">
@@ -40,7 +40,7 @@
                   <div class="arrow">
                     <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                   </div>
-                  <div class="text">В Настоящее</div>
+                  <div class="text">{{ $t('buttons.at_present') }}</div>
                 </osm-button>
               </div>
             </div>
@@ -71,7 +71,7 @@
                 <div class="arrow">
                   <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                 </div>
-                <div class="text">В прошлое</div>
+                <div class="text">{{ $t('buttons.into_the_past') }}</div>
               </osm-button>
             </div>
             <div @click="next">
@@ -79,7 +79,7 @@
                 <div class="arrow">
                   <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                 </div>
-                <div class="text">В Настоящее</div>
+                <div class="text">{{ $t('buttons.at_present') }}</div>
               </osm-button>
             </div>
           </div>

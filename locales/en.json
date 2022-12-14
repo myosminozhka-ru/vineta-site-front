@@ -27,7 +27,14 @@
     "view_all": "View all",
     "reset": "Reset",
     "apply2": "Apply",
-    "print": "Print"
+    "print": "Print",
+    "unwrap":  "Unwrap",
+    "roll_up": "Roll Up",
+    "into_the_past": "Into The Past",
+    "at_present": "At Present",
+    "go_to_the_website": "Go to the website",
+    "upload": "Upload",
+    "to_catalogue": "To catalogue"
   },
   "menu": {
     "products": "Manufacturing range"
@@ -57,10 +64,17 @@
       "policy_before_link": "By filling out this form, you accept the terms of the",
       "policy_link": "Data Protection Guidelines",
       "policy_after_link": "on the website terms of use as to processing and use of personal data",
-      "privacy_policy": "Privacy policy"
+      "privacy_policy": "Privacy policy",
+      "to_customers": "To Customers"
     },
     "modals": {
-      "apply_vacancy": "Apply for a job"
+      "apply_vacancy": "Apply for a job",
+      "max_size": "The maximum file size is 7 MB",
+      "policy_before_link": "By filling out this form, you accept the terms",
+      "policy_link": "privacy policies",
+      "policy_after_link": "about the use of the site and give your consent to the processing, including in terms of processing and use of personal data",
+      "thank_application": "Thank you for the application!",
+      "we_you_shortly.": "We will contact you shortly."
     }
   },
   "footer": {
@@ -90,5 +104,27 @@
   "vacancies": {
     "advantages": "Advantages of working with us",
     "respond": "Respond to a vacancy"
+  },
+  "about": {
+    "small_text": "ship repair, nuclear industry, transport and fuel and energy complex enterprises",
+    "third_title" : "About the company in numbers",
+    "map": "Map"
+  },
+  "partners": {
+    "partners_title": "Main customers",
+    "partners_title_hidden": "Subsidiaries"
+  },
+  "news": {
+    "news_more_title": "See also"
+  },
+  "search": {
+    "placeholder": "Site Search",
+    "text_before_count": "Found",
+    "text_after_count": "result",
+    "null_result": "Nothing found"
+  },
+  "favourites": {
+    "title": "Favourites",
+    "subtitle": "You haven't added anything to your favorites yet."
   }
 }
