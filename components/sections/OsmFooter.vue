@@ -5,7 +5,7 @@
         <osm-h1 class="section__title">
           <template v-if="!isSuccess">
             {{ $t('sections.footer.request') }}
-            <div>Вы можете направить нам запрос в электронном виде, используя нижеприведенную форму, или позвонить по указанному телефону</div>
+            <div>{{ $t('sections.footer.description') }}</div>
           </template>
           <template v-else>
             {{ $t('sections.footer.thanks') }}
@@ -27,9 +27,9 @@
           <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
         </div>
         <p style="font-size: 12rem">
-          Заполняя данную форму, вы принимаете условия
-          <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
-          об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
+          {{ $t('sections.footer.policy_before_link') }}
+          <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> {{ $t('sections.footer.policy_link') }} </a>
+          {{ $t('sections.footer.policy_after_link') }}
         </p>
         <osm-button class="section__button" :large="true" type="submit">{{ $t('sections.footer.send') }}</osm-button>
       </form>
@@ -74,7 +74,7 @@
         <div v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']" class="section__popup_right">
           <ul>
             <li>
-              <a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a>
+              <a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">{{ $t('sections.footer.privacy_policy') }}</a>
             </li>
             <!-- <li><a href="#">Пользовательское соглашение</a></li>
                         <li><a href="#">Карта сайта</a></li> -->

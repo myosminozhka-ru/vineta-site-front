@@ -23,7 +23,11 @@
     "to_favorites": "To favorites",
     "checkout": "Proceed to checkout",
     "apply": "Apply",
-    "company_presentation": "Company presentation"
+    "company_presentation": "Company presentation",
+    "view_all": "View all",
+    "reset": "Reset",
+    "apply2": "Apply",
+    "print": "Print"
   },
   "menu": {
     "products": "Manufacturing range"
@@ -45,10 +49,15 @@
     },
     "footer": {
       "request": "Leave a request",
+      "description": "Please feel free to contact us via form below or by phone",
       "thanks": "Thanks for your request",
       "send": "Send",
       "response": "We will respond within a working day or the next working day",
-      "worktime": "Mon-Fri from 8:00 to 17:00"
+      "worktime": "Mon-Fri from 8:00 to 17:00",
+      "policy_before_link": "By filling out this form, you accept the terms of the",
+      "policy_link": "Data Protection Guidelines",
+      "policy_after_link": "on the website terms of use as to processing and use of personal data",
+      "privacy_policy": "Privacy policy"
     },
     "modals": {
       "apply_vacancy": "Apply for a job"
@@ -63,6 +72,14 @@
   },
   "catalog": {
     "empty": " No products"
+  },
+  "catalog_id": {
+    "description": "Description",
+    "main_features": "Main Features",
+    "specifications": "Specifications",
+    "modifications": "Modifications",
+    "modification": "Modification",
+    "analogs": "Analogs"
   },
   "counter": {
     "title": "Quantity"

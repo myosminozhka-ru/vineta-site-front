@@ -19,28 +19,28 @@
               </div>
               <template v-for="(contact, index) in getContacts['0'].PROPERIES">
                 <div v-if="contact.CODE === 'NAME_PHONE'" :key="index" class="contacts__item contacts__item--schedule">
-                    <div class="contacts__item_in name_phone">
-                      <div class="icon">
-                        <nuxt-img src="/contacts/NAME_PHONE.svg" width="100%" alt="" loading="lazy" />
-                      </div>
-                      <div class="text">{{ contact?.VALUE }}</div>
+                  <div class="contacts__item_in name_phone">
+                    <div class="icon">
+                      <nuxt-img src="/contacts/NAME_PHONE.svg" width="100%" alt="" loading="lazy" />
                     </div>
+                    <div class="text">{{ contact?.VALUE }}</div>
+                  </div>
                 </div>
                 <div v-else-if="contact.CODE === 'PHONE'" :key="index" class="contacts__item">
-                    <a :href="`tel:${contact?.VALUE}`" class="contacts__item_in phone">
-                      <div class="icon">
-                        <nuxt-img src="/contacts/PHONE.svg" width="100%" alt="" loading="lazy" />
-                      </div>
-                      <div class="text">{{ contact?.VALUE }}</div>
-                    </a>
+                  <a :href="`tel:${contact?.VALUE}`" class="contacts__item_in phone">
+                    <div class="icon">
+                      <nuxt-img src="/contacts/PHONE.svg" width="100%" alt="" loading="lazy" />
+                    </div>
+                    <div class="text">{{ contact?.VALUE }}</div>
+                  </a>
                 </div>
                 <div v-else-if="contact.CODE === 'GEO'" :key="index" class="contacts__item">
-                    <div class="contacts__item_in geo">
-                      <div class="icon">
-                        <nuxt-img src="/contacts/MAP.svg" width="100%" alt="" loading="lazy" />
-                      </div>
-                      <div class="text">{{ contact?.VALUE }}</div>
+                  <div class="contacts__item_in geo">
+                    <div class="icon">
+                      <nuxt-img src="/contacts/MAP.svg" width="100%" alt="" loading="lazy" />
                     </div>
+                    <div class="text">{{ contact?.VALUE }}</div>
+                  </div>
                 </div>
                 <div v-else-if="contact.CODE === 'EMAIL'" :key="index" class="contacts__item">
                   <a :href="`mailto:${contact?.VALUE}`" class="contacts__item_in email">
@@ -100,7 +100,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'ContactsPage',
+  name: 'ContactsPageasdasdasd',
   components: {
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
@@ -117,7 +117,7 @@ export default {
      * @type {boolean}
      * @default false
      */
-     isMounted: false,
+    isMounted: false,
   }),
   async fetch() {
     await this.addContacts()

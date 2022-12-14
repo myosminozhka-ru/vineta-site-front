@@ -15,7 +15,7 @@
           <osm-button v-if="'NAME_BUTTON' in firstData.PROPERIES" class="section__button" link="catalog">
             {{ firstData.PROPERIES.NAME_BUTTON.VALUE }}
           </osm-button>
-          <osm-button class="section__button" link="about"> Подробнее </osm-button>
+          <osm-button class="section__button" link="about"> {{ $t('buttons.more') }} </osm-button>
         </div>
       </div>
     </div>
