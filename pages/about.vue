@@ -741,6 +741,10 @@ export default {
   font-size: 0;
   position: relative;
 
+  > img {
+    max-width: 100%;
+  }
+
   @media all and (max-width: 1440px) {
     padding-right: 150px;
     padding-left: 150px;
