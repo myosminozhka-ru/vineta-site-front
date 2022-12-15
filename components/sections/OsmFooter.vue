@@ -63,7 +63,7 @@
         </div>
       </div>
       <div class="section__map" @mousewheel.stop>
-        <osm-map />
+        <osm-map v-if="isActive" />
       </div>
     </div>
     <osm-footer class="section__footer hide_on_desktop" />
@@ -96,6 +96,12 @@ export default {
     OsmMap: () => import('~/components/global/OsmMap.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
+  },
+  props: {
+    isActive: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => ({
     fields: {
