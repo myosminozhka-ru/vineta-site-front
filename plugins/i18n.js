@@ -3,6 +3,7 @@ export default function ({ app }) {
   app.i18n.onBeforeLanguageSwitch = (oldLocale, newLocale) => {
     setTimeout(async () => {
       await Promise.all([
+        await app.store.ispatch('setLoadingStatus', true),
         await app.store.dispatch('addMain'),
         await app.store.dispatch('addMainMore'),
         await app.store.dispatch('addCatalog'),
@@ -15,6 +16,7 @@ export default function ({ app }) {
         await app.store.dispatch('setLoadedStatus'),
         await app.store.dispatch('addSeo'),
         await app.store.dispatch('addAbout'),
+        await app.store.ispatch('setLoadingStatus', false),
       ])
     }, 0)
   }
