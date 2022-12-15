@@ -170,7 +170,6 @@
       </section>
     </div>
     <osm-footer />
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 <script>
@@ -182,7 +181,6 @@ export default {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     Customers: () => import('~/components/sliders/Customers.vue'),
     Licenses: () => import('~/components/tabs/Licenses.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     isTextShowed: false,

@@ -1,8 +1,5 @@
 <template>
   <div class="wrapper">
-
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
-
     <div v-show="isMounted" class="full-page-indicators" :class="{ white: +activeIndex === 5 }">
       <div v-for="(indicator, key) in sections" :key="indicator.index" class="indicator" :class="{ active: +activeIndex === +key }" @click="activeIndex = key">
         <span></span>
@@ -31,7 +28,6 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'IndexPage',
   components: {
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
     OsmFirstSection: () => import('~/components/sections/OsmFirst.vue'),
     OsmSecondSection: () => import('~/components/sections/OsmSecond.vue'),
     OsmThirdSection: () => import('~/components/sections/OsmThird.vue'),
@@ -87,6 +83,9 @@ export default {
   beforeDestroy() {
     document.removeEventListener('mousewheel', function () {})
   },
+  created() {
+    this.setLoadingStatus(true)
+  },
   mounted() {
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1
@@ -122,12 +121,14 @@ export default {
     this.$nextTick().then(() => {
       setTimeout(() => {
         this.isMounted = true
+        this.setLoadingStatus(false)
       }, 1000)
     })
   },
   methods: {
     ...mapActions(['setGalleryIndex']),
     ...mapActions(['addMain']),
+    ...mapActions(['setLoadingStatus']),
     onWheel(event) {
       event = event || window.event
       const delta = event.deltaX || event.detail || event.wheelDelta

@@ -30,7 +30,6 @@
                            :data-object="getTechnology && getTechnology[6]" />
       <osm-eighth-section v-if="false" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-footer-section class="techs_footer" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
-      <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
     </div>
   </div>
 </template>
@@ -49,7 +48,6 @@ export default {
     OsmSeventhSection: () => import('~/components/techs/OsmSeventh.vue'),
     OsmEighthSection: () => import('~/components/techs/OsmEighth.vue'),
     OsmFooterSection: () => import('~/components/sections/OsmFooter.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     activeIndex: null,

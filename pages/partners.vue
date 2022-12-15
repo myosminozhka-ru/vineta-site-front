@@ -85,7 +85,6 @@
       </div>
     </div>
     <osm-footer />
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 
@@ -96,7 +95,6 @@ export default {
   components: {
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     isMounted: false

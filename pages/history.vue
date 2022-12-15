@@ -86,7 +86,6 @@
         </div>
       </div>
     </div>
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 <script>
@@ -96,7 +95,6 @@ export default {
   components: {
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     selectedTime: 0,

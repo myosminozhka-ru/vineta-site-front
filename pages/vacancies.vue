@@ -5,7 +5,6 @@
       <nuxt-child />
     </div>
     <osm-footer />
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 <script>
@@ -14,7 +13,6 @@ export default {
   name: 'VacanciesPage',
   components: {
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     isDataLoaded: false,

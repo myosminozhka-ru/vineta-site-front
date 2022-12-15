@@ -93,7 +93,6 @@
     </section>
     <osm-down-to element-to="contact-slider" />
     <osm-footer />
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 
@@ -105,7 +104,6 @@ export default {
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmContactsSlider: () => import('~/components/contacts/OsmSlider.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
     OsmMap: () => import('~/components/global/OsmMap.vue'),
     OsmDownTo: () => import('~/components/global/OsmDownTo.vue'),
   },

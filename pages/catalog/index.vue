@@ -1,9 +1,9 @@
 <template>
   <div class="pageWrap">
-    <osm-breadcrumbs />
-    <osm-catalog-top :title="$t('buttons.catalog')" />
-    <osm-catalog-categories />
-    <div class="catalog__header_right hide_off_mobile">
+    <osm-breadcrumbs v-show="isMounted" />
+    <osm-catalog-top v-show="isMounted" :title="$t('buttons.catalog')" />
+    <osm-catalog-categories v-show="isMounted" />
+    <div v-show="isMounted" class="catalog__header_right hide_off_mobile">
       <a href="https://vinetaboat.ru/" target="_blank" class="catalog__header_btn">
         <div class="text">{{ $t('buttons.boats') }}</div>
         <div class="icon">
@@ -52,6 +52,9 @@ export default {
     OsmCatalogTop: () => import('~/components/catalog/OsmCatalogTop.vue'),
     OsmCatalogCategories: () => import('~/components/catalog/OsmCatalogCategories.vue'),
   },
+  data: () => ({
+    isMounted: false,
+  }),
   created() {
     this.addBreadcrumbs([
       {
@@ -64,6 +67,9 @@ export default {
         isLink: false,
       },
     ])
+  },
+  mounted() {
+    this.isMounted = true;
   },
   methods: {
     ...mapActions(['addBreadcrumbs']),

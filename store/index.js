@@ -35,7 +35,8 @@ export const state = () => ({
     },
   },
   seo: {},
-  technology: {}
+  technology: {},
+  isLoading: true
 })
 
 export const mutations = {
@@ -113,6 +114,9 @@ export const mutations = {
   },
   addTechnology(state, data) {
     state.technology = data
+  },
+  setLoadingStatus(state, status) {
+    state.isLoading = status;
   }
 }
 
@@ -137,157 +141,193 @@ export const actions = {
   },
   addDownloads(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('downloads.php')
         .then((response) => {
           resolve(response)
           context.commit('addDownloads', response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addMain(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('slider.php')
         .then((response) => {
           resolve(response)
           context.commit('addMain', response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addMainMore(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('main.php')
         .then((response) => {
           resolve(response)
           context.commit('addMainMore', response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addCatalog(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('catalog/tree.php')
         .then((response) => {
           context.commit('addCatalog', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addVacancies(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('vacancy.php')
         .then((response) => {
           context.commit('addVacancies', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addContacts(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('contact.php')
         .then((response) => {
           context.commit('addContacts', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addAbout(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('about.php')
         .then((response) => {
           context.commit('addAbout', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addHistory(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('history.php')
         .then((response) => {
           context.commit('addHistory', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addLicenses(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('license.php')
         .then((response) => {
           context.commit('addLicenses', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addNews(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('news.php')
         .then((response) => {
           context.commit('addNews', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addPartners(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('client.php')
         .then((response) => {
           context.commit('addPartners', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addProducts(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('catalog/elements_all.php')
         .then((response) => {
           context.commit('addProducts', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
@@ -320,29 +360,38 @@ export const actions = {
   },
   addSeo(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('seo.php')
         .then((response) => {
           context.commit('addSeo', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
   },
   addTechnology(context) {
     return new Promise((resolve, reject) => {
+      context.commit('setLoadingStatus', true)
       this.$axios
         .$get('technology.php')
         .then((response) => {
           context.commit('addTechnology', response)
           resolve(response)
+          context.commit('setLoadingStatus', false)
         })
         .catch((error) => {
           reject(error)
+          context.commit('setLoadingStatus', false)
         })
     })
+  },
+  setLoadingStatus({commit}, status) {
+    commit('setLoadingStatus', status)
   },
   async nuxtServerInit({ dispatch }) {
     await dispatch('addMain')
