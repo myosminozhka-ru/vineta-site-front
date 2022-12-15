@@ -16,7 +16,6 @@
       </div>
     </div>
     <osm-footer />
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
     <osm-favorites-modal />
   </div>
 </template>
@@ -30,7 +29,6 @@ export default {
     OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProductsFake.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
     OsmFavoritesModal: () => import('~/components/modals/favorites.vue'),
   },
   data: () => ({

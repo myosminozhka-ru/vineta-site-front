@@ -1,5 +1,5 @@
 <template>
-  <div class="preloader">
+  <div class="preloader" :class="[{'preloader--is-hidden': !$store.state.isLoading}]">
     <span class="circle circle-1"></span>
     <span class="circle circle-2"></span>
     <span class="circle circle-3"></span>

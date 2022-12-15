@@ -13,7 +13,6 @@
       </div>
     </div>
     <osm-footer />
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
   </div>
 </template>
 
@@ -25,7 +24,6 @@ export default {
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmGallery: () => import('~/components/licenses/OsmGallery.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     isMounted: false

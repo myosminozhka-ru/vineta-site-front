@@ -1,9 +1,7 @@
 <template>
   <div id="wrapper" class="wrapper footerOnBottom">
-    <osm-preloader :class="[{'preloader--is-hidden': isMounted}]" />
-    <!-- <osm-header /> -->
-    <nuxt-child />
-    <osm-footer />
+    <nuxt-child v-show="isMounted" />
+    <osm-footer v-show="isMounted" />
   </div>
 </template>
 <script>
@@ -12,7 +10,6 @@ export default {
   name: 'CatalogTemplate',
   components: {
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     isMounted: false,
