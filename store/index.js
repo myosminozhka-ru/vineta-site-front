@@ -1,6 +1,6 @@
 export const state = () => ({
   main: [],
-  main2: [],
+  main2: {},
   catalog: [],
   vacancies: [],
   contacts: [],
@@ -36,7 +36,11 @@ export const state = () => ({
   },
   seo: {},
   technology: {},
-  isLoading: true
+  isLoading: true,
+  dataVacancy: [],
+  dataProduct: [],
+  dataProductOther: [],
+  dataNews: []
 })
 
 export const mutations = {
@@ -117,10 +121,34 @@ export const mutations = {
   },
   setLoadingStatus(state, status) {
     state.isLoading = status;
+  },
+  setDataVacancy(state, data) {
+    state.dataVacancy = data
+  },
+  setDataProduct(state, data) {
+    state.dataProduct = data
+  },
+  setDataProductOther(state, data) {
+    state.dataProductOther = data
+  },
+  setDataNews(state, data) {
+    state.dataNews = data
   }
 }
 
 export const actions = {
+  setDataVacancy({commit}, data) {
+    commit('setDataVacancy', data)
+  },
+  setDataProduct({commit}, data) {
+    commit('setDataProduct', data)
+  },
+  setDataProductOther({commit}, data) {
+    commit('setDataProductOther', data)
+  },
+  setDataNews({commit}, data) {
+    commit('setDataNews', data)
+  },
   setCatalogFilters(context, data) {
     context.commit('setCatalogFilters', data)
   },
@@ -351,22 +379,39 @@ export const actions = {
   setLoadingStatus({commit}, status) {
     commit('setLoadingStatus', status)
   },
-  async nuxtServerInit({ dispatch }) {
-    await dispatch('setLoadingStatus', true)
-    await dispatch('addMain')
-    await dispatch('addMainMore')
-    await dispatch('addCatalog')
-    await dispatch('addContacts')
-    await dispatch('addLicenses')
-    await dispatch('addNews')
-    await dispatch('addPartners')
-    await dispatch('addProducts')
-    await dispatch('addDownloads')
-    await dispatch('setLoadedStatus')
-    await dispatch('addSeo')
-    await dispatch('addAbout')
-    await dispatch('setLoadingStatus', false)
-  },
+
+  async nuxtServerInit({ dispatch, state }) {
+    if (!Object.keys(state.seo).length) {
+      await dispatch('addSeo')
+    }
+
+    if (!state.contacts.length) {
+      await dispatch('addContacts')
+    }
+
+    if (!Object.keys(state.downloads).length) {
+      await dispatch('addDownloads')
+    }
+
+    if(!state.catalog.length) {
+      await dispatch('addCatalog')
+    }
+  }
+  //   await dispatch('setLoadingStatus', true)
+  //   await dispatch('addMain')
+  //   await dispatch('addMainMore')
+  //   await dispatch('addCatalog')
+  //   await dispatch('addContacts')
+  //   await dispatch('addLicenses')
+  //   await dispatch('addNews')
+  //   await dispatch('addPartners')
+  //   await dispatch('addProducts')
+  //   await dispatch('addDownloads')
+  //   await dispatch('setLoadedStatus')
+  //   await dispatch('addSeo')
+  //   await dispatch('addAbout')
+  //   await dispatch('setLoadingStatus', false)
+  // },
 }
 
 export const getters = {
@@ -422,7 +467,8 @@ export const getters = {
     return state.galleryIndex
   },
   getLoadedStatus(state) {
-    return state.isDataLoaded
+    // return state.isDataLoaded
+    return state.isLoading
   },
   getCatalogFilters(state) {
     return state.catalogFilters

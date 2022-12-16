@@ -5,7 +5,7 @@
         <source type="video/webm" src="~/assets/video/2.webm" />
       </video>
     </div>
-    <div class="section__right">
+    <div v-if="firstData" class="section__right">
       <div v-if="'PROPERIES' in firstData" class="section__content">
         <osm-h1 class="section__title">{{ firstData.NAME }}</osm-h1>
         <div class="section__text">
@@ -46,7 +46,7 @@ export default {
   computed: {
     ...mapGetters(['getMain']),
     firstData() {
-      return this.getMain[0]
+      return this.getMain[0] || null
     },
     combined() {
       return `${this.isStart}|${this.video}`

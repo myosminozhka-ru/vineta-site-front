@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'FavoritesPage',
   components: {
@@ -34,6 +34,27 @@ export default {
   data: () => ({
     isMounted: false,
   }),
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.products.length) {
+      await store.dispatch('addProducts')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.history,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
+  },
   head() {
     return {
       title: this.getSeo.favorites.SEO.META.TITLE,
@@ -59,24 +80,10 @@ export default {
       return this.getProducts.filter((item) => this.getFavorites.includes(+item.ID))
     },
   },
-  created() {
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('favourites.title'),
-        isLink: false,
-      },
-    ])
-  },
   mounted() {
     this.isMounted = true;
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
     printSection() {
       window.print()
     },

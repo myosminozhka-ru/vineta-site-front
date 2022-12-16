@@ -1,9 +1,9 @@
 <template>
   <div class="pageWrap">
-    <osm-breadcrumbs v-show="isMounted" />
-    <osm-catalog-top v-show="isMounted" :title="$t('buttons.catalog')" />
-    <osm-catalog-categories v-show="isMounted" />
-    <div v-show="isMounted" class="catalog__header_right hide_off_mobile">
+    <osm-breadcrumbs />
+    <osm-catalog-top :title="$t('buttons.catalog')" />
+    <osm-catalog-categories />
+    <div class="catalog__header_right hide_off_mobile">
       <a href="https://vinetaboat.ru/" target="_blank" class="catalog__header_btn">
         <div class="text">{{ $t('buttons.boats') }}</div>
         <div class="icon">
@@ -55,24 +55,26 @@ export default {
   data: () => ({
     isMounted: false,
   }),
-  created() {
-    this.addBreadcrumbs([
+  async fetch({store, i18n}) {
+    await store.dispatch('addBreadcrumbs', [
       {
-        name: this.$t('buttons.main'),
+        name: i18n.messages[i18n.locale].buttons.main,
         link: 'index',
         isLink: true,
       },
       {
-        name: this.$t('buttons.catalog'),
+        name: i18n.messages[i18n.locale].buttons.catalog,
         isLink: false,
       },
     ])
   },
   mounted() {
-    this.isMounted = true;
+    setTimeout(() => {
+      this.setLoadingStatus(false)
+    }, 0)
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
+    ...mapActions(['setLoadingStatus']),
   },
 }
 </script>

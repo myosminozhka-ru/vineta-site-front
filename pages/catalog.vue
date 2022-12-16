@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper" class="wrapper footerOnBottom">
-    <nuxt-child v-show="isMounted" />
-    <osm-footer v-show="isMounted" />
+    <nuxt-child />
+    <osm-footer />
   </div>
 </template>
 <script>
@@ -14,6 +14,13 @@ export default {
   data: () => ({
     isMounted: false,
   }),
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.products.length) {
+      await store.dispatch('addProducts')
+    }
+  },
   head() {
     return {
       title: this.getSeo.catalog.SEO.META.TITLE,

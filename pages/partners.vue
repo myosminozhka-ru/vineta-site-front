@@ -3,7 +3,7 @@
     <!-- <osm-header /> -->
     <div class="partners">
       <!-- <pre style="font-size: 15rem;">{{ getPartners }}</pre> -->
-      <div v-if="getPartners" class="header_padding">
+      <div class="header_padding">
         <osm-breadcrumbs />
         <div class="partners__title">{{ $t('partners.partners_title') }}</div>
         <div class="partners__items">
@@ -12,7 +12,7 @@
               <!-- <pre>{{ item }}</pre> -->
               <div class="partners__item_top">
                 <div v-if="'PREVIEW_PICTURE' in item" class="partners__item_logo">
-                  <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
+                  <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
                 </div>
                 <div v-if="'PREVIEW_TEXT' in item" class="partners__item_text">
                   {{ item.PREVIEW_TEXT }}
@@ -20,25 +20,25 @@
                 <div v-if="'PROPERIES' in item" class="partners__contact_items">
                   <div class="partners__contact_item">
                     <div class="icon">
-                      <nuxt-img src="/contacts/MAP.svg" width="100%" alt="" loading="lazy" />
+                      <nuxt-img src="/contacts/MAP.svg" width="100%" alt="" />
                     </div>
                     <div class="text">{{ item.ADRESS.VALUE }}</div>
                   </div>
                   <a v-if="item.PROPERIES[1]" :href="`mailto:${item.PROPERIES[1].VALUE}`" class="partners__contact_item email">
                     <div class="icon">
-                      <nuxt-img src="/contacts/EMAIL.svg" width="100%" alt="" loading="lazy" />
+                      <nuxt-img src="/contacts/EMAIL.svg" width="100%" alt="" />
                     </div>
                     <div class="text">{{ item.PROPERIES[1].VALUE }}</div>
                   </a>
                   <a v-if="item.PROPERIES[2]" :href="`tel:${item.PROPERIES[2].VALUE}`" class="partners__contact_item phone">
                     <div class="icon">
-                      <nuxt-img src="/contacts/PHONE.svg" width="100%" alt="" loading="lazy" />
+                      <nuxt-img src="/contacts/PHONE.svg" width="100%" alt="" />
                     </div>
                     <div class="text">{{ item.PROPERIES[2].VALUE }}</div>
                   </a>
                   <div v-if="item.PROPERIES[3]" class="partners__contact_item">
                     <div class="icon">
-                      <nuxt-img src="/contacts/SITE.svg" width="100%" alt="" loading="lazy" />
+                      <nuxt-img src="/contacts/SITE.svg" width="100%" alt="" />
                     </div>
                     <div class="text">{{ item.PROPERIES[3].VALUE }}</div>
                   </div>
@@ -57,25 +57,25 @@
             <div class="partners__contact_items">
               <div class="partners__contact_item">
                 <div class="icon">
-                  <nuxt-img src="/contacts/MAP.svg" width="100%" alt="" loading="lazy" />
+                  <nuxt-img src="/contacts/MAP.svg" width="100%" alt="" />
                 </div>
                 <div class="text">620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500</div>
               </div>
               <a href="mailto:info@vineta.ru" class="partners__contact_item">
                 <div class="icon">
-                  <nuxt-img src="/contacts/EMAIL.svg" width="100%" alt="" loading="lazy" />
+                  <nuxt-img src="/contacts/EMAIL.svg" width="100%" alt="" />
                 </div>
                 <div class="text">info@vineta.ru</div>
               </a>
               <a href="tel:+7(812)493-50-48" class="partners__contact_item">
                 <div class="icon">
-                  <nuxt-img src="/contacts/PHONE.svg" width="100%" alt="" loading="lazy" />
+                  <nuxt-img src="/contacts/PHONE.svg" width="100%" alt="" />
                 </div>
                 <div class="text">+7(812)493-50-48</div>
               </a>
               <div class="partners__contact_item">
                 <div class="icon">
-                  <nuxt-img src="/contacts/WATCH.svg" width="100%" alt="" loading="lazy" />
+                  <nuxt-img src="/contacts/WATCH.svg" width="100%" alt="" />
                 </div>
                 <div class="text">Пн-Пт с 9:00 до 18:00</div>
               </div>
@@ -99,6 +99,27 @@ export default {
   data: () => ({
     isMounted: false
   }),
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!Object.keys(store.state.partners).length) {
+      await store.dispatch('addPartners')
+    }
+
+    store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].partners.partners_title,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
+  },
   head() {
     return {
       title: this.getSeo.partners.SEO.META.TITLE,
@@ -120,24 +141,11 @@ export default {
     ...mapGetters(['getPartners']),
     ...mapGetters(['getSeo']),
   },
-  created() {
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('partners.partners_title'),
-        isLink: false,
-      },
-    ])
-  },
   mounted() {
     this.isMounted = true
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
+    ...mapActions(['setLoadingStatus']),
   },
 }
 </script>

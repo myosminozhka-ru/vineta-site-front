@@ -15,16 +15,9 @@
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">06</div>
                         <div class="texts">
-                            <div class="title">{{ dataObject.NAME }}</div>
+                          <div class="title">{{ dataObject.NAME }}</div>
 
                           <div v-html="dataObject.PREVIEW_TEXT"></div>
-
-<!--                            <p class="text">-->
-<!--                            Транспортировка деталей, заготовок и готовой продукции-->
-<!--                            производится подъемным оборудованием, г/п до 10 тонн.<br>-->
-<!--                            Упаковка изделий и оформление сопроводительной документации-->
-<!--                            выполняется в соответствии с действующими стандартами.-->
-<!--                            </p>-->
                         </div>
                     </div>
                 </div>
@@ -34,7 +27,7 @@
 </template>
 <script>
 export default {
-  name: 'OsmFirstSection',
+  name: 'OsmSeventhSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')

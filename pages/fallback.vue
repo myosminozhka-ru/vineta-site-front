@@ -131,13 +131,12 @@
         <div class="errorPage__code">
           <nuxt-img src="/errors/404.svg" width="100%" alt="" loading="lazy" />
         </div>
-        <div class="errorPage__title">Страница не найдена</div>
-        <div class="errorPage__text">А также для военного и гражданского судоремонта, транспорта, предприятий ТЭК,
-          атомной промышленности и других.</div>
+        <div class="errorPage__title">{{ $t('not_found.title') }}</div>
+        <div class="errorPage__text">{{ $t('not_found.text') }}</div>
         <div class="errorPage__buttons">
-          <osm-button link="index" class="errorPage__button">На главную</osm-button>
-          <osm-button link="catalog" class="errorPage__button">В каталог</osm-button>
-          <osm-button link="contacts" class="errorPage__button">Контакты</osm-button>
+          <osm-button link="index" class="errorPage__button">{{ $t('buttons.to_main') }}</osm-button>
+          <osm-button link="catalog" class="errorPage__button">{{ $t('buttons.to_catalogue') }}</osm-button>
+          <osm-button link="contacts" class="errorPage__button">{{ $t('buttons.contacts') }}</osm-button>
         </div>
       </div>
     </div>
@@ -145,10 +144,20 @@
 </template>
 
 <script>
+  import {mapActions} from "vuex";
+
   export default {
     name: "ErrorPage",
     components: {
       OsmButton: () => import('~/components/global/OsmButton.vue')
+    },
+    mounted() {
+      setTimeout(() => {
+        this.setLoadingStatus(false)
+      }, 0)
+    },
+    methods: {
+      ...mapActions(['setLoadingStatus'])
     }
   }
 

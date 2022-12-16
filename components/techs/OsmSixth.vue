@@ -18,12 +18,6 @@
                             <div class="title">{{ dataObject.NAME }}</div>
 
                             <div v-html="dataObject.PREVIEW_TEXT"></div>
-
-<!--                            <p class="text">-->
-<!--                            Предприятие располагает стендом для проведения гидравлических-->
-<!--                            испытаний макс.давлением до 500 кгс/см.кв. (Аттестат №180/4).<br>-->
-<!--                            Оборудована лаборатория неразрушающего контроля.-->
-<!--                            </p>-->
                         </div>
                     </div>
                 </div>
@@ -33,7 +27,7 @@
 </template>
 <script>
 export default {
-  name: 'OsmFirstSection',
+  name: 'OsmSixthSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')

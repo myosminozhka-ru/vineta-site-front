@@ -6,7 +6,7 @@
       </video>
       <!-- <img :src="$vareibles.remote + secondData.PREVIEW_PICTURE" alt="first" width="100%"> -->
     </div>
-    <div class="section__right">
+    <div v-if="secondData" class="section__right">
       <div v-if="'PROPERIES' in secondData" class="section__content">
         <div class="mobile_left">
           <osm-h1 class="section__title">{{ secondData.NAME }}</osm-h1>

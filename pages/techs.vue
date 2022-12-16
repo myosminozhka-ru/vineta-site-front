@@ -7,27 +7,27 @@
     <div class="sections" :data-id="activeIndex">
       <osm-first-section :class="{ isActive: activeIndex === 0 }"
                          :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
-                         :data-object="getTechnology && getTechnology[0]"
+                         :data-object="getTechnology[0] || {}"
                          @toNext="goToNext" />
       <osm-second-section id="second"
                           :class="{ isActive: activeIndex === 1 }"
                           :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
-                          :data-object="getTechnology && getTechnology[1]" />
+                          :data-object="getTechnology[1] || {}" />
       <osm-third-section :class="{ isActive: activeIndex === 2 }"
                          :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
-                         :data-object="getTechnology && getTechnology[2]" />
+                         :data-object="getTechnology[2] || {}" />
       <osm-fourth-section :class="{ isActive: activeIndex === 3 }"
                           :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
-                          :data-object="getTechnology && getTechnology[3]" />
+                          :data-object="getTechnology[3] || {}" />
       <osm-fiveth-section :class="{ isActive: activeIndex === 4 }"
                           :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
-                          :data-object="getTechnology && getTechnology[4]" />
+                          :data-object="getTechnology[4] || {}" />
       <osm-sixth-section :class="{ isActive: activeIndex === 5 }"
                          :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
-                         :data-object="getTechnology && getTechnology[5]" />
+                         :data-object="getTechnology[5] || {}" />
       <osm-seventh-section :class="{ isActive: activeIndex === 6 }"
                            :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
-                           :data-object="getTechnology && getTechnology[6]" />
+                           :data-object="getTechnology[6] || {}" />
       <osm-eighth-section v-if="false" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
       <osm-footer-section class="techs_footer" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
     </div>
@@ -55,6 +55,27 @@ export default {
     isInProgress: false,
     isMounted: false
   }),
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.technology.technology) {
+      await store.dispatch('addTechnology')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.techs,
+        isLink: false,
+      },
+    ])
+
+    store.dispatch('setLoadingStatus', false)
+  },
   head() {
     return {
       title: this.getSeo.techs.SEO.META.TITLE,
@@ -73,7 +94,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getMain']),
+    // ...mapGetters(['getMain']),
     ...mapGetters(['getSeo', 'getTechnology']),
     activeSection: {
       get() {
@@ -88,23 +109,10 @@ export default {
     document.removeEventListener('mousewheel', () => {
     })
   },
-  created() {
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('buttons.techs'),
-        isLink: false,
-      },
-    ])
-  },
   mounted() {
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1
-      this.scollTo()
+      this.scrollTo()
     }
 
     if (window.innerWidth > 1024) {
@@ -139,12 +147,9 @@ export default {
         }
       }, 1000)
     }
-
-    this.addTechnology()
-    this.isMounted = true;
   },
   methods: {
-    ...mapActions(['addBreadcrumbs', 'addTechnology']),
+    ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
     change(direction) {
       if (this.isInProgress) return
 
@@ -161,7 +166,7 @@ export default {
         this.isInProgress = false
       }, 500)
     },
-    scollTo() {
+    scrollTo() {
       const sectionBottom = document.querySelector('.section__bottom--tech .title')
       const elementPosition = sectionBottom.getBoundingClientRect().top
 
@@ -174,7 +179,7 @@ export default {
       if (window.innerWidth > 1024) {
         this.activeIndex = 1
       } else {
-        this.scollTo()
+        this.scrollTo()
       }
     },
   },

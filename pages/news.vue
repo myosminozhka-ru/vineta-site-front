@@ -38,6 +38,14 @@ export default {
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmNewsTop: () => import('~/components/news/OsmNewsTop.vue'),
   },
+  data: () => ({
+    /**
+     * Скрыть лоадер
+     * @type {boolean}
+     * @default false
+     */
+    isMounted: false,
+  }),
   head() {
     return {
       title: this.getSeo.news.SEO.META.TITLE,
@@ -55,14 +63,13 @@ export default {
       ],
     }
   },
-  data: () => ({
-    /**
-     * Скрыть лоадер
-     * @type {boolean}
-     * @default false
-     */
-    isMounted: false,
-  }),
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.news.length) {
+      await store.dispatch('addNews')
+    }
+  },
   computed: {
     ...mapGetters(['getDownloads']),
     ...mapGetters(['getSeo']),

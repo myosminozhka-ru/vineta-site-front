@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isDataLoaded" class="wrapper">
+  <div class="wrapper">
     <!-- <osm-header /> -->
     <!-- <pre>{{ getContacts }}</pre> -->
     <div v-if="'0' in getContacts" class="contacts">
@@ -97,9 +97,9 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
-  name: 'ContactsPageasdasdasd',
+  name: 'ContactsPage',
   components: {
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
@@ -117,13 +117,30 @@ export default {
      */
     isMounted: false,
   }),
-  async fetch() {
-    await this.addContacts()
-    await this.addVacancies()
-    await this.addAbout()
-    if (process.client) {
-      this.createDinamycHeight()
+  async fetch({store, i18n, app}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.vacancies.length) {
+      await store.dispatch('addVacancies')
     }
+
+    if (!Object.keys(store.state.about).length) {
+      await store.dispatch('addAbout')
+    }
+
+    store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.contacts,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
   },
   head() {
     return {
@@ -156,24 +173,6 @@ export default {
       return this.getAbout.peoples
     },
   },
-
-  async created() {
-    await this.addContacts()
-    await this.addVacancies()
-    await this.addAbout()
-    this.isDataLoaded = true
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('buttons.contacts'),
-        isLink: false,
-      },
-    ])
-  },
   mounted() {
     this.createDinamycHeight()
     window.addEventListener('resize', this.createDinamycHeight)
@@ -183,10 +182,6 @@ export default {
     window.removeEventListener('resize', this.createDinamycHeight)
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
-    ...mapActions(['addContacts']),
-    ...mapActions(['addVacancies']),
-    ...mapActions(['addAbout']),
     createDinamycHeight() {
       this.maxHeight = 'auto'
 

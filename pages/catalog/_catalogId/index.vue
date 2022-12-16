@@ -135,8 +135,13 @@ export default {
       },
     ])
   },
+  mounted() {
+    setTimeout(() => {
+      this.setLoadingStatus(false)
+    }, 0)
+  },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
+    ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
   },
 }
 </script>

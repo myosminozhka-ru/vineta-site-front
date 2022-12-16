@@ -30,7 +30,7 @@
         <nuxt-link :to="localePath({ name: 'contacts' })">{{ $t('buttons.contacts') }}</nuxt-link>
       </li>
       <li>
-        <span>{{ getContacts[0].ADRESS?.VALUE }}</span>
+        <span>{{ getContacts[0]?.ADRESS?.VALUE }}</span>
       </li>
       <template v-if="getPhoneAndEmail.length">
         <li v-for="(contact, index) in getPhoneAndEmail" :key="index">
