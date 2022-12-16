@@ -34,7 +34,8 @@
     "at_present": "At Present",
     "go_to_the_website": "Go to the website",
     "upload": "Upload",
-    "to_catalogue": "Catalogue"
+    "to_catalogue": "Catalogue",
+    "to_main": "Home page"
   },
   "menu": {
     "products": "Manufacturing range"
@@ -127,5 +128,9 @@
   "favourites": {
     "title": "Favourites",
     "subtitle": "You haven't added anything to your favorites yet."
+  },
+  "not_found": {
+    "title": "Page not found",
+    "text": "And also for military and civil ship repair, transport, fuel and energy companies, nuclear industry and others."
   }
 }

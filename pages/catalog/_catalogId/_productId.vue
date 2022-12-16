@@ -1,7 +1,7 @@
 <template>
-  <div v-if="product" class="productPage">
+  <div v-if="$store.state.dataProduct[0]" class="productPage">
     <!-- <pre style="font-size: 15rem;">
-      {{ product[0] }}
+      {{ $store.state.dataProduct[0] }}
     </pre> -->
     <div class="productPage__print-up">
       <nuxt-img src="/logo.svg" alt="" class="img" loading="lazy" />
@@ -9,20 +9,20 @@
     </div>
     <div class="productPage__container">
       <osm-breadcrumbs />
-      <osm-product-top :data="product[0]" />
+      <osm-product-top :data="$store.state.dataProduct[0]" />
     </div>
     <div class="productPage__top">
-      <osm-product-slider :data="product[0]" />
+      <osm-product-slider :data="$store.state.dataProduct[0]" />
       <div class="productPage__info">
-        <!-- <pre style="font-size: 15rem">{{ product[0] }}</pre> -->
-        <!-- <div class="productPage__description" v-if="product[0].DETAIL_TEXT"> -->
+        <!-- <pre style="font-size: 15rem">{{ $store.state.dataProduct[0] }}</pre> -->
+        <!-- <div class="productPage__description" v-if="$store.state.dataProduct[0].DETAIL_TEXT"> -->
         <div v-if="false" class="productPage__description">
           <div class="title">{{ $t('catalog_id.description') }}</div>
-          <div class="value">{{ product[0].DETAIL_TEXT }}</div>
+          <div class="value">{{ $store.state.dataProduct[0].DETAIL_TEXT }}</div>
         </div>
         <div class="productPage__text--title">{{ $t('catalog_id.main_features') }}</div>
         <div v-if="offersCount.length === 1">
-          <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__print--stat">
+          <div v-for="prop in Object.values($store.state.dataProduct[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__print--stat">
             <div>
               <div class="productPage__mods--char_title">
                 {{ prop.NAME }}
@@ -33,8 +33,8 @@
             </div>
           </div>
         </div>
-        <div v-if="'PROPERIES' in product[0]" class="productPage__texts no-print">
-          <div v-for="item in product[0].PROPERIES" :key="item.index" class="productPage__text">
+        <div v-if="'PROPERIES' in $store.state.dataProduct[0]" class="productPage__texts no-print">
+          <div v-for="item in $store.state.dataProduct[0].PROPERIES" :key="item.index" class="productPage__text">
             <template v-if="'NAME' in item && item.NAME">
               <div class="title">{{ item.NAME }}</div>
               <div class="value">{{ item.VALUE }}</div>
@@ -45,7 +45,7 @@
           <div @click="openBuy">
             <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
           </div>
-          <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
+          <div :data-product_id="$store.state.dataProduct[0].ID" @click="addFavorites($store.state.dataProduct[0].ID)">
             <osm-button class="productPage__buttons--fav" :outlined="true">
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
@@ -75,7 +75,7 @@
       <div id="modifications" class="productPage__mods">
         <div class="productPage__mods--tabs hide_on_tablet">
           <div class="titles">
-            <div v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" :class="{ isActive: tabs.selected === 1 || tabs.selected === null }" @click.prevent="tabsSelect(1)">
+            <div v-if="'DETAIL_TEXT' in $store.state.dataProduct[0] && $store.state.dataProduct[0].DETAIL_TEXT" :class="{ isActive: tabs.selected === 1 || tabs.selected === null }" @click.prevent="tabsSelect(1)">
               <osm-button class="productPage__mods--opener" :large="true" :class="{ isActive: tabs.selected === 1 || tabs.selected === null }" :outlined="true"> {{ $t('catalog_id.description') }}</osm-button>
             </div>
             <div v-if="hasChar" :class="{ isActive: tabs.selected === 2 }" @click.prevent="tabsSelect(2)">
@@ -87,16 +87,16 @@
             </div>
           </div>
           <div class="tabs">
-            <div v-show="(tabs.selected === 1 || tabs.selected === null) && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
+            <div v-show="(tabs.selected === 1 || tabs.selected === null) && 'DETAIL_TEXT' in $store.state.dataProduct[0] && $store.state.dataProduct[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">{{ $t('catalog_id.description') }}</div>
               <div class="value">
-                <div class="value__in" v-html="product[0].DETAIL_TEXT"></div>
+                <div class="value__in" v-html="$store.state.dataProduct[0].DETAIL_TEXT"></div>
               </div>
               <div class="productPage__buttons">
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
+                <div :data-product_id="$store.state.dataProduct[0].ID" @click="addFavorites($store.state.dataProduct[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
@@ -112,9 +112,9 @@
             <div v-if="hasChar" v-show="tabs.selected === 2" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">{{ $t('catalog_id.specifications') }}</div>
               <div class="value">
-                <!-- <pre style="font-size: 15rem">{{product[0]}}</pre> -->
+                <!-- <pre style="font-size: 15rem">{{$store.state.dataProduct[0]}}</pre> -->
                 <div class="productPage__mods--chars">
-                  <div v-for="prop in product[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
+                  <div v-for="prop in $store.state.dataProduct[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
                     <template v-if="'NAME' in prop && prop.NAME">
                       <div class="productPage__mods--char_title">
                         {{ prop.NAME }}
@@ -125,7 +125,7 @@
                     </template>
                   </div>
                   <template v-if="offersCount.length === 1">
-                    <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__mods--char">
+                    <div v-for="prop in Object.values($store.state.dataProduct[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__mods--char">
                       <div class="productPage__mods--char_title">
                         {{ prop.NAME }}
                       </div>
@@ -140,7 +140,7 @@
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
+                <div :data-product_id="$store.state.dataProduct[0].ID" @click="addFavorites($store.state.dataProduct[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
@@ -156,21 +156,21 @@
             <div v-if="hasMod && tabs.selected === 3" class="productPage__mods--tab">
               <div class="title">{{ $t('catalog_id.modifications') }} ({{ offersCount.length }})</div>
               <div class="value">
-                <!-- <pre style="font-size: 15rem">{{product[0] }}</pre> -->
+                <!-- <pre style="font-size: 15rem">{{$store.state.dataProduct[0] }}</pre> -->
                 <div class="productPage__mods--mods">
                   <!-- <pre>
-                    {{ product[0].OFFERS.length }}
+                    {{ $store.state.dataProduct[0].OFFERS.length }}
                   </pre> -->
                   <table class="productPage__mods--mods_table">
                     <thead>
                       <tr>
-                        <td v-for="(proper, index) in Object.values(product[0].OFFERS)[longestLength].PROPERTIES" :key="index" class="productPage__mods--mods_title-table">
+                        <td v-for="(proper, index) in Object.values($store.state.dataProduct[0].OFFERS)[longestLength].PROPERTIES" :key="index" class="productPage__mods--mods_title-table">
                           {{ proper.NAME }}
                         </td>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="mod in product[0].OFFERS" :key="mod.index" class="productPage__mods--mod-table">
+                      <tr v-for="mod in $store.state.dataProduct[0].OFFERS" :key="mod.index" class="productPage__mods--mod-table">
                         <td v-for="proper in mod.PROPERTIES" :key="proper.index" class="productPage__mods--mods_val-table">
                           {{ proper.VALUE }}
                         </td>
@@ -183,7 +183,7 @@
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
+                <div :data-product_id="$store.state.dataProduct[0].ID" @click="addFavorites($store.state.dataProduct[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
@@ -200,7 +200,7 @@
         </div>
         <div class="productPage__mods--tabs hide_on_desktop">
           <div class="tabs">
-            <div v-if="'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="tabs__opener" :class="{ isActive: tabs.selected === 1 }" @click.prevent="tabsSelect(1)">
+            <div v-if="'DETAIL_TEXT' in $store.state.dataProduct[0] && $store.state.dataProduct[0].DETAIL_TEXT" class="tabs__opener" :class="{ isActive: tabs.selected === 1 }" @click.prevent="tabsSelect(1)">
               <div class="text">{{ $t('catalog_id.description') }}</div>
               <div class="arrow">
                 <svg data-v-975c5a0e="" xmlns="http://www.w3.org/2000/svg" width="19" height="10" viewBox="0 0 19 10" fill="none">
@@ -208,16 +208,16 @@
                 </svg>
               </div>
             </div>
-            <div v-show="tabs.selected === 1 && 'DETAIL_TEXT' in product[0] && product[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
+            <div v-show="tabs.selected === 1 && 'DETAIL_TEXT' in $store.state.dataProduct[0] && $store.state.dataProduct[0].DETAIL_TEXT" class="productPage__mods--tab productPage__mods--bg">
               <div class="title">{{ $t('catalog_id.description') }}</div>
               <div class="value">
-                <div class="value__in" v-html="product[0].DETAIL_TEXT"></div>
+                <div class="value__in" v-html="$store.state.dataProduct[0].DETAIL_TEXT"></div>
               </div>
               <div class="productPage__buttons">
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
+                <div :data-product_id="$store.state.dataProduct[0].ID" @click="addFavorites($store.state.dataProduct[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
@@ -242,7 +242,7 @@
               <div class="title">{{ $t('catalog_id.specifications') }}</div>
               <div class="value">
                 <div class="productPage__mods--chars">
-                  <div v-for="prop in product[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
+                  <div v-for="prop in $store.state.dataProduct[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
                     <template v-if="'NAME' in prop && prop.NAME">
                       <div class="productPage__mods--char_title">
                         {{ prop.NAME }}
@@ -253,7 +253,7 @@
                     </template>
                   </div>
                   <template v-if="offersCount.length === 1">
-                    <div v-for="prop in Object.values(product[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__mods--char">
+                    <div v-for="prop in Object.values($store.state.dataProduct[0].OFFERS)[0].PROPERTIES" :key="prop.index" class="productPage__mods--char">
                       <div class="productPage__mods--char_title">
                         {{ prop.NAME }}
                       </div>
@@ -268,7 +268,7 @@
                 <div @click="openBuy">
                   <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                 </div>
-                <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
+                <div :data-product_id="$store.state.dataProduct[0].ID" @click="addFavorites($store.state.dataProduct[0].ID)">
                   <osm-button class="productPage__buttons--fav" :outlined="true">
                     <div class="icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
@@ -290,7 +290,7 @@
               </div>
             </div>
             <div v-if="hasMod && tabs.selected === 3">
-              <div v-for="(mod, key, index) in product[0].OFFERS" :key="key" class="productPage__mods--tab productPage__mods--bg" @click="modsSelect(index)">
+              <div v-for="(mod, key, index) in $store.state.dataProduct[0].OFFERS" :key="key" class="productPage__mods--tab productPage__mods--bg" @click="modsSelect(index)">
                 <div class="title title__opener">
                   <span>{{ $t('catalog_id.modification') }} {{ index + 1 }}</span>
                   <div class="arrow">
@@ -323,7 +323,7 @@
                   <div @click="openBuy">
                     <osm-button class="productPage__buttons--buy">{{ $t('buttons.checkout') }}</osm-button>
                   </div>
-                  <div :data-product_id="product[0].ID" @click="addFavorites(product[0].ID)">
+                  <div :data-product_id="$store.state.dataProduct[0].ID" @click="addFavorites($store.state.dataProduct[0].ID)">
                     <osm-button class="productPage__buttons--fav" :outlined="true">
                       <div class="icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 30 30" fill="none" stroke="#172242">
@@ -363,7 +363,7 @@
           <div class="glide__track" data-glide-el="track">
             <div class="glide__slides">
               <a
-                v-for="prod in analogsItems.slice(0, 4)"
+                v-for="prod in analogsItems?.slice(0, 4)"
                 :key="prod.CODE"
                 class="products__item"
                 :href="
@@ -385,7 +385,7 @@
                   </span>
                   <div v-if="prod.SKU" class="products__item_sku">{{ prod.SKU }}</div>
                   <div class="products__item_properties">
-                    <div v-for="property in prod.PROPERIES.slice(0, 3)" :key="property.index" class="products__item_property">
+                    <div v-for="property in prod.PROPERIES?.slice(0, 3)" :key="property.index" class="products__item_property">
                       <template v-if="'NAME' in property && property.NAME">
                         <div class="name">{{ property.NAME }}</div>
                         <div class="value">{{ property.VALUE }}</div>
@@ -399,24 +399,24 @@
         </div>
       </div>
     </div>
-    <div v-if="product[0] && 'OFFERS' in product[0]" class="mods_for_print">
+    <div v-if="$store.state.dataProduct[0] && 'OFFERS' in $store.state.dataProduct[0]" class="mods_for_print">
       <h3>{{ $t('catalog_id.modifications') }} ({{ offersCount.length }})</h3>
       <!-- <div>
-        <table class="titles" v-for="mod in product[0].OFFERS" :key="mod.index">
+        <table class="titles" v-for="mod in $store.state.dataProduct[0].OFFERS" :key="mod.index">
 
         </table>
       </div> -->
       <table>
-        <thead v-for="mod in product[0].OFFERS" :key="mod.index">
+        <thead v-for="mod in $store.state.dataProduct[0].OFFERS" :key="mod.index">
           <tr>
-            <td v-for="proper in mod.PROPERTIES.slice(0, 7)" :key="proper.index">
+            <td v-for="proper in mod.PROPERTIES?.slice(0, 7)" :key="proper.index">
               {{ proper.NAME }}
             </td>
           </tr>
         </thead>
-        <tbody v-for="mod in product[0].OFFERS" :key="mod.index">
+        <tbody v-for="mod in $store.state.dataProduct[0].OFFERS" :key="mod.index">
           <tr>
-            <td v-for="proper in mod.PROPERTIES.slice(0, 7)" :key="proper.index">
+            <td v-for="proper in mod.PROPERTIES?.slice(0, 7)" :key="proper.index">
               {{ proper.VALUE }}
             </td>
           </tr>
@@ -427,7 +427,7 @@
         <div class="productPage__mods--mods">
           <div
             class="productPage__mods--mod"
-            v-for="mod in product[0].OFFERS"
+            v-for="mod in $store.state.dataProduct[0].OFFERS"
             :key="mod.index"
           >
             <div class="productPage__mods--mods_titles">
@@ -484,25 +484,24 @@ export default {
       longestLength: 0,
     }
   },
-  async fetch() {
-    await this.setLoadedStatus(false)
-    this.product = await this.$axios.$get(`catalog/detail.php?code=${this.$route.params.productId}`)
-    this.products = await this.$axios.$get(`catalog/elements.php?code=${this.$route.params.catalogId}&sub=y`)
-    await this.setLoadedStatus(true)
+  async fetch({store, route, app}) {
+    await store.dispatch('setLoadingStatus', true)
+    await store.dispatch('setDataProduct', await app.$axios.$get(`catalog/detail.php?code=${route.params.productId}`))
+    await store.dispatch('setDataProductOther', await app.$axios.$get(`catalog/elements.php?code=${route.params.catalogId}&sub=y`))
   },
   head() {
     return {
-      title: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.TITLE : '',
+      title: this.$store.state.dataProduct && 'SEO' in this.$store.state.dataProduct[0] ? this.$store.state.dataProduct[0].SEO.META.TITLE : '',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.DESCRIPTION : 'DESCRIPTION',
+          content: this.$store.state.dataProduct && 'SEO' in this.$store.state.dataProduct[0] ? this.$store.state.dataProduct[0].SEO.META.DESCRIPTION : 'DESCRIPTION',
         },
         {
           hid: 'keywords',
           name: 'keywords',
-          content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.KEYWORDS : '',
+          content: this.$store.state.dataProduct && 'SEO' in this.$store.state.dataProduct[0] ? this.$store.state.dataProduct[0].SEO.META.KEYWORDS : '',
         },
         {
           hid: 'twitter:card',
@@ -517,17 +516,17 @@ export default {
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.TITLE : '',
+          content: this.$store.state.dataProduct && 'SEO' in this.$store.state.dataProduct[0] ? this.$store.state.dataProduct[0].SEO.META.TITLE : '',
         },
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content: this.product && 'SEO' in this.product[0] ? this.product[0].SEO.META.DESCRIPTION : '',
+          content: this.$store.state.dataProduct && 'SEO' in this.$store.state.dataProduct[0] ? this.$store.state.dataProduct[0].SEO.META.DESCRIPTION : '',
         },
         {
           hid: 'twitter:imag',
           name: 'twitter:imag',
-          content: this.product && 'PREVIEW_PICTURE' in this.product[0] ? this.$vareibles.remote + this.product[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          content: this.$store.state.dataProduct && 'PREVIEW_PICTURE' in this.$store.state.dataProduct[0] ? this.$vareibles.remote + this.$store.state.dataProduct[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
         },
       ],
     }
@@ -535,10 +534,10 @@ export default {
   computed: {
     ...mapGetters(['getDownloads']),
     analogsItems() {
-      return this.products.filter((i) => i.ID !== this.product[0].ID).slice(0, 4)
+      return this.products.filter((i) => i.ID !== this.$store.state.dataProduct[0].ID)?.slice(0, 4)
     },
     hasChar() {
-      const first = !!(this.product[0].PROPERIES && this.product[0].PROPERIES.find((i) => i.NAME !== null))
+      const first = !!(this.$store.state.dataProduct[0].PROPERIES && this.$store.state.dataProduct[0].PROPERIES.find((i) => i.NAME !== null))
       const second = !!(this.offersCount && this.offersCount.length === 1)
       return !(first === false && second === false)
     },
@@ -553,9 +552,13 @@ export default {
       },
     },
   },
-  async mounted() {
-    await this.$fetch()
-    const properties = Object.values(this.product[0].OFFERS).map((ele) => [...ele?.PROPERTIES])
+  mounted() {
+    this.product = this.$store.state.dataProduct;
+    this.products = this.$store.state.dataProductOther;
+    const properties = Object.values(this.$store.state.dataProduct[0].OFFERS).map((ele) => [...ele.PROPERTIES || []])
+    if (!properties.filter(item => item.length > 0).length) {
+      this.$router.push(`/${this.$i18n.locale}/fallback`)
+    }
     this.longestLength = properties.map((a) => a.length).indexOf(Math.max(...properties.map((a) => a.length)))
     this.addBreadcrumbs([
       {
@@ -569,23 +572,23 @@ export default {
         isLink: true,
       },
       {
-        name: this.product[0].SECTION_ARRAY.NAME,
+        name: this.$store.state.dataProduct[0].SECTION_ARRAY.NAME,
         link: 'catalog-catalogId',
         params: {
-          catalogId: this.product[0].SECTION,
+          catalogId: this.$store.state.dataProduct[0].SECTION,
         },
         isLink: true,
       },
       {
-        name: this.product[0].NAME,
+        name: this.$store.state.dataProduct[0].NAME,
         isLink: false,
       },
     ])
-    if ('DETAIL_TEXT' in this.product[0] && !this.product[0].DETAIL_TEXT) {
+    if ('DETAIL_TEXT' in this.$store.state.dataProduct[0] && !this.$store.state.dataProduct[0].DETAIL_TEXT) {
       this.tabs.selected = 2
     }
-    if ('OFFERS' in this.product[0]) {
-      this.offersCount = Object.values(this.product[0].OFFERS)
+    if ('OFFERS' in this.$store.state.dataProduct[0]) {
+      this.offersCount = Object.values(this.$store.state.dataProduct[0].OFFERS)
     }
     if (window.innerWidth <= 1280) {
       setTimeout(() => {
@@ -602,6 +605,9 @@ export default {
         }).mount()
       }, 500)
     }
+    setTimeout(() => {
+      this.setLoadingStatus(false)
+    }, 0)
   },
   updated() {
     this.addBreadcrumbs([
@@ -616,23 +622,22 @@ export default {
         isLink: true,
       },
       {
-        name: this.product[0].SECTION_ARRAY.NAME,
+        name: this.$store.state.dataProduct[0].SECTION_ARRAY.NAME,
         link: 'catalog-catalogId',
         params: {
-          catalogId: this.product[0].SECTION,
+          catalogId: this.$store.state.dataProduct[0].SECTION,
         },
         isLink: true,
       },
       {
-        name: this.product[0].NAME,
+        name: this.$store.state.dataProduct[0].NAME,
         isLink: false,
       },
     ])
   },
   methods: {
-    ...mapActions(['toggleModal']),
+    ...mapActions(['toggleModal', 'addBreadcrumbs', 'setLoadingStatus']),
     ...mapActions('localStorage', ['addFavorites']),
-    ...mapActions(['addBreadcrumbs', 'setLoadedStatus']),
     openBuy() {
       this.toggleModal({
         isOpened: true,

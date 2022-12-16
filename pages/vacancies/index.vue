@@ -1,14 +1,11 @@
 <template>
   <div>
-    <!-- <pre style="font-size: 15rem;">
-        {{ getVacancies }}
-      </pre> -->
-    <section v-if="getVacancies.banners.first" class="first">
+    <section v-if="getVacancies.banners?.first" class="first">
       <div class="first__text">
         {{ getVacancies.banners.first.NAME }}
       </div>
       <div class="first__image hide_on_mobile">
-        <nuxt-img :src="$vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+        <nuxt-img :src="$vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="" />
       </div>
     </section>
     <osm-advantagies :bennefits="getVacancies.bennefits" />
@@ -21,7 +18,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'AboutPage',
   components: {
@@ -33,6 +30,21 @@ export default {
   data: () => ({
     isTextShowed: false,
   }),
+  async fetch({store, i18n}) {
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.vacancies,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
+  },
   head() {
     return {
       title: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.TITLE : '',
@@ -74,22 +86,6 @@ export default {
         },
       ],
     }
-  },
-  created() {
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('buttons.vacancies'),
-        isLink: false,
-      },
-    ])
-  },
-  methods: {
-    ...mapActions(['addBreadcrumbs']),
   },
   computed: {
     ...mapGetters(['getVacancies']),

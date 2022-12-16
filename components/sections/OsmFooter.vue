@@ -13,7 +13,7 @@
         </osm-h1>
         <div v-if="false" class="section__text">Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные</div>
       </div>
-      <form class="section__left_form" @submit.prevent="sendForm">
+      <form v-if="filteredFileds" class="section__left_form" @submit.prevent="sendForm">
         <div v-for="field in filteredFileds" :key="field.index" class="osm__form_field">
           <div v-if="errors[field.VARNAME]" class="osm__error">
             {{ errors[field.VARNAME] }}

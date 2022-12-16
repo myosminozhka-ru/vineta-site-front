@@ -4,9 +4,6 @@
     <div class="licenses">
       <div class="header_padding">
         <osm-breadcrumbs />
-        <!-- <pre style="font-size: 15rem;">
-                    {{ getLicenses }}
-                </pre> -->
         <osm-gallery :images="filterBySection('litsenzii-i-sertifikaty')" :title="$t('sections.fiveth.tabs.first')" />
         <osm-gallery :images="filterBySection('blagodarstvennye-pisma-i-otzyvy')" :title="$t('sections.fiveth.tabs.second')" />
         <osm-gallery :images="filterBySection('otchety-po-sout')" :title="$t('sections.fiveth.tabs.third')" />
@@ -17,7 +14,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'LicensesPage',
   components: {
@@ -28,6 +25,28 @@ export default {
   data: () => ({
     isMounted: false
   }),
+  async fetch({store, i18n}) {
+
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.licenses.length) {
+      await store.dispatch('addLicenses')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].sections.fiveth.tabs.first,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
+  },
   head() {
     return {
       title: this.getSeo.licenses.SEO.META.TITLE,
@@ -49,24 +68,10 @@ export default {
     ...mapGetters(['getLicenses']),
     ...mapGetters(['getSeo']),
   },
-  created() {
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('tabs.first'),
-        isLink: false,
-      },
-    ])
-  },
   mounted() {
     this.isMounted = true;
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
     filterBySection(type) {
       return this.getLicenses.filter((i) => i.SECTION === type)
     },

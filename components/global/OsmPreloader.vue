@@ -1,5 +1,5 @@
 <template>
-  <div class="preloader" :class="[{'preloader--is-hidden': !$store.state.isLoading}]">
+  <div class="preloader" :class="[dynamicClass]">
     <span class="circle circle-1"></span>
     <span class="circle circle-2"></span>
     <span class="circle circle-3"></span>
@@ -14,23 +14,12 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  data: () => ({
-    isMounted: false,
-    isAnimated: false,
-  }),
   computed: {
     ...mapGetters(['getLoadedStatus']),
-  },
-  beforeDestroy() {
-    this.isMounted = false
-    this.isAnimated = false
-  },
-  mounted() {
-    this.isMounted = true
-
-    setTimeout(() => {
-      this.isAnimated = true
-    }, 1000)
+    dynamicClass() {
+      const status = this.getLoadedStatus;
+      return status ? null : 'preloader--is-hidden'
+    }
   },
 }
 </script>

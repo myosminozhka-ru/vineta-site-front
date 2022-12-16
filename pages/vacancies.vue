@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isDataLoaded" class="wrapper footerOnBottom">
+  <div class="wrapper footerOnBottom">
     <!-- <osm-header /> -->
     <div class="header_padding">
       <nuxt-child />
@@ -14,17 +14,20 @@ export default {
   components: {
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
-  data: () => ({
-    isDataLoaded: false,
-    /**
-     * Скрыть лоадер
-     * @type {boolean}
-     * @default false
-     */
-     isMounted: false,
-  }),
-  async fetch() {
-    await this.addVacancies()
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.vacancies.length) {
+      await store.dispatch('addVacancies')
+    }
+
+    if (!store.state.main.length) {
+      await store.dispatch('addMain')
+    }
+
+    if (!Object.keys(store.state.main2).length) {
+      await store.dispatch('addMainMore')
+    }
   },
   head() {
     return {
@@ -46,17 +49,9 @@ export default {
   computed: {
     ...mapGetters(['getSeo']),
   },
-  created() {
-    this.addVacancies().then((result) => {
-      this.isDataLoaded = true
-    })
-  },
   methods: {
-    ...mapActions(['addVacancies']),
+    ...mapActions(['setLoadingStatus', 'addVacancies', 'addMain', 'addMainMore']),
   },
-  mounted() {
-    this.isMounted = true;
-  }
 }
 </script>
 

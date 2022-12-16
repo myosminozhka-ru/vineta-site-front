@@ -27,7 +27,7 @@
 </template>
 <script>
 export default {
-  name: 'OsmFirstSection',
+  name: 'OsmThirdSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue')

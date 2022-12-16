@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isMounted && isDataLoaded" class="history">
+  <div v-if="isMounted" class="history">
     <!-- <osm-header /> -->
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
@@ -89,7 +89,7 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'HistoryPage',
   components: {
@@ -102,14 +102,26 @@ export default {
     isDataLoaded: false,
     isMounted: false,
   }),
-  async fetch() {
-    await this.addHistory()
-    this.modifyedHistory = this.getHistory.map((item) => {
-      return {
-        ...item,
-        isTextShowed: false,
-      }
-    })
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.history.length) {
+      await store.dispatch('addHistory')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.history,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
   },
   head() {
     return {
@@ -141,25 +153,17 @@ export default {
       }
     })
   },
-  async created() {
-    await this.addHistory().then((result) => {
-      this.isDataLoaded = true
-    })
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('buttons.history'),
-        isLink: false,
-      },
-    ])
+  watch: {
+    getHistory(val, oldVal) {
+      this.modifyedHistory = val.map((item) => {
+        return {
+          ...item,
+          isTextShowed: false,
+        }
+      })
+    }
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
-    ...mapActions(['addHistory']),
     next() {
       if (this.selectedTime >= this.getHistory.length - 1) return
       this.selectedTime++

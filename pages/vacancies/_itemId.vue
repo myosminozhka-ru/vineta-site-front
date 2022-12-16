@@ -1,20 +1,20 @@
 <template>
   <div class="vacancy">
-    <div v-if="vacancy.length > 0" class="vacancy__in">
+    <div v-if="$store.state.dataVacancy.length > 0" class="vacancy__in">
       <osm-breadcrumbs />
       <div class="vacancy__top">
-        <div class="vacancy__title">{{ vacancy[0].NAME }}</div>
+        <div class="vacancy__title">{{ $store.state.dataVacancy[0].NAME }}</div>
         <div class="vacancy__button hide_on_mobile" @click="openApplyModal">
           <osm-button>{{ $t('buttons.apply') }}</osm-button>
         </div>
       </div>
-      <div class="vacancy__price">от 45 000 до 65 000 руб. до вычета налогов</div>
+      <div class="vacancy__price">{{ $store.state.dataVacancy[0].PROPERIES.find(item => item.CODE === 'OKLAD')?.VALUE }}</div>
       <div class="vacancy__button hide_off_mobile" @click="openApplyModal">
         <osm-button>{{ $t('buttons.apply') }}</osm-button>
       </div>
       <div class="vacancy__items">
         <div v-if="isMounted" class="vacancy__item">
-          <div v-for="item in vacancy[0].PROPERIES" :key="item.index" class="spec">
+          <div v-for="item in $store.state.dataVacancy[0].PROPERIES" :key="item.index" class="spec">
             <div class="title">{{ item.NAME }}</div>
             <template v-if="item.VALUE.TEXT">
               <div class="text" v-html="decodeHTML(item.VALUE.TEXT)"></div>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <osm-apply-modal v-if="isShowApplyModal" :property="vacancy[0].NAME" @close="isShowApplyModal = false" />
+      <osm-apply-modal v-if="isShowApplyModal" :property="$store.state.dataVacancy[0].NAME" @close="isShowApplyModal = false" />
     </div>
     <osm-response @onOpenModal="isShowApplyModal = true" :data-array="getVacancies.persons" />
   </div>
@@ -45,38 +45,40 @@ export default {
     isMounted: false,
     isShowApplyModal: false,
   }),
-  async fetch() {
-    this.vacancy = await this.$axios.$get(`vacancy-detail.php?code=${this.$route.params.itemId}`)
-    this.addBreadcrumbs([
+  async fetch({store, route, app, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+    const dataVacancy = await app.$axios.$get(`vacancy-detail.php?code=${route.params.itemId}`)
+    await store.dispatch('setDataVacancy', dataVacancy)
+    await store.dispatch('addBreadcrumbs', [
       {
-        name: this.$t('buttons.main'),
+        name: i18n.messages[i18n.locale].buttons.main,
         link: 'index',
         isLink: true,
       },
       {
-        name: this.$t('buttons.vacancies'),
+        name: i18n.messages[i18n.locale].buttons.vacancies,
         link: 'vacancies',
         isLink: true,
       },
       {
-        name: this.vacancy[0].NAME,
+        name: dataVacancy[0].NAME,
         isLink: false,
       },
     ])
   },
   head() {
     return {
-      title: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
+      title: this.$store.state.dataVacancy.length > 0 && 'SEO' in this.$store.state.dataVacancy[0] ? this.$store.state.dataVacancy[0].SEO.META.TITLE : '',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.DESCRIPTION : 'DESCRIPTION',
+          content: this.$store.state.dataVacancy.length > 0 && 'SEO' in this.$store.state.dataVacancy[0] ? this.$store.state.dataVacancy[0].SEO.META.DESCRIPTION : 'DESCRIPTION',
         },
         {
           hid: 'keywords',
           name: 'keywords',
-          content: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.KEYWORDS : '',
+          content: this.$store.state.dataVacancy.length > 0 && 'SEO' in this.$store.state.dataVacancy[0] ? this.$store.state.dataVacancy[0].SEO.META.KEYWORDS : '',
         },
         {
           hid: 'twitter:card',
@@ -91,17 +93,17 @@ export default {
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
+          content: this.$store.state.dataVacancy.length > 0 && 'SEO' in this.$store.state.dataVacancy[0] ? this.$store.state.dataVacancy[0].SEO.META.TITLE : '',
         },
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content: this.vacancy.length > 0 && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.DESCRIPTION : '',
+          content: this.$store.state.dataVacancy.length > 0 && 'SEO' in this.$store.state.dataVacancy[0] ? this.$store.state.dataVacancy[0].SEO.META.DESCRIPTION : '',
         },
         {
           hid: 'twitter:imag',
           name: 'twitter:imag',
-          content: this.vacancy.length > 0 && 'PREVIEW_PICTURE' in this.vacancy[0] ? this.$vareibles.remote + this.vacancy[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          content: this.$store.state.dataVacancy.length > 0 && 'PREVIEW_PICTURE' in this.$store.state.dataVacancy[0] ? this.$vareibles.remote + this.$store.state.dataVacancy[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
         },
       ],
     }
@@ -110,11 +112,19 @@ export default {
     ...mapGetters(['getVacancies']),
   },
   mounted() {
+    this.vacancy = this.$store.state.dataVacancy;
     window.scrollTo(0, 0)
     this.isMounted = true
+
+    setTimeout(() => {
+      this.setLoadingStatus(false)
+    }, 0)
+  },
+  destroyed() {
+    this.setDataVacancy = [];
   },
   methods: {
-    ...mapActions(['toggleModal']),
+    ...mapActions(['toggleModal', 'setDataVacancy']),
     openApplyModal() {
       this.toggleModal({
         isOpened: true,
@@ -122,7 +132,7 @@ export default {
       })
       this.isShowApplyModal = true
     },
-    ...mapActions(['addBreadcrumbs']),
+    ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
     decodeHTML(html) {
       if (document) {
         const txt = document.createElement('textarea')

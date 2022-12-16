@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper">
-    <div v-show="isMounted" class="full-page-indicators" :class="{ white: +activeIndex === 5 }">
-      <div v-for="(indicator, key) in sections" :key="indicator.index" class="indicator" :class="{ active: +activeIndex === +key }" @click="activeIndex = key">
+    <div class="full-page-indicators" :class="{ white: +activeIndex === 5 }">
+      <div v-for="(indicator, key) in sections" :key="indicator.index" class="indicator" :class="{ active: +activeIndex === +key }" @click="goToSlide(key)">
         <span></span>
       </div>
     </div>
 
-    <div v-show="isMounted" class="sections" :data-id="activeIndex">
+    <div class="sections" :data-id="activeIndex">
       <osm-first-section :is-mounted="activeIndex === 0" :class="{ isActive: activeIndex === 0 }" :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" :is-start="activeIndex === 0" />
       <osm-second-section :is-mounted="activeIndex === 1" :class="{ isActive: activeIndex === 1 }" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" :is-start="activeIndex === 1" />
       <osm-third-section :is-mounted="activeIndex === 2" :class="{ isActive: activeIndex === 2 }" :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" :is-active="activeIndex === 2" />
@@ -17,7 +17,7 @@
       <osm-footer-section :is-active="activeIndex === 7" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
 
       <ClientOnly>
-        <LightGallery v-if="isMounted" :images="imagesGallery" :index="galleryIndex" :disable-scroll="true" @close="setGalleryIndex(null)" />
+        <LightGallery :images="imagesGallery" :index="galleryIndex" :disable-scroll="true" @close="setGalleryIndex(null)" />
       </ClientOnly>
     </div>
   </div>
@@ -37,12 +37,21 @@ export default {
     OsmSeventhSection: () => import('~/components/sections/OsmSeventh.vue'),
     OsmFooterSection: () => import('~/components/sections/OsmFooter.vue'),
   },
+
   data: () => ({
     activeIndex: -1,
     sections: [],
     isInProgress: false,
-    isMounted: false,
   }),
+
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.main.length) {
+      await store.dispatch('addMain')
+    }
+  },
+
   head() {
     return {
       title: this.getSeo.main.SEO.META.TITLE,
@@ -60,9 +69,8 @@ export default {
       ],
     }
   },
+
   computed: {
-    ...mapGetters(['getMain']),
-    ...mapGetters(['getMainMore']),
     ...mapGetters(['getLicenses']),
     ...mapGetters(['galleryIndex']),
     ...mapGetters(['getSeo']),
@@ -80,12 +88,11 @@ export default {
       },
     },
   },
+
   beforeDestroy() {
     document.removeEventListener('mousewheel', function () {})
   },
-  created() {
-    this.setLoadingStatus(true)
-  },
+
   mounted() {
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1
@@ -118,17 +125,19 @@ export default {
       }, 100)
     }
 
-    this.$nextTick().then(() => {
-      setTimeout(() => {
-        this.isMounted = true
-        this.setLoadingStatus(false)
-      }, 1000)
-    })
+    setTimeout(() => {
+      this.setLoadingStatus(false)
+    }, 1000)
   },
   methods: {
-    ...mapActions(['setGalleryIndex']),
-    ...mapActions(['addMain']),
-    ...mapActions(['setLoadingStatus']),
+    ...mapActions([
+      'setGalleryIndex',
+      'setLoadingStatus',
+      'addMainMore',
+      'addLicenses',
+      'addCatalog',
+      'addNews',
+    ]),
     onWheel(event) {
       event = event || window.event
       const delta = event.deltaX || event.detail || event.wheelDelta
@@ -145,18 +154,40 @@ export default {
 
       if (direction === 'down' && this.activeIndex < this.sections.length - 1) {
         setTimeout(() => {
-          this.activeIndex++
+          this.goToSlide(this.activeIndex + 1)
         }, 300)
       }
       if (direction === 'up') {
         setTimeout(() => {
-          this.activeIndex > 1 ? this.activeIndex-- : (this.activeIndex = 0)
+          this.activeIndex > 1 ? this.goToSlide(this.activeIndex - 1) : this.goToSlide(0)
         }, 300)
       }
       setTimeout(() => {
         this.isInProgress = false
       }, 2000)
     },
+    goToSlide(number) {
+      if (number === 4 && (!Object.keys(this.$store.state.main2).length || !this.$store.state.licenses.length)) {
+        Promise.all([
+          this.addMainMore(),
+          this.addLicenses()
+        ].map(p => p.catch(x => console.error(x))))
+          .then(r => {
+            this.activeIndex = number;
+          }
+        );
+        return;
+      }
+
+      if (number === 6 && !this.$store.state.news.length) {
+        this.addNews().then(() => {
+          this.activeIndex = number;
+        })
+        return;
+      }
+
+      this.activeIndex = number;
+    }
   },
 }
 </script>

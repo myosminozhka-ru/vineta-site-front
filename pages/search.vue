@@ -31,6 +31,25 @@ export default {
   data: () => ({
       isMounted: false
   }),
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.products.length) {
+      await store.dispatch('addProducts')
+    }
+
+    this.addBreadcrumbs([
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true
+      },
+      {
+        name: i18n.messages[i18n.locale].search.title,
+        isLink: false
+      },
+    ])
+  },
   head() {
     return {
       title: 'Результаты поиска',
@@ -70,24 +89,15 @@ export default {
           return this.getProducts.filter(product => product.NAME.includes(this.$route.query.q));
       }
   },
-  created() {
-    this.addBreadcrumbs([
-        {
-            name: this.$t('buttons.main'),
-            link: 'index',
-            isLink: true
-        },
-        {
-            name: this.$t('search.title'),
-            isLink: false
-        },
-    ])
-  },
   mounted() {
     this.isMounted = true;
+
+    setTimeout(() => {
+      this.setLoadingStatus(false)
+    }, 0)
   },
   methods: {
-    ...mapActions(['addBreadcrumbs'])
+    ...mapActions(['setLoadingStatus'])
   },
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <nuxt-link :to="localePath({ name: 'index' })" class="header__logo">
-        <object :data="require(`~/assets/img/logo.svg`)" width="100%" class="header__object" />
+      <nuxt-img src="/logo.svg" class="header__object"/>
     </nuxt-link>
 </template>
 
@@ -19,6 +19,7 @@
         }
     }
     &__object {
+      width: 100%;
         pointer-events: none;
     }
 }

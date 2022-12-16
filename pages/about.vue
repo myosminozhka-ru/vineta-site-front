@@ -2,9 +2,6 @@
   <div v-if="isMounted" class="wrapper footerOnBottom">
     <!-- <osm-header /> -->
     <div class="header_padding">
-      <!-- <pre style="font-size: 15rem;">
-        {{ getAbout }}
-      </pre> -->
       <section class="first">
         <div class="first__text">
           {{ getAbout.banners.first.NAME }}
@@ -58,7 +55,7 @@
             </div>
             <div class="second__items">
               <div class="second__items_col">
-                <nuxt-link v-for="link in filteredFirstAboutSections" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
+                <nuxt-link v-for="link in filterAboutSections.firstArray" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
                   <div class="icon">
                     <nuxt-img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
                   </div>
@@ -66,7 +63,7 @@
                 </nuxt-link>
               </div>
               <div class="second__items_col">
-                <nuxt-link v-for="link in filteredSecondAboutSections" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
+                <nuxt-link v-for="link in filterAboutSections.secondArray" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
                   <div class="icon">
                     <nuxt-img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
                   </div>
@@ -185,16 +182,37 @@ export default {
   data: () => ({
     isTextShowed: false,
     isDataLoaded: false,
-    filteredFirstAboutSections: [],
-    filteredSecondAboutSections: [],
     isMounted: false,
     maxHeight: 'auto',
   }),
-  async fetch() {
-    await this.addAbout()
-    if (process.client) {
-      this.createDinamycHeight()
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!Object.keys(store.state.about).length) {
+      await store.dispatch('addAbout')
     }
+
+    if(!Object.keys(store.state.main2).length ){
+      await store.dispatch('addMainMore')
+    }
+
+    if (!store.state.licenses.length) {
+      await store.dispatch('addLicenses')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.about,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
   },
   head() {
     return {
@@ -219,47 +237,12 @@ export default {
     managment() {
       return this.getAbout.peoples
     },
-  },
-  created() {
-    this.addAbout().then((result) => {
-      this.isDataLoaded = true
-    })
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('buttons.about'),
-        isLink: false,
-      },
-    ])
-  },
-
-  mounted() {
-    this.isMounted = true
-    this.filterAboutSections()
-    this.createDinamycHeight()
-    window.addEventListener('resize', this.createDinamycHeight)
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.createDinamycHeight)
-  },
-  methods: {
-    ...mapActions(['addBreadcrumbs']),
-    ...mapActions(['addAbout']),
-    decodeHTML(html) {
-      if (document) {
-        const txt = document.createElement('textarea')
-        txt.innerHTML = html
-        return txt.value
-      }
-    },
     filterAboutSections() {
+      const sections = this.getAbout.sections;
       const firstArray = []
       const secondArray = []
-      this.getAbout.sections.forEach((i) => {
+
+      sections.forEach((i) => {
         switch (i.ID) {
           case '16':
             firstArray[0] = i
@@ -290,8 +273,29 @@ export default {
             break
         }
       })
-      this.filteredFirstAboutSections = firstArray
-      this.filteredSecondAboutSections = secondArray
+
+      return {
+        firstArray,
+        secondArray
+      }
+    },
+  },
+  mounted() {
+    this.isMounted = true
+    this.createDinamycHeight()
+    window.addEventListener('resize', this.createDinamycHeight)
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.createDinamycHeight)
+  },
+  methods: {
+    ...mapActions(['addAbout']),
+    decodeHTML(html) {
+      if (document) {
+        const txt = document.createElement('textarea')
+        txt.innerHTML = html
+        return txt.value
+      }
     },
     createDinamycHeight() {
       this.maxHeight = 'auto'
