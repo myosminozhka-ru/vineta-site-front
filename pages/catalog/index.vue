@@ -67,11 +67,8 @@ export default {
         isLink: false,
       },
     ])
-  },
-  mounted() {
-    setTimeout(() => {
-      this.setLoadingStatus(false)
-    }, 0)
+
+    await store.dispatch('setLoadingStatus', false)
   },
   methods: {
     ...mapActions(['setLoadingStatus']),
