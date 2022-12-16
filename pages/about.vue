@@ -744,7 +744,7 @@ export default {
   position: relative;
 
   > img {
-    max-width: 100%;
+    width: 100%;
   }
 
   @media all and (max-width: 1440px) {
