@@ -77,7 +77,7 @@
             <li v-for="item in submenu.childs" :key="item.index">
               <nuxt-link :to="localePath({ name: item.url })">
                 <div class="icon">
-                  <nuxt-img :src="item.icon" width="100%" alt="" loading="lazy" />
+                  <nuxt-img :src="item.icon" alt="" loading="lazy" />
                 </div>
                 <div class="text">{{ item.text }}</div>
               </nuxt-link>
@@ -410,6 +410,9 @@ export default {
       text-decoration: none;
 
       .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: rem(40);
         margin-right: rem(20);
 

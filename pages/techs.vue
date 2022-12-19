@@ -6,30 +6,30 @@
     </div>
     <div class="sections" :data-id="activeIndex">
       <osm-first-section :class="{ isActive: activeIndex === 0 }"
-                         :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+                         :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"
                          :data-object="getTechnology[0] || {}"
                          @toNext="goToNext" />
       <osm-second-section id="second"
                           :class="{ isActive: activeIndex === 1 }"
-                          :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+                          :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"
                           :data-object="getTechnology[1] || {}" />
       <osm-third-section :class="{ isActive: activeIndex === 2 }"
-                         :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+                         :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"
                          :data-object="getTechnology[2] || {}" />
       <osm-fourth-section :class="{ isActive: activeIndex === 3 }"
-                          :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+                          :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"
                           :data-object="getTechnology[3] || {}" />
       <osm-fiveth-section :class="{ isActive: activeIndex === 4 }"
-                          :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+                          :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"
                           :data-object="getTechnology[4] || {}" />
       <osm-sixth-section :class="{ isActive: activeIndex === 5 }"
-                         :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+                         :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"
                          :data-object="getTechnology[5] || {}" />
       <osm-seventh-section :class="{ isActive: activeIndex === 6 }"
-                           :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`"
+                           :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`"
                            :data-object="getTechnology[6] || {}" />
-      <osm-eighth-section v-if="false" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
-      <osm-footer-section class="techs_footer" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(0px, 100vw);'}`" />
+      <osm-eighth-section v-if="false" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
+      <osm-footer-section class="techs_footer" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
     </div>
   </div>
 </template>
@@ -50,7 +50,7 @@ export default {
     OsmFooterSection: () => import('~/components/sections/OsmFooter.vue'),
   },
   data: () => ({
-    activeIndex: null,
+    activeIndex: -1,
     sections: [],
     isInProgress: false,
     isMounted: false
