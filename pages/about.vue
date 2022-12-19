@@ -239,8 +239,8 @@ export default {
     },
     filterAboutSections() {
       const sections = this.getAbout.sections;
-      const firstArray = sections.filter(item => (item.SORT / 100) % 2 === 0)
-      const secondArray = sections.filter(item => (item.SORT / 100) % 2 !== 0)
+      const firstArray = sections.filter(item => (item.SORT / 100) % 2 !== 0)
+      const secondArray = sections.filter(item => (item.SORT / 100) % 2 === 0)
       // const secondArray = []
 
       // sections.forEach((i) => {
