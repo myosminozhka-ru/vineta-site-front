@@ -28,10 +28,9 @@
               </template>
             </template>
             <template v-else-if="field.FIELD_TYPE === 'file'">
-              <label>
-                <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" :name="field.SID" accept=".doc,.docs,.rtf,.pdf" @change="onChangeFiles($event, field.VARNAME)" />
+                <input :id="`file-${field.SID}`" v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :title="$t('upload_file')" style="display: none;" :required="field.REQUIRED === 'Y'" :name="field.SID" accept=".doc,.docs,.rtf,.pdf" @change="onChangeFiles($event, field.VARNAME)" />
+                <label :for="`file-${field.SID}`" class="osm__input modal__input" :class="{ hasError: errors[field.VARNAME] }">{{ formData[field.VARNAME]?.split('\\')[formData[field.VARNAME].split('\\').length-1] || $t('upload_file') }}</label>
                 <span class="modal__input-info">{{ $t('sections.modals.max_size') }}</span>
-              </label>
             </template>
             <template v-else>
               <div v-if="errors[field.VARNAME]" class="osm__error">
@@ -128,7 +127,7 @@ export default {
       })
     },
     onChangeFiles(event, filedName) {
-      if (event.target.files[0].size > 7340032) {
+      if (event.target.files[0]?.size > 7340032) {
         event.target.value = "";
         delete this.formData[filedName]
       }
@@ -238,5 +237,8 @@ export default {
       font-size: 15rem;
     }
   }
+}
+label.osm__input.modal__input {
+  display: flex;
 }
 </style>

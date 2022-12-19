@@ -239,40 +239,41 @@ export default {
     },
     filterAboutSections() {
       const sections = this.getAbout.sections;
-      const firstArray = []
-      const secondArray = []
+      const firstArray = sections.filter(item => (item.SORT / 100) % 2 !== 0)
+      const secondArray = sections.filter(item => (item.SORT / 100) % 2 !== 0)
+      // const secondArray = []
 
-      sections.forEach((i) => {
-        switch (i.ID) {
-          case '16':
-            firstArray[0] = i
-            break
-          case '3':
-            firstArray[1] = i
-            break
-          case '33':
-            firstArray[2] = i
-            break
-          case '2':
-            firstArray[3] = i
-            break
-          case '9':
-            firstArray[4] = i
-            break
-          case '1':
-            secondArray[0] = i
-            break
-          case '29':
-            secondArray[1] = i
-            break
-          case '34':
-            secondArray[2] = i
-            break
-          case '8':
-            secondArray[3] = i
-            break
-        }
-      })
+      // sections.forEach((i) => {
+      //   switch (i.ID) {
+      //     case '16':
+      //       firstArray[0] = i
+      //       break
+      //     case '3':
+      //       firstArray[1] = i
+      //       break
+      //     case '33':
+      //       firstArray[2] = i
+      //       break
+      //     case '2':
+      //       firstArray[3] = i
+      //       break
+      //     case '9':
+      //       firstArray[4] = i
+      //       break
+      //     case '1':
+      //       secondArray[0] = i
+      //       break
+      //     case '29':
+      //       secondArray[1] = i
+      //       break
+      //     case '34':
+      //       secondArray[2] = i
+      //       break
+      //     case '8':
+      //       secondArray[3] = i
+      //       break
+      //   }
+      // })
 
       return {
         firstArray,
