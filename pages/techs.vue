@@ -2,7 +2,7 @@
   <div class="wrapper">
     <!-- <osm-header /> -->
     <div class="full-page-indicators" :class="{ white: +activeIndex === 5 }">
-      <div v-for="(indicator, key) in sections" :key="indicator.index" class="indicator" :class="{ active: +activeIndex === +key }" @click="activeIndex = key"><span></span></div>
+      <div v-for="(indicator, key) in sections" :key="indicator.index" class="indicator" :class="{ active: +activeIndex === +key }" @click="goToSlide(key)"><span></span></div>
     </div>
     <div class="sections" :data-id="activeIndex">
       <osm-first-section :class="{ isActive: activeIndex === 0 }"
@@ -94,7 +94,6 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters(['getMain']),
     ...mapGetters(['getSeo', 'getTechnology']),
     activeSection: {
       get() {
@@ -106,13 +105,11 @@ export default {
     },
   },
   beforeDestroy() {
-    document.removeEventListener('mousewheel', () => {
-    })
+    document.removeEventListener('mousewheel', function () {})
   },
   mounted() {
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1
-      this.scrollTo()
     }
 
     if (window.innerWidth > 1024) {
@@ -123,49 +120,63 @@ export default {
             this.activeIndex = 0
             this.sections = document.querySelectorAll('.section')
             this.activeIndex = 0
-            this.sections.forEach((item) => {
-              if (item.querySelector('.section__top--tech') && item.querySelector('.section__middle--tech')) {
-                const top = item.querySelector('.section__top--tech').clientHeight
-                const middle = item.querySelector('.section__middle--tech').clientHeight
-                item.querySelector('.section__bottom--tech').style.height = `calc(100% - ${top}px - ${middle}px)`
-              }
-            })
-            document.addEventListener('mousewheel', (event) => {
-              if (event.wheelDelta > 0 || event.detail < 0) {
-                this.change('up')
-                this.isInProgress = true
+            if (document.addEventListener) {
+              if ('onwheel' in document) {
+                // IE9+, FF17+, Ch31+
+                document.addEventListener('wheel', this.onWheel)
+              } else if ('onmousewheel' in document) {
+                // устаревший вариант события
+                document.addEventListener('mousewheel', this.onWheel)
               } else {
-                this.change('down')
-                this.isInProgress = true
+                // Firefox < 17
+                document.addEventListener('MozMousePixelScroll', this.onWheel)
               }
-            })
-
-            if (this.$route.hash === '#second') {
-              this.activeIndex = 1
+            } else {
+              // IE8-
+              document.attachEvent('onmousewheel', this.onWheel)
             }
-          }, 100)
+          }, 1000)
         }
-      }, 1000)
+      }, 100)
     }
   },
   methods: {
     ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
+
+    onWheel(event) {
+      event = event || window.event
+      const delta = event.deltaX || event.detail || event.wheelDelta
+      if (delta > 0 || event.detail < 0) {
+        this.change('up')
+        this.isInProgress = true
+      } else {
+        this.change('down')
+        this.isInProgress = true
+      }
+    },
+
     change(direction) {
       if (this.isInProgress) return
 
       if (direction === 'down' && this.activeIndex < this.sections.length - 1) {
-        this.activeIndex++
+        setTimeout(() => {
+          this.goToSlide(this.activeIndex + 1)
+        }, 300)
       }
       if (direction === 'up') {
-        this.activeIndex--
-      }
-      if (this.activeIndex < 1) {
-        this.activeIndex = 0
+        setTimeout(() => {
+          this.activeIndex > 1 ? this.goToSlide(this.activeIndex - 1) : this.goToSlide(0)
+        }, 300)
       }
       setTimeout(() => {
         this.isInProgress = false
-      }, 500)
+      }, 2000)
     },
+
+    goToSlide(number) {
+      this.activeIndex = number;
+    },
+
     scrollTo() {
       const sectionBottom = document.querySelector('.section__bottom--tech .title')
       const elementPosition = sectionBottom.getBoundingClientRect().top
@@ -175,6 +186,7 @@ export default {
         behavior: 'smooth',
       })
     },
+
     goToNext() {
       if (window.innerWidth > 1024) {
         this.activeIndex = 1
