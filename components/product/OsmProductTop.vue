@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="product__header_buttons hide_on_mobile">
-      <div v-if="offersCount.length > 1" class="product__header_mods" @click="scrollToModifications">Модификаций ({{ offersCount.length }})</div>
+      <div v-if="offersCount.length > 1" class="product__header_mods" @click="scrollToModifications">{{ $t('catalog_id.modifications') }} ({{ offersCount.length }})</div>
       <template v-if="getDownloads['katalog-produktsii']">
         <a v-if="'PROPERIES' in getDownloads['katalog-produktsii']" :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" target="_blank" download="catalogue_Vineta" class="product__link">
           <div class="icon">
