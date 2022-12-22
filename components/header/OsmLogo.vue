@@ -1,6 +1,7 @@
 <template>
     <nuxt-link :to="localePath({ name: 'index' })" class="header__logo">
-      <nuxt-img src="/logo.svg" class="header__object"/>
+      <nuxt-img v-show="$i18n.locale === 'ru'" src="/logo.svg" class="header__object"/>
+      <nuxt-img v-show="$i18n.locale === 'en'" src="/logo_eng.svg" class="header__object"/>
     </nuxt-link>
 </template>
 
