@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="footer__bottom_left">ООО “Винета”, 2012-2022</div>
+      <div class="footer__bottom_left">{{ $t('company_name') }}, 2012-2022</div>
       <template v-if="getDownloads['politika-konfedentsialnosti']">
         <div v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']" class="footer__bottom_right">
           <ul>

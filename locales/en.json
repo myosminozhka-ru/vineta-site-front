@@ -1,7 +1,7 @@
 {
   "message": "Hello!",
   "buttons": {
-    "catalog": "Catalogue",
+    "catalog": "Our catalogue",
     "about": "About us",
     "downloads": "Downloads",
     "news": "News",
@@ -28,13 +28,13 @@
     "reset": "Reset",
     "apply2": "Apply",
     "print": "Print",
-    "unwrap":  "Unwrap",
+    "unwrap":  "Expand",
     "roll_up": "Roll Up",
     "into_the_past": "Into The Past",
     "at_present": "At Present",
     "go_to_the_website": "Go to the website",
     "upload": "Upload",
-    "to_catalogue": "Catalogue",
+    "to_catalogue": "Our catalogue",
     "to_main": "Home page"
   },
   "menu": {
@@ -133,5 +133,6 @@
     "title": "Page not found",
     "text": "And also for military and civil ship repair, transport, fuel and energy companies, nuclear industry and others."
   },
-  "upload_file": "No file chosen"
+  "upload_file": "No file chosen",
+  "company_name": "Vineta Ltd"
 }
