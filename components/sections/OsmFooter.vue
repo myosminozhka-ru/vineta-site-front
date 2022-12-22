@@ -47,11 +47,12 @@
         </div>
         <div class="section__contacts">
           <div class="section__contacts_side">
-            <a href="tel:78124935048" class="section__contact"> +7 (812) 493-50-48 </a>
-            <div class="section__contacts_info">187026, Ленинградская обл., Тосненский район, г. Никольское, Ульяновское шоссе 5Ж</div>
+            <template v-if="getPhone.length">
+              <a v-for="(phone, index) in getPhone" :key="index" class="section__contact" :href="`tel:${phone.VALUE}`">{{phone.VALUE}}</a>
+            </template>
+            <div class="section__contacts_info">{{ getContacts[0]?.ADRESS?.VALUE }}</div>
             <div class="section__contacts_worktime">
-              Пн-Пт с 8:00 до 17:00
-              <!-- {{ $t('sections.footer.worktime') }} -->
+              {{ $t('sections.footer.worktime') }}
             </div>
           </div>
           <div class="section__contacts_side">
@@ -68,7 +69,7 @@
     </div>
     <osm-footer class="section__footer hide_on_desktop" />
     <div class="section__popup hide_on_tablet">
-      <div class="section__popup_left">ООО “Винета”, 2012-2022</div>
+      <div class="section__popup_left">{{ $t('company_name') }}, 2012-2022</div>
 
       <template v-if="getDownloads['politika-konfedentsialnosti']">
         <div v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']" class="section__popup_right">
@@ -126,10 +127,14 @@ export default {
     ],
   }),
   computed: {
-    ...mapGetters(['getDownloads']),
+    ...mapGetters(['getDownloads', 'getContacts']),
     filteredFileds() {
       return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD')
     },
+    getPhone() {
+      const contacts = this.getContacts;
+      return contacts[0]?.PROPERIES.filter((item) => item.CODE === 'PHONE') || []
+    }
   },
   async mounted() {
     this.fields = await this.$axios.$get('forms/request.php')

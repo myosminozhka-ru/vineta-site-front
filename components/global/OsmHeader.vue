@@ -7,7 +7,6 @@
     <osm-mobile-menu />
   </header>
 </template>
-
 <script>
 export default {
   components: {
