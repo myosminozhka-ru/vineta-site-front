@@ -21,6 +21,24 @@
       <li>
         <nuxt-link :to="localePath({ name: 'partners' })">{{ $t('sections.footer.to_customers') }}</nuxt-link>
       </li>
+       <li>
+        <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" download="catalogue_Vineta" target="_black">{{ $t('buttons.download_catalog') }}</a>
+      </li>
+      <li>
+        <a href="//vinetaboat.ru/" target="_blank">{{ $t('sections.footer.boats_and_boat') }}</a>
+      </li>
+      <li>
+        <a href="/files/vineta_book_TP_rus_001.pdf" download target="_blank">{{ $t('sections.footer.fuel_preparation_equipment') }}</a>
+      </li>
+      <li>
+        <a href="/files/Vineta_book_VO_rus_ver012.pdf" download target="_blank">{{ $t('sections.footer.water_treatment_and_purification_equipment') }}</a>
+      </li>
+      <li>
+        <a href="/files/vineta_book_TO_002.pdf" download target="_blank">{{ $t('sections.footer.heat_exchange_equipment') }}</a>
+      </li>
+      <li>
+        <a href="/files/Vineta_book_VGO_ru_002.pdf" download target="_blank">{{ $t('sections.footer.air_and_gas_cleaning_equipment') }}</a>
+      </li>
       <!-- <li v-for="link in []" :key="link.ID">
         <a :href="link.PROPERIES[0].SRC" :download="link.CODE" target="_black">{{ link.NAME }}</a>
       </li> -->
