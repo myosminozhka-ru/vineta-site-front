@@ -66,7 +66,12 @@
       "policy_link": "Data Protection Guidelines",
       "policy_after_link": "on the website terms of use as to processing and use of personal data",
       "privacy_policy": "Privacy policy",
-      "to_customers": "To Customers"
+      "to_customers": "To Customers",
+      "boats_and_boat": "Boats and boat",
+      "fuel_preparation_equipment": "Fuel preparation equipment",
+      "water_treatment_and_purification_equipment": "Water treatment and purification equipment",
+      "heat_exchange_equipment": "Heat exchange equipment",
+      "air_and_gas_cleaning_equipment": "Air and gas cleaning equipment"
     },
     "modals": {
       "apply_vacancy": "Apply for a job",
