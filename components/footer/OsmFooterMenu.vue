@@ -21,8 +21,8 @@
       <li>
         <nuxt-link :to="localePath({ name: 'partners' })">{{ $t('sections.footer.to_customers') }}</nuxt-link>
       </li>
-       <li>
-        <a v-if="'PROPERIES' in getMainMore.downloads[0]" :href="getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC" download="catalogue_Vineta" target="_black">{{ $t('buttons.download_catalog') }}</a>
+      <li>
+        <a v-if="getDownloadsCustomers.src" :href="getDownloadsCustomers.src" download="catalogue_Vineta" target="_black">{{ $t('buttons.download_catalog') }}</a>
       </li>
       <li>
         <a href="//vinetaboat.ru/" target="_blank">{{ $t('sections.footer.boats_and_boat') }}</a>
@@ -85,6 +85,16 @@ export default {
     ...mapGetters(['getMainMore']),
     ...mapGetters(['getDownloads']),
     ...mapGetters(['getContacts']),
+    getDownloadsCustomers() {
+      const produktsii = this.getDownloads['katalog-produktsii']
+      const length = produktsii?.PROPERIES.length;
+      const src = length ? produktsii?.PROPERIES[0]?.SRC : '';
+      const name = length ? produktsii?.NAME : '';
+      return {
+        src,
+        name,
+      }
+    },
     aboutDownloadLinks() {
       const filterArray = [];
       for (const key in this.getDownloads) {
