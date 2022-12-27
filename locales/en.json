@@ -124,7 +124,7 @@
     "news_more_title": "See also"
   },
   "search": {
-    "placeholder": "Site Search",
+    "placeholder": "Search",
     "text_before_count": "Found",
     "text_after_count": "result",
     "null_result": "Nothing found",
@@ -139,5 +139,6 @@
     "text": "And also for military and civil ship repair, transport, fuel and energy companies, nuclear industry and others."
   },
   "upload_file": "No file chosen",
-  "company_name": "Vineta Ltd"
+  "company_name": "Vineta Ltd",
+  "productIdPrintUpText": "5 G, Ulyanovskaya road, Tosno region, <br>Nikolskoe 187026, Russian Federation<br> tel./fax: +7(812) 493-50-48 info@vineta.ru"
 }
