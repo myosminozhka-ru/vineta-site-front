@@ -50,6 +50,8 @@ export default {
     if (!store.state.main.length) {
       await store.dispatch('addMain')
     }
+
+    await store.dispatch('setLoadingStatus', false)
   },
 
   head() {
@@ -124,10 +126,6 @@ export default {
         }
       }, 100)
     }
-
-    setTimeout(() => {
-      this.setLoadingStatus(false)
-    }, 1000)
   },
   methods: {
     ...mapActions([
