@@ -5,7 +5,7 @@
     </pre> -->
     <div class="productPage__print-up">
       <nuxt-img src="/logo.svg" alt="" class="img" loading="lazy" />
-      <p class="title" v-html="printUpText"></p>
+      <p class="title" v-html="$t('productIdPrintUpText')"></p>
     </div>
     <div class="productPage__container">
       <osm-breadcrumbs />

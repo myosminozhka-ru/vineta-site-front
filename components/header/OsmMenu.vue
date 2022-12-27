@@ -195,19 +195,21 @@ export default {
     ...mapGetters(['getDownloads']),
     ...mapGetters('localStorage', ['getFavorites']),
     catalogDownloadLinks() {
+      const getDownload = {...this.getDownloads};
       const filterArray = []
-      for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES?.length > 1) {
-          filterArray.push(this.getDownloads[key])
+      for (const key in getDownload) {
+        if (getDownload[key].PROPERIES?.length > 1) {
+          filterArray.push(getDownload[key])
         }
       }
       return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'catalog_file')
     },
     aboutDownloadLinks() {
+      const getDownload = {...this.getDownloads};
       const filterArray = []
-      for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES?.length > 1) {
-          filterArray.push(this.getDownloads[key])
+      for (const key in getDownload) {
+        if (getDownload[key].PROPERIES?.length > 1) {
+          filterArray.push(getDownload[key])
         }
       }
       return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file')
