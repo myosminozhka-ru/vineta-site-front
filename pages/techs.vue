@@ -117,9 +117,8 @@ export default {
         if (document.readyState === 'complete') {
           clearInterval(stateCheck)
           setTimeout(() => {
-            this.activeIndex = 0
             this.sections = document.querySelectorAll('.section')
-            this.activeIndex = 0
+            this.activeIndex = this.$route.hash.slice(1) ? this.$route.hash.slice(1) - 1 : 0;
             if (document.addEventListener) {
               if ('onwheel' in document) {
                 // IE9+, FF17+, Ch31+
@@ -175,6 +174,7 @@ export default {
 
     goToSlide(number) {
       this.activeIndex = number;
+      this.$router.push(`${this.$route.path}#${number+1}`)
     },
 
     scrollTo() {
