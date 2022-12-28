@@ -7,7 +7,7 @@
       <div class="section__content">
         <osm-h1 class="section__title" >{{ fourthData.NAME }}</osm-h1>
         <div class="section__text" v-html="fourthData.PREVIEW_TEXT"></div>
-        <osm-button class="section__button" link="techs" hash="#second">{{ $t('buttons.more') }}</osm-button>
+        <osm-button class="section__button" link="techs" hash="#2">{{ $t('buttons.more') }}</osm-button>
       </div>
     </div>
   </section>
