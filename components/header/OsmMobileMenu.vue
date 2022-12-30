@@ -16,7 +16,7 @@
           <ul>
             <li class="menu__links_li has-child">
               <div>
-                <nuxt-link :to="localePath({ name: 'catalog' })" class="text">Каталог</nuxt-link>
+                <nuxt-link :to="localePath({ name: 'catalog' })" class="text">{{$t('menu.catalog')}}</nuxt-link>
                 <div class="arrow">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
                     <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2" />
@@ -82,66 +82,68 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  data: () => ({
-    socials: [
-      {
-        icon: require('~/assets/img/socials/vk.svg'),
-        link: '#',
-      },
-      {
-        icon: require('~/assets/img/socials/telegram.svg'),
-        link: '#',
-      },
-      {
-        icon: require('~/assets/img/socials/twitter.svg'),
-        link: '#',
-      },
-    ],
-    menu: [
-      {
-        text: 'О компании',
-        isOpened: false,
-        url: 'about',
-        childs: [
-          {
-            url: 'techs',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Технологии производства',
-          },
-          {
-            url: 'history',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'История',
-          },
-          {
-            url: 'partners',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Заказчики',
-          },
-          {
-            url: 'licenses',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Лицензии',
-          },
-        ],
-      },
-      {
-        text: 'Новости',
-        isOpened: false,
-        url: 'news',
-      },
-      {
-        text: 'Вакансии',
-        isOpened: false,
-        url: 'vacancies',
-      },
-      {
-        text: 'Контакты',
-        isOpened: false,
-        url: 'contacts',
-      },
-    ],
-  }),
+  data() {
+    return {
+      socials: [
+        {
+          icon: require('~/assets/img/socials/vk.svg'),
+          link: '#',
+        },
+        {
+          icon: require('~/assets/img/socials/telegram.svg'),
+          link: '#',
+        },
+        {
+          icon: require('~/assets/img/socials/twitter.svg'),
+          link: '#',
+        },
+      ],
+      menu: [
+        {
+          text: this.$t('menu.about'),
+          isOpened: false,
+          url: 'about',
+          childs: [
+            {
+              url: 'techs',
+              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+              text: this.$t('menu.aboutChilds.techs'),
+            },
+            {
+              url: 'history',
+              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+              text: this.$t('menu.aboutChilds.history'),
+            },
+            {
+              url: 'partners',
+              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+              text: this.$t('menu.aboutChilds.partners'),
+            },
+            {
+              url: 'licenses',
+              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+              text: this.$t('menu.aboutChilds.licenses'),
+            },
+          ],
+        },
+        {
+          text: this.$t('menu.news'),
+          isOpened: false,
+          url: 'news',
+        },
+        {
+          text: this.$t('menu.jobs'),
+          isOpened: false,
+          url: 'vacancies',
+        },
+        {
+          text: this.$t('menu.contacts'),
+          isOpened: false,
+          url: 'contacts',
+        },
+      ],
+    }
+  },
   computed: {
     ...mapGetters(['getModals']),
     ...mapGetters(['getCatalog']),
@@ -272,6 +274,11 @@ export default {
         width: 30px;
         height: 30px;
         margin-right: 20px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
       }
     }
   }
