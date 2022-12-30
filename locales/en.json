@@ -38,6 +38,18 @@
     "to_main": "Home page"
   },
   "menu": {
+    "menu": "Menu",
+    "catalog": "Catalog",
+    "about": "About us",
+    "aboutChilds": {
+      "techs": "Techs",
+      "history": "History",
+      "partners": "Partners",
+      "licenses": "Licenses"
+    },
+    "news": "News",
+    "jobs": "Jobs",
+    "contacts": "Contacts",
     "products": "Manufacturing range"
   },
   "sections": {
