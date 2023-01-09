@@ -12,7 +12,7 @@
       display: block;
       font-size: 0;
       margin-bottom: rem(30);
-      width: rem(187);
+      width: rem(312);
       flex-shrink: 0;
 
       @media all and (max-width: 1280px) {
