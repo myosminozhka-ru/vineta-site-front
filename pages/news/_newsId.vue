@@ -102,14 +102,13 @@ export default {
 
 <style lang="scss" scoped>
 .news {
-  &__inner {
-  }
   &__image {
-    height: rem(580);
-    @media all and (max-width: 1280px) {
-      height: rem(400);
-    }
+    position: relative;
+    padding-bottom: 73.5%;
     img {
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;

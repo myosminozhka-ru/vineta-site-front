@@ -7,10 +7,11 @@
         :class="{'news__item_big' :key === 0, 'news__item': key != 0}"
         class="hide_on_mobile" >
             <template v-if="key === 0">
-                <div class="news__image">
-                    <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
-                    <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
-                </div>
+              <div class="news__image">
+                  <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                  <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
+              </div>
+              <div class="news__item-inner">
                 <div class="news__item_top">
                     <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
                 </div>
@@ -20,6 +21,7 @@
                     </div>
                     <osm-button :link="item.link">{{ $t('buttons.more') }}</osm-button>
                 </div>
+              </div>
             </template>
             <template v-else>
                 <div class="news__item_left">
@@ -189,20 +191,22 @@ export default {
         }
     }
     &__item_big {
+      position: relative;
+      grid-area: big;
+    }
+    &__item_big &__item-inner {
         text-decoration: none;
-        position: relative;
+        position: absolute;
+        left: 0;
+        top: 0;
         padding: rem(60);
-        min-height: rem(563);
+        height: 100%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        grid-area: big;
         @media all and (max-width: 1280px) {
             padding: 20px 30px 20px 20px;
-            min-height: 563px;
-        }
-        @media all and (max-width: 840px) {
-            min-height: 280px;
         }
         &::before {
             content: "";
@@ -217,12 +221,11 @@ export default {
         }
     }
     &__item_big &__image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        padding-bottom: 73.5%;
         img {
+            position: absolute;
+            left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -280,7 +283,7 @@ export default {
     }
     &__item &__item_left {
         position: relative;
-        padding-top: 50%;
+        padding-top: 73.5%;
         img {
             position: absolute;
             top: 0;
