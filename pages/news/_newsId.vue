@@ -104,7 +104,7 @@ export default {
 .news {
   &__image {
     position: relative;
-    padding-bottom: 73.5%;
+    padding-bottom: 53.5%;
     img {
       position: absolute;
       left: 0;

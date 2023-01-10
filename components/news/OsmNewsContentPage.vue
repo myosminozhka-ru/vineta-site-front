@@ -180,7 +180,7 @@ export default {
         grid-template-areas:
             'big big big'
             'first second third';
-        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+        @media all and (max-width: 1440px) {
             grid-template-columns: repeat(2, 1fr );
             grid-template-areas:
                 'big big'
@@ -221,7 +221,7 @@ export default {
         }
     }
     &__item_big &__image {
-        padding-bottom: 73.5%;
+        padding-bottom: 53.5%;
         img {
             position: absolute;
             left: 0;
@@ -283,7 +283,7 @@ export default {
     }
     &__item &__item_left {
         position: relative;
-        padding-top: 73.5%;
+        padding-top: 53.5%;
         img {
             position: absolute;
             top: 0;
