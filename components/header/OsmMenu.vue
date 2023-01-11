@@ -38,7 +38,7 @@
                 "
               >
                 <div class="icon">
-                  <nuxt-img :src="$vareibles.remote + category.PICTURE" alt="" loading="lazy" />
+                  <nuxt-img :src="$config.vareibles.remote + category.PICTURE" alt="" loading="lazy" />
                 </div>
                 <div class="text">{{ category.NAME }}</div>
               </a>

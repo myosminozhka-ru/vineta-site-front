@@ -19,7 +19,7 @@
       <template v-if="getDownloads['politika-konfedentsialnosti']">
         <div v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']" class="footer__bottom_right">
           <ul>
-            <li><a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">
+            <li><a :href="$config.vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">
               {{ $t('sections.footer.privacy_policy') }}
             </a></li>
           </ul>

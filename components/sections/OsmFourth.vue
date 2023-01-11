@@ -1,7 +1,7 @@
 <template>
   <section v-if="fourthData" class="section section__item section__item--fourth">
     <div v-show="'PROPERIES' in fourthData" class="section__left">
-      <nuxt-img :src="$vareibles.remote + fourthData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC" alt="" loading="lazy" />
+      <nuxt-img :src="$config.vareibles.remote + fourthData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC" alt="" loading="lazy" />
     </div>
     <div class="section__right">
       <div class="section__content">

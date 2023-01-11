@@ -73,12 +73,15 @@ export default {
     // lazy: true,
     langDir: 'locales',
   },
-
+  publicRuntimeConfig: {
+    vareibles: {
+      remote: process.env.URL,
+    }
+  },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: 'https://vineta.ru/local/api/',
-    baseURL: 'https://vineta.fvds.ru/local/api/',
+    baseURL: process.env.URL + '/local/api/',
   },
 
   image: {

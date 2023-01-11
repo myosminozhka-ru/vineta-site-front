@@ -65,7 +65,7 @@ export default {
         {
           hid: 'twitter:url',
           name: 'twitter:url',
-          content: 'https://vineta.fvds.ru/',
+          content: this.$config.vareibles.remote,
         },
         {
           hid: 'twitter:title',
@@ -80,7 +80,7 @@ export default {
         {
           hid: 'twitter:imag',
           name: 'twitter:imag',
-          content: 'SEO' in this.currentCategory && 'DETAIL_PICTURE' in this.currentCategory ? this.$vareibles.remote + this.currentCategory.DETAIL_PICTURE : require('~/assets/img/product.noimage.png'),
+          content: 'SEO' in this.currentCategory && 'DETAIL_PICTURE' in this.currentCategory ? this.$config.vareibles.remote + this.currentCategory.DETAIL_PICTURE : require('~/assets/img/product.noimage.png'),
         },
       ],
     }

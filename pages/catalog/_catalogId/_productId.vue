@@ -376,7 +376,7 @@
                 <!-- <pre style="font-size: 15rem">{{ prod.CODE }}</pre> -->
                 <div class="products__item_image">
                   <div class="image_container">
-                    <nuxt-img :src="$vareibles.remote + prod.PREVIEW_PICTURE" alt="" loading="lazy" />
+                    <nuxt-img :src="$config.vareibles.remote + prod.PREVIEW_PICTURE" alt="" loading="lazy" />
                   </div>
                 </div>
                 <div class="products__item_data">
@@ -511,7 +511,7 @@ export default {
         {
           hid: 'twitter:url',
           name: 'twitter:url',
-          content: 'https://vineta.fvds.ru/',
+          content: this.$config.vareibles.remote,
         },
         {
           hid: 'twitter:title',
@@ -526,7 +526,7 @@ export default {
         {
           hid: 'twitter:imag',
           name: 'twitter:imag',
-          content: this.$store.state.dataProduct && 'PREVIEW_PICTURE' in this.$store.state.dataProduct[0] ? this.$vareibles.remote + this.$store.state.dataProduct[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          content: this.$store.state.dataProduct && 'PREVIEW_PICTURE' in this.$store.state.dataProduct[0] ? this.$config.vareibles.remote + this.$store.state.dataProduct[0].PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
         },
       ],
     }

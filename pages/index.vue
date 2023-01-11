@@ -78,7 +78,7 @@ export default {
     ...mapGetters(['getSeo']),
     imagesGallery() {
       return this.getLicenses.map((item) => {
-        return this.$vareibles.remote + item.PREVIEW_PICTURE
+        return this.$config.vareibles.remote + item.PREVIEW_PICTURE
       })
     },
     activeSection: {

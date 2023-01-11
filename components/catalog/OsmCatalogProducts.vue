@@ -14,7 +14,7 @@
       >
         <div class="products__item_image">
           <div class="image_container">
-            <nuxt-img v-if="product.PREVIEW_PICTURE" :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" loading="lazy" />
+            <nuxt-img v-if="product.PREVIEW_PICTURE" :src="$config.vareibles.remote + product.PREVIEW_PICTURE" alt="" loading="lazy" />
             <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
           </div>
         </div>

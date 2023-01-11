@@ -5,7 +5,7 @@
                 <li class="glide__slide" v-for="item in gallery" :key="item.index">
                     <div class="contacts__slider_item">
                         <div class="contacts__slider_item_in">
-                            <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
+                            <nuxt-img :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                         </div>
                     </div>
                 </li>

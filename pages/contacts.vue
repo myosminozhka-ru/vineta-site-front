@@ -53,7 +53,7 @@
               </template>
             </div>
             <template v-if="getDownloads['rekvizity']">
-              <a v-if="'PROPERIES' in getDownloads['rekvizity']" :href="$vareibles.remote + getDownloads['rekvizity'].PROPERIES[0]?.VALUE.SRC" target="_blank" class="button contacts__button">
+              <a v-if="'PROPERIES' in getDownloads['rekvizity']" :href="$config.vareibles.remote + getDownloads['rekvizity'].PROPERIES[0]?.VALUE.SRC" target="_blank" class="button contacts__button">
                 <div class="contacts__button_in">
                   <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 21 28" fill="none">
@@ -78,7 +78,7 @@
         <div v-for="item in managment" :key="item.index" class="fiveth__item">
           <div class="avatar">
             <div class="avatar__in">
-              <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
+              <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
               <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
             </div>
           </div>

@@ -15,7 +15,7 @@
                 <div class="news__content_bottons">
                   <osm-button class="news__content_botton" :large="true" link="catalog">{{ $t('buttons.catalog') }}</osm-button>
                   <osm-button v-if="false" class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
-                  <a v-if="'prezentatsiya' in getDownloads && getDownloads.prezentatsiya.PROPERIES" :href="$vareibles.remote + getDownloads.prezentatsiya.PROPERIES[0].SRC" class="button isOutlined isLarge but_prez">Презентация компании</a>
+                  <a v-if="'prezentatsiya' in getDownloads && getDownloads.prezentatsiya.PROPERIES" :href="$config.vareibles.remote + getDownloads.prezentatsiya.PROPERIES[0].SRC" class="button isOutlined isLarge but_prez">Презентация компании</a>
                 </div>
                 <osm-category />
               </div>

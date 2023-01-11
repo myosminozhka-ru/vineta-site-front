@@ -37,7 +37,7 @@
                     "
                   >
                     <div class="icon">
-                      <nuxt-img :src="$vareibles.remote + child.PICTURE" width="100%" alt="" loading="lazy" />
+                      <nuxt-img :src="$config.vareibles.remote + child.PICTURE" width="100%" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ child.NAME }}</div>
                   </a>

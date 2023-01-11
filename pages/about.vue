@@ -8,7 +8,7 @@
           <span class="first__small-text">{{ $t('about.small_text') }}</span>
         </div>
         <div class="first__image hide_on_mobile">
-          <nuxt-img :src="$vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+          <nuxt-img :src="$config.vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
         </div>
       </section>
       <section v-if="getAbout.banners.second" class="second">
@@ -57,7 +57,7 @@
               <div class="second__items_col">
                 <nuxt-link v-for="link in filterAboutSections.firstArray" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
                   <div class="icon">
-                    <nuxt-img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
+                    <nuxt-img :src="$config.vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
                   </div>
                   <div class="text">{{ link.NAME }}</div>
                 </nuxt-link>
@@ -65,7 +65,7 @@
               <div class="second__items_col">
                 <nuxt-link v-for="link in filterAboutSections.secondArray" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
                   <div class="icon">
-                    <nuxt-img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
+                    <nuxt-img :src="$config.vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
                   </div>
                   <div class="text">{{ link.NAME }}</div>
                 </nuxt-link>
@@ -105,7 +105,7 @@
         </div>
       </section>
       <section v-if="getAbout.banners.third" class="fourth">
-        <nuxt-img :src="$vareibles.remote + getAbout.banners.third.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+        <nuxt-img :src="$config.vareibles.remote + getAbout.banners.third.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
       </section>
       <section class="fiveth">
         <div class="fiveth__title">{{ $t('contacts.guide') }}</div>
@@ -113,7 +113,7 @@
           <div v-for="item in managment" :key="item.index" class="fiveth__item">
             <div class="avatar">
               <div class="avatar__in">
-                <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
+                <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                 <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
               </div>
             </div>

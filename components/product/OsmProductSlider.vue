@@ -6,7 +6,7 @@
         <slide v-for="(picture, idx) in data.GALLERY" :key="`picture_${idx}`" class="productPage__slider-item">
           <div class="productPage__slider-item__in" @click="elementOpened = idx">
             <div class="productPage__slider-item__imege">
-              <nuxt-img :src="$vareibles.remote + picture" :alt="`picture_${idx}`" loading="lazy" />
+              <nuxt-img :src="$config.vareibles.remote + picture" :alt="`picture_${idx}`" loading="lazy" />
             </div>
           </div>
         </slide>
@@ -16,7 +16,7 @@
         <hooper :settings="hooperSettings" group="product_items" class="productPage__slider-previews">
           <slide v-for="(picture, idx) in data.GALLERY" :key="`picture_${idx}`" class="productPage__slider-preview">
             <span @click="slideTo(idx)">
-              <nuxt-img :src="$vareibles.remote + picture" :alt="`picture_${idx}`" loading="lazy" />
+              <nuxt-img :src="$config.vareibles.remote + picture" :alt="`picture_${idx}`" loading="lazy" />
             </span>
           </slide>
         </hooper>
@@ -92,7 +92,7 @@ export default {
   }),
   computed: {
     popupPhotos() {
-      return this.data.GALLERY.map((gallery) => ({ url: this.$vareibles.remote + gallery, title: '' }))
+      return this.data.GALLERY.map((gallery) => ({ url: this.$config.vareibles.remote + gallery, title: '' }))
     },
   },
   mounted() {

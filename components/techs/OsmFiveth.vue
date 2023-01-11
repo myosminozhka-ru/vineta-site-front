@@ -10,7 +10,7 @@
                 </div>
                 <div class="section__bottom--tech">
                     <div class="section__left--tech">
-                        <nuxt-img :src="$vareibles.remote + dataObject.PREVIEW_PICTURE" alt="" loading="lazy" />
+                        <nuxt-img :src="$config.vareibles.remote + dataObject.PREVIEW_PICTURE" alt="" loading="lazy" />
                     </div>
                     <div class="section__right--tech" @mousewheel.stop>
                         <div class="index">04</div>

@@ -10,14 +10,14 @@
     <div class="gallery__items">
       <div v-for="(image, key) in images" :key="image.index" class="gallery__item" @click="index = key">
         <div class="gallery__item_image">
-          <nuxt-img :src="$vareibles.remote + image.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+          <nuxt-img :src="$config.vareibles.remote + image.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
         </div>
         <div class="gallery__item_overlay">
           <div class="icon">
             <nuxt-img src="/licenses/search_icon.svg" width="100%" alt="" loading="lazy" />
           </div>
           <div class="text">{{ image.NAME }}</div>
-          <a v-if="image.PROPERIES" :href="$vareibles.remote + image.PROPERIES.PDF.SRC" download="true" target="_blank" class="pdf">
+          <a v-if="image.PROPERIES" :href="$config.vareibles.remote + image.PROPERIES.PDF.SRC" download="true" target="_blank" class="pdf">
             <nuxt-img src="/pdf.png" alt="" loading="lazy" />
           </a>
         </div>
@@ -53,7 +53,7 @@ export default {
   computed: {
     imagesGallery() {
       return this.images.map((item) => {
-        return this.$vareibles.remote + item.PREVIEW_PICTURE
+        return this.$config.vareibles.remote + item.PREVIEW_PICTURE
       })
     },
   },
