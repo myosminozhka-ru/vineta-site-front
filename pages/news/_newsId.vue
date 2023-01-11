@@ -1,7 +1,7 @@
 <template>
   <div v-if="$store.state.dataNews.length" class="news__inner">
     <div class="news__image">
-      <nuxt-img :src="$vareibles.remote + $store.state.dataNews[0]?.PREVIEW_PICTURE" alt="" />
+      <nuxt-img :src="$config.vareibles.remote + $store.state.dataNews[0]?.PREVIEW_PICTURE" alt="" />
     </div>
     <div class="news__buttons">
       <osm-button class="news__button" style="pointer-events: none">{{
@@ -32,7 +32,7 @@
           <div class="news__item_left">
             <div class="news__image">
               <nuxt-img v-if="item.PREVIEW_PICTURE"
-                :src="$vareibles.remote + item.PREVIEW_PICTURE"
+                :src="$config.vareibles.remote + item.PREVIEW_PICTURE"
                 alt="" />
               <nuxt-img v-else src="/product.noimage.png" alt="" />
             </div>

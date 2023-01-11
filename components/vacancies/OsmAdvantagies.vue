@@ -4,7 +4,7 @@
     <div class="advantages__items">
       <div class="advantages__item" v-for="item in bennefits" :key="item.index">
         <div class="icon">
-          <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+          <nuxt-img :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
         </div>
         <div class="advantages__item__info">
           <div class="title">{{ item.NAME }}</div>

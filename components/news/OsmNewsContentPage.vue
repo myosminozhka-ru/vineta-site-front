@@ -8,7 +8,7 @@
         class="hide_on_mobile" >
             <template v-if="key === 0">
               <div class="news__image">
-                  <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                  <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
                   <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
               </div>
               <div class="news__item-inner">
@@ -26,7 +26,7 @@
             <template v-else>
                 <div class="news__item_left">
                     <div class="news__image">
-                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
                         <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                 </div>
@@ -53,7 +53,7 @@
             <nuxt-link v-for="(item, key) in news" :key="key" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
-                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
                         <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                 </div>
@@ -80,7 +80,7 @@
             <nuxt-link v-for="(item, key) in news" :key="key" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
-                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
                         <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                 </div>
@@ -107,7 +107,7 @@
             <nuxt-link v-for="(item, key) in news" :key="key" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
-                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
                         <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                 </div>

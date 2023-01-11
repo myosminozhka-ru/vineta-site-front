@@ -5,7 +5,7 @@
         {{ getVacancies.banners.first.NAME }}
       </div>
       <div class="first__image hide_on_mobile">
-        <nuxt-img :src="$vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="" />
+        <nuxt-img :src="$config.vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="" />
       </div>
     </section>
     <osm-advantagies :bennefits="getVacancies.bennefits" />
@@ -67,7 +67,7 @@ export default {
         {
           hid: 'twitter:url',
           name: 'twitter:url',
-          content: 'https://vineta.fvds.ru/',
+          content: this.$config.vareibles.remote,
         },
         {
           hid: 'twitter:title',
@@ -82,7 +82,7 @@ export default {
         {
           hid: 'twitter:imag',
           name: 'twitter:imag',
-          content: this.getVacancies && 'PREVIEW_PICTURE' in this.getVacancies ? this.$vareibles.remote + this.getVacancies.PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          content: this.getVacancies && 'PREVIEW_PICTURE' in this.getVacancies ? this.$config.vareibles.remote + this.getVacancies.PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
         },
       ],
     }

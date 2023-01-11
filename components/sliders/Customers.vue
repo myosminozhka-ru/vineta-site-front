@@ -10,7 +10,7 @@
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
                         <li v-for="(item, key) in fivethData.filter(item => item.PREVIEW_PICTURE)" :key="key" class="customers__slide glide__slide">
-                            <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" :alt="item.name" loading="lazy" />
+                            <nuxt-img :src="$config.vareibles.remote + item.PREVIEW_PICTURE" :alt="item.name" loading="lazy" />
                         </li>
                     </ul>
                 </div>

@@ -6,7 +6,7 @@
         <div class="catalog__points">
           <div v-for="(point, key) in getCatalog" :key="point.index" class="catalog__point"  @click="catalog.slider.go(`=${key}`)">
             <div class="icon">
-              <nuxt-img :src="$vareibles.remote + point.PICTURE" width="100%" alt="" loading="lazy" />
+              <nuxt-img :src="$config.vareibles.remote + point.PICTURE" width="100%" alt="" loading="lazy" />
             </div>
             <div class="text">{{ point.NAME }}</div>
           </div>
@@ -27,7 +27,7 @@
               class="catalog__item">
               <div class="catalog__item_in">
                 <div class="image">
-                  <nuxt-img :src="$vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="" loading="lazy" />
+                  <nuxt-img :src="$config.vareibles.remote + item.DETAIL_PICTURE" width="100%" alt="" loading="lazy" />
                 </div>
                 <span class="text">{{ item.NAME }}</span>
               </div>

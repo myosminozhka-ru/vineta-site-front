@@ -24,7 +24,7 @@
         <a v-for="product in productsResult.slice(0, 4)" :key="product.ID" :href="localePath(`/catalog/${product.SECTION}/${product.CODE}`)" class="seacrhModal__item">
           <div class="products__item_image">
             <div class="image_container">
-              <nuxt-img :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" loading="lazy" />
+              <nuxt-img :src="$config.vareibles.remote + product.PREVIEW_PICTURE" alt="" loading="lazy" />
             </div>
           </div>
           <div class="products__item_data">

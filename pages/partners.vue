@@ -12,7 +12,7 @@
               <!-- <pre>{{ item }}</pre> -->
               <div class="partners__item_top">
                 <div v-if="'PREVIEW_PICTURE' in item" class="partners__item_logo">
-                  <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
+                  <nuxt-img :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" />
                 </div>
                 <div v-if="'PREVIEW_TEXT' in item" class="partners__item_text">
                   {{ item.PREVIEW_TEXT }}

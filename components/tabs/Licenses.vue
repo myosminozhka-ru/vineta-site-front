@@ -12,20 +12,20 @@
                   <template v-if="item.PREVIEW_PICTURE">
                     <div v-if="tab.filter === 'otchety-po-sout'" class="gallery__item">
                       <div class="gallery__item_image">
-                        <nuxt-img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
                       </div>
                       <div class="gallery__item_overlay">
                         <div class="icon">
                           <nuxt-img src="/licenses/search_icon.svg" width="100%" alt="" loading="lazy" />
                         </div>
                         <div class="text">{{ item.NAME }}</div>
-                        <a v-if="item.PROPERIES" :href="$vareibles.remote + item.PROPERIES.PDF.SRC" download="true" target="_blank" class="pdf">
+                        <a v-if="item.PROPERIES" :href="$config.vareibles.remote + item.PROPERIES.PDF.SRC" download="true" target="_blank" class="pdf">
                           <nuxt-img src="/pdf.png" alt="" loading="lazy" />
                         </a>
                       </div>
                     </div>
 
-                    <nuxt-img v-else :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
+                    <nuxt-img v-else :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                   </template>
                 </li>
                 <nuxt-link :to="localePath({ name: 'licenses' })" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
@@ -67,7 +67,7 @@
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
                   <li v-for="(item, key) in filterBySection(tab.filter)" :key="item.index" class="licensesSlid__slide glide__slide" @click="setGalleryIndex(key)">
-                    <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
+                    <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                   </li>
                   <nuxt-link :to="localePath({ name: 'licenses' })" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
                     <div class="text">{{ $t('buttons.view_all') }}</div>
@@ -133,7 +133,7 @@ export default {
     },
     imagesGallery() {
       return this.getLicenses.map((item) => {
-        return this.$vareibles.remote + item.PREVIEW_PICTURE
+        return this.$config.vareibles.remote + item.PREVIEW_PICTURE
       })
     },
   },
