@@ -34,7 +34,6 @@ export default {
         const modificationsTabs = document.getElementById(this.elementTo)
         const elementPosition = modificationsTabs.getBoundingClientRect().top
         const offsetPosition = elementPosition - headerHeight
-
         window.scrollBy({
           top: offsetPosition,
           behavior: 'smooth',

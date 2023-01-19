@@ -8,7 +8,7 @@
           <osm-button>{{ $t('buttons.apply') }}</osm-button>
         </div>
       </div>
-      <div class="vacancy__price">{{ $store.state.dataVacancy[0].PROPERIES.find(item => item.CODE === 'OKLAD')?.VALUE }}</div>
+      <div class="vacancy__price">{{ $store.state.dataVacancy[0].PROPERIES.find((item) => item.CODE === 'OKLAD')?.VALUE }}</div>
       <div class="vacancy__button hide_off_mobile" @click="openApplyModal">
         <osm-button>{{ $t('buttons.apply') }}</osm-button>
       </div>
@@ -45,7 +45,7 @@ export default {
     isMounted: false,
     isShowApplyModal: false,
   }),
-  async fetch({store, route, app, i18n}) {
+  async fetch({ store, route, app, i18n }) {
     await store.dispatch('setLoadingStatus', true)
     const dataVacancy = await app.$axios.$get(`vacancy-detail.php?code=${route.params.itemId}`)
     await store.dispatch('setDataVacancy', dataVacancy)
@@ -112,7 +112,7 @@ export default {
     ...mapGetters(['getVacancies']),
   },
   mounted() {
-    this.vacancy = this.$store.state.dataVacancy;
+    this.vacancy = this.$store.state.dataVacancy
     window.scrollTo(0, 0)
     this.isMounted = true
 
@@ -121,7 +121,7 @@ export default {
     }, 0)
   },
   destroyed() {
-    this.setDataVacancy = [];
+    this.setDataVacancy = []
   },
   methods: {
     ...mapActions(['toggleModal', 'setDataVacancy']),
@@ -139,7 +139,7 @@ export default {
         txt.innerHTML = html
         return txt.value
       }
-    }
+    },
   },
 }
 </script>

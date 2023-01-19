@@ -92,6 +92,7 @@ export default {
     },
   },
   created() {
+    console.log('hey')
     if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochee-oborudovanie' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
       this.hasFilters = false
     }
@@ -138,7 +139,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.setLoadingStatus(false)
-    }, 0)
+    }, 700)
   },
   methods: {
     ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
