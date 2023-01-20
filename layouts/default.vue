@@ -37,15 +37,15 @@ export default {
     OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
-  // watch: {
-  //   $route(to, from) {
-  //     if (window) {
-  //       window.scrollTo({
-  //         top: 0,
-  //         behavior: "smooth"
-  //       });
-  //     }
-  //   },
-  // },
+  watch: {
+    $route(to, from) {
+      if (window) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        })
+      }
+    },
+  },
 }
 </script>

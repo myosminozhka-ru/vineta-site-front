@@ -485,8 +485,8 @@ export default {
   },
   async fetch({ store, route, app }) {
     await store.dispatch('setLoadingStatus', true)
-    await store.dispatch('setDataProduct', await app.$axios.$get(`catalog/detail.php?code=${route.params.productId}`))
-    await store.dispatch('setDataProductOther', await app.$axios.$get(`catalog/elements.php?code=${route.params.catalogId}&sub=y`))
+    await Promise.all([store.dispatch('setDataProduct', await app.$axios.$get(`catalog/detail.php?code=${route.params.productId}`)), store.dispatch('setDataProductOther', await app.$axios.$get(`catalog/elements.php?code=${route.params.catalogId}&sub=y`))])
+    await store.dispatch('setLoadingStatus', false)
   },
   head() {
     return {
