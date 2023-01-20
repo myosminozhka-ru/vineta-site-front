@@ -2,6 +2,7 @@
   <nav class="header__menu" @mouseleave="closeModals">
     <!-- <pre style="font-size: 15rem">
       {{ getMainMore.downloads }}
+      test
     </pre> -->
     <ul class="header__ul hide_on_mobile">
       <li class="header__li has-child" @mouseenter.stop="openModal(123)" :data-modal-to-open="123">
@@ -31,7 +32,7 @@
               <!-- <pre style="font-size: 15rem">{{ category }}</pre> -->
               <nuxt-link :to="localePath({name: 'catalog-catalogId', params: {catalogId: category.CODE }})">
                 <div class="icon">
-                  <img :src="$vareibles.remote + category.PICTURE" width="100%" alt="">
+                  <img :src="$config.vareibles.remote + category.PICTURE" width="100%" alt="">
                 </div>
                 <div class="text">{{ category.NAME }}</div>
               </nuxt-link>
@@ -41,7 +42,7 @@
         <div class="menu__modal_bottom" v-if="getDownloads['katalog-produktsii']">
           <osm-h2 class="menu__modal_title">{{ $t('buttons.downloads') }}</osm-h2>
           <a target="_blank" v-if="'PROPERIES' in getDownloads['katalog-produktsii']"
-            :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC"
+            :href="$config.vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC"
             class="menu__modal_file">
             <div class="icon">
               <img src="~/assets/img/download.svg" width="100%" alt="">
@@ -80,7 +81,7 @@
         <div class="menu__modal_bottom" v-if="getDownloads['katalog-produktsii']">
           <osm-h2 class="menu__modal_title">{{ $t('buttons.downloads') }}</osm-h2>
           <a target="_blank" v-if="'PROPERIES' in getDownloads['katalog-produktsii']"
-            :href="$vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC"
+            :href="$config.vareibles.remote + getDownloads['katalog-produktsii'].PROPERIES[0].VALUE.SRC"
             class="menu__modal_file">
             <div class="icon">
               <img src="~/assets/img/download.svg" width="100%" alt="">

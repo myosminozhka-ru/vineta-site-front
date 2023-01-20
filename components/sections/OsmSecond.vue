@@ -4,9 +4,9 @@
       <video id="second-video" muted class="section__left_video">
         <source type="video/webm" src="~/assets/video/1.webm" />
       </video>
-      <!-- <img :src="$vareibles.remote + secondData.PREVIEW_PICTURE" alt="first" width="100%"> -->
+      <!-- <img :src="$config.vareibles.remote + secondData.PREVIEW_PICTURE" alt="first" width="100%"> -->
     </div>
-    <div class="section__right">
+    <div v-if="secondData" class="section__right">
       <div v-if="'PROPERIES' in secondData" class="section__content">
         <div class="mobile_left">
           <osm-h1 class="section__title">{{ secondData.NAME }}</osm-h1>
@@ -15,7 +15,7 @@
           </div>
           <div class="section__buttons hide_on_desktop hide_on_mobile">
             <osm-button v-if="'NAME_BUTTON' in secondData.PROPERIES" link="index" class="section__button">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
-            <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC" class="section__downloads">
+            <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$config.vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC" class="section__downloads">
               <div class="section__pdf">
                 <div class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 25">
@@ -34,7 +34,7 @@
               <!-- <pre>
 				{{ secondData.PROPERIES }}
 			</pre> -->
-              <video v-if="'VIDEO' in secondData.PROPERIES" ref="secondVideo" :class="{ isVideoPlayed }" controls="false" :src="$vareibles.remote + secondData.PROPERIES.VIDEO.VALUE.SRC" :type="secondData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" :poster="'VIDEO_PREVIEW' in secondData.PROPERIES ? $vareibles.remote + secondData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC : require('~/assets/img/product.noimage.png')" />
+              <video v-if="'VIDEO' in secondData.PROPERIES" ref="secondVideo" :class="{ isVideoPlayed }" controls="false" :src="$config.vareibles.remote + secondData.PROPERIES.VIDEO.VALUE.SRC" :type="secondData.PROPERIES.VIDEO.VALUE.CONTENT_TYPE" :poster="'VIDEO_PREVIEW' in secondData.PROPERIES ? $config.vareibles.remote + secondData.PROPERIES.VIDEO_PREVIEW.VALUE.SRC : require('~/assets/img/product.noimage.png')" />
               <div v-if="!isVideoPlayed" class="tiles__item-bottom" @click="playVideo">
                 <div class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 60 60">
@@ -47,13 +47,13 @@
             </div>
             <template v-if="'MORE_PHOTO' in secondData.PROPERIES">
               <div v-for="morePhoto in secondData.PROPERIES.MORE_PHOTO.VALUE" :key="morePhoto.ID" class="tiles__item">
-                <img :src="$vareibles.remote + morePhoto.SRC" alt="" />
+                <nuxt-img :src="$config.vareibles.remote + morePhoto.SRC" alt="" loading="lazy" />
               </div>
             </template>
           </div>
           <div class="section__buttons hide_off_mobile">
             <osm-button v-if="'NAME_BUTTON' in secondData.PROPERIES" class="section__more" link="index">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
-            <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC" class="section__downloads">
+            <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$config.vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC" class="section__downloads">
               <div class="section__pdf">
                 <div class="icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 25">
@@ -68,7 +68,7 @@
         </div>
         <div class="section__buttons hide_on_tablet">
           <osm-button v-if="'NAME_BUTTON' in secondData.PROPERIES" link="index">{{ secondData.PROPERIES.NAME_BUTTON.VALUE }}</osm-button>
-          <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC" class="section__downloads">
+          <a v-if="'FILE' in secondData.PROPERIES" target="_blank" :href="$config.vareibles.remote + secondData.PROPERIES.FILE.VALUE.SRC" class="section__downloads">
             <div class="section__pdf">
               <div class="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 25">
@@ -90,7 +90,6 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    //   OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   props: {
     isMounted: {
@@ -187,8 +186,6 @@ export default {
     }
     img {
       width: auto;
-      // -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
-      // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
     }
   }
   svg {
@@ -218,8 +215,6 @@ export default {
       transform: translateX(-50%);
     }
     transition: 1s clip-path 2.3s ease;
-    //   padding-top: rem(30);
-    //   padding-bottom: rem(25);
     padding: 24px;
     &:not(.isClipped) {
       @media all and (min-width: 861px) {
@@ -291,8 +286,6 @@ export default {
 
   &__right {
     padding-right: rem(122);
-    //   padding-top: 0;
-    //   padding-bottom: 0;
     background: #2e5599;
     display: flex;
     flex-direction: column;
@@ -302,7 +295,6 @@ export default {
       padding-bottom: 0 !important;
     }
     @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
-      //   padding-left: rem(50);
       padding-right: rem(50);
     }
 

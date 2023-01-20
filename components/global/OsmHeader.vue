@@ -1,5 +1,5 @@
 <template>
-  <header class="header" v-show="getLoadedStatus">
+  <header class="header">
     <osm-logo />
     <osm-menu />
     <osm-info />
@@ -7,10 +7,7 @@
     <osm-mobile-menu />
   </header>
 </template>
-
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   components: {
     OsmLogo: () => import('~/components/header/OsmLogo.vue'),
@@ -19,14 +16,10 @@ export default {
     OsmMobileMenu: () => import('~/components/header/OsmMobileMenu.vue'),
     OsmSearch: () => import('~/components/search/OsmSearchPopup.vue'),
   },
-  computed: {
-    ...mapGetters(['getLoadedStatus']),
-  },
   async mounted() {
     try {
       await this.$recaptcha.init()
     } catch (e) {
-      console.log(e);
     }
   },
 }

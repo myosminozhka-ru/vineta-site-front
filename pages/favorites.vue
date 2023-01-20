@@ -4,37 +4,57 @@
     <div class="header_padding">
       <div class="favorites">
         <osm-breadcrumbs />
-        <div class="favorites__title">Избранное</div>
+        <div class="favorites__title">{{ $t('favourites.title') }}</div>
         <osm-catalog-products v-if="products.length" />
-        <div v-else class="favorites__subtitle">Вы пока ничего не добавили в избранное.</div>
+        <div v-else class="favorites__subtitle">{{ $t('favourites.subtitle') }}</div>
         <div class="favorites__buttons">
           <span v-if="false" @click="printSection">
-            <osm-button class="favorites__button" :large="true" :outlined="true">Выгрузить</osm-button>
+            <osm-button class="favorites__button" :large="true" :outlined="true">{{ $t('buttons.upload') }}</osm-button>
           </span>
-          <osm-button class="favorites__button" :large="true" link="catalog">В каталог</osm-button>
+          <osm-button class="favorites__button" :large="true" link="catalog">{{ $t('buttons.to_catalogue') }}</osm-button>
         </div>
       </div>
     </div>
     <osm-footer />
-    <osm-preloader />
     <osm-favorites-modal />
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'FavoritesPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProductsFake.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
     OsmFavoritesModal: () => import('~/components/modals/favorites.vue'),
   },
+  data: () => ({
+    isMounted: false,
+  }),
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
 
+    if (!store.state.products.length) {
+      await store.dispatch('addProducts')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.history,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
+  },
   head() {
     return {
       title: this.getSeo.favorites.SEO.META.TITLE,
@@ -60,24 +80,11 @@ export default {
       return this.getProducts.filter((item) => this.getFavorites.includes(+item.ID))
     },
   },
-  created() {
-    this.addBreadcrumbs([
-      {
-        name: 'Главная',
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: 'Избранное',
-        isLink: false,
-      },
-    ])
+  mounted() {
+    this.isMounted = true;
   },
-
   methods: {
-    ...mapActions(['addBreadcrumbs']),
     printSection() {
-      // this.$htmlToPaper("wrapper");
       window.print()
     },
   },

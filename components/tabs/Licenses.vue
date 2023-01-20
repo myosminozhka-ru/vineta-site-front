@@ -12,24 +12,24 @@
                   <template v-if="item.PREVIEW_PICTURE">
                     <div v-if="tab.filter === 'otchety-po-sout'" class="gallery__item">
                       <div class="gallery__item_image">
-                        <img :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" />
+                        <nuxt-img :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
                       </div>
                       <div class="gallery__item_overlay">
                         <div class="icon">
-                          <img :src="require('~/assets/img/licenses/search_icon.svg')" width="100%" alt="" />
+                          <nuxt-img src="/licenses/search_icon.svg" width="100%" alt="" loading="lazy" />
                         </div>
                         <div class="text">{{ item.NAME }}</div>
-                        <a v-if="item.PROPERIES" :href="$vareibles.remote + item.PROPERIES.PDF.SRC" download="true" target="_blank" class="pdf">
-                          <img :src="require('~/assets/img/pdf.png')" alt="" />
+                        <a v-if="item.PROPERIES" :href="$config.vareibles.remote + item.PROPERIES.PDF.SRC" download="true" target="_blank" class="pdf">
+                          <nuxt-img src="/pdf.png" alt="" loading="lazy" />
                         </a>
                       </div>
                     </div>
 
-                    <img v-else :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
+                    <nuxt-img v-else :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                   </template>
                 </li>
                 <nuxt-link :to="localePath({ name: 'licenses' })" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
-                  <div class="text">Смотреть все</div>
+                  <div class="text">{{ $t('buttons.view_all') }}</div>
                 </nuxt-link>
               </ul>
             </div>
@@ -67,16 +67,16 @@
               <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
                   <li v-for="(item, key) in filterBySection(tab.filter)" :key="item.index" class="licensesSlid__slide glide__slide" @click="setGalleryIndex(key)">
-                    <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
+                    <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
                   </li>
                   <nuxt-link :to="localePath({ name: 'licenses' })" class="licensesSlid__slide licensesSlid__slide--last glide__slide">
-                    <div class="text">Смотреть все</div>
+                    <div class="text">{{ $t('buttons.view_all') }}</div>
                   </nuxt-link>
                 </ul>
               </div>
             </div>
             <div class="licensesSlid__arrows">
-              <nuxt-link :to="localePath({ name: 'licenses' })" class="more">Смотреть все</nuxt-link>
+              <nuxt-link :to="localePath({ name: 'licenses' })" class="more">{{ $t('buttons.view_all') }}</nuxt-link>
               <div class="licensesSlid__arrows-in" data-glide-el="controls">
                 <button class="licensesSlid__arrow licensesSlid__arrow--left" data-glide-dir="<">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 40 40" fill="none">
@@ -133,7 +133,7 @@ export default {
     },
     imagesGallery() {
       return this.getLicenses.map((item) => {
-        return this.$vareibles.remote + item.PREVIEW_PICTURE
+        return this.$config.vareibles.remote + item.PREVIEW_PICTURE
       })
     },
   },
@@ -146,16 +146,12 @@ export default {
       this.initAccordions()
       this.isMounted = true
     }, 1000)
-    // this.setGalleryIndex(2);
-    // console.log('galleryIndex', this.galleryIndex);
   },
   methods: {
     ...mapActions(['setGalleryIndex']),
     tabClicked(selectedTab) {
-      // console.log('Current tab re-clicked:' + selectedTab.tab.name);
     },
     tabChanged(selectedTab) {
-      // console.log('Tab changed t:' + selectedTab.tab.name);
     },
     initSlider() {
       document.querySelectorAll('.licensesSlid').forEach((item) => {
@@ -208,12 +204,6 @@ export default {
     transition: opacity 0.3s ease;
   }
 
-  // }
-  // &-panel:not([aria-hidden="true"]) {
-  //     transition: 0.5s opacity 5s ease;
-  //     opacity: 1;
-  //     visibility: visible;
-  // }
   &-tabs {
     list-style: none;
     display: flex;

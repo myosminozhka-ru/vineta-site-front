@@ -2,7 +2,7 @@
   <div class="response">
     <div class="response__in">
       <div class="response__left">
-        <div class="response__title">Откликнуться на вакансию</div>
+        <div class="response__title">{{ $t('sections.modals.apply_vacancy') }}</div>
         <div class="response__line"></div>
         <div v-for="(item, index) in dataArray" :key="index" class="response__contacts">
           <div class="name">{{ item.NAME }}</div>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="response__right" @click="openApplyModal">
-        <osm-button>Откликнуться</osm-button>
+        <osm-button>{{ $t('buttons.apply') }}</osm-button>
       </div>
     </div>
   </div>
@@ -39,7 +39,6 @@ export default {
   methods: {
     ...mapActions(['toggleModal']),
     openApplyModal() {
-      // console.log('openApplyModal');
       this.toggleModal({
         isOpened: true,
         type: 'apply',

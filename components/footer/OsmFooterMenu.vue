@@ -19,33 +19,45 @@
     </ul>
     <ul class="opened isOpened">
       <li>
-        <nuxt-link :to="localePath({ name: 'partners' })">Заказчикам</nuxt-link>
+        <nuxt-link :to="localePath({ name: 'partners' })">{{ $t('sections.footer.to_customers') }}</nuxt-link>
       </li>
-      <li v-for="link in aboutDownloadLinks" :key="link.ID">
+      <li>
+        <nuxt-link :to="localePath({ name: 'licenses' })">{{ $t('sections.footer.licenses_and_certificates') }}</nuxt-link>
+      </li>
+      <li>
+        <a v-if="getDownloadsCustomers.src" :href="getDownloadsCustomers.src" download="catalogue_Vineta" target="_black">{{ $t('buttons.download_catalog') }}</a>
+      </li>
+      <li>
+        <a href="/files/vineta_book_TO_002.pdf" download target="_blank">{{ $t('sections.footer.heat_exchange_equipment') }}</a>
+      </li>
+      <li>
+        <a href="/files/vineta_book_TP_rus_001.pdf" download target="_blank">{{ $t('sections.footer.fuel_preparation_equipment') }}</a>
+      </li>
+      <li>
+        <a href="/files/Vineta_book_VGO_ru_002.pdf" download target="_blank">{{ $t('sections.footer.air_and_gas_cleaning_equipment') }}</a>
+      </li>
+      <li>
+        <a href="/files/Vineta_book_VO_rus_ver012.pdf" download target="_blank">{{ $t('sections.footer.water_treatment_and_purification_equipment') }}</a>
+      </li>
+      <!-- <li v-for="link in []" :key="link.ID">
         <a :href="link.PROPERIES[0].SRC" :download="link.CODE" target="_black">{{ link.NAME }}</a>
-      </li>
+      </li> -->
     </ul>
     <ul class="opened isOpened">
       <li>
         <nuxt-link :to="localePath({ name: 'contacts' })">{{ $t('buttons.contacts') }}</nuxt-link>
       </li>
       <li>
-        <span>{{ getContacts[0].ADRESS.VALUE }}</span>
+        <span>{{ getContacts[0]?.ADRESS?.VALUE }}</span>
       </li>
-      <li>
-        <a href="tel:78124935048">+7(812)493-50-48</a>
-      </li>
-      <li>
-        <a href="mailto:info@vineta.ru">info@vineta.ru</a>
-      </li>
+      <template v-if="getPhoneAndEmail.length">
+        <li v-for="(contact, index) in getPhoneAndEmail" :key="index">
+          <a :href=" contact.CODE === 'PHONE' ? `tel:${contact.VALUE}` : `mailto:${contact.VALUE}`">{{contact.VALUE}}</a>
+        </li>
+      </template>
       <li>
         <span>{{ $t('sections.footer.worktime') }}</span>
       </li>
-      <div v-if="false" class="footer__top_socials hide_on_desktop">
-        <a v-for="social in socials" :key="social.index" :href="social.link" target="_blank" class="footer__top_social">
-          <img :src="social.icon" width="100%" alt="" />
-        </a>
-      </div>
     </ul>
   </nav>
 </template>
@@ -73,15 +85,33 @@ export default {
     ...mapGetters(['getMainMore']),
     ...mapGetters(['getDownloads']),
     ...mapGetters(['getContacts']),
+    getDownloadsCustomers() {
+      const produktsii = this.getDownloads['katalog-produktsii']
+      const length = produktsii?.PROPERIES.length;
+      const src = length ? produktsii?.PROPERIES[0]?.SRC : '';
+      const name = length ? produktsii?.NAME : '';
+      return {
+        src,
+        name,
+      }
+    },
     aboutDownloadLinks() {
       const filterArray = [];
       for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES.length > 1) {
+        if (this.getDownloads[key].PROPERIES?.length > 1) {
           filterArray.push(this.getDownloads[key])
         }
       }
-      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file');
+      return filterArray.filter((item) => item?.PROPERIES[1]?.VALUE === 'about_file');
     },
+    /**
+     * Получение телефона и почты
+     * @function
+     * @return {{}[] | []}
+     */
+    getPhoneAndEmail() {
+      return this.getContacts[0]?.PROPERIES.filter((item) => item.CODE === 'PHONE' || item.CODE === 'EMAIL') || []
+    }
   },
   mounted() {
     this.initCollapse()

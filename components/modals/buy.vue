@@ -3,7 +3,7 @@
     <div class="modal__in" @click.stop>
       <div class="modal__top">
         <div class="modal__closer" @click="closeBuy">
-          <img :src="require('~/assets/img/closer.svg')" width="100%" alt="" />
+          <nuxt-img src="/closer.svg" width="100%" alt="" loading="lazy" />
         </div>
       </div>
       <form ref="buy_form" class="modal__form" @submit.prevent="sendForm">
@@ -29,12 +29,7 @@
               {{ errors[field.VARNAME] }}
             </div>
             <template v-if="field.VARNAME !== 'NUMBER'">
-              <template v-if="field.VARNAME !== 'PHONE'">
-                <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
-              </template>
-              <template v-else>
-                <input v-model="formData[field.VARNAME]" v-mask="'+_ (___) ___-__-__'" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" />
-              </template>
+              <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input test" />
             </template>
             <template v-else>
               <osm-counter class="modal__input" />
@@ -48,15 +43,15 @@
 
                     <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
           <p style="font-size: 12rem">
-            Заполняя данную форму, вы принимаете условия
-            <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
-            об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
+            {{ $t('sections.modals.policy_before_link') }}
+            <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> {{ $t('sections.modals.policy_link') }} </a>
+            {{ $t('sections.modals.policy_after_link') }}
           </p>
-          <osm-button class="modal__button" :large="true" type="submit">Отправить</osm-button>
+          <osm-button class="modal__button" :large="true" type="submit">{{ $t('sections.footer.send') }}</osm-button>
         </div>
         <div v-else class="modal__form_in">
-          <div class="modal__title">Спасибо за заявку!</div>
-          <div class="modal__subtitle">Мы свяжемся с Вами в ближайшее время.</div>
+          <div class="modal__title">{{ $t('sections.modals.thank_application') }}</div>
+          <div class="modal__subtitle">{{ $t('sections.modals.we_you_shortly') }}</div>
         </div>
       </form>
     </div>
@@ -80,14 +75,6 @@ export default {
   },
   computed: {
     ...mapGetters(['getModals', 'getProducts']),
-    // formData() {
-    //     return this.fields.value.map(item => {
-    //         return {
-    //             name: item.VARNAME,
-    //             value: ""
-    //         }
-    //     })
-    // }
   },
   mounted() {
     const codeProduct = window.location.href.split('/')
@@ -97,38 +84,34 @@ export default {
     ...mapActions(['toggleModal']),
     closeBuy() {
       this.isSuccess = false
-      this.formData = {}
+      this.clearFormData()
       this.toggleModal({
         isOpened: false,
         type: 'buy',
       })
     },
-    async sendForm() {
+    clearFormData(){
+      for (const k in this.formData) {
+        if (k !== 'GOOD') {
+            delete this.formData[k];
+        }
+      }
+    },
+    sendForm() {
       const formObj = { ...this.formData }
-      // const form = this.formData.filter(item => item);
-      // console.log(form)
-      // const data = new FormData(this.$refs.buy_form);
       const form = new FormData()
 
       for (const key in formObj) {
         form.append(key, formObj[key])
       }
-      const token = await this.$recaptcha.execute('submit')
-      form.append('token', token)
-      // this.formData.map(item => {
-      //     const [key, value] = item;
-      //     console.log(key, value);
-      //     return item;
-      // })
-      // const form = new FormData(this.formData);
-      // console.log(form);
       this.$axios.$post('forms/result_order.php', form).then((result) => {
-        // console.log(result);
         if (result.error) {
           this.errors = result.error
         }
         if (result.success) {
           this.isSuccess = true
+          this.clearFormData()
+          this.errors = {}
         }
       })
     },
@@ -146,7 +129,6 @@ export default {
   background: rgba(23, 34, 66, 0.8);
   z-index: 1000;
   text-align: center;
-  // padding: 58px 0;
   padding: 10px 0;
   box-sizing: border-box;
   opacity: 0;
@@ -164,7 +146,6 @@ export default {
   }
   &__in {
     background: #ffffff;
-    // padding: rem(40);
     padding: rem(20);
     max-width: rem(710);
     width: 100%;
@@ -228,9 +209,6 @@ export default {
   .osm__form_field {
     margin-bottom: rem(20);
   }
-  // &__input {
-  //     margin-bottom: rem(20);
-  // }
   &__textarea {
     margin-bottom: rem(20);
   }

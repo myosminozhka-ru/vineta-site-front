@@ -1,15 +1,15 @@
 <template>
     <div class="news__wrap" :class="{'innerPage': inner}">
         <div class="news__top">
-            <osm-h1 class="news__title">{{ this.$t('buttons.news') }}</osm-h1>
-            <osm-button class="news__button_top" link="news" :outlined="true">{{ this.$t('buttons.all_news') }}</osm-button>
+            <osm-h1 class="news__title">{{ $t('buttons.news') }}</osm-h1>
+            <osm-button class="news__button_top" link="news" :outlined="true">{{ $t('buttons.all_news') }}</osm-button>
         </div>
         <div class="news__bottom hide_on_tablet">
-            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in getNews.slice(0, 4)" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
+            <nuxt-link v-for="(item, key) in getNews.slice(0, 4)" :key="key" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" :class="{'news__item_big': key === 0, 'news__item': key != 0}" >
                 <template v-if="key === 0">
                     <div class="news__image">
-                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
-                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                     <div class="news__item_top">
                         <div class="news__date">{{ item.DATE }}</div>
@@ -24,13 +24,13 @@
                 <template v-else>
                     <div class="news__item_left">
                         <div class="news__image">
-                            <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
-                            <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                            <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                            <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                         </div>
                     </div>
                     <div class="news__item_right">
                         <div class="news__item_top">
-                            <div class="news__date" v-if="'PROPERIES' in item">{{ item.PROPERIES[0].VALUE }}</div>
+                            <div v-if="'PROPERIES' in item" class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
                             <div class="news__text">
                                 {{ item.NAME }}
                             </div>
@@ -45,8 +45,8 @@
                 <div class="glide__slides news__slides">
                     <div v-for="(item, key) in getNews" :key="key" class="news__item_big">
                         <div class="news__image">
-                            <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
-                            <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                            <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                            <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                         </div>
                         <div class="news__item_top">
                             <div class="news__date">{{ item.DATE }}</div>
@@ -91,15 +91,15 @@ import Glide from '@glidejs/glide';
 import { mapGetters } from 'vuex';
 export default {
   name: 'OsmSeventhSection',
+  components: {
+    OsmH1: () => import('~/components/global/OsmH1.vue'),
+    OsmButton: () => import('~/components/global/OsmButton.vue'),
+  },
   props: {
     inner: {
         type: Boolean,
         default: false
     }
-  },
-  components: {
-    OsmH1: () => import('~/components/global/OsmH1.vue'),
-    OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   data: () => ({
     slider: null,
@@ -254,7 +254,7 @@ export default {
         width: 100%;
         &:not(.innerPage) {
             padding: 110rem 240rem 0rem 108rem;
-            
+
             .news__title {
                 @media all and (max-width: 840px) {
                     color: #fff;
@@ -273,9 +273,9 @@ export default {
             }
         }
     }
-    
-    
-    
+
+
+
     &__top {
         display: flex;
         align-items: center;
@@ -287,7 +287,7 @@ export default {
     }
     &__bottom {
         display: grid;
-        grid-template-areas: 
+        grid-template-areas:
                 "first second"
                 "first third"
                 "first fourth";

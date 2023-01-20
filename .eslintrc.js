@@ -12,8 +12,7 @@ module.exports = {
   },
   extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier'],
   plugins: [],
-  // add your custom rules here
   rules: {
-    'no-console': 'off',
-  },
+    "vue/no-v-html": 0
+  }
 }

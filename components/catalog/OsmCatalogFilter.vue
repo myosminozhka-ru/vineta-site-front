@@ -44,11 +44,11 @@
           </div>
         </div>
         <div class="filter__controlls">
-            <button class="filter__start hide_on_desktop" @click="isFilterOpened = false">Применить</button>
-            <button class="filter__clear hide_on_desktop" @click="clearFilter">Сбросить</button>
+            <button class="filter__start hide_on_desktop" @click="isFilterOpened = false">{{ $t('buttons.apply2') }}</button>
+            <button class="filter__clear hide_on_desktop" @click="clearFilter">{{ $t('buttons.reset') }}</button>
         </div>
       </div>
-      <button v-if="getCatalogFilters" class="filter__clear hide_on_tablet" @click="clearFilter">Сбросить</button>
+      <button v-if="getCatalogFilters" class="filter__clear hide_on_tablet" @click="clearFilter">{{ $t('buttons.reset') }}</button>
       <div v-if="!getCatalogFilters" class="filter__title">
         {{ $t('filter.empty') }}
       </div>
@@ -69,7 +69,6 @@ export default {
         return this.getFilters
       },
       set(newValue) {
-        // console.log(newValue)
         this.addFilters(this.filterObj)
       },
     },
@@ -108,9 +107,6 @@ export default {
       return item
     })
     this.setCatalogFilters(JSON.stringify(params))
-    // console.log(this.getCatalogFilters)
-    // console.log('this.getCatalog', this.getCatalogFilters);
-
     this.setFilterOpener()
   },
   methods: {

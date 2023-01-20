@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="preloader"
-    :class="[isMounted, getLoadedStatus ? 'isAnimated' : '']"
-  >
+  <div class="preloader" :class="[dynamicClass]">
     <span class="circle circle-1"></span>
     <span class="circle circle-2"></span>
     <span class="circle circle-3"></span>
@@ -17,33 +14,12 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-  data: () => ({
-    isMounted: false,
-    isAnimated: false,
-  }),
   computed: {
     ...mapGetters(['getLoadedStatus']),
-  },
-  beforeDestroy() {
-    this.isMounted = false
-    this.isAnimated = false
-  },
-  mounted() {
-    this.isMounted = true
-    setTimeout(() => {
-      this.isAnimated = true
-    }, 1000)
-    // const stateCheck = setInterval(() => {
-    //   if (document.readyState === 'complete' && this.getLoadedStatus) {
-    //       clearInterval(stateCheck);
-    //       setTimeout(() => {
-    //         this.isMounted = true
-    //     }, 0);
-    //     setTimeout(() => {
-    //         this.isAnimated = true
-    //     }, 1000);
-    //     }
-    // }, 100);
+    dynamicClass() {
+      const status = this.getLoadedStatus;
+      return status ? null : 'preloader--is-hidden'
+    }
   },
 }
 </script>
@@ -60,12 +36,20 @@ export default {
   align-items: center;
   justify-content: center;
   background: #f2f2f2;
-  transition: opacity 1s ease;
+  transition: all 1s ease;
   opacity: 1;
   visibility: visible;
+
+  &--is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   &.isMounted {
     opacity: 0;
   }
+
   &.isAnimated {
     visibility: hidden;
     pointer-events: none;

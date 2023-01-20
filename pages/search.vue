@@ -14,81 +14,91 @@
             </div>
         </div>
         <osm-footer />
-        <osm-preloader />
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 export default {
-    name: "FavoritesPage",
-    head() {
-      return {
-        title: 'Результаты поиска',
-        meta: [
-          // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-          {
-            hid: 'description',
-            name: 'description',
-            content: 'Результаты поиска'
-          },
-          {
-            hid: 'keywords',
-            name: 'keywords',
-            content: 'Результаты поиска'
-          },
-          {
-            hid: 'twitter:card',
-            name: 'twitter:card',
-            content: 'summary_large_image'
-          },
-          {
-            hid: 'twitter:title',
-            name: 'twitter:title',
-            content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
-          },
-          {
-            hid: 'twitter:description',
-            name: 'twitter:description',
-            content: 'Результаты поиска'
-          },
-        ]
-      }
-    },
-    components: {
-        // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
-        OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
-        OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProductsSearch.vue'),
-        OsmButton: () => import('~/components/global/OsmButton.vue'),
-        OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-        OsmNewsBlock: () => import('~/components/news/OsmBlock.vue'),
-        OsmPreloader: () => import('~/components/global/OsmPreloader.vue')
-    },
-    computed: {
-        ...mapGetters(['getProducts']),
-        productsResult() {
-            return this.getProducts.filter(product => product.NAME.includes(this.$route.query.q));
-        }
-    },
-    created() {
-      this.addBreadcrumbs([
-          {
-              name: 'Главная',
-              link: 'index',
-              isLink: true
-          },
-          {
-              name: 'Результаты поиска',
-              isLink: false
-          },
-      ])
-    },
-    methods: {
-      ...mapActions(['addBreadcrumbs'])
-    },
-    mounted() {
-        // console.log(this.$route.query.q);
+  name: "SearchPage",
+  components: {
+    OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
+    OsmCatalogProducts: () => import('~/components/catalog/OsmCatalogProductsSearch.vue'),
+    OsmButton: () => import('~/components/global/OsmButton.vue'),
+    OsmFooter: () => import('~/components/global/OsmFooter.vue'),
+    OsmNewsBlock: () => import('~/components/news/OsmBlock.vue'),
+  },
+  data: () => ({
+      isMounted: false
+  }),
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.products.length) {
+      await store.dispatch('addProducts')
     }
+
+    this.addBreadcrumbs([
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true
+      },
+      {
+        name: i18n.messages[i18n.locale].search.title,
+        isLink: false
+      },
+    ])
+  },
+  head() {
+    return {
+      title: 'Результаты поиска',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Результаты поиска'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'Результаты поиска'
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: this.vacancy && 'SEO' in this.vacancy[0] ? this.vacancy[0].SEO.META.TITLE : '',
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content: 'Результаты поиска'
+        },
+      ]
+    }
+  },
+
+  computed: {
+      ...mapGetters(['getProducts']),
+      productsResult() {
+          return this.getProducts.filter(product => product.NAME.includes(this.$route.query.q));
+      }
+  },
+  mounted() {
+    this.isMounted = true;
+
+    setTimeout(() => {
+      this.setLoadingStatus(false)
+    }, 0)
+  },
+  methods: {
+    ...mapActions(['setLoadingStatus'])
+  },
 }
 </script>
 

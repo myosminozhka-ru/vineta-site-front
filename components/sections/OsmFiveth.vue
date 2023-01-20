@@ -1,7 +1,7 @@
 <template>
     <section class="section section__item section__item--fiveth">
-        <customers class="customers__slider" />
-        <licenses />
+        <customers v-if="isActive" class="customers__slider" />
+        <licenses v-if="isActive" />
     </section>
 </template>
 <script>
@@ -11,7 +11,17 @@ export default {
     Customers: () => import('~/components/sliders/Customers.vue'),
     Licenses: () => import('~/components/tabs/Licenses.vue'),
   },
-  
+  props: {
+    /**
+     * Виден ли слайдер
+     * @type {boolean}
+     * @default false
+     */
+    isActive: {
+      type: Boolean,
+      default: false
+    },
+  }
 }
 </script>
 

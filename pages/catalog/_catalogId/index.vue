@@ -44,11 +44,9 @@ export default {
     parent: null,
   }),
   head() {
-    // console.log(this.currentCategory);
     return {
       title: 'SEO' in this.currentCategory ? this.currentCategory.SEO.META.TITLE : '',
       meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
           hid: 'description',
           name: 'description',
@@ -67,7 +65,7 @@ export default {
         {
           hid: 'twitter:url',
           name: 'twitter:url',
-          content: 'https://vineta.fvds.ru/',
+          content: this.$config.vareibles.remote,
         },
         {
           hid: 'twitter:title',
@@ -82,7 +80,7 @@ export default {
         {
           hid: 'twitter:imag',
           name: 'twitter:imag',
-          content: 'SEO' in this.currentCategory && 'DETAIL_PICTURE' in this.currentCategory ? this.$vareibles.remote + this.currentCategory.DETAIL_PICTURE : require('~/assets/img/product.noimage.png'),
+          content: 'SEO' in this.currentCategory && 'DETAIL_PICTURE' in this.currentCategory ? this.$config.vareibles.remote + this.currentCategory.DETAIL_PICTURE : require('~/assets/img/product.noimage.png'),
         },
       ],
     }
@@ -93,15 +91,11 @@ export default {
       return this.$route.params.catalogId
     },
   },
-  // beforeCreate() {
-  //     this.currentCategory = this.getCatalog.filter(category => category.CODE === this.$route.params.catalogId);
-  // },
   created() {
-    // this.currentCategory
+    console.log('hey')
     if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochee-oborudovanie' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
       this.hasFilters = false
     }
-    console.log(this.getCatalog)
     this.getCatalog.map((category) => {
       if (category.CODE === this.$route.params.catalogId) {
         this.currentCategory = category
@@ -109,7 +103,6 @@ export default {
       }
       if (!category.CHILD) return category
       category.CHILD.map((child) => {
-        // console.log(child)
         if (child.CODE === this.$route.params.catalogId) {
           this.parent = category
           this.currentCategory = child
@@ -120,12 +113,12 @@ export default {
     })
     this.addBreadcrumbs([
       {
-        name: 'Главная',
+        name: this.$t('buttons.main'),
         link: 'index',
         isLink: true,
       },
       {
-        name: 'Каталог',
+        name: this.$t('buttons.catalog'),
         link: 'catalog',
         isLink: true,
       },
@@ -143,8 +136,13 @@ export default {
       },
     ])
   },
+  mounted() {
+    setTimeout(() => {
+      this.setLoadingStatus(false)
+    }, 700)
+  },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
+    ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
   },
 }
 </script>
@@ -177,7 +175,6 @@ export default {
 .catalog {
   &__in {
     display: flex;
-    // align-items: flex-start;
     justify-content: space-between;
     @media all and (max-width: 1280px) {
       flex-direction: column;
@@ -185,10 +182,8 @@ export default {
   }
   &__in-left {
     width: rem(345);
-    // border: 1px solid #D7DCE1;
     @media all and (max-width: 1280px) {
       width: 100%;
-      // border: none;
     }
   }
   &__in-right {

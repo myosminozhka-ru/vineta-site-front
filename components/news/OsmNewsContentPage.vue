@@ -1,11 +1,17 @@
 <template>
     <div class="news__content_in">
-        <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" :class="{'news__item_big': key === 0, 'news__item': key != 0}" class="hide_on_mobile" >
+      <nuxt-link
+        v-for="(item, key) in news"
+        :key="key"
+        :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})"
+        :class="{'news__item_big' :key === 0, 'news__item': key != 0}"
+        class="hide_on_mobile" >
             <template v-if="key === 0">
-                <div class="news__image">
-                    <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
-                    <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
-                </div>
+              <div class="news__image">
+                  <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                  <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
+              </div>
+              <div class="news__item-inner">
                 <div class="news__item_top">
                     <div class="news__date">{{ item.PROPERIES[0].VALUE }}</div>
                 </div>
@@ -15,12 +21,13 @@
                     </div>
                     <osm-button :link="item.link">{{ $t('buttons.more') }}</osm-button>
                 </div>
+              </div>
             </template>
             <template v-else>
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
-                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                 </div>
                 <div class="news__item_right">
@@ -30,7 +37,7 @@
                             {{ item.NAME }}
                         </div>
                     </div>
-                    <span class="news__link" :to="{name: item.link, params: {newsId: item.CODE}}">Читать новость</span>
+                    <span :to="{name: item.link, params: {newsId: item.CODE}}" class="news__link">{{ $t('buttons.read_news') }}</span>
                 </div>
             </template>
         </nuxt-link>
@@ -42,12 +49,12 @@
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 1">
-            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div v-if="tabs.selected === 1" class="news__content_tabs hide_off_mobile">
+            <nuxt-link v-for="(item, key) in news" :key="key" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
-                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                 </div>
                 <div class="news__item_right">
@@ -57,7 +64,7 @@
                             {{ item.NAME }}
                         </div>
                     </div>
-                    <span class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</span>
+                    <span :to="{name: item.link, params: {newsId: 'tratata'}}" class="news__link">{{ $t('buttons.read_news') }}</span>
                 </div>
             </nuxt-link>
         </div>
@@ -69,12 +76,12 @@
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 2">
-            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div v-if="tabs.selected === 2" class="news__content_tabs hide_off_mobile">
+            <nuxt-link v-for="(item, key) in news" :key="key" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
-                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                 </div>
                 <div class="news__item_right">
@@ -84,7 +91,7 @@
                             {{ item.NAME }}
                         </div>
                     </div>
-                    <span class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</span>
+                    <span :to="{name: item.link, params: {newsId: 'tratata'}}" class="news__link">{{ $t('buttons.read_news') }}</span>
                 </div>
             </nuxt-link>
         </div>
@@ -96,12 +103,12 @@
                 </svg>
             </div>
         </div>
-        <div class="news__content_tabs hide_off_mobile" v-if="tabs.selected === 3">
-            <nuxt-link :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" v-for="(item, key) in news" :key="key" class="news__item hide_off_mobile">
+        <div v-if="tabs.selected === 3" class="news__content_tabs hide_off_mobile">
+            <nuxt-link v-for="(item, key) in news" :key="key" :to="localePath({name: 'news-newsId', params: {newsId: item.CODE}})" class="news__item hide_off_mobile">
                 <div class="news__item_left">
                     <div class="news__image">
-                        <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="">
-                        <img v-else :src="require('~/assets/img/product.noimage.png')" alt="">
+                        <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
+                        <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
                     </div>
                 </div>
                 <div class="news__item_right">
@@ -111,7 +118,7 @@
                             {{ item.NAME }}
                         </div>
                     </div>
-                    <span class="news__link" :to="{name: item.link, params: {newsId: 'tratata'}}">Читать новость</span>
+                    <span :to="{name: item.link, params: {newsId: 'tratata'}}" class="news__link">{{ $t('buttons.read_news') }}</span>
                 </div>
             </nuxt-link>
         </div>
@@ -170,12 +177,12 @@ export default {
         display: grid;
         grid-gap: rem(20);
         grid-template-columns: repeat(3, 1fr );
-        grid-template-areas: 
+        grid-template-areas:
             'big big big'
             'first second third';
-        @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+        @media all and (max-width: 1440px) {
             grid-template-columns: repeat(2, 1fr );
-            grid-template-areas: 
+            grid-template-areas:
                 'big big'
                 'first second';
         }
@@ -184,20 +191,22 @@ export default {
         }
     }
     &__item_big {
+      position: relative;
+      grid-area: big;
+    }
+    &__item_big &__item-inner {
         text-decoration: none;
-        position: relative;
+        position: absolute;
+        left: 0;
+        top: 0;
         padding: rem(60);
-        min-height: rem(563);
+        height: 100%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        grid-area: big;
         @media all and (max-width: 1280px) {
             padding: 20px 30px 20px 20px;
-            min-height: 563px;
-        }
-        @media all and (max-width: 840px) {
-            min-height: 280px;
         }
         &::before {
             content: "";
@@ -212,12 +221,11 @@ export default {
         }
     }
     &__item_big &__image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        padding-bottom: 53.5%;
         img {
+            position: absolute;
+            left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -225,27 +233,12 @@ export default {
         }
     }
     &__item_big &__item_top {
-        // position: relative;
-        // z-index: 2;
         margin-bottom: rem(70);
     }
     &__item_big &__item_bottom {
         position: relative;
         z-index: 2;
     }
-    // &__item_big &__date {
-    //     font-style: normal;
-    //     font-weight: 400;
-    //     font-size: rem(20);
-    //     line-height: 140%;
-    //     color: #FFFFFF;
-    //     @media all and (max-width: 1280px) {
-    //         font-size: 20px;
-    //     }
-    //     @media all and (max-width: 1280px) {
-    //         font-size: 14px;
-    //     }
-    // }
     &__item_big &__text {
         font-style: normal;
         font-weight: 600;
@@ -289,9 +282,8 @@ export default {
         }
     }
     &__item &__item_left {
-        // height: rem(345);
         position: relative;
-        padding-top: 50%;
+        padding-top: 53.5%;
         img {
             position: absolute;
             top: 0;

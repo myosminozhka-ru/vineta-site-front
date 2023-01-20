@@ -1,6 +1,6 @@
 <template>
   <div class="products__items products__items--favorites">
-    <div class="products__item" v-for="product in products" :key="product.index">
+    <div v-for="product in products" :key="product.index" class="products__item">
       <div class="products__item_closer" @click="addFavorites(product.ID)">
         <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none">
           <rect width="24" height="24" fill="#FF0040" />
@@ -12,8 +12,8 @@
         <nuxt-link class="products__item-content" :to="localePath(`/catalog/${product.SECTION}/${product.CODE}`)">
           <div class="products__item_image">
             <div class="image_container">
-              <img v-if="product.PREVIEW_PICTURE" :src="$vareibles.remote + product.PREVIEW_PICTURE" alt="" />
-              <img v-else :src="require('~/assets/img/product.noimage.png')" alt="" />
+              <nuxt-img v-if="product.PREVIEW_PICTURE" :src="$config.vareibles.remote + product.PREVIEW_PICTURE" alt="" loading="lazy" />
+              <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
             </div>
           </div>
           <div class="products__item_data">
@@ -49,7 +49,6 @@ export default {
     ...mapActions(['toggleModal']),
     ...mapActions('localStorage', ['addFavorites']),
     openFavModal() {
-      // console.log('openFavModal');
       this.toggleModal({
         isOpened: true,
         type: 'favorites',
@@ -93,16 +92,9 @@ export default {
   height: 100%;
 }
 .products__item_button {
-  //   width: calc(100% + #{rem(40)});
   margin-top: rem(20);
-  //   margin-bottom: rem(-20);
-  //   margin-left: rem(-20);
-  //   margin-right: rem(-20);
   @media all and (max-width: 1280px) {
     margin-top: 20px;
-    // margin-bottom: -20px;
-    // margin-left: -20px;
-    // margin-right: -20px;
   }
   @media print {
     display: none;

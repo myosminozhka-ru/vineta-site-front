@@ -22,7 +22,7 @@ export default {
   mounted() {
     window.addEventListener('scroll', () => {
       if (this.elementTo) {
-        const elementPosition = document.getElementById(this.elementTo).getBoundingClientRect().top
+        const elementPosition = document.getElementById(this.elementTo)?.getBoundingClientRect().top
         this.isShow = window.scrollY < elementPosition
       }
     })
@@ -34,7 +34,6 @@ export default {
         const modificationsTabs = document.getElementById(this.elementTo)
         const elementPosition = modificationsTabs.getBoundingClientRect().top
         const offsetPosition = elementPosition - headerHeight
-
         window.scrollBy({
           top: offsetPosition,
           behavior: 'smooth',

@@ -1,30 +1,56 @@
 {
   "message": "Hello!",
   "buttons": {
-    "catalog": "Store",
-    "about": "About",
+    "catalog": "Our catalogue",
+    "about": "About us",
     "downloads": "Downloads",
     "news": "News",
     "vacancies": "Vacancies",
-    "contacts": "Contacts",
-    "techs": "Production technologies",
-    "history": "History",
-    "partners": "Partners",
-    "licenses": "Licenses",
-    "more": "Details",
+    "contacts": "Contact us",
+    "techs": "Our technologies",
+    "history": "Our history",
+    "partners": "Our Clients",
+    "licenses": "Licenses and Certificates",
+    "more": "Know more",
     "all_news": "All news",
-    "read_news": "Read news",
+    "read_news": "Read",
     "main": "Homepage",
     "boats": "Boats speedboats",
     "download_catalog": "Download the catalog",
     "buy": "Order",
-    "up": "up",
+    "up": "top",
     "down": "down",
     "to_favorites": "To favorites",
-    "checkout": "Proceed to checkout"
+    "checkout": "Proceed to checkout",
+    "apply": "Apply",
+    "company_presentation": "Presentation",
+    "view_all": "View all",
+    "reset": "Reset",
+    "apply2": "Apply",
+    "print": "Print",
+    "unwrap":  "Expand",
+    "roll_up": "Roll Up",
+    "into_the_past": "Into The Past",
+    "at_present": "At Present",
+    "go_to_the_website": "Go to the website",
+    "upload": "Upload",
+    "to_catalogue": "Our catalogue",
+    "to_main": "Home page"
   },
   "menu": {
-    "products": "Manufactured products"
+    "menu": "Menu",
+    "catalog": "Catalog",
+    "about": "About us",
+    "aboutChilds": {
+      "techs": "Techs",
+      "history": "History",
+      "partners": "Partners",
+      "licenses": "Licenses"
+    },
+    "news": "News",
+    "jobs": "Jobs",
+    "contacts": "Contacts",
+    "products": "Manufacturing range"
   },
   "sections": {
     "second": {
@@ -36,33 +62,95 @@
       },
       "tabs": {
         "first": "Licenses and certificates",
-        "second": "Thank you letters and reviews",
-        "third": "Reports and attestations",
+        "second": "Appreciation letters",
+        "third": "Reports on special assessment of working conditions",
         "title": "Licenses and certificates"
       }
     },
     "footer": {
-      "request": "Leave a request",
+      "request": "Submit your application",
+      "description": "Please feel free to contact us via form below or by phone",
       "thanks": "Thanks for your request",
-      "send": "Send",
-      "response": "We will respond within a working day or the next working day",
-      "worktime": "Mon-Fri from 8:00 to 17:00"
+      "send": "Submit",
+      "response": "We will respond within one business day",
+      "worktime": "Mo – Fr 8.00 AM – 5:00 PM",
+      "policy_before_link": "By filling out this form, you accept the terms of the",
+      "policy_link": "Data Protection Guidelines",
+      "policy_after_link": "on the website terms of use as to processing and use of personal data",
+      "privacy_policy": "Privacy policy",
+      "to_customers": "For Our Customers",
+      "fuel_preparation_equipment": "Fuel preparation equipment",
+      "water_treatment_and_purification_equipment": "Water treatment and purification equipment",
+      "heat_exchange_equipment": "Heat exchange equipment",
+      "air_and_gas_cleaning_equipment": "Air and gas cleaning equipment",
+      "licenses_and_certificates": "Licenses and Certificates"
     },
     "modals": {
-      "apply_vacancy": "Откликнуться на вакансию"
+      "apply_vacancy": "Apply for a job",
+      "max_size": "The maximum file size is 7 MB",
+      "policy_before_link": "By filling out this form, you accept the terms",
+      "policy_link": "privacy policies",
+      "policy_after_link": "about the use of the site and give your consent to the processing, including in terms of processing and use of personal data",
+      "thank_application": "Thank you for the application!",
+      "we_you_shortly": "We will contact you shortly."
     }
   },
   "footer": {
-    "address": "620062, г. Екатеринбург, пр. Ленина, д. 101, стр.2, офис 500"
+    "address": "5 G, Ulyanovskaya road,Tosno region, Nikolskoe 187026, Russian Federation"
   },
   "filter": {
     "title": "Search options",
-    "empty": "Нет доступных фильтров для этой категории"
+    "empty": "There are no filters available for this category"
   },
   "catalog": {
     "empty": " No products"
   },
+  "catalog_id": {
+    "description": "Description",
+    "main_features": "Main Features",
+    "specifications": "Specifications",
+    "modifications": "Modifications",
+    "modification": "Modification",
+    "analogs": "Analogs"
+  },
   "counter": {
     "title": "Quantity"
-  }
+  },
+  "contacts": {
+    "guide": "Administration"
+  },
+  "vacancies": {
+    "advantages": "Advantages of working with us",
+    "respond": "Submit"
+  },
+  "about": {
+    "small_text": "ship repair, nuclear industry, transport and fuel and energy complex enterprises",
+    "third_title" : "About the company in numbers",
+    "map": "Map"
+  },
+  "partners": {
+    "partners_title": "Main customers",
+    "partners_title_hidden": "Subsidiaries"
+  },
+  "news": {
+    "news_more_title": "See also"
+  },
+  "search": {
+    "placeholder": "Search",
+    "text_before_count": "Found",
+    "text_after_count": "result",
+    "null_result": "Nothing found",
+    "title": "Search results"
+  },
+  "favourites": {
+    "title": "Favourites",
+    "subtitle": "You haven't added anything to your favorites yet."
+  },
+  "not_found": {
+    "title": "Page not found",
+    "text": "And also for military and civil ship repair, transport, fuel and energy companies, nuclear industry and others."
+  },
+  "upload_file": "No file chosen",
+  "company_name": "Vineta Ltd",
+  "productIdPrintUpText": "5 G, Ulyanovskaya road, Tosno region, <br>Nikolskoe 187026, Russian Federation<br> tel./fax: +7(812) 493-50-48 info@vineta.ru"
 }

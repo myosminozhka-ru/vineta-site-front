@@ -52,21 +52,26 @@ export default {
     OsmCatalogTop: () => import('~/components/catalog/OsmCatalogTop.vue'),
     OsmCatalogCategories: () => import('~/components/catalog/OsmCatalogCategories.vue'),
   },
-  created() {
-    this.addBreadcrumbs([
+  data: () => ({
+    isMounted: false,
+  }),
+  async fetch({ store, i18n }) {
+    await store.dispatch('addBreadcrumbs', [
       {
-        name: this.$t('buttons.main'),
+        name: i18n.messages[i18n.locale].buttons.main,
         link: 'index',
         isLink: true,
       },
       {
-        name: this.$t('buttons.catalog'),
+        name: i18n.messages[i18n.locale].buttons.catalog,
         isLink: false,
       },
     ])
+
+    await store.dispatch('setLoadingStatus', false)
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
+    ...mapActions(['setLoadingStatus']),
   },
 }
 </script>

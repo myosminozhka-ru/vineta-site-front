@@ -1,53 +1,25 @@
 <template>
-  <div
-    class="menu hide_off_mobile"
-    :class="{ isOpened: getModals.mobileMenu.isOpened }"
-    @click="closeMenu"
-  >
+  <div class="menu hide_off_mobile" :class="{ isOpened: getModals.mobileMenu.isOpened }" @click="closeMenu">
     <div class="menu__in" @click.stop>
       <div>
         <div class="menu__top">
-          <div class="menu__langs" v-if="false">
-            <nuxt-link
-              :to="switchLocalePath('en')"
-              :class="{ isActive: $i18n.locale === 'en' }"
-              >En</nuxt-link
-            >
+          <div class="menu__langs">
+            <nuxt-link :to="switchLocalePath('en')" :class="{ isActive: $i18n.locale === 'en' }">En</nuxt-link>
             <div class="delim">/</div>
-            <nuxt-link
-              :to="switchLocalePath('ru')"
-              :class="{ isActive: $i18n.locale === 'ru' }"
-              >Ру</nuxt-link
-            >
+            <nuxt-link :to="switchLocalePath('ru')" :class="{ isActive: $i18n.locale === 'ru' }">Ру</nuxt-link>
           </div>
           <div class="menu__closer" @click="closeMenu">
-            <img
-              :src="require('~/assets/img/closer.svg')"
-              width="100%"
-              alt=""
-            />
+            <nuxt-img src="/closer.svg" width="100%" alt="" loading="lazy" />
           </div>
         </div>
         <nav class="menu__links">
           <ul>
             <li class="menu__links_li has-child">
               <div>
-                <nuxt-link :to="localePath({ name: 'catalog' })" class="text"
-                  >Каталог</nuxt-link
-                >
+                <nuxt-link :to="localePath({ name: 'catalog' })" class="text">{{$t('menu.catalog')}}</nuxt-link>
                 <div class="arrow">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 11 7"
-                    fill="none"
-                  >
-                    <path
-                      d="M1 6L5.5 2L10 6"
-                      stroke="#172242"
-                      stroke-width="2"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
+                    <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2" />
                   </svg>
                 </div>
                 <!-- <div v-if="link.childs" class="header__arrow">
@@ -65,40 +37,19 @@
                     "
                   >
                     <div class="icon">
-                      <img
-                        :src="$vareibles.remote + child.PICTURE"
-                        width="100%"
-                        alt=""
-                      />
+                      <nuxt-img :src="$config.vareibles.remote + child.PICTURE" width="100%" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ child.NAME }}</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li
-              v-for="link in menu"
-              :key="link.index"
-              class="menu__links_li"
-              :class="{ 'has-child': link.childs, isOpened: link.isOpened }"
-            >
+            <li v-for="link in menu" :key="link.index" class="menu__links_li" :class="{ 'has-child': link.childs, isOpened: link.isOpened }">
               <div>
-                <nuxt-link :to="localePath({ name: link.url })" class="text">{{
-                  link.text
-                }}</nuxt-link>
-                <div class="arrow" v-if="link.childs">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 11 7"
-                    fill="none"
-                  >
-                    <path
-                      d="M1 6L5.5 2L10 6"
-                      stroke="#172242"
-                      stroke-width="2"
-                    />
+                <nuxt-link :to="localePath({ name: link.url })" class="text">{{ link.text }}</nuxt-link>
+                <div v-if="link.childs" class="arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 11 7" fill="none">
+                    <path d="M1 6L5.5 2L10 6" stroke="#172242" stroke-width="2" />
                   </svg>
                 </div>
                 <!-- <div v-if="link.childs" class="header__arrow">
@@ -109,7 +60,7 @@
                 <li v-for="child in link.childs" :key="child.index">
                   <nuxt-link :to="localePath({ name: child.url })">
                     <div class="icon">
-                      <img :src="child.icon" width="100%" alt="" />
+                      <nuxt-img :src="child.icon" alt="" loading="lazy" />
                     </div>
                     <div class="text">{{ child.text }}</div>
                   </nuxt-link>
@@ -131,66 +82,73 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  data: () => ({
-    socials: [
-      {
-        icon: require('~/assets/img/socials/vk.svg'),
-        link: '#',
-      },
-      {
-        icon: require('~/assets/img/socials/telegram.svg'),
-        link: '#',
-      },
-      {
-        icon: require('~/assets/img/socials/twitter.svg'),
-        link: '#',
-      },
-    ],
-    menu: [
-      {
-        text: 'О компании',
-        isOpened: false,
-        url: 'about',
-        childs: [
-          {
-            url: 'techs',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Технологии производства',
-          },
-          {
-            url: 'history',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'История',
-          },
-          {
-            url: 'partners',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Заказчики',
-          },
-          {
-            url: 'licenses',
-            icon: require('~/assets/img/catalog/catalog_icon1.svg'),
-            text: 'Лицензии',
-          },
-        ],
-      },
-      {
-        text: 'Новости',
-        isOpened: false,
-        url: 'news',
-      },
-      {
-        text: 'Вакансии',
-        isOpened: false,
-        url: 'vacancies',
-      },
-      {
-        text: 'Контакты',
-        isOpened: false,
-        url: 'contacts',
-      },
-    ],
-  }),
+  data() {
+    return {
+      socials: [
+        {
+          icon: require('~/assets/img/socials/vk.svg'),
+          link: '#',
+        },
+        {
+          icon: require('~/assets/img/socials/telegram.svg'),
+          link: '#',
+        },
+        {
+          icon: require('~/assets/img/socials/twitter.svg'),
+          link: '#',
+        },
+      ],
+      menu: [
+        {
+          text: this.$t('menu.about'),
+          isOpened: false,
+          url: 'about',
+          childs: [
+            {
+              url: 'techs',
+              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+              text: this.$t('menu.aboutChilds.techs'),
+            },
+            {
+              url: 'history',
+              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+              text: this.$t('menu.aboutChilds.history'),
+            },
+            {
+              url: 'partners',
+              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+              text: this.$t('menu.aboutChilds.partners'),
+            },
+            {
+              url: 'licenses',
+              icon: require('~/assets/img/catalog/catalog_icon1.svg'),
+              text: this.$t('menu.aboutChilds.licenses'),
+            },
+          ],
+        },
+        {
+          text: this.$t('menu.news'),
+          isOpened: false,
+          url: 'news',
+        },
+        {
+          text: this.$t('menu.jobs'),
+          isOpened: false,
+          url: 'vacancies',
+        },
+        {
+          text: this.$t('menu.contacts'),
+          isOpened: false,
+          url: 'contacts',
+        },
+      ],
+    }
+  },
+  computed: {
+    ...mapGetters(['getModals']),
+    ...mapGetters(['getCatalog']),
+    ...mapGetters(['getMainMore']),
+  },
   watch: {
     $route(to, from) {
       if (to !== from) {
@@ -202,25 +160,14 @@ export default {
     this.closeMenu()
     this.openChilds()
   },
-  computed: {
-    ...mapGetters(['getModals']),
-    ...mapGetters(['getCatalog']),
-    ...mapGetters(['getMainMore']),
-  },
-
   methods: {
     openChilds() {
-      document
-        .querySelectorAll('.menu__links_li.has-child > div > .arrow')
-        .forEach((item) => {
-          item.addEventListener('click', (e) => {
-            e.preventDefault()
-            item.closest('li').classList.toggle('isOpened')
-          })
+      document.querySelectorAll('.menu__links_li.has-child > div > .arrow').forEach((item) => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault()
+          item.closest('li').classList.toggle('isOpened')
         })
-      // console.log(item)
-      // if (!item) return;
-      // item.isOpened = !item.isOpened;
+      })
     },
     ...mapActions(['toggleModal']),
     closeMenu() {
@@ -327,6 +274,11 @@ export default {
         width: 30px;
         height: 30px;
         margin-right: 20px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
       }
     }
   }

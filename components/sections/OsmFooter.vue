@@ -5,7 +5,7 @@
         <osm-h1 class="section__title">
           <template v-if="!isSuccess">
             {{ $t('sections.footer.request') }}
-            <div>Вы можете направить нам запрос в электронном виде, используя нижеприведенную форму, или позвонить по указанному телефону</div>
+            <div>{{ $t('sections.footer.description') }}</div>
           </template>
           <template v-else>
             {{ $t('sections.footer.thanks') }}
@@ -13,7 +13,7 @@
         </osm-h1>
         <div v-if="false" class="section__text">Безусловно, постоянное информационно-пропагандистское обеспечение нашей деятельности однозначно фиксирует необходимость соответствующих условий активизации. А ещё реплицированные с зарубежных источников, современные</div>
       </div>
-      <form class="section__left_form" @submit.prevent="sendForm">
+      <form v-if="filteredFileds" class="section__left_form" @submit.prevent="sendForm">
         <div v-for="field in filteredFileds" :key="field.index" class="osm__form_field">
           <div v-if="errors[field.VARNAME]" class="osm__error">
             {{ errors[field.VARNAME] }}
@@ -27,9 +27,9 @@
           <!-- <osm-input class="section__input" :placeholder="field.TITLE" :type="field.FIELD_TYPE" :required="field.REQUIRED === 'Y'"/> -->
         </div>
         <p style="font-size: 12rem">
-          Заполняя данную форму, вы принимаете условия
-          <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
-          об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
+          {{ $t('sections.footer.policy_before_link') }}
+          <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> {{ $t('sections.footer.policy_link') }} </a>
+          {{ $t('sections.footer.policy_after_link') }}
         </p>
         <osm-button class="section__button" :large="true" type="submit">{{ $t('sections.footer.send') }}</osm-button>
       </form>
@@ -41,17 +41,18 @@
 
           <div v-if="false" class="section__socials">
             <a v-for="social in socials" :key="social.index" :href="social.link" class="section__social" target="_blank">
-              <img :src="social.icon" width="100%" alt="" />
+              <nuxt-img :src="social.icon" width="100%" alt="" loading="lazy" />
             </a>
           </div>
         </div>
         <div class="section__contacts">
           <div class="section__contacts_side">
-            <a href="tel:78124935048" class="section__contact"> +7 (812) 493-50-48 </a>
-            <div class="section__contacts_info">187026, Ленинградская обл., Тосненский район, г. Никольское, Ульяновское шоссе 5Ж</div>
+            <template v-if="getPhone.length">
+              <a v-for="(phone, index) in getPhone" :key="index" class="section__contact" :href="`tel:${phone.VALUE}`">{{phone.VALUE}}</a>
+            </template>
+            <div class="section__contacts_info">{{ getContacts[0]?.ADRESS?.VALUE }}</div>
             <div class="section__contacts_worktime">
-              Пн-Пт с 8:00 до 17:00
-              <!-- {{ $t('sections.footer.worktime') }} -->
+              {{ $t('sections.footer.worktime') }}
             </div>
           </div>
           <div class="section__contacts_side">
@@ -63,18 +64,18 @@
         </div>
       </div>
       <div class="section__map" @mousewheel.stop>
-        <osm-map />
+        <osm-map v-if="isActive" />
       </div>
     </div>
     <osm-footer class="section__footer hide_on_desktop" />
     <div class="section__popup hide_on_tablet">
-      <div class="section__popup_left">ООО “Винета”, 2012-2022</div>
+      <div class="section__popup_left">{{ $t('company_name') }}, 2012-2022</div>
 
       <template v-if="getDownloads['politika-konfedentsialnosti']">
         <div v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']" class="section__popup_right">
           <ul>
             <li>
-              <a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">Политика конфидециальности</a>
+              <a :href="$config.vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">{{ $t('sections.footer.privacy_policy') }}</a>
             </li>
             <!-- <li><a href="#">Пользовательское соглашение</a></li>
                         <li><a href="#">Карта сайта</a></li> -->
@@ -82,7 +83,7 @@
         </div>
       </template>
       <a href="https://myosminozhka.ru/" target="_blank" class="section__popup_link">
-        <img src="~/assets/img/osm_logo.svg" width="100%" alt="" />
+        <nuxt-img src="/osm_logo.svg" width="100%" alt="" loading="lazy" />
       </a>
     </div>
   </section>
@@ -93,18 +94,16 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    // OsmInput: () => import('~/components/global/OsmInput.vue'),
     OsmMap: () => import('~/components/global/OsmMap.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
-  computed: {
-    ...mapGetters(['getDownloads']),
-    filteredFileds() {
-      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD')
-    },
+  props: {
+    isActive: {
+      type: Boolean,
+      default: false
+    }
   },
-
   data: () => ({
     fields: {
       value: [],
@@ -127,6 +126,16 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapGetters(['getDownloads', 'getContacts']),
+    filteredFileds() {
+      return this.fields.value.filter((field) => field.SID !== 'COUNT' && field.SID !== 'GOOD')
+    },
+    getPhone() {
+      const contacts = this.getContacts;
+      return contacts[0]?.PROPERIES.filter((item) => item.CODE === 'PHONE') || []
+    }
+  },
   async mounted() {
     this.fields = await this.$axios.$get('forms/request.php')
    },
@@ -144,7 +153,6 @@ export default {
       form.append('token', token)
 
       this.$axios.$post('forms/result_request.php', form).then((result) => {
-        // console.log(result);
         if (result.error) {
           this.errors = result.error
         }
@@ -178,9 +186,6 @@ export default {
       line-height: normal;
       font-weight: normal;
     }
-    // @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
-    //     margin-bottom: 5px !important;
-    // }
   }
   &__content {
     margin-bottom: rem(31);
@@ -263,30 +268,18 @@ export default {
     width: 100%;
   }
   &__right {
-    // padding-right: rem(240);
-    // padding-left: rem(71);
-
-    // padding-bottom: rem(121);
     padding: 0;
     background: #2e5599;
     width: calc(100% - #{rem(900)} + #{rem(133)});
     flex-direction: column;
 
-    // @media all and (max-width: 1440px) {
-    //     padding: 90px 150px 120px 70px !important;
-    //     width: 778px;
-    // }
     @media all and (max-width: 1440px) {
       width: 778px;
       padding: 0 !important;
-      // padding: 90px 0 0 0 !important;
-      // padding: 80px 20px !important;
     }
     @media all and (max-width: 1280px) {
       width: 100% !important;
       padding: 80px 20px !important;
-      // padding: 90px 0 0 0 !important;
-      // padding: 80px 20px !important;
     }
     @media all and (max-width: 840px) {
       padding: 20px !important;
@@ -301,18 +294,10 @@ export default {
   }
   &__right &__title {
     color: #fff;
-    // margin-bottom: rem(30);
-    // @media all and (max-width: 1280px) {
-    //     margin-bottom: 30px;
-    // }
   }
   &__contacts {
     display: flex;
     align-items: flex-start;
-    // margin-bottom: rem(54);
-    // @media all and (max-width: 1280px) {
-    //     margin-bottom: 60px;
-    // }
   }
   &__contacts_side {
     width: rem(240);

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isMounted && isDataLoaded" class="history">
+  <div v-if="isMounted" class="history">
     <!-- <osm-header /> -->
     <div class="header_padding">
       <!-- <pre style="font-size: 15rem;">
@@ -22,25 +22,25 @@
             >
               <p v-html="decodeHTML(item.PREVIEW_TEXT)" />
               <div class="text button" @click="item.isTextShowed = !item.isTextShowed">
-                <template v-if="!item.isTextShowed">Развернуть</template>
-                <template v-else>Свернуть</template>
+                <template v-if="!item.isTextShowed">{{ $t('buttons.unwrap') }}</template>
+                <template v-else>{{ $t('buttons.roll_up') }}</template>
               </div>
             </div>
             <div class="history__text--buttons hide_on_tablet">
               <div @click="prev">
                 <osm-button :outlined="true" class="history__text--button">
                   <div class="arrow">
-                    <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="" />
+                    <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                   </div>
-                  <div class="text">В прошлое</div>
+                  <div class="text">{{ $t('buttons.into_the_past') }}</div>
                 </osm-button>
               </div>
               <div @click="next">
                 <osm-button :outlined="true" class="history__text--button history__text--button--fwd">
                   <div class="arrow">
-                    <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="" />
+                    <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                   </div>
-                  <div class="text">В Настоящее</div>
+                  <div class="text">{{ $t('buttons.at_present') }}</div>
                 </osm-button>
               </div>
             </div>
@@ -69,35 +69,32 @@
             <div @click="prev">
               <osm-button :outlined="true" class="history__text--button">
                 <div class="arrow">
-                  <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="" />
+                  <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                 </div>
-                <div class="text">В прошлое</div>
+                <div class="text">{{ $t('buttons.into_the_past') }}</div>
               </osm-button>
             </div>
             <div @click="next">
               <osm-button :outlined="false" class="history__text--button history__text--button--fwd">
                 <div class="arrow">
-                  <img :src="require('~/assets/img/arrow2.svg')" width="100%" alt="" />
+                  <nuxt-img src="/arrow2.svg" width="100%" alt="" loading="lazy" />
                 </div>
-                <div class="text">В Настоящее</div>
+                <div class="text">{{ $t('buttons.at_present') }}</div>
               </osm-button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <osm-preloader />
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'HistoryPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     selectedTime: 0,
@@ -105,6 +102,27 @@ export default {
     isDataLoaded: false,
     isMounted: false,
   }),
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.history.length) {
+      await store.dispatch('addHistory')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.history,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
+  },
   head() {
     return {
       title: this.getSeo.history.SEO.META.TITLE,
@@ -128,7 +146,6 @@ export default {
   },
   mounted() {
     this.isMounted = true
-    // console.log('modifyedHistory', this.modifyedHistory);
     this.modifyedHistory = this.getHistory.map((item) => {
       return {
         ...item,
@@ -136,34 +153,17 @@ export default {
       }
     })
   },
-  async fetch() {
-    await this.addHistory()
-    this.modifyedHistory = this.getHistory.map((item) => {
-      return {
-        ...item,
-        isTextShowed: false,
-      }
-    })
-  },
-  async created() {
-    await this.addHistory().then((result) => {
-      this.isDataLoaded = true
-    })
-    this.addBreadcrumbs([
-      {
-        name: 'Главная',
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: 'История',
-        isLink: false,
-      },
-    ])
+  watch: {
+    getHistory(val, oldVal) {
+      this.modifyedHistory = val.map((item) => {
+        return {
+          ...item,
+          isTextShowed: false,
+        }
+      })
+    }
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
-    ...mapActions(['addHistory']),
     next() {
       if (this.selectedTime >= this.getHistory.length - 1) return
       this.selectedTime++
@@ -228,7 +228,6 @@ export default {
     justify-content: space-between;
   }
   &__text--left {
-    // width: rem(588);
     flex: 1 1 auto;
     margin-right: rem(20);
     display: none;
@@ -359,9 +358,6 @@ export default {
     }
     @media all and (max-width: 1280px) {
       transform: none;
-      // min-width: 190px;
-    }
-    .top {
     }
     .line {
       height: 2px;

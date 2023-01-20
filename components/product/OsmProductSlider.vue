@@ -1,12 +1,12 @@
 <template>
-  <div class="productPage__in" v-if="isMounted">
+  <div v-if="isMounted" class="productPage__in">
     <LightGallery :images="popupPhotos" :index="elementOpened" :disable-scroll="true" @close="elementOpened = null" />
-    <div class="productPage__slider" v-if="data">
-      <hooper :itemsToShow="1" ref="carousel" group="product_items" class="productPage__slider-left">
-        <slide class="productPage__slider-item" v-for="(picture, idx) in data.GALLERY" :key="`picture_${idx}`">
-          <div class="productPage__slider-item__in" @click="elementOpened = 0">
+    <div v-if="data" class="productPage__slider">
+      <hooper ref="carousel" :items-to-show="1" :settings="{ wheelControl: false }" group="product_items" class="productPage__slider-left">
+        <slide v-for="(picture, idx) in data.GALLERY" :key="`picture_${idx}`" class="productPage__slider-item">
+          <div class="productPage__slider-item__in" @click="elementOpened = idx">
             <div class="productPage__slider-item__imege">
-              <img :src="$vareibles.remote + picture" :alt="`picture_${idx}`" />
+              <nuxt-img :src="$config.vareibles.remote + picture" :alt="`picture_${idx}`" loading="lazy" />
             </div>
           </div>
         </slide>
@@ -14,18 +14,18 @@
       </hooper>
       <div class="productPage__slider-right">
         <hooper :settings="hooperSettings" group="product_items" class="productPage__slider-previews">
-          <slide class="productPage__slider-preview" v-for="(picture, idx) in data.GALLERY" :key="`picture_${idx}`">
-            <span @click="slideTo(0)">
-              <img :src="$vareibles.remote + picture" :alt="`picture_${idx}`" />
+          <slide v-for="(picture, idx) in data.GALLERY" :key="`picture_${idx}`" class="productPage__slider-preview">
+            <span @click="slideTo(idx)">
+              <nuxt-img :src="$config.vareibles.remote + picture" :alt="`picture_${idx}`" loading="lazy" />
             </span>
           </slide>
         </hooper>
         <div class="productPage__slider-buttons">
           <!-- <div class="productPage__slider-button productPage__slider-button--more" v-if="'MORE_PHOTO' in data"> -->
-          <div class="productPage__slider-button productPage__slider-button--more" v-if="data.GALLERY.length > 2" @click="elementOpened = 2">
+          <div v-if="data.GALLERY.length > 2" class="productPage__slider-button productPage__slider-button--more" @click="elementOpened = 2">
             <div class="text">Еще {{ data.GALLERY.length - 2 }}</div>
           </div>
-          <div class="productPage__slider-button productPage__slider-button--3d" @click="treeDView.isOpened = true" v-if="false">
+          <div v-if="false" class="productPage__slider-button productPage__slider-button--3d" @click="treeDView.isOpened = true">
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 23 29" fill="none">
                 <path d="M13.0465 28.309L13.0726 28.7236C13.0787 28.82 13.1318 28.9074 13.2147 28.9571C13.2611 28.9848 13.3135 28.999 13.3659 28.999C13.4074 28.999 13.4488 28.9902 13.4876 28.9726L15.5988 28.012C15.714 27.9596 15.7828 27.8393 15.7694 27.7135C15.7561 27.5877 15.6637 27.4846 15.5401 27.4574L13.3379 26.9744C13.2479 26.9553 13.1537 26.9783 13.0836 27.0385C13.0136 27.0985 12.9759 27.188 12.9817 27.28L13.0095 27.7224C12.4352 27.7667 11.8524 27.7898 11.2649 27.7898C8.82379 27.7898 6.52254 27.4122 4.61004 26.6979C4.27697 26.5734 3.95678 26.4386 3.65819 26.2971C3.511 26.2273 3.33627 26.2901 3.26669 26.4367C3.19712 26.5834 3.25973 26.7587 3.40633 26.8281C3.71995 26.9768 4.05577 27.1183 4.4043 27.2484C6.38206 27.9871 8.75436 28.3775 11.2649 28.3775C11.8646 28.3775 12.4598 28.3542 13.0465 28.309Z" fill="#172242" />
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="modal" v-if="treeDView.isOpened" @click="treeDView.isOpened = false">
+    <div v-if="treeDView.isOpened" class="modal" @click="treeDView.isOpened = false">
       <div class="modal__in" @click.stop>
         <iframe width="100%" height="500" allowfullscreen src="https://www.blend4web.com/apps/webplayer/webplayer.html?load=/assets/tutorials/web_page_integration/apple.json"></iframe>
       </div>
@@ -59,31 +59,21 @@
 </template>
 
 <script>
-// import Glide from '@glidejs/glide';
 import { Hooper, Slide, Navigation as HooperNavigation } from 'hooper'
 import 'hooper/dist/hooper.css'
 export default {
+  components: {
+    Hooper,
+    Slide,
+    HooperNavigation,
+  },
   props: {
     data: {
       type: Object,
       default: null,
     },
   },
-  components: {
-    Hooper,
-    Slide,
-    HooperNavigation,
-  },
-  computed: {
-    popupPhotos() {
-      return this.data.GALLERY.map((gallery) => ({ url: this.$vareibles.remote + gallery, title: '' }))
-    },
-  },
   data: () => ({
-    // slider: new Glide('.productPage__slider-left', {
-    //     perView: 1,
-    //     gap: 0
-    // }),
     treeDView: {
       isOpened: false,
     },
@@ -93,6 +83,7 @@ export default {
       itemsToShow: 3,
       centerMode: true,
       vertical: false,
+      wheelControl: false,
       breakpoints: {
         1281: {
           vertical: true,
@@ -100,6 +91,11 @@ export default {
       },
     },
   }),
+  computed: {
+    popupPhotos() {
+      return this.data.GALLERY.map((gallery) => ({ url: this.$config.vareibles.remote + gallery, title: '' }))
+    },
+  },
   mounted() {
     this.isMounted = true
   },
@@ -244,7 +240,8 @@ export default {
       img {
         width: 100% !important;
       }
-      &::v-deep .hooper-track {
+
+      :v-deep(.hooper-track) {
         transform: translate(0px, 0px) !important;
       }
     }

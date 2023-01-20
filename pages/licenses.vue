@@ -4,29 +4,48 @@
     <div class="licenses">
       <div class="header_padding">
         <osm-breadcrumbs />
-        <!-- <pre style="font-size: 15rem;">
-                    {{ getLicenses }}
-                </pre> -->
         <osm-gallery :images="filterBySection('litsenzii-i-sertifikaty')" :title="$t('sections.fiveth.tabs.first')" />
         <osm-gallery :images="filterBySection('blagodarstvennye-pisma-i-otzyvy')" :title="$t('sections.fiveth.tabs.second')" />
         <osm-gallery :images="filterBySection('otchety-po-sout')" :title="$t('sections.fiveth.tabs.third')" />
       </div>
     </div>
     <osm-footer />
-    <osm-preloader />
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'LicensesPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmGallery: () => import('~/components/licenses/OsmGallery.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
+  },
+  data: () => ({
+    isMounted: false
+  }),
+  async fetch({store, i18n}) {
+
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.licenses.length) {
+      await store.dispatch('addLicenses')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].sections.fiveth.tabs.first,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
   },
   head() {
     return {
@@ -49,21 +68,10 @@ export default {
     ...mapGetters(['getLicenses']),
     ...mapGetters(['getSeo']),
   },
-  created() {
-    this.addBreadcrumbs([
-      {
-        name: 'Главная',
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: 'Лицензии и сертификаты',
-        isLink: false,
-      },
-    ])
+  mounted() {
+    this.isMounted = true;
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
     filterBySection(type) {
       return this.getLicenses.filter((i) => i.SECTION === type)
     },

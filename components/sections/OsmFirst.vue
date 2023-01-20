@@ -5,7 +5,7 @@
         <source type="video/webm" src="~/assets/video/2.webm" />
       </video>
     </div>
-    <div class="section__right">
+    <div v-if="firstData" class="section__right">
       <div v-if="'PROPERIES' in firstData" class="section__content">
         <osm-h1 class="section__title">{{ firstData.NAME }}</osm-h1>
         <div class="section__text">
@@ -15,7 +15,7 @@
           <osm-button v-if="'NAME_BUTTON' in firstData.PROPERIES" class="section__button" link="catalog">
             {{ firstData.PROPERIES.NAME_BUTTON.VALUE }}
           </osm-button>
-          <osm-button class="section__button" link="about"> Подробнее </osm-button>
+          <osm-button class="section__button" link="about"> {{ $t('buttons.more') }} </osm-button>
         </div>
       </div>
     </div>
@@ -27,7 +27,6 @@ export default {
   name: 'OsmFirstSection',
   components: {
     OsmH1: () => import('~/components/global/OsmH1.vue'),
-    //   OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
   props: {
     isMounted: {
@@ -47,7 +46,7 @@ export default {
   computed: {
     ...mapGetters(['getMain']),
     firstData() {
-      return this.getMain[0]
+      return this.getMain[0] || null
     },
     combined() {
       return `${this.isStart}|${this.video}`
@@ -59,10 +58,6 @@ export default {
         setTimeout(() => {
           this.isSvgVisible = false
         }, 3000)
-        // console.log('start: ', this.isStart)
-        // setTimeout(() => {
-        //   document.getElementById('first-video').play()
-        // }, 1500)
       } else {
         this.isSvgVisible = true
       }
@@ -132,8 +127,6 @@ export default {
     }
     img {
       width: auto;
-      // -webkit-filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
-      // filter: drop-shadow(#{rem(10)} #{rem(10)} #{rem(10)} #222);
     }
   }
   svg {
@@ -157,8 +150,6 @@ export default {
       transform: translateX(-50%);
     }
     transition: 1s clip-path 2.3s ease;
-    //   padding-top: rem(30);
-    //   padding-bottom: rem(25);
     padding: 24px;
     &:not(.isClipped) {
       @media all and (min-width: 861px) {

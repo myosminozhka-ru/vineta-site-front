@@ -3,7 +3,7 @@
     <div class="modal__in" @click.stop>
       <div class="modal__top">
         <div class="modal__closer" @click="closeBuy">
-          <img :src="require('~/assets/img/closer.svg')" width="100%" alt="" />
+          <nuxt-img src="/closer.svg" width="100%" alt="" loading="lazy" />
         </div>
       </div>
       <form ref="buy_form" class="modal__form" @submit.prevent="sendForm">
@@ -28,10 +28,9 @@
               </template>
             </template>
             <template v-else-if="field.FIELD_TYPE === 'file'">
-              <label>
-                <input v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :placeholder="field.TITLE" :required="field.REQUIRED === 'Y'" :class="{ hasError: errors[field.VARNAME] }" class="osm__input modal__input" :name="field.SID" accept=".doc,.docs,.rtf,.pdf" @change="onChangeFiles($event, field.VARNAME)" />
-                <span class="modal__input-info">Максимальный размер файла – 7 МВ</span>
-              </label>
+                <input :id="`file-${field.SID}`" v-model="formData[field.VARNAME]" :type="field.FIELD_TYPE" :title="$t('upload_file')" style="display: none;" :required="field.REQUIRED === 'Y'" :name="field.SID" accept=".doc,.docs,.rtf,.pdf" @change="onChangeFiles($event, field.VARNAME)" />
+                <label :for="`file-${field.SID}`" class="osm__input modal__input" :class="{ hasError: errors[field.VARNAME] }">{{ formData[field.VARNAME]?.split('\\')[formData[field.VARNAME].split('\\').length-1] || $t('upload_file') }}</label>
+                <span class="modal__input-info">{{ $t('sections.modals.max_size') }}</span>
             </template>
             <template v-else>
               <div v-if="errors[field.VARNAME]" class="osm__error">
@@ -47,15 +46,15 @@
                     <osm-counter class="modal__input"/>
                     <osm-textarea class="modal__textarea" placeholder="Ваше сообщение" type="email" :required="true"/> -->
           <p style="font-size: 12rem">
-            Заполняя данную форму, вы принимаете условия
-            <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> политики конфиденциальности </a>
-            об использовании сайта и даете свое согласие на обработку в том числе в части обработки и использования персональных данных
+            {{ $t('sections.modals.policy_before_link') }}
+            <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> {{ $t('sections.modals.policy_link') }} </a>
+            {{ $t('sections.modals.policy_after_link') }}
           </p>
-          <osm-button class="modal__button" :large="true" type="submit">Откликнуться на вакансию</osm-button>
+          <osm-button class="modal__button" :large="true" type="submit">{{ $t('sections.modals.apply_vacancy') }}</osm-button>
         </div>
         <div v-else class="modal__form_in">
-          <div class="modal__title">Спасибо за заявку!</div>
-          <div class="modal__subtitle">Мы свяжемся с Вами в ближайшее время.</div>
+          <div class="modal__title">{{ $t('sections.modals.thank_application') }}</div>
+          <div class="modal__subtitle">{{ $t('sections.modals.we_you_shortly') }}</div>
         </div>
       </form>
     </div>
@@ -80,35 +79,23 @@ export default {
     errors: {},
     isSuccess: false,
   }),
+  async fetch() {
+    this.fields = await this.$axios.$get('forms/vacancy.php')
+  },
+  computed: {
+    ...mapGetters(['getModals']),
+  },
   watch: {
     property: {
-      // this.formData.VACANCY_NAME = newVal;
       immediate: true,
       handler(val, oldVal) {
         this.formData.VACANCY_NAME = val
       },
     },
   },
-  computed: {
-    ...mapGetters(['getModals']),
-    // formData() {
-    //     return this.fields.value.map(item => {
-    //         return {
-    //             name: item.VARNAME,
-    //             value: ""
-    //         }
-    //     })
-    // }
-  },
-  async fetch() {
-    this.fields = await this.$axios.$get('forms/vacancy.php')
-  },
   mounted() {
     this.formData.VACANCY = window.location.href
     this.formData.VACANCY_NAME = this.property
-    console.log(this.property)
-
-    // console.log(this.formData)
   },
   methods: {
     ...mapActions(['toggleModal']),
@@ -130,15 +117,7 @@ export default {
       }
       const token = await this.$recaptcha.execute('submit')
       form.append('token', token)
-      // this.formData.map(item => {
-      //     const [key, value] = item;
-      //     console.log(key, value);
-      //     return item;
-      // })
-      // const form = new FormData(this.formData);
-      // console.log(form);
       this.$axios.$post('forms/result_vacancy.php', form).then((result) => {
-        // console.log(result);
         if (result.error) {
           this.errors = result.error
         }
@@ -148,7 +127,7 @@ export default {
       })
     },
     onChangeFiles(event, filedName) {
-      if (event.target.files[0].size > 7340032) {
+      if (event.target.files[0]?.size > 7340032) {
         event.target.value = "";
         delete this.formData[filedName]
       }
@@ -167,7 +146,6 @@ export default {
   background: rgba(23, 34, 66, 0.8);
   z-index: 1000;
   text-align: center;
-  // padding: 58px 0;
   padding: 10px 0;
   box-sizing: border-box;
   opacity: 0;
@@ -185,7 +163,6 @@ export default {
   }
   &__in {
     background: #ffffff;
-    // padding: rem(40);
     padding: rem(20);
     max-width: rem(710);
     width: 100%;
@@ -249,9 +226,6 @@ export default {
   .osm__form_field {
     margin-bottom: rem(20);
   }
-  // &__input {
-  //     margin-bottom: rem(20);
-  // }
   &__textarea {
     margin-bottom: rem(20);
   }
@@ -263,5 +237,8 @@ export default {
       font-size: 15rem;
     }
   }
+}
+label.osm__input.modal__input {
+  display: flex;
 }
 </style>

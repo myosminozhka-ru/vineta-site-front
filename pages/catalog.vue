@@ -1,7 +1,5 @@
 <template>
   <div id="wrapper" class="wrapper footerOnBottom">
-    <osm-preloader />
-    <!-- <osm-header /> -->
     <nuxt-child />
     <osm-footer />
   </div>
@@ -11,9 +9,17 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'CatalogTemplate',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
+  },
+  data: () => ({
+    isMounted: false,
+  }),
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.products.length) {
+      await store.dispatch('addProducts')
+    }
   },
   head() {
     return {
@@ -35,5 +41,8 @@ export default {
   computed: {
     ...mapGetters(['getSeo']),
   },
+  mounted() {
+    this.isMounted = true;
+  }
 }
 </script>

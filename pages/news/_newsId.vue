@@ -1,50 +1,40 @@
 <template>
-  <div class="news__inner" v-if="detail">
-    <!-- <pre style="font-size: 15rem;">
-            {{ detail }}
-        </pre> -->
+  <div v-if="$store.state.dataNews.length" class="news__inner">
     <div class="news__image">
-      <img :src="$vareibles.remote + detail[0].PREVIEW_PICTURE" alt="" />
+      <nuxt-img :src="$config.vareibles.remote + $store.state.dataNews[0]?.PREVIEW_PICTURE" alt="" />
     </div>
     <div class="news__buttons">
       <osm-button class="news__button" style="pointer-events: none">{{
-        detail[0].PROPERIES[0].VALUE
+        $store.state.dataNews[0]?.PROPERIES[0].VALUE
       }}</osm-button>
       <osm-button
         :outlined="true"
         class="news__button"
         style="pointer-events: none"
-        >{{ detail[0].PROPERIES[1].VALUE }}</osm-button
+        >{{ $store.state.dataNews[0]?.PROPERIES[1].VALUE }}</osm-button
       >
     </div>
     <div class="news__title">
-      {{ detail[0].NAME }}
+      {{ $store.state.dataNews[0]?.NAME }}
     </div>
+
     <div class="news__texts">
-      <p v-html="detail[0].DETAIL_TEXT" />
+      <p v-html="$store.state.dataNews[0]?.DETAIL_TEXT" />
     </div>
     <div class="news__more">
-      <div class="news__more--title">Смотрите так же</div>
+      <div class="news__more--title">{{ $t('news.news_more_title') }}</div>
       <div class="news__more--items">
         <a
-          :href="localePath(`/news/${item.CODE}`)"
           v-for="(item, key) in news"
           :key="key"
-          class="news__item"
-        >
+          :href="localePath(`/news/${item.CODE}`)"
+          class="news__item" >
           <div class="news__item_left">
             <div class="news__image">
-              <img
-                v-if="item.PREVIEW_PICTURE"
-                :src="$vareibles.remote + item.PREVIEW_PICTURE"
-                width="100%"
-                alt=""
-              />
-              <img
-                v-else
-                :src="require('~/assets/img/product.noimage.png')"
-                alt=""
-              />
+              <nuxt-img v-if="item.PREVIEW_PICTURE"
+                :src="$config.vareibles.remote + item.PREVIEW_PICTURE"
+                alt="" />
+              <nuxt-img v-else src="/product.noimage.png" alt="" />
             </div>
           </div>
           <div class="news__item_right">
@@ -54,11 +44,9 @@
                 {{ item.NAME }}
               </div>
             </div>
-            <span
-              class="news__link"
-              :to="{ name: item.link, params: { newsId: item.CODE } }"
-              >Читать новость</span
-            >
+            <NuxtLink :to="{ name: item.link, params: { newsId: item.CODE } }" class="news__link">
+              {{ $t('buttons.read_news') }}
+            </NuxtLink>
           </div>
         </a>
       </div>
@@ -72,9 +60,32 @@ export default {
   components: {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
   },
-  data: () => ({
-    detail: null,
-  }),
+  async fetch({store, app, route, i18n}) {
+    const dataNews = await app.$axios.$get(
+      `news-detail.php?code=${route.params.newsId}`
+    )
+
+    store.dispatch('setDataNews', dataNews)
+
+    store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.news,
+        link: 'news',
+        isLink: true,
+      },
+      {
+        name: dataNews[0].NAME,
+        isLink: false,
+      },
+    ])
+
+    store.dispatch('setLoadingStatus', false)
+  },
   computed: {
     ...mapGetters(['getNews']),
     news() {
@@ -83,49 +94,21 @@ export default {
       )
     },
   },
-  beforeDestroy() {
-    this.detail = null
-  },
-  async fetch() {
-    this.detail = await this.$axios.$get(
-      `news-detail.php?code=${this.$route.params.newsId}`
-    )
-    this.addBreadcrumbs([
-      {
-        name: 'Главная',
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: 'Новости',
-        link: 'news',
-        isLink: true,
-      },
-      {
-        name: this.detail[0].NAME,
-        isLink: false,
-      },
-    ])
-  },
-  // mounted() {
-  //     console.log('Данные страницы новости', this.detail);
-  // },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
+    ...mapActions(['setDataNews']),
   },
 }
 </script>
 
 <style lang="scss" scoped>
 .news {
-  &__inner {
-  }
   &__image {
-    height: rem(580);
-    @media all and (max-width: 1280px) {
-      height: rem(400);
-    }
+    position: relative;
+    padding-bottom: 53.5%;
     img {
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -190,7 +173,6 @@ export default {
     position: relative;
   }
   &__item &__item_left {
-    // height: rem(185);
     margin-bottom: rem(20);
   }
   &__item &__image {

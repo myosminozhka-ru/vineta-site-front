@@ -2,16 +2,13 @@
   <div v-if="isMounted" class="wrapper footerOnBottom">
     <!-- <osm-header /> -->
     <div class="header_padding">
-      <!-- <pre style="font-size: 15rem;">
-        {{ getAbout }}
-      </pre> -->
       <section class="first">
         <div class="first__text">
           {{ getAbout.banners.first.NAME }}
-          <span class="first__small-text">судоремонта, атомной промышленности, транспорта и предприятий топливно-энергетического комплекса</span>
+          <span class="first__small-text">{{ $t('about.small_text') }}</span>
         </div>
         <div class="first__image hide_on_mobile">
-          <img :src="$vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="" />
+          <nuxt-img :src="$config.vareibles.remote + getAbout.banners.first.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
         </div>
       </section>
       <section v-if="getAbout.banners.second" class="second">
@@ -40,8 +37,8 @@
                 </svg>
               </div>
               <div class="text">
-                <template v-if="!isTextShowed">Развернуть</template>
-                <template v-else>Свернуть</template>
+                <template v-if="!isTextShowed">{{ $t('buttons.unwrap') }}</template>
+                <template v-else>{{ $t('buttons.roll_up') }}</template>
               </div>
             </osm-button>
           </div>
@@ -49,7 +46,7 @@
         <div class="second__side second__side--right">
           <div class="second__side_top">
             <div class="second__title">
-              <div class="text">Каталог</div>
+              <div class="text">{{ $t('buttons.catalog') }}</div>
               <nuxt-link :to="localePath({ name: 'catalog' })" class="second__title_button">
                 <svg width="100%" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L8 9L1 17" stroke="white" stroke-width="2" />
@@ -58,17 +55,17 @@
             </div>
             <div class="second__items">
               <div class="second__items_col">
-                <nuxt-link v-for="link in filteredFirstAboutSections" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
+                <nuxt-link v-for="link in filterAboutSections.firstArray" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
                   <div class="icon">
-                    <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" />
+                    <nuxt-img :src="$config.vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
                   </div>
                   <div class="text">{{ link.NAME }}</div>
                 </nuxt-link>
               </div>
               <div class="second__items_col">
-                <nuxt-link v-for="link in filteredSecondAboutSections" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
+                <nuxt-link v-for="link in filterAboutSections.secondArray" :key="link.index" :to="localePath({ name: 'catalog-catalogId', params: { catalogId: link.CODE } })" class="second__item">
                   <div class="icon">
-                    <img :src="$vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" />
+                    <nuxt-img :src="$config.vareibles.remote + link.UF_PHOTO_ABOUT" width="100%" alt="" loading="lazy" />
                   </div>
                   <div class="text">{{ link.NAME }}</div>
                 </nuxt-link>
@@ -99,7 +96,7 @@
         </div>
       </section>
       <section class="third">
-        <div class="third__title">О компании в цифрах</div>
+        <div class="third__title">{{ $t('about.third_title') }}</div>
         <div class="third__items">
           <div v-for="item in getAbout.numbers" :key="item.index" class="third__item">
             <div class="number">{{ item.PROPERIES[0].VALUE }}</div>
@@ -108,16 +105,16 @@
         </div>
       </section>
       <section v-if="getAbout.banners.third" class="fourth">
-        <img :src="$vareibles.remote + getAbout.banners.third.PREVIEW_PICTURE" width="100%" alt="" />
+        <nuxt-img :src="$config.vareibles.remote + getAbout.banners.third.PREVIEW_PICTURE" width="100%" alt="" loading="lazy" />
       </section>
       <section class="fiveth">
-        <div class="fiveth__title">Руководство</div>
+        <div class="fiveth__title">{{ $t('contacts.guide') }}</div>
         <div class="fiveth__items">
           <div v-for="item in managment" :key="item.index" class="fiveth__item">
             <div class="avatar">
               <div class="avatar__in">
-                <img v-if="item.PREVIEW_PICTURE" :src="$vareibles.remote + item.PREVIEW_PICTURE" alt="" />
-                <img v-else :src="require('~/assets/img/product.noimage.png')" alt="" />
+                <nuxt-img v-if="item.PREVIEW_PICTURE" :src="$config.vareibles.remote + item.PREVIEW_PICTURE" alt="" loading="lazy" />
+                <nuxt-img v-else src="/product.noimage.png" alt="" loading="lazy" />
               </div>
             </div>
             <div class="height" :style="'height:' + maxHeight">
@@ -130,7 +127,7 @@
         </div>
       </section>
       <section class="fourth">
-        <img :src="require('~/assets/img/about/people2.jpg')" width="100%" alt="" />
+        <nuxt-img src="/about/people2.jpg" width="100%" alt="" loading="lazy" />
         <div v-if="false" class="play">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" fill="none">
             <rect width="100%" height="100%" fill="#FF004D" />
@@ -151,7 +148,7 @@
           <div class="history__top">
             <div class="history__title">{{ getAbout.banners.sixth.NAME }}</div>
             <div class="history__line"></div>
-            <div class="history__text">{{ getAbout.banners.sixth.PREVIEW_TEXT }}</div>
+            <div class="history__text" v-html="getAbout.banners.sixth.PREVIEW_TEXT"></div>
           </div>
           <osm-button class="history__button" :outlined="true" link="techs">{{ $t('buttons.more') }}</osm-button>
         </div>
@@ -160,9 +157,9 @@
         <customers :has-button="true" />
       </section>
       <section v-if="false" class="seventh">
-        <div class="seventh__title">Карта</div>
+        <div class="seventh__title">{{ $t('about.map') }}</div>
         <div class="seventh__map">
-          <img :src="require('~/assets/img/about/map.svg')" width="100%" alt="" />
+          <nuxt-img src="/about/map.svg" width="100%" alt="" loading="lazy" />
         </div>
       </section>
       <section class="eighth">
@@ -170,7 +167,6 @@
       </section>
     </div>
     <osm-footer />
-    <osm-preloader />
   </div>
 </template>
 <script>
@@ -178,26 +174,45 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'AboutPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmButton: () => import('~/components/global/OsmButton.vue'),
     Customers: () => import('~/components/sliders/Customers.vue'),
     Licenses: () => import('~/components/tabs/Licenses.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   data: () => ({
     isTextShowed: false,
     isDataLoaded: false,
-    filteredFirstAboutSections: [],
-    filteredSecondAboutSections: [],
     isMounted: false,
     maxHeight: 'auto',
   }),
-  async fetch() {
-    await this.addAbout()
-    if (process.client) {
-      this.createDinamycHeight()
+  async fetch({store, i18n}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!Object.keys(store.state.about).length) {
+      await store.dispatch('addAbout')
     }
+
+    if(!Object.keys(store.state.main2).length ){
+      await store.dispatch('addMainMore')
+    }
+
+    if (!store.state.licenses.length) {
+      await store.dispatch('addLicenses')
+    }
+
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.about,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
   },
   head() {
     return {
@@ -222,27 +237,52 @@ export default {
     managment() {
       return this.getAbout.peoples
     },
-  },
-  created() {
-    this.addAbout().then((result) => {
-      this.isDataLoaded = true
-    })
-    this.addBreadcrumbs([
-      {
-        name: 'Главная',
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: 'О компании',
-        isLink: false,
-      },
-    ])
-  },
+    filterAboutSections() {
+      const sections = this.getAbout.sections;
+      const firstArray = sections.filter(item => (item.SORT / 100) % 2 !== 0)
+      const secondArray = sections.filter(item => (item.SORT / 100) % 2 === 0)
+      // const secondArray = []
 
+      // sections.forEach((i) => {
+      //   switch (i.ID) {
+      //     case '16':
+      //       firstArray[0] = i
+      //       break
+      //     case '3':
+      //       firstArray[1] = i
+      //       break
+      //     case '33':
+      //       firstArray[2] = i
+      //       break
+      //     case '2':
+      //       firstArray[3] = i
+      //       break
+      //     case '9':
+      //       firstArray[4] = i
+      //       break
+      //     case '1':
+      //       secondArray[0] = i
+      //       break
+      //     case '29':
+      //       secondArray[1] = i
+      //       break
+      //     case '34':
+      //       secondArray[2] = i
+      //       break
+      //     case '8':
+      //       secondArray[3] = i
+      //       break
+      //   }
+      // })
+
+      return {
+        firstArray,
+        secondArray
+      }
+    },
+  },
   mounted() {
     this.isMounted = true
-    this.filterAboutSections()
     this.createDinamycHeight()
     window.addEventListener('resize', this.createDinamycHeight)
   },
@@ -250,7 +290,6 @@ export default {
     window.removeEventListener('resize', this.createDinamycHeight)
   },
   methods: {
-    ...mapActions(['addBreadcrumbs']),
     ...mapActions(['addAbout']),
     decodeHTML(html) {
       if (document) {
@@ -258,43 +297,6 @@ export default {
         txt.innerHTML = html
         return txt.value
       }
-    },
-    filterAboutSections() {
-      const firstArray = []
-      const secondArray = []
-      this.getAbout.sections.forEach((i) => {
-        switch (i.ID) {
-          case '16':
-            firstArray[0] = i
-            break
-          case '3':
-            firstArray[1] = i
-            break
-          case '33':
-            firstArray[2] = i
-            break
-          case '2':
-            firstArray[3] = i
-            break
-          case '9':
-            firstArray[4] = i
-            break
-          case '1':
-            secondArray[0] = i
-            break
-          case '29':
-            secondArray[1] = i
-            break
-          case '34':
-            secondArray[2] = i
-            break
-          case '8':
-            secondArray[3] = i
-            break
-        }
-      })
-      this.filteredFirstAboutSections = firstArray
-      this.filteredSecondAboutSections = secondArray
     },
     createDinamycHeight() {
       this.maxHeight = 'auto'
@@ -417,7 +419,6 @@ export default {
       }
       @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
         padding-left: rem(50);
-        // padding-right: rem(50);
       }
 
       @media all and (max-width: 1280px) {
@@ -437,7 +438,6 @@ export default {
         padding-right: 150px;
       }
       @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 700px) {
-        // padding-left: rem(50);
         padding-right: rem(50);
       }
 
@@ -608,6 +608,10 @@ export default {
       margin: rem(10);
       flex-shrink: 0;
 
+      img {
+        width: 100%;
+      }
+
       @media all and (max-width: 1280px) {
         width: 24px;
         margin-right: 10px;
@@ -620,7 +624,6 @@ export default {
       font-size: rem(18);
       line-height: 140%;
       color: #ffffff;
-      // width: calc(100% - #{rem(34)});
       position: relative;
 
       &:after {
@@ -635,7 +638,6 @@ export default {
       }
 
       @media all and (max-width: 1280px) {
-        // width: calc(100% - 34px);
         font-size: 16px;
       }
     }
@@ -741,6 +743,10 @@ export default {
   padding: 0 rem(240);
   font-size: 0;
   position: relative;
+
+  > img {
+    width: 100%;
+  }
 
   @media all and (max-width: 1440px) {
     padding-right: 150px;

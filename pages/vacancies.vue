@@ -1,27 +1,33 @@
 <template>
-  <div v-if="isDataLoaded" class="wrapper footerOnBottom">
+  <div class="wrapper footerOnBottom">
     <!-- <osm-header /> -->
     <div class="header_padding">
       <nuxt-child />
     </div>
     <osm-footer />
-    <osm-preloader />
   </div>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'AboutPage',
+  name: 'VacanciesPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
-  data: () => ({
-    isDataLoaded: false,
-  }),
-  async fetch() {
-    await this.addVacancies()
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.vacancies.length) {
+      await store.dispatch('addVacancies')
+    }
+
+    if (!store.state.main.length) {
+      await store.dispatch('addMain')
+    }
+
+    if (!Object.keys(store.state.main2).length) {
+      await store.dispatch('addMainMore')
+    }
   },
   head() {
     return {
@@ -43,13 +49,8 @@ export default {
   computed: {
     ...mapGetters(['getSeo']),
   },
-  created() {
-    this.addVacancies().then((result) => {
-      this.isDataLoaded = true
-    })
-  },
   methods: {
-    ...mapActions(['addVacancies']),
+    ...mapActions(['setLoadingStatus', 'addVacancies', 'addMain', 'addMainMore']),
   },
 }
 </script>

@@ -13,9 +13,9 @@
             <div class="news__content_right">
               <div class="news__content_right_in">
                 <div class="news__content_bottons">
-                  <osm-button class="news__content_botton" :large="true" link="catalog">В каталог</osm-button>
+                  <osm-button class="news__content_botton" :large="true" link="catalog">{{ $t('buttons.catalog') }}</osm-button>
                   <osm-button v-if="false" class="news__content_botton" :large="true" :outlined="true">Презентация компании</osm-button>
-                  <a v-if="'prezentatsiya' in getDownloads" :href="$vareibles.remote + getDownloads.prezentatsiya.PROPERIES[0].SRC" class="button isOutlined isLarge but_prez">Презентация компании</a>
+                  <a v-if="'prezentatsiya' in getDownloads && getDownloads.prezentatsiya.PROPERIES" :href="$config.vareibles.remote + getDownloads.prezentatsiya.PROPERIES[0].SRC" class="button isOutlined isLarge but_prez">Презентация компании</a>
                 </div>
                 <osm-category />
               </div>
@@ -26,7 +26,6 @@
       </div>
     </div>
     <osm-footer />
-    <osm-preloader />
   </div>
 </template>
 
@@ -35,12 +34,18 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'NewsPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
     OsmBreadcrumbs: () => import('~/components/global/OsmBreadcrumbs.vue'),
     OsmNewsTop: () => import('~/components/news/OsmNewsTop.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
+  data: () => ({
+    /**
+     * Скрыть лоадер
+     * @type {boolean}
+     * @default false
+     */
+    isMounted: false,
+  }),
   head() {
     return {
       title: this.getSeo.news.SEO.META.TITLE,
@@ -58,10 +63,20 @@ export default {
       ],
     }
   },
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.news.length) {
+      await store.dispatch('addNews')
+    }
+  },
   computed: {
     ...mapGetters(['getDownloads']),
     ...mapGetters(['getSeo']),
   },
+  mounted() {
+    this.isMounted = true
+  }
 }
 </script>
 
@@ -99,20 +114,12 @@ export default {
         padding: 18px 30px;
       }
       svg {
-        // fill: #fff;
         path {
           transition: all 0.3s ease;
         }
       }
       &:hover {
-        // color: #fff;
         background: #fff;
-        // svg {
-        //     // fill: #fff;
-        //     path {
-        //         fill: #fff;
-        //     }
-        // }
         &:before,
         &:after {
           width: 70%;
@@ -128,20 +135,18 @@ export default {
     }
   }
   padding: rem(30) rem(240) rem(120);
-  @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
+  @media all and (max-width: 1440px) {
     padding-left: rem(50);
     padding-right: rem(50);
   }
   background: #fff;
-  // @media all and (max-width: 1440px) and (min-width: 1281px) and (max-height: 900px) and (min-height: 670px) {
-  //     padding: rem(30) rem(100) rem(120);
-  // }
+
   @media all and (max-width: 1280px) {
     padding: 30px 20px;
   }
   &__content {
     display: flex;
-    // align-items: flex-start;
+
     @media all and (max-width: 1280px) {
       display: block;
     }

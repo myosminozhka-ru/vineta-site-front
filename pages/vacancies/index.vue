@@ -1,14 +1,11 @@
 <template>
   <div>
-    <!-- <pre style="font-size: 15rem;">
-        {{ getVacancies }}
-      </pre> -->
-    <section v-if="getVacancies.banners.first" class="first">
+    <section v-if="getVacancies.banners?.first" class="first">
       <div class="first__text">
         {{ getVacancies.banners.first.NAME }}
       </div>
       <div class="first__image hide_on_mobile">
-        <img :src="$vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="" />
+        <nuxt-img :src="$config.vareibles.remote + getVacancies.banners.first.PREVIEW_PICTURE" width="100%" alt="" />
       </div>
     </section>
     <osm-advantagies :bennefits="getVacancies.bennefits" />
@@ -21,7 +18,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'AboutPage',
   components: {
@@ -33,11 +30,25 @@ export default {
   data: () => ({
     isTextShowed: false,
   }),
+  async fetch({store, i18n}) {
+    await store.dispatch('addBreadcrumbs', [
+      {
+        name: i18n.messages[i18n.locale].buttons.main,
+        link: 'index',
+        isLink: true,
+      },
+      {
+        name: i18n.messages[i18n.locale].buttons.vacancies,
+        isLink: false,
+      },
+    ])
+
+    await store.dispatch('setLoadingStatus', false)
+  },
   head() {
     return {
       title: this.getVacancies && 'SEO' in this.getVacancies ? this.getVacancies.SEO.META.TITLE : '',
       meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
         {
           hid: 'description',
           name: 'description',
@@ -56,7 +67,7 @@ export default {
         {
           hid: 'twitter:url',
           name: 'twitter:url',
-          content: 'https://vineta.fvds.ru/',
+          content: this.$config.vareibles.remote,
         },
         {
           hid: 'twitter:title',
@@ -71,26 +82,10 @@ export default {
         {
           hid: 'twitter:imag',
           name: 'twitter:imag',
-          content: this.getVacancies && 'PREVIEW_PICTURE' in this.getVacancies ? this.$vareibles.remote + this.getVacancies.PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
+          content: this.getVacancies && 'PREVIEW_PICTURE' in this.getVacancies ? this.$config.vareibles.remote + this.getVacancies.PREVIEW_PICTURE : require('~/assets/img/product.noimage.png'),
         },
       ],
     }
-  },
-  created() {
-    this.addBreadcrumbs([
-      {
-        name: 'Главная',
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: 'Вакансии',
-        isLink: false,
-      },
-    ])
-  },
-  methods: {
-    ...mapActions(['addBreadcrumbs']),
   },
   computed: {
     ...mapGetters(['getVacancies']),

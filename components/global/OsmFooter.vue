@@ -6,7 +6,7 @@
         <osm-logo-footer />
         <div v-if="false" class="footer__top_socials hide_on_tablet">
           <a v-for="social in socials" :key="social.index" :href="social.link" target="_blank" class="footer__top_social">
-            <img :src="social.icon" width="100%" alt="" />
+            <nuxt-img :src="social.icon" width="100%" alt="" loading="lazy" />
           </a>
         </div>
       </div>
@@ -15,21 +15,18 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="footer__bottom_left">ООО “Винета”, 2012-2022</div>
-      <!-- <pre>
-                {{ getDownloads }}
-            </pre> -->
+      <div class="footer__bottom_left">{{ $t('company_name') }}, 2012-2022</div>
       <template v-if="getDownloads['politika-konfedentsialnosti']">
         <div v-if="'PROPERIES' in getDownloads['politika-konfedentsialnosti']" class="footer__bottom_right">
           <ul>
-            <li><a :href="$vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">Политика конфиденциальности</a></li>
-            <!-- <li><a href="#">Пользовательское соглашение</a></li>
-                        <li><a href="#">Карта сайта</a></li> -->
+            <li><a :href="$config.vareibles.remote + getDownloads['politika-konfedentsialnosti'].PROPERIES[0].VALUE.SRC">
+              {{ $t('sections.footer.privacy_policy') }}
+            </a></li>
           </ul>
         </div>
       </template>
       <a href="https://myosminozhka.ru/" target="_blank" class="footer__popup_link">
-        <img src="~/assets/img/osm_logo.svg" width="100%" alt="" />
+        <nuxt-img src="/osm_logo.svg" width="100%" alt="" loading="lazy" />
       </a>
     </div>
   </footer>
@@ -42,12 +39,6 @@ export default {
     OsmLogoFooter: () => import('~/components/footer/OsmLogoFooter.vue'),
     OsmFooterMenu: () => import('~/components/footer/OsmFooterMenu.vue'),
     OsmUp: () => import('~/components/global/OsmUp.vue'),
-  },
-  computed: {
-    ...mapGetters(['getDownloads']),
-  },
-  mounted() {
-    // console.log(this.getDownloads[1]);
   },
   data: () => ({
     socials: [
@@ -65,6 +56,12 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapGetters(['getDownloads']),
+  },
+  mounted() {
+  },
+
 }
 </script>
 
@@ -133,7 +130,6 @@ export default {
     transition: 1s bottom 0.5s ease;
     @media all and (max-width: 1280px) {
       padding: 30px 20px;
-      // align-items: flex-start;
     }
     @media all and (max-width: 840px) {
       flex-direction: column;
@@ -148,7 +144,6 @@ export default {
     color: #ffffff;
     @media all and (max-width: 1280px) {
       font-size: 18px;
-      // width: 50%;
     }
     @media all and (max-width: 840px) {
       width: 100%;
@@ -157,7 +152,6 @@ export default {
   }
   &__bottom_right {
     @media all and (max-width: 1280px) {
-      // width: 50%;
     }
     @media all and (max-width: 840px) {
       width: 100%;

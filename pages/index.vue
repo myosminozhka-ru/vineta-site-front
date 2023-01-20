@@ -1,36 +1,33 @@
 <template>
   <div class="wrapper">
-    <!-- <pre style="font-size: 15rem;">{{getMainMore}}</pre> -->
     <div class="full-page-indicators" :class="{ white: +activeIndex === 5 }">
-      <div v-for="(indicator, key) in sections" :key="indicator.index" class="indicator" :class="{ active: +activeIndex === +key }" @click="activeIndex = key">
+      <div v-for="(indicator, key) in sections" :key="indicator.index" class="indicator" :class="{ active: +activeIndex === +key }" @click="goToSlide(key)">
         <span></span>
       </div>
     </div>
+
     <div class="sections" :data-id="activeIndex">
       <osm-first-section :is-mounted="activeIndex === 0" :class="{ isActive: activeIndex === 0 }" :style="`${activeIndex >= 0 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" :is-start="activeIndex === 0" />
       <osm-second-section :is-mounted="activeIndex === 1" :class="{ isActive: activeIndex === 1 }" :style="`${activeIndex >= 1 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" :is-start="activeIndex === 1" />
       <osm-third-section :is-mounted="activeIndex === 2" :class="{ isActive: activeIndex === 2 }" :style="`${activeIndex >= 2 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" :is-active="activeIndex === 2" />
       <osm-fourth-section :class="{ isActive: activeIndex === 3 }" :style="`${activeIndex >= 3 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
-      <osm-fiveth-section :class="{ isActive: activeIndex === 4 }" :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
-      <osm-sixth-section :class="{ isActive: activeIndex === 5 }" :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
+      <osm-fiveth-section :is-active="activeIndex === 4" :class="{ isActive: activeIndex === 4 }" :style="`${activeIndex >= 4 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
+      <osm-sixth-section :is-active="activeIndex === 5" :class="{ isActive: activeIndex === 5 }" :style="`${activeIndex >= 5 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
       <osm-seventh-section :class="{ isActive: activeIndex === 6 }" :style="`${activeIndex >= 6 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
-      <osm-footer-section :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
-      <osm-preloader />
+      <osm-footer-section :is-active="activeIndex === 7" :class="{ isActive: activeIndex === 7 }" :style="`${activeIndex >= 7 ? 'transform: translate(0px, 0px);' : 'transform: translate(100vw, 0px);'}`" />
+
       <ClientOnly>
-        <LightGallery v-if="isMounted" :images="imagesGallery" :index="galleryIndex" :disable-scroll="true" @close="setGalleryIndex(null)" />
+        <LightGallery :images="imagesGallery" :index="galleryIndex" :disable-scroll="true" @close="setGalleryIndex(null)" />
       </ClientOnly>
     </div>
   </div>
 </template>
 
 <script>
-// import $ from 'jquery';
-// import 'pagepiling-js-version-kostyast/jquery.pagepiling.min.js';
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'IndexPage',
   components: {
-    // OsmHeader: () => import('~/components/global/OsmHeader.vue'),
     OsmFirstSection: () => import('~/components/sections/OsmFirst.vue'),
     OsmSecondSection: () => import('~/components/sections/OsmSecond.vue'),
     OsmThirdSection: () => import('~/components/sections/OsmThird.vue'),
@@ -39,14 +36,24 @@ export default {
     OsmSixthSection: () => import('~/components/sections/OsmSixth.vue'),
     OsmSeventhSection: () => import('~/components/sections/OsmSeventh.vue'),
     OsmFooterSection: () => import('~/components/sections/OsmFooter.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
+
   data: () => ({
     activeIndex: -1,
     sections: [],
     isInProgress: false,
-    isMounted: false,
   }),
+
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+
+    if (!store.state.main.length) {
+      await store.dispatch('addMain')
+    }
+
+    await store.dispatch('setLoadingStatus', false)
+  },
+
   head() {
     return {
       title: this.getSeo.main.SEO.META.TITLE,
@@ -64,15 +71,14 @@ export default {
       ],
     }
   },
+
   computed: {
-    ...mapGetters(['getMain']),
-    ...mapGetters(['getMainMore']),
     ...mapGetters(['getLicenses']),
     ...mapGetters(['galleryIndex']),
     ...mapGetters(['getSeo']),
     imagesGallery() {
       return this.getLicenses.map((item) => {
-        return this.$vareibles.remote + item.PREVIEW_PICTURE
+        return this.$config.vareibles.remote + item.PREVIEW_PICTURE
       })
     },
     activeSection: {
@@ -84,12 +90,12 @@ export default {
       },
     },
   },
+
   beforeDestroy() {
     document.removeEventListener('mousewheel', function () {})
   },
+
   mounted() {
-    this.isMounted = true
-    // console.log('getMainMore', this.getMainMore)
     if (window.innerWidth <= 1024) {
       this.activeIndex = -1
     }
@@ -101,40 +107,85 @@ export default {
             this.activeIndex = 0
             this.sections = document.querySelectorAll('.section')
             this.activeIndex = 0
-            document.addEventListener('mousewheel', (event) => {
-              if (event.wheelDelta > 0 || event.detail < 0) {
-                this.change('up')
-                this.isInProgress = true
+            if (document.addEventListener) {
+              if ('onwheel' in document) {
+                // IE9+, FF17+, Ch31+
+                document.addEventListener('wheel', this.onWheel)
+              } else if ('onmousewheel' in document) {
+                // устаревший вариант события
+                document.addEventListener('mousewheel', this.onWheel)
               } else {
-                this.change('down')
-                this.isInProgress = true
+                // Firefox < 17
+                document.addEventListener('MozMousePixelScroll', this.onWheel)
               }
-            })
+            } else {
+              // IE8-
+              document.attachEvent('onmousewheel', this.onWheel)
+            }
           }, 1000)
         }
       }, 100)
     }
   },
   methods: {
-    ...mapActions(['setGalleryIndex']),
-    ...mapActions(['addMain']),
+    ...mapActions([
+      'setGalleryIndex',
+      'setLoadingStatus',
+      'addMainMore',
+      'addLicenses',
+      'addCatalog',
+      'addNews',
+    ]),
+    onWheel(event) {
+      event = event || window.event
+      const delta = event.deltaX || event.detail || event.wheelDelta
+      if (delta > 0 || event.detail < 0) {
+        this.change('up')
+        this.isInProgress = true
+      } else {
+        this.change('down')
+        this.isInProgress = true
+      }
+    },
     change(direction) {
       if (this.isInProgress) return
 
       if (direction === 'down' && this.activeIndex < this.sections.length - 1) {
         setTimeout(() => {
-          this.activeIndex++
+          this.goToSlide(this.activeIndex + 1)
         }, 300)
       }
       if (direction === 'up') {
         setTimeout(() => {
-          this.activeIndex > 1 ? this.activeIndex-- : (this.activeIndex = 0)
+          this.activeIndex > 1 ? this.goToSlide(this.activeIndex - 1) : this.goToSlide(0)
         }, 300)
       }
       setTimeout(() => {
         this.isInProgress = false
-      }, 500)
+      }, 2000)
     },
+    goToSlide(number) {
+      if (number === 4 && (!Object.keys(this.$store.state.main2).length || !this.$store.state.licenses.length)) {
+        Promise.all([
+          this.addMainMore(),
+          this.addLicenses()
+        ].map(p => p.catch(x => console.error(x))))
+          .then(r => {
+            this.activeIndex = number;
+          }
+        );
+        return;
+      }
+
+      if (number === 6 && !this.$store.state.news.length) {
+        this.addNews().then(() => {
+          this.activeIndex = number;
+        })
+        return;
+      }
+
+      this.activeIndex = number;
+    }
   },
 }
 </script>

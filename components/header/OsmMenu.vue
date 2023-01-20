@@ -8,7 +8,7 @@
         <nuxt-link class="header__link" :to="localePath({ name: 'catalog' })" @click.stop="">
           <span>{{ $t('buttons.catalog') }}</span>
           <div class="header__arrow">
-            <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow" />
+            <nuxt-img src="/arrow.svg" alt="arrow" loading="lazy" />
           </div>
         </nuxt-link>
       </li>
@@ -16,7 +16,7 @@
         <nuxt-link class="header__link" :to="localePath({ name: link.url })" @click.stop="">
           <span>{{ link.text }}</span>
           <div v-show="link.childs" class="header__arrow">
-            <img :src="require(`~/assets/img/arrow.svg`)" alt="arrow" />
+            <nuxt-img src="/arrow.svg" alt="arrow" loading="lazy" />
           </div>
         </nuxt-link>
       </li>
@@ -38,7 +38,7 @@
                 "
               >
                 <div class="icon">
-                  <img :src="$vareibles.remote + category.PICTURE" width="100%" alt="" />
+                  <nuxt-img :src="$config.vareibles.remote + category.PICTURE" alt="" loading="lazy" />
                 </div>
                 <div class="text">{{ category.NAME }}</div>
               </a>
@@ -50,15 +50,14 @@
             {{ $t('buttons.downloads') }}
           </osm-h2>
           <div class="menu__modal_list">
-
-            <a target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" v-for="item in catalogDownloadLinks" :key="item.CODE" download="">
+            <a v-for="item in catalogDownloadLinks" :key="item.CODE" target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" download="">
               <div class="icon">
-                <img src="~/assets/img/download.svg" width="100%" alt="" />
+                <nuxt-img src="/download.svg" width="100%" alt="" loading="lazy" />
               </div>
               <div class="text">
                 <div class="top">{{ item.NAME }}</div>
                 <div class="bottom">
-                  <span>{{ (item.PROPERIES[0].VALUE.FILE_NAME)?.split('.')[1].toUpperCase() }}</span>
+                  <span>{{ item.PROPERIES[0].VALUE.FILE_NAME?.split('.')[1].toUpperCase() }}</span>
                   <div class="delim">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
                       <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
@@ -68,7 +67,6 @@
                 </div>
               </div>
             </a>
-
           </div>
         </div>
       </div>
@@ -79,7 +77,7 @@
             <li v-for="item in submenu.childs" :key="item.index">
               <nuxt-link :to="localePath({ name: item.url })">
                 <div class="icon">
-                  <img :src="item.icon" width="100%" alt="" />
+                  <nuxt-img :src="item.icon" alt="" loading="lazy" />
                 </div>
                 <div class="text">{{ item.text }}</div>
               </nuxt-link>
@@ -88,18 +86,17 @@
         </div>
         <div v-show="Object.keys(getDownloads).length" class="menu__modal_bottom">
           <osm-h2 class="menu__modal_title">
-            {{ $t('buttons.downloads') }}
+              {{ $t('buttons.downloads') }}
           </osm-h2>
           <div class="menu__modal_list">
-
-            <a target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" v-for="item in aboutDownloadLinks" :key="item.CODE" download="">
+            <a v-for="item in aboutDownloadLinks" :key="item.CODE" target="_blank" :href="item.PROPERIES[0].VALUE.SRC" class="menu__modal_file" download="">
               <div class="icon">
-                <img src="~/assets/img/download.svg" width="100%" alt="" />
+                <nuxt-img src="/download.svg" width="100%" alt="" loading="lazy" />
               </div>
               <div class="text">
                 <div class="top">{{ item.NAME }}</div>
                 <div class="bottom">
-                  <span>{{ (item.PROPERIES[0].VALUE.FILE_NAME)?.split('.')[1].toUpperCase() }}</span>
+                  <span>{{ item.PROPERIES[0].VALUE.FILE_NAME?.split('.')[1].toUpperCase() }}</span>
                   <div class="delim">
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 20 20" fill="none">
                       <path d="M10.832 8.3335H9.16536C8.70513 8.3335 8.33203 8.70659 8.33203 9.16683V10.8335C8.33203 11.2937 8.70513 11.6668 9.16536 11.6668H10.832C11.2923 11.6668 11.6654 11.2937 11.6654 10.8335V9.16683C11.6654 8.70659 11.2923 8.3335 10.832 8.3335Z" fill="#2E5599" />
@@ -126,11 +123,9 @@
       </div>
     </nuxt-link>
     <div class="header__menu_opener hide_off_mobile" @click="openMenu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="77" height="30" viewBox="0 0 77 30" fill="none">
-        <rect width="77" height="30" rx="5" fill="#2E5599" />
-        <path d="M19.75 18H12.25C12.0511 18 11.8603 18.079 11.7197 18.2197C11.579 18.3603 11.5 18.5511 11.5 18.75C11.5 18.9489 11.579 19.1397 11.7197 19.2803C11.8603 19.421 12.0511 19.5 12.25 19.5H19.75C19.9489 19.5 20.1397 19.421 20.2803 19.2803C20.421 19.1397 20.5 18.9489 20.5 18.75C20.5 18.5511 20.421 18.3603 20.2803 18.2197C20.1397 18.079 19.9489 18 19.75 18ZM12.25 12H25.75C25.9489 12 26.1397 11.921 26.2803 11.7803C26.421 11.6397 26.5 11.4489 26.5 11.25C26.5 11.0511 26.421 10.8603 26.2803 10.7197C26.1397 10.579 25.9489 10.5 25.75 10.5H12.25C12.0511 10.5 11.8603 10.579 11.7197 10.7197C11.579 10.8603 11.5 11.0511 11.5 11.25C11.5 11.4489 11.579 11.6397 11.7197 11.7803C11.8603 11.921 12.0511 12 12.25 12ZM25.75 14.25H12.25C12.0511 14.25 11.8603 14.329 11.7197 14.4697C11.579 14.6103 11.5 14.8011 11.5 15C11.5 15.1989 11.579 15.3897 11.7197 15.5303C11.8603 15.671 12.0511 15.75 12.25 15.75H25.75C25.9489 15.75 26.1397 15.671 26.2803 15.5303C26.421 15.3897 26.5 15.1989 26.5 15C26.5 14.8011 26.421 14.6103 26.2803 14.4697C26.1397 14.329 25.9489 14.25 25.75 14.25Z" fill="white" />
-        <path d="M36.936 19H37.932V12.124H37.968L40.26 19H41.292L43.596 12.124H43.632V19H44.724V10.684H43.128L40.86 17.572H40.824L38.544 10.684H36.936V19ZM48.9683 19.12C49.9883 19.12 50.6843 18.796 51.0563 18.52V17.74C50.4923 18.028 49.9643 18.208 49.1363 18.208C47.9123 18.208 47.1923 17.692 47.1203 16.228H51.2363V15.628C51.2363 13.696 50.4323 12.724 48.7402 12.724C47.3123 12.724 46.0283 13.684 46.0283 15.832V16.012C46.0283 17.92 47.0243 19.12 48.9683 19.12ZM48.6923 13.576C49.6283 13.576 50.1203 14.08 50.1203 15.376H47.1203C47.2163 13.96 48.0083 13.576 48.6923 13.576ZM56.0854 19H57.1414V12.844H56.0854V15.364H53.4214V12.844H52.3654V19H53.4214V16.24H56.0854V19ZM63.4823 19.12C65.1143 19.12 66.1823 17.944 66.1823 16V15.808C66.1823 13.876 65.1983 12.724 63.4943 12.724C62.0183 12.724 60.9863 13.72 60.8183 15.364H59.7143V12.844H58.6583V19H59.7143V16.24H60.7943V16.3C60.8903 18.076 61.8503 19.12 63.4823 19.12ZM63.5063 18.256C62.6183 18.256 61.8863 17.74 61.8863 16.072V15.736C61.8863 14.368 62.4623 13.588 63.4703 13.588C64.3703 13.588 65.0903 14.116 65.0903 15.784V16.12C65.0903 17.5 64.5143 18.256 63.5063 18.256Z" fill="white" />
-      </svg>
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9.75 12H2.25C2.05109 12 1.86032 12.079 1.71967 12.2197C1.57902 12.3603 1.5 12.5511 1.5 12.75C1.5 12.9489 1.57902 13.1397 1.71967 13.2803C1.86032 13.421 2.05109 13.5 2.25 13.5H9.75C9.94891 13.5 10.1397 13.421 10.2803 13.2803C10.421 13.1397 10.5 12.9489 10.5 12.75C10.5 12.5511 10.421 12.3603 10.2803 12.2197C10.1397 12.079 9.94891 12 9.75 12ZM2.25 6H15.75C15.9489 6 16.1397 5.92098 16.2803 5.78033C16.421 5.63968 16.5 5.44891 16.5 5.25C16.5 5.05109 16.421 4.86032 16.2803 4.71967C16.1397 4.57902 15.9489 4.5 15.75 4.5H2.25C2.05109 4.5 1.86032 4.57902 1.71967 4.71967C1.57902 4.86032 1.5 5.05109 1.5 5.25C1.5 5.44891 1.57902 5.63968 1.71967 5.78033C1.86032 5.92098 2.05109 6 2.25 6ZM15.75 8.25H2.25C2.05109 8.25 1.86032 8.32902 1.71967 8.46967C1.57902 8.61032 1.5 8.80109 1.5 9C1.5 9.19891 1.57902 9.38968 1.71967 9.53033C1.86032 9.67098 2.05109 9.75 2.25 9.75H15.75C15.9489 9.75 16.1397 9.67098 16.2803 9.53033C16.421 9.38968 16.5 9.19891 16.5 9C16.5 8.80109 16.421 8.61032 16.2803 8.46967C16.1397 8.32902 15.9489 8.25 15.75 8.25Z" fill="white"/>
+      </svg>{{$t('menu.menu')}}
     </div>
   </nav>
 </template>
@@ -142,6 +137,11 @@ export default {
   components: {
     OsmH2: () => import('~/components/global/OsmH2.vue'),
   },
+  data: () => ({
+    favoritesCount: 4,
+    filteredFirstCatalog: [],
+    filteredSecondCatalog: [],
+  }),
   computed: {
     menu() {
       return [
@@ -193,29 +193,26 @@ export default {
     ...mapGetters(['getDownloads']),
     ...mapGetters('localStorage', ['getFavorites']),
     catalogDownloadLinks() {
-      const filterArray = [];
-      for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES.length > 1) {
-          filterArray.push(this.getDownloads[key])
+      const getDownload = {...this.getDownloads};
+      const filterArray = []
+      for (const key in getDownload) {
+        if (getDownload[key].PROPERIES?.length > 1) {
+          filterArray.push(getDownload[key])
         }
       }
-      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'catalog_file');
+      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'catalog_file')
     },
     aboutDownloadLinks() {
-      const filterArray = [];
-      for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES.length > 1) {
-          filterArray.push(this.getDownloads[key])
+      const getDownload = {...this.getDownloads};
+      const filterArray = []
+      for (const key in getDownload) {
+        if (getDownload[key].PROPERIES?.length > 1) {
+          filterArray.push(getDownload[key])
         }
       }
-      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file');
-    }
+      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file')
+    },
   },
-  data: () => ({
-    favoritesCount: 4,
-    filteredFirstCatalog: [],
-    filteredSecondCatalog: [],
-  }),
   mounted() {
     document.addEventListener('click', () => {
       this.closeModals()
@@ -295,14 +292,14 @@ export default {
     },
     sizeFile(size) {
       if (size === 0) {
-        return '0';
+        return '0'
       } else {
-        const k = 1024;
-        const sizes = ['Байт', 'КБ', 'МБ', 'ГБ', 'ТБ'];
-        const i = Math.floor(Math.log(size) / Math.log(k));
-        return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        const k = 1024
+        const sizes = ['Байт', 'КБ', 'МБ', 'ГБ', 'ТБ']
+        const i = Math.floor(Math.log(size) / Math.log(k))
+        return parseFloat((size / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
       }
-    }
+    },
   },
 }
 </script>
@@ -413,8 +410,15 @@ export default {
       text-decoration: none;
 
       .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: rem(40);
         margin-right: rem(20);
+
+        img {
+          max-width: 100%;
+        }
 
         @media all and (max-width: 1280px) {
           width: 30px;
@@ -501,7 +505,16 @@ export default {
 
 .header {
   &__menu_opener {
-    font-size: 0;
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    background: #2E5599;
+    border-radius: 5px;
+    padding: 6px 10px;
+    color: #ffffff;
+    svg {
+      margin-right: 8px;
+    }
   }
 
   &__button {

@@ -7,7 +7,7 @@
 
 
 <script>
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-unminified';
 import { mapGetters } from 'vuex';
 export default {
     head: {
@@ -38,8 +38,10 @@ export default {
 
 <style lang="scss" scoped>
 .osmMap {
+    width: 100%;
     height: 100%;
     &__in {
+        width: 100%;
         height: 100%;
     }
 }
