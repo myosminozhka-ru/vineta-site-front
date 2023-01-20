@@ -55,7 +55,7 @@ export default {
   data: () => ({
     isMounted: false,
   }),
-  async fetch({store, i18n}) {
+  async fetch({ store, i18n }) {
     await store.dispatch('addBreadcrumbs', [
       {
         name: i18n.messages[i18n.locale].buttons.main,

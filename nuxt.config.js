@@ -76,7 +76,7 @@ export default {
   publicRuntimeConfig: {
     vareibles: {
       remote: process.env.URL,
-    }
+    },
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -85,7 +85,7 @@ export default {
   },
 
   image: {
-    dir: 'assets/img'
+    dir: 'assets/img',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -94,7 +94,7 @@ export default {
       config.resolve.symlinks = false
     },
     filenames: {
-      chunk: () => '[name].[id].[contenthash].js'
+      chunk: () => '[name].[id].[contenthash].js',
     },
     extractCSS: true,
     transpile: ['three'],
