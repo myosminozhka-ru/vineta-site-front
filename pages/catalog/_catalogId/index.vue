@@ -139,7 +139,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.setLoadingStatus(false)
-    }, 700)
+    }, 2000)
   },
   methods: {
     ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
