@@ -1,8 +1,5 @@
 <template>
   <div class="pageWrap">
-    <!-- <pre style="font-size: 15rem;">
-            {{ currentCategory }}
-        </pre> -->
     <osm-breadcrumbs />
     <osm-catalog-top v-if="'NAME' in currentCategory" :title="currentCategory.NAME" />
     <div class="catalog__in">
@@ -91,50 +88,15 @@ export default {
       return this.$route.params.catalogId
     },
   },
-  created() {
-    console.log('hey')
-    if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochee-oborudovanie' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
-      this.hasFilters = false
-    }
-    this.getCatalog.map((category) => {
-      if (category.CODE === this.$route.params.catalogId) {
-        this.currentCategory = category
-        return category
+  watch: {
+    getCatalog: {
+      handler(catalog){
+        this.updateCatalog(catalog)
       }
-      if (!category.CHILD) return category
-      category.CHILD.map((child) => {
-        if (child.CODE === this.$route.params.catalogId) {
-          this.parent = category
-          this.currentCategory = child
-        }
-        return child
-      })
-      return category
-    })
-    this.addBreadcrumbs([
-      {
-        name: this.$t('buttons.main'),
-        link: 'index',
-        isLink: true,
-      },
-      {
-        name: this.$t('buttons.catalog'),
-        link: 'catalog',
-        isLink: true,
-      },
-      {
-        name: this.parent ? this.parent.NAME : '',
-        link: 'catalog-catalogId',
-        params: {
-          catalogId: this.parent ? this.parent.CODE : '',
-        },
-        isLink: true,
-      },
-      {
-        name: this.currentCategory.NAME,
-        isLink: false,
-      },
-    ])
+    },
+  },
+  created() {    
+    this.updateCatalog(this.getCatalog)
   },
   mounted() {
     this.setLoadingStatus(true)
@@ -144,6 +106,37 @@ export default {
   },
   methods: {
     ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
+    updateCatalog(catalogs){
+      if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochee-oborudovanie' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
+        this.hasFilters = false
+      }
+      catalogs.map((category) => {
+        if (category.CODE === this.$route.params.catalogId) {
+          this.currentCategory = category
+          return category
+        }
+        if (!category.CHILD) return category
+        category.CHILD.map((child) => {
+          if (child.CODE === this.$route.params.catalogId) {
+            this.parent = category
+            this.currentCategory = child
+          }
+          return child
+        })
+        return category
+      })
+      this.addBreadcrumbs([
+        {
+          name: this.$t('buttons.catalog'),
+          link: 'catalog',
+          isLink: true,
+        },
+        {
+          name: this.currentCategory.NAME,
+          isLink: false,
+        },
+      ])
+    }
   },
 }
 </script>
