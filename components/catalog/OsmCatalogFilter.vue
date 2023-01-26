@@ -10,12 +10,12 @@
         </div>
       </div>
       <!-- {{ getCatalogFilters }} -->
-      <div class="filter__params" @click.stop>
+      <div class="filter__params">
         <div v-if="currentCategory[0] && 'CHILD' in currentCategory[0]" class="filter__params_block">
           <div class="filter__params_title">Тип</div>
-          <div class="filter__params_items" @click.stop>
-            <label v-for="param in currentCategory[0].CHILD" :key="param.index" class="filter__params_item" @click.stop>
-              <input type="checkbox" class="checkbox" :value="param.CODE" name="asdasd" @click="selectType(param.CODE)" />
+          <div class="filter__params_items">
+            <label class="filter__params_item" v-for="param in currentCategory[0].CHILD" :key="param.index">
+              <input type="checkbox" class="checkbox" :value="param.CODE" name="asdasd" ref="check_input" @click="selectType(param.CODE)" />
               <div class="filter__params_checkbox">
                 <div class="check">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 12" fill="none">
@@ -29,8 +29,8 @@
         </div>
         <div v-for="(item, key) in getCatalogFilters" :key="item.index" class="filter__params_block">
           <div class="filter__params_title">{{ key }}</div>
-          <div class="filter__params_items" @click.stop>
-            <label v-for="param in item" :key="param.index" class="filter__params_item" @click.stop>
+          <div class="filter__params_items">
+            <label v-for="param in item" :key="param.index" class="filter__params_item">
               <input type="checkbox" class="checkbox" :value="param" name="asdasd" @click="selectParams(param)" />
               <div class="filter__params_checkbox">
                 <div class="check">
@@ -44,8 +44,8 @@
           </div>
         </div>
         <div class="filter__controlls">
-            <button class="filter__start hide_on_desktop" @click="isFilterOpened = false">{{ $t('buttons.apply2') }}</button>
-            <button class="filter__clear hide_on_desktop" @click="clearFilter">{{ $t('buttons.reset') }}</button>
+          <button class="filter__start hide_on_desktop" @click="isFilterOpened = false">{{ $t('buttons.apply2') }}</button>
+          <button class="filter__clear hide_on_desktop" @click="clearFilter">{{ $t('buttons.reset') }}</button>
         </div>
       </div>
       <button v-if="getCatalogFilters" class="filter__clear hide_on_tablet" @click="clearFilter">{{ $t('buttons.reset') }}</button>
@@ -121,6 +121,8 @@ export default {
       })
     },
     clearFilter() {
+      const checks = document.querySelectorAll('.checkbox')
+      checks && checks.forEach((check) => (check.checked = false))
       this.addFilters([])
     },
     selectType(type) {
@@ -153,8 +155,6 @@ export default {
   }
   &__in {
     padding: rem(40) rem(30);
-    position: sticky;
-    top: rem(200);
     border: 1px solid #d7dce1;
     @media all and (max-width: 1280px) {
       border: none;
@@ -317,15 +317,15 @@ export default {
     font-size: rem(20);
     line-height: 140%;
     color: #ffffff;
-    background-color: #2E5599;
+    background-color: #2e5599;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
     &:hover {
-      background: #00234A;
+      background: #00234a;
     }
     &:active {
-      background: #00234A;
+      background: #00234a;
     }
     @media all and (max-width: 1280px) {
       height: 68px;
