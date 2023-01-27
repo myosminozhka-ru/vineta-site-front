@@ -70,6 +70,14 @@ export default {
 
     await store.dispatch('setLoadingStatus', false)
   },
+  mounted() {
+    window.onbeforeunload = function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }
+  },
   methods: {
     ...mapActions(['setLoadingStatus']),
   },

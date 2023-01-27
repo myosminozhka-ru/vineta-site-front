@@ -90,15 +90,21 @@ export default {
   },
   watch: {
     getCatalog: {
-      handler(catalog){
+      handler(catalog) {
         this.updateCatalog(catalog)
-      }
+      },
     },
   },
-  created() {    
+  created() {
     this.updateCatalog(this.getCatalog)
   },
   mounted() {
+    window.onbeforeunload = function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }
     this.setLoadingStatus(true)
     setTimeout(() => {
       this.setLoadingStatus(false)
@@ -106,7 +112,7 @@ export default {
   },
   methods: {
     ...mapActions(['addBreadcrumbs', 'setLoadingStatus']),
-    updateCatalog(catalogs){
+    updateCatalog(catalogs) {
       if (this.uri === 'oborudovanie-vozdukho-i-gazoochistki' || this.uri === 'sudovaya-armatura' || this.uri === 'avtomaticheskie-zakrytiya-vozdushnykh-trub' || this.uri === 'prochee-oborudovanie' || this.uri === 'oborudovanie-sistem-vodosnabzheniya') {
         this.hasFilters = false
       }
@@ -136,7 +142,7 @@ export default {
           isLink: false,
         },
       ])
-    }
+    },
   },
 }
 </script>
