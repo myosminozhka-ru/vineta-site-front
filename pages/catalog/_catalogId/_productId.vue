@@ -552,6 +552,12 @@ export default {
     },
   },
   mounted() {
+    window.onbeforeunload = function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      })
+    }
     this.product = this.$store.state.dataProduct
     this.products = this.$store.state.dataProductOther
     const properties = Object.values(this.$store.state.dataProduct[0].OFFERS).map((ele) => [...(ele.PROPERTIES || [])])
