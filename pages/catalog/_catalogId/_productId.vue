@@ -560,11 +560,7 @@ export default {
     }
     this.product = this.$store.state.dataProduct
     this.products = this.$store.state.dataProductOther
-    const properties = Object.values(this.$store.state.dataProduct[0].OFFERS).map((ele) => [...(ele.PROPERTIES || [])])
-    if (!properties.filter((item) => item.length > 0).length) {
-      this.$router.push(`/${this.$i18n.locale}/fallback`)
-    }
-    this.longestLength = properties.map((a) => a.length).indexOf(Math.max(...properties.map((a) => a.length)))
+
     this.addBreadcrumbs([
       {
         name: this.$t('buttons.main'),
@@ -594,6 +590,11 @@ export default {
     }
     if ('OFFERS' in this.$store.state.dataProduct[0]) {
       this.offersCount = Object.values(this.$store.state.dataProduct[0].OFFERS)
+      const properties = Object.values(this.$store.state.dataProduct[0].OFFERS).map((ele) => [...(ele.PROPERTIES || [])])
+      if (!properties.filter((item) => item.length > 0).length) {
+        this.$router.push(`/${this.$i18n.locale}/fallback`)
+      }
+      this.longestLength = properties.map((a) => a.length).indexOf(Math.max(...properties.map((a) => a.length)))
     }
     if (window.innerWidth <= 1280) {
       setTimeout(() => {
