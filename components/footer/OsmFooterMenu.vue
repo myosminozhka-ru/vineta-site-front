@@ -25,19 +25,19 @@
         <nuxt-link :to="localePath({ name: 'licenses' })">{{ $t('sections.footer.licenses_and_certificates') }}</nuxt-link>
       </li>
       <li>
-        <a v-if="getDownloadsCustomers.src" :href="getDownloadsCustomers.src" download="catalogue_Vineta" target="_black">{{ $t('buttons.download_catalog') }}</a>
+        <a :href="catalogDownloadLinks[0]['PROPERIES'][0]['SRC']" download target="_black">{{ $t('buttons.download_catalog') }}</a>
       </li>
       <li>
-        <a href="/files/vineta_book_TO_002.pdf" download target="_blank">{{ $t('sections.footer.heat_exchange_equipment') }}</a>
+        <a :href="catalogDownloadLinks[3]['PROPERIES'][0]['SRC']" download target="_blank">{{ $t('sections.footer.heat_exchange_equipment') }}</a>
       </li>
       <li>
-        <a href="/files/vineta_book_TP_rus_001.pdf" download target="_blank">{{ $t('sections.footer.fuel_preparation_equipment') }}</a>
+        <a :href="catalogDownloadLinks[1]['PROPERIES'][0]['SRC']" download target="_blank">{{ $t('sections.footer.fuel_preparation_equipment') }}</a>
       </li>
       <li>
-        <a href="/files/Vineta_book_VGO_ru_002.pdf" download target="_blank">{{ $t('sections.footer.air_and_gas_cleaning_equipment') }}</a>
+        <a :href="catalogDownloadLinks[4]['PROPERIES'][0]['SRC']" download target="_blank">{{ $t('sections.footer.air_and_gas_cleaning_equipment') }}</a>
       </li>
       <li>
-        <a href="/files/Vineta_book_VO_rus_ver012.pdf" download target="_blank">{{ $t('sections.footer.water_treatment_and_purification_equipment') }}</a>
+        <a :href="catalogDownloadLinks[2]['PROPERIES'][0]['SRC']" download target="_blank">{{ $t('sections.footer.water_treatment_and_purification_equipment') }}</a>
       </li>
       <!-- <li v-for="link in []" :key="link.ID">
         <a :href="link.PROPERIES[0].SRC" :download="link.CODE" target="_black">{{ link.NAME }}</a>
@@ -52,7 +52,7 @@
       </li>
       <template v-if="getPhoneAndEmail.length">
         <li v-for="(contact, index) in getPhoneAndEmail" :key="index">
-          <a :href=" contact.CODE === 'PHONE' ? `tel:${contact.VALUE}` : `mailto:${contact.VALUE}`">{{contact.VALUE}}</a>
+          <a :href="contact.CODE === 'PHONE' ? `tel:${contact.VALUE}` : `mailto:${contact.VALUE}`">{{ contact.VALUE }}</a>
         </li>
       </template>
       <li>
@@ -87,22 +87,23 @@ export default {
     ...mapGetters(['getContacts']),
     getDownloadsCustomers() {
       const produktsii = this.getDownloads['katalog-produktsii']
-      const length = produktsii?.PROPERIES.length;
-      const src = length ? produktsii?.PROPERIES[0]?.SRC : '';
-      const name = length ? produktsii?.NAME : '';
+      const length = produktsii?.PROPERIES.length
+      const src = length ? produktsii?.PROPERIES[0]?.SRC : ''
+      const name = length ? produktsii?.NAME : ''
       return {
         src,
         name,
       }
     },
-    aboutDownloadLinks() {
-      const filterArray = [];
-      for (const key in this.getDownloads) {
-        if (this.getDownloads[key].PROPERIES?.length > 1) {
-          filterArray.push(this.getDownloads[key])
+    catalogDownloadLinks() {
+      const getDownload = { ...this.getDownloads }
+      const filterArray = []
+      for (const key in getDownload) {
+        if (getDownload[key].PROPERIES?.length > 1) {
+          filterArray.push(getDownload[key])
         }
       }
-      return filterArray.filter((item) => item?.PROPERIES[1]?.VALUE === 'about_file');
+      return filterArray.filter((item) => item.PROPERIES[1].VALUE === 'about_file')
     },
     /**
      * Получение телефона и почты
@@ -111,7 +112,7 @@ export default {
      */
     getPhoneAndEmail() {
       return this.getContacts[0]?.PROPERIES.filter((item) => item.CODE === 'PHONE' || item.CODE === 'EMAIL') || []
-    }
+    },
   },
   mounted() {
     this.initCollapse()
