@@ -21,6 +21,7 @@
         <osm-button>{{ $t('buttons.apply') }}</osm-button>
       </div>
     </div>
+    <osm-apply-modal v-if="isShowApplyModal" :property="$store.state.dataVacancy[0].NAME" @close="isShowApplyModal = false" />
   </div>
 </template>
 
@@ -29,6 +30,12 @@ import { mapActions } from 'vuex'
 export default {
   components: {
     OsmButton: () => import('~/components/global/OsmButton.vue'),
+    OsmApplyModal: () => import('~/components/modals/apply.vue'),
+  },
+  data() {
+    return {
+      isShowApplyModal: false,
+    }
   },
   props: {
     dataArray: {
@@ -39,10 +46,12 @@ export default {
   methods: {
     ...mapActions(['toggleModal']),
     openApplyModal() {
+      console.log('hey 1')
       this.toggleModal({
         isOpened: true,
         type: 'apply',
       })
+      this.isShowApplyModal = true
     },
   },
 }
