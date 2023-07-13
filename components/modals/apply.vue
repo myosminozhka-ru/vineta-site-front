@@ -116,6 +116,7 @@ export default {
         form.append(key, formObj[key])
       }
       const token = await this.$recaptcha.execute('submit')
+      console.log('ReCaptcha token:', token)
       form.append('token', token)
       this.$axios.$post('forms/result_vacancy.php', form).then((result) => {
         if (result.error) {

@@ -51,6 +51,7 @@ export default {
     '@nuxtjs/i18n',
     '@nuxt/image',
     // 'nuxt-lazy-load',
+    '@nuxtjs/recaptcha',
   ],
 
   i18n: {
@@ -77,6 +78,12 @@ export default {
     vareibles: {
       remote: process.env.URL,
     },
+  },
+  recaptcha: {
+      hideBadge: true, // Hide badge element (v3 & v2 via size=invisible)
+      mode: "enterprise",       // Mode: 'base', 'enterprise'
+      siteKey: process.env.RECAPTCHA_SITE_KEY,    // Site key for requests
+      version: 3,    // Version
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
