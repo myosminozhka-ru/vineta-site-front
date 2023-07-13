@@ -20,6 +20,7 @@ export default {
     try {
       await this.$recaptcha.init()
     } catch (e) {
+      console.error(e)
     }
   },
 }
