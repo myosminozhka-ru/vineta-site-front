@@ -381,6 +381,10 @@ export const actions = {
   },
 
   async nuxtServerInit({ dispatch, state }) {
+    if (!state.products.length) {
+      await dispatch('addProducts')
+    }
+
     if (!Object.keys(state.seo).length) {
       await dispatch('addSeo')
     }

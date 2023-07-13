@@ -97,7 +97,7 @@ export default {
       chunk: () => '[name].[id].[contenthash].js',
     },
     extractCSS: true,
-    transpile: ['three'],
+    transpile: ['three', '@glidejs/glide'],
   },
   components: true,
   styleResources: {
