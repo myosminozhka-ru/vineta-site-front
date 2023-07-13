@@ -14,6 +14,7 @@ export default {
     },
     meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: '' }, { name: 'format-detection', content: 'telephone=no' }],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [ { src: 'https://www.google.com/recaptcha/api.js?render=6LdyyBIiAAAAAJxX77HEBLLkdwh06qwsdXOrL9wm', async: true, defer: true}]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -51,7 +52,6 @@ export default {
     '@nuxtjs/i18n',
     '@nuxt/image',
     // 'nuxt-lazy-load',
-    '@nuxtjs/recaptcha',
   ],
 
   i18n: {
@@ -78,12 +78,7 @@ export default {
     vareibles: {
       remote: process.env.URL,
     },
-  },
-  recaptcha: {
-      hideBadge: true, // Hide badge element (v3 & v2 via size=invisible)
-      mode: "enterprise",       // Mode: 'base', 'enterprise'
-      siteKey: process.env.RECAPTCHA_SITE_KEY,    // Site key for requests
-      version: 3,    // Version
+    recaptchaSiteKey: process.env.RECAPTCHA_SITE_KEY,
   },
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

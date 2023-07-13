@@ -563,6 +563,11 @@ body .wrapper .full-page-indicators {
       white-space: normal;
   }
 }
+.osm__error-captcha {
+  color: #CB2A2A;
+  font-size: 16px;
+  padding: 10px 0;
+}
 .osm__input {
   height: rem(60);
   width: 100%;
