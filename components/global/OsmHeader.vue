@@ -16,13 +16,6 @@ export default {
     OsmMobileMenu: () => import('~/components/header/OsmMobileMenu.vue'),
     OsmSearch: () => import('~/components/search/OsmSearchPopup.vue'),
   },
-  async mounted() {
-    try {
-      await this.$recaptcha.init()
-    } catch (e) {
-      console.error(e)
-    }
-  },
 }
 </script>
 

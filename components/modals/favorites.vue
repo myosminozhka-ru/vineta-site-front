@@ -40,6 +40,9 @@
                     <a href="/upload/iblock/972/hy68tiym8msmmnuf771f6kydjn6m8aj4.docx" target="_blank"> {{ $t('sections.modals.policy_link') }} </a>
                   {{ $t('sections.modals.policy_after_link') }}
                   </p>
+                  <div v-if="!isSuccess && errors.ReCaptcha" class="osm__error-captcha">
+                    {{ errors.ReCaptcha }} капча
+                  </div>
                     <osm-button class="modal__button" :large="true" type="submit">{{ $t('sections.footer.send') }}</osm-button>
                 </div>
                 <div v-else class="modal__form_in">
@@ -91,7 +94,15 @@ export default {
         for ( const key in formObj ) {
             form.append(key, formObj[key]);
         }
-        const token = await this.$recaptcha.execute('submit')
+        let token = null
+        try {
+          token = await window.grecaptcha.execute(this.$config.recaptchaSiteKey, {action: 'submit'}).then(function(token) {
+            return token
+          });
+        } catch(e) {
+          console.error(e)
+        }
+        console.log('ReCaptcha token:', token)
         form.append('token', token)
         this.$axios.$post('forms/result_favorites.php', form).then(result => {
             if (result.error) {
