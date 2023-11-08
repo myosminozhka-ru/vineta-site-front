@@ -1,5 +1,5 @@
 <template>
-  <div class="preloader" :class="[dynamicClass]">
+  <div :class="'preloader ' + getLoadedStatus ? null : 'preloader--is-hidden'">
     <span class="circle circle-1"></span>
     <span class="circle circle-2"></span>
     <span class="circle circle-3"></span>
