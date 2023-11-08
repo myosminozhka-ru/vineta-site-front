@@ -1,15 +1,15 @@
 <template>
+  <no-ssr>
     <model-fbx
       :src="`/models/Y_Bot.fbx`"
       :background-color="0xdddddd"
-      :lights="lights"
       :gl-options="{ antialias: true }"
     />
+  </no-ssr>
 </template>
 
 <script>
 import { ModelFbx } from 'vue-3d-model';
-import * as THREE from 'three'
 export default {
   name: 'OsmScene',
   components: { ModelFbx },
@@ -19,9 +19,6 @@ export default {
     }
   },
   mounted() {
-    this.lights.push(new THREE.DirectionalLight(0xffffff, 1.0))
-    this.lights.push(new THREE.AmbientLight(0x404040))
-    this.lights.push(new THREE.HemisphereLight(0xffffff, 0x444444, 1.0))
     this.$store.dispatch('setLoadingStatus', false)
   }
 }
