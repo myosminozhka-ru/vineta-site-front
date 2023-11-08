@@ -1,7 +1,15 @@
 <template>
   <no-ssr>
+    <model-obj
+      v-if="format === 'obj'"
+      :src="`/models/model.obj`"
+      :mtl="`/models/model.mtl`"
+      :background-color="0xdddddd"
+      :gl-options="{ antialias: true }"
+    />
     <model-fbx
-      :src="`/models/Y_Bot.fbx`"
+      v-else
+      :src="`/models/model.fbx`"
       :background-color="0xdddddd"
       :gl-options="{ antialias: true }"
     />
@@ -9,10 +17,16 @@
 </template>
 
 <script>
-import { ModelFbx } from 'vue-3d-model';
+import { ModelFbx, ModelObj } from 'vue-3d-model';
 export default {
   name: 'OsmScene',
-  components: { ModelFbx },
+  props: {
+    format: {
+      type: String,
+      default: '',
+    }
+  },
+  components: { ModelFbx, ModelObj },
   data() {
     return {
       lights: [],

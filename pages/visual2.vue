@@ -2,7 +2,7 @@
   <div class="header_padding">
     <div class="wrapper footerOnBottom">
       <div class="visual">
-        <VisualScene :is-start="true" :format="'fbx'"/>
+        <VisualScene :is-start="true" :format="'obj'"/>
       </div>
       <osm-footer />
     </div>
