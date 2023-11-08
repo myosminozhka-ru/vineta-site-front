@@ -2,7 +2,7 @@
   <div class="header_padding">
     <div class="wrapper footerOnBottom">
       <div class="visual">
-        <OsmScena :is-start="true"/>
+        <VisualScene :is-start="true"/>
       </div>
       <osm-footer />
     </div>
@@ -12,7 +12,7 @@
 export default {
   name: 'VisualPage',
   components: {
-    OsmScena: () => import('~/components/visual/SceneV.vue'),
+    VisualScene: () => import('~/components/visual/VisualScene.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
   mounted() {
