@@ -4,6 +4,14 @@
       v-if="format === 'obj'"
       :src="`/models/model.obj`"
       :mtl="`/models/model.mtl`"
+      :lights="lights"
+      :background-color="0xdddddd"
+      :gl-options="{ antialias: true }"
+    />
+    <model-gltf
+      v-else-if="format === 'glb'"
+      :src="`/models/model.glb`"
+      :lights="lights"
       :background-color="0xdddddd"
       :gl-options="{ antialias: true }"
     />
@@ -17,7 +25,7 @@
 </template>
 
 <script>
-import { ModelFbx, ModelObj } from 'vue-3d-model';
+import { ModelFbx, ModelObj, ModelGltf } from 'vue-3d-model';
 export default {
   name: 'OsmScene',
   props: {
@@ -26,10 +34,24 @@ export default {
       default: '',
     }
   },
-  components: { ModelFbx, ModelObj },
+  components: { ModelFbx, ModelObj, ModelGltf },
   data() {
     return {
-      lights: [],
+      lights: [
+          {
+            type: 'HemisphereLight',
+            position: { x: 0, y: 1, z: 0 },
+            skyColor: 0xaaaaff,
+            groundColor: 0x806060,
+            intensity: 0.7,
+          },
+          {
+            type: 'DirectionalLight',
+            position: { x: 1, y: 1, z: 1 },
+            color: 0xffffff,
+            intensity: 0.9,
+          },
+        ]
     }
   },
   mounted() {
