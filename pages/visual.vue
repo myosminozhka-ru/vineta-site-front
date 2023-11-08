@@ -9,11 +9,10 @@
   </div>
 </template>
 <script>
-import Scene from '~/components/visual/SceneV.vue'
 export default {
   name: 'VisualPage',
   components: {
-    OsmScena: Scene,
+    OsmScena: () => import('~/components/visual/SceneV.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
   mounted() {

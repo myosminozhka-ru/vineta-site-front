@@ -1,6 +1,6 @@
 <template>
     <model-fbx
-      :src="`/models/model1.fbx`"
+      :src="`/models/Y_Bot.fbx`"
       :background-color="0xdddddd"
       :lights="lights"
       :gl-options="{ antialias: true }"
