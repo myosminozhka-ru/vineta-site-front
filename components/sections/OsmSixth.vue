@@ -101,10 +101,8 @@ export default {
     ...mapGetters(['getCatalog']),
   },
   watch: {
-    isActive: function(newVal, oldVal) { // watch it
-      if (newVal) {
-        this.catalog.slider.mount()
-      }
+    isActive(newVal, oldVal) { // watch it
+      if (newVal) this.catalog.slider.mount();
     }
   },
 }

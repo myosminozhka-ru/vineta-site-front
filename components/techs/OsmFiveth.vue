@@ -90,6 +90,9 @@ export default {
         flex: 1 1 auto;
         display: flex;
         align-items: center;
+        @media all and (min-width: 1281px) {
+          height: 60%;
+        }
         @media all and (max-width: 1280px) {
             flex-direction: column;
         }
@@ -114,7 +117,7 @@ export default {
     }
     &__right--tech {
         width: calc(100% - #{rem(602)} - #{rem(128)});
-height: 100%;
+        height: 100%;
         position: relative;
         @media all and (max-width: 1280px) {
             width: 100%;
@@ -140,8 +143,8 @@ height: 100%;
             }
             @media all and (max-width: 860px) {
                 font-size: 190px;
-top: -50px;
-right: 10px;
+                top: -50px;
+                right: 10px;
             }
             &:after {
                 content: "";
@@ -156,8 +159,6 @@ right: 10px;
         .texts {
             position: relative;
             z-index: 2;
-height: 100%;
-overflow: auto;
         }
         .title {
             font-style: normal;

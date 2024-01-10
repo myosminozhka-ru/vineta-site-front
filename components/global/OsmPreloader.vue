@@ -1,5 +1,5 @@
 <template>
-  <div :class="'preloader ' + getLoadedStatus ? null : 'preloader--is-hidden'">
+  <div :class="'preloader' + dynamicClass">
     <span class="circle circle-1"></span>
     <span class="circle circle-2"></span>
     <span class="circle circle-3"></span>
@@ -17,8 +17,7 @@ export default {
   computed: {
     ...mapGetters(['getLoadedStatus']),
     dynamicClass() {
-      const status = this.getLoadedStatus;
-      return status ? null : 'preloader--is-hidden'
+      return this.getLoadedStatus ? '' : ' preloader--is-hidden'
     }
   },
 }

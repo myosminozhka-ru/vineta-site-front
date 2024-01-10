@@ -1,0 +1,18 @@
+@mixin overflowTextBlock{
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth; /* Для браузеров, поддерживающих новые стандарты */
+  &::-webkit-scrollbar-track {
+    background-color: #e7e7e7;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #2E5599;
+    border-radius: 3px;
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 100%;
+  }
+}

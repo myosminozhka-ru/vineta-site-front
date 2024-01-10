@@ -85,6 +85,7 @@ export default {
         flex: 1 1 auto;
         display: flex;
         align-items: center;
+        height: 60%;
         @media all and (max-width: 1280px) {
             flex-direction: column;
         }
@@ -151,8 +152,6 @@ right: 10px;
         .texts {
             position: relative;
             z-index: 2;
-height: 100%;
-overflow: auto;
         }
         .title {
             font-style: normal;

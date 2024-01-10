@@ -205,8 +205,7 @@ export default {
 :deep(.texts) {
   position: relative;
   z-index: 2;
-  height: 100%;
-  overflow: auto;
+  @include overflowTextBlock();
 }
 :deep(.title) {
   font-style: normal;
