@@ -1,5 +1,8 @@
 # vineta site front
 
+## Перед запуском
+Необходимо скопировать файл `.env.prod`, удалить окончание `prod`. Иначе проект не возможно будет запустить для разработки.
+
 ## Build Setup
 
 ```bash
@@ -16,7 +19,6 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
-
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
 ## Special Directories
