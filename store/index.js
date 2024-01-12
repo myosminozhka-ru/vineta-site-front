@@ -377,7 +377,7 @@ export const actions = {
     })
   },
   setLoadingStatus({commit}, status) {
-    commit('setLoadingStatus', status)
+    commit('setLoadingStatus', status);
   },
 
   async nuxtServerInit({ dispatch, state }) {

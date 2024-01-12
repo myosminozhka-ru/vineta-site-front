@@ -144,7 +144,7 @@
 </template>
 
 <script>
-  import {mapActions} from "vuex";
+  import {mapMutations} from "vuex";
 
   export default {
     name: "ErrorPage",
@@ -152,13 +152,14 @@
       OsmButton: () => import('~/components/global/OsmButton.vue')
     },
     mounted() {
-      setTimeout(() => {
-        this.setLoadingStatus(false)
-      }, 0)
+      this.hidePreloader();
     },
     methods: {
-      ...mapActions(['setLoadingStatus'])
-    }
+      ...mapMutations(['setLoadingStatus']),
+      hidePreloader() {
+        this.setLoadingStatus(false);
+      }
+    },
   }
 
 </script>

@@ -105,4 +105,7 @@ export default {
   styleResources: {
     scss: ['./assets/scss/helpers/*.scss'],
   },
+  ignore:  [
+    'pages/visual.vue',
+  ]
 }
