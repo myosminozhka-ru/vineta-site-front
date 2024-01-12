@@ -151,6 +151,7 @@
     components: {
       OsmButton: () => import('~/components/global/OsmButton.vue')
     },
+    layout: 'error',
     mounted() {
       this.hidePreloader();
     },

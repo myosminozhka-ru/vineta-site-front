@@ -1,6 +1,5 @@
 <template>
   <div>
-    <osm-preloader />
     <osm-header />
     <Nuxt />
     <no-ssr>
@@ -35,7 +34,6 @@ export default {
   name: 'DefaultLayout',
   components: {
     OsmHeader: () => import('~/components/global/OsmHeader.vue'),
-    OsmPreloader: () => import('~/components/global/OsmPreloader.vue'),
   },
   watch: {
     $route(to, from) {

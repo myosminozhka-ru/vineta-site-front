@@ -9,6 +9,7 @@ export default {
   components: {
     ErrorPage,
   },
+  layout: 'error-layout',
   props: {
     error: {
       type: Object,
