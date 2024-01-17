@@ -106,6 +106,6 @@ export default {
     scss: ['./assets/scss/helpers/*.scss'],
   },
   ignore:  [
-    'pages/visual.vue',
+    // 'pages/visual.vue',
   ]
 }

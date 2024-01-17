@@ -15,12 +15,10 @@ export default {
     VisualScene: () => import('~/components/visual/VisualScene.vue'),
     OsmFooter: () => import('~/components/global/OsmFooter.vue'),
   },
-  mounted() {
-    this.$store.commit('setLoadingStatus', false)
-    setTimeout(() => {
-      this.$store.dispatch('setLoadingStatus', false)
-    }, 2000)
-  }
+  async fetch({store}) {
+    await store.dispatch('setLoadingStatus', true)
+    await store.dispatch('setLoadingStatus', false)
+  },
 }
 </script>
 
