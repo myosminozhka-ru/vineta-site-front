@@ -141,7 +141,7 @@ export const actions = {
     commit('setDataVacancy', data)
   },
   setDataProduct({commit}, data) {
-    commit('setDataProduct', data)
+    commit('setDataProduct', data);
   },
   setDataProductOther({commit}, data) {
     commit('setDataProductOther', data)

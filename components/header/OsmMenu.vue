@@ -21,7 +21,7 @@
         </nuxt-link>
       </li>
     </ul>
-    <div class="menu__modals hide_on_mobile">
+    <div class="menu__modals">
       <div class="menu__modal" :data-modal-id="123">
         <div class="menu__modal_top" @mousewheel.stop>
           <osm-h2 class="menu__modal_title">{{ $t('menu.products') }}</osm-h2>
@@ -308,6 +308,9 @@ export default {
 .menu {
   &__modals {
     background: #000;
+    @media (max-width: 1280px) {
+      display: none;
+    }
   }
 
   &__modal {
@@ -678,7 +681,6 @@ export default {
     }
   }
 }
-
 .menu__modal_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -25,7 +25,7 @@
           <div v-if="data.GALLERY.length > 2" class="productPage__slider-button productPage__slider-button--more" @click="elementOpened = 2">
             <div class="text">Еще {{ data.GALLERY.length - 2 }}</div>
           </div>
-          <div v-if="false" class="productPage__slider-button productPage__slider-button--3d" @click="treeDView.isOpened = true">
+          <div v-if="is3DModel" class="productPage__slider-button productPage__slider-button--3d" @click="treeDView.isOpened = true">999
             <div class="icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 23 29" fill="none">
                 <path d="M13.0465 28.309L13.0726 28.7236C13.0787 28.82 13.1318 28.9074 13.2147 28.9571C13.2611 28.9848 13.3135 28.999 13.3659 28.999C13.4074 28.999 13.4488 28.9902 13.4876 28.9726L15.5988 28.012C15.714 27.9596 15.7828 27.8393 15.7694 27.7135C15.7561 27.5877 15.6637 27.4846 15.5401 27.4574L13.3379 26.9744C13.2479 26.9553 13.1537 26.9783 13.0836 27.0385C13.0136 27.0985 12.9759 27.188 12.9817 27.28L13.0095 27.7224C12.4352 27.7667 11.8524 27.7898 11.2649 27.7898C8.82379 27.7898 6.52254 27.4122 4.61004 26.6979C4.27697 26.5734 3.95678 26.4386 3.65819 26.2971C3.511 26.2273 3.33627 26.2901 3.26669 26.4367C3.19712 26.5834 3.25973 26.7587 3.40633 26.8281C3.71995 26.9768 4.05577 27.1183 4.4043 27.2484C6.38206 27.9871 8.75436 28.3775 11.2649 28.3775C11.8646 28.3775 12.4598 28.3542 13.0465 28.309Z" fill="#172242" />
@@ -50,9 +50,10 @@
         </div>
       </div>
     </div>
+
     <div v-if="treeDView.isOpened" class="modal" @click="treeDView.isOpened = false">
       <div class="modal__in" @click.stop>
-        <iframe width="100%" height="500" allowfullscreen src="https://www.blend4web.com/apps/webplayer/webplayer.html?load=/assets/tutorials/web_page_integration/apple.json"></iframe>
+        <VisualScene :format="data.MODEL_3D.format" :src="data.MODEL_3D.src" :mtl="data.MODEL_3D.mtl"/>
       </div>
     </div>
   </div>
@@ -61,11 +62,13 @@
 <script>
 import { Hooper, Slide, Navigation as HooperNavigation } from 'hooper'
 import 'hooper/dist/hooper.css'
+import VisualScene from "~/components/visual/VisualScene";
 export default {
   components: {
     Hooper,
     Slide,
     HooperNavigation,
+    VisualScene
   },
   props: {
     data: {
@@ -92,6 +95,9 @@ export default {
     },
   }),
   computed: {
+    is3DModel() {
+      return this.data.MODEL_3D.format
+    },
     popupPhotos() {
       return this.data.GALLERY.map((gallery) => ({ url: this.$config.vareibles.remote + gallery, title: '' }))
     },
@@ -143,11 +149,11 @@ export default {
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.3);
+  padding: 16px;
   &__in {
-    width: rem(1200);
-    iframe {
-      border: none;
-    }
+    position: relative;
+    max-width: rem(1440);
+    width: 100%;
   }
 }
 .productPage {
