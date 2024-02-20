@@ -90,10 +90,12 @@ export default {
     increaseHandler() {
       this.scale.x += .1;
       this.scale.y += .1;
+      this.scale.z += .1;
     },
     decreaseHandler() {
       this.scale.x -= .1;
       this.scale.y -= .1;
+      this.scale.z -= .1;
     }
   }
 }

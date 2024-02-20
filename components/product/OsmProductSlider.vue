@@ -53,6 +53,7 @@
 
     <div v-if="treeDView.isOpened" class="modal" @click="treeDView.isOpened = false">
       <div class="modal__in" @click.stop>
+        <button  class="modal__close" type="button" @click="treeDView.isOpened = false"></button>
         <VisualScene :format="data.MODEL_3D.format" :src="data.MODEL_3D.src" :mtl="data.MODEL_3D.mtl"/>
       </div>
     </div>
@@ -154,6 +155,31 @@ export default {
     position: relative;
     max-width: rem(1440);
     width: 100%;
+  }
+  &__close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    width: 30px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: #ececec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    padding: 0;
+    z-index: 9;
+    cursor: pointer;
+    &::before {
+      content: '';
+      display: block;
+      width: 12px;
+      aspect-ratio: 1/1;
+      mask: url("~assets/img/closer.svg") 0 0 no-repeat;
+      mask-size: contain;
+      background-color: #555F76;
+    }
   }
 }
 .productPage {
