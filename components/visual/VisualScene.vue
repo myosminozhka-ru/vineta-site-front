@@ -1,29 +1,31 @@
 <template>
   <div class="visual-scene">
-    <no-ssr>
-      <model-obj
-        v-if="format === 'obj'"
-        :src="src"
-        :mtl="mtl"
-        :lights="lights"
-        :scale="scale"
-        :background-color="0xdddddd"
-        :gl-options="{ antialias: true }"
-      />
-      <model-gltf
-        v-else-if="format === 'glb'"
-        :src="`/models/model.glb`"
-        :lights="lights"
-        :background-color="0xdddddd"
-        :gl-options="{ antialias: true }"
-      />
-      <model-fbx
-        v-else
-        :src="src"
-        :background-color="0xdddddd"
-        :gl-options="{ antialias: true }"
-      />
-    </no-ssr>
+    <div class="visual-scene__canvas">
+      <no-ssr>
+        <model-obj
+          v-if="format === 'obj'"
+          :src="src"
+          :mtl="mtl"
+          :lights="lights"
+          :scale="scale"
+          :background-color="0xdddddd"
+          :gl-options="{ antialias: true }"
+        />
+        <model-gltf
+          v-else-if="format === 'glb'"
+          :src="`/models/model.glb`"
+          :lights="lights"
+          :background-color="0xdddddd"
+          :gl-options="{ antialias: true }"
+        />
+        <model-fbx
+          v-else
+          :src="src"
+          :background-color="0xdddddd"
+          :gl-options="{ antialias: true }"
+        />
+      </no-ssr>
+    </div>
     <div class="visual-scene__bottom">
       <div class="visual-scene__buttons">
         <button class="visual-scene__button visual-scene__button--plus" @click="increaseHandler()"></button>
@@ -108,8 +110,11 @@ export default {
   canvas {
     max-width: 100%;
   }
+  &__canvas {
+    cursor: url("~assets/img/cursor.svg") -4 -4, pointer;
+  }
   &__bottom {
-    padding-bottom: 50px;
+    padding-bottom: 77px;
     @media (max-width: 767px) {
       padding: 15px;
       display: flex;
