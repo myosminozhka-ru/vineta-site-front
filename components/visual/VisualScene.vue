@@ -1,6 +1,6 @@
 <template>
   <div class="visual-scene">
-    {{src}}
+    <osm-preloader :dop-class="dinamicClass"/>
     <div class="visual-scene__canvas">
       <no-ssr>
         <model-obj
@@ -11,11 +11,8 @@
           :scale="scale"
           :background-color="0xdddddd"
           :gl-options="{ antialias: true }"
-        >
-          <template #progress-bar>
-           4443
-          </template>
-        </model-obj>
+          @on-load="onLoad"
+        />
         <model-gltf
           v-else-if="format === 'glb'"
           :src="`/models/model.glb`"
@@ -28,6 +25,7 @@
           :src="src"
           :background-color="0xdddddd"
           :gl-options="{ antialias: true }"
+          @on-load="onLoad"
         />
       </no-ssr>
     </div>
@@ -53,9 +51,10 @@
 
 <script>
 import { ModelFbx, ModelObj, ModelGltf } from 'vue-3d-model';
+import osmPreloader from "~/components/global/OsmPreloader";
 export default {
   name: 'OsmScene',
-  components: { ModelFbx, ModelObj, ModelGltf },
+  components: { ModelFbx, ModelObj, ModelGltf, osmPreloader },
   props: {
     format: {
       type: String,
@@ -72,6 +71,7 @@ export default {
   },
   data() {
     return {
+      dinamicClass: '',
       scale: { x: 1, y: 1, z: 1 },
       lights: [
           {
@@ -94,6 +94,9 @@ export default {
     this.$store.dispatch('setLoadingStatus', false)
   },
   methods: {
+    onLoad() {
+      this.dinamicClass = 'preloader--is-hidden'
+    },
     increaseHandler() {
       this.scale.x += .1;
       this.scale.y += .1;

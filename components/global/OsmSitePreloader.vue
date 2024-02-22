@@ -1,22 +1,22 @@
 <template>
-  <div :class="`preloader ${dopClass}`">
-    <span class="circle circle-1"></span>
-    <span class="circle circle-2"></span>
-    <span class="circle circle-3"></span>
-    <span class="circle circle-4"></span>
-    <span class="circle circle-5"></span>
-    <span class="circle circle-6"></span>
-    <span class="circle circle-7"></span>
-    <span class="circle circle-8"></span>
-  </div>
+  <osm-preloader :dop-class="`preloader--fixed${dynamicClass}`"/>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import osmPreloader from "~/components/global/OsmPreloader";
 export default {
+  components: {osmPreloader},
   props: {
     dopClass: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    ...mapGetters(['getLoadedStatus']),
+    dynamicClass() {
+      return this.getLoadedStatus ? '' : ' preloader--is-hidden'
     }
   },
 }
@@ -24,9 +24,12 @@ export default {
 
 <style lang="scss" scoped>
 .preloader {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,14 +37,8 @@ export default {
   transition: all 1s ease;
   opacity: 1;
   visibility: visible;
-
-  &--fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10000000;
+  &--sm {
+    position: static;
   }
   &--is-hidden {
     opacity: 0;
