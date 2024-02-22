@@ -1,5 +1,6 @@
 <template>
   <div class="visual-scene">
+    {{src}}
     <div class="visual-scene__canvas">
       <no-ssr>
         <model-obj
@@ -10,7 +11,11 @@
           :scale="scale"
           :background-color="0xdddddd"
           :gl-options="{ antialias: true }"
-        />
+        >
+          <template #progress-bar>
+           4443
+          </template>
+        </model-obj>
         <model-gltf
           v-else-if="format === 'glb'"
           :src="`/models/model.glb`"
