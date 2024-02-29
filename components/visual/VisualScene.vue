@@ -4,7 +4,7 @@
     <div class="visual-scene__canvas">
       <no-ssr>
         <model-obj
-          v-if="format === 'obj'"
+          v-if="current3DFormat === 'obj'"
           :src="src"
           :mtl="mtl"
           :lights="lights"
@@ -14,14 +14,14 @@
           @on-load="onLoad"
         />
         <model-gltf
-          v-else-if="format === 'glb' || format === 'gltf'"
+          v-else-if="current3DFormat === 'glb' || current3DFormat === 'gltf'"
           :src="src"
           :lights="lightsGLTF"
           :background-color="0xdddddd"
           :gl-options="{ antialias: true }"
         />
         <model-fbx
-          v-else
+          v-else-if="current3DFormat === fbx"
           :src="src"
           :background-color="0xdddddd"
           :gl-options="{ antialias: true }"
@@ -62,7 +62,7 @@ export default {
     },
     src: {
       type: String,
-      default: `/models/model.obj`,
+      default: '',
     },
     mtl: {
       type: String,
@@ -135,6 +135,11 @@ export default {
             angle: 1,
           },
         ]
+    }
+  },
+  computed: {
+    current3DFormat() {
+      return this.src.length ? this.src.split('.').pop() : '';
     }
   },
   mounted() {
