@@ -3,20 +3,20 @@
     <osm-preloader :dop-class="dinamicClass"/>
     <div class="visual-scene__canvas">
       <no-ssr>
-        <model-obj
-          v-if="current3DFormat === 'obj'"
+        <model-gltf
+          v-if="current3DFormat === 'glb' || current3DFormat === 'gltf'"
           :src="src"
-          :mtl="mtl"
-          :lights="lights"
-          :scale="scale"
+          :lights="lightsGLTF"
           :background-color="0xdddddd"
           :gl-options="{ antialias: true }"
           @on-load="onLoad"
         />
-        <model-gltf
-          v-else-if="current3DFormat === 'glb' || current3DFormat === 'gltf'"
+        <model-obj
+          v-else-if="current3DFormat === 'obj'"
           :src="src"
-          :lights="lightsGLTF"
+          :mtl="mtl"
+          :lights="lights"
+          :scale="scale"
           :background-color="0xdddddd"
           :gl-options="{ antialias: true }"
           @on-load="onLoad"
@@ -92,48 +92,22 @@ export default {
       lightsGLTF: [
           {
             type: 'HemisphereLight',
-            position: { x: 1, y: 1, z: 1 },
-            skyColor: 0xaaaaff,
-            groundColor: 0x806060,
-            intensity: 0.7,
+            position: { x: 15, y: 15, z: 15 },
+            skyColor: 0xbebebe,
+            groundColor: 0x707070,
+            intensity: 0.5,
           },
           {
             type: 'DirectionalLight',
-            position: { x: 0, y: 1, z: 1 },
-            color: 0xffffff,
-            intensity: 0.3,
+            position: { x: 15, y: 15, z: -5 },
+            color: '#ffffff',
+            intensity: 1.5,
           },
           {
             type: 'DirectionalLight',
-            position: { x: 1, y: 0, z: 1 },
-            color: 0xffffff,
-            intensity: 0.4,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: 1, y: 1, z: 0 },
-            color: 0xffffff,
-            intensity: 0.3,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: 1, y: 1, z: 1 },
-            color: 0xffffff,
-            intensity: 0.4,
-          },
-          {
-            type: 'AmbientLight',
-            position: { x: 2.11, y: 2.115, z: 4.135 },
-            color: 0xffffff,
-            intensity: 0.3,
-          },
-          {
-            type: 'SpotLight',
-            position: { x: 0, y: 0.42, z: 0 },
-            color: 0xffffff,
-            intensity: 0.25,
-            distance: 0.84,
-            angle: 1,
+            position: { x: -15, y: 15, z: -15 },
+            color: '#ffffff',
+            intensity: 1.5,
           },
         ]
     }
