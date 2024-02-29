@@ -19,6 +19,7 @@
           :lights="lightsGLTF"
           :background-color="0xdddddd"
           :gl-options="{ antialias: true }"
+          @on-load="onLoad"
         />
         <model-fbx
           v-else-if="current3DFormat === fbx"
