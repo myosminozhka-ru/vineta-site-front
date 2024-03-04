@@ -54,7 +54,7 @@
     <div v-if="treeDView.isOpened" class="modal" @click="treeDView.isOpened = false">
       <div class="modal__in" @click.stop>
         <button  class="modal__close" type="button" @click="treeDView.isOpened = false"></button>
-        <VisualScene :format="data.MODEL_3D.format" :src="data.MODEL_3D.src" :mtl="data.MODEL_3D.mtl"/>
+        <VisualScene :format="data.MODEL_3D.format" :src="data.MODEL_3D.src" :mtl="data.MODEL_3D.mtl" :position-prop="position"/>
       </div>
     </div>
   </div>
@@ -102,6 +102,13 @@ export default {
     popupPhotos() {
       return this.data.GALLERY.map((gallery) => ({ url: this.$config.vareibles.remote + gallery, title: '' }))
     },
+    position() {
+      const item = this.data?.PROPERIES.find(i => i.CODE === "ROTATION")
+      if (item) {
+        return item.VALUE
+      }
+      return null
+    }
   },
   mounted() {
     this.isMounted = true

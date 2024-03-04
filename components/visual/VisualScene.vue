@@ -8,6 +8,7 @@
           :src="src"
           :lights="lightsGLTF"
           :background-color="0xdddddd"
+          :camera-position="rotation"
           :gl-options="{ antialias: true }"
           @on-load="onLoad"
         />
@@ -68,7 +69,11 @@ export default {
     mtl: {
       type: String,
       default: `/models/model.mtl`,
-    }
+    },
+    positionProp: {
+      type: String || null,
+      default: ''
+    },
   },
   data() {
     return {
@@ -76,18 +81,18 @@ export default {
       scale: { x: 1, y: 1, z: 1 },
       lights: [
         {
-            type: 'HemisphereLight',
-            position: { x: 0, y: 1, z: 0 },
-            skyColor: 0xaaaaff,
-            groundColor: 0x806060,
-            intensity: 0.7,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: 1, y: 1, z: 1 },
-            color: 0xffffff,
-            intensity: 0.9,
-          },
+          type: 'HemisphereLight',
+          position: { x: 0, y: 1, z: 0 },
+          skyColor: 0xaaaaff,
+          groundColor: 0x806060,
+          intensity: 0.7,
+        },
+        {
+          type: 'DirectionalLight',
+          position: { x: 1, y: 1, z: 1 },
+          color: 0xffffff,
+          intensity: 0.9,
+        },
       ],
       lightsGLTF: [
           {
@@ -109,12 +114,25 @@ export default {
             color: '#ffffff',
             intensity: 1.5,
           },
-        ]
+      ],
+      rotation: {x: 0.14, y: 0.07, z: -0.12},
     }
   },
   computed: {
     current3DFormat() {
       return this.src.length ? this.src.split('.').pop() : '';
+    }
+  },
+  created() {
+    if (this.positionProp) {
+      try {
+        const rotation = JSON.parse(this.positionProp)
+        if (rotation) {
+          this.rotation = rotation
+        }
+      } catch(e) {
+        console.error(e)
+      }
     }
   },
   mounted() {
