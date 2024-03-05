@@ -126,7 +126,8 @@ export default {
   created() {
     if (this.positionProp) {
       try {
-        const rotation = JSON.parse(this.positionProp)
+        const string = `${this.positionProp.replace(/&quot;/gi, '"')}`
+        const rotation = JSON.parse(string)
         if (rotation) {
           this.rotation = rotation
         }

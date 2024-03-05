@@ -35,7 +35,7 @@
         </div>
         <div v-if="'PROPERIES' in $store.state.dataProduct[0]" class="productPage__texts no-print">
           <div v-for="item in $store.state.dataProduct[0].PROPERIES" :key="item.index" class="productPage__text">
-            <template v-if="'NAME' in item && item.NAME">
+            <template v-if="'NAME' in item && item.NAME && item.CODE !== 'ROTATION'">
               <div class="title">{{ item.NAME }}</div>
               <div class="value">{{ item.VALUE }}</div>
             </template>
