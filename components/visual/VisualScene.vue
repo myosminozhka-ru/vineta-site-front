@@ -7,9 +7,10 @@
           v-if="current3DFormat === 'glb' || current3DFormat === 'gltf'"
           :src="src"
           :lights="lightsGLTF"
-          :background-color="0xdddddd"
+          :background-color="0xefebeb"
           :camera-position="rotation"
           :gl-options="{ antialias: true }"
+          :controls-options="{minDistance: 0.1}"
           @on-load="onLoad"
         />
         <model-obj
@@ -18,15 +19,17 @@
           :mtl="mtl"
           :lights="lights"
           :scale="scale"
-          :background-color="0xdddddd"
+          :background-color="0xefebeb"
           :gl-options="{ antialias: true }"
+          :controls-options="{minDistance: 0.1}"
           @on-load="onLoad"
         />
         <model-fbx
           v-else-if="current3DFormat === fbx"
           :src="src"
-          :background-color="0xdddddd"
+          :background-color="0xefebeb"
           :gl-options="{ antialias: true }"
+          :controls-options="{minDistance: 0.1}"
           @on-load="onLoad"
         />
       </no-ssr>
