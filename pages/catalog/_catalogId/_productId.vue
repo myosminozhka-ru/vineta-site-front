@@ -114,7 +114,7 @@
                 <!-- <pre style="font-size: 15rem">{{$store.state.dataProduct[0]}}</pre> -->
                 <div class="productPage__mods--chars">
                   <div v-for="prop in $store.state.dataProduct[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
-                    <template v-if="'NAME' in prop && prop.NAME">
+                    <template v-if="'NAME' in prop && prop.NAME && prop.NAME !== 'rotation'">
                       <div class="productPage__mods--char_title">
                         {{ prop.NAME }}
                       </div>
@@ -242,7 +242,7 @@
               <div class="value">
                 <div class="productPage__mods--chars">
                   <div v-for="prop in $store.state.dataProduct[0].PROPERIES" :key="prop.index" class="productPage__mods--char">
-                    <template v-if="'NAME' in prop && prop.NAME">
+                    <template v-if="'NAME' in prop && prop.NAME && prop.NAME !== 'rotation'">
                       <div class="productPage__mods--char_title">
                         {{ prop.NAME }}
                       </div>
@@ -384,8 +384,8 @@
                   </span>
                   <div v-if="prod.SKU" class="products__item_sku">{{ prod.SKU }}</div>
                   <div class="products__item_properties">
-                    <div v-for="property in prod.PROPERIES?.slice(0, 3)" :key="property.index" class="products__item_property">
-                      <template v-if="'NAME' in property && property.NAME">
+                    <div v-for="property in prod.PROPERIES?.slice(0, 3)" :key="property.index" class="products__item_property 3">
+                      <template v-if="'NAME' in property && property.NAME && property.NAME !== 'rotation'">
                         <div class="name">{{ property.NAME }}</div>
                         <div class="value">{{ property.VALUE }}</div>
                       </template>
@@ -536,7 +536,7 @@ export default {
       return this.products.filter((i) => i.ID !== this.$store.state.dataProduct[0].ID)?.slice(0, 4)
     },
     hasChar() {
-      const first = !!(this.$store.state.dataProduct[0].PROPERIES && this.$store.state.dataProduct[0].PROPERIES.find((i) => i.NAME !== null))
+      const first = !!(this.$store.state.dataProduct[0].PROPERIES && this.$store.state.dataProduct[0].PROPERIES.find((i) => i.NAME !== null && i.NAME !== 'rotation'))
       const second = !!(this.offersCount && this.offersCount.length === 1)
       return !(first === false && second === false)
     },
