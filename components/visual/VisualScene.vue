@@ -117,6 +117,12 @@ export default {
             color: '#ffffff',
             intensity: 1.5,
           },
+          {
+            type: 'DirectionalLight',
+            position: { x: 10, y: 15, z: 15 },
+            color: '#ffffff',
+            intensity: 1.5,
+          },
       ],
       rotation: {x: 0.14, y: 0.07, z: -0.12},
     }
