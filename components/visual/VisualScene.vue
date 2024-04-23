@@ -7,6 +7,7 @@
           v-if="current3DFormat === 'glb' || current3DFormat === 'gltf'"
           :src="src"
           :lights="lightsGLTF"
+          :scale="scale"
           :background-color="0xefebeb"
           :camera-position="rotation"
           :gl-options="{ antialias: true }"
@@ -97,7 +98,7 @@ export default {
           intensity: 0.9,
         },
       ],
-      lightsGLTF: [
+      lightsGLTFr: [
           {
             type: 'HemisphereLight',
             position: { x: 15, y: 15, z: 15 },
@@ -122,6 +123,51 @@ export default {
             position: { x: 10, y: 15, z: 15 },
             color: '#ffffff',
             intensity: 1.5,
+          },
+      ],
+      lightsGLTF: [
+          // {
+          //   type: 'HemisphereLight',
+          //   position: { x: 0, y: 15, z: 0 },
+          //   skyColor: 0xffffff,
+          //   groundColor: 0xffffff,
+          //   intensity: 0.5,
+          // },
+          {
+            type: 'DirectionalLight',
+            position: { x: 5, y: 1, z: 8 },
+            color: 0xffffff,
+            intensity: 0.7,
+          },
+          {
+            type: 'DirectionalLight',
+            position: { x: -5, y: 1, z: 8 },
+            color: 0xffffff,
+            intensity: 0.7,
+          },
+          {
+            type: 'DirectionalLight',
+            position: { x: -5, y: 1, z: -8 },
+            color: 0xffffff,
+            intensity: 0.7,
+          },
+          {
+            type: 'DirectionalLight',
+            position: { x: 5, y: 1, z: -8 },
+            color: 0xffffff,
+            intensity: 0.7,
+          },
+          {
+            type: 'DirectionalLight',
+            position: { x: 0, y: 10, z: 0 },
+            color: 0xffffff,
+            intensity: 0.7,
+          },
+          {
+            type: 'AmbientLight',
+            position: { x: 0, y: 0, z: 0 },
+            color: 0xffffff,
+            intensity: 0.2,
           },
       ],
       rotation: {x: 0.14, y: 0.07, z: -0.12},
