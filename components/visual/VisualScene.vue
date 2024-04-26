@@ -88,7 +88,7 @@ export default {
       const heightless = 120
       const cameraRotation = this.rotation
       const onLoad = this.onLoad
-      // const src = this.src
+      const src = this.src
       const scene = new THREE.Scene();
       scene.background = new THREE.Color(0xefebeb)
       const camera = new THREE.PerspectiveCamera(45, sceneEl.clientWidth / (window.innerHeight - heightless), 0.05, 1000);
@@ -132,7 +132,7 @@ export default {
       const loader = new GLTFLoader();
       // const minDistance = 0.1
       loader.load(
-        '/models/ASBT_du50_electro.glb',
+        src,
         (gltf) => {
           const model = gltf.scene;
           model.scale.set(1, 1, 1); // Set scale to (1, 1, 1)
