@@ -53,14 +53,8 @@ export default {
   },
   data() {
     return {
-      scale: { x: 1, y: 1, z: 1 },
       dinamicClass: '',
       rotation: {x: 0.14, y: 0.07, z: -0.12},
-      scene: null,
-      renderer: null,
-      camera: null,
-      controls: null,
-      model: null,
     }
   },
   computed: {
@@ -136,16 +130,12 @@ export default {
       controls.minDistance = 0.1;
       // Load GLB model
       const loader = new GLTFLoader();
-      const setModel = (m) => {
-        this.model = m
-      }
       // const minDistance = 0.1
       loader.load(
         src,
         (gltf) => {
           const model = gltf.scene;
           model.scale.set(1, 1, 1); // Set scale to (1, 1, 1)
-          setModel(model)
           scene.add(model);
           camera.position.set(cameraRotation.x, cameraRotation.y, cameraRotation.z); // Adjust camera position to view the model
           centerModel(model);
@@ -195,8 +185,8 @@ export default {
           // Calculate minZoomLevel based on model properties (e.g., bounding box size)
           const bbox = new THREE.Box3().setFromObject(model);
           const modelSize = bbox.getSize(new THREE.Vector3());
-          const minDimension = Math.min(modelSize.x, modelSize.y, modelSize.z);
-          return minDimension * 1.1; // Adjust based on the scale of your scene
+          const minDimension = Math.max(modelSize.x, modelSize.y, modelSize.z);
+          return minDimension * 1.3; // Adjust based on the scale of your scene
       }
       // Resize handling
       window.addEventListener('resize', () => {
