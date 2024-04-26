@@ -95,7 +95,6 @@ export default {
       const cameraRotation = this.rotation
       const onLoad = this.onLoad
       const src = this.src
-      window.sceneEl = sceneEl
       const scene = new THREE.Scene();
       scene.background = new THREE.Color(0xefebeb)
       const camera = new THREE.PerspectiveCamera(45, sceneEl.clientWidth / (window.innerHeight - heightless), 0.05, 1000);
@@ -140,6 +139,7 @@ export default {
       const setModel = (m) => {
         this.model = m
       }
+      // const minDistance = 0.1
       loader.load(
         src,
         (gltf) => {
@@ -149,6 +149,7 @@ export default {
           scene.add(model);
           camera.position.set(cameraRotation.x, cameraRotation.y, cameraRotation.z); // Adjust camera position to view the model
           centerModel(model);
+          controls.minDistance = calculateMinZoomLevel(model);
           onLoad()
         },
         undefined,
@@ -188,6 +189,14 @@ export default {
 
           // Move the model to align its center with the scene's center
           model.position.sub(center);
+      }
+      // Example: Define a function to calculate minZoomLevel based on model properties
+      function calculateMinZoomLevel(model) {
+          // Calculate minZoomLevel based on model properties (e.g., bounding box size)
+          const bbox = new THREE.Box3().setFromObject(model);
+          const modelSize = bbox.getSize(new THREE.Vector3());
+          const minDimension = Math.min(modelSize.x, modelSize.y, modelSize.z);
+          return minDimension * 1.1; // Adjust based on the scale of your scene
       }
       // Resize handling
       window.addEventListener('resize', () => {
