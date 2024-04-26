@@ -1,44 +1,13 @@
 <template>
   <div class="visual-scene">
     <osm-preloader :dop-class="dinamicClass"/>
-    <div class="visual-scene__canvas">
-      <no-ssr>
-        <model-gltf
-          v-if="current3DFormat === 'glb' || current3DFormat === 'gltf'"
-          :src="src"
-          :lights="lightsGLTF"
-          :scale="scale"
-          :background-color="0xefebeb"
-          :camera-position="rotation"
-          :gl-options="{ antialias: true }"
-          :controls-options="{minDistance: 0.1}"
-          @on-load="onLoad"
-        />
-        <model-obj
-          v-else-if="current3DFormat === 'obj'"
-          :src="src"
-          :mtl="mtl"
-          :lights="lights"
-          :scale="scale"
-          :background-color="0xefebeb"
-          :gl-options="{ antialias: true }"
-          :controls-options="{minDistance: 0.1}"
-          @on-load="onLoad"
-        />
-        <model-fbx
-          v-else-if="current3DFormat === fbx"
-          :src="src"
-          :background-color="0xefebeb"
-          :gl-options="{ antialias: true }"
-          :controls-options="{minDistance: 0.1}"
-          @on-load="onLoad"
-        />
-      </no-ssr>
+    <div ref="canvas" class="visual-scene__canvas">
+      <div ref="scene"></div>
     </div>
     <div class="visual-scene__bottom">
       <div class="visual-scene__buttons">
-        <button class="visual-scene__button visual-scene__button--plus" @click="increaseHandler()"></button>
-        <button class="visual-scene__button visual-scene__button--minus" @click="decreaseHandler()"></button>
+        <button id="decreaseZoomButton" class="visual-scene__button visual-scene__button--plus"></button>
+        <button id="increaseZoomButton" class="visual-scene__button visual-scene__button--minus"></button>
       </div>
       <div class="visual-scene__actions">
         <div class="visual-scene__actions-item visual-scene__actions-item--mouse-left">
@@ -56,11 +25,14 @@
 </template>
 
 <script>
-import { ModelFbx, ModelObj, ModelGltf } from 'vue-3d-model';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import osmPreloader from "~/components/global/OsmPreloader";
+
 export default {
   name: 'OsmScene',
-  components: { ModelFbx, ModelObj, ModelGltf, osmPreloader },
+  components: { osmPreloader },
   props: {
     format: {
       type: String,
@@ -81,96 +53,14 @@ export default {
   },
   data() {
     return {
-      dinamicClass: '',
       scale: { x: 1, y: 1, z: 1 },
-      lights: [
-        {
-          type: 'HemisphereLight',
-          position: { x: 0, y: 1, z: 0 },
-          skyColor: 0xaaaaff,
-          groundColor: 0x806060,
-          intensity: 0.7,
-        },
-        {
-          type: 'DirectionalLight',
-          position: { x: 1, y: 1, z: 1 },
-          color: 0xffffff,
-          intensity: 0.9,
-        },
-      ],
-      lightsGLTFr: [
-          {
-            type: 'HemisphereLight',
-            position: { x: 15, y: 15, z: 15 },
-            skyColor: 0xbebebe,
-            groundColor: 0x707070,
-            intensity: 0.5,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: 15, y: 15, z: -5 },
-            color: '#ffffff',
-            intensity: 1.5,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: -15, y: 15, z: -15 },
-            color: '#ffffff',
-            intensity: 1.5,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: 10, y: 15, z: 15 },
-            color: '#ffffff',
-            intensity: 1.5,
-          },
-      ],
-      lightsGLTF: [
-          // {
-          //   type: 'HemisphereLight',
-          //   position: { x: 0, y: 15, z: 0 },
-          //   skyColor: 0xffffff,
-          //   groundColor: 0xffffff,
-          //   intensity: 0.5,
-          // },
-          {
-            type: 'DirectionalLight',
-            position: { x: 5, y: 1, z: 8 },
-            color: 0xffffff,
-            intensity: 0.7,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: -5, y: 1, z: 8 },
-            color: 0xffffff,
-            intensity: 0.7,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: -5, y: 1, z: -8 },
-            color: 0xffffff,
-            intensity: 0.7,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: 5, y: 1, z: -8 },
-            color: 0xffffff,
-            intensity: 0.7,
-          },
-          {
-            type: 'DirectionalLight',
-            position: { x: 0, y: 10, z: 0 },
-            color: 0xffffff,
-            intensity: 0.7,
-          },
-          {
-            type: 'AmbientLight',
-            position: { x: 0, y: 0, z: 0 },
-            color: 0xffffff,
-            intensity: 0.2,
-          },
-      ],
+      dinamicClass: '',
       rotation: {x: 0.14, y: 0.07, z: -0.12},
+      scene: null,
+      renderer: null,
+      camera: null,
+      controls: null,
+      model: null,
     }
   },
   computed: {
@@ -193,20 +83,135 @@ export default {
   },
   mounted() {
     this.$store.dispatch('setLoadingStatus', false)
+    this.initThree()
   },
   methods: {
     onLoad() {
       this.dinamicClass = 'preloader--is-hidden'
     },
-    increaseHandler() {
-      this.scale.x += .1;
-      this.scale.y += .1;
-      this.scale.z += .1;
-    },
-    decreaseHandler() {
-      this.scale.x -= .1;
-      this.scale.y -= .1;
-      this.scale.z -= .1;
+    initThree() {
+      const sceneEl = this.$refs.scene
+      const heightless = 120
+      const cameraRotation = this.rotation
+      const onLoad = this.onLoad
+      const src = this.src
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xefebeb)
+      const camera = new THREE.PerspectiveCamera(45, sceneEl.clientWidth / (window.innerHeight - heightless), 0.05, 1000);
+      camera.position.z = 2;
+      const renderer = new THREE.WebGLRenderer({ antialias: true }); // Enable anti-aliasing
+      renderer.setSize(sceneEl.clientWidth, window.innerHeight - heightless);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.shadowMap.enabled = true; // Enable shadows
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Soft shadows for smoother edges
+      renderer.toneMapping = THREE.LinearToneMapping;
+      renderer.toneMappingExposure = 2;
+      // renderer.setClearColor(0xffffff);
+      sceneEl.appendChild(renderer.domElement);
+
+      // Lights
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+      scene.add(ambientLight);
+      const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1);
+      const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1);
+      const directionalLight3 = new THREE.DirectionalLight(0xffffff, 1);
+      const directionalLight4 = new THREE.DirectionalLight(0xffffff, 1);
+      const directionalLight5 = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight1.position.set(3, 1, 3);
+      directionalLight2.position.set(-3, 1, 3);
+      directionalLight3.position.set(3, 1, -3);
+      directionalLight4.position.set(-3, 1, -3);
+      directionalLight5.position.set(0, 5, 0);
+      scene.add(directionalLight1);
+      scene.add(directionalLight2);
+      scene.add(directionalLight3);
+      scene.add(directionalLight4);
+      scene.add(directionalLight5);
+
+      // Orbit controls
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.25;
+      controls.enableZoom = true;
+      controls.minDistance = 0.1;
+      // Load GLB model
+      const loader = new GLTFLoader();
+      const setModel = (m) => {
+        this.model = m
+      }
+      // const minDistance = 0.1
+      loader.load(
+        src,
+        (gltf) => {
+          const model = gltf.scene;
+          model.scale.set(1, 1, 1); // Set scale to (1, 1, 1)
+          setModel(model)
+          scene.add(model);
+          camera.position.set(cameraRotation.x, cameraRotation.y, cameraRotation.z); // Adjust camera position to view the model
+          centerModel(model);
+          controls.minDistance = calculateMinZoomLevel(model);
+          onLoad()
+        },
+        undefined,
+        (error) => {
+          onLoad()
+          console.error('Error loading GLB model:', error);
+        }
+      );
+      
+      let zoomLevel = 1.0;
+      const zoomIncrement = 0.1;
+
+      function updateCameraZoom() {
+          const newFOV = 45 / zoomLevel;
+          camera.fov = newFOV;
+          camera.updateProjectionMatrix();
+      }
+      const increaseZoomButton = document.getElementById('increaseZoomButton');
+      const decreaseZoomButton = document.getElementById('decreaseZoomButton');
+
+      increaseZoomButton.addEventListener('click', () => {
+          zoomLevel -= zoomIncrement;
+          if (zoomLevel < 0.1) {
+              zoomLevel = 0.1;
+          }
+          updateCameraZoom();
+      });
+      
+      decreaseZoomButton.addEventListener('click', () => {
+          zoomLevel += zoomIncrement;
+          updateCameraZoom();
+      });
+      // Center the Model Function:
+      function centerModel(model) {
+          const bbox = new THREE.Box3().setFromObject(model);
+          const center = bbox.getCenter(new THREE.Vector3());
+
+          // Move the model to align its center with the scene's center
+          model.position.sub(center);
+      }
+      // Example: Define a function to calculate minZoomLevel based on model properties
+      function calculateMinZoomLevel(model) {
+          // Calculate minZoomLevel based on model properties (e.g., bounding box size)
+          const bbox = new THREE.Box3().setFromObject(model);
+          const modelSize = bbox.getSize(new THREE.Vector3());
+          const minDimension = Math.min(modelSize.x, modelSize.y, modelSize.z);
+          return minDimension * 1.1; // Adjust based on the scale of your scene
+      }
+      // Resize handling
+      window.addEventListener('resize', () => {
+        camera.aspect = sceneEl.clientWidth / (window.innerHeight - heightless);
+        camera.updateProjectionMatrix();
+        renderer.setSize(sceneEl.clientWidth, window.innerHeight - heightless);
+      });
+
+      // Render loop
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
     }
   }
 }
@@ -221,6 +226,12 @@ export default {
   }
   &__canvas {
     cursor: url("~assets/img/cursor.svg") -4 -4, pointer;
+    width: 100%;
+    height: 100%;
+    div {
+      width: 100%;
+      height: 100%;
+    }
   }
   &__bottom {
     padding-bottom: 77px;
